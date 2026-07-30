@@ -144,13 +144,75 @@ case ":${PATH}:" in
         ;;
 esac
 
-# --- 3. Content index ------------------------------------------------------
+# --- 3. Prune developer-only material ---------------------------------------
+# The reader used to receive a purpose-built archive: bin/build-dist.sh
+# assembled it by copying only what she needed out of the repo tree. Now she
+# gets the repository's own tarball straight from GitHub, so nothing is
+# trimmed before it reaches her — this section is where that trimming
+# happens instead. It runs here, after the launcher is installed, and before
+# the content index below, so the index below is built from the tree she
+# will actually keep.
+#
+# The tui/*.py removal is the one that matters most. /usr/bin/python3 on her
+# Mac is a stub that triggers a ~1 GB Xcode Command Line Tools download the
+# moment anything runs it. tui/*.py is a full Python implementation of the
+# reader, kept in the repo only as a parity-testing oracle; if it survives
+# into her installed folder, an agent improvising past a problem could run
+# it and set that download off. This is not housekeeping — leave it out and
+# a future maintainer reading a diff that drops it will see a pointless
+# deletion and be tempted to restore it.
+#
+# Written with rm -rf/-f throughout, and no step depends on a previous one
+# having found anything, so a second run — with everything below already
+# gone — succeeds exactly like the first.
+
+# The repo's root CLAUDE.md, AGENTS.md and README.md are written for
+# developers: they describe spike branches, the Go source and the parity
+# harness, none of which exist in an installed copy. packaging/ carries the
+# reader-facing versions of the same three; swap them in, then drop
+# packaging/ itself. Guarded so a second run, with packaging/ already gone,
+# is a no-op rather than an error.
+if [ -d "$TUTOR_HOME/packaging" ]; then
+    cp "$TUTOR_HOME/packaging/CLAUDE.md" "$TUTOR_HOME/CLAUDE.md"
+    cp "$TUTOR_HOME/packaging/AGENTS.md" "$TUTOR_HOME/AGENTS.md"
+    cp "$TUTOR_HOME/packaging/README.md" "$TUTOR_HOME/README.md"
+    rm -rf "$TUTOR_HOME/packaging"
+fi
+say "  docs        CLAUDE.md, AGENTS.md, README.md (reader-facing versions)"
+
+rm -rf "$TUTOR_HOME/go"
+rm -rf "$TUTOR_HOME/bin"
+rm -rf "$TUTOR_HOME/devlog"
+rm -rf "$TUTOR_HOME/content/_pipeline"
+rm -rf "$TUTOR_HOME/.github"
+find "$TUTOR_HOME/tui" -name '*.py' -type f -exec rm -f {} + 2>/dev/null || true
+rm -rf "$TUTOR_HOME/tui/__pycache__"
+
+# Storage settings for the tool that keeps large files out of the repository.
+# The old archive dropped these; the tarball carries them. They name a private
+# cloud bucket, they are meaningless on her machine, and nothing she runs will
+# ever look for them.
+rm -rf "$TUTOR_HOME/.dvc"
+rm -f "$TUTOR_HOME/.dvcignore"
+
+# Rules about which files the repository ignores. There is no repository here.
+rm -f "$TUTOR_HOME/.gitignore"
+
+say "  pruned      go/ bin/ devlog/ content/_pipeline/ .github/ tui/*.py .dvc/"
+
+# Plugins enabled in the development environment are not enabled on her
+# machine; shipping this setting would only produce an error about a plugin
+# she does not have. .claude/skills/ is left alone — it is how the agent
+# half of the course works.
+rm -f "$TUTOR_HOME/.claude/settings.json"
+
+# --- 4. Content index ------------------------------------------------------
 # Run the installed copy, never the one still sitting in the unpacked folder:
 # that one is still quarantined, and macOS would refuse it.
 
 "$LAUNCHER" index | sed 's/^/  /'
 
-# --- 4. Done ---------------------------------------------------------------
+# --- 5. Done ---------------------------------------------------------------
 
 say ""
 say "Done."

@@ -40,6 +40,12 @@ func getWinsize(fd int) (cols, rows int, err error) {
 	return int(ws.Col), int(ws.Row), nil
 }
 
+// The pixel fields this ioctl also returns are read by cellPixels in
+// image.go, which does its own TIOCGWINSZ rather than calling through here.
+// That duplication is deliberate: image.go is self-contained by design, and
+// a second accessor in this file would be a copy of the same three lines
+// with nothing to keep the two honest if one of them changed.
+
 func ioctlPtr(fd int, req uintptr, arg unsafe.Pointer) error {
 	_, _, errno := syscall.Syscall(syscall.SYS_IOCTL, uintptr(fd), req, uintptr(arg))
 	if errno != 0 {

@@ -10,6 +10,8 @@
 //	headings (#..####)   paragraphs with reflow   fenced code blocks
 //	inline `code`        **bold**   *italic*      bullet + ordered lists
 //	> blockquotes        --- rules  [links](url)  | pipe | tables |
+//	![alt](pic.png)      pictures — PNG only, and only where the terminal
+//	                     can actually show them
 //
 // Anything unrecognised degrades to a plain wrapped paragraph, so unexpected
 // syntax is always readable even when it is not pretty.
@@ -21,6 +23,7 @@
 package main
 
 import (
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -511,6 +514,7 @@ var (
 	quoteRe       = regexp.MustCompile(`^\s*>\s?(.*)$`)
 	frontmatterRe = regexp.MustCompile(`(?s)\A---\r?\n.*?\r?\n---\r?\n`)
 	tableSepRe    = regexp.MustCompile(`^\|?[\s:|-]+\|[\s:|-]*$`)
+	imageRe       = regexp.MustCompile(`^\s*!\[([^\]]*)\]\(([^)\s]*)\)\s*$`)
 )
 
 // Every glyph the renderer draws has to exist in Menlo and SF Mono, or macOS
@@ -552,17 +556,55 @@ func splitRow(line string) []string {
 	return cells
 }
 
+// isBlockStart reports whether a line begins a block, and so must not be
+// swallowed into the paragraph or blockquote being accumulated above it.
+//
+// A picture is listed here even though a table is not, and the asymmetry is
+// deliberate. A table is several lines long and an author naturally leaves a
+// blank line around it; a picture is a single line, and writing it flush
+// against the paragraph it illustrates is the obvious thing to do. Without
+// this, that spelling would silently print the raw ![alt](path) as body text
+// rather than drawing anything — a failure with no error attached to it.
 func isBlockStart(line string) bool {
 	return fenceRe.MatchString(line) ||
 		headingRe.MatchString(line) ||
 		ruleRe.MatchString(line) ||
+		imageRe.MatchString(line) ||
 		quoteRe.MatchString(line) ||
 		bulletRe.MatchString(line) ||
 		orderedRe.MatchString(line)
 }
 
+// imageBlock is one picture found while rendering, and where its reserved
+// rows ended up in the output.
+//
+// render() emits a picture as nothing but blank rows — that is what keeps
+// tui/render.py able to produce byte-identical output without knowing what a
+// picture is. This struct is the Go-only side channel that says which file
+// belongs in which of those gaps, so layout.go can put a real bitmap there
+// later. Nothing the parity harness compares ever sees it.
+type imageBlock struct {
+	path       string // absolute path to the PNG on disk
+	start      int    // index of its first reserved row within the rendered rows
+	rows       int    // how many rows it reserves
+	imgW, imgH int    // the picture's own pixel size, for the aspect fit at draw time
+}
+
 // render turns markdown into a list of styled rows at width columns.
+//
+// A thin wrapper over renderWithImages, kept so the five existing callers —
+// and the blockquote recursion below — carry on unchanged, and so the
+// signature tui/render.py mirrors stays exactly as it was.
 func render(md string, width int) [][]span {
+	rows, _ := renderWithImages(md, width)
+	return rows
+}
+
+// renderWithImages is render plus the picture side channel. Go-only: there is
+// deliberately no Python counterpart, because pictures are drawn by the live
+// reader and the live reader is the one thing bin/parity.sh never runs.
+func renderWithImages(md string, width int) ([][]span, []imageBlock) {
+	imgs := []imageBlock{}
 	width = max(20, width)
 	md = stripFrontmatter(strings.ReplaceAll(md, "\t", "    "))
 	src := strings.Split(md, "\n")
@@ -622,6 +664,36 @@ func render(md string, width int) [][]span {
 		// -- horizontal rule ----------------------------------------------
 		if ruleRe.MatchString(line) {
 			out = append(out, []span{{strings.Repeat("─", width), "rule"}})
+			out = append(out, []span{})
+			i++
+			continue
+		}
+
+		// -- picture --------------------------------------------------------
+		if m := imageRe.FindStringSubmatch(line); m != nil {
+			alt, rel := m[1], m[2]
+			rows := 0
+			// A missing, unreadable or non-PNG file reserves zero rows rather
+			// than erroring, and Python must fail the same way: "just the
+			// caption, no picture" is the one shape both sides can produce
+			// identically without agreeing on an error message too.
+			abs := filepath.Join(contentDir(resolveRoot()), rel)
+			imgW, imgH := 0, 0
+			if w, h, err := pngSize(abs); err == nil {
+				imgW, imgH = w, h
+				rows = imageRows(w, h, width)
+			}
+			if rows > 0 {
+				// Recorded before the rows are appended, so start is the index
+				// of the first reserved row rather than the one past the last.
+				imgs = append(imgs, imageBlock{
+					path: abs, start: len(out), rows: rows, imgW: imgW, imgH: imgH,
+				})
+			}
+			for r := 0; r < rows; r++ {
+				out = append(out, []span{{strings.Repeat(" ", width), "imagepad"}})
+			}
+			out = append(out, wrapSpans(parseInline(alt, "dim"), width, nil, nil)...)
 			out = append(out, []span{})
 			i++
 			continue
@@ -696,7 +768,7 @@ func render(md string, width int) [][]span {
 	for len(out) > 0 && len(out[len(out)-1]) == 0 {
 		out = out[:len(out)-1]
 	}
-	return out
+	return out, imgs
 }
 
 // renderCode paints a code block as a solid tinted slab: padded to full

@@ -1,0 +1,109 @@
+# AGENTS.md — tutor
+
+This folder — `~/tutor` — is a crash course on Claude Code. It has two
+halves: a reader the user opens in a terminal of their own, and an agent that
+answers their questions from the same articles. If you are reading this, you
+are the second half.
+
+This document is the generic-agent version of `~/tutor/CLAUDE.md`. The two
+cover the same ground; read whichever suits you and ignore the other.
+
+## What this folder is not
+
+There is no source tree here. No `go/`, no build scripts, no version control,
+no tests. This copy **is** the product — the installer stripped the
+developer material out when it ran, and the repo it came from is elsewhere.
+If a task seems to require rebuilding something, it does not; say so rather
+than reconstructing a toolchain.
+
+## First thing, every session
+
+Run the installer before anything else:
+
+```bash
+bash ~/tutor/install.sh
+```
+
+Run it first, every time, without working out whether it is needed. It is
+idempotent — it overwrites what it owns, leaves everything else alone, stays
+inside the home folder, never uses `sudo`, and downloads nothing. Running it
+is always cheaper than deciding whether it was necessary.
+
+Start the command with `bash`, exactly as written. On a fresh copy the reader
+has not been installed yet, and macOS blocks programs that arrived in a
+download until they have been through this step. Invoking the installer any
+other way, or reaching into `~/tutor/tui/bin/` directly, hits that block and
+reports an error that looks far worse than it is.
+
+Then confirm:
+
+```bash
+tutor doctor
+```
+
+One line per check. If every line says `ok`, say nothing and get on with the
+user's question. A line beginning `note` is not a failure — it only means the
+process has no terminal attached, which is always true of a tool call.
+
+If a check says `FAIL`, do what it suggests. If macOS still refuses to run
+`tutor`, the way through is **Settings → Privacy & Security**, where a
+message about `tutor` will be waiting with an **Open Anyway** button.
+
+## You cannot open the reader
+
+Your session owns this terminal, so the TUI needs a tab of its own. Never run
+`tutor` from a tool call — it detects the missing terminal and prints
+instructions rather than hanging, so the call achieves nothing.
+
+If the install is fresh and the reader has not been opened yet, tell the
+user:
+
+> Open a new Ghostty tab and type `tutor`. Keep it open beside this one.
+
+## Answering questions
+
+The answer lives in `content/`. Find it there rather than answering from
+memory — the course is opinionated, and a generically correct answer that
+contradicts it is worse than no answer.
+
+`content/index.json` lists every article with a summary and keywords. Read
+the one that matches, then answer in your own words. If the content does not
+cover what was asked, say so plainly, answer as best you can, and note that
+it is not in the course yet.
+
+## Teaching the course
+
+To take the user through the course in order rather than answering a
+one-off question, the shipped `learn` skill does it one section at a time: it
+works out where they have got to, sends them to read, checks it landed, and
+sets them one thing to try. Prefer it over improvising a lesson.
+
+## How to talk to the user
+
+They are new to this. That shapes everything:
+
+- Short sentences. No jargon without a plain-English gloss first.
+- Show the command to type, on its own line, ready to copy.
+- Say what will happen before they run something, and what they should see
+  afterwards, so they can tell success from failure themselves.
+- Never say a thing is "simple" or "just" anything.
+- When they get something wrong, fix the thing; do not explain the mistake at
+  length.
+
+## The layout
+
+```
+~/tutor/
+├── content/            the course itself, one folder per part
+│   └── index.json      what exists, with summaries and keywords
+├── tui/
+│   └── bin/            the reader; install.sh copies it to ~/.local/bin/tutor
+├── .claude/skills/
+│   ├── learn/          taking them through the course, a section at a time
+│   ├── tutor/          answering their questions from the course
+│   ├── custom-agents/  building them a custom agent
+│   └── custom-skills/  building them a custom skill
+├── README.md           the same instructions, written for them
+├── CLAUDE.md           the same again for Claude Code
+└── install.sh          idempotent; run it whenever something seems off
+```

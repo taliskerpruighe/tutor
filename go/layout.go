@@ -40,9 +40,10 @@ type itemBox struct {
 
 // Frame is a painted frame plus the hitboxes needed to interpret a click.
 type Frame struct {
-	rows  [][]span
-	tabs  []tabBox
-	items []itemBox
+	rows   [][]span
+	tabs   []tabBox
+	items  []itemBox
+	images []placement
 
 	paneX, paneY, paneW, paneH int
 }
@@ -431,12 +432,24 @@ func buildFrame(app *App, cols, rows int) *Frame {
 
 	side := sidebarRows(frame, app, sw, bodyH, len(out))
 	lines := app.paneLines(pw)
-	bar := scrollbar(bodyH, len(lines), bodyH, app.scroll)
 
 	frame.paneX = sw + 3
 	frame.paneY = len(out)
 	frame.paneW = pw
 	frame.paneH = bodyH
+
+	if app.images {
+		frame.images = visibleImages(app, pw, bodyH, frame.paneX, frame.paneY)
+	} else {
+		// No pictures this session: strip the reserved blank rows so a
+		// caption sits flush under the text before it rather than leaving a
+		// stretch of blank lines where a picture would have gone. This is
+		// the only place that branches on app.images — paneLines, its cache
+		// and the scroll math never learn pictures exist at all.
+		lines = dropImagePad(lines)
+	}
+
+	bar := scrollbar(bodyH, len(lines), bodyH, app.scroll)
 
 	for i := 0; i < bodyH; i++ {
 		var line []span
@@ -454,6 +467,123 @@ func buildFrame(app *App, cols, rows int) *Frame {
 	out = append(out, statusBar(app, cols))
 	frame.rows = out
 	return frame
+}
+
+// --------------------------------------------------------------------------
+// Pictures
+//
+// The reference for the arithmetic below is /tmp/kdemo/main.go, a spike
+// written to answer exactly this question: how does a picture placed in the
+// kitty graphics protocol survive the reader's existing draw model — full
+// redraw of every line, on every keypress, inside the alternate screen —
+// without flicker, without ghosts, and with correct cropping when it is
+// half scrolled off the pane.
+// --------------------------------------------------------------------------
+
+// dropImagePad strips the blank rows render.go reserved for a picture,
+// identified the same way term.go's Draw recognises them: a row that is
+// nothing but a single "imagepad"-styled span. Used only when app.images is
+// false — see buildFrame above for why that is the one branch point.
+func dropImagePad(lines [][]span) [][]span {
+	out := make([][]span, 0, len(lines))
+	for _, line := range lines {
+		if len(line) == 1 && line[0].style == "imagepad" {
+			continue
+		}
+		out = append(out, line)
+	}
+	return out
+}
+
+// visibleImages turns each picture in the current article into a placement,
+// or drops it if none of the rows it reserved are on screen this frame.
+// paneX/paneY are the pane's own top-left cell within this frame — the same
+// values already computed as frame.paneX/frame.paneY just above the call.
+func visibleImages(app *App, paneW, bodyH, paneX, paneY int) []placement {
+	var out []placement
+	visTop, visBot := app.scroll, app.scroll+bodyH
+
+	for _, img := range app.paneImages(paneW) {
+		// Intersect the picture's reserved row range with the pane's visible
+		// window. An empty intersection means no part of it is on screen.
+		if img.start >= visBot || img.start+img.rows <= visTop || img.rows <= 0 {
+			continue
+		}
+		topCut, botCut := 0, 0
+		if img.start < visTop {
+			topCut = visTop - img.start
+		}
+		if img.start+img.rows > visBot {
+			botCut = (img.start + img.rows) - visBot
+		}
+		showRows := img.rows - topCut - botCut
+		if showRows <= 0 {
+			continue
+		}
+
+		// Fit the picture inside the visible slice of its reserved box at
+		// its own true aspect ratio, using the terminal's real cell pixel
+		// size rather than the 1:2 the reservation assumed — a real font is
+		// rarely exactly that shape, and filling the box edge to edge on
+		// that assumption would distort the picture instead of just leaving
+		// a slightly generous margin.
+		cols, rows := fitBox(img.imgW, img.imgH, paneW, showRows, app.cellW, app.cellH)
+		if cols <= 0 || rows <= 0 {
+			continue
+		}
+
+		// The source pixel crop is proportional to the reservation's own row
+		// count, not the fitted box's — topCut and showRows describe how much
+		// of the RESERVED range scrolled off, and that same fraction of the
+		// picture's own pixel height is what a half-scrolled picture must
+		// lose, regardless of how large the fitted box ends up being.
+		srcY := topCut * img.imgH / img.rows
+		srcH := showRows * img.imgH / img.rows
+		if srcH <= 0 {
+			continue
+		}
+
+		out = append(out, placement{
+			path: img.path,
+			// +1 on both: frame.paneX/paneY and the row/scroll arithmetic
+			// below are 0-based indices into this frame's own rows and
+			// columns, but placement.row/col are 1-based absolute screen
+			// cells, the coordinate kitty's own cursor-relative positioning
+			// expects.
+			row:  paneY + 1 + (img.start + topCut - app.scroll),
+			col:  paneX + 1 + (paneW-cols)/2, // centred horizontally in the pane
+			cols: cols, rows: rows,
+			srcY: srcY, srcH: srcH,
+		})
+	}
+	return out
+}
+
+// fitBox scales (imgW, imgH) to fit inside a boxCols x boxRows cell box,
+// each cell cellW x cellH pixels, preserving the picture's own aspect ratio,
+// and returns the result in cells. A zero cell size means the terminal never
+// reported one (image.go's cellPixels), so the box is used as-is — the same
+// 1:2 assumption the reservation itself was already sized with.
+func fitBox(imgW, imgH, boxCols, boxRows, cellW, cellH int) (cols, rows int) {
+	if imgW <= 0 || imgH <= 0 || boxCols <= 0 || boxRows <= 0 {
+		return 0, 0
+	}
+	if cellW <= 0 || cellH <= 0 {
+		return boxCols, boxRows
+	}
+	boxPxW, boxPxH := boxCols*cellW, boxRows*cellH
+	// Compare imgW*boxPxH against imgH*boxPxW instead of dividing, so the
+	// tighter dimension is found with integers only — the same reasoning
+	// imageRows already uses to keep Go and Python rounding identically.
+	if boxPxW*imgH <= boxPxH*imgW {
+		// Width is the binding constraint.
+		cols = boxCols
+		rows = max(1, imgH*boxPxW/imgW/cellH)
+	} else {
+		rows = boxRows
+		cols = max(1, imgW*boxPxH/imgH/cellW)
+	}
+	return min(cols, boxCols), min(rows, boxRows)
 }
 
 const helpDoc = `

@@ -1,11 +1,12 @@
 # CLAUDE.md — tutor
 
-The repo root carries an `AGENTS.md`. It is written for other coding agents,
-not for you. **Do not read it** unless the user explicitly points you to it.
+This folder — `~/tutor` — is a crash course on Claude Code. You are the half
+of it that answers questions; the other half is a reader they open in their
+own terminal.
 
-This folder is a crash course on Claude Code. You are
-the half of it that answers questions; the other half is a reader they open in
-their own terminal.
+`~/tutor/AGENTS.md` says all of this again for other coding agents. **Do not
+read it** unless the user points you at it; there is nothing in it that is
+not here.
 
 ## First thing, every new session
 
@@ -111,5 +112,11 @@ They are new to this. That shapes everything:
 │   ├── tutor/          answering their questions from the course
 │   ├── custom-agents/  building them a custom agent
 │   └── custom-skills/  building them a custom skill
+├── README.md           the same instructions, written for them
+├── AGENTS.md           the same again for other coding agents — not for you
 └── install.sh          idempotent; run it whenever something seems off
 ```
+
+There is no `go/` here, no build script and no version control. This folder
+is the course and the reader, nothing else. If you find yourself looking for
+a source tree to change, there isn't one — this copy is the product.

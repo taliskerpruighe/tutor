@@ -10,6 +10,8 @@ control rather than a guess about arbitrary input:
     headings (#..####)   paragraphs with reflow   fenced code blocks
     inline `code`        **bold**   *italic*      bullet + ordered lists
     > blockquotes        --- rules  [links](url)  | pipe | tables |
+    ![alt](pic.png)      pictures — PNG only, and only where the terminal
+                         can actually show them
 
 Anything unrecognised degrades to a plain wrapped paragraph, so unexpected
 syntax is always readable even when it is not pretty.
@@ -23,8 +25,11 @@ Headless check:
     python3 -m tui.render content/01-the-terminal/01-foo.md 72
 """
 
+import os
 import re
 import unicodedata
+
+from . import content
 
 # --------------------------------------------------------------------------
 # Width helpers
@@ -301,6 +306,7 @@ _BULLET_RE = re.compile(r"^(\s*)([-*+])\s+(.*)$")
 _ORDERED_RE = re.compile(r"^(\s*)(\d+)[.)]\s+(.*)$")
 _QUOTE_RE = re.compile(r"^\s*>\s?(.*)$")
 _FRONTMATTER_RE = re.compile(r"\A---\r?\n.*?\r?\n---\r?\n", re.S)
+_IMAGE_RE = re.compile(r"^\s*!\[([^\]]*)\]\(([^)\s]*)\)\s*$")
 
 # Every glyph the renderer draws has to exist in Menlo and SF Mono, or macOS
 # substitutes a font and may give it double width — which would shift every
@@ -310,6 +316,47 @@ _BULLETS = ("•", "◦", "-")
 
 def strip_frontmatter(text):
     return _FRONTMATTER_RE.sub("", text, count=1)
+
+
+def _repo_root():
+    """The tutor folder, for resolving picture paths under ``content/``.
+
+    Mirrors frame.py's ``repo_root()`` rather than importing it: frame.py
+    imports app.py, which imports this module, so importing frame.py here
+    would cycle. ``$TUTOR_HOME`` lets bin/parity.sh pin this to the same
+    tree the Go binary resolves, the way frame.py already does for whole
+    screens.
+    """
+    return os.environ.get("TUTOR_HOME") or os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
+
+
+def _png_size(path):
+    """Read width/height straight from a PNG's IHDR chunk.
+
+    Returns ``(None, None)`` for anything that is not a readable PNG, so the
+    picture branch can reserve zero rows without the two languages needing
+    to agree on an exception type or error message.
+    """
+    try:
+        with open(path, "rb") as fh:
+            head = fh.read(24)
+    except OSError:
+        return None, None
+    if len(head) < 24 or head[:8] != b"\x89PNG\r\n\x1a\n":
+        return None, None
+    return int.from_bytes(head[16:20], "big"), int.from_bytes(head[20:24], "big")
+
+
+def _image_rows(img_w, img_h, pane_w):
+    """How many blank terminal rows a picture reserves, cells being ~2:1 (w:h).
+
+    Integer division only, mirroring Go's imageRows(): the two languages
+    must land on the exact same row count for every input, and a float
+    ceil() is not guaranteed to round identically on both sides.
+    """
+    return (img_h * pane_w + img_w * 2 - 1) // (img_w * 2)
 
 
 def _is_table_sep(line):
@@ -380,6 +427,25 @@ def render(md, width):
             i += 1
             continue
 
+        # -- picture ---------------------------------------------------------
+        m = _IMAGE_RE.match(line)
+        if m:
+            alt, rel = m.group(1), m.group(2)
+            rows = 0
+            # A missing, unreadable or non-PNG file reserves zero rows rather
+            # than erroring, and Go must fail the same way: "just the
+            # caption, no picture" is the one shape both sides can produce
+            # identically without agreeing on an error message too.
+            img_w, img_h = _png_size(os.path.join(content.content_dir(_repo_root()), rel))
+            if img_w is not None:
+                rows = _image_rows(img_w, img_h, width)
+            for _ in range(rows):
+                out.append([(" " * width, "imagepad")])
+            out.extend(wrap(parse_inline(alt, "dim"), width))
+            out.append([])
+            i += 1
+            continue
+
         # -- blockquote ----------------------------------------------------
         if _QUOTE_RE.match(line):
             block = []
@@ -432,10 +498,20 @@ def render(md, width):
 
 
 def _is_block_start(line):
+    """Does this line begin a block, and so end the paragraph above it?
+
+    A picture is listed here even though a table is not, and the asymmetry is
+    deliberate. A table is several lines long and an author naturally leaves a
+    blank line around it; a picture is a single line, and writing it flush
+    against the paragraph it illustrates is the obvious thing to do. Without
+    this, that spelling would silently print the raw ![alt](path) as body text
+    rather than drawing anything — a failure with no error attached to it.
+    """
     return bool(
         _FENCE_RE.match(line)
         or _HEADING_RE.match(line)
         or _RULE_RE.match(line)
+        or _IMAGE_RE.match(line)
         or _QUOTE_RE.match(line)
         or _BULLET_RE.match(line)
         or _ORDERED_RE.match(line)

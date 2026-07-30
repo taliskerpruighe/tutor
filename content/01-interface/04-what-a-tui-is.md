@@ -21,6 +21,8 @@ This reader is one. The parts along the top are not really tabs — they are
 words in a row, coloured to look like tabs. The line down the middle is a
 column of `│` characters. It is all text, arranged carefully.
 
+![This reader itself, drawn entirely out of characters: the parts of the course run across the top, the articles down the left, and the article fills the rest.](images/the-reader.png)
+
 Claude Code is one too.
 
 ## Which came first

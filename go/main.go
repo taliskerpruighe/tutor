@@ -13,12 +13,14 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strconv"
 	"strings"
+	"syscall"
 )
 
 const version = "0.2.0"
@@ -29,6 +31,8 @@ tutor index           rebuild content/index.json
 tutor doctor          check the install and report what is wrong
 tutor render f.md 72  print one article as the reader would see it
 tutor frame 80 24     print a whole screen, for the parity harness
+tutor splash [cols]   print the launch screen once, with no wait
+tutor update          check GitHub for a newer version and install it
 tutor --version`
 
 // --------------------------------------------------------------------------
@@ -136,8 +140,11 @@ func cmdDoctor(root string) int {
 	}
 	checks := []check{}
 
-	checks = append(checks, check{true,
-		fmt.Sprintf("tutor %s (%s/%s)", version, runtime.GOOS, runtime.GOARCH), ""})
+	versionLine := fmt.Sprintf("tutor %s (%s/%s)", version, runtime.GOOS, runtime.GOARCH)
+	if latest, available := cachedUpdateVersion(); available {
+		versionLine += fmt.Sprintf(" — %s available", latest)
+	}
+	checks = append(checks, check{true, versionLine, ""})
 
 	dir := contentDir(root)
 	info, err := os.Stat(dir)
@@ -201,6 +208,15 @@ func cmdDoctor(root string) int {
 	// that does not exist.
 	if !(isTTY(os.Stdin) && isTTY(os.Stdout)) {
 		fmt.Println("  note  no terminal attached here — run `tutor` in a terminal of its own")
+	} else if os.Getenv("TMUX") != "" {
+		// Pictures are a nicety, not a requirement — the course reads fine
+		// without them — so a miss here is a note, not a FAIL, the same way
+		// the missing-terminal case above is not counted as one either.
+		fmt.Println("  note  pictures will not draw — tmux blocks the kitty graphics protocol")
+	} else if probeImages(int(os.Stdin.Fd())) {
+		fmt.Println("  ok    pictures supported")
+	} else {
+		fmt.Println("  note  pictures will not draw — this terminal does not support them")
 	}
 
 	fmt.Println()
@@ -272,6 +288,12 @@ func cmdFrame(root string, args []string) int {
 	}
 
 	app := NewApp(root, loadIndex(root, false), "")
+	// app.images is left at its NewApp default of false — deliberately, not
+	// an omission. This command's whole job is byte-for-byte determinism
+	// against tui/frame.py for the parity harness, and probeImages depends
+	// on a real terminal's reply; a frame that varied with what happened to
+	// be attached to stdout when it ran would break parity for reasons
+	// having nothing to do with an actual bug in either renderer.
 	if id != "" {
 		for _, item := range flatten(app.index) {
 			if item.article.ID == id {
@@ -323,6 +345,49 @@ func cmdRun(root, query string) int {
 	}
 
 	index := loadIndex(root, true)
+
+	if latest, available := checkForUpdate(); available {
+		fmt.Printf("tutor %s is available (you have %s).\n", latest, version)
+		fmt.Print("Update now? [y/N] ")
+		reader := bufio.NewReader(os.Stdin)
+		answer, _ := reader.ReadString('\n')
+		answer = strings.ToLower(strings.TrimSpace(answer))
+		if answer == "y" || answer == "yes" {
+			if err := applyUpdate(root, latest); err != nil {
+				fmt.Fprintf(os.Stderr, "update failed: %v\n", err)
+			} else {
+				launcher := filepath.Join(homeDir(), ".local", "bin", "tutor")
+				if err := syscall.Exec(launcher, []string{launcher}, os.Environ()); err != nil {
+					fmt.Fprintf(os.Stderr, "update installed, but could not restart: %v\n", err)
+				}
+			}
+		}
+	}
+
+	// This is the one point in cmdRun where stdout is still the ordinary
+	// terminal: the tty check above has already returned (so this can never
+	// run from an agent's tool call and hang on the wait), and t.Start()
+	// below is what enables raw mode and switches to the alternate screen
+	// (term.go:264-291) — neither has happened yet. Printing here behaves
+	// like the output of any other command and scrolls into her shell's
+	// history, which is what lets her scroll back to it later.
+	printSplash(detectWidth())
+	if waitForSplash() {
+		// Ctrl-C during the screen means "quit", not "open the reader".
+		return 0
+	}
+
+	// probeImages must run here — after the splash screen, before
+	// NewTerminal/t.Start() below. It does its own blocking read of the
+	// terminal's reply to a capability query, and t.Start() spawns a
+	// goroutine (term.go:307) that takes over stdin for the rest of the
+	// session; running the probe after that would race that goroutine for
+	// the same bytes. The splash screen is what leaves stdin free this long
+	// in the first place, which is exactly why the probe piggybacks on the
+	// same gap rather than needing one of its own.
+	images := probeImages(int(os.Stdin.Fd()))
+	cellW, cellH := cellPixels(int(os.Stdin.Fd()))
+
 	t := NewTerminal(true)
 	if err := t.Start(); err != nil {
 		fmt.Fprintf(os.Stderr, "could not take over the terminal: %v\n", err)
@@ -337,7 +402,10 @@ func cmdRun(root, query string) int {
 		}
 		t.Restore()
 	}()
-	NewApp(root, index, query).Run(t)
+	app := NewApp(root, index, query)
+	app.images = images
+	app.cellW, app.cellH = cellW, cellH
+	app.Run(t)
 	return 0
 }
 
@@ -366,6 +434,10 @@ func run(argv []string) int {
 			return cmdRender(argv[1:])
 		case "frame":
 			return cmdFrame(root, argv[1:])
+		case "splash":
+			return cmdSplash(argv[1:])
+		case "update":
+			return cmdUpdate(root)
 		case "run":
 			argv = argv[1:]
 		}

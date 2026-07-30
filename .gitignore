@@ -1,4 +1,3 @@
-dist/
 __pycache__/
 *.pyc
 
@@ -6,8 +5,10 @@ __pycache__/
 # the published course.
 content/_pipeline/
 
-# Build output. The binaries are ~2.5MB each and bin/build-tui.sh rebuilds
-# them from go/ on every dist build, so committing them would only bloat
-# history with artefacts nothing reads.
-tui/bin/
+# tui/bin/ holds the shipped macOS binaries and IS committed deliberately:
+# the repo tarball is what the reader downloads, and without these binaries
+# in it, that download would be source code rather than a working reader.
+#
+# bin/tutor-host stays ignored: it's the local build-machine binary, rebuilt
+# constantly, and no end user needs it.
 bin/tutor-host

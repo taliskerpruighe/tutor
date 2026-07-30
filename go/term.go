@@ -36,27 +36,27 @@ import (
 const reset = "\x1b[0m"
 
 var styles = map[string]string{
-	"":           "",
-	"body":       "38;5;252",
-	"dim":        "38;5;245",
-	"faint":      "38;5;240",
-	"bold":       "1;38;5;255",
-	"italic":     "3;38;5;252",
-	"bolditalic": "1;3;38;5;255",
-	"h1":         "1;38;5;81",
-	"h2":         "1;38;5;80",
-	"h3":         "1;38;5;115",
-	"h4":         "1;38;5;150",
-	"code":       "38;5;215;48;5;236",
-	"codeblock":  "38;5;223;48;5;235",
-	"codelang":   "38;5;108;48;5;235",
-	"link":       "4;38;5;117",
-	"linkurl":    "38;5;244",
-	"rule":       "38;5;238",
-	"quote":      "3;38;5;250",
-	"quotebar":   "38;5;72",
-	"bullet":     "1;38;5;81",
-	"tablehead":  "1;38;5;81",
+	"":            "",
+	"body":        "38;5;252",
+	"dim":         "38;5;245",
+	"faint":       "38;5;240",
+	"bold":        "1;38;5;255",
+	"italic":      "3;38;5;252",
+	"bolditalic":  "1;3;38;5;255",
+	"h1":          "1;38;5;81",
+	"h2":          "1;38;5;80",
+	"h3":          "1;38;5;115",
+	"h4":          "1;38;5;150",
+	"code":        "38;5;215;48;5;236",
+	"codeblock":   "38;5;223;48;5;235",
+	"codelang":    "38;5;108;48;5;235",
+	"link":        "4;38;5;117",
+	"linkurl":     "38;5;244",
+	"rule":        "38;5;238",
+	"quote":       "3;38;5;250",
+	"quotebar":    "38;5;72",
+	"bullet":      "1;38;5;81",
+	"tablehead":   "1;38;5;81",
 	"tableborder": "38;5;240",
 	// chrome
 	"tab_active": "1;4;38;5;81",
@@ -254,10 +254,17 @@ type Terminal struct {
 	winchCh  chan os.Signal
 	termCh   chan os.Signal
 	restored bool
+
+	// sent maps a picture's file path to the id it was transmitted under.
+	// imgTransmit's own bytes — the picture's whole PNG, base64'd — are the
+	// expensive part, so this is what keeps them going over the wire once
+	// per session instead of on every keypress; imgPlace, which IS cheap
+	// enough to repeat every frame, is all that runs on a cache hit.
+	sent map[string]int
 }
 
 func NewTerminal(mouse bool) *Terminal {
-	return &Terminal{fd: int(os.Stdin.Fd()), mouse: mouse}
+	return &Terminal{fd: int(os.Stdin.Fd()), mouse: mouse, sent: map[string]int{}}
 }
 
 // Start puts the tty into raw mode and switches to the alternate screen.
@@ -329,12 +336,18 @@ func (t *Terminal) Restore() {
 		return
 	}
 	t.restored = true
-	out := ""
-	if t.mouse {
-		out += "\x1b[?1006l\x1b[?1000l"
+	var b strings.Builder
+	if len(t.sent) > 0 {
+		// Frees the pixels a picture-heavy session decoded, so they do not sit
+		// in the terminal's memory after the reader has closed. Harmless (and
+		// skipped) when nothing was ever transmitted this session.
+		imgFreeAll(&b)
 	}
-	out += "\x1b[?25h\x1b[?1049l" + reset
-	t.write(out)
+	if t.mouse {
+		b.WriteString("\x1b[?1006l\x1b[?1000l")
+	}
+	b.WriteString("\x1b[?25h\x1b[?1049l" + reset)
+	t.write(b.String())
 	_ = setTermios(t.fd, setDrain, t.saved)
 }
 
@@ -352,14 +365,29 @@ func (t *Terminal) Size() (int, int) {
 	return max(cols, 1), max(rows, 1)
 }
 
-// Draw paints rows: a list of rows, each a list of (text, style) spans.
+// Draw paints rows: a list of rows, each a list of (text, style) spans, plus
+// the pictures visible this frame.
 //
 // Rows beyond the list are blanked, so callers never have to pad the frame to
 // the full screen height themselves.
-func (t *Terminal) Draw(rows [][]span) {
+//
+// Everything — the placement clear, the text, the pictures — goes into the
+// one strings.Builder this function already used, and out in the one write
+// call at the bottom. That single write is what keeps the screen from
+// tearing; splitting the picture calls into writes of their own would
+// reintroduce it.
+func (t *Terminal) Draw(rows [][]span, images []placement) {
 	_, height := t.Size()
 	var b strings.Builder
 	b.WriteString("\x1b[H")
+
+	// Clearing placements has to happen before any text is written. The
+	// per-line \x1b[2K below erases text but not a picture — they live in
+	// different planes as far as the terminal is concerned — so a picture
+	// left over from the previous frame would otherwise ghost underneath
+	// whatever now scrolls past where it was.
+	imgClearPlacements(&b)
+
 	for y := 0; y < height; y++ {
 		b.WriteString("\x1b[" + strconv.Itoa(y+1) + ";1H\x1b[2K")
 		if y < len(rows) {
@@ -376,6 +404,36 @@ func (t *Terminal) Draw(rows [][]span) {
 		}
 	}
 	b.WriteString("\x1b[" + strconv.Itoa(height) + ";1H")
+
+	// Pictures are placed last, after the text and the final cursor move, so
+	// their own cursor-relative positioning (image.go's imgPlace) lands
+	// against the frame just painted rather than wherever the cursor was
+	// before this call began.
+	for _, p := range images {
+		id, sent := t.sent[p.path]
+		if !sent {
+			// Transmitted once per path per session — the expensive part, the
+			// picture's own PNG bytes — and never again; only the cheap
+			// imgPlace call below repeats on every keypress.
+			//
+			// Numbered from firstImageID rather than from 1 so that no
+			// picture can ever collide with probeCapabilityID, the id
+			// image.go's startup query borrows. That query asks the terminal
+			// to decode and discard rather than to keep anything, so in
+			// principle id 1 is free the moment it returns — but the cost of
+			// not relying on that is one constant, and the failure it would
+			// cause (a picture silently replaced by a 1x1 probe pixel) is
+			// exactly the kind that would be blamed on anything but this.
+			id = firstImageID + len(t.sent)
+			if err := imgTransmit(&b, id, p.path); err != nil {
+				continue // unreadable file: draw nothing, same fallback render.go uses
+			}
+			t.sent[p.path] = id
+		}
+		p.id = id
+		imgPlace(&b, p)
+	}
+
 	t.write(b.String())
 }
 

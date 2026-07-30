@@ -289,6 +289,23 @@ def _scrollbar(height, total, visible, scroll):
 # --------------------------------------------------------------------------
 
 
+def _drop_image_pad(lines):
+    """Strip the blank rows render.py reserved for a picture.
+
+    The mirror of dropImagePad in go/layout.go, and the one place this
+    implementation acknowledges pictures at all. It is unconditional here
+    where Go branches on whether the terminal can draw them, because this
+    reader never draws one: it exists to be diffed against the Go build by
+    bin/parity.sh, and Go's `frame` subcommand — the only half of it parity
+    compares — always takes the no-pictures path for exactly that reason.
+
+    Without this, an article carrying a picture would differ between the two
+    builds by however many rows it reserved, which is precisely the sort of
+    silent drift the harness is here to catch.
+    """
+    return [ln for ln in lines if not (len(ln) == 1 and ln[0][1] == "imagepad")]
+
+
 def build(app, cols, rows):
     """Compose the whole screen for the current application state."""
     if too_small(cols, rows):
@@ -319,7 +336,7 @@ def build(app, cols, rows):
     out.append([("─" * cols, "rule")])
 
     side = _sidebar_rows(frame, app, sw, body_h, len(out))
-    lines = app.pane_lines(pw)
+    lines = _drop_image_pad(app.pane_lines(pw))
     bar = _scrollbar(body_h, len(lines), body_h, app.scroll)
 
     frame.pane_x = sw + 3

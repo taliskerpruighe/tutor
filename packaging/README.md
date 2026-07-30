@@ -6,8 +6,8 @@ It comes in two halves. One you read; one answers questions.
 
 ## Setting it up
 
-You should have a folder called `tutor` in your home folder. If you unzipped
-it somewhere else, move it there first. Then, in Ghostty:
+You should have a folder called `tutor` in your home folder. If it ended up
+somewhere else, move it there first. Then, in Ghostty:
 
 ```bash
 bash ~/tutor/install.sh
@@ -75,3 +75,19 @@ tutor doctor
 
 It prints one line per check and tells you what to do about anything that
 failed. Running `bash ~/tutor/install.sh` again fixes most things.
+
+## What is in the folder
+
+```
+~/tutor/
+├── content/        the course itself, one folder per part
+├── tui/bin/        the reader; install.sh copies it to ~/.local/bin/tutor
+├── .claude/        the skills Claude Code loads to help you
+├── install.sh      run it whenever something seems off
+└── CLAUDE.md       notes for Claude Code — you can ignore these
+```
+
+Nothing here needs building or updating by hand. Move the whole folder if you
+like, then run `bash ~/tutor/install.sh` again so the `tutor` command knows
+where it went.
+

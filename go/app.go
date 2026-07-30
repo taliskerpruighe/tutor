@@ -36,16 +36,40 @@ type App struct {
 	running  bool
 
 	paneW, paneH int
-	cache        map[cacheKey][][]span
+	cache        map[cacheKey]paneRender
 	helpCache    map[int][][]span
 	returnTo     *position
+
+	// images is "pictures can be drawn this session" — probeImages's answer,
+	// taken once at startup (main.go's cmdRun) and never rechecked. Default
+	// false, so any path that constructs an App without setting it (cmdFrame,
+	// notably) gets the safe, deterministic behaviour of no pictures.
+	images bool
+
+	// cellW, cellH are the terminal's real cell size in pixels (image.go's
+	// cellPixels), taken once at the same time as images. buildFrame is pure
+	// arithmetic with no terminal of its own — cmdFrame calls it against no
+	// tty at all — so this is how it learns the real cell shape instead of
+	// assuming the 1:2 the reservation itself was sized with. Zero means
+	// "unknown", which fitBox treats as "trust the reservation as-is".
+	cellW, cellH int
+}
+
+// paneRender is what paneLines caches: the rendered lines and, alongside
+// them, where each picture referenced in the article sits within those
+// lines. Caching the pair together — rather than lines alone — is what lets
+// buildFrame ask for the image list on every keypress without re-parsing the
+// article's markdown just to find it again.
+type paneRender struct {
+	lines  [][]span
+	images []imageBlock
 }
 
 func NewApp(root string, index Index, query string) *App {
 	app := &App{
 		root: root, index: index, mode: "normal", running: true,
 		paneW: 72, paneH: 20,
-		cache:     map[cacheKey][][]span{},
+		cache:     map[cacheKey]paneRender{},
 		helpCache: map[int][][]span{},
 	}
 	if query != "" {
@@ -79,21 +103,38 @@ func (a *App) article() (Article, bool) {
 // -- rendering -------------------------------------------------------------
 
 func (a *App) paneLines(width int) [][]span {
+	return a.paneRenderAt(width).lines
+}
+
+// paneImages is paneLines' companion: the pictures found in whatever article
+// paneLines(width) just rendered, keyed the same way. buildFrame calls this
+// to place pictures on screen without re-parsing the article's markdown a
+// second time on every keypress just to relocate them.
+func (a *App) paneImages(width int) []imageBlock {
+	return a.paneRenderAt(width).images
+}
+
+// paneRenderAt renders — or serves from cache — the current article at
+// width, keeping its lines and its picture list together so paneLines and
+// paneImages never cause the article to be parsed twice for one keypress.
+func (a *App) paneRenderAt(width int) paneRender {
 	a.paneW = width
 	article, ok := a.article()
 	if !ok {
-		return render(emptyDoc, width)
+		lines, imgs := renderWithImages(emptyDoc, width)
+		return paneRender{lines, imgs}
 	}
 	key := cacheKey{article.Path, width}
-	if lines, hit := a.cache[key]; hit {
-		return lines
+	if pr, hit := a.cache[key]; hit {
+		return pr
 	}
 	if len(a.cache) > 24 {
-		a.cache = map[cacheKey][][]span{}
+		a.cache = map[cacheKey]paneRender{}
 	}
-	lines := render(readArticle(a.root, article), width)
-	a.cache[key] = lines
-	return lines
+	lines, imgs := renderWithImages(readArticle(a.root, article), width)
+	pr := paneRender{lines, imgs}
+	a.cache[key] = pr
+	return pr
 }
 
 func (a *App) helpLines(width int) [][]span {
@@ -237,7 +278,7 @@ func (a *App) cancelSearch() {
 
 func (a *App) reload() {
 	a.index = loadIndex(a.root, true)
-	a.cache = map[cacheKey][][]span{}
+	a.cache = map[cacheKey]paneRender{}
 	a.goTo(a.partI, a.articleI)
 }
 
@@ -412,7 +453,7 @@ func (a *App) Run(t *Terminal) {
 		a.paneH = max(1, rows-chromeRows)
 		a.clampScroll()
 		frame := buildFrame(a, cols, rows)
-		t.Draw(frame.rows)
+		t.Draw(frame.rows, frame.images)
 
 		ev, ok := t.ReadEvent(time.Duration(0))
 		if !ok {

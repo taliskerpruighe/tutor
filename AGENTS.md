@@ -7,10 +7,13 @@
 against `tori`, then merged or discarded; a discarded spike takes its history
 with it, so this repo keeps a `devlog/` — see `devlog/SPIKES.md`.
 
+The repo is **public**, and its history was squashed to a single commit
+before that happened. Anything added here is readable by anyone.
+
 ## What this is
 
-A crash course on Claude Code. The reader receives a zip, unpacks
-it to `~/tutor`, and reads it two ways:
+A crash course on Claude Code. The reader downloads this repository from
+GitHub into `~/tutor`, runs `install.sh`, and reads it two ways:
 
 - **outside Claude Code** — a wiki-style TUI in a terminal of its own, and
 - **inside Claude Code** — an agent that answers the reader's questions.
@@ -20,16 +23,19 @@ Both read the same corpus. There is no second copy of any fact.
 ```
 content/            the single source of truth
   ├── index.json    generated; regenerates itself when articles change
+  ├── _pipeline/    gitignored raw authoring notes — not part of the course
   └── NN-part/NN-article.md
 go/                 the reader (Go, zero dependencies) — what ships
 tui/                the same reader in Python — the parity oracle, see below
-  └── bin/          gitignored build output; the binaries that ship
-.claude/skills/     the skill the agent loads to answer questions
-packaging/          the CLAUDE.md and README.md that ship in the reader's copy
+  └── bin/          committed build output; the binaries that ship
+.claude/skills/     the skills the shipped agent loads
+packaging/          the CLAUDE.md, AGENTS.md and README.md that ship in the
+                    reader's copy, replacing the ones at this root
+install.sh          sets up the reader's copy and prunes developer material
 bin/build-tui.sh    go/ -> tui/bin/tutor-darwin-{arm64,amd64}
 bin/parity.sh       diffs the two implementations byte for byte —
                     article renders, whole composed frames, and index.json
-bin/build-dist.sh   repo tree -> dist/tutor.zip
+devlog/SPIKES.md    the durable record of spikes, merged and discarded
 ```
 
 ## Two implementations, one of them frozen
@@ -79,6 +85,10 @@ no sections.** `1`–`9` are the only keys that jump straight to an article, and
 they count within whatever list is on show, so a tenth entry is reachable only
 by walking there with `n`. Nine is also about as long as a section should be
 before it wants splitting anyway.
+
+`content/_pipeline/` holds raw authoring notes the finished articles are
+written from. It is gitignored and excluded from the archive. Nothing in it
+is course content, and nothing should be published straight out of it.
 
 ## The markdown contract
 
@@ -159,20 +169,34 @@ sh bin/parity.sh                              # Go vs Python, byte for byte
 ./bin/tutor-host doctor                       # check an install
 ./bin/tutor-host render content/…/x.md 72     # preview a render, no tty needed
 ./bin/tutor-host frame 80 24 shell/packages   # preview a whole screen
-sh bin/build-dist.sh                          # -> dist/tutor.zip
 ```
 
 ## What ships
 
-`bin/build-dist.sh` excludes in two ways. Anchored to the repo root —
-`bin/`, `go/`, `devlog/`, `packaging/` and `dist/` — because an unanchored
-`bin` would also swallow `tui/bin/`, which holds the only thing the reader
-actually needs. Dropped wherever they appear instead: `.DS_Store`, `__pycache__`,
-`*.pyc`, and `*.py` — the last of these strips the whole Python reader from
-the shipped copy, so nothing in the reader's home folder can reach for
-`python3` and set off the Command Line Tools download. `.claude/settings.json`
-is stripped from the staged copy separately, after the rest is assembled,
-because a plugin enabled here and not there would only error for the reader.
-`packaging/CLAUDE.md` and `packaging/README.md` replace the root `CLAUDE.md`
-and `README.md` in the reader's copy. The reader's agent should read
-instructions written for the reader, not for us.
+The reader gets the whole repository, so nothing is trimmed before it
+reaches her. `install.sh` does the trimming instead, in its "prune
+developer-only material" section — after the launcher is installed and
+before the index is built, so the index is built from the tree she keeps.
+Every step is `rm -rf`/`-f` and none depends on a previous one having found
+anything, so re-running the installer is safe.
+
+It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`, `.github/`,
+`tui/*.py`, `tui/__pycache__`, `.dvc/`, `.dvcignore` and `.gitignore`. The
+`tui/*.py` removal is the one that matters: leave the Python reader in place
+and an agent improvising past a problem could run it and set off the ~1 GB
+Command Line Tools download. `.claude/settings.json` goes too, because a
+plugin enabled here and not there would only error for the reader;
+`.claude/skills/` is left alone, since it is how the agent half of the
+course works.
+
+`packaging/CLAUDE.md`, `packaging/AGENTS.md` and `packaging/README.md` are
+copied over the root `CLAUDE.md`, `AGENTS.md` and `README.md`, and then
+`packaging/` itself is deleted. The agent in the reader's home folder should
+read instructions written for the reader, not for us — this document would
+only mislead it, since nothing it describes (spikes, the devlog, `go/`, the
+parity harness) exists in that copy.
+
+`tui/bin/` is committed deliberately, and `.gitignore` says so. The reader
+downloads the repository as it stands; without those binaries in it, that
+download would be source code rather than a working reader. `bin/tutor-host`
+stays ignored — it is the local build-machine binary.
