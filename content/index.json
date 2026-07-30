@@ -1,0 +1,954 @@
+{
+  "parts": [
+    {
+      "slug": "01-interface",
+      "title": "Interface",
+      "articles": [
+        {
+          "id": "wiki/about-this-wiki",
+          "title": "About this wiki",
+          "section": "This Wiki",
+          "summary": "What this course is, how it differs from the official docs, and what later versions will add.",
+          "keywords": [
+            "about",
+            "party trick",
+            "party tricks",
+            "the boss",
+            "documentation",
+            "docs",
+            "anthropic",
+            "version",
+            "roadmap",
+            "agents",
+            "skills",
+            "subagents",
+            "chains",
+            "hooks",
+            "mcp",
+            "plugins"
+          ],
+          "path": "content/01-interface/01-about-this-wiki.md"
+        },
+        {
+          "id": "wiki/how-to-read-this",
+          "title": "How to read this",
+          "section": "This Wiki",
+          "summary": "How to move around this wiki — the keys, the mouse, and where to start.",
+          "keywords": [
+            "start",
+            "navigation",
+            "keys",
+            "mouse",
+            "help",
+            "search",
+            "formatting"
+          ],
+          "path": "content/01-interface/02-how-to-read-this.md"
+        },
+        {
+          "id": "terminal/what-a-terminal-is",
+          "title": "What a terminal is",
+          "section": "The Terminal",
+          "summary": "The black window is an app that runs other apps, and it is pretending to be furniture.",
+          "keywords": [
+            "terminal",
+            "emulator",
+            "console",
+            "history",
+            "mainframe",
+            "vt100",
+            "window"
+          ],
+          "path": "content/01-interface/03-what-a-terminal-is.md"
+        },
+        {
+          "id": "terminal/what-a-tui-is",
+          "title": "What a TUI is",
+          "section": "The Terminal",
+          "summary": "An app made of text and driven by the keyboard, which is what everything was before it was made of pictures.",
+          "keywords": [
+            "tui",
+            "gui",
+            "interface",
+            "keyboard",
+            "text",
+            "mouse"
+          ],
+          "path": "content/01-interface/04-what-a-tui-is.md"
+        },
+        {
+          "id": "terminal/why-ghostty",
+          "title": "Why Ghostty",
+          "section": "The Terminal",
+          "summary": "The terminal you were given, what it does better, and what was set up inside it for you.",
+          "keywords": [
+            "ghostty",
+            "terminal",
+            "tabs",
+            "config",
+            "font",
+            "theme",
+            "catppuccin"
+          ],
+          "path": "content/01-interface/05-why-ghostty.md"
+        },
+        {
+          "id": "shell/what-a-shell-is",
+          "title": "What a shell is",
+          "section": "The Shell",
+          "summary": "The program that greets you when a terminal opens, and what sits underneath it.",
+          "keywords": [
+            "shell",
+            "kernel",
+            "operating system",
+            "prompt",
+            "command",
+            "zsh"
+          ],
+          "path": "content/01-interface/06-what-a-shell-is.md"
+        },
+        {
+          "id": "shell/why-it-is-powerful",
+          "title": "Why the shell is powerful",
+          "section": "The Shell",
+          "summary": "Clicking does one thing at a time; a typed command does a thousand, from anywhere.",
+          "keywords": [
+            "power",
+            "glob",
+            "pipe",
+            "find",
+            "grep",
+            "batch",
+            "wildcard"
+          ],
+          "path": "content/01-interface/07-why-it-is-powerful.md"
+        },
+        {
+          "id": "shell/your-shell-zsh",
+          "title": "Your shell is zsh",
+          "section": "The Shell",
+          "summary": "Which shell you have, where it came from, and what the others are.",
+          "keywords": [
+            "zsh",
+            "bash",
+            "sh",
+            "unix",
+            "posix",
+            "fish",
+            "nushell",
+            "powershell"
+          ],
+          "path": "content/01-interface/08-your-shell-zsh.md"
+        },
+        {
+          "id": "shell/your-prompt",
+          "title": "Your prompt",
+          "section": "The Shell",
+          "summary": "The text before the cursor is a status display, and it can say whatever is useful to you.",
+          "keywords": [
+            "prompt",
+            "command prompt",
+            "cursor",
+            "path",
+            "pwd",
+            "customise"
+          ],
+          "path": "content/01-interface/09-your-prompt.md"
+        },
+        {
+          "id": "shell/starship",
+          "title": "Starship and powerline themes",
+          "section": "The Shell",
+          "summary": "What draws your prompt, why it needs a special font, and how to have it restyled.",
+          "keywords": [
+            "starship",
+            "powerline",
+            "theme",
+            "nerd font",
+            "colours",
+            "toml",
+            "customise"
+          ],
+          "path": "content/01-interface/10-starship.md"
+        },
+        {
+          "id": "shell/moving-around",
+          "title": "Moving around",
+          "section": "The Shell",
+          "summary": "Paths, the four commands you need daily, and how to type far less than you think.",
+          "keywords": [
+            "path",
+            "cd",
+            "pwd",
+            "ls",
+            "open",
+            "tilde",
+            "tab",
+            "history",
+            "alias",
+            "folder"
+          ],
+          "path": "content/01-interface/11-moving-around.md"
+        },
+        {
+          "id": "shell/packages",
+          "title": "Packages",
+          "section": "The Shell",
+          "summary": "Every app is a bundle of code, most of that code is free, and the shell is how you reach it.",
+          "keywords": [
+            "package",
+            "open source",
+            "install",
+            "homebrew",
+            "pandoc",
+            "tesseract",
+            "git",
+            "diff",
+            "licence"
+          ],
+          "path": "content/01-interface/12-packages.md"
+        },
+        {
+          "id": "linux/what-linux-is",
+          "title": "What Linux is",
+          "section": "Linux",
+          "summary": "A kernel, not an operating system — and the distributions that build one around it.",
+          "keywords": [
+            "linux",
+            "kernel",
+            "distribution",
+            "distro",
+            "open source",
+            "unix",
+            "debian",
+            "fedora",
+            "arch",
+            "nixos"
+          ],
+          "path": "content/01-interface/13-what-linux-is.md"
+        },
+        {
+          "id": "linux/why-it-is-better",
+          "title": "Why it is better",
+          "section": "Linux",
+          "summary": "Faster, safer by construction, and honest about what it lacks — before the article that makes the real case.",
+          "keywords": [
+            "linux",
+            "performance",
+            "security",
+            "virus",
+            "privacy",
+            "tui",
+            "claude code"
+          ],
+          "path": "content/01-interface/14-why-it-is-better.md"
+        },
+        {
+          "id": "linux/you-are-the-system",
+          "title": "You are the system",
+          "section": "Linux",
+          "summary": "Every layer of a Linux machine is a choice you make — and Claude Code is what makes making that choice practical.",
+          "keywords": [
+            "linux",
+            "window manager",
+            "desktop environment",
+            "wayland",
+            "x11",
+            "init",
+            "customise",
+            "sway",
+            "gnome"
+          ],
+          "path": "content/01-interface/15-you-are-the-system.md"
+        }
+      ]
+    },
+    {
+      "slug": "02-setup",
+      "title": "Setup",
+      "articles": [
+        {
+          "id": "claude-code/what-it-is",
+          "title": "What Claude Code is",
+          "section": "How It Works",
+          "summary": "Claude is the model; Claude Code is the machinery that gives it hands.",
+          "keywords": [
+            "llm",
+            "model",
+            "harness",
+            "claude",
+            "agent",
+            "tools",
+            "loop"
+          ],
+          "path": "content/02-setup/01-what-claude-code-is.md"
+        },
+        {
+          "id": "claude-code/why-claude-code",
+          "title": "Why Claude Code",
+          "section": "How It Works",
+          "summary": "Why the model lives in a data centre, the harness lives on your Mac, and what the alternatives are.",
+          "keywords": [
+            "vram",
+            "gpu",
+            "ram",
+            "cpu",
+            "openai",
+            "gemini",
+            "llama",
+            "mistral",
+            "qwen",
+            "local"
+          ],
+          "path": "content/02-setup/02-why-claude-code.md"
+        },
+        {
+          "id": "claude-code/installing",
+          "title": "Installing",
+          "section": "How It Works",
+          "summary": "It is already on your Mac — how to check, how to sign in, and how to put it on the next machine.",
+          "keywords": [
+            "install",
+            "installer",
+            "update",
+            "version",
+            "sign in",
+            "login",
+            "account",
+            "doctor"
+          ],
+          "path": "content/02-setup/03-installing.md"
+        },
+        {
+          "id": "claude-code/launching",
+          "title": "Launching Claude Code",
+          "section": "How It Works",
+          "summary": "Type claude and press enter — and understand the one thing that changes what happens next.",
+          "keywords": [
+            "launch",
+            "start",
+            "ghostty",
+            "ide",
+            "cd",
+            "working directory",
+            "cwd",
+            "session"
+          ],
+          "path": "content/02-setup/04-launching.md"
+        },
+        {
+          "id": "claude-code/claude-directory",
+          "title": "The .claude directory",
+          "section": "What It Reads",
+          "summary": "The harness lives in an ordinary hidden folder called .claude, not on a server.",
+          "keywords": [
+            "dotfile",
+            "hidden file",
+            "home directory",
+            "global",
+            "user-level",
+            "config"
+          ],
+          "path": "content/02-setup/05-the-claude-directory.md"
+        },
+        {
+          "id": "claude-code/inside-claude",
+          "title": "Inside .claude",
+          "section": "What It Reads",
+          "summary": "A tour of what lives inside .claude — more than you need today, so the names are not strange later.",
+          "keywords": [
+            "settings",
+            "CLAUDE.md",
+            "rules",
+            "agents",
+            "skills",
+            "hooks",
+            "plugins"
+          ],
+          "path": "content/02-setup/06-inside-the-claude-directory.md"
+        },
+        {
+          "id": "claude-code/more-directories",
+          "title": "More .claude directories",
+          "section": "What It Reads",
+          "summary": "You can have as many as you like, one per folder, and each one makes that folder a project.",
+          "keywords": [
+            "project",
+            "project-level",
+            "global",
+            "layering",
+            "multiple",
+            "per-folder"
+          ],
+          "path": "content/02-setup/07-more-claude-directories.md"
+        },
+        {
+          "id": "claude-code/what-a-session-sees",
+          "title": "What a session sees",
+          "section": "What It Reads",
+          "summary": "Claude walks up from the folder you launched in, collecting every .claude on the way.",
+          "keywords": [
+            "walk up",
+            "parent",
+            "ancestor",
+            "sibling",
+            "working directory",
+            "discovery",
+            "context"
+          ],
+          "path": "content/02-setup/08-what-a-session-sees.md"
+        },
+        {
+          "id": "claude-code/location-matters",
+          "title": "Location matters",
+          "section": "What It Reads",
+          "summary": "More is worse — so split what you build across folders and launch from the right one.",
+          "keywords": [
+            "content isolation",
+            "context",
+            "too many",
+            "agents",
+            "skills",
+            "layout",
+            "party trick"
+          ],
+          "path": "content/02-setup/09-location-matters.md"
+        }
+      ]
+    },
+    {
+      "slug": "03-agents",
+      "title": "Agents",
+      "articles": [
+        {
+          "id": "agents/what-it-is",
+          "title": "What an agent is",
+          "section": "Context",
+          "summary": "Every separate conversation is a separate agent, and it knows nothing about the others.",
+          "keywords": [
+            "agent",
+            "conversation",
+            "session",
+            "separate",
+            "fresh",
+            "parallel",
+            "terminal"
+          ],
+          "path": "content/03-agents/01-what-an-agent-is.md"
+        },
+        {
+          "id": "agents/context",
+          "title": "Context",
+          "section": "Context",
+          "summary": "Every agent has a fixed amount of brainspace, and everything it touches fills a little of it.",
+          "keywords": [
+            "context",
+            "context window",
+            "tokens",
+            "brainspace",
+            "model",
+            "haiku",
+            "sonnet",
+            "opus",
+            "fable",
+            "size"
+          ],
+          "path": "content/03-agents/02-context.md"
+        },
+        {
+          "id": "agents/context-rot",
+          "title": "Context rot",
+          "section": "Context",
+          "summary": "As the window fills the agent gets worse at everything, and it never tells you.",
+          "keywords": [
+            "context rot",
+            "hallucination",
+            "attention",
+            "degradation",
+            "silent",
+            "fifty percent",
+            "the boss"
+          ],
+          "path": "content/03-agents/03-context-rot.md"
+        },
+        {
+          "id": "agents/managing",
+          "title": "Managing context",
+          "section": "Context",
+          "summary": "The three resets — compact, clear, exit — and how to pick between them.",
+          "keywords": [
+            "compact",
+            "clear",
+            "exit",
+            "reset",
+            "party trick",
+            "auto-compact",
+            "context management",
+            "slash command"
+          ],
+          "path": "content/03-agents/04-context-management.md"
+        },
+        {
+          "id": "agents/default",
+          "title": "The default agent",
+          "section": "Custom Agents",
+          "summary": "Every plain `claude` gives you the same type of agent — the default one, which has no definition behind it.",
+          "keywords": [
+            "default agent",
+            "claude",
+            "type",
+            "definition",
+            "same",
+            "plain",
+            "launch"
+          ],
+          "path": "content/03-agents/05-the-default-agent.md"
+        },
+        {
+          "id": "agents/custom",
+          "title": "Custom agents",
+          "section": "Custom Agents",
+          "summary": "A custom agent is one file in a `.claude/agents/` folder, launched with `claude --agent`.",
+          "keywords": [
+            "custom agent",
+            "agents folder",
+            "definition",
+            "--agent",
+            "global",
+            "project",
+            "launch"
+          ],
+          "path": "content/03-agents/06-custom-agents.md"
+        },
+        {
+          "id": "agents/definition",
+          "title": "The definition file",
+          "section": "Custom Agents",
+          "summary": "Two parts — frontmatter for the settings, body for the instructions — and most documented settings are noise.",
+          "keywords": [
+            "definition",
+            "frontmatter",
+            "YAML",
+            "body",
+            "instructions",
+            "role",
+            "markdown",
+            "the boss"
+          ],
+          "path": "content/03-agents/07-the-definition-file.md"
+        },
+        {
+          "id": "agents/fields",
+          "title": "The fields that matter",
+          "section": "Custom Agents",
+          "summary": "Party Trick #3 — six frontmatter fields do real work, and the rest is decoration.",
+          "keywords": [
+            "name",
+            "description",
+            "model",
+            "background",
+            "memory",
+            "tools",
+            "party trick",
+            "agent engineering",
+            "subagent"
+          ],
+          "path": "content/03-agents/08-the-fields-that-matter.md"
+        },
+        {
+          "id": "agents/building",
+          "title": "Building one",
+          "section": "Custom Agents",
+          "summary": "Ask the custom-agents skill and answer four questions — including which model does which kind of work.",
+          "keywords": [
+            "custom-agents",
+            "skill",
+            "build",
+            "opus",
+            "sonnet",
+            "haiku",
+            "model choice",
+            "tutor"
+          ],
+          "path": "content/03-agents/09-building-one.md"
+        }
+      ]
+    },
+    {
+      "slug": "04-skills",
+      "title": "Skills",
+      "articles": [
+        {
+          "id": "skills/start-with-never",
+          "title": "Start with never",
+          "section": "When To Build One",
+          "summary": "Most jobs do not need a skill — try the agents first, and build one only when the same instructions keep coming out of your mouth.",
+          "keywords": [
+            "skill",
+            "when",
+            "context rot",
+            "default agent",
+            "custom agent",
+            "subagents",
+            "repeating",
+            "correcting",
+            "proofread"
+          ],
+          "path": "content/04-skills/01-start-with-never.md"
+        },
+        {
+          "id": "skills/what-a-skill-is",
+          "title": "What a skill is",
+          "section": "When To Build One",
+          "summary": "A folder holding a SKILL.md and its supporting files — think of it as a custom, much longer prompt you only write once.",
+          "keywords": [
+            "skill",
+            "folder",
+            "SKILL.md",
+            "supporting files",
+            "claude directory",
+            "global",
+            "project",
+            "prompt"
+          ],
+          "path": "content/04-skills/02-what-a-skill-is.md"
+        },
+        {
+          "id": "skills/frontmatter",
+          "title": "The frontmatter",
+          "section": "When To Build One",
+          "summary": "Four fields do real work in a SKILL.md — name, description, effort, and user-invocable, which is always true.",
+          "keywords": [
+            "frontmatter",
+            "name",
+            "description",
+            "effort",
+            "user-invocable",
+            "yaml",
+            "settings",
+            "ignored silently"
+          ],
+          "path": "content/04-skills/03-the-frontmatter.md"
+        },
+        {
+          "id": "skills/body",
+          "title": "The body",
+          "section": "When To Build One",
+          "summary": "Where the instructions go — and why you will not be writing them yourself.",
+          "keywords": [
+            "body",
+            "instructions",
+            "steps",
+            "skill writing",
+            "custom-skills",
+            "techniques",
+            "length",
+            "order"
+          ],
+          "path": "content/04-skills/04-the-body.md"
+        },
+        {
+          "id": "skills/supporting-files",
+          "title": "Supporting files",
+          "section": "When To Build One",
+          "summary": "A skill is a folder, so it can carry templates, checklists and scripts — read only when the instructions point at them.",
+          "keywords": [
+            "supporting files",
+            "assets",
+            "references",
+            "scripts",
+            "templates",
+            "checklists",
+            "folders",
+            "pointer"
+          ],
+          "path": "content/04-skills/05-supporting-files.md"
+        },
+        {
+          "id": "skills/how-to-build-one",
+          "title": "How to build one",
+          "section": "Building One",
+          "summary": "Claude writes the skill, but you still have to say what goes in it — and there is an efficient way to say it.",
+          "keywords": [
+            "build",
+            "custom-skills",
+            "vague",
+            "specific",
+            "brief",
+            "instructions",
+            "examples",
+            "leading by example"
+          ],
+          "path": "content/04-skills/06-how-to-build-one.md"
+        },
+        {
+          "id": "skills/start-with-examples",
+          "title": "Start with examples",
+          "section": "Building One",
+          "summary": "Party Trick #4 — build a skill from your own worked examples, and give it the inputs as well as the outputs.",
+          "keywords": [
+            "party trick",
+            "skill engineering",
+            "examples",
+            "inputs",
+            "outputs",
+            "transformation",
+            "precedent",
+            "assets"
+          ],
+          "path": "content/04-skills/07-start-with-examples.md"
+        },
+        {
+          "id": "skills/iterate",
+          "title": "Iterate with corrections",
+          "section": "Building One",
+          "summary": "Narrow skills work first time; broad ones you patch — say what went wrong and show it the other correct answer.",
+          "keywords": [
+            "iterate",
+            "corrections",
+            "patch",
+            "narrow",
+            "broad",
+            "caption",
+            "variation",
+            "machine learning"
+          ],
+          "path": "content/04-skills/08-iterate-with-corrections.md"
+        },
+        {
+          "id": "skills/building-first",
+          "title": "Building your first skill",
+          "section": "Building One",
+          "summary": "Ask the custom-skills skill and answer five questions — the important one being how hard it should think.",
+          "keywords": [
+            "custom-skills",
+            "interview",
+            "name",
+            "effort",
+            "medium",
+            "high",
+            "xhigh",
+            "description",
+            "user-invocable"
+          ],
+          "path": "content/04-skills/09-building-your-first.md"
+        },
+        {
+          "id": "skills/how-they-work",
+          "title": "How skills work",
+          "section": "Making Them Fire",
+          "summary": "Writing a good skill is the easy part — getting it to fire when it should, and only then, is the hard part.",
+          "keywords": [
+            "skill",
+            "firing",
+            "frontmatter",
+            "skills field",
+            "skill tool",
+            "subagent",
+            "main agent",
+            "documentation"
+          ],
+          "path": "content/04-skills/10-how-skills-work.md"
+        },
+        {
+          "id": "skills/invoke-manually",
+          "title": "Always invoke manually",
+          "section": "Making Them Fire",
+          "summary": "Party Trick #5 — type a slash, pick the skill off the list, and it fires every time.",
+          "keywords": [
+            "party trick",
+            "picker",
+            "slash",
+            "invoke",
+            "manually",
+            "custom-skills",
+            "tutor",
+            "visible",
+            "location"
+          ],
+          "path": "content/04-skills/11-always-invoke-manually.md"
+        }
+      ]
+    },
+    {
+      "slug": "05-subagents",
+      "title": "Subagents",
+      "articles": [
+        {
+          "id": "subagents/what-it-is",
+          "title": "What a subagent is",
+          "section": "Chains",
+          "summary": "Your main agent can open conversations underneath your own, hand out instructions, and take the finished work back.",
+          "keywords": [
+            "subagent",
+            "main agent",
+            "spawn",
+            "context",
+            "fresh",
+            "inherits nothing",
+            "return",
+            "delegate"
+          ],
+          "path": "content/05-subagents/01-what-a-subagent-is.md"
+        },
+        {
+          "id": "subagents/chain-engineering",
+          "title": "Chain engineering",
+          "section": "Chains",
+          "summary": "Party Trick #6 — stack agents and their skills without limit, and Claude stops doing tasks and starts taking on projects.",
+          "keywords": [
+            "party trick",
+            "chain engineering",
+            "stack",
+            "orchestrate",
+            "opus",
+            "sonnet",
+            "project",
+            "this wiki"
+          ],
+          "path": "content/05-subagents/02-chain-engineering.md"
+        },
+        {
+          "id": "subagents/out-of-the-box",
+          "title": "Out of the box",
+          "section": "Chains",
+          "summary": "Your default agent already spawns subagents — ask it to, or enter plan mode and watch it propose them itself.",
+          "keywords": [
+            "default agent",
+            "plan mode",
+            "shift+tab",
+            "plan",
+            "spawn",
+            "split the work",
+            "generic",
+            "claude"
+          ],
+          "path": "content/05-subagents/03-out-of-the-box.md"
+        },
+        {
+          "id": "subagents/designing",
+          "title": "Designing a chain",
+          "section": "Chains",
+          "summary": "Three shapes, from generic agents on different models to custom agents each running their own skill — and one rule about not mixing.",
+          "keywords": [
+            "chain",
+            "shapes",
+            "model",
+            "effort",
+            "custom agents",
+            "skills",
+            "mixing",
+            "one skill per spawn"
+          ],
+          "path": "content/05-subagents/04-designing-a-chain.md"
+        },
+        {
+          "id": "subagents/the-door",
+          "title": "The door",
+          "section": "Chains",
+          "summary": "One skill you type a slash into whose only job is to spawn the chain, with every worker skill fired by a slash command on line one of its spawn prompt.",
+          "keywords": [
+            "door",
+            "door skill",
+            "spawn prompt",
+            "slash",
+            "user-invocable",
+            "effort",
+            "chain",
+            "silent failure"
+          ],
+          "path": "content/05-subagents/05-the-door.md"
+        },
+        {
+          "id": "subagents/step-one",
+          "title": "Step one — the project",
+          "section": "Build a Chain",
+          "summary": "Make a folder of its own, and ask Claude for three documents to point the chain at.",
+          "keywords": [
+            "exercise",
+            "project",
+            "folder",
+            "mkdir",
+            "location matters",
+            "sample documents",
+            "bundle"
+          ],
+          "path": "content/05-subagents/06-step-one-the-project.md"
+        },
+        {
+          "id": "subagents/step-two",
+          "title": "Step two — the workers",
+          "section": "Build a Chain",
+          "summary": "Four builds — two agents and two skills — each one a short interview you have already been walked through.",
+          "keywords": [
+            "exercise",
+            "custom-agents",
+            "custom-skills",
+            "haiku",
+            "sonnet",
+            "effort",
+            "medium",
+            "high",
+            "bundle-reader",
+            "bundle-consolidator"
+          ],
+          "path": "content/05-subagents/07-step-two-the-workers.md"
+        },
+        {
+          "id": "subagents/step-three",
+          "title": "Step three — the door",
+          "section": "Build a Chain",
+          "summary": "One more skill, and this one does no work — it spawns the four you already built.",
+          "keywords": [
+            "exercise",
+            "door",
+            "custom-skills",
+            "spawn",
+            "slash opener",
+            "subagent",
+            "prompt",
+            "bundle"
+          ],
+          "path": "content/05-subagents/08-step-three-the-door.md"
+        },
+        {
+          "id": "subagents/step-four",
+          "title": "Step four — run it",
+          "section": "Build a Chain",
+          "summary": "One line, five parts, and a chronology out the other end — with a way to tell whether it is right.",
+          "keywords": [
+            "exercise",
+            "run",
+            "picker",
+            "slash",
+            "spawn",
+            "haiku",
+            "sonnet",
+            "chronology",
+            "checking"
+          ],
+          "path": "content/05-subagents/09-step-four-run-it.md"
+        },
+        {
+          "id": "subagents/step-five",
+          "title": "Step five — watch it",
+          "section": "Build a Chain",
+          "summary": "Read a chain while it runs, fix it in the skill that got it wrong, and the course is done.",
+          "keywords": [
+            "exercise",
+            "watch",
+            "debug",
+            "legible",
+            "fix",
+            "iterate",
+            "corrections",
+            "party tricks",
+            "roadmap",
+            "tutor"
+          ],
+          "path": "content/05-subagents/10-step-five-watch-it.md"
+        }
+      ]
+    }
+  ]
+}

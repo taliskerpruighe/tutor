@@ -1,0 +1,13 @@
+dist/
+__pycache__/
+*.pyc
+
+# Raw authoring notes the finished articles are written from, not part of
+# the published course.
+content/_pipeline/
+
+# Build output. The binaries are ~2.5MB each and bin/build-tui.sh rebuilds
+# them from go/ on every dist build, so committing them would only bloat
+# history with artefacts nothing reads.
+tui/bin/
+bin/tutor-host
