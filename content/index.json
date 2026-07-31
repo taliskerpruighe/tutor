@@ -1,14 +1,14 @@
 {
   "parts": [
     {
-      "slug": "01-interface",
-      "title": "Interface",
+      "slug": "01-this-wiki",
+      "title": "This Wiki",
       "articles": [
         {
           "id": "wiki/about-this-wiki",
           "title": "About this wiki",
           "section": "This Wiki",
-          "summary": "What this course is, how it differs from the official docs, and what later versions will add.",
+          "summary": "What this course is, who it is written by, and how it differs from the official docs.",
           "keywords": [
             "about",
             "party trick",
@@ -17,17 +17,46 @@
             "documentation",
             "docs",
             "anthropic",
+            "claude code",
+            "findings",
+            "order"
+          ],
+          "path": "content/01-this-wiki/01-about-this-wiki.md"
+        },
+        {
+          "id": "wiki/this-version",
+          "title": "This version",
+          "section": "This Wiki",
+          "summary": "What this version of the course covers, what it leaves out on purpose, and what a later one adds",
+          "keywords": [
             "version",
             "roadmap",
             "agents",
             "skills",
             "subagents",
-            "chains",
+            "workflows",
             "hooks",
-            "mcp",
-            "plugins"
+            "plugins",
+            "headless",
+            "crons",
+            "changelog"
           ],
-          "path": "content/01-interface/01-about-this-wiki.md"
+          "path": "content/01-this-wiki/02-this-version.md"
+        },
+        {
+          "id": "wiki/changelog",
+          "title": "Changelog",
+          "section": "This Wiki",
+          "summary": "What changed in each version before this one, kept so a returning reader can find the delta",
+          "keywords": [
+            "changelog",
+            "version",
+            "history",
+            "update",
+            "0.1.0",
+            "0.2.0"
+          ],
+          "path": "content/01-this-wiki/03-changelog.md"
         },
         {
           "id": "wiki/how-to-read-this",
@@ -43,12 +72,51 @@
             "search",
             "formatting"
           ],
-          "path": "content/01-interface/02-how-to-read-this.md"
+          "path": "content/01-this-wiki/04-how-to-read-this.md"
         },
+        {
+          "id": "wiki/companion-agent",
+          "title": "The companion agent",
+          "section": "This Wiki",
+          "summary": "A second way into the course — an agent that has read every page here and answers from it, citing its source",
+          "keywords": [
+            "companion agent",
+            "claude",
+            "tab",
+            "ghostty",
+            "question",
+            "cite",
+            "ask",
+            "article"
+          ],
+          "path": "content/01-this-wiki/05-the-companion-agent.md"
+        },
+        {
+          "id": "wiki/exercises",
+          "title": "Exercises",
+          "section": "This Wiki",
+          "summary": "Where the exercises in this course sit, and why what you build in one is kept rather than thrown away",
+          "keywords": [
+            "exercise",
+            "build a chain",
+            "subagents",
+            "bundle",
+            "keyboard",
+            "hands-on",
+            "project"
+          ],
+          "path": "content/01-this-wiki/06-exercises.md"
+        }
+      ]
+    },
+    {
+      "slug": "02-tuis",
+      "title": "TUIs",
+      "articles": [
         {
           "id": "terminal/what-a-terminal-is",
           "title": "What a terminal is",
-          "section": "The Terminal",
+          "section": "Terminals",
           "summary": "The black window is an app that runs other apps, and it is pretending to be furniture.",
           "keywords": [
             "terminal",
@@ -59,12 +127,12 @@
             "vt100",
             "window"
           ],
-          "path": "content/01-interface/03-what-a-terminal-is.md"
+          "path": "content/02-tuis/01-what-a-terminal-is.md"
         },
         {
           "id": "terminal/what-a-tui-is",
-          "title": "What a TUI is",
-          "section": "The Terminal",
+          "title": "GUI and TUI",
+          "section": "Terminals",
           "summary": "An app made of text and driven by the keyboard, which is what everything was before it was made of pictures.",
           "keywords": [
             "tui",
@@ -74,76 +142,118 @@
             "text",
             "mouse"
           ],
-          "path": "content/01-interface/04-what-a-tui-is.md"
+          "path": "content/02-tuis/02-gui-and-tui.md"
+        },
+        {
+          "id": "tuis/cli-and-command-line",
+          "title": "What CLI, command line and prompt mean",
+          "section": "Terminals",
+          "summary": "Four words for one window, and what each one meant before they collapsed into each other",
+          "keywords": [
+            "cli",
+            "command line",
+            "console",
+            "prompt",
+            "terminal",
+            "interface",
+            "jargon"
+          ],
+          "path": "content/02-tuis/03-cli-command-line-and-prompt.md"
+        },
+        {
+          "id": "tuis/terminals-people-use",
+          "title": "The terminals people use",
+          "section": "Terminals",
+          "summary": "The terminal on your Mac is not the only one, and the ones people actually reach for differ on five things",
+          "keywords": [
+            "terminal",
+            "iterm2",
+            "wezterm",
+            "alacritty",
+            "kitty",
+            "ghostty",
+            "config",
+            "gpu"
+          ],
+          "path": "content/02-tuis/04-the-terminals-people-use.md"
         },
         {
           "id": "terminal/why-ghostty",
-          "title": "Why Ghostty",
-          "section": "The Terminal",
-          "summary": "The terminal you were given, what it does better, and what was set up inside it for you.",
+          "title": "Your terminal is Ghostty",
+          "section": "Ghostty",
+          "summary": "The terminal you were given, what it does better than the one your Mac came with, and the four keys worth knowing.",
           "keywords": [
             "ghostty",
             "terminal",
             "tabs",
+            "windows",
             "config",
-            "font",
+            "cmd-t",
+            "macos",
+            "graphics chip"
+          ],
+          "path": "content/02-tuis/05-your-terminal-is-ghostty.md"
+        },
+        {
+          "id": "tuis/ghostty-defaults",
+          "title": "What was set up for you",
+          "section": "Ghostty",
+          "summary": "Someone else chose your colours and your font before you ever opened Ghostty, and none of it is permanent",
+          "keywords": [
+            "ghostty",
+            "config",
+            "catppuccin",
             "theme",
-            "catppuccin"
+            "monospace",
+            "font",
+            "transparency",
+            "title bar",
+            "bell"
           ],
-          "path": "content/01-interface/05-why-ghostty.md"
+          "path": "content/02-tuis/06-what-was-set-up-for-you.md"
         },
         {
-          "id": "shell/what-a-shell-is",
-          "title": "What a shell is",
-          "section": "The Shell",
-          "summary": "The program that greets you when a terminal opens, and what sits underneath it.",
+          "id": "tuis/what-tmux-is",
+          "title": "What tmux is",
+          "section": "TMUX",
+          "summary": "A program that keeps a terminal session running even after the window looking at it is gone",
           "keywords": [
-            "shell",
-            "kernel",
-            "operating system",
-            "prompt",
-            "command",
-            "zsh"
+            "tmux",
+            "session",
+            "multiplexer",
+            "terminal",
+            "detach",
+            "screen",
+            "ghostty"
           ],
-          "path": "content/01-interface/06-what-a-shell-is.md"
+          "path": "content/02-tuis/07-what-tmux-is.md"
         },
         {
-          "id": "shell/why-it-is-powerful",
-          "title": "Why the shell is powerful",
-          "section": "The Shell",
-          "summary": "Clicking does one thing at a time; a typed command does a thousand, from anywhere.",
+          "id": "tuis/tmux-use-cases",
+          "title": "What it is for",
+          "section": "TMUX",
+          "summary": "Insurance for a long job, a session you can hand to someone else, and several processes on one screen",
           "keywords": [
-            "power",
-            "glob",
-            "pipe",
-            "find",
-            "grep",
-            "batch",
-            "wildcard"
+            "tmux",
+            "session",
+            "panes",
+            "layout",
+            "sharing",
+            "laptop",
+            "workflow"
           ],
-          "path": "content/01-interface/07-why-it-is-powerful.md"
-        },
-        {
-          "id": "shell/your-shell-zsh",
-          "title": "Your shell is zsh",
-          "section": "The Shell",
-          "summary": "Which shell you have, where it came from, and what the others are.",
-          "keywords": [
-            "zsh",
-            "bash",
-            "sh",
-            "unix",
-            "posix",
-            "fish",
-            "nushell",
-            "powershell"
-          ],
-          "path": "content/01-interface/08-your-shell-zsh.md"
-        },
+          "path": "content/02-tuis/08-what-it-is-for.md"
+        }
+      ]
+    },
+    {
+      "slug": "03-the-cli",
+      "title": "The CLI",
+      "articles": [
         {
           "id": "shell/your-prompt",
           "title": "Your prompt",
-          "section": "The Shell",
+          "section": "Command Lines and Prompts",
           "summary": "The text before the cursor is a status display, and it can say whatever is useful to you.",
           "keywords": [
             "prompt",
@@ -153,12 +263,12 @@
             "pwd",
             "customise"
           ],
-          "path": "content/01-interface/09-your-prompt.md"
+          "path": "content/03-the-cli/01-your-prompt.md"
         },
         {
           "id": "shell/starship",
           "title": "Starship and powerline themes",
-          "section": "The Shell",
+          "section": "Command Lines and Prompts",
           "summary": "What draws your prompt, why it needs a special font, and how to have it restyled.",
           "keywords": [
             "starship",
@@ -169,12 +279,78 @@
             "toml",
             "customise"
           ],
-          "path": "content/01-interface/10-starship.md"
+          "path": "content/03-the-cli/02-starship-and-powerline-themes.md"
+        },
+        {
+          "id": "shell/what-a-shell-is",
+          "title": "What a shell is",
+          "section": "Shells",
+          "summary": "The program that greets you when a terminal opens, and what sits underneath it.",
+          "keywords": [
+            "shell",
+            "kernel",
+            "operating system",
+            "prompt",
+            "command",
+            "zsh"
+          ],
+          "path": "content/03-the-cli/03-what-a-shell-is.md"
+        },
+        {
+          "id": "shell/why-it-is-powerful",
+          "title": "Why the shell is powerful",
+          "section": "Shells",
+          "summary": "Clicking does one thing at a time; a typed command does a thousand, from anywhere.",
+          "keywords": [
+            "power",
+            "glob",
+            "pipe",
+            "find",
+            "grep",
+            "batch",
+            "wildcard"
+          ],
+          "path": "content/03-the-cli/04-why-the-shell-is-powerful.md"
+        },
+        {
+          "id": "cli/the-shells-there-are",
+          "title": "The shells there are",
+          "section": "Shells",
+          "summary": "One family of programs, mostly interchangeable, plus a Boss's opinion of the one that is not",
+          "keywords": [
+            "shell",
+            "bash",
+            "zsh",
+            "sh",
+            "fish",
+            "nushell",
+            "powershell",
+            "unix",
+            "family tree"
+          ],
+          "path": "content/03-the-cli/05-the-shells-there-are.md"
+        },
+        {
+          "id": "shell/your-shell-zsh",
+          "title": "Your shell is zsh",
+          "section": "Zsh",
+          "summary": "Which one you actually have, why Apple chose it, and the standard that makes it worth learning once",
+          "keywords": [
+            "zsh",
+            "echo",
+            "shell",
+            "unix",
+            "posix",
+            "apple",
+            "licence",
+            "linux"
+          ],
+          "path": "content/03-the-cli/06-your-shell-is-zsh.md"
         },
         {
           "id": "shell/moving-around",
           "title": "Moving around",
-          "section": "The Shell",
+          "section": "Zsh",
           "summary": "Paths, the four commands you need daily, and how to type far less than you think.",
           "keywords": [
             "path",
@@ -188,13 +364,36 @@
             "alias",
             "folder"
           ],
-          "path": "content/01-interface/11-moving-around.md"
+          "path": "content/03-the-cli/07-moving-around.md"
+        }
+      ]
+    },
+    {
+      "slug": "04-software",
+      "title": "Software",
+      "articles": [
+        {
+          "id": "software/every-app-is-a-wrapper",
+          "title": "Every app is a wrapper",
+          "section": "Packages",
+          "summary": "What you pay for is rarely the code itself — it is the installer, the window and the logo wrapped around it",
+          "keywords": [
+            "software",
+            "wrapper",
+            "licence",
+            "open source",
+            "acrobat",
+            "word",
+            "adobe",
+            "package"
+          ],
+          "path": "content/04-software/01-every-app-is-a-wrapper.md"
         },
         {
           "id": "shell/packages",
           "title": "Packages",
-          "section": "The Shell",
-          "summary": "Every app is a bundle of code, most of that code is free, and the shell is how you reach it.",
+          "section": "Packages",
+          "summary": "Every app is a bundle of code, most of that code is free, and the shell is how you reach it",
           "keywords": [
             "package",
             "open source",
@@ -206,12 +405,249 @@
             "diff",
             "licence"
           ],
-          "path": "content/01-interface/12-packages.md"
+          "path": "content/04-software/02-packages.md"
         },
+        {
+          "id": "software/package-managers",
+          "title": "Package managers",
+          "section": "Packages",
+          "summary": "The one program that finds a package, checks it is genuine, fetches everything it needs, and keeps the lot working",
+          "keywords": [
+            "package manager",
+            "homebrew",
+            "dnf",
+            "apt",
+            "pacman",
+            "dependency",
+            "repository",
+            "signed",
+            "update",
+            "linux"
+          ],
+          "path": "content/04-software/03-package-managers.md"
+        },
+        {
+          "id": "software/what-homebrew-is",
+          "title": "What Homebrew is",
+          "section": "Homebrew",
+          "summary": "The package manager macOS does not come with, and the one nearly every set of instructions online quietly assumes you have",
+          "keywords": [
+            "homebrew",
+            "brew",
+            "install",
+            "opt",
+            "usr local",
+            "macos",
+            "apple silicon",
+            "terminal"
+          ],
+          "path": "content/04-software/04-what-homebrew-is.md"
+        },
+        {
+          "id": "software/formulae-and-casks",
+          "title": "Formulae and casks",
+          "section": "Homebrew",
+          "summary": "One kind of Homebrew install gives you a command; the other gives you a whole app with a window",
+          "keywords": [
+            "homebrew",
+            "formula",
+            "cask",
+            "brew install",
+            "ghostty",
+            "applications",
+            "command line"
+          ],
+          "path": "content/04-software/05-formulae-and-casks.md"
+        },
+        {
+          "id": "software/checking-and-updating",
+          "title": "Checking and updating",
+          "section": "Homebrew",
+          "summary": "One command a week finds everything out of date and brings it current, instead of fifteen separate update dialogs",
+          "keywords": [
+            "homebrew",
+            "brew list",
+            "brew search",
+            "brew outdated",
+            "brew update",
+            "brew upgrade",
+            "brew doctor",
+            "updates"
+          ],
+          "path": "content/04-software/06-checking-and-updating.md"
+        }
+      ]
+    },
+    {
+      "slug": "05-files",
+      "title": "Files",
+      "articles": [
+        {
+          "id": "files/programming-languages",
+          "title": "What a programming language is",
+          "section": "Languages and Scripts",
+          "summary": "A shell drives a machine that already exists; a programming language builds the machine it drives",
+          "keywords": [
+            "programming language",
+            "script",
+            "code",
+            "shell",
+            "python",
+            "javascript",
+            "go",
+            "java",
+            "compile",
+            "interpret"
+          ],
+          "path": "content/05-files/01-what-a-programming-language-is.md"
+        },
+        {
+          "id": "files/why-plain-text-wins",
+          "title": "Why plain text wins",
+          "section": "Languages and Scripts",
+          "summary": "A machine can read a plain file without being told how, and almost everything in this course rests on that one fact",
+          "keywords": [
+            "plain text",
+            "file format",
+            "md",
+            "txt",
+            "json",
+            "jsonl",
+            "doc",
+            "xls",
+            "diff",
+            "search",
+            "edit"
+          ],
+          "path": "content/05-files/02-why-plain-text-wins.md"
+        },
+        {
+          "id": "files/formats",
+          "title": "The formats you will meet",
+          "section": "Languages and Scripts",
+          "summary": "A format is the shape plain text gets cut into, and some shapes forgive a typo while others do not",
+          "keywords": [
+            "yaml",
+            "json",
+            "toml",
+            "jsonl",
+            "parquet",
+            "format",
+            "frontmatter",
+            "settings",
+            "config",
+            "punctuation"
+          ],
+          "path": "content/05-files/03-the-formats-you-will-meet.md"
+        },
+        {
+          "id": "files/ides",
+          "title": "IDEs",
+          "section": "Editors",
+          "summary": "A single program built to hold every step of writing software at once, which is not the shape of your day",
+          "keywords": [
+            "ide",
+            "vs code",
+            "jetbrains",
+            "intellij",
+            "editor",
+            "integrated development environment"
+          ],
+          "path": "content/05-files/04-ides.md"
+        },
+        {
+          "id": "files/terminal-editors",
+          "title": "Editors in the terminal",
+          "section": "Editors",
+          "summary": "Nano and micro behave the way you already expect; vim, neovim and helix trade discoverability for speed you do not need",
+          "keywords": [
+            "nano",
+            "micro",
+            "vim",
+            "neovim",
+            "helix",
+            "emacs",
+            "terminal editor",
+            "modal editing"
+          ],
+          "path": "content/05-files/05-editors-in-the-terminal.md"
+        },
+        {
+          "id": "files/what-git-is",
+          "title": "What git is",
+          "section": "Version Control",
+          "summary": "A tool that keeps every version of every file, with a note explaining why each one changed",
+          "keywords": [
+            "git",
+            "version control",
+            "commit",
+            "history",
+            "diff",
+            "draft",
+            "plain text"
+          ],
+          "path": "content/05-files/06-what-git-is.md"
+        },
+        {
+          "id": "files/how-git-works",
+          "title": "How git works",
+          "section": "Version Control",
+          "summary": "Commits chain into history, branches split off it, and a remote is the same history living somewhere else",
+          "keywords": [
+            "git",
+            "commit",
+            "history",
+            "branch",
+            "merge",
+            "remote",
+            "github",
+            "model"
+          ],
+          "path": "content/05-files/07-how-git-works.md"
+        },
+        {
+          "id": "files/jj",
+          "title": "jj",
+          "section": "Version Control",
+          "summary": "The same history, kept the same way, with the parts of git that trip people up removed rather than fixed",
+          "keywords": [
+            "jj",
+            "jujutsu",
+            "git",
+            "version control",
+            "staging area",
+            "commit",
+            "working copy"
+          ],
+          "path": "content/05-files/08-jj.md"
+        },
+        {
+          "id": "files/github",
+          "title": "GitHub",
+          "section": "Version Control",
+          "summary": "A host for the history git already keeps, and everything a host adds once other people can reach it",
+          "keywords": [
+            "github",
+            "remote",
+            "git",
+            "pull request",
+            "issue",
+            "repository",
+            "host",
+            "collaboration"
+          ],
+          "path": "content/05-files/09-github.md"
+        }
+      ]
+    },
+    {
+      "slug": "06-linux",
+      "title": "Linux",
+      "articles": [
         {
           "id": "linux/what-linux-is",
           "title": "What Linux is",
-          "section": "Linux",
+          "section": "The world runs on linux",
           "summary": "A kernel, not an operating system — and the distributions that build one around it.",
           "keywords": [
             "linux",
@@ -225,12 +661,30 @@
             "arch",
             "nixos"
           ],
-          "path": "content/01-interface/13-what-linux-is.md"
+          "path": "content/06-linux/01-what-linux-is.md"
+        },
+        {
+          "id": "linux/the-world-runs-on-linux",
+          "title": "The world runs on Linux",
+          "section": "The world runs on linux",
+          "summary": "Under three percent of desktops and nearly all of everything else — including the machine answering you right now",
+          "keywords": [
+            "linux",
+            "servers",
+            "android",
+            "kernel",
+            "data centre",
+            "claude.ai",
+            "cowork",
+            "claude code",
+            "packages"
+          ],
+          "path": "content/06-linux/02-the-world-runs-on-linux.md"
         },
         {
           "id": "linux/why-it-is-better",
           "title": "Why it is better",
-          "section": "Linux",
+          "section": "Why its better",
           "summary": "Faster, safer by construction, and honest about what it lacks — before the article that makes the real case.",
           "keywords": [
             "linux",
@@ -241,12 +695,12 @@
             "tui",
             "claude code"
           ],
-          "path": "content/01-interface/14-why-it-is-better.md"
+          "path": "content/06-linux/03-why-it-is-better.md"
         },
         {
           "id": "linux/you-are-the-system",
           "title": "You are the system",
-          "section": "Linux",
+          "section": "Why its better",
           "summary": "Every layer of a Linux machine is a choice you make — and Claude Code is what makes making that choice practical.",
           "keywords": [
             "linux",
@@ -259,53 +713,273 @@
             "sway",
             "gnome"
           ],
-          "path": "content/01-interface/15-you-are-the-system.md"
+          "path": "content/06-linux/04-you-are-the-system.md"
         }
       ]
     },
     {
-      "slug": "02-setup",
-      "title": "Setup",
+      "slug": "07-agentic-ai",
+      "title": "Agentic AI",
       "articles": [
         {
-          "id": "claude-code/what-it-is",
-          "title": "What Claude Code is",
-          "section": "How It Works",
-          "summary": "Claude is the model; Claude Code is the machinery that gives it hands.",
+          "id": "ai/what-an-llm-is",
+          "title": "What an LLM is",
+          "section": "LLMs",
+          "summary": "A model is a mathematical function that guesses the next word, and that turns out to be enough and not enough",
           "keywords": [
             "llm",
             "model",
-            "harness",
-            "claude",
-            "agent",
-            "tools",
-            "loop"
+            "large language model",
+            "token",
+            "prediction",
+            "brain in a jar",
+            "training",
+            "weights"
           ],
-          "path": "content/02-setup/01-what-claude-code-is.md"
+          "path": "content/07-agentic-ai/01-what-an-llm-is.md"
         },
         {
-          "id": "claude-code/why-claude-code",
-          "title": "Why Claude Code",
-          "section": "How It Works",
-          "summary": "Why the model lives in a data centre, the harness lives on your Mac, and what the alternatives are.",
+          "id": "ai/model-differences",
+          "title": "What makes one model different from another",
+          "section": "LLMs",
+          "summary": "Size, architecture and speciality are the three axes, and only one of them is the number everyone quotes",
           "keywords": [
-            "vram",
-            "gpu",
-            "ram",
-            "cpu",
-            "openai",
+            "parameters",
+            "size",
+            "mixture of experts",
+            "dense model",
+            "speciality",
+            "fine-tuning",
+            "price",
+            "speed"
+          ],
+          "path": "content/07-agentic-ai/02-what-makes-one-model-different.md"
+        },
+        {
+          "id": "ai/the-models-there-are",
+          "title": "The models there are",
+          "section": "LLMs",
+          "summary": "Cloud models you reach over the internet, open-weight models you can download, and why the second kind is harder than it sounds",
+          "keywords": [
+            "claude",
+            "gpt",
             "gemini",
             "llama",
             "mistral",
             "qwen",
-            "local"
+            "deepseek",
+            "kimi",
+            "cloud model",
+            "open weight"
           ],
-          "path": "content/02-setup/02-why-claude-code.md"
+          "path": "content/07-agentic-ai/03-the-models-there-are.md"
+        },
+        {
+          "id": "ai/what-a-model-consumes",
+          "title": "What a model consumes",
+          "section": "LLMs",
+          "summary": "Billions of numbers held where they can be multiplied at once, and free is not the same as available to you",
+          "keywords": [
+            "vram",
+            "gpu",
+            "graphics card",
+            "ram",
+            "apple silicon",
+            "memory",
+            "open weight",
+            "hardware"
+          ],
+          "path": "content/07-agentic-ai/04-what-a-model-consumes.md"
+        },
+        {
+          "id": "ai/what-a-harness-is",
+          "title": "What a harness is",
+          "section": "Harnesses",
+          "summary": "The model is the brain; a harness is the body that gives it hands",
+          "keywords": [
+            "harness",
+            "loop",
+            "model",
+            "llm",
+            "tool",
+            "permission",
+            "agent",
+            "claude code"
+          ],
+          "path": "content/07-agentic-ai/05-what-a-harness-is.md"
+        },
+        {
+          "id": "ai/the-harnesses-there-are",
+          "title": "The harnesses there are",
+          "section": "Harnesses",
+          "summary": "Claude Code is one harness among a growing field of them, sorted by where they live",
+          "keywords": [
+            "harness",
+            "claude code",
+            "antigravity",
+            "qwen code",
+            "kimi code",
+            "opencode",
+            "cli",
+            "tui",
+            "gui",
+            "online"
+          ],
+          "path": "content/07-agentic-ai/06-the-harnesses-there-are.md"
+        },
+        {
+          "id": "ai/what-a-harness-consumes",
+          "title": "What a harness consumes",
+          "section": "Harnesses",
+          "summary": "A harness wants almost nothing from your machine, until you ask it to run many of itself at once",
+          "keywords": [
+            "cpu",
+            "ram",
+            "harness",
+            "laptop",
+            "hardware",
+            "agents",
+            "parallel",
+            "machine"
+          ],
+          "path": "content/07-agentic-ai/07-what-a-harness-consumes.md"
+        },
+        {
+          "id": "ai/renting-a-computer",
+          "title": "Renting a computer",
+          "section": "Cloud Computing",
+          "summary": "When your own machine is not enough, you rent someone else's by the hour rather than buy one",
+          "keywords": [
+            "cloud",
+            "aws",
+            "amazon",
+            "google",
+            "microsoft",
+            "azure",
+            "box",
+            "rent",
+            "hourly",
+            "data centre",
+            "server"
+          ],
+          "path": "content/07-agentic-ai/08-renting-a-computer.md"
+        },
+        {
+          "id": "ai/what-you-do-with-a-box",
+          "title": "What you do with a box",
+          "section": "Cloud Computing",
+          "summary": "Install what the job needs, run it, and bring home only the result",
+          "keywords": [
+            "box",
+            "cloud",
+            "linux",
+            "terminal",
+            "ssh",
+            "shell",
+            "install",
+            "download",
+            "headless"
+          ],
+          "path": "content/07-agentic-ai/09-what-you-do-with-a-box.md"
+        }
+      ]
+    },
+    {
+      "slug": "08-claude",
+      "title": "Claude",
+      "articles": [
+        {
+          "id": "claude/the-models",
+          "title": "The models",
+          "section": "Claude",
+          "summary": "Four Claude models exist, and choosing between them is a trade-off between speed and depth, not a favourite",
+          "keywords": [
+            "claude",
+            "model",
+            "haiku",
+            "sonnet",
+            "opus",
+            "fable",
+            "speed",
+            "cost",
+            "parameter",
+            "size"
+          ],
+          "path": "content/08-claude/01-the-models.md"
+        },
+        {
+          "id": "claude/the-harnesses",
+          "title": "The harnesses",
+          "section": "Claude",
+          "summary": "Three ways to reach Claude — a website, a sandboxed website, and a terminal program on your own machine",
+          "keywords": [
+            "claude.ai",
+            "claude cowork",
+            "claude code",
+            "harness",
+            "website",
+            "terminal",
+            "sandbox",
+            "agent"
+          ],
+          "path": "content/08-claude/02-the-harnesses.md"
+        },
+        {
+          "id": "claude/the-plans",
+          "title": "The plans",
+          "section": "Claude subscriptions",
+          "summary": "Four tiers, and the saving from one to the next is a multiple, not a step",
+          "keywords": [
+            "subscription",
+            "plan",
+            "free",
+            "pro",
+            "max",
+            "account limit",
+            "effort",
+            "cost",
+            "tier"
+          ],
+          "path": "content/08-claude/03-the-plans.md"
+        },
+        {
+          "id": "claude-code/why-claude-code",
+          "title": "Why Claude Code",
+          "section": "Claude Code",
+          "summary": "The model lives in a data centre and the harness lives on your Mac, and that split is what this article is really about",
+          "keywords": [
+            "claude code",
+            "harness",
+            "model",
+            "terminal",
+            "local",
+            "permission",
+            "taught",
+            "data centre"
+          ],
+          "path": "content/08-claude/04-why-claude-code.md"
+        },
+        {
+          "id": "claude-code/what-it-can-do",
+          "title": "What it can do that the others cannot",
+          "section": "Claude Code",
+          "summary": "Standing inside your own machine is not only safer, it is more capable — real software and real hardware, not a fixed slice of someone else's",
+          "keywords": [
+            "claude code",
+            "claude cowork",
+            "package",
+            "homebrew",
+            "hardware",
+            "cores",
+            "sandbox",
+            "m1"
+          ],
+          "path": "content/08-claude/05-what-it-can-do.md"
         },
         {
           "id": "claude-code/installing",
           "title": "Installing",
-          "section": "How It Works",
+          "section": "Claude Code setup",
           "summary": "It is already on your Mac — how to check, how to sign in, and how to put it on the next machine.",
           "keywords": [
             "install",
@@ -317,12 +991,12 @@
             "account",
             "doctor"
           ],
-          "path": "content/02-setup/03-installing.md"
+          "path": "content/08-claude/06-installing.md"
         },
         {
           "id": "claude-code/launching",
           "title": "Launching Claude Code",
-          "section": "How It Works",
+          "section": "Claude Code setup",
           "summary": "Type claude and press enter — and understand the one thing that changes what happens next.",
           "keywords": [
             "launch",
@@ -334,12 +1008,12 @@
             "cwd",
             "session"
           ],
-          "path": "content/02-setup/04-launching.md"
+          "path": "content/08-claude/07-launching-claude-code.md"
         },
         {
           "id": "claude-code/claude-directory",
           "title": "The .claude directory",
-          "section": "What It Reads",
+          "section": "Claude Code setup",
           "summary": "The harness lives in an ordinary hidden folder called .claude, not on a server.",
           "keywords": [
             "dotfile",
@@ -349,12 +1023,12 @@
             "user-level",
             "config"
           ],
-          "path": "content/02-setup/05-the-claude-directory.md"
+          "path": "content/08-claude/08-the-claude-directory.md"
         },
         {
           "id": "claude-code/inside-claude",
           "title": "Inside .claude",
-          "section": "What It Reads",
+          "section": "Claude Code setup",
           "summary": "A tour of what lives inside .claude — more than you need today, so the names are not strange later.",
           "keywords": [
             "settings",
@@ -365,12 +1039,12 @@
             "hooks",
             "plugins"
           ],
-          "path": "content/02-setup/06-inside-the-claude-directory.md"
+          "path": "content/08-claude/09-inside-claude.md"
         },
         {
           "id": "claude-code/more-directories",
           "title": "More .claude directories",
-          "section": "What It Reads",
+          "section": "Claude Code setup",
           "summary": "You can have as many as you like, one per folder, and each one makes that folder a project.",
           "keywords": [
             "project",
@@ -380,12 +1054,12 @@
             "multiple",
             "per-folder"
           ],
-          "path": "content/02-setup/07-more-claude-directories.md"
+          "path": "content/08-claude/10-more-claude-directories.md"
         },
         {
           "id": "claude-code/what-a-session-sees",
           "title": "What a session sees",
-          "section": "What It Reads",
+          "section": "Claude Code setup",
           "summary": "Claude walks up from the folder you launched in, collecting every .claude on the way.",
           "keywords": [
             "walk up",
@@ -396,12 +1070,12 @@
             "discovery",
             "context"
           ],
-          "path": "content/02-setup/08-what-a-session-sees.md"
+          "path": "content/08-claude/11-what-a-session-sees.md"
         },
         {
           "id": "claude-code/location-matters",
           "title": "Location matters",
-          "section": "What It Reads",
+          "section": "Claude Code setup",
           "summary": "More is worse — so split what you build across folders and launch from the right one.",
           "keywords": [
             "content isolation",
@@ -412,12 +1086,12 @@
             "layout",
             "party trick"
           ],
-          "path": "content/02-setup/09-location-matters.md"
+          "path": "content/08-claude/12-location-matters.md"
         }
       ]
     },
     {
-      "slug": "03-agents",
+      "slug": "09-agents",
       "title": "Agents",
       "articles": [
         {
@@ -434,7 +1108,26 @@
             "parallel",
             "terminal"
           ],
-          "path": "content/03-agents/01-what-an-agent-is.md"
+          "path": "content/09-agents/01-what-an-agent-is.md"
+        },
+        {
+          "id": "agents/tabs-and-windows",
+          "title": "Tabs and windows",
+          "section": "Context",
+          "summary": "Cmd-1 through Cmd-9 jump straight to a tab, a split faces two agents at once, and a rename is how you tell three claude sessions apart",
+          "keywords": [
+            "ghostty",
+            "tab",
+            "window",
+            "split",
+            "cmd-t",
+            "cmd-n",
+            "cmd-d",
+            "rename",
+            "agent",
+            "jump"
+          ],
+          "path": "content/09-agents/02-tabs-and-windows.md"
         },
         {
           "id": "agents/context",
@@ -453,7 +1146,7 @@
             "fable",
             "size"
           ],
-          "path": "content/03-agents/02-context.md"
+          "path": "content/09-agents/03-context.md"
         },
         {
           "id": "agents/context-rot",
@@ -469,7 +1162,7 @@
             "fifty percent",
             "the boss"
           ],
-          "path": "content/03-agents/03-context-rot.md"
+          "path": "content/09-agents/04-context-rot.md"
         },
         {
           "id": "agents/managing",
@@ -486,7 +1179,25 @@
             "context management",
             "slash command"
           ],
-          "path": "content/03-agents/04-context-management.md"
+          "path": "content/09-agents/05-managing-context.md"
+        },
+        {
+          "id": "agents/moving-between-folders",
+          "title": "Moving between folders",
+          "section": "Context",
+          "summary": "The walk-up rule makes the folder you launch from a decision, and cd, pwd and Tab are how you get it right",
+          "keywords": [
+            "cd",
+            "pwd",
+            "tab completion",
+            "ctrl-c",
+            "walk-up rule",
+            "exit",
+            "folder",
+            "matter",
+            "launch"
+          ],
+          "path": "content/09-agents/06-moving-between-folders.md"
         },
         {
           "id": "agents/default",
@@ -502,7 +1213,7 @@
             "plain",
             "launch"
           ],
-          "path": "content/03-agents/05-the-default-agent.md"
+          "path": "content/09-agents/07-the-default-agent.md"
         },
         {
           "id": "agents/custom",
@@ -518,7 +1229,7 @@
             "project",
             "launch"
           ],
-          "path": "content/03-agents/06-custom-agents.md"
+          "path": "content/09-agents/08-custom-agents.md"
         },
         {
           "id": "agents/definition",
@@ -535,7 +1246,7 @@
             "markdown",
             "the boss"
           ],
-          "path": "content/03-agents/07-the-definition-file.md"
+          "path": "content/09-agents/09-the-definition-file.md"
         },
         {
           "id": "agents/fields",
@@ -553,7 +1264,7 @@
             "agent engineering",
             "subagent"
           ],
-          "path": "content/03-agents/08-the-fields-that-matter.md"
+          "path": "content/09-agents/10-the-fields-that-matter.md"
         },
         {
           "id": "agents/building",
@@ -570,12 +1281,12 @@
             "model choice",
             "tutor"
           ],
-          "path": "content/03-agents/09-building-one.md"
+          "path": "content/09-agents/11-building-one.md"
         }
       ]
     },
     {
-      "slug": "04-skills",
+      "slug": "10-skills",
       "title": "Skills",
       "articles": [
         {
@@ -594,7 +1305,7 @@
             "correcting",
             "proofread"
           ],
-          "path": "content/04-skills/01-start-with-never.md"
+          "path": "content/10-skills/01-start-with-never.md"
         },
         {
           "id": "skills/what-a-skill-is",
@@ -611,7 +1322,7 @@
             "project",
             "prompt"
           ],
-          "path": "content/04-skills/02-what-a-skill-is.md"
+          "path": "content/10-skills/02-what-a-skill-is.md"
         },
         {
           "id": "skills/frontmatter",
@@ -628,7 +1339,7 @@
             "settings",
             "ignored silently"
           ],
-          "path": "content/04-skills/03-the-frontmatter.md"
+          "path": "content/10-skills/03-the-frontmatter.md"
         },
         {
           "id": "skills/body",
@@ -645,7 +1356,7 @@
             "length",
             "order"
           ],
-          "path": "content/04-skills/04-the-body.md"
+          "path": "content/10-skills/04-the-body.md"
         },
         {
           "id": "skills/supporting-files",
@@ -662,7 +1373,7 @@
             "folders",
             "pointer"
           ],
-          "path": "content/04-skills/05-supporting-files.md"
+          "path": "content/10-skills/05-supporting-files.md"
         },
         {
           "id": "skills/how-to-build-one",
@@ -679,7 +1390,7 @@
             "examples",
             "leading by example"
           ],
-          "path": "content/04-skills/06-how-to-build-one.md"
+          "path": "content/10-skills/06-how-to-build-one.md"
         },
         {
           "id": "skills/start-with-examples",
@@ -696,7 +1407,7 @@
             "precedent",
             "assets"
           ],
-          "path": "content/04-skills/07-start-with-examples.md"
+          "path": "content/10-skills/07-start-with-examples.md"
         },
         {
           "id": "skills/iterate",
@@ -713,7 +1424,7 @@
             "variation",
             "machine learning"
           ],
-          "path": "content/04-skills/08-iterate-with-corrections.md"
+          "path": "content/10-skills/08-iterate-with-corrections.md"
         },
         {
           "id": "skills/building-first",
@@ -731,7 +1442,7 @@
             "description",
             "user-invocable"
           ],
-          "path": "content/04-skills/09-building-your-first.md"
+          "path": "content/10-skills/09-building-your-first.md"
         },
         {
           "id": "skills/how-they-work",
@@ -748,7 +1459,7 @@
             "main agent",
             "documentation"
           ],
-          "path": "content/04-skills/10-how-skills-work.md"
+          "path": "content/10-skills/10-how-skills-work.md"
         },
         {
           "id": "skills/invoke-manually",
@@ -766,12 +1477,29 @@
             "visible",
             "location"
           ],
-          "path": "content/04-skills/11-always-invoke-manually.md"
+          "path": "content/10-skills/11-always-invoke-manually.md"
+        },
+        {
+          "id": "skills/reading-your-prompt",
+          "title": "Reading your own prompt",
+          "section": "Making Them Fire",
+          "summary": "The picker tells you a skill is missing after you have already started — the directory segment in your prompt can tell you before",
+          "keywords": [
+            "starship",
+            "prompt",
+            "directory segment",
+            "picker",
+            "toml",
+            "walk-up rule",
+            "location",
+            "diagnostic"
+          ],
+          "path": "content/10-skills/12-reading-your-own-prompt.md"
         }
       ]
     },
     {
-      "slug": "05-subagents",
+      "slug": "11-subagents",
       "title": "Subagents",
       "articles": [
         {
@@ -789,7 +1517,7 @@
             "return",
             "delegate"
           ],
-          "path": "content/05-subagents/01-what-a-subagent-is.md"
+          "path": "content/11-subagents/01-what-a-subagent-is.md"
         },
         {
           "id": "subagents/chain-engineering",
@@ -806,7 +1534,7 @@
             "project",
             "this wiki"
           ],
-          "path": "content/05-subagents/02-chain-engineering.md"
+          "path": "content/11-subagents/02-chain-engineering.md"
         },
         {
           "id": "subagents/out-of-the-box",
@@ -823,7 +1551,7 @@
             "generic",
             "claude"
           ],
-          "path": "content/05-subagents/03-out-of-the-box.md"
+          "path": "content/11-subagents/03-out-of-the-box.md"
         },
         {
           "id": "subagents/designing",
@@ -840,7 +1568,7 @@
             "mixing",
             "one skill per spawn"
           ],
-          "path": "content/05-subagents/04-designing-a-chain.md"
+          "path": "content/11-subagents/04-designing-a-chain.md"
         },
         {
           "id": "subagents/the-door",
@@ -857,7 +1585,7 @@
             "chain",
             "silent failure"
           ],
-          "path": "content/05-subagents/05-the-door.md"
+          "path": "content/11-subagents/05-the-door.md"
         },
         {
           "id": "subagents/step-one",
@@ -873,7 +1601,7 @@
             "sample documents",
             "bundle"
           ],
-          "path": "content/05-subagents/06-step-one-the-project.md"
+          "path": "content/11-subagents/06-step-one-the-project.md"
         },
         {
           "id": "subagents/step-two",
@@ -892,7 +1620,7 @@
             "bundle-reader",
             "bundle-consolidator"
           ],
-          "path": "content/05-subagents/07-step-two-the-workers.md"
+          "path": "content/11-subagents/07-step-two-the-workers.md"
         },
         {
           "id": "subagents/step-three",
@@ -909,7 +1637,7 @@
             "prompt",
             "bundle"
           ],
-          "path": "content/05-subagents/08-step-three-the-door.md"
+          "path": "content/11-subagents/08-step-three-the-door.md"
         },
         {
           "id": "subagents/step-four",
@@ -927,13 +1655,13 @@
             "chronology",
             "checking"
           ],
-          "path": "content/05-subagents/09-step-four-run-it.md"
+          "path": "content/11-subagents/09-step-four-run-it.md"
         },
         {
           "id": "subagents/step-five",
           "title": "Step five — watch it",
           "section": "Build a Chain",
-          "summary": "Read a chain while it runs, fix it in the skill that got it wrong, and the course is done.",
+          "summary": "Read a chain while it runs, fix it in the skill that got it wrong, and the chain is yours.",
           "keywords": [
             "exercise",
             "watch",
@@ -943,10 +1671,388 @@
             "iterate",
             "corrections",
             "party tricks",
-            "roadmap",
-            "tutor"
+            "chain",
+            "workflows"
           ],
-          "path": "content/05-subagents/10-step-five-watch-it.md"
+          "path": "content/11-subagents/10-step-five-watch-it.md"
+        }
+      ]
+    },
+    {
+      "slug": "12-workflows",
+      "title": "Workflows",
+      "articles": [
+        {
+          "id": "workflows/what-it-is",
+          "title": "What a workflow is",
+          "section": "What They Are",
+          "summary": "The same idea as a chain with the driving seat taken out — a script calls every agent instead of one you can talk to",
+          "keywords": [
+            "workflow",
+            "chain",
+            "script",
+            "pipeline",
+            "orchestration",
+            "prompt",
+            "claude directory",
+            "subagent"
+          ],
+          "path": "content/12-workflows/01-what-a-workflow-is.md"
+        },
+        {
+          "id": "workflows/cost",
+          "title": "What they buy and what they cost",
+          "section": "What They Are",
+          "summary": "A fixed script cannot forget a step, and that guarantee is paid for in agents that take longer to start and cost more to run",
+          "keywords": [
+            "workflow",
+            "consistency",
+            "quality control",
+            "cost",
+            "bloat",
+            "spawn",
+            "script",
+            "chain"
+          ],
+          "path": "content/12-workflows/02-what-they-buy-and-cost.md"
+        },
+        {
+          "id": "workflows/when-to-use",
+          "title": "When to use one",
+          "section": "What They Are",
+          "summary": "One pipeline, run ten times over or ten times at once, with none of the sessions and none of the management",
+          "keywords": [
+            "workflow",
+            "pipeline",
+            "chain",
+            "context",
+            "books",
+            "chronology",
+            "session",
+            "management"
+          ],
+          "path": "content/12-workflows/03-when-to-use-one.md"
+        },
+        {
+          "id": "workflows/sessions-that-survive",
+          "title": "Sessions that survive",
+          "section": "What They Are",
+          "summary": "Start the workflow inside a named tmux session, detach, and it keeps running with the lid shut",
+          "keywords": [
+            "tmux",
+            "session",
+            "detach",
+            "reattach",
+            "workflow",
+            "naming",
+            "persistence",
+            "lid"
+          ],
+          "path": "content/12-workflows/04-sessions-that-survive.md"
+        },
+        {
+          "id": "workflows/how-to-build",
+          "title": "How to build a workflow",
+          "section": "Building One",
+          "summary": "Ask the main agent for a workflow the same way you ask for a chain, on the effort level built for it",
+          "keywords": [
+            "workflow",
+            "ultracode",
+            "effort",
+            "main agent",
+            "ask",
+            "chain",
+            "script"
+          ],
+          "path": "content/12-workflows/05-how-to-build-a-workflow.md"
+        },
+        {
+          "id": "workflows/making-it-thinner",
+          "title": "Making it thinner",
+          "section": "Building One",
+          "summary": "What Claude hands back first is oversized on purpose — push back on the count, the models, and whether an LLM was ever needed",
+          "keywords": [
+            "workflow",
+            "thinner",
+            "cost",
+            "model",
+            "downgrade",
+            "script",
+            "push back",
+            "haiku",
+            "sonnet"
+          ],
+          "path": "content/12-workflows/06-making-it-thinner.md"
+        }
+      ]
+    },
+    {
+      "slug": "13-hooks",
+      "title": "Hooks",
+      "articles": [
+        {
+          "id": "hooks/what-it-is",
+          "title": "What a hook is",
+          "section": "What They Are",
+          "summary": "A script that fires by itself on a trigger, which is the only part of Claude Code that is not a request",
+          "keywords": [
+            "hook",
+            "trigger",
+            "script",
+            "settings",
+            "automation",
+            "force",
+            "visibility",
+            "chains",
+            "workflows"
+          ],
+          "path": "content/13-hooks/01-what-a-hook-is.md"
+        },
+        {
+          "id": "hooks/triggers",
+          "title": "The triggers",
+          "section": "What They Are",
+          "summary": "Eight moments a hook can attach to, and knowing the list is what tells you a hook is even possible",
+          "keywords": [
+            "trigger",
+            "event",
+            "sessionstart",
+            "userpromptsubmit",
+            "pretooluse",
+            "posttooluse",
+            "subagentstart",
+            "subagentstop",
+            "stop",
+            "sessionend"
+          ],
+          "path": "content/13-hooks/02-the-triggers.md"
+        },
+        {
+          "id": "hooks/scoping",
+          "title": "Scoping a hook",
+          "section": "What They Are",
+          "summary": "A hook obeys the same placement rule as everything else, plus one further axis — which agent, or which tool",
+          "keywords": [
+            "scope",
+            "settings.json",
+            "project",
+            "plugin",
+            "agent",
+            "matcher",
+            "customisation",
+            "location matters"
+          ],
+          "path": "content/13-hooks/03-scoping-a-hook.md"
+        },
+        {
+          "id": "hooks/worked-examples",
+          "title": "Worked examples",
+          "section": "Using Them",
+          "summary": "Eight triggers against eight jobs, so the abstract list from two articles ago turns into things worth building",
+          "keywords": [
+            "example",
+            "sessionstart",
+            "userpromptsubmit",
+            "pretooluse",
+            "posttooluse",
+            "subagentstart",
+            "subagentstop",
+            "stop",
+            "sessionend",
+            "workflow"
+          ],
+          "path": "content/13-hooks/04-worked-examples.md"
+        }
+      ]
+    },
+    {
+      "slug": "14-plugins",
+      "title": "Plugins",
+      "articles": [
+        {
+          "id": "plugins/what-it-is",
+          "title": "What a plugin is",
+          "section": "What They Are",
+          "summary": "A plugin is a portable .claude directory, built once and installed anywhere rather than written into one project",
+          "keywords": [
+            "plugin",
+            "portable",
+            "install",
+            "marketplace",
+            "project",
+            "global",
+            "bundle",
+            "agents",
+            "skills"
+          ],
+          "path": "content/14-plugins/01-what-a-plugin-is.md"
+        },
+        {
+          "id": "plugins/when-to-make-one",
+          "title": "When to make one",
+          "section": "What They Are",
+          "summary": "Four cases where a suite belongs outside any one project, and the one where a plugin earns its keep every single day",
+          "keywords": [
+            "plugin",
+            "when",
+            "project",
+            "sharing",
+            "voice agent",
+            "clutter",
+            "location matters",
+            "context"
+          ],
+          "path": "content/14-plugins/02-when-to-make-one.md"
+        },
+        {
+          "id": "plugins/inside",
+          "title": "What is inside one",
+          "section": "What They Are",
+          "summary": "The same folders as .claude, plus one extra folder that is what actually turns an ordinary directory into a plugin",
+          "keywords": [
+            "plugin",
+            "claude-plugin",
+            "agents",
+            "skills",
+            "hooks",
+            "mcps",
+            "settings",
+            "commands",
+            "manifest"
+          ],
+          "path": "content/14-plugins/03-what-is-inside-one.md"
+        },
+        {
+          "id": "plugins/how-it-works",
+          "title": "How a plugin works",
+          "section": "Using Them",
+          "summary": "A manifest names it, a marketplace lists it, and installing it is a choice of scope you already know how to make",
+          "keywords": [
+            "plugin",
+            "manifest",
+            "plugin.json",
+            "marketplace",
+            "install",
+            "enable",
+            "disable",
+            "update",
+            "global",
+            "project"
+          ],
+          "path": "content/14-plugins/04-how-a-plugin-works.md"
+        },
+        {
+          "id": "plugins/building",
+          "title": "Building one",
+          "section": "Using Them",
+          "summary": "You do not hand-write a manifest or a marketplace listing; you tell Claude what to bundle and it writes both",
+          "keywords": [
+            "plugin",
+            "build",
+            "ask claude",
+            "manifest",
+            "marketplace",
+            "custom-agents",
+            "custom-skills"
+          ],
+          "path": "content/14-plugins/05-building-one.md"
+        },
+        {
+          "id": "plugins/exercises",
+          "title": "Exercises",
+          "section": "Using Them",
+          "summary": "Take something you already built, turn it into a plugin, and prove it by installing it somewhere else",
+          "keywords": [
+            "plugin",
+            "exercise",
+            "bundle-reader",
+            "bundle-read",
+            "marketplace",
+            "install",
+            "second project"
+          ],
+          "path": "content/14-plugins/06-exercises.md"
+        }
+      ]
+    },
+    {
+      "slug": "15-headless-sessions",
+      "title": "Headless Sessions",
+      "articles": [
+        {
+          "id": "headless/what-it-is",
+          "title": "What a headless session is",
+          "section": "Running Without a Chat",
+          "summary": "Type claude -p and a prompt on the same line, and Claude Code answers once and hands the shell straight back",
+          "keywords": [
+            "headless",
+            "print",
+            "-p",
+            "--print",
+            "non-interactive",
+            "script",
+            "prompt",
+            "output",
+            "shell",
+            "scripting"
+          ],
+          "path": "content/15-headless-sessions/01-what-a-headless-session-is.md"
+        },
+        {
+          "id": "headless/when-to-use",
+          "title": "When to use one",
+          "section": "Running Without a Chat",
+          "summary": "Not for working something out — for running work you have already worked out, three shapes of it",
+          "keywords": [
+            "headless",
+            "print",
+            "when",
+            "chain",
+            "workflow",
+            "babysit",
+            "pipeline",
+            "subagent",
+            "quick job"
+          ],
+          "path": "content/15-headless-sessions/02-when-to-use-one.md"
+        },
+        {
+          "id": "headless/piping",
+          "title": "Piping",
+          "section": "Running Without a Chat",
+          "summary": "The one shell operator Moving around left out on purpose, and the reason a headless session needed it first",
+          "keywords": [
+            "pipe",
+            "piping",
+            "shell",
+            "stdin",
+            "stdout",
+            "redirect",
+            "claude -p",
+            "pbcopy",
+            "cat",
+            "grep"
+          ],
+          "path": "content/15-headless-sessions/03-piping.md"
+        },
+        {
+          "id": "headless/watching",
+          "title": "Watching",
+          "section": "Running Without a Chat",
+          "summary": "A headless session prints once and stops talking, which is not the same as nothing happening in between",
+          "keywords": [
+            "watching",
+            "tmux",
+            "panes",
+            "headless",
+            "subagent",
+            "chain",
+            "tail",
+            "log",
+            "monitor",
+            "split"
+          ],
+          "path": "content/15-headless-sessions/04-watching.md"
         }
       ]
     }
