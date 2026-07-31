@@ -1,6 +1,7 @@
 ---
 id: shell/your-prompt
 title: Your prompt
+level: Level 1
 part: The CLI
 section: Command Lines and Prompts
 order: 1

@@ -1,6 +1,7 @@
 ---
 id: skills/start-with-examples
 title: Start with examples
+level: Level 2
 part: Skills
 section: Building One
 order: 7

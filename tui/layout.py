@@ -6,15 +6,17 @@ Building both together is what keeps the mouse honest: a tab is clickable at
 exactly the columns it was drawn at, with no second layout calculation to
 drift out of sync.
 
-    ▌Interface   Setup   Agents   Skills   Subagents
+      Level 1     Level 2
     ────────────────────────────────────────────────────────────────
-      The Terminal       │  Paths and the filesystem
-    ▌ The Shell          │  ────────────────────────
-    ▌1  What is a shell  │  Every file has an address…
-     2  Paths            │
-     3  Pipes            │
+      This Wiki            │  Paths and the filesystem
+      The CLI              │  ────────────────────────
+    ▌   The Shell          │  Every file has an address…
+    ▌  1  What is a shell  │
+       2  Paths            │
+         Zsh               │
+      Software             │
     ────────────────────────────────────────────────────────────────
-     Interface 1/5 · The Shell 2/2 · Paths 2/4 · ←→ parts · ⇥ sections
+     The CLI 2/8 · The Shell · Paths 2/3 · ←→ levels · [] parts
 """
 
 from . import content
@@ -31,8 +33,8 @@ class Frame:
 
     def __init__(self, rows):
         self.rows = rows
-        self.tabs = []      # (x0, x1, part_index)
-        self.items = []     # (y, kind, item_index)
+        self.tabs = []      # (x0, x1, level_index)
+        self.items = []     # (y, kind, item_index)  kind: "article" | "section" | "part"
         self.pane_x = 0
         self.pane_y = 0
         self.pane_w = 0
@@ -62,8 +64,13 @@ class Frame:
         )
 
 
+# sidebar_width is two columns wider than it was before the column grew a
+# second tier of heading, so an article title has exactly the room it had
+# when parts were tabs: the extra indent is paid for by the sidebar, not by
+# the titles. It is one column wider again for the read tick, bought on
+# exactly the same principle -- the column pays for the mark, not the title.
 def sidebar_width(cols):
-    return min(28, max(18, cols // 4))
+    return min(31, max(21, cols // 4))
 
 
 def pane_width(cols):
@@ -116,8 +123,8 @@ def _slice(spans, a, b):
     return out
 
 
-def _tab_bar(frame, parts, active, cols):
-    labels = [("  " + p["title"] + "  ") for p in parts] or ["  (no content)  "]
+def _tab_bar(frame, levels, active, cols):
+    labels = [("  " + title + "  ") for title, _from, _to in levels] or ["  (no content)  "]
     spans = []
     boxes = []
     x = 0
@@ -159,7 +166,15 @@ def _status_bar(app, cols):
         article = app.article()
         pieces = []
         if part:
-            pieces.append("%s %d/%d" % (part["title"], app.part_i + 1, len(app.index["parts"])))
+            # The part counts within its level, not within the whole course:
+            # the level is what the tab bar is showing, so "3/8" answers the
+            # question the reader can actually see being asked.
+            first, total = 0, len(app.index["parts"])
+            lv, li = app.levels()
+            if li is not None:
+                _title, first, last = lv[li]
+                total = last - first
+            pieces.append("%s %d/%d" % (part["title"], app.part_i - first + 1, total))
         if article:
             # Inside a section the article counts within it, matching the
             # numbers in the sidebar and the keys that jump to them.
@@ -176,7 +191,7 @@ def _status_bar(app, cols):
         left = [(" " + " · ".join(pieces), "status")]
         # Hints are dropped from the right as the window narrows, so the most
         # useful ones survive instead of the whole strip being cut mid-word.
-        hints = ["←→ parts", "⇥ sections", "↑↓ scroll", "n next", "/ find", "? help", "q quit"]
+        hints = ["←→ levels", "[] parts", "⇥ sections", "↑↓ scroll", "n next", "m mark", "/ find", "? help", "q quit"]
         room = cols - spans_width(left) - 3
         while len(hints) > 1 and dwidth(" · ".join(hints)) > room:
             hints.pop(-2 if len(hints) > 1 else 0)
@@ -188,39 +203,56 @@ def _status_bar(app, cols):
 
 
 def _sidebar_entries(app):
-    """Lay the left column out.
+    """Lay the left column out. It carries two tiers of heading now that the
+    tabs along the top are levels: every part in the level is listed, and
+    the one standing open expands into its sections and all of their
+    articles — the whole part on show at once, exactly as it was when a
+    part was a tab.
 
-    Every section's header, followed by its articles, the whole part on show
-    at once. Numbering restarts inside each section, matching the keys —
-    ``1``-``9`` count within the section you are in, so a part of more than
-    nine articles still has every page one keypress away. A part whose
-    articles carry no ``section:`` is a single untitled section, so it draws
-    as the plain numbered list it always was. Entries are
-    ``(num, title, sub, kind, index, open)``.
+    Numbering restarts inside each section, matching the keys — ``1``-``9``
+    count within the section you are in, so a part of more than nine
+    articles still has every page one keypress away. A part whose articles
+    carry no ``section:`` is a single untitled section, so it draws as the
+    plain numbered list it always was; and a level holding a single part
+    drops the part heading, which is what makes a corpus with no ``level:``
+    at all look exactly as it did before levels existed. Entries are
+    ``(num, title, sub, kind, index, open, read)``.
     """
     if app.mode == "search":
         entries = [
-            ("%d" % (i + 1), a["title"], p["title"], "article", i, False)
+            ("%d" % (i + 1), a["title"], p["title"], "article", i, False, a["id"] in app.read)
             for i, (_pi, _ai, p, a) in enumerate(app.results)
         ]
         return entries, app.result_i
 
-    part = app.part()
-    if not part:
-        return [], 0
-    articles = part.get("articles", [])
-    open_i = content.section_at(part, app.article_i)
+    parts = app.index.get("parts", [])
+    lv, li = app.levels()
+    if li is not None:
+        _title, from_, to = lv[li]
+    else:
+        from_, to = app.part_i, app.part_i + 1
     entries = []
     selected = 0
-    for si, (title, start, stop) in enumerate(content.part_sections(part)):
-        if title:
-            entries.append(("", title, None, "section", si, si == open_i))
-        for ai in range(start, stop):
-            if ai == app.article_i:
-                selected = len(entries)
-            entries.append(
-                ("%d" % (ai - start + 1), articles[ai]["title"], None, "article", ai, False)
-            )
+    for pi in range(from_, to):
+        if pi < 0 or pi >= len(parts):
+            continue
+        part = parts[pi]
+        if to - from_ > 1:
+            entries.append(("", part["title"], None, "part", pi, pi == app.part_i, False))
+        if pi != app.part_i:
+            continue
+        articles = part.get("articles", [])
+        open_i = content.section_at(part, app.article_i)
+        for si, (title, start, stop) in enumerate(content.part_sections(part)):
+            if title:
+                entries.append(("", title, None, "section", start, si == open_i, False))
+            for ai in range(start, stop):
+                if ai == app.article_i:
+                    selected = len(entries)
+                entries.append(
+                    ("%d" % (ai - start + 1), articles[ai]["title"], None, "article", ai, False,
+                     articles[ai]["id"] in app.read)
+                )
     return entries, selected
 
 
@@ -249,20 +281,29 @@ def _sidebar_rows(frame, app, width, height, top):
             # everything right of it slides left below the last article.
             rows.append([(" " * width, "body")])
             continue
-        num, title, sub, kind, index, is_open = entries[i]
-        # A section header is the side tab: styled like the tabs along the
-        # top, marked when it is the one standing open.
-        if kind == "section":
+        num, title, sub, kind, index, is_open, is_read = entries[i]
+        # The two heading tiers are side tabs: styled like the tabs along the
+        # top, marked when they are the ones standing open. Indentation is
+        # what separates them — a part sits flush, its sections one step in,
+        # and its articles one step further.
+        if kind in ("part", "section"):
             marker = ("▌", "sel_bar") if is_open else (" ", "body")
             style = "tab_active" if is_open else "tab_idle"
-            rows.append(pad([marker, (" ", "body"), (title, style)], width, "body"))
+            indent = "   " if kind == "section" else " "
+            rows.append(pad([marker, (indent, "body"), (title, style)], width, "body"))
             frame.items.append((top + i, kind, index))
             continue
         is_sel = i == selected
         marker = ("▌", "sel_bar") if is_sel else (" ", "body")
         num_style = "sel_row" if is_sel else "row_num"
         text_style = "sel_row" if is_sel else "row"
-        line = [marker, (num.rjust(2) + "  ", num_style), (title, text_style)]
+        # Search results are a flat list under no heading at all, so they
+        # keep the left margin the headings would otherwise have earned.
+        indent = "" if app.mode == "search" else "  "
+        # The tick rides inside the number's own span rather than getting one
+        # of its own, so a selected row still turns sel_row in one piece.
+        mark = "✓" if is_read else " "
+        line = [marker, (indent + num.rjust(2) + " " + mark + " ", num_style), (title, text_style)]
         if sub:
             line.append(("  " + sub, "dim" if not is_sel else "sel_row"))
         rows.append(pad(line, width, "sel_row" if is_sel else "body"))
@@ -332,7 +373,8 @@ def build(app, cols, rows):
     sw = sidebar_width(cols)
     pw = pane_width(cols)
 
-    out.append(_tab_bar(frame, app.index.get("parts", []), app.part_i, cols))
+    levels, active_level = app.levels()
+    out.append(_tab_bar(frame, levels, active_level if active_level is not None else 0, cols))
     out.append([("─" * cols, "rule")])
 
     side = _sidebar_rows(frame, app, sw, body_h, len(out))
@@ -368,20 +410,31 @@ HELP = """
 
 Nothing here is destructive. Press any key and see what happens.
 
+## The three sizes of thing
+
+The course nests three deep. **Levels** are the two or three names across the
+top. Each level holds **parts**, the headings down the left margin. Each part
+holds **sections**, the headings indented under the part standing open. The
+numbered list is the **articles** themselves.
+
+## Moving between levels
+
+- `←` `→` — previous / next level
+- click a name at the top to jump straight to it
+
 ## Moving between parts
 
-The names across the top are the **parts** of the course. Move between them
-with the left and right arrows.
+Every part in the level is listed down the left. Only the one you are in
+opens up.
 
-- `←` `→` — previous / next part
-- `Tab` — next part
-- click a name at the top to jump straight to it
+- `[` `]` — previous / next part
+- click a part's name to open it
 
 ## Moving between sections
 
-Some parts are divided into **sections**, the headings down the left. Each
-one numbers its own articles, and the numbers you press are the ones in the
-section you are in.
+Each section numbers its own articles, and the numbers you press are the ones
+in the section you are in. `⇥` walks the left column top to bottom, on into
+the next part when it runs out of sections.
 
 - `⇥` — next section
 - `⇧⇥` — previous section
@@ -401,6 +454,13 @@ The numbered list down the left is the **articles** in the current section.
 - `Space` `b`, or `PgDn` `PgUp` — scroll a page
 - `g` `G` — jump to the top or the bottom
 - the mouse wheel scrolls too
+
+## Marking what you have read
+
+Nothing is marked for you. `m` puts a tick beside the article you are on, and
+`m` again takes it off. The ticks sit in the left margin next to the numbers,
+and they are remembered between sessions — quitting, reinstalling and
+updating all leave them where they are.
 
 ## Finding something
 

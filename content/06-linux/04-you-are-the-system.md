@@ -1,6 +1,7 @@
 ---
 id: linux/you-are-the-system
 title: You are the system
+level: Level 1
 part: Linux
 section: Why its better
 order: 4

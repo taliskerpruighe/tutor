@@ -1,6 +1,7 @@
 ---
 id: skills/what-a-skill-is
 title: What a skill is
+level: Level 2
 part: Skills
 section: When To Build One
 order: 2

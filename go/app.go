@@ -40,6 +40,13 @@ type App struct {
 	helpCache    map[int][][]span
 	returnTo     *position
 
+	// read is the set of article ids marked read, and readPath is where it is
+	// written back. An empty readPath means "hold this in memory and do not
+	// persist" — which is what cmdFrame wants, for the determinism reason set
+	// out there.
+	read     map[string]bool
+	readPath string
+
 	// images is "pictures can be drawn this session" — probeImages's answer,
 	// taken once at startup (main.go's cmdRun) and never rechecked. Default
 	// false, so any path that constructs an App without setting it (cmdFrame,
@@ -71,6 +78,7 @@ func NewApp(root string, index Index, query string) *App {
 		paneW: 72, paneH: 20,
 		cache:     map[cacheKey]paneRender{},
 		helpCache: map[int][][]span{},
+		read:      map[string]bool{},
 	}
 	if query != "" {
 		app.mode = "search"
@@ -180,7 +188,68 @@ func (a *App) goTo(partI, articleI int) {
 	a.scroll = 0
 }
 
-func (a *App) stepPart(delta int) { a.goTo(a.partI+delta, 0) }
+func (a *App) toggleRead() {
+	article, ok := a.article()
+	if !ok {
+		return
+	}
+	if a.read[article.ID] {
+		delete(a.read, article.ID)
+	} else {
+		a.read[article.ID] = true
+	}
+	if a.readPath != "" {
+		// A failure here costs the mark at the next launch and nothing more,
+		// so it must not interrupt reading. tutor doctor is where an
+		// unwritable state directory is meant to surface.
+		_ = saveMarks(a.readPath, a.read)
+	}
+}
+
+// levels returns the index's levels and which one the cursor is in. Like
+// sections, the open level is derived from where the cursor is rather than
+// stored, so `n`, a search hit and a click all open the right tab without
+// knowing levels exist.
+func (a *App) levels() ([]Level, int, bool) {
+	lv := indexLevels(a.index)
+	if len(lv) == 0 {
+		return nil, 0, false
+	}
+	li, found := levelAt(a.index, a.partI)
+	return lv, li, found
+}
+
+// stepLevel moves to the neighbouring level's first article — what ← and →
+// do now that the tabs along the top are levels rather than parts.
+func (a *App) stepLevel(delta int) {
+	lv, li, ok := a.levels()
+	if !ok {
+		return
+	}
+	target := max(0, min(li+delta, len(lv)-1))
+	a.goTo(lv[target].From, 0)
+}
+
+// openLevel jumps to a level by index — what a click on a tab does.
+func (a *App) openLevel(index int) {
+	lv, _, ok := a.levels()
+	if !ok || index < 0 || index >= len(lv) {
+		return
+	}
+	a.goTo(lv[index].From, 0)
+}
+
+// stepPart moves one part, clamping at the level's edges: ← and → are the way
+// out of a level, so `[` and `]` never carry the reader across a tab boundary
+// by accident.
+func (a *App) stepPart(delta int) {
+	lv, li, ok := a.levels()
+	if !ok {
+		a.goTo(a.partI+delta, 0)
+		return
+	}
+	a.goTo(max(lv[li].From, min(a.partI+delta, lv[li].To-1)), 0)
+}
 
 // sections returns the current part's sections, and where the cursor sits in
 // them. The open section is derived from articleI rather than stored, so
@@ -199,24 +268,36 @@ func (a *App) sections() ([]Section, int, bool) {
 	return secs, si, found
 }
 
-// stepSection moves to the neighbouring section's first article. It clamps at
-// the part's edges: ← and → are already the way out of a part.
-func (a *App) stepSection(delta int) {
-	secs, si, ok := a.sections()
+// levelSections flattens every section of every part in the current level into
+// one list, so ⇥ walks the left column top to bottom the way it looks — on
+// into the next part's first section rather than stopping dead at a part
+// boundary. It clamps at the level's edges, because ← and → are the way out.
+func (a *App) levelSections() ([]position, int) {
+	lv, li, ok := a.levels()
 	if !ok {
-		return
+		return nil, 0
 	}
-	target := max(0, min(si+delta, len(secs)-1))
-	a.goTo(a.partI, secs[target].From)
+	out, here := []position{}, 0
+	for pi := lv[li].From; pi < lv[li].To; pi++ {
+		part := a.index.Parts[pi]
+		for _, sec := range partSections(part) {
+			if pi == a.partI && sec.contains(a.articleI) {
+				here = len(out)
+			}
+			out = append(out, position{pi, sec.From, 0})
+		}
+	}
+	return out, here
 }
 
-// openSection jumps to a section by index — what a click on its header does.
-func (a *App) openSection(index int) {
-	secs, _, ok := a.sections()
-	if !ok || index < 0 || index >= len(secs) {
+// stepSection moves to the neighbouring section's first article.
+func (a *App) stepSection(delta int) {
+	secs, here := a.levelSections()
+	if len(secs) == 0 {
 		return
 	}
-	a.goTo(a.partI, secs[index].From)
+	target := secs[max(0, min(here+delta, len(secs)-1))]
+	a.goTo(target.partI, target.articleI)
 }
 
 // stepArticle moves one article, carrying on into the neighbouring part at
@@ -312,8 +393,12 @@ func (a *App) handleNormal(key string) bool {
 		a.returnTo = &position{a.partI, a.articleI, a.scroll}
 		a.setQuery("")
 	case "left", "h":
-		a.stepPart(-1)
+		a.stepLevel(-1)
 	case "right", "l":
+		a.stepLevel(1)
+	case "[":
+		a.stepPart(-1)
+	case "]":
 		a.stepPart(1)
 	case "shift-tab":
 		a.stepSection(-1)
@@ -337,6 +422,8 @@ func (a *App) handleNormal(key string) bool {
 		a.scroll = a.maxScroll()
 	case "r":
 		a.reload()
+	case "m":
+		a.toggleRead()
 	default:
 		// 1-9 count within the open section, so a part with more than nine
 		// articles in it still has every page one keypress away.
@@ -425,7 +512,7 @@ func (a *App) handleMouse(ev event, frame *Frame) bool {
 			if a.mode == "search" {
 				a.cancelSearch()
 			}
-			a.goTo(tab, 0)
+			a.openLevel(tab)
 		} else if kind, item, ok := frame.itemAt(ev.x, ev.y); ok {
 			switch {
 			case a.mode == "search":
@@ -433,9 +520,13 @@ func (a *App) handleMouse(ev event, frame *Frame) bool {
 					a.resultI = item
 					a.openResult()
 				}
-			case kind == "section":
-				a.openSection(item)
+			case kind == "part":
+				// A part header carries the part's own index, so clicking a
+				// collapsed one opens it at its first article.
+				a.goTo(item, 0)
 			default:
+				// Section headers and articles both carry an article index
+				// within the part standing open, so one branch serves both.
 				a.goTo(a.partI, item)
 			}
 		}

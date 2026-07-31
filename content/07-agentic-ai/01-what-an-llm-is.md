@@ -1,6 +1,7 @@
 ---
 id: ai/what-an-llm-is
 title: What an LLM is
+level: Level 1
 part: Agentic AI
 section: LLMs
 order: 1

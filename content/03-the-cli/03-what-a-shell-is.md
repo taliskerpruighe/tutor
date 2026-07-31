@@ -1,6 +1,7 @@
 ---
 id: shell/what-a-shell-is
 title: What a shell is
+level: Level 1
 part: The CLI
 section: Shells
 order: 3

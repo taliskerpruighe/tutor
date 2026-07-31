@@ -1,6 +1,7 @@
 ---
 id: ai/what-a-harness-is
 title: What a harness is
+level: Level 1
 part: Agentic AI
 section: Harnesses
 order: 5

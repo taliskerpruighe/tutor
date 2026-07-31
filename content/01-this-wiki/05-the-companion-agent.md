@@ -1,8 +1,8 @@
 ---
 id: wiki/companion-agent
 title: The companion agent
+level: Level 1
 part: This Wiki
-section: This Wiki
 order: 5
 summary: A second way into the course — an agent that has read every page here and answers from it, citing its source
 keywords: [companion agent, claude, tab, ghostty, question, cite, ask, article]

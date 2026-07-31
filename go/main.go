@@ -193,6 +193,30 @@ func cmdDoctor(root string) int {
 		binDir + " is not on PATH — open a new terminal, or run: bash " +
 			filepath.Join(root, "install.sh")})
 
+	// The only place an unwritable state directory becomes visible: a failed
+	// write here would otherwise surface only as a mark quietly not sticking,
+	// mid-session, with nothing to explain why.
+	mp := marksPath()
+	marks := loadMarks(mp)
+	present := "not created yet"
+	if _, err := os.Stat(mp); err == nil {
+		present = "present"
+	}
+	sd := stateDir()
+	writable := os.MkdirAll(sd, 0o755) == nil
+	if writable {
+		if f, err := os.CreateTemp(sd, ".doctor-*"); err != nil {
+			writable = false
+		} else {
+			name := f.Name()
+			f.Close()
+			os.Remove(name)
+		}
+	}
+	checks = append(checks, check{writable,
+		fmt.Sprintf("read marks %s at %s (%d article%s)", present, mp, len(marks), plural(len(marks))),
+		"state directory not writable — read marks would not be saved: " + sd})
+
 	failures := 0
 	for _, c := range checks {
 		if c.ok {
@@ -294,6 +318,16 @@ func cmdFrame(root string, args []string) int {
 	// on a real terminal's reply; a frame that varied with what happened to
 	// be attached to stdout when it ran would break parity for reasons
 	// having nothing to do with an actual bug in either renderer.
+	//
+	// Read marks are loaded only when $TUTOR_STATE names a directory, never
+	// from the reader's real ~/.local/share/tutor — and readPath is left empty
+	// so this command never writes. Same reasoning as app.images just above: a
+	// frame that varied with what the developer running it happened to have
+	// read would break parity for reasons having nothing to do with either
+	// renderer. bin/parity.sh pins a fixture to exercise the ticked row.
+	if os.Getenv("TUTOR_STATE") != "" {
+		app.read = loadMarks(marksPath())
+	}
 	if id != "" {
 		for _, item := range flatten(app.index) {
 			if item.article.ID == id {
@@ -405,6 +439,8 @@ func cmdRun(root, query string) int {
 	app := NewApp(root, index, query)
 	app.images = images
 	app.cellW, app.cellH = cellW, cellH
+	app.readPath = marksPath()
+	app.read = loadMarks(app.readPath)
 	app.Run(t)
 	return 0
 }

@@ -1,6 +1,7 @@
 ---
 id: agents/fields
 title: The fields that matter
+level: Level 2
 part: Agents
 section: Custom Agents
 order: 10

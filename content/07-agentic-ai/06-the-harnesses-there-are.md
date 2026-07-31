@@ -1,6 +1,7 @@
 ---
 id: ai/the-harnesses-there-are
 title: The harnesses there are
+level: Level 1
 part: Agentic AI
 section: Harnesses
 order: 6

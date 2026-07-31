@@ -1,6 +1,7 @@
 ---
 id: agents/building
 title: Building one
+level: Level 2
 part: Agents
 section: Custom Agents
 order: 11

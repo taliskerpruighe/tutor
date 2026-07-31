@@ -1,6 +1,7 @@
 ---
 id: workflows/sessions-that-survive
 title: Sessions that survive
+level: Level 2
 part: Workflows
 section: What They Are
 order: 4

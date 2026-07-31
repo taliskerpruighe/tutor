@@ -1,6 +1,7 @@
 ---
 id: software/package-managers
 title: Package managers
+level: Level 1
 part: Software
 section: Packages
 order: 3

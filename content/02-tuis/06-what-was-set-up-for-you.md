@@ -1,6 +1,7 @@
 ---
 id: tuis/ghostty-defaults
 title: What was set up for you
+level: Level 1
 part: TUIs
 section: Ghostty
 order: 6

@@ -1,6 +1,7 @@
 ---
 id: workflows/what-it-is
 title: What a workflow is
+level: Level 2
 part: Workflows
 section: What They Are
 order: 1

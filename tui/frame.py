@@ -14,10 +14,10 @@ import sys
 
 if __package__ in (None, ""):  # invoked as a plain script
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from tui import content, layout, term
+    from tui import content, layout, state, term
     from tui.app import App
 else:
-    from . import content, layout, term
+    from . import content, layout, state, term
     from .app import App
 
 
@@ -29,6 +29,16 @@ def repo_root():
 
 def build_frame(root, cols, rows, article_id="", mode="normal", query=""):
     app = App(root, content.load_index(root, rebuild=False))
+    # Read marks are loaded only when $TUTOR_STATE names a directory, never
+    # from the reader's real ~/.local/share/tutor -- and app.read_path is
+    # left unset so this command never writes. This command's whole job is
+    # byte-for-byte determinism against the Go binary's `frame` subcommand
+    # for the parity harness, and a frame that varied with what the
+    # developer running it happened to have read would break parity for
+    # reasons having nothing to do with either renderer. bin/parity.sh pins
+    # a fixture to exercise the ticked row.
+    if os.environ.get("TUTOR_STATE"):
+        app.read = state.load_marks(state.marks_path())
     if article_id:
         for pi, ai, _part, article in content.flatten(app.index):
             if article["id"] == article_id:

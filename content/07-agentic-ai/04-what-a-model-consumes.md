@@ -1,6 +1,7 @@
 ---
 id: ai/what-a-model-consumes
 title: What a model consumes
+level: Level 1
 part: Agentic AI
 section: LLMs
 order: 4

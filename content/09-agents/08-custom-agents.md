@@ -1,6 +1,7 @@
 ---
 id: agents/custom
 title: Custom agents
+level: Level 2
 part: Agents
 section: Custom Agents
 order: 8

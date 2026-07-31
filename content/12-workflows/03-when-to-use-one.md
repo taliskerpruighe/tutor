@@ -1,6 +1,7 @@
 ---
 id: workflows/when-to-use
 title: When to use one
+level: Level 2
 part: Workflows
 section: What They Are
 order: 3

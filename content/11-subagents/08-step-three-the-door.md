@@ -1,6 +1,7 @@
 ---
 id: subagents/step-three
 title: Step three — the door
+level: Level 2
 part: Subagents
 section: Build a Chain
 order: 8

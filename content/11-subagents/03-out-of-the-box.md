@@ -1,6 +1,7 @@
 ---
 id: subagents/out-of-the-box
 title: Out of the box
+level: Level 2
 part: Subagents
 section: Chains
 order: 3

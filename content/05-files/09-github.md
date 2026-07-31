@@ -1,6 +1,7 @@
 ---
 id: files/github
 title: GitHub
+level: Level 1
 part: Files
 section: Version Control
 order: 9

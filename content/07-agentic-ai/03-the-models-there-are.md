@@ -1,6 +1,7 @@
 ---
 id: ai/the-models-there-are
 title: The models there are
+level: Level 1
 part: Agentic AI
 section: LLMs
 order: 3

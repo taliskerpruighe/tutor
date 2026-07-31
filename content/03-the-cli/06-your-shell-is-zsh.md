@@ -1,6 +1,7 @@
 ---
 id: shell/your-shell-zsh
 title: Your shell is zsh
+level: Level 1
 part: The CLI
 section: Zsh
 order: 6

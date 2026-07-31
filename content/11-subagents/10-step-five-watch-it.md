@@ -1,6 +1,7 @@
 ---
 id: subagents/step-five
 title: Step five — watch it
+level: Level 2
 part: Subagents
 section: Build a Chain
 order: 10

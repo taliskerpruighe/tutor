@@ -1,6 +1,7 @@
 ---
 id: files/ides
 title: IDEs
+level: Level 1
 part: Files
 section: Editors
 order: 4

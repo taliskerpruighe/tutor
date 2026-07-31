@@ -1,6 +1,7 @@
 ---
 id: terminal/why-ghostty
 title: Your terminal is Ghostty
+level: Level 1
 part: TUIs
 section: Ghostty
 order: 5

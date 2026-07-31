@@ -1,6 +1,7 @@
 ---
 id: claude/the-harnesses
 title: The harnesses
+level: Level 1
 part: Claude
 section: Claude
 order: 2

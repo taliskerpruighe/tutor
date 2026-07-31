@@ -1,6 +1,7 @@
 ---
 id: workflows/making-it-thinner
 title: Making it thinner
+level: Level 2
 part: Workflows
 section: Building One
 order: 6

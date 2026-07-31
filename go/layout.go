@@ -6,15 +6,17 @@
 // clickable at exactly the columns it was drawn at, with no second layout
 // calculation to drift out of sync.
 //
-//	▌Interface   Setup   Agents   Skills   Subagents
+//	  Level 1     Level 2
 //	────────────────────────────────────────────────────────────────
-//	  The Terminal       │  Paths and the filesystem
-//	▌ The Shell          │  ────────────────────────
-//	▌1  What is a shell  │  Every file has an address…
-//	 2  Paths            │
-//	 3  Pipes            │
+//	  This Wiki            │  Paths and the filesystem
+//	  The CLI              │  ────────────────────────
+//	▌   The Shell          │  Every file has an address…
+//	▌  1  What is a shell  │
+//	   2  Paths            │
+//	     Zsh               │
+//	  Software             │
 //	────────────────────────────────────────────────────────────────
-//	 Interface 1/5 · The Shell 2/2 · Paths 2/4 · ←→ parts · ⇥ sections
+//	 The CLI 2/8 · The Shell · Paths 2/3 · ←→ levels · [] parts
 package main
 
 import (
@@ -35,7 +37,7 @@ type tabBox struct {
 
 type itemBox struct {
 	y, index int
-	kind     string // "article" | "section"
+	kind     string // "article" | "section" | "part"
 }
 
 // Frame is a painted frame plus the hitboxes needed to interpret a click.
@@ -72,7 +74,12 @@ func (f *Frame) itemAt(x, y int) (string, int, bool) {
 	return "", 0, false
 }
 
-func sidebarWidth(cols int) int { return min(28, max(18, cols/4)) }
+// sidebarWidth is two columns wider than it was before the column grew a
+// second tier of heading, so an article title has exactly the room it had
+// when parts were tabs: the extra indent is paid for by the sidebar, not by
+// the titles. It is one column wider again for the read tick, bought on
+// exactly the same principle — the column pays for the mark, not the title.
+func sidebarWidth(cols int) int { return min(31, max(21, cols/4)) }
 
 // paneWidth leaves room for the sidebar, separator, two spaces of gutter and
 // one column of scrollbar.
@@ -132,10 +139,10 @@ func sliceSpans(spans []span, a, b int) []span {
 	return out
 }
 
-func tabBar(frame *Frame, parts []Part, active, cols int) []span {
+func tabBar(frame *Frame, levels []Level, active, cols int) []span {
 	labels := []string{}
-	for _, p := range parts {
-		labels = append(labels, "  "+p.Title+"  ")
+	for _, l := range levels {
+		labels = append(labels, "  "+l.Title+"  ")
 	}
 	if len(labels) == 0 {
 		labels = []string{"  (no content)  "}
@@ -199,8 +206,15 @@ func statusBar(app *App, cols int) []span {
 		article, hasArticle := app.article()
 		pieces := []string{}
 		if hasPart {
-			pieces = append(pieces, part.Title+" "+strconv.Itoa(app.partI+1)+"/"+
-				strconv.Itoa(len(app.index.Parts)))
+			// The part counts within its level, not within the whole course:
+			// the level is what the tab bar is showing, so "3/8" answers the
+			// question the reader can actually see being asked.
+			first, total := 0, len(app.index.Parts)
+			if lv, li, ok := app.levels(); ok {
+				first, total = lv[li].From, lv[li].To-lv[li].From
+			}
+			pieces = append(pieces, part.Title+" "+strconv.Itoa(app.partI-first+1)+"/"+
+				strconv.Itoa(total))
 		}
 		if hasArticle {
 			// Inside a section the article counts within it, matching the
@@ -221,7 +235,10 @@ func statusBar(app *App, cols int) []span {
 		left = []span{{" " + strings.Join(pieces, " · "), "status"}}
 		// Hints are dropped from the right as the window narrows, so the most
 		// useful ones survive instead of the whole strip being cut mid-word.
-		hints := []string{"←→ parts", "⇥ sections", "↑↓ scroll", "n next", "/ find", "? help", "q quit"}
+		// Position matters here: the drop loop below removes from
+		// len(hints)-2, so entries earlier in the slice survive a narrower
+		// window than the ones placed after them.
+		hints := []string{"←→ levels", "[] parts", "⇥ sections", "↑↓ scroll", "n next", "m mark", "/ find", "? help", "q quit"}
 		room := cols - spansWidth(left) - 3
 		for len(hints) > 1 && dwidth(strings.Join(hints, " · ")) > room {
 			hints = append(hints[:len(hints)-2], hints[len(hints)-1])
@@ -247,17 +264,25 @@ func statusBarHelp(cols int) []span {
 
 type sidebarEntry struct {
 	num, title, sub string
-	kind            string // "article" | "section"
-	index           int    // article index, or section index for a header
-	open            bool   // set on the header of the expanded section
+	kind            string // "article" | "section" | "part"
+	index           int    // part index on a part header, else an article index
+	open            bool   // set on the header standing open
+	read            bool   // article marked read; never set on a heading
 }
 
-// sidebarEntries lays the left column out: every section's header followed by
-// its articles, the whole part on show at once. Numbering restarts inside
-// each section, matching the keys — `1`-`9` count within the section you are
-// in, so a part of more than nine articles still has every page one keypress
-// away. A part whose articles carry no `section:` is a single untitled
-// section, so it draws as the plain numbered list it always was.
+// sidebarEntries lays the left column out. It carries two tiers of heading
+// now that the tabs along the top are levels: every part in the level is
+// listed, and the one standing open expands into its sections and all of
+// their articles — the whole part on show at once, exactly as it was when a
+// part was a tab.
+//
+// Numbering restarts inside each section, matching the keys — `1`-`9` count
+// within the section you are in, so a part of more than nine articles still
+// has every page one keypress away. A part whose articles carry no `section:`
+// is a single untitled section, so it draws as the plain numbered list it
+// always was; and a level holding a single part drops the part heading, which
+// is what makes a corpus with no `level:` at all look exactly as it did
+// before levels existed.
 func sidebarEntries(app *App) ([]sidebarEntry, int) {
 	entries := []sidebarEntry{}
 	selected := 0
@@ -266,27 +291,46 @@ func sidebarEntries(app *App) ([]sidebarEntry, int) {
 		for i, r := range app.results {
 			entries = append(entries, sidebarEntry{
 				strconv.Itoa(i + 1), r.article.Title, r.part.Title, "article", i, false,
+				app.read[r.article.ID],
 			})
 		}
 		return entries, app.resultI
 	}
 
-	part, ok := app.part()
-	if !ok {
-		return entries, 0
+	lv, li, hasLevel := app.levels()
+	from, to := app.partI, app.partI+1
+	if hasLevel {
+		from, to = lv[li].From, lv[li].To
 	}
-	openI, _ := sectionAt(part, app.articleI)
-	for si, sec := range partSections(part) {
-		if sec.Title != "" {
-			entries = append(entries, sidebarEntry{"", sec.Title, "", "section", si, si == openI})
+	for pi := from; pi < to; pi++ {
+		if pi < 0 || pi >= len(app.index.Parts) {
+			continue
 		}
-		for ai := sec.From; ai < sec.To; ai++ {
-			if ai == app.articleI {
-				selected = len(entries)
-			}
+		part := app.index.Parts[pi]
+		if to-from > 1 {
 			entries = append(entries, sidebarEntry{
-				strconv.Itoa(ai - sec.From + 1), part.Articles[ai].Title, "", "article", ai, false,
+				"", part.Title, "", "part", pi, pi == app.partI, false,
 			})
+		}
+		if pi != app.partI {
+			continue
+		}
+		openI, _ := sectionAt(part, app.articleI)
+		for si, sec := range partSections(part) {
+			if sec.Title != "" {
+				entries = append(entries, sidebarEntry{
+					"", sec.Title, "", "section", sec.From, si == openI, false,
+				})
+			}
+			for ai := sec.From; ai < sec.To; ai++ {
+				if ai == app.articleI {
+					selected = len(entries)
+				}
+				entries = append(entries, sidebarEntry{
+					strconv.Itoa(ai - sec.From + 1), part.Articles[ai].Title, "", "article", ai, false,
+					app.read[part.Articles[ai].ID],
+				})
+			}
 		}
 	}
 	return entries, selected
@@ -321,16 +365,22 @@ func sidebarRows(frame *Frame, app *App, width, height, top int) [][]span {
 		}
 		e := entries[i]
 		isSel := e.kind == "article" && i == selected
-		// A section header is the side tab: styled like the tabs along the
-		// top, marked when it is the one standing open.
-		if e.kind == "section" {
+		// The two heading tiers are side tabs: styled like the tabs along the
+		// top, marked when they are the ones standing open. Indentation is
+		// what separates them — a part sits flush, its sections one step in,
+		// and its articles one step further.
+		if e.kind == "part" || e.kind == "section" {
 			marker := span{" ", "body"}
 			style := "tab_idle"
 			if e.open {
 				marker = span{"▌", "sel_bar"}
 				style = "tab_active"
 			}
-			rows = append(rows, padSpans([]span{marker, {" ", "body"}, {e.title, style}}, width, "body"))
+			indent := " "
+			if e.kind == "section" {
+				indent = "   "
+			}
+			rows = append(rows, padSpans([]span{marker, {indent, "body"}, {e.title, style}}, width, "body"))
 			frame.items = append(frame.items, itemBox{top + i, e.index, e.kind})
 			continue
 		}
@@ -344,7 +394,19 @@ func sidebarRows(frame *Frame, app *App, width, height, top int) [][]span {
 		for len([]rune(num)) < 2 {
 			num = " " + num
 		}
-		line := []span{marker, {num + "  ", numStyle}, {e.title, textStyle}}
+		// Search results are a flat list under no heading at all, so they keep
+		// the left margin the headings would otherwise have earned.
+		indent := "  "
+		if app.mode == "search" {
+			indent = ""
+		}
+		// The tick rides inside the number's own span rather than getting one of
+		// its own, so a selected row still turns sel_row in one piece.
+		mark := " "
+		if e.read {
+			mark = "✓"
+		}
+		line := []span{marker, {indent + num + " " + mark + " ", numStyle}, {e.title, textStyle}}
 		if e.sub != "" {
 			subStyle := "dim"
 			if isSel {
@@ -427,7 +489,8 @@ func buildFrame(app *App, cols, rows int) *Frame {
 	sw := sidebarWidth(cols)
 	pw := paneWidth(cols)
 
-	out = append(out, tabBar(frame, app.index.Parts, app.partI, cols))
+	levels, activeLevel, _ := app.levels()
+	out = append(out, tabBar(frame, levels, activeLevel, cols))
 	out = append(out, []span{{strings.Repeat("─", cols), "rule"}})
 
 	side := sidebarRows(frame, app, sw, bodyH, len(out))
@@ -591,20 +654,31 @@ const helpDoc = `
 
 Nothing here is destructive. Press any key and see what happens.
 
+## The three sizes of thing
+
+The course nests three deep. **Levels** are the two or three names across the
+top. Each level holds **parts**, the headings down the left margin. Each part
+holds **sections**, the headings indented under the part standing open. The
+numbered list is the **articles** themselves.
+
+## Moving between levels
+
+- ` + "`←`" + ` ` + "`→`" + ` — previous / next level
+- click a name at the top to jump straight to it
+
 ## Moving between parts
 
-The names across the top are the **parts** of the course. Move between them
-with the left and right arrows.
+Every part in the level is listed down the left. Only the one you are in
+opens up.
 
-- ` + "`←`" + ` ` + "`→`" + ` — previous / next part
-- ` + "`Tab`" + ` — next part
-- click a name at the top to jump straight to it
+- ` + "`[`" + ` ` + "`]`" + ` — previous / next part
+- click a part's name to open it
 
 ## Moving between sections
 
-Some parts are divided into **sections**, the headings down the left. Each
-one numbers its own articles, and the numbers you press are the ones in the
-section you are in.
+Each section numbers its own articles, and the numbers you press are the ones
+in the section you are in. ` + "`⇥`" + ` walks the left column top to bottom, on into
+the next part when it runs out of sections.
 
 - ` + "`⇥`" + ` — next section
 - ` + "`⇧⇥`" + ` — previous section
@@ -624,6 +698,13 @@ The numbered list down the left is the **articles** in the current section.
 - ` + "`Space`" + ` ` + "`b`" + `, or ` + "`PgDn`" + ` ` + "`PgUp`" + ` — scroll a page
 - ` + "`g`" + ` ` + "`G`" + ` — jump to the top or the bottom
 - the mouse wheel scrolls too
+
+## Marking what you have read
+
+Nothing is marked for you. ` + "`m`" + ` puts a tick beside the article you are on, and
+` + "`m`" + ` again takes it off. The ticks sit in the left margin next to the numbers,
+and they are remembered between sessions — quitting, reinstalling and
+updating all leave them where they are.
 
 ## Finding something
 

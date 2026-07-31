@@ -1,6 +1,7 @@
 ---
 id: plugins/when-to-make-one
 title: When to make one
+level: Level 2
 part: Plugins
 section: What They Are
 order: 2

@@ -1,6 +1,7 @@
 ---
 id: plugins/how-it-works
 title: How a plugin works
+level: Level 2
 part: Plugins
 section: Using Them
 order: 4

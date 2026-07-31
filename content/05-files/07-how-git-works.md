@@ -1,6 +1,7 @@
 ---
 id: files/how-git-works
 title: How git works
+level: Level 1
 part: Files
 section: Version Control
 order: 7

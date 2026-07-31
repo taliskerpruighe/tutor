@@ -1,6 +1,7 @@
 ---
 id: shell/starship
 title: Starship and powerline themes
+level: Level 1
 part: The CLI
 section: Command Lines and Prompts
 order: 2

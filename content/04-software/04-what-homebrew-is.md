@@ -1,6 +1,7 @@
 ---
 id: software/what-homebrew-is
 title: What Homebrew is
+level: Level 1
 part: Software
 section: Homebrew
 order: 4

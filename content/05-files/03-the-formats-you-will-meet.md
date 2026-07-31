@@ -1,6 +1,7 @@
 ---
 id: files/formats
 title: The formats you will meet
+level: Level 1
 part: Files
 section: Languages and Scripts
 order: 3

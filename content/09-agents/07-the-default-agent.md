@@ -1,6 +1,7 @@
 ---
 id: agents/default
 title: The default agent
+level: Level 2
 part: Agents
 section: Custom Agents
 order: 7

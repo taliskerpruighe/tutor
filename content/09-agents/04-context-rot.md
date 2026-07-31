@@ -1,6 +1,7 @@
 ---
 id: agents/context-rot
 title: Context rot
+level: Level 2
 part: Agents
 section: Context
 order: 4

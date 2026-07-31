@@ -1,6 +1,7 @@
 ---
 id: skills/reading-your-prompt
 title: Reading your own prompt
+level: Level 2
 part: Skills
 section: Making Them Fire
 order: 12

@@ -1,6 +1,7 @@
 ---
 id: cli/the-shells-there-are
 title: The shells there are
+level: Level 1
 part: The CLI
 section: Shells
 order: 5

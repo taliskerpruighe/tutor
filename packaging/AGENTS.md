@@ -60,6 +60,22 @@ user:
 
 > Open a new Ghostty tab and type `tutor`. Keep it open beside this one.
 
+## Read marks
+
+Pressing `m` in the reader ticks the article the user is on as read;
+pressing it again clears the tick. Nothing is marked for them
+automatically — it is entirely by hand.
+
+The ticks are kept in `~/.local/share/tutor/read.json`, outside `~/tutor`
+itself. That is deliberate: `install.sh` replaces the whole `~/tutor`
+folder on an update, and anything stored inside it would be lost every
+time it runs. If the user asks where their progress went, or worries that
+reinstalling will lose it, that file is the answer — it is untouched by
+installing, reinstalling or updating.
+
+The reader still opens on the first article every time. It does not
+remember the user's place, only which articles they have ticked.
+
 ## Answering questions
 
 The answer lives in `content/`. Find it there rather than answering from

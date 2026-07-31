@@ -24,10 +24,10 @@ import sys
 
 if __package__ in (None, ""):  # invoked as a plain script
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from tui import content, term
+    from tui import content, state, term
     from tui.app import App
 else:
-    from . import content, term
+    from . import content, state, term
     from .app import App
 
 VERSION = "0.2.0"
@@ -126,8 +126,11 @@ def cmd_run(root, query=None):
         return 1
 
     index = content.load_index(root)
+    app = App(root, index, query)
+    app.read_path = state.marks_path()
+    app.read = state.load_marks(app.read_path)
     with term.Terminal() as terminal:
-        App(root, index, query).run(terminal)
+        app.run(terminal)
     return 0
 
 

@@ -1,6 +1,7 @@
 ---
 id: agents/managing
 title: Managing context
+level: Level 2
 part: Agents
 section: Context
 order: 5

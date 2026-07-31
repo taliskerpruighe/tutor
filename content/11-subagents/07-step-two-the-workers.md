@@ -1,6 +1,7 @@
 ---
 id: subagents/step-two
 title: Step two — the workers
+level: Level 2
 part: Subagents
 section: Build a Chain
 order: 7

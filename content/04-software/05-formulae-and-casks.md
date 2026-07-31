@@ -1,6 +1,7 @@
 ---
 id: software/formulae-and-casks
 title: Formulae and casks
+level: Level 1
 part: Software
 section: Homebrew
 order: 5

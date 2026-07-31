@@ -1,6 +1,7 @@
 ---
 id: claude-code/location-matters
 title: Location matters
+level: Level 1
 part: Claude
 section: Claude Code setup
 order: 12

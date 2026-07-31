@@ -1,6 +1,7 @@
 ---
 id: tuis/what-tmux-is
 title: What tmux is
+level: Level 1
 part: TUIs
 section: TMUX
 order: 7

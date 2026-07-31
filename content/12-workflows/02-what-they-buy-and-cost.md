@@ -1,6 +1,7 @@
 ---
 id: workflows/cost
 title: What they buy and what they cost
+level: Level 2
 part: Workflows
 section: What They Are
 order: 2

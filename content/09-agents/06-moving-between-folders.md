@@ -1,6 +1,7 @@
 ---
 id: agents/moving-between-folders
 title: Moving between folders
+level: Level 2
 part: Agents
 section: Context
 order: 6

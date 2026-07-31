@@ -1,6 +1,7 @@
 ---
 id: headless/when-to-use
 title: When to use one
+level: Level 2
 part: Headless Sessions
 section: Running Without a Chat
 order: 2

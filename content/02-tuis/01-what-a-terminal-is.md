@@ -1,6 +1,7 @@
 ---
 id: terminal/what-a-terminal-is
 title: What a terminal is
+level: Level 1
 part: TUIs
 section: Terminals
 order: 1

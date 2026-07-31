@@ -1,6 +1,7 @@
 ---
 id: skills/how-they-work
 title: How skills work
+level: Level 2
 part: Skills
 section: Making Them Fire
 order: 10

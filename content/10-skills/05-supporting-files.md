@@ -1,6 +1,7 @@
 ---
 id: skills/supporting-files
 title: Supporting files
+level: Level 2
 part: Skills
 section: When To Build One
 order: 5

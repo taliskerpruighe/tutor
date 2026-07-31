@@ -1,6 +1,7 @@
 ---
 id: tuis/terminals-people-use
 title: The terminals people use
+level: Level 1
 part: TUIs
 section: Terminals
 order: 4

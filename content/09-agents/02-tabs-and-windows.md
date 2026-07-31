@@ -1,6 +1,7 @@
 ---
 id: agents/tabs-and-windows
 title: Tabs and windows
+level: Level 2
 part: Agents
 section: Context
 order: 2

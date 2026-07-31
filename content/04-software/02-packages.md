@@ -1,6 +1,7 @@
 ---
 id: shell/packages
 title: Packages
+level: Level 1
 part: Software
 section: Packages
 order: 2

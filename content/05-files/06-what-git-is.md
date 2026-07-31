@@ -1,6 +1,7 @@
 ---
 id: files/what-git-is
 title: What git is
+level: Level 1
 part: Files
 section: Version Control
 order: 6

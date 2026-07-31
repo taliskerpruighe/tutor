@@ -1,6 +1,7 @@
 ---
 id: files/terminal-editors
 title: Editors in the terminal
+level: Level 1
 part: Files
 section: Editors
 order: 5

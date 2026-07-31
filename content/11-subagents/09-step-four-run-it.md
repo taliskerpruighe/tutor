@@ -1,6 +1,7 @@
 ---
 id: subagents/step-four
 title: Step four — run it
+level: Level 2
 part: Subagents
 section: Build a Chain
 order: 9

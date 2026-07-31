@@ -1,6 +1,7 @@
 ---
 id: shell/why-it-is-powerful
 title: Why the shell is powerful
+level: Level 1
 part: The CLI
 section: Shells
 order: 4

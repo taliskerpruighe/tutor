@@ -1,6 +1,7 @@
 ---
 id: plugins/inside
 title: What is inside one
+level: Level 2
 part: Plugins
 section: What They Are
 order: 3

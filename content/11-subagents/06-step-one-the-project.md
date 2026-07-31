@@ -1,6 +1,7 @@
 ---
 id: subagents/step-one
 title: Step one — the project
+level: Level 2
 part: Subagents
 section: Build a Chain
 order: 6

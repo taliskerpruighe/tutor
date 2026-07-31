@@ -1,6 +1,7 @@
 ---
 id: headless/what-it-is
 title: What a headless session is
+level: Level 2
 part: Headless Sessions
 section: Running Without a Chat
 order: 1

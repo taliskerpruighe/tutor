@@ -1,6 +1,7 @@
 ---
 id: agents/context
 title: Context
+level: Level 2
 part: Agents
 section: Context
 order: 3

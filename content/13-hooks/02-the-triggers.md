@@ -1,6 +1,7 @@
 ---
 id: hooks/triggers
 title: The triggers
+level: Level 2
 part: Hooks
 section: What They Are
 order: 2

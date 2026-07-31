@@ -1,8 +1,8 @@
 ---
 id: wiki/changelog
 title: Changelog
+level: Level 1
 part: This Wiki
-section: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
 keywords: [changelog, version, history, update, 0.1.0, 0.2.0]
@@ -43,6 +43,12 @@ New material, not present before:
 - **Cloud computing**, brought forward from a later version because
   hardware limits come up earlier than expected once agents start
   running several things at once.
+
+The reader also picked up **read marks** in this version. Press `m` on an
+article to tick it as read, and press `m` again to clear the tick. The
+reader still opens on the first article every time — that has not changed —
+but the ticks themselves are kept between sessions, outside the course
+folder, so reinstalling or updating this course does not clear them.
 
 ## 0.1.0 — the first version
 

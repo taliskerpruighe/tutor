@@ -9,7 +9,7 @@ end — `esc` always backs out, `q` always leaves, and an unknown key is
 silently ignored rather than beeping or bailing.
 """
 
-from . import content, layout
+from . import content, layout, state
 from .render import render
 
 
@@ -31,6 +31,12 @@ class App:
         self._pane_w = 72
         self._pane_h = 20
         self._return_to = None
+        # read is the set of article ids marked read, and read_path is where
+        # it is written back. An empty read_path means "hold this in memory
+        # and do not persist" -- which is what build_frame wants, for the
+        # determinism reason set out there.
+        self.read = {}
+        self.read_path = None
         if query:
             self.mode = "search"
             self._return_to = (self.part_i, self.article_i, self.scroll)
@@ -99,8 +105,65 @@ class App:
         self.article_i = max(0, min(article_i, max(0, len(articles) - 1)))
         self.scroll = 0
 
+    def toggle_read(self):
+        article = self.article()
+        if not article:
+            return
+        if article["id"] in self.read:
+            del self.read[article["id"]]
+        else:
+            self.read[article["id"]] = True
+        if self.read_path:
+            # A failure here costs the mark at the next launch and nothing
+            # more, so it must not interrupt reading. `tutor doctor` is
+            # where an unwritable state directory is meant to surface.
+            try:
+                state.save_marks(self.read_path, self.read)
+            except OSError:
+                pass
+
+    def levels(self):
+        """The index's levels, and which one the cursor is in.
+
+        Like sections, the open level is derived from where the cursor sits
+        rather than stored, so ``n``, a search hit and a click all open the
+        right tab without knowing levels exist.
+        """
+        lv = content.index_levels(self.index)
+        if not lv:
+            return [], None
+        return lv, content.level_at(self.index, self.part_i)
+
+    def step_level(self, delta):
+        """Move to the neighbouring level's first article.
+
+        What ← and → do now that the tabs along the top are levels rather
+        than parts.
+        """
+        lv, li = self.levels()
+        if li is None:
+            return
+        target = max(0, min(li + delta, len(lv) - 1))
+        self.go(lv[target][1], 0)
+
+    def open_level(self, index):
+        """Jump to a level by index — what a click on a tab does."""
+        lv, _li = self.levels()
+        if 0 <= index < len(lv):
+            self.go(lv[index][1], 0)
+
     def step_part(self, delta):
-        self.go(self.part_i + delta, 0)
+        """Move one part, clamping at the level's edges.
+
+        ← and → are the way out of a level, so ``[`` and ``]`` never carry
+        the reader across a tab boundary by accident.
+        """
+        lv, li = self.levels()
+        if li is None:
+            self.go(self.part_i + delta, 0)
+            return
+        _title, first, last = lv[li]
+        self.go(max(first, min(self.part_i + delta, last - 1)), 0)
 
     def sections(self):
         """The current part's sections and where the cursor sits in them.
@@ -117,22 +180,34 @@ class App:
             return [], None
         return secs, content.section_at(part, self.article_i)
 
-    def step_section(self, delta):
-        """Move to the neighbouring section's first article.
+    def level_sections(self):
+        """Flatten every section of every part in the current level into one list.
 
-        Clamps at the part's edges: ← and → are already the way out of a part.
+        So ``Tab`` walks the left column top to bottom the way it looks — on
+        into the next part's first section rather than stopping dead at a
+        part boundary. It clamps at the level's edges, because ← and → are
+        the way out.
         """
-        secs, si = self.sections()
-        if si is None:
-            return
-        target = max(0, min(si + delta, len(secs) - 1))
-        self.go(self.part_i, secs[target][1])
+        lv, li = self.levels()
+        if li is None:
+            return [], 0
+        _title, first, last = lv[li]
+        out, here = [], 0
+        for pi in range(first, last):
+            part = self.parts()[pi]
+            for _title, start, stop in content.part_sections(part):
+                if pi == self.part_i and start <= self.article_i < stop:
+                    here = len(out)
+                out.append((pi, start))
+        return out, here
 
-    def open_section(self, index):
-        """Jump to a section by index — what a click on its header does."""
-        secs, _si = self.sections()
-        if 0 <= index < len(secs):
-            self.go(self.part_i, secs[index][1])
+    def step_section(self, delta):
+        """Move to the neighbouring section's first article."""
+        secs, here = self.level_sections()
+        if not secs:
+            return
+        target_pi, target_ai = secs[max(0, min(here + delta, len(secs) - 1))]
+        self.go(target_pi, target_ai)
 
     def step_article(self, delta):
         """Move one article, carrying on into the neighbouring part at the ends.
@@ -211,8 +286,12 @@ class App:
             self._return_to = (self.part_i, self.article_i, self.scroll)
             self.set_query("")
         elif key in ("left", "h"):
-            self.step_part(-1)
+            self.step_level(-1)
         elif key in ("right", "l"):
+            self.step_level(1)
+        elif key == "[":
+            self.step_part(-1)
+        elif key == "]":
             self.step_part(1)
         elif key == "shift-tab":
             self.step_section(-1)
@@ -236,6 +315,8 @@ class App:
             self.scroll = self.max_scroll()
         elif key == "r":
             self.reload()
+        elif key == "m":
+            self.toggle_read()
         elif key and len(key) == 1 and key.isdigit() and key != "0":
             # 1-9 count within the open section, so a part with more than nine
             # articles in it still has every page one keypress away.
@@ -305,7 +386,7 @@ class App:
             if tab is not None:
                 if self.mode == "search":
                     self.cancel_search()
-                self.go(tab, 0)
+                self.open_level(tab)
             else:
                 hit = frame.item_at(x, y)
                 if hit is not None:
@@ -314,9 +395,15 @@ class App:
                         if item < len(self.results):
                             self.result_i = item
                             self.open_result()
-                    elif item_kind == "section":
-                        self.open_section(item)
+                    elif item_kind == "part":
+                        # A part header carries the part's own index, so
+                        # clicking a collapsed one opens it at its first
+                        # article.
+                        self.go(item, 0)
                     else:
+                        # Section headers and articles both carry an article
+                        # index within the part standing open, so one branch
+                        # serves both.
                         self.go(self.part_i, item)
         self._clamp_scroll()
         return self.running

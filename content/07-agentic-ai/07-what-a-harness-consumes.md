@@ -1,6 +1,7 @@
 ---
 id: ai/what-a-harness-consumes
 title: What a harness consumes
+level: Level 1
 part: Agentic AI
 section: Harnesses
 order: 7

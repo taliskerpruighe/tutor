@@ -1,6 +1,7 @@
 ---
 id: headless/piping
 title: Piping
+level: Level 2
 part: Headless Sessions
 section: Running Without a Chat
 order: 3

@@ -1,6 +1,7 @@
 ---
 id: software/checking-and-updating
 title: Checking and updating
+level: Level 1
 part: Software
 section: Homebrew
 order: 6

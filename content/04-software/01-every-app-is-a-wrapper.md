@@ -1,6 +1,7 @@
 ---
 id: software/every-app-is-a-wrapper
 title: Every app is a wrapper
+level: Level 1
 part: Software
 section: Packages
 order: 1

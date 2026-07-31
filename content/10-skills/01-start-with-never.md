@@ -1,6 +1,7 @@
 ---
 id: skills/start-with-never
 title: Start with never
+level: Level 2
 part: Skills
 section: When To Build One
 order: 1

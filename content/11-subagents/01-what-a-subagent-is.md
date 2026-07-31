@@ -1,6 +1,7 @@
 ---
 id: subagents/what-it-is
 title: What a subagent is
+level: Level 2
 part: Subagents
 section: Chains
 order: 1

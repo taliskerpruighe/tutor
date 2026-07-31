@@ -29,18 +29,31 @@ Both read the same corpus. There is no second copy of any fact anywhere.
 ```
 content/            the single source of truth
   ├── index.json    generated; regenerates itself when articles change
+  ├── images/       the PNGs articles embed; nothing else may be referenced
+  ├── plan.md       which part sits at which level; authoring, not content
+  ├── outline.md    the shape of the course; authoring, not content
   ├── _pipeline/    gitignored raw authoring notes — not part of the course
   └── NN-part/NN-article.md
 go/                 the reader (Go, zero dependencies) — what ships
 tui/                the same reader in Python — the parity oracle
   └── bin/          committed build output; the binaries that ship
-.claude/skills/     the skills the shipped agent loads
+.claude/skills/     the skills the shipped agent loads — committed, see below
 packaging/          the CLAUDE.md, AGENTS.md and README.md that ship
 install.sh          sets up the reader's copy and prunes developer material
+version.txt         the version `tutor update` compares against GitHub
 bin/build-tui.sh    go/ -> tui/bin/tutor-darwin-{arm64,amd64}
 bin/parity.sh       diffs the two implementations byte for byte
+bin/banner-preview.sh   eyeball the launch screen without rebuilding
 devlog/SPIKES.md    the durable record of spikes, merged and discarded
 ```
+
+`.claude/` is committed here, which it is not in any other repo on this
+machine: the global excludes file ignores `.claude/` everywhere, and this
+repo's `.gitignore` carries a `!/.claude/` negation to outrank it. That line
+is load-bearing. The reader gets the agent half of the course only because
+`.claude/skills/` is inside the repository she downloads, and deleting the
+negation would stop the skills shipping without breaking anything visible
+here. `.claude/settings.local.json` stays ignored — it is this machine's.
 
 ## Two implementations, one of them frozen
 
@@ -63,6 +76,7 @@ needed — the index rebuilds itself whenever an article is newer than it.
 ---
 id: skills/frontmatter
 title: The frontmatter
+level: Level 2
 part: Skills
 section: When To Build One
 order: 3
@@ -73,16 +87,28 @@ keywords: [skill, frontmatter, description]
 # The frontmatter
 ```
 
-`part:` is the display name on the tab bar; the directory's number sets the
-order. Directory and file number prefixes order everything, and `order:`
-overrides that where needed. Missing fields degrade rather than fail: `title`
-falls back to the first heading, `part` to a de-slugged directory name.
+The course nests three deep — **level**, **part**, **section** — and only the
+level is a tab along the top. Parts and sections are both headings down the
+left margin, the part flush and its sections indented under it. Only the part
+you are in expands; the rest of the level's parts stay as one-line headings.
 
-`section:` is optional and divides a part's articles into the side tabs down
-the left. A section is a **run of consecutive articles sharing the value**, so
-ordering is what groups them — there is no second directory level. The whole
-part stays on show, and numbering restarts inside each section. Leave
-`section:` off and the part draws as one plain numbered list.
+`level:` is the tab. A level is a **run of consecutive parts sharing the
+value**, exactly the way a section is a run of consecutive articles — so the
+directory numbers are what group parts into levels, and there is no second
+directory level. `content/plan.md` is what decides which part belongs to
+which. Leave `level:` off everywhere and each part becomes its own level,
+which is the two-tier reader as it was before levels existed.
+
+`part:` is the part heading; the directory's number sets the order. Directory
+and file number prefixes order everything, and `order:` overrides that where
+needed. Missing fields degrade rather than fail: `title` falls back to the
+first heading, `part` to a de-slugged directory name, `level` to the part's
+own title.
+
+`section:` is optional and divides a part's articles into the indented
+headings under it — again a run of consecutive articles sharing the value.
+The whole part stays on show, and numbering restarts inside each section.
+Leave `section:` off and the part draws as one plain numbered list.
 
 **Keep each section to nine articles or fewer** — or each part, where a part
 has no sections. `1`–`9` are the only keys that jump straight to an article,
@@ -159,21 +185,52 @@ When you write an article:
 - **The copy goes to a temp name and is renamed into place.** The reader is
   told to keep the TUI open in its own tab, so overwriting the launcher
   directly would hit `ETXTBSY` whenever the installer is re-run.
+- **The launch screen is printed before raw mode, on purpose.** `go/splash.go`
+  draws five rows of block letters and holds them for five seconds, and
+  `cmdRun` prints it *before* `NewTerminal.Start` takes the tty into raw mode
+  and switches to the alternate screen. That ordering is the feature: printed
+  there it scrolls into her shell's history like any command's output and is
+  still scrollable after she quits, where printing it inside the alternate
+  screen would wipe it on exit. It writes its own `\x1b[…m` sequences rather
+  than calling `sgr()`, because one of its five colours (215) exists in the
+  styles map only inside `code`, bundled with a background that would paint a
+  block behind the letter. `tutor splash [cols]` prints it once with no wait,
+  and `sh bin/banner-preview.sh` draws the same design in shell so it can be
+  eyeballed without a rebuild — the Go source wins if the two disagree. The
+  design is settled; the rejected letterforms and colour schemes were deleted
+  deliberately, so there is nothing to switch back to.
+- **The splash has no Python counterpart, so parity never sees it.** It is
+  the one part of the reader that exists on the Go side alone, which means
+  changing it costs nothing in `tui/` and buys no verification either. Check
+  it with `tutor splash` or the preview script by eye.
 - **`glow` and `bat` were tested and rejected.** `bat` renders markdown
   *source*, not markdown. `glow` only keeps colour through a pipe under
   `CLICOLOR_FORCE=1`, and then emits an escape sequence around every padding
   space, with wrapping that follows source newlines rather than the pane
   width. Owning the renderer buys correct reflow, instant resize, and no
   dependency on the reader's machine.
-- **Sections are derived, not stored.** `index.json` stays a flat list of
-  articles carrying a `section` string; `partSections` groups consecutive
-  equal values at render time. So search, `flatten` and the skill never
-  learnt about sections, and a part with no `section:` anywhere is one
-  untitled section spanning the lot — the old behaviour as the degenerate
-  case rather than a branch.
-- **The open section is derived from the article index too.** There is no
-  second cursor, so `n`, a search hit and a click all open the right section
-  without knowing sections exist.
+- **Levels and sections are both derived, not stored.** `index.json` stays a
+  flat list of parts holding a flat list of articles; `indexLevels` groups
+  consecutive parts by their `level` string and `partSections` groups
+  consecutive articles by their `section` string, both at render time. So
+  search, `flatten` and the skill never learnt that either exists. Each
+  degenerates rather than branching: a part with no `section:` anywhere is
+  one untitled section spanning the lot, and a corpus with no `level:`
+  anywhere is one part per level — which is exactly the two-tier reader that
+  preceded them.
+- **The open level and the open section are derived from the cursor too.**
+  The cursor is still just `(partI, articleI)`; there is no third or even
+  second index. So `n`, a search hit and a click all open the right tab and
+  the right section without knowing either exists.
+- **Three tiers, three key pairs.** `←`/`→` step level, `[`/`]` step part
+  within the level, `⇥`/`⇧⇥` step section. Tab walks the *flattened* list of
+  every section in the level, so it carries on into the next part rather than
+  stopping dead at a boundary — the left column reads top to bottom the way
+  it looks.
+- **The sidebar grew two columns to pay for the indent.** `sidebarWidth` went
+  from `min(28, max(18, …))` to `min(30, max(20, …))`, which is exactly what
+  the extra step of indentation costs an article title. Titles have the same
+  room they had when parts were tabs.
 - **Terminal size comes from `ioctl(TIOCGWINSZ)`** on the tty fd, never from
   `$COLUMNS` — a stale exported value would freeze the layout at the size the
   shell started at.
@@ -189,20 +246,51 @@ When you write an article:
 - **An agent cannot launch the TUI.** Claude Code owns its terminal; `tutor`
   detects the missing tty and prints instructions rather than hanging. This
   applies to you: never run `tutor` from a tool call.
+- **Read marks live in exactly one file outside the reader's own tree:**
+  `~/.local/share/tutor/read.json`, a sorted set of article `id`s under a
+  `"read"` key, sitting beside the `home` pointer file `install.sh` already
+  writes there. It has to sit outside the tree because `applyUpdate` in
+  `go/update.go` renames the whole repo directory aside and deletes it —
+  state kept inside it would not survive a single upgrade.
+- **The set is keyed on article `id`, not `path`.** Renumbering a directory
+  changes a `path` but not an `id`, so reorganising the course, as this
+  version just did, never costs anyone their marks.
+- **`$TUTOR_STATE` overrides the state directory, and `tutor frame` reads
+  marks only when it is set** — never from the real one — so the command
+  stays byte-for-byte deterministic for `bin/parity.sh`, the same reasoning
+  already recorded above for `app.images` in `cmdFrame`. `frame` never
+  writes marks, only reads them.
+- **The sidebar grew one more column to pay for the tick**, on the same
+  principle as the two columns it grew for the indent: the column pays for
+  it, not the titles.
+- **`bin/parity.sh` drives no keyboard input at all, so a key binding is
+  invisible to it.** The tick that binding leaves behind is not invisible,
+  which is why the harness now pins a marks fixture and runs a second,
+  sampled frame pass against it.
 
 ## Commands
 
 ```bash
 sh bin/build-tui.sh                           # build binaries + signing gate
 sh bin/parity.sh                              # Go vs Python, byte for byte
+sh bin/banner-preview.sh                      # the launch screen, no rebuild
 ./bin/tutor-host index                        # rebuild the index
 ./bin/tutor-host doctor                       # check an install
 ./bin/tutor-host render content/…/x.md 72     # preview a render, no tty needed
 ./bin/tutor-host frame 80 24 shell/packages   # preview a whole screen
+./bin/tutor-host splash 80                    # the launch screen, no wait
+./bin/tutor-host --version                    # the built-in version constant
 ```
 
-`./bin/tutor-host render` and `frame` are the two that work without a
-terminal, so they are the ones you can actually use to check your own work.
+`./bin/tutor-host render`, `frame` and `splash` are the three that work
+without a terminal, so they are the ones you can use to check your own work.
+`tutor update` is the reader's command, not yours: it fetches the newer
+version from GitHub and `applyUpdate` renames her whole `~/tutor` aside and
+deletes it. Never run it from a tool call. `version.txt` is what it compares
+against — it is fetched raw from the trunk on GitHub — while the binary
+reports `go/main.go`'s `const version`, which is also where `splash.go` takes
+its tag from rather than hardcoding one. `bin/banner-preview.sh` is the one
+place that does hardcode it. Three files, one number: move all three.
 
 ## What ships
 
@@ -214,14 +302,18 @@ Every step is `rm -rf`/`-f` and none depends on a previous one having found
 anything, so re-running the installer is safe.
 
 It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`, `.github/`,
-`tui/*.py`, `tui/__pycache__`, `.dvc/`, `.dvcignore` and `.gitignore`. The
-`tui/*.py` removal is the one that matters: leave the Python reader in place
-and an agent improvising past a problem could run it and set off the ~1 GB
-Command Line Tools download.
+`tui/*.py`, `tui/__pycache__`, `.dvc/`, `.dvcignore`, `.gitignore`,
+`content/plan.md` and `content/outline.md`. The `tui/*.py` removal is the one
+that matters: leave the Python reader in place and an agent improvising past
+a problem could run it and set off the ~1 GB Command Line Tools download.
+`plan.md` and `outline.md` go because they are authoring scaffolding — a
+reader opening one would find a work list where she expected an article.
 
-`.claude/settings.json` goes too, because a plugin enabled here and not
-there would only produce an error for the reader. `.claude/skills/` is left
-alone — it is how the agent half of the course works.
+`.claude/settings.json` and `.claude/settings.local.json` go too: they
+describe this development environment, and a plugin named in one and absent
+from her machine would only produce an error. `.claude/skills/` is left
+alone — it is how the agent half of the course works, and it reaches her at
+all only because of the `!/.claude/` negation described above.
 
 `packaging/CLAUDE.md`, `packaging/AGENTS.md` and `packaging/README.md` are
 copied over the root `CLAUDE.md`, `AGENTS.md` and `README.md`, and then
@@ -248,8 +340,10 @@ These are the shipped copy's skills, not yours to invoke while working in
 this repo. They describe behaviour in the reader's `~/tutor`, and reading one
 is how you find out what the reader will experience.
 
-**Plugins.** `.claude/settings.json` enables none. Keep it that way, or the
-build will ship a setting the reader's machine cannot satisfy.
+**Plugins.** There is no `.claude/settings.json` here, and none is wanted:
+a plugin enabled in this repo would ship as a setting the reader's machine
+cannot satisfy. The only settings file present is `.claude/settings.local.json`,
+which is gitignored and pruned by `install.sh` in any case.
 
 **Commits.** All commits go through `git-ops commit`. Never run a `git`,
 `jj`, `dvc` or `git-ops` command that changes repo state unless the user

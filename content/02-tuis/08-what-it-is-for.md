@@ -1,6 +1,7 @@
 ---
 id: tuis/tmux-use-cases
 title: What it is for
+level: Level 1
 part: TUIs
 section: TMUX
 order: 8

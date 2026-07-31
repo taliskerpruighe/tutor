@@ -185,6 +185,13 @@ rm -rf "$TUTOR_HOME/bin"
 rm -rf "$TUTOR_HOME/devlog"
 rm -rf "$TUTOR_HOME/content/_pipeline"
 rm -rf "$TUTOR_HOME/.github"
+
+# plan.md and outline.md are the authoring scaffolding the course was written
+# against — which part sits at which level, which articles are still to come.
+# They are course *planning*, not course content: the reader would open one
+# expecting an article and find a work list.
+rm -f "$TUTOR_HOME/content/plan.md"
+rm -f "$TUTOR_HOME/content/outline.md"
 find "$TUTOR_HOME/tui" -name '*.py' -type f -exec rm -f {} + 2>/dev/null || true
 rm -rf "$TUTOR_HOME/tui/__pycache__"
 
@@ -200,11 +207,13 @@ rm -f "$TUTOR_HOME/.gitignore"
 
 say "  pruned      go/ bin/ devlog/ content/_pipeline/ .github/ tui/*.py .dvc/"
 
-# Plugins enabled in the development environment are not enabled on her
-# machine; shipping this setting would only produce an error about a plugin
-# she does not have. .claude/skills/ is left alone — it is how the agent
-# half of the course works.
+# Claude settings describe the development environment — plugins enabled
+# here, output styles chosen here — and none of it holds on her machine; a
+# plugin named in one of these files and absent from hers would only produce
+# an error. Both spellings go, whichever happens to be present.
+# .claude/skills/ is left alone: it is the agent half of the course.
 rm -f "$TUTOR_HOME/.claude/settings.json"
+rm -f "$TUTOR_HOME/.claude/settings.local.json"
 
 # --- 4. Content index ------------------------------------------------------
 # Run the installed copy, never the one still sitting in the unpacked folder:

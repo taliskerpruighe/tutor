@@ -1,6 +1,7 @@
 ---
 id: tuis/cli-and-command-line
 title: What CLI, command line and prompt mean
+level: Level 1
 part: TUIs
 section: Terminals
 order: 3

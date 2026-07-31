@@ -1,6 +1,7 @@
 ---
 id: headless/watching
 title: Watching
+level: Level 2
 part: Headless Sessions
 section: Running Without a Chat
 order: 4

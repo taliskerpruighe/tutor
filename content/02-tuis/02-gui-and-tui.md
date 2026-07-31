@@ -1,6 +1,7 @@
 ---
 id: terminal/what-a-tui-is
 title: GUI and TUI
+level: Level 1
 part: TUIs
 section: Terminals
 order: 2
@@ -19,11 +20,11 @@ name — a **GUI**, for *graphical user interface*.
 The other kind is a **TUI**: a *text user interface*. An app made entirely
 of characters, drawn inside a terminal, driven mostly by the keyboard.
 
-This reader is one. The parts along the top are not really tabs — they are
+This reader is one. The levels along the top are not really tabs — they are
 words in a row, coloured to look like tabs. The line down the middle is a
 column of `│` characters. It is all text, arranged carefully.
 
-![This reader itself, drawn entirely out of characters: the parts of the course run across the top, the articles down the left, and the article fills the rest.](images/the-reader.png)
+![This reader itself, drawn entirely out of characters: the two levels of the course run across the top, the parts and their sections down the left, and the article fills the rest.](images/the-reader.png)
 
 Claude Code is one too.
 

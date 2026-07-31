@@ -37,25 +37,65 @@ sh bin/parity.sh                # both renderers, both screen composers, and
 If parity reports a difference, the Go side is wrong until proven otherwise.
 Changing the Python to make a diff disappear defeats the point of having it.
 
+## The launch screen
+
+`tutor` opens on five rows of block letters, held for five seconds
+(`go/splash.go`). It is printed before the terminal goes into raw mode and
+before the alternate screen, which is the whole point of it: printed there it
+scrolls into shell history like any command's output and is still there to
+scroll back to once the reader quits. Printing it inside the alternate screen
+would wipe it on exit.
+
+```bash
+./bin/tutor-host splash 80      # print it once, no wait
+sh bin/banner-preview.sh        # the same design in shell, no rebuild
+```
+
+The design is settled — every rejected letterform and colour scheme was
+deleted rather than kept as an option — and the Go source wins if the preview
+script ever disagrees with it. This is also the one piece of the reader that
+has no Python counterpart, so `bin/parity.sh` cannot check it; it is checked
+by eye.
+
+The version shown on that screen comes from `const version` in `go/main.go`.
+`version.txt` at the root is the copy `tutor update` fetches from GitHub to
+compare against, and `bin/banner-preview.sh` hardcodes its own. Move all three
+together.
+
 ## Layout
 
 ```
 content/            the course; one folder per part, plus a generated index
+  ├── images/       the PNGs articles embed
+  ├── plan.md       which part sits at which level — authoring, not content
+  ├── outline.md    the shape of the course — authoring, not content
   └── _pipeline/    raw authoring notes — gitignored, never published
 go/                 the reader, in Go — this is what ships
 tui/                the same reader in Python — the parity oracle
 .claude/skills/     the four skills that ship with the reader's copy
 packaging/          the three root documents that ship, replacing these ones
 bin/                build, parity and preview scripts
+version.txt         the version `tutor update` compares against GitHub
 devlog/             the durable record of spikes
 ```
+
+`.claude/` is committed on purpose, and the `!/.claude/` line in `.gitignore`
+is what makes that possible: this machine's global excludes file ignores
+`.claude/` in every repo, and a per-repo negation is what outranks it. Delete
+that line and the four skills stop reaching readers, with nothing here
+looking any different.
 
 ## Usage
 
 **Add an article** — drop a markdown file into `content/NN-part/NN-title.md`
-with frontmatter (`id`, `title`, `part`, `order`, `summary`, `keywords`, and
-optionally `section` to group it with its neighbours in the sidebar). The
-index rebuilds itself; there is no build step.
+with frontmatter (`id`, `title`, `level`, `part`, `order`, `summary`,
+`keywords`, and optionally `section` to group it with its neighbours in the
+sidebar). The index rebuilds itself; there is no build step.
+
+The course nests three deep. `level:` is the tab along the top — there are
+two, and a level is a run of consecutive parts sharing the value. `part:` and
+`section:` are both headings down the left, the part flush and its sections
+indented under it, and only the part being read expands.
 
 Keep each section to nine articles or fewer. The number keys `1`–`9` are the
 only way to jump straight to an article, and they count within whatever list
@@ -63,20 +103,49 @@ is on screen.
 
 The renderer implements a deliberate subset of markdown, not all of it —
 headings, paragraphs, fenced code, inline code, bold, italic, lists,
-blockquotes, rules, links and pipe tables. Anything outside that renders as a
-plain paragraph. Code blocks are clipped rather than wrapped, so keep lines
-readable at 60 columns.
+blockquotes, rules, links, pipe tables and pictures. Anything outside that
+renders as a plain paragraph. Code blocks are clipped rather than wrapped, so
+keep lines readable at 60 columns.
+
+A picture is `![a caption](images/ghostty.png)` alone on its line, PNG only,
+from `content/images/`, and under 500 KB — a test enforces the size, because
+the reader downloads the whole repository. Anything else on that line and it
+is not recognised at all. Pictures show only in Ghostty; elsewhere, tmux
+included, the alt text is all that survives, so write it as a sentence that
+stands on its own rather than a label. Heights are never stated: both
+renderers work the space out from the picture's own proportions, which is how
+parity keeps agreeing on it.
 
 **Preview without a terminal:**
 
 ```bash
-./bin/tutor-host render content/01-interface/02-how-to-read-this.md 72
+./bin/tutor-host render content/01-this-wiki/04-how-to-read-this.md 72
 ./bin/tutor-host frame 80 24 shell/packages
+./bin/tutor-host splash 80
 ```
 
 **How a reader installs it:** download this repository from GitHub into
 their home folder as `~/tutor`, run `bash ~/tutor/install.sh`, then `tutor`
 from a new tab.
+
+## Read marks
+
+Pressing `m` on an article ticks it as read; pressing it again clears the
+tick. The one file that records this lives outside `~/tutor` entirely, at
+`~/.local/share/tutor/read.json` — a sorted set of article ids under a
+`"read"` key, next to the `home` pointer file `install.sh` already writes
+there. It has to live outside the repo folder: `applyUpdate`
+(`go/update.go`) renames that whole folder aside and deletes it on every
+update, so anything kept inside would not survive one. The set is keyed on
+article `id`, not `path`, so renumbering a directory never costs anyone
+their marks.
+
+`$TUTOR_STATE` overrides the state directory, and `tutor frame` reads marks
+only when that variable is set, never from the real file, so the command
+stays deterministic for `bin/parity.sh`. That harness drives no keyboard
+input at all, so it cannot see `m` being pressed — it now pins a marks
+fixture instead, and samples a second pass of frames against it to cover
+the tick.
 
 ## What ships, and what does not
 
@@ -85,11 +154,15 @@ rather than here: `install.sh` prunes the developer-only material after
 installing the launcher and before building the content index, so the index
 is built from the tree she keeps.
 
-It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`, `.github/`,
-`tui/*.py`, `tui/__pycache__`, `.dvc/`, `.dvcignore`, `.gitignore` and
-`.claude/settings.json`. Stripping the Python reader is the one that
-matters, so nothing in the reader's home folder can reach for `python3`.
-Every step is `rm -rf`/`-f`, so re-running the installer is safe.
+It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`, `content/plan.md`,
+`content/outline.md`, `.github/`, `tui/*.py`, `tui/__pycache__`, `.dvc/`,
+`.dvcignore`, `.gitignore`, `.claude/settings.json` and
+`.claude/settings.local.json`. Stripping the Python reader is the one that
+matters, so nothing in the reader's home folder can reach for `python3`;
+`plan.md` and `outline.md` go because they are authoring scaffolding, and a
+reader opening one would find a work list where she expected an article.
+`.claude/skills/` stays, being the agent half of the course. Every step is
+`rm -rf`/`-f`, so re-running the installer is safe.
 
 The three documents in `packaging/` — `CLAUDE.md`, `AGENTS.md` and
 `README.md` — are copied over the three at this root, and `packaging/` is
@@ -103,7 +176,7 @@ would be source code rather than a working reader.
 
 See `CLAUDE.md` for the full architecture notes: the code-signing gate, the
 quarantine workaround in `install.sh`, why `glow` and `bat` were rejected,
-and how sections are derived rather than stored.
+and how levels and sections are derived rather than stored.
 
 ## Contributing
 

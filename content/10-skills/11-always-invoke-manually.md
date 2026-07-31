@@ -1,6 +1,7 @@
 ---
 id: skills/invoke-manually
 title: Always invoke manually
+level: Level 2
 part: Skills
 section: Making Them Fire
 order: 11

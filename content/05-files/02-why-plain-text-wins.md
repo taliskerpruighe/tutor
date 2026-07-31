@@ -1,6 +1,7 @@
 ---
 id: files/why-plain-text-wins
 title: Why plain text wins
+level: Level 1
 part: Files
 section: Languages and Scripts
 order: 2

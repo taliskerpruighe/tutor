@@ -1,6 +1,7 @@
 ---
 id: linux/what-linux-is
 title: What Linux is
+level: Level 1
 part: Linux
 section: The world runs on linux
 order: 1

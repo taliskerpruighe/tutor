@@ -1,8 +1,8 @@
 ---
 id: wiki/this-version
 title: This version
+level: Level 1
 part: This Wiki
-section: This Wiki
 order: 2
 summary: What this version of the course covers, what it leaves out on purpose, and what a later one adds
 keywords: [version, roadmap, agents, skills, subagents, workflows, hooks, plugins, headless, crons, changelog]

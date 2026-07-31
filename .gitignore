@@ -12,3 +12,16 @@ content/_pipeline/
 # bin/tutor-host stays ignored: it's the local build-machine binary, rebuilt
 # constantly, and no end user needs it.
 bin/tutor-host
+
+# .claude/ MUST be committed, and this un-ignore is what makes that happen.
+# The machine's global excludes file ignores .claude/ everywhere, which is
+# right for every other repo and wrong for this one: .claude/skills/ is the
+# agent half of the course, and the reader gets it only if it is inside the
+# repository she downloads. A per-repo negation outranks the global pattern,
+# so this line is load-bearing — delete it and the skills silently stop
+# shipping while everything here still looks fine.
+!/.claude/
+
+# Machine-local Claude settings, though: those stay out. They describe this
+# development environment, not hers.
+.claude/settings.local.json

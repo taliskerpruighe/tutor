@@ -1,8 +1,8 @@
 ---
 id: wiki/about-this-wiki
 title: About this wiki
+level: Level 1
 part: This Wiki
-section: This Wiki
 order: 1
 summary: What this course is, who it is written by, and how it differs from the official docs.
 keywords: [about, party trick, party tricks, the boss, documentation, docs, anthropic, claude code, findings, order]

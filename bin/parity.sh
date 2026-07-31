@@ -113,6 +113,74 @@ for id in $IDS "" ; do
     done
 done
 
+# Read marks
+#
+# The frame pass above drives no keyboard input at all, so `m` is never
+# pressed and every frame it checks is the reader's default, unmarked state.
+# The tick sidebarRows draws when app.read says an article is marked
+# (layout.go) is real output composed by the same width- and mode-sensitive
+# code as every other row, so trusting the pass above to have exercised it
+# by accident would be trusting an empty read.json to stand in for a used
+# one. This pass gives it a fixture instead: a read.json with marks already
+# in it, read back through $TUTOR_STATE the same way TUTOR_HOME pins the
+# corpus above, so every frame below carries both a ticked and an unticked
+# row to compare.
+mkdir -p "$TMP/state"
+SAMPLE_IDS=$(python3 - "$TMP/state/read.json" <<'PY'
+import json
+import sys
+
+out = sys.argv[1]
+with open("content/index.json", encoding="utf-8") as fh:
+    index = json.load(fh)
+ids = [a["id"] for part in index.get("parts", []) for a in part.get("articles", [])]
+
+# Every other id is "read", so every frame below shows both a ticked row and
+# an unticked one to compare.
+marked = sorted(i for n, i in enumerate(ids) if n % 2 == 0)
+with open(out, "w", encoding="utf-8") as fh:
+    json.dump({"read": marked}, fh, indent=2, ensure_ascii=False)
+    fh.write("\n")
+
+# Roughly every eighth id, about fifteen of them: the tick is composed
+# identically for every article, so what varies here is width and mode, not
+# which article happens to be open.
+for n, i in enumerate(ids):
+    if n % 8 == 0:
+        print(i)
+PY
+)
+
+sampled=$(printf '%s\n' $SAMPLE_IDS | grep -c .)
+total=$(printf '%s\n' $IDS | grep -c .)
+echo "read-marks pass: sampling $sampled of $total articles"
+
+for id in $SAMPLE_IDS; do
+    for size in $SIZES; do
+        cols=${size%x*}
+        rows=${size#*x}
+        # help replaces the whole body and draws no sidebar, so there is no
+        # tick to compare there — only normal and search draw one.
+        for mode in normal search; do
+            set -- "$cols" "$rows" "$id" "$mode"
+            if [ "$mode" = search ]; then
+                set -- "$@" shell
+            fi
+            TUTOR_STATE="$TMP/state" python3 -m tui.frame "$@" > "$TMP/py" 2>"$TMP/pyerr" || {
+                echo "python failed on read-marks frame $id $size $mode"; cat "$TMP/pyerr"
+                failed=$((failed + 1)); continue; }
+            TUTOR_STATE="$TMP/state" "$GO_BIN" frame "$@" > "$TMP/go"
+
+            checked=$((checked + 1))
+            if ! cmp -s "$TMP/py" "$TMP/go"; then
+                failed=$((failed + 1))
+                echo "DIFF  read-marks frame $id  $size  $mode"
+                diff "$TMP/py" "$TMP/go" | head -20 | cat -v
+            fi
+        done
+    done
+done
+
 echo
 echo "$checked comparisons, $failed differing."
 [ "$failed" -eq 0 ] || exit 1

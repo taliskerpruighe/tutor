@@ -1,6 +1,7 @@
 ---
 id: hooks/worked-examples
 title: Worked examples
+level: Level 2
 part: Hooks
 section: Using Them
 order: 4

@@ -1,6 +1,7 @@
 ---
 id: subagents/the-door
 title: The door
+level: Level 2
 part: Subagents
 section: Chains
 order: 5

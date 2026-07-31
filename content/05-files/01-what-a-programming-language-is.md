@@ -1,6 +1,7 @@
 ---
 id: files/programming-languages
 title: What a programming language is
+level: Level 1
 part: Files
 section: Languages and Scripts
 order: 1

@@ -1,6 +1,7 @@
 ---
 id: workflows/how-to-build
 title: How to build a workflow
+level: Level 2
 part: Workflows
 section: Building One
 order: 5

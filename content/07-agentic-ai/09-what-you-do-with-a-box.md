@@ -1,6 +1,7 @@
 ---
 id: ai/what-you-do-with-a-box
 title: What you do with a box
+level: Level 1
 part: Agentic AI
 section: Cloud Computing
 order: 9

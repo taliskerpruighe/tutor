@@ -1,8 +1,8 @@
 ---
 id: wiki/exercises
 title: Exercises
+level: Level 1
 part: This Wiki
-section: This Wiki
 order: 6
 summary: Where the exercises in this course sit, and why what you build in one is kept rather than thrown away
 keywords: [exercise, build a chain, subagents, bundle, keyboard, hands-on, project]

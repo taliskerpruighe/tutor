@@ -1,6 +1,7 @@
 ---
 id: agents/what-it-is
 title: What an agent is
+level: Level 2
 part: Agents
 section: Context
 order: 1

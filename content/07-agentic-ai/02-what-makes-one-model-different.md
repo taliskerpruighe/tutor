@@ -1,6 +1,7 @@
 ---
 id: ai/model-differences
 title: What makes one model different from another
+level: Level 1
 part: Agentic AI
 section: LLMs
 order: 2

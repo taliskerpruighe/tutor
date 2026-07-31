@@ -1,6 +1,7 @@
 ---
 id: subagents/chain-engineering
 title: Chain engineering
+level: Level 2
 part: Subagents
 section: Chains
 order: 2

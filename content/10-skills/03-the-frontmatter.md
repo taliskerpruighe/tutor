@@ -1,6 +1,7 @@
 ---
 id: skills/frontmatter
 title: The frontmatter
+level: Level 2
 part: Skills
 section: When To Build One
 order: 3

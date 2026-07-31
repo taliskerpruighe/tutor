@@ -1,6 +1,7 @@
 ---
 id: agents/definition
 title: The definition file
+level: Level 2
 part: Agents
 section: Custom Agents
 order: 9

@@ -45,6 +45,7 @@ type Article struct {
 type Part struct {
 	Slug     string    `json:"slug"`
 	Title    string    `json:"title"`
+	Level    string    `json:"level"`
 	Articles []Article `json:"articles"`
 }
 
@@ -88,6 +89,53 @@ func sectionAt(part Part, i int) (int, bool) {
 
 type Index struct {
 	Parts []Part `json:"parts"`
+}
+
+// Level is a run of consecutive parts sharing a `level:` value — the tabs
+// along the top. It is derived the same way Section is, and for the same
+// reason: the index stays a flat list of parts holding a flat list of
+// articles, so search, `flatten` and the Claude Code skill never learnt that
+// levels exist.
+type Level struct {
+	Title    string
+	From, To int // [From, To) over index.Parts
+}
+
+func (l Level) contains(i int) bool { return l.From <= i && i < l.To }
+
+// levelOf is a part's level, falling back to its own title. That fallback is
+// what makes a corpus carrying no `level:` at all degrade to the old
+// behaviour exactly — every part becomes its own single-part level, so the
+// tab bar still reads as the list of parts and the sidebar suppresses the
+// redundant part heading.
+func levelOf(part Part) string {
+	if part.Level != "" {
+		return part.Level
+	}
+	return part.Title
+}
+
+// indexLevels groups the index's parts into runs of equal `level:`.
+func indexLevels(index Index) []Level {
+	out := []Level{}
+	for i, p := range index.Parts {
+		if n := len(out); n > 0 && out[n-1].Title == levelOf(p) && out[n-1].To == i {
+			out[n-1].To = i + 1
+			continue
+		}
+		out = append(out, Level{levelOf(p), i, i + 1})
+	}
+	return out
+}
+
+// levelAt returns the level holding part i, and whether there is one.
+func levelAt(index Index, i int) (int, bool) {
+	for li, l := range indexLevels(index) {
+		if l.contains(i) {
+			return li, true
+		}
+	}
+	return 0, false
 }
 
 type sortKey struct {
@@ -324,7 +372,8 @@ func buildIndex(root string) Index {
 
 		part, ok := parts[f.slug]
 		if !ok {
-			part = &Part{Slug: f.slug, Title: partTitle, Articles: []Article{}}
+			part = &Part{Slug: f.slug, Title: partTitle, Level: meta.get("level"),
+				Articles: []Article{}}
 			parts[f.slug] = part
 			order = append(order, f.slug)
 		}
@@ -332,6 +381,10 @@ func buildIndex(root string) Index {
 		// ones do not get to rename it out from under the earlier files.
 		if meta.get("part") != "" && part.Title == deslug(f.slug) {
 			part.Title = meta.get("part")
+		}
+		// `level:` follows the same first-one-wins rule.
+		if part.Level == "" {
+			part.Level = meta.get("level")
 		}
 		part.Articles = append(part.Articles, article)
 	}

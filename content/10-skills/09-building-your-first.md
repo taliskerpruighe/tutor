@@ -1,6 +1,7 @@
 ---
 id: skills/building-first
 title: Building your first skill
+level: Level 2
 part: Skills
 section: Building One
 order: 9

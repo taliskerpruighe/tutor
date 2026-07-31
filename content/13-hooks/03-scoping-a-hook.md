@@ -1,6 +1,7 @@
 ---
 id: hooks/scoping
 title: Scoping a hook
+level: Level 2
 part: Hooks
 section: What They Are
 order: 3

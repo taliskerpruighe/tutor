@@ -1,6 +1,7 @@
 ---
 id: shell/moving-around
 title: Moving around
+level: Level 1
 part: The CLI
 section: Zsh
 order: 7

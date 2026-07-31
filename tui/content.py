@@ -123,11 +123,17 @@ def build_index(root):
             "path": os.path.relpath(path, root).replace(os.sep, "/"),
             "_sort": _sort_key(name, meta.get("order"), title),
         }
-        part = parts.setdefault(slug, {"slug": slug, "title": part_title, "articles": []})
+        part = parts.setdefault(
+            slug,
+            {"slug": slug, "title": part_title, "level": meta.get("level", ""), "articles": []},
+        )
         # The first article carrying an explicit `part:` names the part; later
         # ones do not get to rename it out from under the earlier files.
         if meta.get("part") and part["title"] == deslug(slug):
             part["title"] = meta["part"]
+        # `level:` follows the same first-one-wins rule.
+        if not part["level"]:
+            part["level"] = meta.get("level", "")
         part["articles"].append(article)
 
     ordered = []
@@ -231,6 +237,44 @@ def section_at(part, i):
     for si, (_title, start, stop) in enumerate(part_sections(part)):
         if start <= i < stop:
             return si
+    return None
+
+
+def level_of(part):
+    """A part's level, falling back to its own title.
+
+    That fallback is what makes a corpus carrying no ``level:`` at all
+    degrade to the old behaviour exactly — every part becomes its own
+    single-part level, so the tab bar still reads as the list of parts and
+    the sidebar suppresses the redundant part heading.
+    """
+    return part.get("level") or part["title"]
+
+
+def index_levels(index):
+    """Group the index's parts into runs of equal ``level:`` as ``(title, from, to)``.
+
+    A level is a run of consecutive parts sharing a ``level:`` value — the
+    tabs along the top. It is derived the same way a section is, and for the
+    same reason: the index stays a flat list of parts holding a flat list of
+    articles, so search, :func:`flatten` and the Claude Code skill never
+    learnt that levels exist.
+    """
+    out = []
+    for i, part in enumerate(index.get("parts", [])):
+        title = level_of(part)
+        if out and out[-1][0] == title and out[-1][2] == i:
+            out[-1] = (title, out[-1][1], i + 1)
+            continue
+        out.append((title, i, i + 1))
+    return out
+
+
+def level_at(index, i):
+    """The index of the level holding part *i*, or ``None``."""
+    for li, (_title, start, stop) in enumerate(index_levels(index)):
+        if start <= i < stop:
+            return li
     return None
 
 

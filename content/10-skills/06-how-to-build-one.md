@@ -1,6 +1,7 @@
 ---
 id: skills/how-to-build-one
 title: How to build one
+level: Level 2
 part: Skills
 section: Building One
 order: 6

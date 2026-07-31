@@ -24,20 +24,30 @@ Open a **new** Ghostty tab and type:
 tutor
 ```
 
-You get a wiki. The parts of the course run across the top; the articles in
-whichever part you are in run down the left, under the section headings that
-group them; the article itself fills the rest.
+You get a wiki. The two levels of the course run across the top; down the
+left are the parts of whichever level you are in, and under the part you are
+in, the sections and articles inside it; the article itself fills the rest.
 
 Press `?` at any time for the full list of keys. The ones worth knowing now:
 
 | Key | What it does |
 |---|---|
 | `n` | the next article — press it repeatedly to read straight through |
-| `←` `→` | move between parts |
+| `m` | mark this article as read — press again to clear it |
+| `←` `→` | move between levels |
+| `[` `]` | move between parts |
 | `⇥` | move between sections |
 | `↑` `↓` | scroll |
 | `/` | search everything |
 | `q` | quit |
+
+Nothing is marked for you automatically. Press `m` on an article once you
+have read it, and a tick appears next to its number; press `m` again to
+take the tick off. The wiki still opens on the first article every time —
+it does not remember where you were — but it does remember what you have
+ticked. Those marks live in a small file outside the `tutor` folder, at
+`~/.local/share/tutor/read.json`, so reinstalling or updating the course
+never clears them.
 
 Nothing in there can break anything. Press keys and see.
 

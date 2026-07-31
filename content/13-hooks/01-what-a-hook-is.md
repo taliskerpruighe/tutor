@@ -1,6 +1,7 @@
 ---
 id: hooks/what-it-is
 title: What a hook is
+level: Level 2
 part: Hooks
 section: What They Are
 order: 1

@@ -1,6 +1,7 @@
 ---
 id: skills/body
 title: The body
+level: Level 2
 part: Skills
 section: When To Build One
 order: 4

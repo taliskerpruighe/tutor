@@ -1,6 +1,7 @@
 ---
 id: linux/why-it-is-better
 title: Why it is better
+level: Level 1
 part: Linux
 section: Why its better
 order: 3

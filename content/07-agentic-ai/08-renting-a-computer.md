@@ -1,6 +1,7 @@
 ---
 id: ai/renting-a-computer
 title: Renting a computer
+level: Level 1
 part: Agentic AI
 section: Cloud Computing
 order: 8

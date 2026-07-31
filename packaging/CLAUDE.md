@@ -52,6 +52,22 @@ tell you the same thing.
 
 To diagnose a problem, `tutor doctor` prints one line per check.
 
+## Read marks
+
+Pressing `m` in the reader ticks the article they are on as read; pressing
+it again clears the tick. Nothing is marked for them automatically — it is
+entirely by hand.
+
+The ticks are kept in `~/.local/share/tutor/read.json`, outside `~/tutor`
+itself. That is deliberate: `install.sh` replaces the whole `~/tutor`
+folder on an update, and anything stored inside it would be lost every time
+it runs. If they ask where their progress went, or worry that reinstalling
+will lose it, that file is the answer — it is untouched by installing,
+reinstalling or updating.
+
+The reader still opens on the first article every time. It does not
+remember their place, only which articles they have ticked.
+
 ## Teaching them the course
 
 Once the reader is installed, tell them about `/learn`:

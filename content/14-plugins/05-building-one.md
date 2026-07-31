@@ -1,6 +1,7 @@
 ---
 id: plugins/building
 title: Building one
+level: Level 2
 part: Plugins
 section: Using Them
 order: 5

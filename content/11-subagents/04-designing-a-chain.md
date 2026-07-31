@@ -1,6 +1,7 @@
 ---
 id: subagents/designing
 title: Designing a chain
+level: Level 2
 part: Subagents
 section: Chains
 order: 4
