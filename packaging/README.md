@@ -6,8 +6,16 @@ It comes in two halves. One you read; one answers questions.
 
 ## Setting it up
 
-You should have a folder called `tutor` in your home folder. If it ended up
-somewhere else, move it there first. Then, in Ghostty:
+If you have not downloaded it yet: go to the course's page on GitHub, press
+the green **Code** button, and choose **Download ZIP**. Open the
+`tutor-tori.zip` that lands in your Downloads folder — it unpacks to a folder
+called `tutor-tori`. Rename that folder to `tutor` and move it into your home
+folder, so it sits at `~/tutor`.
+
+There is nothing to install first and nothing to build. The reader is a
+single self-contained program that came down inside that download.
+
+Once the folder is in place, in Ghostty:
 
 ```bash
 bash ~/tutor/install.sh
@@ -15,6 +23,11 @@ bash ~/tutor/install.sh
 
 That takes a second or two and prints what it did. It only writes inside your
 home folder and never asks for a password.
+
+Type `bash` in front, exactly as written above. macOS treats anything that
+arrived in a download with suspicion until it has been through this step, and
+starting the installer any other way runs into that and reports an error far
+more alarming than the situation deserves.
 
 ## Reading it
 
@@ -85,6 +98,31 @@ tutor doctor
 
 It prints one line per check and tells you what to do about anything that
 failed. Running `bash ~/tutor/install.sh` again fixes most things.
+
+## Keeping it up to date
+
+You do not have to do anything. When the course gains new articles, the next
+time you type `tutor` you will see:
+
+```
+tutor 0.2.1 is available (you have 0.2.0).
+Update now? [y/N]
+```
+
+Press `y` and Enter and it fetches the new version, puts it in place and
+opens itself. Press Enter on its own — or anything other than `y` — and it
+opens the copy you already have; you will be asked again another day.
+
+The check is quick, happens at most once a day, and is skipped in silence if
+you are offline, so it never delays the course opening. Your ticks survive an
+update: they live outside the folder, in
+`~/.local/share/tutor/read.json`.
+
+To check on the spot rather than waiting to be asked:
+
+```bash
+tutor update
+```
 
 ## What is in the folder
 

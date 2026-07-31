@@ -52,6 +52,29 @@ tell you the same thing.
 
 To diagnose a problem, `tutor doctor` prints one line per check.
 
+## Updates are theirs, not yours
+
+The reader keeps itself current. Every launch checks GitHub for a newer
+version — at most once a day, cached, and skipped in silence when there is no
+network — and asks before doing anything:
+
+```
+tutor 0.2.1 is available (you have 0.2.0).
+Update now? [y/N]
+```
+
+Answering `y` fetches the new version, swaps the folder and reopens. That
+prompt appears in their reader tab, not here, and the choice is theirs.
+
+**Never run `tutor update` from a tool call.** Unlike `tutor` it does not
+need a terminal, so nothing will stop you: it deletes and replaces the whole
+of `~/tutor` — the folder you are sitting in — while you are sitting in it.
+If they want to update right now, tell them to type `tutor update` in their
+own tab.
+
+`tutor doctor` mentions an available update when it knows of one. It reads
+that from a cache file rather than the network, so it is safe to run.
+
 ## Read marks
 
 Pressing `m` in the reader ticks the article they are on as read; pressing

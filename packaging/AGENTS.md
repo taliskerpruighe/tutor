@@ -60,6 +60,29 @@ user:
 
 > Open a new Ghostty tab and type `tutor`. Keep it open beside this one.
 
+## Updates are the user's, not yours
+
+The reader updates itself. Every launch checks GitHub for a newer version —
+at most once a day, cached, and skipped silently when offline — and if there
+is one it asks before doing anything:
+
+```
+tutor 0.2.1 is available (you have 0.2.0).
+Update now? [y/N]
+```
+
+Answering `y` downloads the new version, swaps the folder and reopens. That
+prompt appears in the user's reader tab, not here.
+
+**Never run `tutor update` from a tool call.** Unlike `tutor`, it does not
+need a terminal and will not stop you: it deletes and replaces the whole of
+`~/tutor` — the folder you are working inside — while you are working inside
+it. If the user wants to update on the spot, tell them to type `tutor update`
+in their own tab.
+
+`tutor doctor` reports a known-available update when it has one. That line is
+read from a cache file and costs no network call, so it is safe.
+
 ## Read marks
 
 Pressing `m` in the reader ticks the article the user is on as read;

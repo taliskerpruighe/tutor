@@ -25,7 +25,10 @@ import (
 )
 
 const (
-	updateTagPrefix = "MkI_v"
+	// Tags in this repo are namespaced by the trunk they were cut on, so the
+	// real ref is "tori/MkI_v0.2.0", not "MkI_v0.2.0". Drop the "tori/" and
+	// every tarball fetch 404s.
+	updateTagPrefix = "tori/MkI_v"
 	versionURL      = "https://raw.githubusercontent.com/taliskerpruighe/tutor/tori/version.txt"
 	tarballURLFmt   = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
 	updateCacheTTL  = 24 * time.Hour
@@ -161,7 +164,7 @@ func cachedUpdateVersion() (latest string, available bool) {
 	return "", false
 }
 
-// applyUpdate downloads the tarball for tag "MkI_v<ver>", unpacks it next to
+// applyUpdate downloads the tarball for tag "tori/MkI_v<ver>", unpacks it next to
 // root, sanity-checks the result, swaps it in, and delegates the actual
 // binary install to install.sh (this function must never copy a binary
 // itself — that is install.sh's job, and only it sheds the quarantine xattr
@@ -213,7 +216,8 @@ func applyUpdate(root string, ver string) error {
 			return fmt.Errorf("reading tarball: %w", err)
 		}
 
-		// Every entry is prefixed with a directory like "tutor-MkI_v0.1.1/".
+		// Every entry is prefixed with one directory: GitHub flattens the tag's
+		// slash, so tag "tori/MkI_v0.2.0" gives "tutor-tori-MkI_v0.2.0/".
 		// Strip exactly one leading path component.
 		parts := strings.SplitN(hdr.Name, "/", 2)
 		if len(parts) < 2 || parts[1] == "" {

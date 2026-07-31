@@ -9,6 +9,41 @@ repository is public, and a reader downloads it from GitHub into `~/tutor`
 and runs `install.sh`, which strips out the version control and authoring
 machinery on the way in.
 
+## Getting the course
+
+Nothing here needs to be built, installed first, or fetched from a command
+line — the reader is a self-contained binary that ships inside the download.
+
+1. Press the green **Code** button at the top of this page and choose
+   **Download ZIP**.
+2. Open the downloaded `tutor-tori.zip`. It unpacks to a folder called
+   `tutor-tori`.
+3. Rename that folder to `tutor` and move it into your home folder, so it
+   sits at `~/tutor`.
+4. Open Ghostty and run:
+
+```bash
+bash ~/tutor/install.sh
+```
+
+That prints what it did and takes a second or two. It writes only inside
+your home folder and never asks for a password. Then open a **new** Ghostty
+tab and type `tutor`.
+
+Use the browser download rather than `git clone` or a `curl` pipeline: on a
+Mac that is not a developer machine, reaching for `git` sets off a ~1 GB
+Command Line Tools download before anything else can happen. The installer
+already expects a browser download and handles the `com.apple.quarantine`
+attribute macOS stamps on everything unpacked that way, which is why it
+copies the binary with a shell redirect instead of `cp`.
+
+From then on the course keeps itself current. Every launch checks GitHub for
+a newer version — at most once a day, cached in
+`~/.local/share/tutor/update-check`, and silent if the network is unreachable
+— and offers to update. Answer `y` and it fetches the new tag, swaps the
+folder, re-runs `install.sh` and restarts itself. `tutor update` forces the
+same check immediately.
+
 ## Setup
 
 You need Go to build the reader. Running it needs nothing at all, which is
@@ -61,6 +96,12 @@ The version shown on that screen comes from `const version` in `go/main.go`.
 `version.txt` at the root is the copy `tutor update` fetches from GitHub to
 compare against, and `bin/banner-preview.sh` hardcodes its own. Move all three
 together.
+
+Whatever `version.txt` says must have a tag behind it on GitHub, because
+`applyUpdate` turns the number into a tarball URL. Tags here are namespaced by
+trunk — `tori/MkI_v0.2.0`, not `MkI_v0.2.0` — which is what `updateTagPrefix`
+in `go/update.go` encodes. Raise `version.txt` without cutting and pushing the
+matching tag and every reader is offered an update that 404s on acceptance.
 
 ## Layout
 

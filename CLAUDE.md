@@ -292,6 +292,18 @@ reports `go/main.go`'s `const version`, which is also where `splash.go` takes
 its tag from rather than hardcoding one. `bin/banner-preview.sh` is the one
 place that does hardcode it. Three files, one number: move all three.
 
+**The version in `version.txt` must have a tag behind it.** `applyUpdate`
+turns it into a tarball URL by prefixing `updateTagPrefix`, and this repo's
+tags are namespaced by trunk — `tori/MkI_v0.2.0`, not `MkI_v0.2.0` — which is
+why that constant carries the `tori/` and why `versionURL` names the same
+branch a few lines above it. Push `version.txt` ahead of the tag and every
+reader is told an update exists and then gets a 404 when she says yes, which
+is worse than not offering one. Bump the number and cut the tag together, and
+push the tag: `git push origin --tags` is a separate step from pushing the
+branch, and `git-ops push` is what does both. Renaming the trunk breaks
+`tutor update` in two places at once, silently, and nothing in the test suite
+would notice — the network is not exercised there.
+
 ## What ships
 
 The reader gets the whole repository, so nothing is trimmed before it

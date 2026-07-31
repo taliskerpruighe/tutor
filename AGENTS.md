@@ -280,6 +280,16 @@ which `splash.go` also takes its tag from rather than hardcoding one.
 `bin/banner-preview.sh` is the one place that does hardcode it. Three files,
 one number: move all three together.
 
+The version in `version.txt` must have a tag behind it. `applyUpdate` builds
+its tarball URL by prefixing `updateTagPrefix`, and this repo's tags are
+namespaced by trunk — `tori/MkI_v0.2.0`, not `MkI_v0.2.0` — which is why that
+constant carries the `tori/` and why `versionURL` names the same branch a few
+lines above. Push `version.txt` ahead of the tag and readers are offered an
+update that 404s when they accept it, which is worse than offering none. Bump
+and tag together, and push the tag — `git push origin --tags` is separate from
+pushing the branch. Renaming the trunk breaks `tutor update` in two places at
+once, silently; the test suite makes no network call and would not catch it.
+
 ## What ships
 
 The reader gets the whole repository, so nothing is trimmed before it
