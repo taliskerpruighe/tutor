@@ -23,7 +23,7 @@ import (
 	"syscall"
 )
 
-const version = "0.2.0"
+const version = "0.2.1"
 
 const usage = `tutor                 open the course
 tutor <words>         open it with a search already running
@@ -324,9 +324,13 @@ func cmdFrame(root string, args []string) int {
 	// so this command never writes. Same reasoning as app.images just above: a
 	// frame that varied with what the developer running it happened to have
 	// read would break parity for reasons having nothing to do with either
-	// renderer. bin/parity.sh pins a fixture to exercise the ticked row.
+	// renderer. bin/parity.sh pins a fixture to exercise the ticked row. The
+	// installed marker is read under the same guard and for the same reason
+	// — app.installed stays "" otherwise, which is the "unknown, treat
+	// everything new as new" default documented on the App struct.
 	if os.Getenv("TUTOR_STATE") != "" {
 		app.read = loadMarks(marksPath())
+		app.installed = loadInstalled(installedPath())
 	}
 	if id != "" {
 		for _, item := range flatten(app.index) {
@@ -441,6 +445,7 @@ func cmdRun(root, query string) int {
 	app.cellW, app.cellH = cellW, cellH
 	app.readPath = marksPath()
 	app.read = loadMarks(app.readPath)
+	app.installed = loadInstalled(installedPath())
 	app.Run(t)
 	return 0
 }

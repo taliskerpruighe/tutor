@@ -1,7 +1,7 @@
 ---
 id: claude/the-plans
 title: The plans
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude subscriptions
 order: 3

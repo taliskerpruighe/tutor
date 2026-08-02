@@ -94,12 +94,15 @@ by eye.
 
 The version shown on that screen comes from `const version` in `go/main.go`.
 `version.txt` at the root is the copy `tutor update` fetches from GitHub to
-compare against, and `bin/banner-preview.sh` hardcodes its own. Move all three
-together.
+compare against, and `tui/tutor.py`'s `VERSION` keeps the same number for the
+parity oracle; `sh bin/build-tui.sh` refuses to build unless all three agree.
+`bin/banner-preview.sh` hardcodes a fourth copy for the shell preview, and
+nothing checks it automatically — eyeball it against the real splash after a
+bump. Four files, one number: move all four.
 
 Whatever `version.txt` says must have a tag behind it on GitHub, because
 `applyUpdate` turns the number into a tarball URL. Tags here are namespaced by
-trunk — `tori/MkI_v0.2.0`, not `MkI_v0.2.0` — which is what `updateTagPrefix`
+trunk — `tori/MkI_v0.2.1`, not `MkI_v0.2.1` — which is what `updateTagPrefix`
 in `go/update.go` encodes. Raise `version.txt` without cutting and pushing the
 matching tag and every reader is offered an update that 404s on acceptance.
 
@@ -108,8 +111,7 @@ matching tag and every reader is offered an update that 404s on acceptance.
 ```
 content/            the course; one folder per part, plus a generated index
   ├── images/       the PNGs articles embed
-  ├── plan.md       which part sits at which level — authoring, not content
-  ├── outline.md    the shape of the course — authoring, not content
+  ├── pipeline.md   which part sits at which level — authoring, not content
   └── _pipeline/    raw authoring notes — gitignored, never published
 go/                 the reader, in Go — this is what ships
 tui/                the same reader in Python — the parity oracle
@@ -179,7 +181,10 @@ there. It has to live outside the repo folder: `applyUpdate`
 (`go/update.go`) renames that whole folder aside and deletes it on every
 update, so anything kept inside would not survive one. The set is keyed on
 article `id`, not `path`, so renumbering a directory never costs anyone
-their marks.
+their marks — this release moved `content/08-claude/` from Level 1 to Level
+2, inserted a new `content/09-instructions/` after it, and pushed the seven
+parts that followed from `08`–`15` to `10`–`16`, and no reader's ticks moved
+with them.
 
 `$TUTOR_STATE` overrides the state directory, and `tutor frame` reads marks
 only when that variable is set, never from the real file, so the command
@@ -188,6 +193,30 @@ input at all, so it cannot see `m` being pressed — it now pins a marks
 fixture instead, and samples a second pass of frames against it to cover
 the tick.
 
+## The new-article marker
+
+Every article carries a version tag on its own line, just under the
+heading — `*v0.2.1*` — and the indexer now reads it into `index.json`
+alongside everything else it already derives; it is the same habit that
+turned levels and sections from stored fields into derived ones, just with
+a new consumer rather than a new copy of the fact. Drop the tag from a new
+article and the indexer has nothing to read, so the marker below silently
+never appears for it.
+
+That version feeds a second marker in the sidebar: a green `N`, drawn in
+the same column the read tick uses. It appears when an article's indexed
+version matches the binary being run, the reader has not ticked it read,
+and `~/.local/share/tutor/installed` — one line, written by `install.sh`
+only on a reader's first-ever install — names an older version than that.
+The read tick is checked first and always wins, so a fresh install shows no
+`N` at all, an upgrade shows it on exactly what the new release added, and
+once the next version ships those articles go quiet again on their own —
+nothing expires it and nothing migrates it.
+
+`bin/parity.sh` pins a fixture for this the same way it pins one for the
+read tick: the harness never presses a key, so anything only reachable that
+way is invisible to it unless a fixture stands in for the key press.
+
 ## What ships, and what does not
 
 The reader gets the whole repository, so the trimming happens on her machine
@@ -195,13 +224,13 @@ rather than here: `install.sh` prunes the developer-only material after
 installing the launcher and before building the content index, so the index
 is built from the tree she keeps.
 
-It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`, `content/plan.md`,
-`content/outline.md`, `.github/`, `tui/*.py`, `tui/__pycache__`, `.dvc/`,
+It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`,
+`content/pipeline.md`, `.github/`, `tui/*.py`, `tui/__pycache__`, `.dvc/`,
 `.dvcignore`, `.gitignore`, `.claude/settings.json` and
 `.claude/settings.local.json`. Stripping the Python reader is the one that
 matters, so nothing in the reader's home folder can reach for `python3`;
-`plan.md` and `outline.md` go because they are authoring scaffolding, and a
-reader opening one would find a work list where she expected an article.
+`pipeline.md` goes because it is authoring scaffolding, and a reader opening
+it would find a work list where she expected an article.
 `.claude/skills/` stays, being the agent half of the course. Every step is
 `rm -rf`/`-f`, so re-running the installer is safe.
 

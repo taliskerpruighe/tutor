@@ -1,7 +1,7 @@
 ---
 id: claude/the-models
 title: The models
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude
 order: 1

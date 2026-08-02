@@ -181,6 +181,111 @@ for id in $SAMPLE_IDS; do
     done
 done
 
+# New-article marker
+#
+# The read-marks pass above pins a fixture so the tick gets exercised at
+# all; the same problem exists one layer up for the green N sidebarRows now
+# draws (layout.go's isNewArticle) — no keyboard input means no frame above
+# was ever opened against a reader who just upgraded, so nothing has
+# compared it either. Two fixtures are needed, not one, because the rule has
+# two distinct paths through it rather than one path with an empty case:
+#
+#   - state-new           read.json, no installed file — the upgrading
+#     reader, for whom an absent marker counts as differing from the
+#     release. Eligible articles that are unread must draw N here.
+#   - state-new-installed  the same read.json, plus an installed file
+#     holding the CURRENT version — the fresh-install reader, for whom
+#     nothing is new because everything she has arrived in the same
+#     release she installed. N must be suppressed everywhere, which is
+#     worth diffing on its own: it is a distinct comparison the rule
+#     makes (installed != version), not merely the read.json fixture
+#     with one file missing.
+#
+# The sample is read.json's own eligible ids — every article whose indexed
+# version equals "v" + the current release, i.e. every article that CAN
+# draw N — plus a scattering of older ones, because a frame that only ever
+# opened on an eligible article would never prove an older one stays quiet.
+# Ids are never hardcoded: the corpus is still being written as this script
+# is, so the eligible set is whatever version.txt and content/index.json
+# agree on at run time.
+mkdir -p "$TMP/state-new" "$TMP/state-new-installed"
+
+CURRENT_VERSION=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$ROOT/version.txt")
+
+NEW_SAMPLE_IDS=$(python3 - "$TMP/state-new/read.json" "$CURRENT_VERSION" <<'PY'
+import json
+import sys
+
+out, current = sys.argv[1], sys.argv[2]
+with open("content/index.json", encoding="utf-8") as fh:
+    index = json.load(fh)
+articles = [a for part in index.get("parts", []) for a in part.get("articles", [])]
+ids = [a["id"] for a in articles]
+eligible = [a["id"] for a in articles if a.get("version") == "v" + current]
+eligible_set = set(eligible)
+older = [i for i in ids if i not in eligible_set]
+
+# Marking is decided within the eligible list itself, not by a global
+# modulo over every id, so that even a small eligible set still lands at
+# least one marked and one unmarked member: every other eligible id is
+# read, which is what lets a single frame show a ticked new-release
+# article (read wins) sitting beside an unticked one (draws N). A
+# scattering of older ids is marked too, on the same every-other rule, so
+# the read/unread split is not confined to the new release alone.
+marked = sorted(i for n, i in enumerate(eligible) if n % 2 == 0)
+marked += sorted(i for n, i in enumerate(older) if n % 2 == 0)
+with open(out, "w", encoding="utf-8") as fh:
+    json.dump({"read": sorted(marked)}, fh, indent=2, ensure_ascii=False)
+    fh.write("\n")
+
+sample = list(eligible)
+for n, i in enumerate(older):
+    if n % 8 == 0:
+        sample.append(i)
+for i in sample:
+    print(i)
+PY
+)
+
+cp "$TMP/state-new/read.json" "$TMP/state-new-installed/read.json"
+printf '%s\n' "$CURRENT_VERSION" > "$TMP/state-new-installed/installed"
+
+new_sampled=$(printf '%s\n' $NEW_SAMPLE_IDS | grep -c .)
+new_total=$(printf '%s\n' $IDS | grep -c .)
+if [ "$new_sampled" -eq 0 ]; then
+    echo "WARNING: new-marker pass selected 0 articles at version v$CURRENT_VERSION — the N rule was not exercised this run" >&2
+else
+    echo "new-marker pass: sampling $new_sampled of $new_total articles"
+fi
+
+for id in $NEW_SAMPLE_IDS; do
+    for size in $SIZES; do
+        cols=${size%x*}
+        rows=${size#*x}
+        # help replaces the whole body and draws no sidebar, same reasoning
+        # as the read-marks pass above.
+        for mode in normal search; do
+            set -- "$cols" "$rows" "$id" "$mode"
+            if [ "$mode" = search ]; then
+                set -- "$@" shell
+            fi
+            for state in state-new state-new-installed; do
+                TUTOR_STATE="$TMP/$state" python3 -m tui.frame "$@" > "$TMP/py" 2>"$TMP/pyerr" || {
+                    echo "python failed on new-marker frame $id $size $mode $state"; cat "$TMP/pyerr"
+                    failed=$((failed + 1)); continue; }
+                TUTOR_STATE="$TMP/$state" "$GO_BIN" frame "$@" > "$TMP/go"
+
+                checked=$((checked + 1))
+                if ! cmp -s "$TMP/py" "$TMP/go"; then
+                    failed=$((failed + 1))
+                    echo "DIFF  new-marker frame $id  $size  $mode  $state"
+                    diff "$TMP/py" "$TMP/go" | head -20 | cat -v
+                fi
+            done
+        done
+    done
+done
+
 echo
 echo "$checked comparisons, $failed differing."
 [ "$failed" -eq 0 ] || exit 1

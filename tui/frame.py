@@ -36,9 +36,13 @@ def build_frame(root, cols, rows, article_id="", mode="normal", query=""):
     # for the parity harness, and a frame that varied with what the
     # developer running it happened to have read would break parity for
     # reasons having nothing to do with either renderer. bin/parity.sh pins
-    # a fixture to exercise the ticked row.
+    # a fixture to exercise the ticked row. The installed marker is read
+    # under the same guard and for the same reason -- app.installed stays ""
+    # otherwise, which is the "unknown, treat everything new as new" default
+    # documented on App.__init__.
     if os.environ.get("TUTOR_STATE"):
         app.read = state.load_marks(state.marks_path())
+        app.installed = state.load_installed(state.installed_path())
     if article_id:
         for pi, ai, _part, article in content.flatten(app.index):
             if article["id"] == article_id:

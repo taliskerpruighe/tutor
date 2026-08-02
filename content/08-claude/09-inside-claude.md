@@ -1,7 +1,7 @@
 ---
 id: claude-code/inside-claude
 title: Inside .claude
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code setup
 order: 9

@@ -1,7 +1,7 @@
 ---
 id: claude-code/location-matters
 title: Location matters
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code setup
 order: 12
@@ -138,9 +138,9 @@ Claude Code before it could start teaching it — the terminal, the shell,
 the software, the files, Linux, and what a model and a harness actually
 are. All of it was groundwork. From here the course only builds.
 
-Agents are next: what one actually is, the single thing that decides
-whether it does good work, and how to make your own. Then skills, which
-teach an agent something once and keep it taught, and subagents, which
-put several of them on one job.
+Instructions is next: the `CLAUDE.md` file every session reads before
+it does anything, how to write one that earns the room it costs, and
+the rule — a file kept apart from `CLAUDE.md`, silent until an `@`
+import invites it in — for the instructions that only apply sometimes.
 
 Press `n`.

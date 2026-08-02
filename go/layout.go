@@ -268,6 +268,19 @@ type sidebarEntry struct {
 	index           int    // part index on a part header, else an article index
 	open            bool   // set on the header standing open
 	read            bool   // article marked read; never set on a heading
+	isNew           bool   // article introduced by the version just installed; never set on a heading
+}
+
+// isNewArticle applies the "N" rule once, for both call sites in
+// sidebarEntries below that build an article entry: an article is new when
+// it belongs to the release this binary IS (its own `version` field equals
+// "v" + the version constant in main.go), the reader's installed marker
+// differs from that release — an absent marker counts as differing, which is
+// every reader who predates this feature — and it has not been read. Read
+// wins outright by construction: a read article can never also satisfy
+// this, so "N" and "✓" never contend for the same slot.
+func isNewArticle(article Article, read bool, installed string) bool {
+	return !read && article.Version == "v"+version && installed != version
 }
 
 // sidebarEntries lays the left column out. It carries two tiers of heading
@@ -289,9 +302,10 @@ func sidebarEntries(app *App) ([]sidebarEntry, int) {
 
 	if app.mode == "search" {
 		for i, r := range app.results {
+			read := app.read[r.article.ID]
 			entries = append(entries, sidebarEntry{
 				strconv.Itoa(i + 1), r.article.Title, r.part.Title, "article", i, false,
-				app.read[r.article.ID],
+				read, isNewArticle(r.article, read, app.installed),
 			})
 		}
 		return entries, app.resultI
@@ -309,7 +323,7 @@ func sidebarEntries(app *App) ([]sidebarEntry, int) {
 		part := app.index.Parts[pi]
 		if to-from > 1 {
 			entries = append(entries, sidebarEntry{
-				"", part.Title, "", "part", pi, pi == app.partI, false,
+				"", part.Title, "", "part", pi, pi == app.partI, false, false,
 			})
 		}
 		if pi != app.partI {
@@ -319,16 +333,17 @@ func sidebarEntries(app *App) ([]sidebarEntry, int) {
 		for si, sec := range partSections(part) {
 			if sec.Title != "" {
 				entries = append(entries, sidebarEntry{
-					"", sec.Title, "", "section", sec.From, si == openI, false,
+					"", sec.Title, "", "section", sec.From, si == openI, false, false,
 				})
 			}
 			for ai := sec.From; ai < sec.To; ai++ {
 				if ai == app.articleI {
 					selected = len(entries)
 				}
+				read := app.read[part.Articles[ai].ID]
 				entries = append(entries, sidebarEntry{
 					strconv.Itoa(ai - sec.From + 1), part.Articles[ai].Title, "", "article", ai, false,
-					app.read[part.Articles[ai].ID],
+					read, isNewArticle(part.Articles[ai], read, app.installed),
 				})
 			}
 		}
@@ -400,13 +415,38 @@ func sidebarRows(frame *Frame, app *App, width, height, top int) [][]span {
 		if app.mode == "search" {
 			indent = ""
 		}
-		// The tick rides inside the number's own span rather than getting one of
-		// its own, so a selected row still turns sel_row in one piece.
-		mark := " "
-		if e.read {
-			mark = "✓"
+		// The tick rides inside the number's own span rather than getting one
+		// of its own, so a selected row still turns sel_row in one piece. An
+		// unselected new-and-unread row gets a green N in a span of its own
+		// instead — the one case that must draw in a colour numStyle does
+		// not carry. A read row's tick already occupies the slot, so
+		// isNewArticle can never be true there; "!isSel" is what is left to
+		// check. Selected is special-cased rather than folded into that same
+		// green span because breaking a selected row apart would let the
+		// highlight stop short of the letter — so a selected new row gets
+		// its N right inside the number's own span instead, sel_row like the
+		// rest of the row, the same way a selected read row's tick already
+		// does. Every other row keeps the exact single-span shape this code
+		// has always emitted, byte for byte.
+		var line []span
+		if !isSel && !e.read && e.isNew {
+			line = []span{
+				marker,
+				{indent + num + " ", numStyle},
+				{"N", "row_new"},
+				{" ", numStyle},
+				{e.title, textStyle},
+			}
+		} else {
+			mark := " "
+			switch {
+			case e.read:
+				mark = "✓"
+			case e.isNew:
+				mark = "N"
+			}
+			line = []span{marker, {indent + num + " " + mark + " ", numStyle}, {e.title, textStyle}}
 		}
-		line := []span{marker, {indent + num + " " + mark + " ", numStyle}, {e.title, textStyle}}
 		if e.sub != "" {
 			subStyle := "dim"
 			if isSel {

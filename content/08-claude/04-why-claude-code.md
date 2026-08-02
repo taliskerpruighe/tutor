@@ -1,7 +1,7 @@
 ---
 id: claude-code/why-claude-code
 title: Why Claude Code
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code
 order: 4

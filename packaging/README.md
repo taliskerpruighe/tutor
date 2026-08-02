@@ -62,6 +62,11 @@ ticked. Those marks live in a small file outside the `tutor` folder, at
 `~/.local/share/tutor/read.json`, so reinstalling or updating the course
 never clears them.
 
+A green `N` can appear in that same spot instead of a tick. It means the
+article is new since you last updated the course. Read it — press `m` as
+usual — and the `N` becomes a tick like any other article's. You will not
+see one the first time you install the course, since nothing is new yet.
+
 Nothing in there can break anything. Press keys and see.
 
 ## Asking it questions
@@ -105,7 +110,7 @@ You do not have to do anything. When the course gains new articles, the next
 time you type `tutor` you will see:
 
 ```
-tutor 0.2.1 is available (you have 0.2.0).
+tutor 0.2.2 is available (you have 0.2.1).
 Update now? [y/N]
 ```
 

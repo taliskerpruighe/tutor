@@ -1,7 +1,7 @@
 ---
 id: claude-code/more-directories
 title: More .claude directories
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code setup
 order: 10

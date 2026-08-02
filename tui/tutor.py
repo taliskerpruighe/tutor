@@ -30,7 +30,7 @@ else:
     from . import content, state, term
     from .app import App
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 
 MIN_PYTHON = (3, 9)
 
@@ -129,6 +129,7 @@ def cmd_run(root, query=None):
     app = App(root, index, query)
     app.read_path = state.marks_path()
     app.read = state.load_marks(app.read_path)
+    app.installed = state.load_installed(state.installed_path())
     with term.Terminal() as terminal:
         app.run(terminal)
     return 0

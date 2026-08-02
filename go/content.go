@@ -36,6 +36,7 @@ type Article struct {
 	Title    string   `json:"title"`
 	Section  string   `json:"section"`
 	Summary  string   `json:"summary"`
+	Version  string   `json:"version"`
 	Keywords []string `json:"keywords"`
 	Path     string   `json:"path"`
 
@@ -158,11 +159,12 @@ func (a sortKey) less(b sortKey) bool {
 // Hand-parsing it avoids a YAML dependency, which would otherwise be the only
 // thing standing between her and a working install.
 var (
-	fmRe     = regexp.MustCompile(`(?s)\A---\r?\n(.*?)\r?\n---\r?\n?`)
-	keyRe    = regexp.MustCompile(`^([A-Za-z_][A-Za-z0-9_-]*)\s*:\s*(.*)$`)
-	numRe    = regexp.MustCompile(`^(\d+)`)
-	prefixRe = regexp.MustCompile(`^\d+[-_]`)
-	headRe   = regexp.MustCompile(`^#{1,6}\s+(.*?)\s*#*\s*$`)
+	fmRe      = regexp.MustCompile(`(?s)\A---\r?\n(.*?)\r?\n---\r?\n?`)
+	keyRe     = regexp.MustCompile(`^([A-Za-z_][A-Za-z0-9_-]*)\s*:\s*(.*)$`)
+	numRe     = regexp.MustCompile(`^(\d+)`)
+	prefixRe  = regexp.MustCompile(`^\d+[-_]`)
+	headRe    = regexp.MustCompile(`^#{1,6}\s+(.*?)\s*#*\s*$`)
+	versionRe = regexp.MustCompile(`(?m)^\*(v[0-9]+(?:\.[0-9]+)*)\*$`)
 )
 
 type frontmatter struct {
@@ -324,6 +326,18 @@ func firstHeading(body string) string {
 	return ""
 }
 
+// extractVersion returns an article's own version tag — the italic line
+// between the H1 and the first paragraph, e.g. `*v0.2.0*` — including its
+// leading "v", or the empty string if no line in the body matches. Only the
+// first matching line counts; render.go passes the line through as ordinary
+// italic text and must go on doing so, so this never touches rendering.
+func extractVersion(body string) string {
+	if m := versionRe.FindStringSubmatch(body); m != nil {
+		return m[1]
+	}
+	return ""
+}
+
 // buildIndex scans content/ and returns the index structure.
 func buildIndex(root string) Index {
 	type partAcc struct {
@@ -365,6 +379,7 @@ func buildIndex(root string) Index {
 			Title:    title,
 			Section:  meta.get("section"),
 			Summary:  meta.get("summary"),
+			Version:  extractVersion(body),
 			Keywords: meta.keywords(),
 			Path:     filepath.ToSlash(rel),
 			sort:     makeSortKey(f.name, meta.order, title),

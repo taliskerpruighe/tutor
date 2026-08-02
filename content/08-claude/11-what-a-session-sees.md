@@ -1,7 +1,7 @@
 ---
 id: claude-code/what-a-session-sees
 title: What a session sees
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code setup
 order: 11

@@ -30,8 +30,7 @@ Both read the same corpus. There is no second copy of any fact anywhere.
 content/            the single source of truth
   ├── index.json    generated; regenerates itself when articles change
   ├── images/       the PNGs articles embed; nothing else may be referenced
-  ├── plan.md       which part sits at which level; authoring, not content
-  ├── outline.md    the shape of the course; authoring, not content
+  ├── pipeline.md   which part sits at which level; authoring, not content
   ├── _pipeline/    gitignored raw authoring notes — not part of the course
   └── NN-part/NN-article.md
 go/                 the reader (Go, zero dependencies) — what ships
@@ -95,7 +94,7 @@ you are in expands; the rest of the level's parts stay as one-line headings.
 `level:` is the tab. A level is a **run of consecutive parts sharing the
 value**, exactly the way a section is a run of consecutive articles — so the
 directory numbers are what group parts into levels, and there is no second
-directory level. `content/plan.md` is what decides which part belongs to
+directory level. `content/pipeline.md` is what decides which part belongs to
 which. Leave `level:` off everywhere and each part becomes its own level,
 which is the two-tier reader as it was before levels existed.
 
@@ -253,8 +252,11 @@ When you write an article:
   `go/update.go` renames the whole repo directory aside and deletes it —
   state kept inside it would not survive a single upgrade.
 - **The set is keyed on article `id`, not `path`.** Renumbering a directory
-  changes a `path` but not an `id`, so reorganising the course, as this
-  version just did, never costs anyone their marks.
+  changes a `path` but not an `id`, so reorganising the course never costs
+  anyone their marks — this release moved `content/08-claude/` from Level 1
+  to Level 2, inserted a new `content/09-instructions/` after it, and pushed
+  the seven parts that followed from `08`–`15` to `10`–`16`, and not one
+  reader's ticks moved with them.
 - **`$TUTOR_STATE` overrides the state directory, and `tutor frame` reads
   marks only when it is set** — never from the real one — so the command
   stays byte-for-byte deterministic for `bin/parity.sh`, the same reasoning
@@ -267,6 +269,50 @@ When you write an article:
   invisible to it.** The tick that binding leaves behind is not invisible,
   which is why the harness now pins a marks fixture and runs a second,
   sampled frame pass against it.
+- **`index.json` gained a `version` field per article, read off content that
+  was already there.** Every article carries a version tag on its own
+  italic line between the H1 and the first paragraph — `*v0.1.0*`,
+  `*v0.2.0*`, now `*v0.2.1*` — and `content/_pipeline/visual-guide.md`
+  mandates it across all 114 articles. The indexer takes the first
+  whole-line match of `*v` followed by digits and dots followed by `*` and
+  stores it, leading `v` included, as `version`. It is the same "derived,
+  not stored" habit as levels and sections: a new consumer of a convention
+  that already existed, not a second copy of the same fact sitting in the
+  frontmatter. The consequence cuts the other way too — the tag is now
+  load-bearing, so an article that drops it silently loses its marker.
+- **A new state file, `~/.local/share/tutor/installed`,** holds one line:
+  the version number, written by `install.sh` only on a first-ever install,
+  guarded on `$STATE_DIR/home` not yet existing. That guard is load-bearing
+  because `applyUpdate` in `go/update.go` re-runs `install.sh` on every
+  update, not just the first one — an unguarded write would restamp every
+  upgrade as a fresh install. Nothing in `go/` or `tui/` ever writes this
+  file, only reads it, and its absence is itself meaningful: it marks a
+  reader who was already here before the file existed.
+- **The green `N`.** In the sidebar's one-column mark slot — the same slot
+  the read tick `✓` occupies — an article draws a green `N` when its
+  indexed `version` equals `"v"` plus the binary's own `version` constant,
+  the `installed` file's contents differ from that version, and the
+  article is not marked read; the tick is checked first and wins outright.
+  A fresh install shows no `N` at all, an upgrader sees `N` on exactly the
+  articles the new release added, and once the next version ships those
+  articles go quiet again on their own, with no migration step and nothing
+  to expire.
+- **`read.json` was deliberately not extended with a new key for this.** A
+  separate file means an upgrading reader's existing marks are read by
+  exactly the code that reads them today, so her ticks cannot be disturbed
+  by anything the marker does.
+- **The mark only breaks into its own span when it is a green `N` on an
+  unselected row.** A tick or a blank stays inside the number's own span
+  exactly as it did before, so the existing invariant — a selected row
+  turns `sel_row` in one piece — survives literally, and any frame with
+  nothing new in it renders byte-for-byte what it always did.
+- **`bin/parity.sh` gained a third fixture pass for the marker**, positive
+  and negative, on the same principle the read-marks pass already
+  established: the harness drives no keyboard input, so anything reachable
+  only by a key press is invisible to it unless a fixture pins it down.
+  `cmdFrame` reads `installed` only when `$TUTOR_STATE` is set, never from
+  the real state directory — the same determinism rule already recorded
+  above for `app.images` and for the read marks themselves.
 
 ## Commands
 
@@ -289,12 +335,18 @@ version from GitHub and `applyUpdate` renames her whole `~/tutor` aside and
 deletes it. Never run it from a tool call. `version.txt` is what it compares
 against — it is fetched raw from the trunk on GitHub — while the binary
 reports `go/main.go`'s `const version`, which is also where `splash.go` takes
-its tag from rather than hardcoding one. `bin/banner-preview.sh` is the one
-place that does hardcode it. Three files, one number: move all three.
+its tag from rather than hardcoding one. The version lives in **four**
+places, not three: `version.txt`, `go/main.go`'s `const version`,
+`tui/tutor.py`'s `VERSION`, and `bin/banner-preview.sh`, which hardcodes a
+fourth copy for the shell preview. `sh bin/build-tui.sh` gates agreement
+across only the first three before it will compile; `bin/banner-preview.sh`
+is checked by nothing and drifts silently unless someone eyeballs
+`sh bin/banner-preview.sh` against the real splash. Four files, one number:
+move all four, and check the fourth by eye.
 
 **The version in `version.txt` must have a tag behind it.** `applyUpdate`
 turns it into a tarball URL by prefixing `updateTagPrefix`, and this repo's
-tags are namespaced by trunk — `tori/MkI_v0.2.0`, not `MkI_v0.2.0` — which is
+tags are namespaced by trunk — `tori/MkI_v0.2.1`, not `MkI_v0.2.1` — which is
 why that constant carries the `tori/` and why `versionURL` names the same
 branch a few lines above it. Push `version.txt` ahead of the tag and every
 reader is told an update exists and then gets a 404 when she says yes, which
@@ -314,12 +366,12 @@ Every step is `rm -rf`/`-f` and none depends on a previous one having found
 anything, so re-running the installer is safe.
 
 It removes `go/`, `bin/`, `devlog/`, `content/_pipeline/`, `.github/`,
-`tui/*.py`, `tui/__pycache__`, `.dvc/`, `.dvcignore`, `.gitignore`,
-`content/plan.md` and `content/outline.md`. The `tui/*.py` removal is the one
-that matters: leave the Python reader in place and an agent improvising past
-a problem could run it and set off the ~1 GB Command Line Tools download.
-`plan.md` and `outline.md` go because they are authoring scaffolding — a
-reader opening one would find a work list where she expected an article.
+`tui/*.py`, `tui/__pycache__`, `.dvc/`, `.dvcignore`, `.gitignore` and
+`content/pipeline.md`. The `tui/*.py` removal is the one that matters: leave
+the Python reader in place and an agent improvising past a problem could run
+it and set off the ~1 GB Command Line Tools download. `pipeline.md` goes
+because it is authoring scaffolding — a reader opening it would find a work
+list where she expected an article.
 
 `.claude/settings.json` and `.claude/settings.local.json` go too: they
 describe this development environment, and a plugin named in one and absent

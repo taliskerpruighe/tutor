@@ -37,6 +37,15 @@ class App:
         # determinism reason set out there.
         self.read = {}
         self.read_path = None
+        # installed is the version the reader first installed at, loaded
+        # once from $STATE_DIR/installed (state.installed_path) by tutor.py
+        # and never written by this program -- install.sh owns the write,
+        # this side only reads it back. An empty value means "unknown, treat
+        # everything new as new": that covers both a genuinely absent file
+        # (every reader who was here before this feature existed) and
+        # frame.py's deliberate choice not to read the real state directory
+        # at all.
+        self.installed = ""
         if query:
             self.mode = "search"
             self._return_to = (self.part_i, self.article_i, self.scroll)

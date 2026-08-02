@@ -21,6 +21,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 )
 
 // marksFile is the on-disk shape of read.json. It is an object rather than a
@@ -39,6 +40,13 @@ func stateDir() string {
 
 func marksPath() string {
 	return filepath.Join(stateDir(), "read.json")
+}
+
+// installedPath is read.json's sibling: one line of plain text recording
+// the version the reader FIRST installed at. install.sh owns the write;
+// nothing in this program ever writes it back.
+func installedPath() string {
+	return filepath.Join(stateDir(), "installed")
 }
 
 // loadMarks reads the set of read article ids, keyed on Article.ID
@@ -70,6 +78,21 @@ func loadMarks(path string) map[string]bool {
 		out[id] = true
 	}
 	return out
+}
+
+// loadInstalled reads the version the reader first installed at, trimmed of
+// surrounding whitespace.
+//
+// A missing file, an unreadable one, or an empty one all return "" rather
+// than an error — the same posture loadMarks takes above, and for the same
+// reason: absent and empty must be indistinguishable to every caller, since
+// every reader who predates this feature has no such file at all.
+func loadInstalled(path string) string {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return ""
+	}
+	return strings.TrimSpace(string(data))
 }
 
 // saveMarks writes the set back, sorted so the file is stable and diffable

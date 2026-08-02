@@ -30,6 +30,36 @@ say ""
 
 mkdir -p "$BIN_DIR" "$STATE_DIR"
 
+# A green "N" marker in the sidebar flags articles introduced by the version
+# the reader just upgraded TO. That only means anything on an upgrade — on a
+# fresh install she has read nothing yet, so nothing should look "new" — and
+# the one signal available here for telling the two apart is whether
+# "$STATE_DIR/home" already exists: it gets written unconditionally, on every
+# run, a few lines below, so its presence means install.sh has been run in
+# this state directory before.
+#
+# The guard below is deliberately keyed on that check and nothing else.
+# applyUpdate in go/update.go re-runs this whole script on every `tutor
+# update`, not just on a first install — an unguarded write here would
+# restamp the version on every upgrade too, and the marker would then have
+# nothing older to compare itself against and would never appear for anyone.
+#
+# The version is read out of version.txt rather than hardcoded, so this line
+# never needs editing when the number moves. If version.txt cannot be
+# read — missing, unreadable, whatever the reason — the write is skipped
+# rather than an empty file being created: absence and an empty file must
+# mean the same thing to whatever reads this back later, and a blank
+# "installed" would be ambiguous between "never installed" and "installed an
+# unknown version".
+#
+# The file's own absence is meaningful too: it marks a reader who was
+# already here before this marker existed, not just one on a fresh install.
+if [ ! -e "$STATE_DIR/home" ]; then
+    VERSION=$(cat "$TUTOR_HOME/version.txt" 2>/dev/null) || VERSION=""
+    VERSION=$(printf '%s' "$VERSION" | tr -d '[:space:]')
+    [ -n "$VERSION" ] && printf '%s\n' "$VERSION" > "$STATE_DIR/installed"
+fi
+
 # --- 1. The reader ---------------------------------------------------------
 # The reader is a self-contained binary, so there is nothing to download and
 # nothing to install first.
@@ -186,10 +216,16 @@ rm -rf "$TUTOR_HOME/devlog"
 rm -rf "$TUTOR_HOME/content/_pipeline"
 rm -rf "$TUTOR_HOME/.github"
 
-# plan.md and outline.md are the authoring scaffolding the course was written
+# pipeline.md is the authoring backlog the course is currently being written
 # against — which part sits at which level, which articles are still to come.
-# They are course *planning*, not course content: the reader would open one
+# It is course *planning*, not course content: the reader would open it
 # expecting an article and find a work list.
+#
+# plan.md and outline.md are pipeline.md's retired predecessors — this
+# repo's content folder does not carry them any more, but an older checkout
+# might, and their names stay in this list so a tree from before the rename
+# still prunes cleanly instead of leaving a stale planning file behind.
+rm -f "$TUTOR_HOME/content/pipeline.md"
 rm -f "$TUTOR_HOME/content/plan.md"
 rm -f "$TUTOR_HOME/content/outline.md"
 find "$TUTOR_HOME/tui" -name '*.py' -type f -exec rm -f {} + 2>/dev/null || true

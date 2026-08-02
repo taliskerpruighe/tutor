@@ -47,6 +47,15 @@ type App struct {
 	read     map[string]bool
 	readPath string
 
+	// installed is the version the reader first installed at, loaded once
+	// from $STATE_DIR/installed (state.go's installedPath) by main.go and
+	// never written by this program — install.sh owns the write, this side
+	// only reads it back. An empty value means "unknown, treat everything
+	// new as new": that covers both a genuinely absent file (every reader
+	// who was here before this feature existed) and cmdFrame's deliberate
+	// choice not to read the real state directory at all.
+	installed string
+
 	// images is "pictures can be drawn this session" — probeImages's answer,
 	// taken once at startup (main.go's cmdRun) and never rechecked. Default
 	// false, so any path that constructs an App without setting it (cmdFrame,

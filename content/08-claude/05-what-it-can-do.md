@@ -1,7 +1,7 @@
 ---
 id: claude-code/what-it-can-do
 title: What it can do that the others cannot
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code
 order: 5

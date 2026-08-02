@@ -141,3 +141,94 @@ func TestTickCharWidth(t *testing.T) {
 		t.Fatalf("charWidth('✓') = %d, want 1", w)
 	}
 }
+
+// TestNCharWidth is TestTickCharWidth's counterpart for the new marker: the
+// mark slot is a single column, shared by the tick and the N, so a glyph
+// measuring two columns there would shift every article title in the
+// sidebar one column right of where the fixed-width layout expects it.
+func TestNCharWidth(t *testing.T) {
+	if w := charWidth('N'); w != 1 {
+		t.Fatalf("charWidth('N') = %d, want 1", w)
+	}
+}
+
+func TestLoadInstalledMissingFile(t *testing.T) {
+	dir := t.TempDir()
+	got := loadInstalled(filepath.Join(dir, "does-not-exist"))
+	if got != "" {
+		t.Fatalf("loadInstalled on a missing file = %q, want empty", got)
+	}
+}
+
+func TestLoadInstalledTrimsWhitespace(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "installed")
+	if err := os.WriteFile(path, []byte("0.2.1\n"), 0o644); err != nil {
+		t.Fatalf("WriteFile: %v", err)
+	}
+	got := loadInstalled(path)
+	if got != "0.2.1" {
+		t.Fatalf("loadInstalled(%q) = %q, want %q", path, got, "0.2.1")
+	}
+}
+
+// TestLoadInstalledWhitespaceOnly pins the equivalence loadInstalled's own
+// comment promises: a file holding nothing but whitespace must come back as
+// "", exactly as a missing file does. That equivalence is load-bearing
+// rather than incidental — absence of the installed marker is what marks a
+// reader who predates this feature, and a whitespace-only file must not be
+// mistaken for one who has it recorded.
+func TestLoadInstalledWhitespaceOnly(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "installed")
+	if err := os.WriteFile(path, []byte("  \n\t \n"), 0o644); err != nil {
+		t.Fatalf("WriteFile: %v", err)
+	}
+	got := loadInstalled(path)
+	if got != "" {
+		t.Fatalf("loadInstalled on whitespace-only = %q, want empty", got)
+	}
+}
+
+// TestIsNewArticleDrawsWhenUnreadAndJustInstalled covers the upgrading
+// reader: the article's version matches this release, nothing has recorded
+// an earlier install, and the article has not been read, so it draws N.
+func TestIsNewArticleDrawsWhenUnreadAndJustInstalled(t *testing.T) {
+	article := Article{ID: "part/one", Version: "v" + version}
+	if !isNewArticle(article, false, "") {
+		t.Fatal("isNewArticle = false, want true for an unread article of the current version with no installed marker")
+	}
+}
+
+// TestIsNewArticleReadWins mirrors the comment on isNewArticle itself: read
+// beats new by construction, so marking the article read must suppress the
+// N even though nothing else about the article changed.
+func TestIsNewArticleReadWins(t *testing.T) {
+	article := Article{ID: "part/one", Version: "v" + version}
+	if isNewArticle(article, true, "") {
+		t.Fatal("isNewArticle = true for a read article, want false")
+	}
+}
+
+// TestIsNewArticleOlderVersionNeverNew is the ordinary case: most of the
+// corpus predates this release, and none of it should ever draw N regardless
+// of what the installed marker says.
+func TestIsNewArticleOlderVersionNeverNew(t *testing.T) {
+	article := Article{ID: "part/one", Version: "v0.1.0"}
+	if isNewArticle(article, false, "") {
+		t.Fatal("isNewArticle = true for an article from an older release, want false")
+	}
+}
+
+// TestIsNewArticleSuppressedOnFreshInstall is the whole reason
+// $STATE_DIR/installed exists: a reader who installs THIS release for the
+// first time has every article at the current version, and none of them
+// arrived as an update she has not seen yet — install.sh records the
+// version she installed at precisely so this case is distinguishable from
+// the upgrading reader above.
+func TestIsNewArticleSuppressedOnFreshInstall(t *testing.T) {
+	article := Article{ID: "part/one", Version: "v" + version}
+	if isNewArticle(article, false, version) {
+		t.Fatal("isNewArticle = true when installed equals the current version, want false")
+	}
+}

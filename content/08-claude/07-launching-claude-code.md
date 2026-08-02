@@ -1,7 +1,7 @@
 ---
 id: claude-code/launching
 title: Launching Claude Code
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code setup
 order: 7

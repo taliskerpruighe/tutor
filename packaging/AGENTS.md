@@ -67,7 +67,7 @@ at most once a day, cached, and skipped silently when offline — and if there
 is one it asks before doing anything:
 
 ```
-tutor 0.2.1 is available (you have 0.2.0).
+tutor 0.2.2 is available (you have 0.2.1).
 Update now? [y/N]
 ```
 
@@ -98,6 +98,11 @@ installing, reinstalling or updating.
 
 The reader still opens on the first article every time. It does not
 remember the user's place, only which articles they have ticked.
+
+A green `N` can show up in that same spot instead of a tick — it marks an
+article that is new since the user last updated. Pressing `m` to mark it
+read replaces the `N` with the tick, same as any other article. They will
+not see one on a fresh install: nothing is new to a first-time user.
 
 ## Answering questions
 

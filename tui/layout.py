@@ -202,6 +202,25 @@ def _status_bar(app, cols):
     return pad(left + [(" " * max(0, gap), "status")] + right_spans, cols, "status")
 
 
+def _is_new(article, is_read, installed):
+    """Apply the "N" rule once, for both call sites in ``_sidebar_entries``
+    below that build an article entry: an article is new when it belongs to
+    the release this build IS (its own ``version`` equals ``"v" +
+    VERSION``), the reader's installed marker differs from that release --
+    an absent marker counts as differing, which is every reader who
+    predates this feature -- and it has not been read. Read wins outright
+    by construction: a read article can never also satisfy this, so "N" and
+    "✓" never contend for the same slot.
+
+    The import is deferred rather than module-level: tutor.py imports
+    ``App`` (by way of app.py, which imports this module) at its own module
+    level, so importing tutor back here at import time would cycle.
+    """
+    from . import tutor
+
+    return not is_read and article.get("version") == "v" + tutor.VERSION and installed != tutor.VERSION
+
+
 def _sidebar_entries(app):
     """Lay the left column out. It carries two tiers of heading now that the
     tabs along the top are levels: every part in the level is listed, and
@@ -216,11 +235,12 @@ def _sidebar_entries(app):
     plain numbered list it always was; and a level holding a single part
     drops the part heading, which is what makes a corpus with no ``level:``
     at all look exactly as it did before levels existed. Entries are
-    ``(num, title, sub, kind, index, open, read)``.
+    ``(num, title, sub, kind, index, open, read, is_new)``.
     """
     if app.mode == "search":
         entries = [
-            ("%d" % (i + 1), a["title"], p["title"], "article", i, False, a["id"] in app.read)
+            ("%d" % (i + 1), a["title"], p["title"], "article", i, False,
+             a["id"] in app.read, _is_new(a, a["id"] in app.read, app.installed))
             for i, (_pi, _ai, p, a) in enumerate(app.results)
         ]
         return entries, app.result_i
@@ -238,20 +258,21 @@ def _sidebar_entries(app):
             continue
         part = parts[pi]
         if to - from_ > 1:
-            entries.append(("", part["title"], None, "part", pi, pi == app.part_i, False))
+            entries.append(("", part["title"], None, "part", pi, pi == app.part_i, False, False))
         if pi != app.part_i:
             continue
         articles = part.get("articles", [])
         open_i = content.section_at(part, app.article_i)
         for si, (title, start, stop) in enumerate(content.part_sections(part)):
             if title:
-                entries.append(("", title, None, "section", start, si == open_i, False))
+                entries.append(("", title, None, "section", start, si == open_i, False, False))
             for ai in range(start, stop):
                 if ai == app.article_i:
                     selected = len(entries)
+                is_read = articles[ai]["id"] in app.read
                 entries.append(
                     ("%d" % (ai - start + 1), articles[ai]["title"], None, "article", ai, False,
-                     articles[ai]["id"] in app.read)
+                     is_read, _is_new(articles[ai], is_read, app.installed))
                 )
     return entries, selected
 
@@ -281,7 +302,7 @@ def _sidebar_rows(frame, app, width, height, top):
             # everything right of it slides left below the last article.
             rows.append([(" " * width, "body")])
             continue
-        num, title, sub, kind, index, is_open, is_read = entries[i]
+        num, title, sub, kind, index, is_open, is_read, is_new = entries[i]
         # The two heading tiers are side tabs: styled like the tabs along the
         # top, marked when they are the ones standing open. Indentation is
         # what separates them — a part sits flush, its sections one step in,
@@ -300,10 +321,30 @@ def _sidebar_rows(frame, app, width, height, top):
         # Search results are a flat list under no heading at all, so they
         # keep the left margin the headings would otherwise have earned.
         indent = "" if app.mode == "search" else "  "
-        # The tick rides inside the number's own span rather than getting one
-        # of its own, so a selected row still turns sel_row in one piece.
-        mark = "✓" if is_read else " "
-        line = [marker, (indent + num.rjust(2) + " " + mark + " ", num_style), (title, text_style)]
+        # The tick rides inside the number's own span rather than getting
+        # one of its own, so a selected row still turns sel_row in one
+        # piece. An unselected new-and-unread row gets a green N in a span
+        # of its own instead -- the one case that must draw in a colour
+        # num_style does not carry. A read row's tick already occupies the
+        # slot, so _is_new can never be True there; "not is_sel" is what is
+        # left to check. Selected is special-cased rather than folded into
+        # that same green span because breaking a selected row apart would
+        # let the highlight stop short of the letter -- so a selected new
+        # row gets its N right inside the number's own span instead,
+        # sel_row like the rest of the row, the same way a selected read
+        # row's tick already does. Every other row keeps the exact
+        # single-span shape this code has always emitted, byte for byte.
+        if not is_sel and not is_read and is_new:
+            line = [
+                marker,
+                (indent + num.rjust(2) + " ", num_style),
+                ("N", "row_new"),
+                (" ", num_style),
+                (title, text_style),
+            ]
+        else:
+            mark = "✓" if is_read else "N" if is_new else " "
+            line = [marker, (indent + num.rjust(2) + " " + mark + " ", num_style), (title, text_style)]
         if sub:
             line.append(("  " + sub, "dim" if not is_sel else "sel_row"))
         rows.append(pad(line, width, "sel_row" if is_sel else "body"))

@@ -1,7 +1,7 @@
 ---
 id: claude-code/installing
 title: Installing
-level: Level 1
+level: Level 2
 part: Claude
 section: Claude Code setup
 order: 6

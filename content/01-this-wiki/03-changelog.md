@@ -5,29 +5,51 @@ level: Level 1
 part: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
-keywords: [changelog, version, history, update, 0.1.0, 0.2.0]
+keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1]
 ---
 
 # Changelog
 
-*v0.2.0*
+*v0.2.1*
 
 This page exists for exactly one reader: someone who has already been
 through this course once, came back after an update, and does not want
 to reread all of it to find out what is new. Skip it the first time
 through.
 
-## 0.2.0 — this version
+## 0.2.1 — this version
+
+*This version* covers the shape of it — what the sixteen parts are and
+what each is for. This page covers only the difference between that
+and what was here before.
+
+New material, not present before:
+
+- **Instructions** — the files that teach an agent how to behave: what
+  a `CLAUDE.md` is, how it loads — up from the folder you launch in,
+  and again whenever Claude touches a file in its own directory — how
+  to write one that actually works, and when to reach for a rule
+  instead.
+
+**Claude** also moved, from closing out Level 1 to opening Level 2,
+ahead of Instructions. Level 1 is everything Claude Code sits on top
+of; Claude Code itself belongs with the level built on it, not the
+level underneath it.
+
+The reader also gained a green **N**, sitting beside an article's
+number in the same slot the read tick uses. It marks an article this
+version added that you have not read yet, and reading the article
+replaces it with the tick. It only appears if you upgraded — a reader
+starting fresh has nothing new to mark — and every tick already earned
+is untouched by it.
+
+## 0.2.0 — the reorganisation
 
 The course was reorganised from a handful of broad parts into fifteen
 narrower ones, so a part stays on the tab bar you can actually hold in
 your head rather than scrolling past it. Nothing already written was
 thrown away; some articles were split where the old organisation had
 folded two subjects into one.
-
-*This version* covers the shape of it — what the fifteen parts are and
-what each is for. This page covers only the difference between that
-and what was here before.
 
 New material, not present before:
 

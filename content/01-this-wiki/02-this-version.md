@@ -10,9 +10,9 @@ keywords: [version, roadmap, agents, skills, subagents, workflows, hooks, plugin
 
 # This version
 
-*v0.2.0*
+*v0.2.1*
 
-This is version **0.2.0**, and it covers the whole path from opening a
+This is version **0.2.1**, and it covers the whole path from opening a
 terminal for the first time to running an agent that works unattended,
 with nobody watching it.
 
@@ -26,12 +26,13 @@ yet. It is what makes the rest of this course legible once Claude Code
 arrives.
 
 The second half is the part you came for. **Agents**, which do the
-work; **skills**, which teach an agent something once and keep it
-taught; **subagents**, which chain agents together into something
-bigger than a conversation. Then **workflows**, the scripted version of
-a chain; **hooks** and **plugins**, which wire all of it into the rest
-of your machine and share it with other projects; and **headless
-sessions**, which run any of the above with no chat window open at all.
+work; **instructions**, the files that teach an agent how to behave;
+**skills**, which teach an agent something once and keep it taught;
+**subagents**, which chain agents together into something bigger than
+a conversation. Then **workflows**, the scripted version of a chain;
+**hooks** and **plugins**, which wire all of it into the rest of your
+machine and share it with other projects; and **headless sessions**,
+which run any of the above with no chat window open at all.
 
 ## What it deliberately leaves out
 
@@ -50,11 +51,18 @@ a thing on its own. Skip ahead and a later article will use a word it
 never defined for you — press `n` and you will not have that problem.
 
 This version is also organised into more parts than the last one was,
-fifteen against a handful. That is not the same course cut into
+sixteen against a handful. That is not the same course cut into
 smaller pieces for its own sake. Some of what used to sit inside one
 broad part — the terminal, the shell, what a model actually is —
 turned out to need its own room once it was written out properly
 rather than assumed.
+
+**Claude** moved for a related reason. It used to be the last part of
+Level 1, straight after Agentic AI; now it opens Level 2, ahead of
+Instructions and Agents. Level 1 is everything Claude Code sits on top
+of, and none of it is Claude Code itself — Claude belongs at the top
+of the level that is about Claude Code, not the bottom of the level
+that is not.
 
 ## Returning after an update
 

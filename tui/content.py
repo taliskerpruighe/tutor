@@ -28,6 +28,11 @@ _KEY_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*)\s*:\s*(.*)$")
 _INT_KEYS = ("order",)
 _LIST_KEYS = ("keywords",)
 
+# An article's own version tag: the italic line between the H1 and the first
+# paragraph, e.g. ``*v0.2.0*``. Matched against the body, not the
+# frontmatter -- see _extract_version below.
+_VERSION_RE = re.compile(r"^\*(v[0-9]+(?:\.[0-9]+)*)\*$", re.M)
+
 
 def _unquote(value):
     if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
@@ -64,6 +69,16 @@ def parse_frontmatter(text):
         if isinstance(meta.get(key), str):
             meta[key] = [v.strip() for v in meta[key].split(",") if v.strip()]
     return meta, text[m.end():]
+
+
+def _extract_version(body):
+    """An article's own version tag, leading "v" included, or "" if the body
+    carries no matching line. Only the first matching line counts;
+    render.py passes the line through as ordinary italic text and must go
+    on doing so, so this never touches rendering.
+    """
+    m = _VERSION_RE.search(body)
+    return m.group(1) if m else ""
 
 
 def deslug(slug):
@@ -119,6 +134,7 @@ def build_index(root):
             "title": title,
             "section": meta.get("section", ""),
             "summary": meta.get("summary", ""),
+            "version": _extract_version(body),
             "keywords": meta.get("keywords", []),
             "path": os.path.relpath(path, root).replace(os.sep, "/"),
             "_sort": _sort_key(name, meta.get("order"), title),

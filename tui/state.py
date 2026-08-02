@@ -30,6 +30,14 @@ def marks_path():
     return os.path.join(state_dir(), "read.json")
 
 
+def installed_path():
+    """``read.json``'s sibling: one line of plain text recording the version
+    the reader FIRST installed at. install.sh owns the write; nothing in
+    this program ever writes it back.
+    """
+    return os.path.join(state_dir(), "installed")
+
+
 def load_marks(path):
     """Read the set of read article ids, keyed on an article's ``id`` rather
     than its ``path``, because an id survives renumbering a directory and a
@@ -57,6 +65,24 @@ def load_marks(path):
         for id_ in data.get("read", []) or []:
             out[id_] = True
     return out
+
+
+def load_installed(path):
+    """Read the version the reader first installed at, trimmed of
+    surrounding whitespace.
+
+    A missing file, an unreadable one, or an empty one all return "" rather
+    than raising -- the same posture load_marks takes above, and for the
+    same reason: absent and empty must be indistinguishable to every
+    caller, since every reader who predates this feature has no such file
+    at all.
+    """
+    try:
+        with open(path, encoding="utf-8") as fh:
+            data = fh.read()
+    except OSError:
+        return ""
+    return data.strip()
 
 
 def save_marks(path, ids):
