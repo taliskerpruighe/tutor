@@ -110,17 +110,18 @@ You do not have to do anything. When the course gains new articles, the next
 time you type `tutor` you will see:
 
 ```
-tutor 0.2.2 is available (you have 0.2.1).
+tutor 0.3.1 is available (you have 0.3.0).
 Update now? [y/N]
 ```
 
 Press `y` and Enter and it fetches the new version, puts it in place and
 opens itself. Press Enter on its own — or anything other than `y` — and it
-opens the copy you already have; you will be asked again another day.
+opens the copy you already have; you will be asked again the next time you
+open it.
 
-The check is quick, happens at most once a day, and is skipped in silence if
-you are offline, so it never delays the course opening. Your ticks survive an
-update: they live outside the folder, in
+The check happens every time you open the reader. It is quick and bounded so
+it never delays the course opening, and it is skipped in silence if you are
+offline. Your ticks survive an update: they live outside the folder, in
 `~/.local/share/tutor/read.json`.
 
 To check on the spot rather than waiting to be asked:

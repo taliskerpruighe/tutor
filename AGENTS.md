@@ -260,7 +260,7 @@ Notes that matter when writing:
 - **`index.json` gained a `version` field per article, read off content that
   was already there.** Every article carries a version tag on its own
   italic line between the H1 and the first paragraph — `*v0.1.0*`,
-  `*v0.2.0*`, now `*v0.2.1*` — and `content/_pipeline/visual-guide.md`
+  `*v0.2.0*`, `*v0.2.1*` — and `content/_pipeline/visual-guide.md`
   mandates it across all 114 articles. The indexer takes the first
   whole-line match of `*v` followed by digits and dots followed by `*` and
   stores it, leading `v` included, as `version`. It is the same "derived,
@@ -333,7 +333,7 @@ files, one number: move all four, and check the fourth by eye.
 
 The version in `version.txt` must have a tag behind it. `applyUpdate` builds
 its tarball URL by prefixing `updateTagPrefix`, and this repo's tags are
-namespaced by trunk — `tori/MkI_v0.2.1`, not `MkI_v0.2.1` — which is why that
+namespaced by trunk — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — which is why that
 constant carries the `tori/` and why `versionURL` names the same branch a few
 lines above. Push `version.txt` ahead of the tag and readers are offered an
 update that 404s when they accept it, which is worse than offering none. Bump

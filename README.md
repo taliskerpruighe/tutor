@@ -38,11 +38,14 @@ attribute macOS stamps on everything unpacked that way, which is why it
 copies the binary with a shell redirect instead of `cp`.
 
 From then on the course keeps itself current. Every launch checks GitHub for
-a newer version — at most once a day, cached in
-`~/.local/share/tutor/update-check`, and silent if the network is unreachable
-— and offers to update. Answer `y` and it fetches the new tag, swaps the
-folder, re-runs `install.sh` and restarts itself. `tutor update` forces the
-same check immediately.
+a newer version, bounded by a 2-second timeout so a slow network can never
+hang the start, and stays silent if the network is unreachable — then offers
+to update. Answer `y` and it fetches the new tag, swaps the folder, re-runs
+`install.sh` and restarts itself. The check still writes
+`~/.local/share/tutor/update-check` on every run, which is what `tutor
+doctor` reads rather than making a network call of its own. `tutor update`
+is now the same check rather than a stronger one — it forces it on the spot
+rather than waiting for the next launch.
 
 ## Setup
 
@@ -102,7 +105,7 @@ bump. Four files, one number: move all four.
 
 Whatever `version.txt` says must have a tag behind it on GitHub, because
 `applyUpdate` turns the number into a tarball URL. Tags here are namespaced by
-trunk — `tori/MkI_v0.2.1`, not `MkI_v0.2.1` — which is what `updateTagPrefix`
+trunk — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — which is what `updateTagPrefix`
 in `go/update.go` encodes. Raise `version.txt` without cutting and pushing the
 matching tag and every reader is offered an update that 404s on acceptance.
 

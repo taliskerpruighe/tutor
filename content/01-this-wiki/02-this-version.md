@@ -12,7 +12,7 @@ keywords: [version, roadmap, agents, skills, subagents, workflows, hooks, plugin
 
 *v0.2.1*
 
-This is version **0.2.1**, and it covers the whole path from opening a
+This is version **0.2.2**, and it covers the whole path from opening a
 terminal for the first time to running an agent that works unattended,
 with nobody watching it.
 
@@ -68,5 +68,7 @@ that is not.
 
 If you have read this course before and are back for a new version,
 you do not need to reread all of it. The next article is the delta.
+This time it is a short one: no articles changed, only how soon the
+reader tells you a new version exists.
 
 Press `n`.

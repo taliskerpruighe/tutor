@@ -55,11 +55,11 @@ To diagnose a problem, `tutor doctor` prints one line per check.
 ## Updates are theirs, not yours
 
 The reader keeps itself current. Every launch checks GitHub for a newer
-version — at most once a day, cached, and skipped in silence when there is no
-network — and asks before doing anything:
+version — quick, bounded so it never delays opening, and skipped in silence
+when there is no network — and asks before doing anything:
 
 ```
-tutor 0.2.2 is available (you have 0.2.1).
+tutor 0.3.1 is available (you have 0.3.0).
 Update now? [y/N]
 ```
 

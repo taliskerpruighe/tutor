@@ -5,7 +5,7 @@ level: Level 1
 part: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
-keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1]
+keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2]
 ---
 
 # Changelog
@@ -17,11 +17,22 @@ through this course once, came back after an update, and does not want
 to reread all of it to find out what is new. Skip it the first time
 through.
 
-## 0.2.1 — this version
+## 0.2.2 — this version
 
-*This version* covers the shape of it — what the sixteen parts are and
-what each is for. This page covers only the difference between that
-and what was here before.
+Nothing new to read here — no articles were added, removed or moved,
+so *This version* still describes the course correctly as it stands.
+
+What changed sits underneath the reading experience: the reader used
+to check GitHub for a new version at most once a day, caching the
+answer for twenty-four hours outside the course folder. It now checks
+on every launch, so word of a new version reaches you the next time
+you type `tutor`, rather than however much of that day was left.
+
+## 0.2.1 — instructions, and the new marker
+
+*This version* still covers the shape of the course as it stood —
+what the sixteen parts are and what each is for. This page covers
+only the difference between that and what was here before.
 
 New material, not present before:
 

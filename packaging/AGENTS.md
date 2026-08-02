@@ -63,11 +63,11 @@ user:
 ## Updates are the user's, not yours
 
 The reader updates itself. Every launch checks GitHub for a newer version —
-at most once a day, cached, and skipped silently when offline — and if there
-is one it asks before doing anything:
+quick, bounded so it never delays opening, and skipped silently when
+offline — and if there is one it asks before doing anything:
 
 ```
-tutor 0.2.2 is available (you have 0.2.1).
+tutor 0.3.1 is available (you have 0.3.0).
 Update now? [y/N]
 ```
 

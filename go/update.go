@@ -31,12 +31,18 @@ const (
 	updateTagPrefix = "tori/MkI_v"
 	versionURL      = "https://raw.githubusercontent.com/taliskerpruighe/tutor/tori/version.txt"
 	tarballURLFmt   = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
-	updateCacheTTL  = 24 * time.Hour
+	// A cached remote version is trusted for this long before the network is
+	// asked again. Zero disables the cache entirely, so every launch checks.
+	updateCacheTTL = 0
 )
 
-// updateCacheFile is where the last-seen remote version is cached, so an
-// ordinary launch doesn't hit the network every time. ~/.local/share/tutor/
-// already exists by the time this runs — install.sh creates it.
+// updateCacheFile is where the last-seen remote version is written after
+// every check. It is no longer what makes an ordinary launch skip the
+// network — checkForUpdate calls out every time now — but cachedUpdateVersion
+// reads this file, and that is what `tutor doctor` relies on, since doctor is
+// routinely run from an agent's tool call and must never make a network call
+// of its own. ~/.local/share/tutor/ already exists by the time this runs —
+// install.sh creates it.
 func updateCacheFile() string {
 	return filepath.Join(filepath.Dir(pointerFile()), "update-check")
 }
@@ -111,33 +117,47 @@ func fetchLatestVersion() (string, error) {
 }
 
 // checkForUpdate answers "is a newer version available?" for the launch-time
-// prompt. It is cache-first: a cache file under 24h old is trusted without a
-// network call. Any failure at all — no network, timeout, non-200, garbage
-// body, unwritable cache — is silent: it returns ("", false) and must never
-// print anything or block startup.
+// prompt. It now runs the network call on every launch — the cache file is
+// still written below on every check, so it stays fresher than before rather
+// than staler, but it is no longer trusted to answer this question; that
+// makes cachedUpdateVersion's answer for `tutor doctor` current within one
+// launch instead of within a day. Any failure at all — no network, timeout,
+// non-200, garbage body, unwritable cache — is silent: it returns ("", false)
+// and must never print anything or block startup.
 func checkForUpdate() (latest string, available bool) {
 	cache := updateCacheFile()
-	if info, err := os.Stat(cache); err == nil && time.Since(info.ModTime()) < updateCacheTTL {
-		data, err := os.ReadFile(cache)
-		if err != nil {
+	// updateCacheTTL is 0, so this guard is what stops the bare comparison
+	// below from misbehaving rather than the comparison being dead code:
+	// time.Since(mod) < 0 evaluates true whenever the cache file's mtime sits
+	// in the future, which a backwards clock adjustment produces, and
+	// without this guard a stale cached version would then be trusted
+	// indefinitely. The guard keeps the constant meaning exactly what it
+	// says, and keeps the cache usable again if the TTL is ever raised.
+	if updateCacheTTL > 0 {
+		if info, err := os.Stat(cache); err == nil && time.Since(info.ModTime()) < updateCacheTTL {
+			data, err := os.ReadFile(cache)
+			if err != nil {
+				return "", false
+			}
+			cached := strings.TrimSpace(string(data))
+			if !looksLikeVersion(cached) {
+				return "", false
+			}
+			if compareVersions(cached, version) > 0 {
+				return cached, true
+			}
 			return "", false
 		}
-		cached := strings.TrimSpace(string(data))
-		if !looksLikeVersion(cached) {
-			return "", false
-		}
-		if compareVersions(cached, version) > 0 {
-			return cached, true
-		}
-		return "", false
 	}
 
 	fetched, err := fetchLatestVersion()
 	if err != nil {
 		return "", false
 	}
-	// Cache regardless of whether it is newer, so a failed comparison
-	// doesn't cause a refetch on every launch.
+	// Write the cache regardless of whether it is newer, so
+	// cachedUpdateVersion — and with it `tutor doctor` — stays current:
+	// doctor should report the same answer this launch just reached, not a
+	// stale one left over from whenever the cache was last written.
 	_ = os.WriteFile(cache, []byte(fetched), 0o644)
 
 	if compareVersions(fetched, version) > 0 {
@@ -296,8 +316,9 @@ func applyUpdate(root string, ver string) error {
 	return nil
 }
 
-// cmdUpdate is the explicit `tutor update` subcommand. Unlike checkForUpdate
-// it always makes the network call, ignoring the 24h cache.
+// cmdUpdate is the explicit `tutor update` subcommand: the reader typed the
+// word "update", so it always fetches, and it refreshes the cache file
+// afterward so cachedUpdateVersion, and with it `tutor doctor`, stay current.
 func cmdUpdate(root string) int {
 	fmt.Printf("Installed version: %s\n", version)
 
@@ -306,8 +327,9 @@ func cmdUpdate(root string) int {
 		fmt.Fprintf(os.Stderr, "could not check for updates: %v\n", err)
 		return 1
 	}
-	// Refresh the cache while we're here, so the next ordinary launch
-	// doesn't immediately refetch.
+	// Refresh the cache while we're here, purely for cachedUpdateVersion's
+	// sake: `tutor doctor` reads that file, never the network, and this
+	// keeps its answer as current as the check this command just made.
 	_ = os.WriteFile(updateCacheFile(), []byte(latest), 0o644)
 
 	fmt.Printf("Latest version:    %s\n", latest)

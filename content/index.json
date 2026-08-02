@@ -59,7 +59,8 @@
             "update",
             "0.1.0",
             "0.2.0",
-            "0.2.1"
+            "0.2.1",
+            "0.2.2"
           ],
           "path": "content/01-this-wiki/03-changelog.md"
         },

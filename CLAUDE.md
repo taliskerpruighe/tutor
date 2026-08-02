@@ -272,7 +272,7 @@ When you write an article:
 - **`index.json` gained a `version` field per article, read off content that
   was already there.** Every article carries a version tag on its own
   italic line between the H1 and the first paragraph — `*v0.1.0*`,
-  `*v0.2.0*`, now `*v0.2.1*` — and `content/_pipeline/visual-guide.md`
+  `*v0.2.0*`, `*v0.2.1*` — and `content/_pipeline/visual-guide.md`
   mandates it across all 114 articles. The indexer takes the first
   whole-line match of `*v` followed by digits and dots followed by `*` and
   stores it, leading `v` included, as `version`. It is the same "derived,
@@ -346,7 +346,7 @@ move all four, and check the fourth by eye.
 
 **The version in `version.txt` must have a tag behind it.** `applyUpdate`
 turns it into a tarball URL by prefixing `updateTagPrefix`, and this repo's
-tags are namespaced by trunk — `tori/MkI_v0.2.1`, not `MkI_v0.2.1` — which is
+tags are namespaced by trunk — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — which is
 why that constant carries the `tori/` and why `versionURL` names the same
 branch a few lines above it. Push `version.txt` ahead of the tag and every
 reader is told an update exists and then gets a 404 when she says yes, which
