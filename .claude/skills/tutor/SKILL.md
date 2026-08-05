@@ -32,15 +32,15 @@ will read the wrong article and cite the wrong place.
 
 ## The shape of the course
 
-Fifteen parts across two levels, in this order:
+Seventeen parts across two levels, in this order:
 
 - **Level 1** — This Wiki, TUIs, The CLI, Software, Files, Linux,
-  Agentic AI, Claude
-- **Level 2** — Agents, Skills, Subagents, Workflows, Hooks, Plugins,
-  Headless Sessions
+  Agentic AI
+- **Level 2** — Claude, Instructions, Agents, Skills, Subagents, Workflows,
+  Hooks, Plugins, Headless Sessions, Counter-Recommendations
 
-This Wiki is the one part with no sections. Everything else divides into two
-to four of them.
+This Wiki and Counter-Recommendations are the two parts with no sections.
+Everything else divides into two to four of them.
 
 Six Party Tricks run through the course and are what it exists for:
 content isolation (Claude → Claude Code setup), the three resets and agent

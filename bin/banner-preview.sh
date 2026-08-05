@@ -128,4 +128,4 @@ printf '\n'
 printf '%s' "$IND"
 spread "$SUB" "$SUB_A" "$SUB_B" "$SUB_C" "$SUB_D" "$SUB_E"
 printf '\n'
-printf '%47s%s%s%s\n' '' "$TAG_COL" 'v0.2.2' "$R"
+printf '%47s%s%s%s\n' '' "$TAG_COL" 'v0.2.3' "$R"

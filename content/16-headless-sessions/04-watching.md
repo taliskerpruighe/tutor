@@ -75,11 +75,12 @@ them, one still narrating the other.
 
 ---
 
-That closes Headless Sessions, and with it the working half of this
-course — agents, skills, subagents, workflows, hooks, plugins, and now
-the ways of running any of them with nobody sitting in front of the
-screen. What is left for a later version is work that starts on its
-own, with nobody watching it at all: crons, schedules, machines that run
-while you are asleep. That is not here yet, on purpose.
+That closes Headless Sessions. Counter-Recommendations comes next —
+the last part, four features Claude Code ships that the Boss says to
+leave switched off: agents it dispatches on its own initiative, a
+background view that hides as much as it shows, subagents spawning
+further subagents until nobody can say what ran, and agent teams,
+switched off anyway because experimental means nobody promised the
+shape holds from one version to the next.
 
-Everything up to here, you can build. Go and use it.
+Press `n`.

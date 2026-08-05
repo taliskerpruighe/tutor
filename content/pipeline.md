@@ -261,42 +261,57 @@
 - Piping
 - Watching
 
-+ ## Counter-Recommendations
+## Counter-Recommendations
 
-+ Builtin agents
-  + explain how cc ships with builtin subagents
-    + explain what they are 
-  + the boss recommends: turn them off
-    + give the setting to put in the global json
-  + explain how they are not worth using
-    + they are too dumb: you can make your own that does the same thing
-    + your main agent calls them too often--even when its much easier for the main agent to just do whatever by itself
-+ Background sessions and agent view
-  + explain the features: /bg or --bg, agent view to watch agents in a dashboard
-  + the boss recommends: dont use
-    + give her the setting to put in the global json
-  + explain how they are not worth using
-    + sounds good in theory
-    + but background sessions take way more resources (cpu, ram) than headless sessions
-    + the agent view itself is its own process that eats up resources
-    + not as user friendly as it seems
-+ subagents spwaning subagents
-  + explain how subagents can spawn their own subagents--up to 5 levels of subagents
-  + the boss recommends: dont use it
-    + make dedicated custom agents to operate only as subagents, not as main agents
-    + remove the Agent tool from those dedicated subagents--so they cant spawn infinitely
-  + explain why it sucks
-    + hard to see/control: subagents can get wild with cost and scope of what they do
-    + bugged: when a subagent spawns a second subagent and the second sugagent finishes, the main agent thinks that its the first subagent that finished--or vice versa
-+ agent teams
-  + explain the feature and how it differs from regular subagents: agents talking to each other
-  + very promising; plus the visibility with tmux panes
-  + but the boss recommends: turn if off
-    + give the global setting to turn it off
+- Builtin agents
+- Background sessions and agent view
+- Subagents spawning subagents
+- Agent teams
 
 # PIPELINE
 
-## tool tips
+## Gizmos
+
+### Version Control
+
++ git
+  + what it is
+    + version control software
+    + invented by the guy who invented linux
+  + used mainly for code--so people assume thats all it can do
+  + but it can do so much more in any field--especially when combined with coding harnesses
+    + give examples here
+    + one example can be how something like google drive only has the latest "sync'd version"--not all priors
+  + if nothing else, the boss says this: its absolutely essential to use to insure against ai agents' trigger happiness with edits 
+
++ github
+  + what it is
+    + how it differs from git
+    + how it works with git: as the remote/the backup
+  + how its an absolute gold mine of scripts and software that ai can find and use to transform your life
+    + give some examples here outside of software, like legal, data, business
+
++ git, github, and cli harnesses
+  + how a lot of cli harnesses are built to work with git
+  + making a folder/project a repo unlocks all kinds of features to supercharge the harness
+    + being able to easily track changes--and change history
+    + being able to have multiple agents work on the same file at once
+    + building multiple versions of the same file, cherry picking the best pieces across all of them, and easily merging them into one
+
+### Worktrees
+
++ worktrees
+  + what they are
+  + how they work in cc
+  + set isolation: worktree at the agent level
+  + dont use it if your agents work sequentially: writer then editor then formatter
+  + use it if your agents work on the same file at once: one writer for section 1, one writer for section 2 
+
++ forking
+  + what it is, and how it differs from non forked subagents
+  + dont use it for tasks that you want to break down because of context or because of specialization from different agents
+  + use it if you want a second opinion or a parallel approach
+    + give some examples of either scenario## tool tips
 
 ### text editors
 - micro

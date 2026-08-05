@@ -21,18 +21,20 @@ know what to ask.
 
 ## The shape of the course
 
-Two levels. Level 1 is eight parts, Level 2 is seven:
+Two levels. Level 1 is seven parts, Level 2 is ten:
 
 | Level 1 | Level 2 |
 |---|---|
-| This Wiki | Agents |
-| TUIs | Skills |
-| The CLI | Subagents |
-| Software | Workflows |
-| Files | Hooks |
-| Linux | Plugins |
-| Agentic AI | Headless Sessions |
-| Claude | |
+| This Wiki | Claude |
+| TUIs | Instructions |
+| The CLI | Agents |
+| Software | Skills |
+| Files | Subagents |
+| Linux | Workflows |
+| Agentic AI | Hooks |
+| | Plugins |
+| | Headless Sessions |
+| | Counter-Recommendations |
 
 Most parts divide into sections; **This Wiki does not**, so its six articles
 are one lesson. Section names repeat across parts — *Building One* is in both
@@ -51,12 +53,12 @@ last part is followed by the first part of the next level.
 Ask for the bottom line of the reader tab. The part you want looks like this:
 
 ```
- Agents 1/7 · Context · Context rot 4/6 · 40%
+ Agents 3/10 · Context · Context rot 4/6 · 40%
 ```
 
 Part, section, article, and how far they have **scrolled down the article
 they are on**. The part counts within the level rather than the whole course,
-so `1/7` is the first of Level 2's seven parts. That last number says nothing
+so `3/10` is the third of Level 2's ten parts. That last number says nothing
 about whether anything was read — a short article reads `100%` the moment it
 opens, because it all fits.
 
@@ -189,6 +191,7 @@ One task. Small enough to finish now. Then stop.
 | Claude → Claude subscriptions | Check which plan they are on. |
 | Claude → Claude Code | Name one thing on the list they could not do from the website. |
 | Claude → Claude Code setup | Look inside `~/tutor/.claude/`, then `~/.claude/`. Say what is in each and why a session in one folder sees both. Party Trick #1. |
+| Instructions → The CLAUDE.md File | Write one line for their own `CLAUDE.md` that would have saved them repeating an instruction this week. |
 | Agents → Context | Watch the number on screen while working, then `/clear` and watch it drop. Party Trick #2. |
 | Agents → Custom Agents | `/custom-agents` — build one, then launch it in a new tab. Party Trick #3. |
 | Skills → When To Build One | Take a job they repeat and walk the ladder on it, out loud. |
@@ -203,6 +206,7 @@ One task. Small enough to finish now. Then stop.
 | Plugins → What They Are | Say which of the four cases matches something they have already built. |
 | Plugins → Using Them | Turn something they built into a plugin and install it somewhere else. |
 | Headless Sessions → Running Without a Chat | Run one `claude -p` line and pipe a file into it. |
+| Counter-Recommendations *(no sections)* | Open your global settings file at `~/.claude/settings.json` and add one of the three `env` switches this part recommends. |
 
 Where the task is `/custom-agents` or `/custom-skills`, say so and let that
 skill run its own interview. It knows what to ask. Pick up afterwards.

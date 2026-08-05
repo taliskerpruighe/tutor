@@ -2273,6 +2273,95 @@
           "path": "content/16-headless-sessions/04-watching.md"
         }
       ]
+    },
+    {
+      "slug": "17-counter-recommendations",
+      "title": "Counter-Recommendations",
+      "level": "Level 2",
+      "articles": [
+        {
+          "id": "counter/builtin-agents",
+          "title": "Builtin agents",
+          "section": "",
+          "summary": "Turn off the agents Claude Code dispatches on its own initiative and let a custom agent built for the job stand in their place",
+          "version": "v0.2.3",
+          "keywords": [
+            "builtin agents",
+            "explore",
+            "plan",
+            "claude_code_disable_explore_plan_agents",
+            "settings.json",
+            "dispatch",
+            "spawn",
+            "custom agent",
+            "context",
+            "boss"
+          ],
+          "path": "content/17-counter-recommendations/01-builtin-agents.md"
+        },
+        {
+          "id": "counter/background-sessions",
+          "title": "Background sessions and agent view",
+          "section": "",
+          "summary": "What a background session and agent view actually cost, and the one setting that turns off both together",
+          "version": "v0.2.3",
+          "keywords": [
+            "background session",
+            "agent view",
+            "/bg",
+            "--bg",
+            "dashboard",
+            "memory",
+            "resources",
+            "settings.json",
+            "env",
+            "claude_code_disable_agent_view",
+            "headless",
+            "tmux"
+          ],
+          "path": "content/17-counter-recommendations/02-background-sessions-and-agent-view.md"
+        },
+        {
+          "id": "counter/nested-subagents",
+          "title": "Subagents spawning subagents",
+          "section": "",
+          "summary": "A structural fix for a feature the Boss says to switch off entirely, with the bug that made him say it",
+          "version": "v0.2.3",
+          "keywords": [
+            "subagent",
+            "nested subagents",
+            "agent",
+            "tools",
+            "chain",
+            "spawn",
+            "cost",
+            "scope",
+            "bug",
+            "custom agent"
+          ],
+          "path": "content/17-counter-recommendations/03-subagents-spawning-subagents.md"
+        },
+        {
+          "id": "counter/agent-teams",
+          "title": "Agent teams",
+          "section": "",
+          "summary": "Teammates that message each other while they work and still get switched off before anything with a deadline attached",
+          "version": "v0.2.3",
+          "keywords": [
+            "agent teams",
+            "subagents",
+            "teammates",
+            "tmux",
+            "panes",
+            "messaging",
+            "claude_code_experimental_agent_teams",
+            "settings.json",
+            "experimental",
+            "boss"
+          ],
+          "path": "content/17-counter-recommendations/04-agent-teams.md"
+        }
+      ]
     }
   ]
 }
