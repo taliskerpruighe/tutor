@@ -152,6 +152,7 @@
 - Rules
 - Rules tips
 
+
 ## Agents
 
 ### Context
@@ -162,6 +163,28 @@
 - Context rot
 - Managing context
 - Moving between folders
+
++ ### Chats: Interactive Sessions
+
++ ccstatusline
+  + cc comes with its own builtin status line
+  + the boss says: the builtin status line is dogshit
+  + the boss recommends: the ccstatusline by sirmalloc (give the gh repo here)
+  + infinite cofiguration and customization; ask an agent to know whats possible
+  + the boss recommends a configuration that shows, at a minimum, context, session usage, and weekly usage
+
++ Output styles
+  + what they are: change how the agent to talk to you in an interactive session
+  + you can ask the agent to structure replies in specific ways, like asking for headings, diagrams, etc
+    + give some practical examples here
+  + does not apply to anything else: subagents, noninteractive sessions, etcj
+
++ The advisor call
+  + give the setting: advisorModel: "<model>"
+  + the boss recommends: set it to Opus
+  + note from the Boss: dual edged sword
+    + very good to catch mistakes and have agents course correct before delivering something terrible
+    + slow and expensive: agents call it way too often, including for basic things like reviewing basic searches
 
 ### Custom Agents
 
@@ -274,6 +297,14 @@
 
 ### Version Control
 
+- repos
+- branches
+- git tracked vs git ignored
+- staged
+- commit
+- push and pull
+- move respectGitignore to false
+
 + git
   + what it is
     + version control software
@@ -303,7 +334,8 @@
 + worktrees
   + what they are
   + how they work in cc
-  + set isolation: worktree at the agent level
+    + for a main agent, you can start a session at a worktree
+    + for a subagents, easiest is to set isolation: worktree in the frontmatter
   + dont use it if your agents work sequentially: writer then editor then formatter
   + use it if your agents work on the same file at once: one writer for section 1, one writer for section 2 
 
@@ -362,40 +394,46 @@
   - agents.md: technically what claude.md is, except claude.md reads automatically
   - readme.md: for people
 
-### ccstatusline 
-   - much better than the bultin stuff
-  - ask cc to install and configure
-  - run thru the options to see what is available
-  - like a powerline, it takes any custom command
- 
-## other gimmicks
-- themes
-- output styles
-- rewinding
-- permissions
+
+## permissions
+
+### permissions in general
+
++ changing permission modes
+  + you will see a "mode" at the bottom of interactive sessions
+  + that is the permission mode, which is basically how often you need to manually approve commands agents try to run
+  + you can change it manually with shift+tab
+  + you can also ask an agent to set your default permission mode in your global settings
+  
++ types of permission modes
+  + default/manual mode: asks approval for most edits
+  + accept edits: skips asking, except for edits to claude assets/settings
+  + auto mode: skips asking based on criteria and judgment calls
+  + bypass permissions: never asks anything
+  + plan mode: a read-only mode used to plan a task
+
++ the boss recommends: auto mode
+  + the boss recommends: set your default permission mode to auto mode
+  + ask an agent to set it for you  
+  + ask an agent to create an autoMode.environment setting for you in your global settings.json
+  + tell it in plain english what kinds of files, or locations, you want to be careful with an have claude code ask for permission before doing certain things, like deleting
+  + use this for sensitive files that you are not tracking with version control (*like git) or cloud storage (like google drive)
+
++ the boss recommends: plan mode
+  + one feature that sets coding harnesses apart
+  + originally meant for software development, given that so many different files depend on each other
+  + but improves the efficiency and effectiveness of agents exponentially--especially later on when coordinating multiple agents, like subagents and workflows
+  + turn plan mode on whenever you ask an agent to do something that takes several steps, like research then write or write then test: it will be worth it
+
+## Other  
+  
+- env: in settings.json
 - prompt engineering
   - use control+g
   - headers
-- permissions
-  - plan mode
-    - the boss recommends: use liberally
-    - explain what it does
-    - party trick: create a / command that you can use anywhere, and have it do only two things: enter plan mode and run in xhigh effort; if you ever need anything plan, run it at the start of the prompt (eg, "/plan-this [prompt]")--which is two birds
- 
-- the advisor
-- give the setting
-- say set it to opus
-- note from the Boss: dual edged sword
-  - very good to catch mistakes and have agents course correct before delivering something terrible
-  - slow and expensive: agents call it way too often, including for basic things like reviewing basic searches
+- remote control
+  - default on startup is remoteControlAtStartup at the json
 
-## git in cc
-- forking
-- worktrees
-
-## convo management
-
-- rewinding
 
 # Level 3+
 - agent memory
@@ -409,3 +447,7 @@
 - mcps
 - lsps
 - apis
+- artifacts
+- externals from hooks
+- externals from channels
+- 
