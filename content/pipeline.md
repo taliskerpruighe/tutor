@@ -450,4 +450,28 @@
 - artifacts
 - externals from hooks
 - externals from channels
-- 
+
+# Agent SDK
+
+- runs on python or typescript/node js
+- works the same, but there is max turns and max budget to put a lid on it
+- can have subagents within a single agent call
+- can continue prior sessions
+- can use settingSources: [] to change what the agent sees as compared to a regular interactive/headless session
+- use multi turn settings for chats and continue/resume settings for coming backa to the same session
+  - in py, claude sdk client handles ids to send queries to the same "session" (client) so that context is preserved
+  - in ts there is no id management, it just runs continue: true against the latest one
+- you can capture the session id's to run resume
+- can build interactive ones
+- build gui's and tui's to interact
+- can use plan mode and tools like askuserquestion
+- enable streaming messages and tool calls for updates akin to transcripts
+- build a "streaming ui" to watch runs
+- you can have an agent output any json schema you define instead of typical replies (recommended to set json schema: zod for ts and pydantic for py)
+- can connect with mcps, apis, databases, etc
+- has a feature called tool search, where there can be hundreds/thousands of tools--and they are discovered as needed
+- using subagents allows the sdk to call an orchestrator where babysitting is required
+- pass the claude_code option for system prompt instead of systemPrompt (TS) or system_prompt (py) for the default system prompt
+- can pass /commands by just including them in the prompt, like headless sessions
+- the skills option takes "all" or a subset between [] to limit skills the session can invoke; no skills option just means it works like the cli
+- sdks can load and invoke plugins too
