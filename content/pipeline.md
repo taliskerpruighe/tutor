@@ -32,10 +32,42 @@ $ Exercises
 ~ Your terminal is Ghostty
 - What was set up for you
 + [insert crash course on main features]
+  + tabs and splits
+    + opening, closing, cycling tabs
+    + splitting a pane and moving between splits
+  + the config file
+    + where it lives and how to edit it
+    + reloading without restarting
+  + keybindings
+    + the defaults and how to see them
+    + remapping one
+  + themes and appearance
+    + built-in themes
+    + font and cursor tweaks
+  + the quick terminal
+    + summon it from anywhere with a hotkey
+  + image support
+    + why pictures render inline here
+    + name the kitty graphics protocol
 
 + ### Tmux
 
 + [insert crash course on main features]
+  + the prefix key
+    + what it is and how to change it
+  + sessions
+    + starting, naming, listing, killing one
+  + windows and panes
+    + splitting a pane
+    + moving between panes and windows
+  + detaching and reattaching
+    + the core trick, one command each way
+  + the config file
+    + .tmux.conf, common tweaks
+  + copy mode
+    + scrolling back and grabbing text
+  + status bar
+    + reading it, customizing it
 
 ### Shells
 
@@ -75,6 +107,17 @@ $ Starship and powerline themes
 
 + Starship
   + [insert crash course on main features]
+    + what it shows out of the box
+      + directory, git branch, command duration
+    + the config file
+      + starship.toml, where it lives
+    + presets
+      + picking a preset instead of building one
+    + modules
+      + turning segments on and off
+      + adding a custom one
+    + installing it
+      + one command, works in any shell
 
 ## Software
 
