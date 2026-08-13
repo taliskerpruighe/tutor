@@ -5,28 +5,52 @@ level: Level 1
 part: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
-keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2]
+keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9]
 ---
 
 # Changelog
 
-*v0.2.1*
+*v0.2.9*
 
 This page exists for exactly one reader: someone who has already been
 through this course once, came back after an update, and does not want
 to reread all of it to find out what is new. Skip it the first time
 through.
 
-## 0.2.2 — this version
+## 0.2.9 — the parts that grew
 
-Nothing new to read here — no articles were added, removed or moved,
-so *This version* still describes the course correctly as it stands.
+*This version* covers the shape of the course as it now stands. This
+page covers only the difference between that and what was here
+before.
 
-What changed sits underneath the reading experience: the reader used
-to check GitHub for a new version at most once a day, caching the
-answer for twenty-four hours outside the course folder. It now checks
-on every launch, so word of a new version reaches you the next time
-you type `tutor`, rather than however much of that day was left.
+New material, not present before:
+
+- **TMUX** is now a full seven-article section.
+- **The CLI** gained six articles on the Zsh tools worth knowing —
+  `zoxide`, permanent variables, globbing, `grep`, `ripgrep`, `fzf` —
+  and its old prompt-theme article split into *Powerline themes* and
+  *Starship*.
+- **Agents** gained two whole sections, *Plans and Permissions* and
+  *Prompts*, plus standalone articles on `ccstatusline` and *Output
+  styles*.
+- **Version control** left Level 1's Files part for a part of its own
+  in Level 2, joined by three new articles: *Git and the harness*,
+  *Worktrees* and *Forking*.
+- **Hooks** replaced its single *Worked examples* article with six,
+  one per trigger family.
+
+As in every version that adds articles, a green `N` marks exactly the
+ones new to a returning reader.
+
+## 0.2.2 — the reader's own marks
+
+No articles were added, removed or moved, so *This version* went on
+describing the course untouched.
+
+What changed sits underneath the reading experience: the check for a
+new version used to run at most once a day, cached outside the course
+folder. It now runs on every launch, so word of a new version reaches
+you the next time you type `tutor`.
 
 ## 0.2.1 — instructions, and the new marker
 

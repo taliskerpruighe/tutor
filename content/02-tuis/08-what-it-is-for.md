@@ -56,10 +56,8 @@ three identical, anonymous entries you would otherwise have to guess
 between. A dozen anonymous sessions are a dozen guesses; a dozen named
 ones are a dozen labels, and the difference is entirely the naming.
 
----
-
-That is TUIs — the window, the terminal underneath it, and the session
-that outlives both. *The CLI* is next: the line you actually type into,
-what writes it, and what runs when you press return.
+Knowing what tmux is for is not the same as being able to drive it.
+*The prefix key* is next: the one keystroke every tmux command starts
+with, and why it exists at all.
 
 Press `n`.

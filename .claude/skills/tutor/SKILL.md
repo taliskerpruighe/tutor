@@ -1,6 +1,6 @@
 ---
 name: tutor
-description: Answer questions about Claude Code — the terminal, the shell, software and packages, files and version control, Linux, LLMs and harnesses, Claude and its setup, agents, context, skills, subagents, chains, workflows, hooks, plugins, headless sessions — using the course content in this folder. Use whenever the user asks how something in Claude Code works, what a term means, or how to do something with it, and when they ask where to read more. Do NOT use it to run a lesson or take them through the course in order — that is the `learn` skill — and do NOT use it to actually build something for them, which is `custom-agents` for an agent and `custom-skills` for a skill.
+description: Answer questions about Claude Code — the terminal, tmux, the shell, software and packages, files and version control including worktrees and forking, Linux, LLMs and harnesses, Claude and its setup, agents, context, permission and plan modes, prompt engineering, skills, subagents, chains, workflows, hooks, plugins, output styles, the status line, headless sessions — using the course content in this folder. Use whenever the user asks how something in Claude Code works, what a term means, or how to do something with it, and when they ask where to read more. Do NOT use it to run a lesson or take them through the course in order — that is the `learn` skill — and do NOT use it to actually build something for them, which is `custom-agents` for an agent and `custom-skills` for a skill.
 user-invocable: true
 ---
 
@@ -12,12 +12,17 @@ just read, and they have no way to tell which of you is right.
 
 ## Finding the answer
 
-1. Read `content/index.json`. It is a list of parts, each carrying a `title`
-   and the `level` it sits in; every article inside is listed with a `title`,
-   `section`, `summary`, `keywords` and `path`.
+1. Read `content/index.json`. It is a flat list of parts, each carrying a
+   `title` and the `level` it sits in, each holding a flat list of articles —
+   a level and a section are both derived, not stored, each one a run of
+   consecutive entries sharing the same `level` or `section` string. Every
+   article is listed with an `id`, `title`, `section`, `summary`, `keywords`
+   and `path`.
 2. Pick the article whose summary or keywords match the question. If two
    match, read both.
-3. Read the file at its `path` and answer from it, in your own words.
+3. Read the file at its `path` and answer from it, in your own words. Quote
+   the article's `id` rather than its `path` if you need to name one
+   precisely — the `id` is stable across releases, the `path` is not.
 4. If the index looks stale or an article is missing, run `tutor index` and
    look again.
 
@@ -26,18 +31,23 @@ surrounding paragraphs are usually the part actually needed.
 
 **Section names repeat across parts.** *Building One* is in both Skills and
 Workflows; *What They Are* is in Workflows, Hooks and Plugins; *Using Them*
-is in Hooks and Plugins; *Exercises* is an article in both This Wiki and
-Plugins. Never match on `section` alone — carry the `part` with it, or you
-will read the wrong article and cite the wrong place.
+is in Hooks and Plugins. A few newer names sit close enough to an older one
+to be said the same way by mistake: *Prompts* (Agents) next to *Command
+Lines and Prompts* (The CLI), *Plans and Permissions* (Agents) next to *The
+plans* (Claude → Claude subscriptions), and *Worktrees* (Version Control) —
+both a section and the article that opens it — next to Hooks'
+*WorktreeCreate and WorktreeRemove*. Never match on `section` alone — carry
+the `part` with it, or you will read the wrong article and cite the wrong
+place.
 
 ## The shape of the course
 
-Seventeen parts across two levels, in this order:
+Eighteen parts across two levels, in this order:
 
 - **Level 1** — This Wiki, TUIs, The CLI, Software, Files, Linux,
   Agentic AI
 - **Level 2** — Claude, Instructions, Agents, Skills, Subagents, Workflows,
-  Hooks, Plugins, Headless Sessions, Counter-Recommendations
+  Version Control, Hooks, Plugins, Headless Sessions, Counter-Recommendations
 
 This Wiki and Counter-Recommendations are the two parts with no sections.
 Everything else divides into two to four of them.

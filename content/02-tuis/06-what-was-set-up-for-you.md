@@ -51,9 +51,9 @@ menu you have never seen. It will find the file, make the change, and
 tell you what it changed.
 
 The same is true one layer up, of the line you type into rather than the
-window it appears in: *Starship and powerline themes*, in *The CLI*,
-covers changing your prompt the same way — by describing the outcome and
-letting Claude Code find the setting.
+window it appears in: *Starship*, in *The CLI*, covers changing your
+prompt the same way — by describing the outcome and letting Claude Code
+find the setting.
 
 Ghostty is the window. What lives inside it, holding a session open even
 when the window closes, is next.

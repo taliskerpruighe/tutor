@@ -21,7 +21,7 @@ know what to ask.
 
 ## The shape of the course
 
-Two levels. Level 1 is seven parts, Level 2 is ten:
+Two levels. Level 1 is seven parts, Level 2 is eleven:
 
 | Level 1 | Level 2 |
 |---|---|
@@ -31,36 +31,46 @@ Two levels. Level 1 is seven parts, Level 2 is ten:
 | Software | Skills |
 | Files | Subagents |
 | Linux | Workflows |
-| Agentic AI | Hooks |
+| Agentic AI | Version Control |
+| | Hooks |
 | | Plugins |
 | | Headless Sessions |
 | | Counter-Recommendations |
 
-Most parts divide into sections; **This Wiki does not**, so its six articles
+Most parts divide into sections; **This Wiki does not**, so its five articles
 are one lesson. Section names repeat across parts — *Building One* is in both
 Skills and Workflows, *What They Are* is in Workflows, Hooks and Plugins,
-*Using Them* is in Hooks and Plugins, *Exercises* is an article in both This
-Wiki and Plugins. **Always carry the part with the section.** A section name
-on its own does not identify a lesson.
+*Using Them* is in Hooks and Plugins. A few new names sit close enough to an
+older one to be said the same way by mistake: *Prompts* (Agents) next to
+*Command Lines and Prompts* (The CLI), *Plans and Permissions* (Agents) next
+to *The plans* (Claude → Claude subscriptions), and *Worktrees* (Version
+Control) — both a section and the article that opens it — next to Hooks'
+*WorktreeCreate and WorktreeRemove*. **Always carry the part with the
+section.** A section name on its own does not identify a lesson.
 
 `content/index.json` is the authority on order, not this table and not the
-status line. Sections run in the order their articles appear in it; a part's
-last section is followed by the first section of the next part; a level's
-last part is followed by the first part of the next level.
+status line. It is a flat list of parts, each holding a flat list of
+articles; a level and a section are both derived, not stored — each is a run
+of consecutive entries sharing the same `level` or `section` string. Sections
+run in the order their articles appear in it; a part's last section is
+followed by the first section of the next part; a level's last part is
+followed by the first part of the next level. An article's `id` is stable
+across releases even when its `path` is renumbered — quote the `id`, not the
+path, when you need to name one precisely.
 
 ## 1. Find out where they are
 
 Ask for the bottom line of the reader tab. The part you want looks like this:
 
 ```
- Agents 3/10 · Context · Context rot 4/6 · 40%
+ Agents 3/11 · Context · Context rot 4/6 · 40%
 ```
 
 Part, section, article, and how far they have **scrolled down the article
 they are on**. The part counts within the level rather than the whole course,
-so `3/10` is the third of Level 2's ten parts. That last number says nothing
-about whether anything was read — a short article reads `100%` the moment it
-opens, because it all fits.
+so `3/11` is the third of Level 2's eleven parts. That last number says
+nothing about whether anything was read — a short article reads `100%` the
+moment it opens, because it all fits.
 
 **Reading the line.** They may paste the whole row, which carries key hints
 on the right (`←→ levels · [] parts · ⇥ sections` and so on), and how many of
@@ -181,7 +191,6 @@ One task. Small enough to finish now. Then stop.
 | Software → Homebrew | Run `brew outdated` and read what it says — no installing. |
 | Files → Languages and Scripts | Open one plain-text file on their own machine and say what format it is in. |
 | Files → Editors | Open a file in a terminal editor, change one word, save, quit. |
-| Files → Version Control | Look at a folder they already have and decide out loud whether it wants version control. |
 | Linux → The world runs on linux | Name three machines in their own day that are running Linux. |
 | Linux → Why its better | Nothing to run — say which of the four claims they would want to test first. |
 | Agentic AI → LLMs | Take one job they do weekly and say which of the three axes decides the model for it. |
@@ -193,6 +202,8 @@ One task. Small enough to finish now. Then stop.
 | Claude → Claude Code setup | Look inside `~/tutor/.claude/`, then `~/.claude/`. Say what is in each and why a session in one folder sees both. Party Trick #1. |
 | Instructions → The CLAUDE.md File | Write one line for their own `CLAUDE.md` that would have saved them repeating an instruction this week. |
 | Agents → Context | Watch the number on screen while working, then `/clear` and watch it drop. Party Trick #2. |
+| Agents → Plans and Permissions | Press Shift-Tab in a running session and read which mode it lands on. |
+| Agents → Prompts | Write one prompt for something they need done today in the three-part shape: context, objectives, traps. |
 | Agents → Custom Agents | `/custom-agents` — build one, then launch it in a new tab. Party Trick #3. |
 | Skills → When To Build One | Take a job they repeat and walk the ladder on it, out loud. |
 | Skills → Building One | Find two matched sets of their own files — the input and the output — then `/custom-skills`. Party Trick #4. |
@@ -201,7 +212,9 @@ One task. Small enough to finish now. Then stop.
 | Subagents → Build a Chain | *One step per lesson* — see below. |
 | Workflows → What They Are | Take the chain they built and say what it would gain, and lose, as a workflow. |
 | Workflows → Building One | Ask the main agent for a workflow, then push back once on the agent count. |
-| Hooks → What They Are | Read the eight triggers and pick the one that fits something they already want. |
+| Version Control → Git, Github, and Jujutsu | Run `git log --oneline -5` in a folder they already have version-controlled and read back what it says. |
+| Version Control → Worktrees | Run `git worktree list` in a repo they already have and say what it shows. |
+| Hooks → What They Are | Read the trigger tables and pick the one that fits something they already want. |
 | Hooks → Using Them | Pick one worked example and say what it would change about their own setup. |
 | Plugins → What They Are | Say which of the four cases matches something they have already built. |
 | Plugins → Using Them | Turn something they built into a plugin and install it somewhere else. |
@@ -217,11 +230,12 @@ step, do it, stop. They type `/learn` for the next.
 
 Then say what the next section is, and that `/learn` will start it.
 
-**The course ends at Headless Sessions → Running Without a Chat.** Say so
-when they get there. They will have all six Party Tricks and have built an
-agent, a skill, a chain, a workflow and a plugin. Point them at
-*This Wiki → This version* for what a later version adds, and say that
-`/tutor` answers anything from the course in a session rather than on a page.
+**The course ends at Counter-Recommendations,** the one other part with no
+sections. Say so when they get there. They will have all six Party Tricks
+and have built an agent, a skill, a chain, a workflow and a plugin. Point
+them at *This Wiki → This version* for what a later version adds, and say
+that `/tutor` answers anything from the course in a session rather than on a
+page.
 
 ## How to talk to them
 

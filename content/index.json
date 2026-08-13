@@ -6,6 +6,29 @@
       "level": "Level 1",
       "articles": [
         {
+          "id": "wiki/this-version",
+          "title": "This version",
+          "section": "",
+          "summary": "What this version of the course covers, what it leaves out on purpose, and what a later one adds",
+          "version": "v0.2.9",
+          "keywords": [
+            "version",
+            "roadmap",
+            "agents",
+            "skills",
+            "subagents",
+            "workflows",
+            "hooks",
+            "plugins",
+            "headless",
+            "version control",
+            "prompts",
+            "permissions",
+            "changelog"
+          ],
+          "path": "content/01-this-wiki/01-this-version.md"
+        },
+        {
           "id": "wiki/about-this-wiki",
           "title": "About this wiki",
           "section": "",
@@ -23,35 +46,14 @@
             "findings",
             "order"
           ],
-          "path": "content/01-this-wiki/01-about-this-wiki.md"
-        },
-        {
-          "id": "wiki/this-version",
-          "title": "This version",
-          "section": "",
-          "summary": "What this version of the course covers, what it leaves out on purpose, and what a later one adds",
-          "version": "v0.2.1",
-          "keywords": [
-            "version",
-            "roadmap",
-            "agents",
-            "skills",
-            "subagents",
-            "workflows",
-            "hooks",
-            "plugins",
-            "headless",
-            "crons",
-            "changelog"
-          ],
-          "path": "content/01-this-wiki/02-this-version.md"
+          "path": "content/01-this-wiki/02-about-this-wiki.md"
         },
         {
           "id": "wiki/changelog",
           "title": "Changelog",
           "section": "",
           "summary": "What changed in each version before this one, kept so a returning reader can find the delta",
-          "version": "v0.2.1",
+          "version": "v0.2.9",
           "keywords": [
             "changelog",
             "version",
@@ -60,7 +62,8 @@
             "0.1.0",
             "0.2.0",
             "0.2.1",
-            "0.2.2"
+            "0.2.2",
+            "0.2.9"
           ],
           "path": "content/01-this-wiki/03-changelog.md"
         },
@@ -98,23 +101,6 @@
             "article"
           ],
           "path": "content/01-this-wiki/05-the-companion-agent.md"
-        },
-        {
-          "id": "wiki/exercises",
-          "title": "Exercises",
-          "section": "",
-          "summary": "Where the exercises in this course sit, and why what you build in one is kept rather than thrown away",
-          "version": "v0.2.0",
-          "keywords": [
-            "exercise",
-            "build a chain",
-            "subagents",
-            "bundle",
-            "keyboard",
-            "hands-on",
-            "project"
-          ],
-          "path": "content/01-this-wiki/06-exercises.md"
         }
       ]
     },
@@ -261,6 +247,127 @@
             "workflow"
           ],
           "path": "content/02-tuis/08-what-it-is-for.md"
+        },
+        {
+          "id": "tmux/the-prefix-key",
+          "title": "The prefix key",
+          "section": "TMUX",
+          "summary": "A chord, not a single key, decides whether a keystroke reaches tmux or the program running inside it",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "prefix",
+            "chord",
+            "keybinding",
+            "ctrl-b",
+            "ctrl-a",
+            "remap",
+            "tmux.conf"
+          ],
+          "path": "content/02-tuis/09-the-prefix-key.md"
+        },
+        {
+          "id": "tmux/sessions",
+          "title": "Sessions",
+          "section": "TMUX",
+          "summary": "Every tmux command works on a session, and an unnamed one is a number you will forget by the third matter",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "session",
+            "tmux new",
+            "tmux ls",
+            "tmux kill-session",
+            "naming",
+            "matter"
+          ],
+          "path": "content/02-tuis/10-sessions.md"
+        },
+        {
+          "id": "tmux/windows-and-panes",
+          "title": "Windows and panes",
+          "section": "TMUX",
+          "summary": "A window takes the whole screen and a pane shares it, both living and dying with the session underneath them",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "window",
+            "pane",
+            "split",
+            "kill-pane",
+            "layout",
+            "zoom"
+          ],
+          "path": "content/02-tuis/11-windows-and-panes.md"
+        },
+        {
+          "id": "tmux/detaching-and-reattaching",
+          "title": "Detaching and reattaching",
+          "section": "TMUX",
+          "summary": "Leaving a session on purpose and finding it again are each one command, and neither one is closing the window",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "detach",
+            "attach",
+            "tmux attach",
+            "reattach",
+            "session",
+            "sharing"
+          ],
+          "path": "content/02-tuis/12-detaching-and-reattaching.md"
+        },
+        {
+          "id": "tmux/the-config-file",
+          "title": "The config file",
+          "section": "TMUX",
+          "summary": "Every persistent tweak to tmux lives in one file, read once at startup and reloaded on command rather than by restarting",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "tmux.conf",
+            "config",
+            "set -g",
+            "bind",
+            "reload",
+            "source-file",
+            "mouse"
+          ],
+          "path": "content/02-tuis/13-the-config-file.md"
+        },
+        {
+          "id": "tmux/copy-mode",
+          "title": "Copy mode",
+          "section": "TMUX",
+          "summary": "Scrollback tmux keeps for itself, and the only way text inside a pane gets out of it",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "copy mode",
+            "scrollback",
+            "selection",
+            "paste buffer",
+            "mouse",
+            "search"
+          ],
+          "path": "content/02-tuis/14-copy-mode.md"
+        },
+        {
+          "id": "tmux/the-status-bar",
+          "title": "The status bar",
+          "section": "TMUX",
+          "summary": "The one line on screen tmux never lets go blank, and what it is telling you by default",
+          "version": "v0.2.9",
+          "keywords": [
+            "tmux",
+            "status bar",
+            "status-left",
+            "status-right",
+            "session name",
+            "window list",
+            "customise"
+          ],
+          "path": "content/02-tuis/15-the-status-bar.md"
         }
       ]
     },
@@ -269,39 +376,6 @@
       "title": "The CLI",
       "level": "Level 1",
       "articles": [
-        {
-          "id": "shell/your-prompt",
-          "title": "Your prompt",
-          "section": "Command Lines and Prompts",
-          "summary": "The text before the cursor is a status display, and it can say whatever is useful to you.",
-          "version": "v0.1.0",
-          "keywords": [
-            "prompt",
-            "command prompt",
-            "cursor",
-            "path",
-            "pwd",
-            "customise"
-          ],
-          "path": "content/03-the-cli/01-your-prompt.md"
-        },
-        {
-          "id": "shell/starship",
-          "title": "Starship and powerline themes",
-          "section": "Command Lines and Prompts",
-          "summary": "What draws your prompt, why it needs a special font, and how to have it restyled.",
-          "version": "v0.1.0",
-          "keywords": [
-            "starship",
-            "powerline",
-            "theme",
-            "nerd font",
-            "colours",
-            "toml",
-            "customise"
-          ],
-          "path": "content/03-the-cli/02-starship-and-powerline-themes.md"
-        },
         {
           "id": "shell/what-a-shell-is",
           "title": "What a shell is",
@@ -316,7 +390,7 @@
             "command",
             "zsh"
           ],
-          "path": "content/03-the-cli/03-what-a-shell-is.md"
+          "path": "content/03-the-cli/01-what-a-shell-is.md"
         },
         {
           "id": "shell/why-it-is-powerful",
@@ -333,7 +407,7 @@
             "batch",
             "wildcard"
           ],
-          "path": "content/03-the-cli/04-why-the-shell-is-powerful.md"
+          "path": "content/03-the-cli/02-why-the-shell-is-powerful.md"
         },
         {
           "id": "cli/the-shells-there-are",
@@ -352,7 +426,7 @@
             "unix",
             "family tree"
           ],
-          "path": "content/03-the-cli/05-the-shells-there-are.md"
+          "path": "content/03-the-cli/03-the-shells-there-are.md"
         },
         {
           "id": "shell/your-shell-zsh",
@@ -370,14 +444,14 @@
             "licence",
             "linux"
           ],
-          "path": "content/03-the-cli/06-your-shell-is-zsh.md"
+          "path": "content/03-the-cli/04-your-shell-is-zsh.md"
         },
         {
           "id": "shell/moving-around",
           "title": "Moving around",
           "section": "Zsh",
-          "summary": "Paths, the four commands you need daily, and how to type far less than you think.",
-          "version": "v0.1.0",
+          "summary": "Paths, the four commands you need daily, and the fastest way from one folder to a neighbour rather than a stranger",
+          "version": "v0.2.9",
           "keywords": [
             "path",
             "cd",
@@ -386,11 +460,178 @@
             "open",
             "tilde",
             "tab",
-            "history",
             "alias",
-            "folder"
+            "folder",
+            "sideways"
           ],
-          "path": "content/03-the-cli/07-moving-around.md"
+          "path": "content/03-the-cli/05-moving-around.md"
+        },
+        {
+          "id": "zsh/zoxide",
+          "title": "zoxide",
+          "section": "Zsh",
+          "summary": "cd remembers nothing between commands; zoxide remembers every folder you have visited and ranks them for you",
+          "version": "v0.2.9",
+          "keywords": [
+            "zoxide",
+            "z",
+            "cd",
+            "frecency",
+            "jump",
+            "folder",
+            "zshrc",
+            "homebrew",
+            "shortcut"
+          ],
+          "path": "content/03-the-cli/06-zoxide.md"
+        },
+        {
+          "id": "zsh/permanent-variables",
+          "title": "Permanent variables",
+          "section": "Zsh",
+          "summary": "A variable typed at the prompt dies with the terminal; the same line in ~/.zshrc survives every one you open after",
+          "version": "v0.2.9",
+          "keywords": [
+            "variable",
+            "export",
+            "environment variable",
+            "zshrc",
+            "path",
+            "permanent",
+            "shell",
+            "source"
+          ],
+          "path": "content/03-the-cli/07-permanent-variables.md"
+        },
+        {
+          "id": "zsh/globbing",
+          "title": "Globbing",
+          "section": "Zsh",
+          "summary": "A pattern stands for many filenames at once, and zsh expands it before the command you typed ever sees it",
+          "version": "v0.2.9",
+          "keywords": [
+            "glob",
+            "globbing",
+            "wildcard",
+            "asterisk",
+            "pattern",
+            "expansion",
+            "no matches",
+            "filename"
+          ],
+          "path": "content/03-the-cli/08-globbing.md"
+        },
+        {
+          "id": "zsh/grep",
+          "title": "grep",
+          "section": "Zsh",
+          "summary": "A glob finds files by name; grep finds them by what is written inside, line by line",
+          "version": "v0.2.9",
+          "keywords": [
+            "grep",
+            "search",
+            "pattern",
+            "flag",
+            "recursive",
+            "case-insensitive",
+            "regex",
+            "contents",
+            "line"
+          ],
+          "path": "content/03-the-cli/09-grep.md"
+        },
+        {
+          "id": "zsh/ripgrep",
+          "title": "ripgrep",
+          "section": "Zsh",
+          "summary": "The same search as grep, defaulting to recursive, skipping what a .gitignore already excludes, fast enough not to notice",
+          "version": "v0.2.9",
+          "keywords": [
+            "ripgrep",
+            "rg",
+            "grep",
+            "gitignore",
+            "fast",
+            "search",
+            "recursive",
+            "default",
+            "homebrew"
+          ],
+          "path": "content/03-the-cli/10-ripgrep.md"
+        },
+        {
+          "id": "zsh/fzf",
+          "title": "fzf",
+          "section": "Zsh",
+          "summary": "rg narrows a search before you look; fzf hands you the list and narrows it live as you type against it",
+          "version": "v0.2.9",
+          "keywords": [
+            "fzf",
+            "fuzzy finder",
+            "ctrl-r",
+            "ctrl-t",
+            "pipe",
+            "interactive",
+            "filter",
+            "history"
+          ],
+          "path": "content/03-the-cli/11-fzf.md"
+        },
+        {
+          "id": "shell/your-prompt",
+          "title": "Your prompt",
+          "section": "Command Lines and Prompts",
+          "summary": "The text before the cursor is a status display, and it can say whatever is useful to you.",
+          "version": "v0.1.0",
+          "keywords": [
+            "prompt",
+            "command prompt",
+            "cursor",
+            "path",
+            "pwd",
+            "customise"
+          ],
+          "path": "content/03-the-cli/12-your-prompt.md"
+        },
+        {
+          "id": "shell/powerline-themes",
+          "title": "Powerline themes",
+          "section": "Command Lines and Prompts",
+          "summary": "A prompt built from coloured blocks called segments, each showing a single fact about where you are, and why the seams between them need a special font",
+          "version": "v0.2.9",
+          "keywords": [
+            "powerline",
+            "segment",
+            "nerd font",
+            "hack nerd font",
+            "p10k",
+            "powerline10k",
+            "git branch",
+            "ssh",
+            "hostname",
+            "google drive"
+          ],
+          "path": "content/03-the-cli/13-powerline-themes.md"
+        },
+        {
+          "id": "shell/starship",
+          "title": "Starship",
+          "section": "Command Lines and Prompts",
+          "summary": "The program that draws your prompt from one readable file, with the branch and the duration already switched on before you touch it",
+          "version": "v0.2.9",
+          "keywords": [
+            "starship",
+            "prompt",
+            "toml",
+            "module",
+            "preset",
+            "git branch",
+            "command duration",
+            "customise",
+            "install",
+            "fish"
+          ],
+          "path": "content/03-the-cli/14-starship.md"
         }
       ]
     },
@@ -610,76 +851,6 @@
             "modal editing"
           ],
           "path": "content/05-files/05-editors-in-the-terminal.md"
-        },
-        {
-          "id": "files/what-git-is",
-          "title": "What git is",
-          "section": "Version Control",
-          "summary": "A tool that keeps every version of every file, with a note explaining why each one changed",
-          "version": "v0.2.0",
-          "keywords": [
-            "git",
-            "version control",
-            "commit",
-            "history",
-            "diff",
-            "draft",
-            "plain text"
-          ],
-          "path": "content/05-files/06-what-git-is.md"
-        },
-        {
-          "id": "files/how-git-works",
-          "title": "How git works",
-          "section": "Version Control",
-          "summary": "Commits chain into history, branches split off it, and a remote is the same history living somewhere else",
-          "version": "v0.2.0",
-          "keywords": [
-            "git",
-            "commit",
-            "history",
-            "branch",
-            "merge",
-            "remote",
-            "github",
-            "model"
-          ],
-          "path": "content/05-files/07-how-git-works.md"
-        },
-        {
-          "id": "files/jj",
-          "title": "jj",
-          "section": "Version Control",
-          "summary": "The same history, kept the same way, with the parts of git that trip people up removed rather than fixed",
-          "version": "v0.2.0",
-          "keywords": [
-            "jj",
-            "jujutsu",
-            "git",
-            "version control",
-            "staging area",
-            "commit",
-            "working copy"
-          ],
-          "path": "content/05-files/08-jj.md"
-        },
-        {
-          "id": "files/github",
-          "title": "GitHub",
-          "section": "Version Control",
-          "summary": "A host for the history git already keeps, and everything a host adds once other people can reach it",
-          "version": "v0.2.0",
-          "keywords": [
-            "github",
-            "remote",
-            "git",
-            "pull request",
-            "issue",
-            "repository",
-            "host",
-            "collaboration"
-          ],
-          "path": "content/05-files/09-github.md"
         }
       ]
     },
@@ -1271,26 +1442,6 @@
           "path": "content/10-agents/01-what-an-agent-is.md"
         },
         {
-          "id": "agents/tabs-and-windows",
-          "title": "Tabs and windows",
-          "section": "Context",
-          "summary": "Cmd-1 through Cmd-9 jump straight to a tab, a split faces two agents at once, and a rename is how you tell three claude sessions apart",
-          "version": "v0.2.0",
-          "keywords": [
-            "ghostty",
-            "tab",
-            "window",
-            "split",
-            "cmd-t",
-            "cmd-n",
-            "cmd-d",
-            "rename",
-            "agent",
-            "jump"
-          ],
-          "path": "content/10-agents/02-tabs-and-windows.md"
-        },
-        {
           "id": "agents/context",
           "title": "Context",
           "section": "Context",
@@ -1308,7 +1459,7 @@
             "fable",
             "size"
           ],
-          "path": "content/10-agents/03-context.md"
+          "path": "content/10-agents/02-context.md"
         },
         {
           "id": "agents/context-rot",
@@ -1325,7 +1476,7 @@
             "fifty percent",
             "the boss"
           ],
-          "path": "content/10-agents/04-context-rot.md"
+          "path": "content/10-agents/03-context-rot.md"
         },
         {
           "id": "agents/managing",
@@ -1343,26 +1494,183 @@
             "context management",
             "slash command"
           ],
-          "path": "content/10-agents/05-managing-context.md"
+          "path": "content/10-agents/04-managing-context.md"
         },
         {
-          "id": "agents/moving-between-folders",
-          "title": "Moving between folders",
+          "id": "agents/ccstatusline",
+          "title": "ccstatusline",
           "section": "Context",
-          "summary": "The walk-up rule makes the folder you launch from a decision, and cd, pwd and Tab are how you get it right",
-          "version": "v0.2.0",
+          "summary": "A third-party status line that puts the figures Context rot and Managing context asked you to watch on the line under the prompt",
+          "version": "v0.2.9",
           "keywords": [
-            "cd",
-            "pwd",
-            "tab completion",
-            "ctrl-c",
-            "walk-up rule",
-            "exit",
-            "folder",
-            "matter",
-            "launch"
+            "ccstatusline",
+            "status line",
+            "sirmalloc",
+            "settings.json",
+            "permission mode",
+            "context",
+            "cost",
+            "session state",
+            "configuration"
           ],
-          "path": "content/10-agents/06-moving-between-folders.md"
+          "path": "content/10-agents/05-ccstatusline.md"
+        },
+        {
+          "id": "perms/changing-modes",
+          "title": "Changing permission modes",
+          "section": "Plans and Permissions",
+          "summary": "Shift-Tab moves a running session between how closely it checks with you before acting, and a setting moves the one it opens in",
+          "version": "v0.2.9",
+          "keywords": [
+            "permission mode",
+            "shift-tab",
+            "mode indicator",
+            "default settings",
+            "ccstatusline",
+            "session state"
+          ],
+          "path": "content/10-agents/06-changing-permission-modes.md"
+        },
+        {
+          "id": "perms/modes-there-are",
+          "title": "The permission modes there are",
+          "section": "Plans and Permissions",
+          "summary": "Five settled points on one dial, from asking about everything to reading only and asking about nothing",
+          "version": "v0.2.9",
+          "keywords": [
+            "permission mode",
+            "default mode",
+            "accept edits",
+            "auto mode",
+            "bypass permissions",
+            "plan mode",
+            "dial",
+            "risk"
+          ],
+          "path": "content/10-agents/07-the-permission-modes-there-are.md"
+        },
+        {
+          "id": "perms/auto-mode",
+          "title": "The boss recommends: auto mode",
+          "section": "Plans and Permissions",
+          "summary": "His own default is auto mode, taught once what counts as sensitive and left alone after that",
+          "version": "v0.2.9",
+          "keywords": [
+            "auto mode",
+            "default permission mode",
+            "settings.json",
+            "autoMode.environment",
+            "sensitive files",
+            "version control",
+            "boss"
+          ],
+          "path": "content/10-agents/08-the-boss-recommends-auto-mode.md"
+        },
+        {
+          "id": "perms/plan-mode",
+          "title": "The boss recommends: plan mode",
+          "section": "Plans and Permissions",
+          "summary": "A mode built for code that turns out to be just as useful once several agents are the ones being coordinated",
+          "version": "v0.2.9",
+          "keywords": [
+            "plan mode",
+            "coding harness",
+            "subagents",
+            "chains",
+            "multi-step",
+            "dependencies",
+            "boss"
+          ],
+          "path": "content/10-agents/09-the-boss-recommends-plan-mode.md"
+        },
+        {
+          "id": "prompt/dos-and-donts",
+          "title": "Prompt dos and donts",
+          "section": "Prompts",
+          "summary": "A quality target gives an agent nothing to check its own work against; an objective does.",
+          "version": "v0.2.9",
+          "keywords": [
+            "prompt",
+            "objective",
+            "instruction",
+            "quality target",
+            "milestone",
+            "benchmark",
+            "dos and donts",
+            "skill",
+            "the boss"
+          ],
+          "path": "content/10-agents/10-prompt-dos-and-donts.md"
+        },
+        {
+          "id": "prompt/engineering",
+          "title": "Prompt engineering",
+          "section": "Prompts",
+          "summary": "Three pieces, always in the same order — context, objectives, traps — and a prompt with all three rarely needs a second try.",
+          "version": "v0.2.9",
+          "keywords": [
+            "prompt engineering",
+            "context",
+            "objectives",
+            "traps",
+            "structure",
+            "order",
+            "chronological"
+          ],
+          "path": "content/10-agents/11-prompt-engineering.md"
+        },
+        {
+          "id": "prompt/long-prompts",
+          "title": "Long prompts",
+          "section": "Prompts",
+          "summary": "Context, objectives and traps written out in full outgrow the chat box, so there is a keystroke for stepping outside it.",
+          "version": "v0.2.9",
+          "keywords": [
+            "long prompt",
+            "ctrl-g",
+            "editor",
+            "settings.json",
+            "headings",
+            "structure",
+            "chat box"
+          ],
+          "path": "content/10-agents/12-long-prompts.md"
+        },
+        {
+          "id": "prompt/shorthands-and-key-words",
+          "title": "Shorthands and key words",
+          "section": "Prompts",
+          "summary": "A word set once in settings.json means the same thing in every prompt after it, the way a variable means the same thing in every line of a script.",
+          "version": "v0.2.9",
+          "keywords": [
+            "shorthand",
+            "key word",
+            "env",
+            "settings.json",
+            "variable",
+            "persistent",
+            "dollar sign",
+            "matter folder"
+          ],
+          "path": "content/10-agents/13-shorthands-and-key-words.md"
+        },
+        {
+          "id": "prompt/the-advisor-tool",
+          "title": "The advisor tool",
+          "section": "Prompts",
+          "summary": "A second model reads the whole transcript and says whether the first one is about to get it wrong, at a cost that is not always worth paying.",
+          "version": "v0.2.9",
+          "keywords": [
+            "advisor",
+            "advisormodel",
+            "opus",
+            "review",
+            "second opinion",
+            "settings.json",
+            "dual edged",
+            "the boss"
+          ],
+          "path": "content/10-agents/14-the-advisor-tool.md"
         },
         {
           "id": "agents/default",
@@ -1379,7 +1687,7 @@
             "plain",
             "launch"
           ],
-          "path": "content/10-agents/07-the-default-agent.md"
+          "path": "content/10-agents/15-the-default-agent.md"
         },
         {
           "id": "agents/custom",
@@ -1396,7 +1704,7 @@
             "project",
             "launch"
           ],
-          "path": "content/10-agents/08-custom-agents.md"
+          "path": "content/10-agents/16-custom-agents.md"
         },
         {
           "id": "agents/definition",
@@ -1414,7 +1722,7 @@
             "markdown",
             "the boss"
           ],
-          "path": "content/10-agents/09-the-definition-file.md"
+          "path": "content/10-agents/17-the-definition-file.md"
         },
         {
           "id": "agents/fields",
@@ -1433,7 +1741,26 @@
             "agent engineering",
             "subagent"
           ],
-          "path": "content/10-agents/10-the-fields-that-matter.md"
+          "path": "content/10-agents/18-the-fields-that-matter.md"
+        },
+        {
+          "id": "agents/output-styles",
+          "title": "Output styles",
+          "section": "Custom Agents",
+          "summary": "An output style changes the register of the whole session, not any single agent's tools or model",
+          "version": "v0.2.9",
+          "keywords": [
+            "output style",
+            "register",
+            "settings.json",
+            "interactive session",
+            "headings",
+            "diagrams",
+            "headless",
+            "subagent",
+            "definition file"
+          ],
+          "path": "content/10-agents/19-output-styles.md"
         },
         {
           "id": "agents/building",
@@ -1451,7 +1778,7 @@
             "model choice",
             "tutor"
           ],
-          "path": "content/10-agents/11-building-one.md"
+          "path": "content/10-agents/20-building-one.md"
         }
       ]
     },
@@ -1988,7 +2315,144 @@
       ]
     },
     {
-      "slug": "14-hooks",
+      "slug": "14-version-control",
+      "title": "Version Control",
+      "level": "Level 2",
+      "articles": [
+        {
+          "id": "files/what-git-is",
+          "title": "What git is",
+          "section": "Git, Github, and Jujutsu",
+          "summary": "Git is not only for code, and the Boss treats it as the one indispensable safeguard against an agent's own trigger-happy edits",
+          "version": "v0.2.9",
+          "keywords": [
+            "git",
+            "version control",
+            "commit",
+            "history",
+            "linus torvalds",
+            "linux",
+            "google drive",
+            "ai agents",
+            "insurance"
+          ],
+          "path": "content/14-version-control/01-what-git-is.md"
+        },
+        {
+          "id": "files/how-git-works",
+          "title": "How git works",
+          "section": "Git, Github, and Jujutsu",
+          "summary": "Files are tracked or ignored, changes are staged before they are committed, and a remote can be a server or a drive as easily as GitHub",
+          "version": "v0.2.9",
+          "keywords": [
+            "git",
+            "repository",
+            "branch",
+            "staging area",
+            "commit",
+            "gitignore",
+            "remote",
+            "fetch",
+            "push",
+            "pull"
+          ],
+          "path": "content/14-version-control/02-how-git-works.md"
+        },
+        {
+          "id": "files/github",
+          "title": "GitHub",
+          "section": "Git, Github, and Jujutsu",
+          "summary": "GitHub hosts the remote git already knows how to talk to, and its real value to you is the working software sitting in other people's repositories",
+          "version": "v0.2.9",
+          "keywords": [
+            "github",
+            "remote",
+            "repository",
+            "pull request",
+            "issue",
+            "open source",
+            "legal tech",
+            "data",
+            "host"
+          ],
+          "path": "content/14-version-control/03-github.md"
+        },
+        {
+          "id": "files/jj",
+          "title": "Jujutsu",
+          "section": "Git, Github, and Jujutsu",
+          "summary": "Jujutsu reads the same history as git but removes the staging step and the state where work can go missing, saving on its own as you go",
+          "version": "v0.2.9",
+          "keywords": [
+            "jujutsu",
+            "jj",
+            "git",
+            "colocation",
+            "staging area",
+            "working copy",
+            "detached head",
+            "commit"
+          ],
+          "path": "content/14-version-control/04-jujutsu.md"
+        },
+        {
+          "id": "vcs/git-and-the-harness",
+          "title": "Git and the harness",
+          "section": "Git, Github, and Jujutsu",
+          "summary": "A folder becomes a repository and a coding harness gets three things it did not have before — a history to undo into, room for several agents on one file, and drafts it can merge into one",
+          "version": "v0.2.9",
+          "keywords": [
+            "harness",
+            "claude code",
+            "repository",
+            "undo",
+            "parallel agents",
+            "cherry pick",
+            "merge",
+            "subagent"
+          ],
+          "path": "content/14-version-control/05-git-and-the-harness.md"
+        },
+        {
+          "id": "vcs/worktrees",
+          "title": "Worktrees",
+          "section": "Worktrees",
+          "summary": "A worktree gives one repository several working folders at once, so agents that need to touch the same project simultaneously never collide",
+          "version": "v0.2.9",
+          "keywords": [
+            "worktree",
+            "git worktree",
+            "subagent",
+            "isolation",
+            "frontmatter",
+            "parallel",
+            "main agent",
+            "branch"
+          ],
+          "path": "content/14-version-control/06-worktrees.md"
+        },
+        {
+          "id": "vcs/forking",
+          "title": "Forking",
+          "section": "Worktrees",
+          "summary": "A forked subagent starts from the conversation you are already in rather than an empty one, which is worth it for a second opinion, not for splitting a job up",
+          "version": "v0.2.9",
+          "keywords": [
+            "fork",
+            "forked subagent",
+            "second opinion",
+            "parallel",
+            "github",
+            "chain",
+            "context",
+            "specialisation"
+          ],
+          "path": "content/14-version-control/07-forking.md"
+        }
+      ]
+    },
+    {
+      "slug": "15-hooks",
       "title": "Hooks",
       "level": "Level 2",
       "articles": [
@@ -2009,13 +2473,13 @@
             "chains",
             "workflows"
           ],
-          "path": "content/14-hooks/01-what-a-hook-is.md"
+          "path": "content/15-hooks/01-what-a-hook-is.md"
         },
         {
           "id": "hooks/triggers",
           "title": "The triggers",
           "section": "What They Are",
-          "summary": "Eight moments a hook can attach to, and knowing the list is what tells you a hook is even possible",
+          "summary": "The named moments a hook can attach to, and knowing the list is what tells you a hook is even possible",
           "version": "v0.2.0",
           "keywords": [
             "trigger",
@@ -2027,9 +2491,14 @@
             "subagentstart",
             "subagentstop",
             "stop",
-            "sessionend"
+            "sessionend",
+            "filechanged",
+            "cwdchanged",
+            "directoryadded",
+            "worktreecreate",
+            "worktreeremove"
           ],
-          "path": "content/14-hooks/02-the-triggers.md"
+          "path": "content/15-hooks/02-the-triggers.md"
         },
         {
           "id": "hooks/scoping",
@@ -2047,32 +2516,120 @@
             "customisation",
             "location matters"
           ],
-          "path": "content/14-hooks/03-scoping-a-hook.md"
+          "path": "content/15-hooks/03-scoping-a-hook.md"
         },
         {
-          "id": "hooks/worked-examples",
-          "title": "Worked examples",
+          "id": "hooks/sessionstart-and-subagentstart",
+          "title": "SessionStart and SubagentStart",
           "section": "Using Them",
-          "summary": "Eight triggers against eight jobs, so the abstract list from two articles ago turns into things worth building",
-          "version": "v0.2.0",
+          "summary": "A SessionStart hook briefs an agent before it reads a word, and a SubagentStart hook does the same the instant a subagent spawns",
+          "version": "v0.2.9",
           "keywords": [
-            "example",
             "sessionstart",
-            "userpromptsubmit",
-            "pretooluse",
-            "posttooluse",
             "subagentstart",
-            "subagentstop",
-            "stop",
-            "sessionend",
-            "workflow"
+            "context injection",
+            "brief",
+            "claude.md",
+            "settings.json",
+            "skill",
+            "matter"
           ],
-          "path": "content/14-hooks/04-worked-examples.md"
+          "path": "content/15-hooks/04-sessionstart-and-subagentstart.md"
+        },
+        {
+          "id": "hooks/pretooluse",
+          "title": "PreToolUse",
+          "section": "Using Them",
+          "summary": "A PreToolUse hook can see a tool call coming and refuse it outright, before a single line changes",
+          "version": "v0.2.9",
+          "keywords": [
+            "pretooluse",
+            "block",
+            "deny",
+            "skill",
+            "matcher",
+            "tool call",
+            "permission",
+            "settings.json"
+          ],
+          "path": "content/15-hooks/05-pretooluse.md"
+        },
+        {
+          "id": "hooks/posttooluse-and-filechanged",
+          "title": "PostToolUse and FileChanged",
+          "section": "Using Them",
+          "summary": "PostToolUse fires once Claude's own tool call is done, and FileChanged fires when a file changes for any reason at all, including one Claude was never told about",
+          "version": "v0.2.9",
+          "keywords": [
+            "posttooluse",
+            "filechanged",
+            "git",
+            "jj",
+            "commit",
+            "save",
+            "review",
+            "subagent",
+            "settings.json"
+          ],
+          "path": "content/15-hooks/06-posttooluse-and-filechanged.md"
+        },
+        {
+          "id": "hooks/sessionend-and-subagentstop",
+          "title": "SessionEnd and SubagentStop",
+          "section": "Using Them",
+          "summary": "SessionEnd closes out a whole conversation and SubagentStop checks a single subagent's work, both asking whether what was supposed to happen actually did",
+          "version": "v0.2.9",
+          "keywords": [
+            "sessionend",
+            "subagentstop",
+            "transcript",
+            "skill check",
+            "chain",
+            "workflow",
+            "audit",
+            "settings.json"
+          ],
+          "path": "content/15-hooks/07-sessionend-and-subagentstop.md"
+        },
+        {
+          "id": "hooks/cwdchanged-and-directoryadded",
+          "title": "CwdChanged and DirectoryAdded",
+          "section": "Using Them",
+          "summary": "CwdChanged fires when an agent's working directory moves and DirectoryAdded fires when a new one enters its reach, both forcing a read that would otherwise wait on chance",
+          "version": "v0.2.9",
+          "keywords": [
+            "cwdchanged",
+            "directoryadded",
+            "cwd",
+            "working directory",
+            "claude.md",
+            "rules",
+            "settings",
+            "subdirectory"
+          ],
+          "path": "content/15-hooks/08-cwdchanged-and-directoryadded.md"
+        },
+        {
+          "id": "hooks/worktreecreate-and-worktreeremove",
+          "title": "WorktreeCreate and WorktreeRemove",
+          "section": "Using Them",
+          "summary": "the closing pair of triggers, firing when a second working copy of a repository appears or disappears beside the first",
+          "version": "v0.2.9",
+          "keywords": [
+            "worktreecreate",
+            "worktreeremove",
+            "worktree",
+            "git",
+            "settings.json",
+            "isolation",
+            "cleanup"
+          ],
+          "path": "content/15-hooks/09-worktreecreate-and-worktreeremove.md"
         }
       ]
     },
     {
-      "slug": "15-plugins",
+      "slug": "16-plugins",
       "title": "Plugins",
       "level": "Level 2",
       "articles": [
@@ -2093,7 +2650,7 @@
             "agents",
             "skills"
           ],
-          "path": "content/15-plugins/01-what-a-plugin-is.md"
+          "path": "content/16-plugins/01-what-a-plugin-is.md"
         },
         {
           "id": "plugins/when-to-make-one",
@@ -2111,7 +2668,7 @@
             "location matters",
             "context"
           ],
-          "path": "content/15-plugins/02-when-to-make-one.md"
+          "path": "content/16-plugins/02-when-to-make-one.md"
         },
         {
           "id": "plugins/inside",
@@ -2130,7 +2687,7 @@
             "commands",
             "manifest"
           ],
-          "path": "content/15-plugins/03-what-is-inside-one.md"
+          "path": "content/16-plugins/03-what-is-inside-one.md"
         },
         {
           "id": "plugins/how-it-works",
@@ -2150,7 +2707,7 @@
             "global",
             "project"
           ],
-          "path": "content/15-plugins/04-how-a-plugin-works.md"
+          "path": "content/16-plugins/04-how-a-plugin-works.md"
         },
         {
           "id": "plugins/building",
@@ -2167,7 +2724,7 @@
             "custom-agents",
             "custom-skills"
           ],
-          "path": "content/15-plugins/05-building-one.md"
+          "path": "content/16-plugins/05-building-one.md"
         },
         {
           "id": "plugins/exercises",
@@ -2184,12 +2741,12 @@
             "install",
             "second project"
           ],
-          "path": "content/15-plugins/06-exercises.md"
+          "path": "content/16-plugins/06-exercises.md"
         }
       ]
     },
     {
-      "slug": "16-headless-sessions",
+      "slug": "17-headless-sessions",
       "title": "Headless Sessions",
       "level": "Level 2",
       "articles": [
@@ -2211,7 +2768,7 @@
             "shell",
             "scripting"
           ],
-          "path": "content/16-headless-sessions/01-what-a-headless-session-is.md"
+          "path": "content/17-headless-sessions/01-what-a-headless-session-is.md"
         },
         {
           "id": "headless/when-to-use",
@@ -2230,7 +2787,7 @@
             "subagent",
             "quick job"
           ],
-          "path": "content/16-headless-sessions/02-when-to-use-one.md"
+          "path": "content/17-headless-sessions/02-when-to-use-one.md"
         },
         {
           "id": "headless/piping",
@@ -2250,7 +2807,7 @@
             "cat",
             "grep"
           ],
-          "path": "content/16-headless-sessions/03-piping.md"
+          "path": "content/17-headless-sessions/03-piping.md"
         },
         {
           "id": "headless/watching",
@@ -2270,12 +2827,12 @@
             "monitor",
             "split"
           ],
-          "path": "content/16-headless-sessions/04-watching.md"
+          "path": "content/17-headless-sessions/04-watching.md"
         }
       ]
     },
     {
-      "slug": "17-counter-recommendations",
+      "slug": "18-counter-recommendations",
       "title": "Counter-Recommendations",
       "level": "Level 2",
       "articles": [
@@ -2297,7 +2854,7 @@
             "context",
             "boss"
           ],
-          "path": "content/17-counter-recommendations/01-builtin-agents.md"
+          "path": "content/18-counter-recommendations/01-builtin-agents.md"
         },
         {
           "id": "counter/background-sessions",
@@ -2319,7 +2876,7 @@
             "headless",
             "tmux"
           ],
-          "path": "content/17-counter-recommendations/02-background-sessions-and-agent-view.md"
+          "path": "content/18-counter-recommendations/02-background-sessions-and-agent-view.md"
         },
         {
           "id": "counter/nested-subagents",
@@ -2339,7 +2896,7 @@
             "bug",
             "custom agent"
           ],
-          "path": "content/17-counter-recommendations/03-subagents-spawning-subagents.md"
+          "path": "content/18-counter-recommendations/03-subagents-spawning-subagents.md"
         },
         {
           "id": "counter/agent-teams",
@@ -2359,7 +2916,7 @@
             "experimental",
             "boss"
           ],
-          "path": "content/17-counter-recommendations/04-agent-teams.md"
+          "path": "content/18-counter-recommendations/04-agent-teams.md"
         }
       ]
     }
