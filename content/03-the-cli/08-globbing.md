@@ -63,7 +63,7 @@ ls ~/work/**/*.pdf
 
 That finds every PDF anywhere under `~/work`, however many folders deep,
 in one line — no `find`, no visiting each matter in turn. bash needs a
-setting switched on before `**` behaves this way; zsh simply does it.
+setting switched on before `**` behaves this way; zsh does it.
 
 ## When nothing matches
 
@@ -84,10 +84,7 @@ than treating it as something broken.
 
 > A pattern copied from a forum post assumes bash unless it says
 > otherwise. Try it, and if zsh refuses with *no matches found* where the
-> post promised a result, the pattern was never wrong — you are simply
+> post promised a result, the pattern was never wrong — you are
 > the shell it was not written for.
-
-A glob narrows filenames. The next article narrows what is written
-inside them.
 
 Press `n`.

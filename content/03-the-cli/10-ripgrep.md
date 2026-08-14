@@ -80,8 +80,6 @@ a machine somewhere without `rg` on it.
 > Knowing the older tool is what makes the newer one optional rather than
 > load-bearing.
 
-Searching contents is now fast. The next article turns the same idea —
-filter a list down as you type — into something you steer with your own
-hands.
+Searching contents is now fast.
 
 Press `n`.

@@ -51,9 +51,9 @@ line to apply and one line to undo.
 
 Any module can be turned off — command duration, say, if a stopwatch on
 every prompt is a distraction rather than a help. A module can also be
-added that Starship does not ship: the Google Drive segment from the last
-article is exactly this shape, not a built-in feature but something
-somebody wrote and dropped into the file.
+added that Starship does not ship: the Google Drive segment from
+*Powerline themes* is exactly this shape, not a built-in feature but
+something somebody wrote and dropped into the file.
 
 You do not need to write any of it yourself. The same sentence to Claude
 Code that changes a Ghostty setting changes this one — *"add a segment

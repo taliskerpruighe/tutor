@@ -3,7 +3,7 @@ id: claude/the-harnesses
 title: The harnesses
 level: Level 2
 part: Claude
-section: Claude
+section: The Claude Code Harness
 order: 2
 summary: Three ways to reach Claude — a website, a sandboxed website, and a terminal program on your own machine
 keywords: [claude.ai, claude cowork, claude code, harness, website, terminal, sandbox, agent]
@@ -13,52 +13,45 @@ keywords: [claude.ai, claude cowork, claude code, harness, website, terminal, sa
 
 *v0.2.0*
 
-A model on its own does nothing — the brain in a jar of *What an LLM is*.
-Anthropic ships three different bodies for it, all called some
-variant of Claude, and telling them apart matters before anything
-else in this part does.
+*Why Claude Code* settled which harness this course teaches, and it
+settled it on one fact: the machine doing the work is yours. Anthropic
+ships two more harnesses under the same name, Claude, and neither one
+stands where Claude Code does.
 
-**claude.ai** is a website. You open it in a browser, type, and read
-what comes back. It can attach a document to a question, but it has
-no persistent access to your files and no way to run a command — a
-conversation, not an agent.
+**claude.ai** is a website — open it, type, read what comes back.
+**Claude Cowork** is a website too, but a different shape of one: it
+reads files, writes files and runs commands, the same actions Claude
+Code takes. What differs, in both cases, is where.
 
-**Claude Cowork** is also a website, and it goes further: it can read
-files, write files and run commands, the way the rest of this course
-describes an agent doing. The difference is where that happens. The
-machine doing the work is not yours. Cowork runs each job inside a
-sandboxed virtual machine that Anthropic provides, with a fixed slice
-of hardware behind it.
+Two comparisons, then, each run against the harness already met.
 
-**Claude Code** is neither. It is a program you install on your own
-Mac and run from the terminal, and the work it does happens there —
-your files, your disk, your hardware.
+## claude.ai gives you an answer, not an action
 
-## Why the difference is not cosmetic
+claude.ai can take a document attached to a question, but that is the
+limit of it: no persistent access to your files, no way to run a
+command of its own. It answers. Claude Code already stands inside the
+folder you are working from, so nothing needs attaching — it reads
+what is there directly, and can write back to the same place.
 
-Cowork and Claude Code both do the same kind of thing: read, write,
-run commands, report back. What separates them is where the machine
-sits and, following from that, whose files and whose hardware it
-reaches. A sandbox never sees the folder you are actually working in
-unless you send a copy into it. A terminal program already stands
-inside that folder.
+## Cowork acts, on a machine that is not yours
 
-That single fact — local machine against someone else's — is going to
-do more work than it looks like it can. It decides what software each
-one can reach, how fast each one runs, and how much of what happens
-you can actually watch happen. All three follow from the same cause,
-and the rest of this part works through them one at a time.
+Cowork's actions are the same shape as Claude Code's: read a file,
+write a file, run a command. That puts it closer to Claude Code than
+claude.ai ever gets. What stays different is whose machine carries
+them out. Cowork opens each job inside a sandboxed virtual machine
+that Anthropic builds and tears down afterwards, with a fixed slice of
+hardware behind it and no view of the folder you actually work in
+unless you send a copy across the network first. Claude Code needs no
+copy sent. It is already standing inside that folder, on hardware
+that is yours.
 
-## The one this course teaches
+## One variable, not three products
 
-Claude Code, throughout. Not because the others do nothing worth
-having — Cowork is a reasonable choice for a job you want running
-without your laptop open — but because a terminal on your own machine
-is the version with the fewest walls around it, and the fewest walls
-is where the rest of this course lives.
-
-Before any of that, the plain economics: what each of these actually
-costs to use, and which tier gets you the model this course keeps
-recommending.
+Three harnesses, one axis: whose machine it runs on. That single fact
+decides what each one can reach — your files directly, a copy of
+them, or nothing beyond what you paste into a box. Nothing about the
+three is a difference in features grafted on afterwards. It is a
+difference in where the loop happens, and everything else follows
+from that.
 
 Press `n`.

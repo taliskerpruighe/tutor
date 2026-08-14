@@ -14,8 +14,8 @@ keywords: [ghostty, config, catppuccin, theme, monospace, font, transparency, ti
 *v0.2.0*
 
 You did not configure Ghostty. Someone did it for you, before you ever
-opened it, and the last article said the defaults were sane without
-saying what they were.
+opened it, and *Your terminal is Ghostty* said the defaults were sane
+without saying what they were.
 
 ## What is actually set
 
@@ -55,7 +55,6 @@ window it appears in: *Starship*, in *The CLI*, covers changing your
 prompt the same way — by describing the outcome and letting Claude Code
 find the setting.
 
-Ghostty is the window. What lives inside it, holding a session open even
-when the window closes, is next.
+Ghostty is the window.
 
 Press `n`.

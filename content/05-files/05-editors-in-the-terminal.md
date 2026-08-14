@@ -64,8 +64,4 @@ have ever used, and neither is the point of this course — Claude Code
 is the one doing the writing. An editor here is for looking, and
 occasionally nudging, not for living in.
 
-The next section is version control — what git actually is, and why
-every file in this course being plain text is what makes it possible
-at all.
-
 Press `n`.

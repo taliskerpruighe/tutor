@@ -46,7 +46,7 @@ an article down the left, and the wheel scrolls this panel.
 
 Nothing here can break anything. Press keys and find out what they do.
 
-## Keeping track of what you've read
+## Keeping track of what you have read
 
 Nothing here is marked for you. Press `m` on an article once you have
 finished it, and a tick (`✓`) appears next to its number in the list on the
@@ -97,6 +97,6 @@ ticks will still be there.
 - Everything in **Level 2**, across the top, assumes Level 1. Come back
   to it.
 
-Reading is not the only way in, and the next article is the other one.
+Reading is not the only way in.
 
 Press `n`.

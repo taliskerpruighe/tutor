@@ -70,6 +70,6 @@ because nobody is changing it any longer.
 
 That is not the same as it disappearing. It is the reason something else
 has taken its place as the one worth installing new — and that one is not
-tied to zsh at all. *Starship* is next.
+tied to zsh at all.
 
 Press `n`.

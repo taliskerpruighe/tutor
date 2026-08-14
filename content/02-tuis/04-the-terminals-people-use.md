@@ -13,9 +13,9 @@ keywords: [terminal, iterm2, wezterm, alacritty, kitty, ghostty, config, gpu]
 
 *v0.2.0*
 
-The first article in this part named the axes terminals differ on
-without naming a single one, beyond the one Apple ships. Here are the
-others, and where each sits on those axes.
+*What a terminal is* named the axes terminals differ on without naming
+a single one, beyond the one Apple ships. Here are the others, and
+where each sits on those axes.
 
 **iTerm2** is the old guard. It predates most of what follows by a
 decade, and it shows: a huge settings window, split panes, search,

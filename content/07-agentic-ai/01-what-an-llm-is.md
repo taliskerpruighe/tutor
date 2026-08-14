@@ -63,6 +63,4 @@ piece of it, with no hands of its own. Nothing about that changes from
 one to the next. What differs is the choices made while building the
 function, and how good its guesses turn out to be.
 
-That difference is the next article.
-
 Press `n`.

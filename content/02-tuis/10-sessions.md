@@ -82,6 +82,6 @@ on the machine in one command, named and un-, and is worth knowing
 about mainly so it is never typed by accident.
 
 Detaching leaves a session alive, everything inside it untouched.
-Killing it does not — that distinction is the next article.
+Killing it does not.
 
 Press `n`.

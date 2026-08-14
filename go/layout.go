@@ -271,16 +271,40 @@ type sidebarEntry struct {
 	isNew           bool   // article introduced by the version just installed; never set on a heading
 }
 
+// newVersions is the set of release tags this build treats as new. It is
+// hand-edited at each release: drop the oldest, add the one being cut.
+//
+// An equality test against the current version alone was the original rule,
+// and it went wrong the first time a release shipped a second batch — bump
+// the constant and every article tagged with the previous release falls
+// silent, which is the opposite of what an upgrading reader wants. Carrying
+// two versions means she is shown everything added since she last looked,
+// not merely the last thing added.
+//
+// bin/parity.sh greps this literal rather than keeping its own copy; a
+// second hand-maintained list of the same versions would drift silently the
+// release after it was written.
+var newVersions = []string{"v0.2.9", "v0.2.10"}
+
 // isNewArticle applies the "N" rule once, for both call sites in
 // sidebarEntries below that build an article entry: an article is new when
-// it belongs to the release this binary IS (its own `version` field equals
-// "v" + the version constant in main.go), the reader's installed marker
-// differs from that release — an absent marker counts as differing, which is
-// every reader who predates this feature — and it has not been read. Read
-// wins outright by construction: a read article can never also satisfy
-// this, so "N" and "✓" never contend for the same slot.
+// its `version` field is one of newVersions above, the reader's installed
+// marker differs from this release — an absent marker counts as differing,
+// which is every reader who predates this feature — and it has not been
+// read. Read wins outright by construction: a read article can never also
+// satisfy this, so "N" and "✓" never contend for the same slot. A fresh
+// install shows no "N" anywhere, which is what `installed == version` still
+// buys and why that term survived the move to a list.
 func isNewArticle(article Article, read bool, installed string) bool {
-	return !read && article.Version == "v"+version && installed != version
+	if read || installed == version {
+		return false
+	}
+	for _, v := range newVersions {
+		if article.Version == v {
+			return true
+		}
+	}
+	return false
 }
 
 // sidebarEntries lays the left column out. It carries two tiers of heading

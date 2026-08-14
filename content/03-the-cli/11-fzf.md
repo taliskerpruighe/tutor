@@ -82,8 +82,4 @@ Then run `$(brew --prefix)/opt/fzf/install` once, which is the step that
 wires up `Ctrl-R` and `Ctrl-T` — the plain install does not do it for
 you.
 
-That is the shell itself: moving through it, remembering it, searching
-it, filtering it. The next article turns to the line that greets you
-before any of that runs — *Your prompt*, and what it can be made to say.
-
 Press `n`.

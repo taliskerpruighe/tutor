@@ -58,7 +58,6 @@ that actually does the work, sitting under a name you were sold. You
 have been running into it your whole working life without meeting it.
 Now you have.
 
-Being common is not the same as being good, though. The next article
-is what Linux is actually better at, and what it costs.
+Being common is not the same as being good, though.
 
 Press `n`.

@@ -15,7 +15,7 @@ keywords: [linux, performance, security, virus, privacy, tui, claude code]
 
 Better is doing some work in that title. Better at some things, and
 this article says which — and then what it costs — because the real
-case for Linux is not any of these. It is the next article.
+case for Linux is not any of these. It is *You are the system*.
 
 ## Lighter
 

@@ -14,8 +14,8 @@ keywords: [package, open source, install, homebrew, pandoc, tesseract, git, diff
 *v0.2.0*
 
 A **package** is a small, self-contained piece of code that does one
-job and can be dropped into anything that needs that job done. The last
-article's wrapper is built out of them.
+job and can be dropped into anything that needs that job done. The
+wrapper from *Every app is a wrapper* is built out of them.
 
 ## Most packages are free
 
@@ -87,6 +87,5 @@ run it.
 
 It cannot do that from nowhere, though. Something has to find the
 package, fetch it, and keep it working when its dependencies change.
-That something is next.
 
 Press `n`.

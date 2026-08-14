@@ -49,7 +49,4 @@ you have to learn first.
 `Cmd-T` is the one you will lean on. The intended way to work is two tabs:
 this reader in one, Claude Code in the other, switching between them.
 
-You did not choose any of the defaults you are looking at, and the next
-article is what they are.
-
 Press `n`.

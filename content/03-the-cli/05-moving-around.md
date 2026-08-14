@@ -80,7 +80,7 @@ looking at the same folders.
 `Tab` finishes what you are typing. A few letters of a folder name, then
 `Tab`, and it completes — which matters more than it sounds like it
 should, because a folder name mistyped by one letter does not error. `cd`
-into a folder that does not exist simply fails, quietly, and leaves you
+into a folder that does not exist fails, quietly, and leaves you
 standing exactly where you were, easy to miss if nobody else is watching.
 A completed path is a path you know is right.
 
@@ -101,7 +101,6 @@ morning I run `cd ~/Documents/clients/acme-corp`. Give me a shortcut
 called `acme`."* It will write the alias into your shell's config file and
 tell you how to make it live.
 
-`cd` only ever takes you exactly where you type. The next article is a
-command that takes you where you meant.
+`cd` only ever takes you exactly where you type.
 
 Press `n`.

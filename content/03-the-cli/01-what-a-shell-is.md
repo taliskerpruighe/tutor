@@ -61,6 +61,4 @@ That is the whole idea. Things you do by pointing, you can do by typing:
 Neither route is more real than the other. They are two doors into the same
 building, and the shell is the older one.
 
-The next article is about why anybody would choose the older door.
-
 Press `n`.

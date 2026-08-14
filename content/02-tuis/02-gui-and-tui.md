@@ -67,7 +67,4 @@ almost nothing else.
 > agent produce the command. Watching it do that is one of the faster ways
 > to learn the vocabulary.
 
-Four words have been used loosely so far — terminal, console, command line,
-prompt. The next article separates them.
-
 Press `n`.

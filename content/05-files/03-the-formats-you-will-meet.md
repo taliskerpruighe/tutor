@@ -85,8 +85,4 @@ telling you nothing. Skills, later in the course, are built from
 frontmatter of exactly this kind, which is worth remembering before
 you type one.
 
-Reading and writing any of this needs a program to hold it open in.
-That is the next two articles: which kind exists, and which one
-actually suits you.
-
 Press `n`.

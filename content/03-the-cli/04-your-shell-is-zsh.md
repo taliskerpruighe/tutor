@@ -58,12 +58,8 @@ travels to any machine you are ever handed, this Mac included only as
 one example among many.
 
 > You can still swap zsh for something else if you want to. Almost
-> nobody does, and the last article named why: everything written for
-> the internet at large assumes you are running bash or zsh, and you
+> nobody does, and *The shells there are* named why: everything written
+> for the internet at large assumes you are running bash or zsh, and you
 > already are.
-
-That is the shell settled. What you actually do with it — the paths,
-the four commands you will use daily, and how to type far less than you
-think — is next.
 
 Press `n`.

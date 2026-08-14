@@ -211,12 +211,32 @@ func TestIsNewArticleReadWins(t *testing.T) {
 }
 
 // TestIsNewArticleOlderVersionNeverNew is the ordinary case: most of the
-// corpus predates this release, and none of it should ever draw N regardless
-// of what the installed marker says.
+// corpus predates the releases in newVersions, and none of it should ever
+// draw N regardless of what the installed marker says. v0.2.3 is used
+// rather than the current version's predecessor precisely because the rule
+// is now a two-version allowlist — the release before this one still draws
+// N, and the test below asserts that on purpose.
 func TestIsNewArticleOlderVersionNeverNew(t *testing.T) {
-	article := Article{ID: "part/one", Version: "v0.1.0"}
+	article := Article{ID: "part/one", Version: "v0.2.3"}
 	if isNewArticle(article, false, "") {
 		t.Fatal("isNewArticle = true for an article from an older release, want false")
+	}
+}
+
+// TestIsNewArticlePreviousReleaseStillNew is the companion, and the whole
+// point of the allowlist: a reader upgrading across a release boundary is
+// shown everything added since she last looked, not merely the batch this
+// release added. Every version in newVersions must draw N, including the
+// one that is no longer current.
+func TestIsNewArticlePreviousReleaseStillNew(t *testing.T) {
+	for _, v := range newVersions {
+		article := Article{ID: "part/one", Version: v}
+		if !isNewArticle(article, false, "") {
+			t.Fatalf("isNewArticle = false for %s, want true: every version in newVersions draws N", v)
+		}
+	}
+	if len(newVersions) < 2 {
+		t.Fatal("newVersions holds fewer than two releases; the allowlist has degenerated to the equality rule it replaced")
 	}
 }
 

@@ -53,8 +53,6 @@ open one doing noticeably less. That is the whole reason Claude
 arrives as a connection rather than a download: the alternative is not
 on offer.
 
-That is what the model needs to run at all. Next, the much smaller
-appetite of the program that puts it to work — the one actually
-sitting on your Mac.
+That is what the model needs to run at all.
 
 Press `n`.

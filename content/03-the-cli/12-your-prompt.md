@@ -69,7 +69,6 @@ People end up putting things there they want to know without asking:
 None of that needs adding today. It is the direction of travel: a prompt
 starts as a `$` and becomes, slowly, the dashboard.
 
-Yours already does some of it, because someone set it up for you. The next
-article is what that is, and how to change it.
+Yours already does some of it, because someone set it up for you.
 
 Press `n`.

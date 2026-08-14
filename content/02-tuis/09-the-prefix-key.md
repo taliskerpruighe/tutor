@@ -76,6 +76,4 @@ prefix keystroke, which is what the inner session then sees. It is a
 narrow case, and the only way past it without remapping one of the
 two.
 
-Sessions are what the prefix actually operates on.
-
 Press `n`.

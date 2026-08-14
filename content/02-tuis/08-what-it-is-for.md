@@ -14,8 +14,8 @@ keywords: [tmux, session, panes, layout, sharing, laptop, workflow]
 *v0.2.0*
 
 A session that survives its window sounds like a convenience. It is
-closer to insurance, and the last article's idiom earns its keep in
-four ordinary situations rather than one clever one.
+closer to insurance, and the idiom from *What tmux is* earns its keep
+in four ordinary situations rather than one clever one.
 
 ## Insurance for a long job
 
@@ -55,9 +55,5 @@ session for another read as what they are in a list, rather than as
 three identical, anonymous entries you would otherwise have to guess
 between. A dozen anonymous sessions are a dozen guesses; a dozen named
 ones are a dozen labels, and the difference is entirely the naming.
-
-Knowing what tmux is for is not the same as being able to drive it.
-*The prefix key* is next: the one keystroke every tmux command starts
-with, and why it exists at all.
 
 Press `n`.

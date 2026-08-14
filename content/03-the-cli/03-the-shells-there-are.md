@@ -19,7 +19,7 @@ which parts of what you have learned travel and which do not.
 
 This matters more than it sounds like it should. Search a problem online
 and the answer assumes a shell — usually not yours — and a line copied
-from the wrong one can simply fail, with no clue in the error that the
+from the wrong one can fail, with no clue in the error that the
 mismatch was the cause.
 
 ## The family tree
@@ -67,8 +67,5 @@ Then there is **PowerShell**, Microsoft's, for Windows.
 
 > The Boss asks that his considered technical assessment be recorded
 > here in full: *"PowerShell is dogshit."*
-
-One of the shells in this family is the one your Mac actually gave you.
-Which, and why, is next.
 
 Press `n`.

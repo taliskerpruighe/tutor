@@ -79,7 +79,6 @@ neither will match the word sitting in the middle of some other
 sentence.
 
 grep does the job. It is not the fastest way to do it, and a folder of
-real size makes you feel the difference. The next article is the
-replacement almost everyone reaches for now.
+real size makes you feel the difference.
 
 Press `n`.

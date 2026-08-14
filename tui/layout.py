@@ -202,15 +202,24 @@ def _status_bar(app, cols):
     return pad(left + [(" " * max(0, gap), "status")] + right_spans, cols, "status")
 
 
+#: The set of release tags this build treats as new, mirroring
+#: ``newVersions`` in ``go/layout.go``. Hand-edited at each release: drop
+#: the oldest, add the one being cut. Both files carry the same literal and
+#: ``bin/parity.sh`` reads the Go one, so a disagreement between them shows
+#: up as a frame diff rather than as silence.
+NEW_VERSIONS = ("v0.2.9", "v0.2.10")
+
+
 def _is_new(article, is_read, installed):
     """Apply the "N" rule once, for both call sites in ``_sidebar_entries``
-    below that build an article entry: an article is new when it belongs to
-    the release this build IS (its own ``version`` equals ``"v" +
-    VERSION``), the reader's installed marker differs from that release --
-    an absent marker counts as differing, which is every reader who
-    predates this feature -- and it has not been read. Read wins outright
-    by construction: a read article can never also satisfy this, so "N" and
-    "✓" never contend for the same slot.
+    below that build an article entry: an article is new when its
+    ``version`` is one of ``NEW_VERSIONS`` above, the reader's installed
+    marker differs from this release -- an absent marker counts as
+    differing, which is every reader who predates this feature -- and it has
+    not been read. Read wins outright by construction: a read article can
+    never also satisfy this, so "N" and "✓" never contend for the same slot.
+    A fresh install shows no "N" anywhere, which is what ``installed ==
+    VERSION`` still buys and why that term survived the move to a set.
 
     The import is deferred rather than module-level: tutor.py imports
     ``App`` (by way of app.py, which imports this module) at its own module
@@ -218,7 +227,9 @@ def _is_new(article, is_read, installed):
     """
     from . import tutor
 
-    return not is_read and article.get("version") == "v" + tutor.VERSION and installed != tutor.VERSION
+    if is_read or installed == tutor.VERSION:
+        return False
+    return article.get("version") in NEW_VERSIONS
 
 
 def _sidebar_entries(app):

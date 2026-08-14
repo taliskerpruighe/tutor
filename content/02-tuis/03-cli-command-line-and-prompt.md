@@ -65,7 +65,6 @@ is for reading unfamiliar sentences, not for writing your own more
 carefully.
 
 All four words describe one window, and there is more than one program
-willing to draw it. Which ones, and what actually separates them, is the
-next article.
+willing to draw it.
 
 Press `n`.

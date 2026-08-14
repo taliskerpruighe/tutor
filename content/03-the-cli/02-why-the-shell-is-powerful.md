@@ -85,7 +85,6 @@ impressive thing you will see done in a terminal is that trick, repeated.
 > of what is possible — *"could I rename all of these at once?"* — because
 > the answer is nearly always yes, and Claude Code can write the line.
 
-All of that ran in one particular shell. The next article is the rest of
-the family, and how much of what you have just seen travels between them.
+All of that ran in one particular shell.
 
 Press `n`.

@@ -55,15 +55,13 @@ writing the instructions is standing on — the same way an instruction
 written for a Linux machine assumes `apt` or `dnf` is already there.
 
 Once it is installed, most of what this course has already shown you —
-`pandoc`, `ripgrep`, `tesseract`, the whole replacements table from two
-articles back — is one line away:
+`pandoc`, `ripgrep`, `tesseract`, the whole replacements table from
+*Packages* — is one line away:
 
 ```
 brew install ripgrep
 ```
 
-That line installs a command. The next article is about a different
-shape of thing Homebrew also hands you — a whole app, with a window,
-installed the same way.
+That line installs a command.
 
 Press `n`.

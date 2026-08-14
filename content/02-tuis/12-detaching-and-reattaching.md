@@ -78,6 +78,6 @@ described. Add `-d` to the command and the earlier window is
 detached automatically, leaving exactly one.
 
 The session survives the window. It does not survive editing it by
-hand while blind — the config file is next, and what belongs in it.
+hand while blind.
 
 Press `n`.

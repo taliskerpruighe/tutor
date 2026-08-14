@@ -10,48 +10,47 @@ keywords: [version, roadmap, agents, skills, subagents, workflows, hooks, plugin
 
 # This version
 
-*v0.2.9*
+*v0.2.10*
 
-This is version 0.2.9, and it still covers the whole path from opening
-a terminal for the first time to running an agent that works
+This is version 0.2.10, and it still covers the whole path from
+opening a terminal for the first time to running an agent that works
 unattended, with nobody watching it. The path has not changed. The
 ground it covers along the way has grown considerably, and this
 article is about where.
 
-The course now runs to 152 articles across eighteen parts, up from
-122.
+The course now runs to 165 articles, up from 152.
 
-## What's new
+## What is new
 
-**TMUX** is now a full nine-article section: the prefix key,
-sessions, windows and panes, detaching and reattaching, the config
-file, copy mode, the status bar. **The CLI** gained six articles on
-the Zsh tools worth actually knowing — `zoxide`, exporting permanent
-variables, globbing, `grep`, `ripgrep`, `fzf` — and split its old
-prompt-theme article in two, *Powerline themes* standing apart from
-*Starship* rather than sharing a page with it.
+**Other Models** is a whole new part, twelve articles, covering how to
+point Claude Code at a model that is not Claude and what you give up
+by doing it. Two worked examples sit at opposite ends of the range:
+Ollama, running on your own machine, and Kimi, a paid cloud endpoint
+reached over the internet. Ollama is met earlier than that, in
+**Agentic AI**'s LLMs section, where a new article — *Running one
+yourself* — is the first word on running a model locally rather than
+renting one.
 
-**Agents** picked up two whole new sections. *Plans and Permissions*
-covers the permission modes sitting at the bottom of every interactive
-session and what plan mode is for; *Prompts* covers writing one that
-actually works. Two standalone articles joined them: `ccstatusline`,
-the status line the Boss uses rather than writing one by hand, and
-*Output styles*.
+Level 2 was reordered around the addition. The **Claude** part now
+opens with the harness itself — Claude Code met before its
+alternatives, the alternatives before the models it can run — and
+**Claude Code Setup**, which used to be a section inside that part, is
+promoted to a part of its own, sitting after Other Models.
 
-**Version control** left Level 1's Files part and became a part of
-its own, in Level 2. The four articles that lived there — *What git
-is*, *How git works*, *Jujutsu*, *GitHub* — moved with it, joined by
-three new ones: *Git and the harness*, *Worktrees* and *Forking*.
-**Hooks** replaced its single *Worked examples* article with six, one
-per trigger family, rather than asking one page to stand in for all
-of them.
+Read marks are kept against an article's own identity rather than its
+place in the course, so all of that renumbering moved nothing you had
+already ticked.
 
-None of that is a reading assignment. A green `N` sits in the margin
-beside exactly the articles this version added, in the same slot the
-read tick occupies, and it clears the moment you read the article or
-the moment the next version ships, whichever comes first.
+None of it is a reading assignment. A green `N` sits beside
+an article in the same slot the read tick occupies, and it now marks
+two versions' worth of new material rather than one: upgrading to
+0.2.10 shows you everything added in 0.2.9 and 0.2.10 both, not only
+the newest batch, so nothing you missed by skipping a release goes
+unmarked. It clears the moment you read the article. A fresh install
+still shows no `N` anywhere — there is nothing new to a reader who has
+never seen an earlier version.
 
-## What's next
+## What is next
 
 Three further levels are sketched, not built. **Level 3** is
 automation and integration — plugging Claude Code into databases,
@@ -65,8 +64,5 @@ is putting all of it to work in business applications.
 None of that has a date attached, and nothing here is a promise about
 one. It is the shape of where this course is going, not a schedule for
 getting there.
-
-The next article is *About this wiki* — what this course is, who
-writes it, and how it differs from Anthropic's own documentation.
 
 Press `n`.

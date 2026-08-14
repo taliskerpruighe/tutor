@@ -61,8 +61,6 @@ Claude Code can run inside an IDE exactly like this, in a panel
 beside your files. That earns its place for someone jumping
 constantly between an answer and the file it belongs to — a
 developer's day, not yours. The rest of this course happens in a
-terminal of its own instead, and the next article is about what runs
-in that terminal when the file you are looking at needs a nudge by
-hand.
+terminal of its own instead.
 
 Press `n`.

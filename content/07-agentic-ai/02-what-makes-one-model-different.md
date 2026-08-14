@@ -63,7 +63,6 @@ and one tuned on legal drafting will hand back different sentences to
 the identical question, without either one being wrong.
 
 Put those three together — size, architecture, and what a model was
-tuned for — and you can place any model you are handed. Here is the
-actual list of them.
+tuned for — and you can place any model you are handed.
 
 Press `n`.

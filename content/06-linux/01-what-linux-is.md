@@ -60,7 +60,7 @@ proof belongs to nobody once it is out.
 > is a certified Unix descendant, and Linux is an independent rebuild of
 > the same design, done in the open. Related, not identical.
 
-That is what Linux is. Where it actually runs — which is very nearly
-everywhere except the desk you are sitting at — is the next article.
+That is what Linux is. Where it actually runs is very nearly
+everywhere except the desk you are sitting at.
 
 Press `n`.

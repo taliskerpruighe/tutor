@@ -62,7 +62,6 @@ it.
 > three different ways.
 
 That is the door this part opens. If the capability is not the scarce
-part, it can be reached directly — and the next article is what that
-looks like from the other side of the wrapper.
+part, it can be reached directly.
 
 Press `n`.

@@ -5,17 +5,45 @@ level: Level 1
 part: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
-keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9]
+keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9, 0.2.10]
 ---
 
 # Changelog
 
-*v0.2.9*
+*v0.2.10*
 
 This page exists for exactly one reader: someone who has already been
 through this course once, came back after an update, and does not want
 to reread all of it to find out what is new. Skip it the first time
 through.
+
+## 0.2.10 — other models, and a longer memory for the marker
+
+*This version* covers the shape of the course as it now stands. This
+page covers only the difference between that and what was here
+before.
+
+New material, not present before:
+
+- **Other Models** is a whole new part, twelve articles, on pointing
+  Claude Code at a model that is not Claude and what you give up by
+  doing it, with two worked examples at opposite ends of the range —
+  Ollama on your own machine, and Kimi, a paid cloud endpoint reached
+  over the internet.
+- **Agentic AI** gained a new article, *Running one yourself*, in its
+  LLMs section — the first mention of Ollama, ahead of the fuller
+  treatment it gets in Other Models.
+- **Level 2** was reordered: the Claude part now leads with the
+  harness itself — Claude Code, then the alternatives, then the
+  models — and **Claude Code Setup**, previously a section inside
+  that part, is promoted to a part of its own, after Other Models.
+- Read marks are kept against an article's own identity, not its
+  place in the course, so the renumbering cost nobody a tick.
+
+The green `N` changed alongside it. It used to mark only the newest
+version's articles; from this version it marks two versions' worth,
+so upgrading to 0.2.10 shows everything added in 0.2.9 and 0.2.10
+both, not only the latest batch. A fresh install still shows none.
 
 ## 0.2.9 — the parts that grew
 
@@ -54,9 +82,9 @@ you the next time you type `tutor`.
 
 ## 0.2.1 — instructions, and the new marker
 
-*This version* still covers the shape of the course as it stood —
-what the sixteen parts are and what each is for. This page covers
-only the difference between that and what was here before.
+*This version* still covers the shape of the course as it stands —
+what the parts are and what each is for. This page covers only the
+difference between that and what was here before.
 
 New material, not present before:
 
@@ -126,7 +154,6 @@ Later versions add their own entry above this one, oldest at the
 bottom, so the whole history stays in one place rather than scattered
 across release notes nobody kept.
 
-That is what the course is and how it got here. The next article is how
-to drive the thing you are reading it in.
+That is what the course is and how it got here.
 
 Press `n`.

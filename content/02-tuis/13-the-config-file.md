@@ -14,9 +14,9 @@ keywords: [tmux, tmux.conf, config, set -g, bind, reload, source-file, mouse]
 *v0.2.9*
 
 tmux reads one file at startup, `~/.tmux.conf`, and every persistent
-change to how it behaves — the prefix remap from earlier in this
-section included — lives there rather than being retyped by hand
-each time a session starts.
+change to how it behaves — the prefix remap from *The prefix key*
+included — lives there rather than being retyped by hand each time a
+session starts.
 
 A line in it is one of two shapes: `set` for an option, `bind` for a
 keystroke. Both take effect only for sessions started after the
@@ -73,8 +73,5 @@ bind r source-file ~/.tmux.conf
 
 after which prefix then `r` reloads the file in one step, rather
 than typing the command out each time it changes.
-
-Reading text already on the screen is one thing. Reaching back past
-the edge of it is *Copy mode*, next.
 
 Press `n`.

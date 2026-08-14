@@ -69,8 +69,4 @@ the finished files, or it may hand you the few lines of code that did
 it and offer to run them again next month. Either answer is the same
 job, done in a language.
 
-The next article is about the files these languages produce, and why
-one kind of file is worth more to you than every other kind put
-together.
-
 Press `n`.

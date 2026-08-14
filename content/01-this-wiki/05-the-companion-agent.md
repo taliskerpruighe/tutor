@@ -65,8 +65,4 @@ does not move your place in the first, and pressing `n` in the first
 does not tell the second what you just read. You are the only thing
 connecting them.
 
-The next article is what you actually do with either tab — not reading,
-not asking, but working through something with your hands on the
-keyboard.
-
 Press `n`.

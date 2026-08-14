@@ -10,7 +10,7 @@
           "title": "This version",
           "section": "",
           "summary": "What this version of the course covers, what it leaves out on purpose, and what a later one adds",
-          "version": "v0.2.9",
+          "version": "v0.2.10",
           "keywords": [
             "version",
             "roadmap",
@@ -53,7 +53,7 @@
           "title": "Changelog",
           "section": "",
           "summary": "What changed in each version before this one, kept so a returning reader can find the delta",
-          "version": "v0.2.9",
+          "version": "v0.2.10",
           "keywords": [
             "changelog",
             "version",
@@ -63,7 +63,8 @@
             "0.2.0",
             "0.2.1",
             "0.2.2",
-            "0.2.9"
+            "0.2.9",
+            "0.2.10"
           ],
           "path": "content/01-this-wiki/03-changelog.md"
         },
@@ -1016,6 +1017,26 @@
           "path": "content/07-agentic-ai/04-what-a-model-consumes.md"
         },
         {
+          "id": "ai/running-one-yourself",
+          "title": "Running one yourself",
+          "section": "LLMs",
+          "summary": "A program that runs models on your own machine, and the trick that gets past the card it does not have",
+          "version": "v0.2.10",
+          "keywords": [
+            "ollama",
+            "daemon",
+            "local model",
+            "cloud model",
+            "api",
+            "localhost",
+            "background service",
+            "vram",
+            "pull",
+            "run"
+          ],
+          "path": "content/07-agentic-ai/05-running-one-yourself.md"
+        },
+        {
           "id": "ai/what-a-harness-is",
           "title": "What a harness is",
           "section": "Harnesses",
@@ -1031,7 +1052,7 @@
             "agent",
             "claude code"
           ],
-          "path": "content/07-agentic-ai/05-what-a-harness-is.md"
+          "path": "content/07-agentic-ai/06-what-a-harness-is.md"
         },
         {
           "id": "ai/the-harnesses-there-are",
@@ -1051,7 +1072,7 @@
             "gui",
             "online"
           ],
-          "path": "content/07-agentic-ai/06-the-harnesses-there-are.md"
+          "path": "content/07-agentic-ai/07-the-harnesses-there-are.md"
         },
         {
           "id": "ai/what-a-harness-consumes",
@@ -1069,7 +1090,7 @@
             "parallel",
             "machine"
           ],
-          "path": "content/07-agentic-ai/07-what-a-harness-consumes.md"
+          "path": "content/07-agentic-ai/08-what-a-harness-consumes.md"
         },
         {
           "id": "ai/renting-a-computer",
@@ -1090,7 +1111,7 @@
             "data centre",
             "server"
           ],
-          "path": "content/07-agentic-ai/08-renting-a-computer.md"
+          "path": "content/07-agentic-ai/09-renting-a-computer.md"
         },
         {
           "id": "ai/what-you-do-with-a-box",
@@ -1109,7 +1130,7 @@
             "download",
             "headless"
           ],
-          "path": "content/07-agentic-ai/09-what-you-do-with-a-box.md"
+          "path": "content/07-agentic-ai/10-what-you-do-with-a-box.md"
         }
       ]
     },
@@ -1119,29 +1140,27 @@
       "level": "Level 2",
       "articles": [
         {
-          "id": "claude/the-models",
-          "title": "The models",
-          "section": "Claude",
-          "summary": "Four Claude models exist, and choosing between them is a trade-off between speed and depth, not a favourite",
+          "id": "claude-code/why-claude-code",
+          "title": "Why Claude Code",
+          "section": "The Claude Code Harness",
+          "summary": "The model lives in a data centre and the harness lives on your Mac, and that split is what this article is really about",
           "version": "v0.2.0",
           "keywords": [
-            "claude",
+            "claude code",
+            "harness",
             "model",
-            "haiku",
-            "sonnet",
-            "opus",
-            "fable",
-            "speed",
-            "cost",
-            "parameter",
-            "size"
+            "terminal",
+            "local",
+            "permission",
+            "taught",
+            "data centre"
           ],
-          "path": "content/08-claude/01-the-models.md"
+          "path": "content/08-claude/01-why-claude-code.md"
         },
         {
           "id": "claude/the-harnesses",
           "title": "The harnesses",
-          "section": "Claude",
+          "section": "The Claude Code Harness",
           "summary": "Three ways to reach Claude — a website, a sandboxed website, and a terminal program on your own machine",
           "version": "v0.2.0",
           "keywords": [
@@ -1157,9 +1176,47 @@
           "path": "content/08-claude/02-the-harnesses.md"
         },
         {
+          "id": "claude-code/what-it-can-do",
+          "title": "What it can do that the others cannot",
+          "section": "The Claude Code Harness",
+          "summary": "Standing inside your own machine is not only safer, it is more capable — real software and real hardware, not a fixed slice of someone else's",
+          "version": "v0.2.0",
+          "keywords": [
+            "claude code",
+            "claude cowork",
+            "package",
+            "homebrew",
+            "hardware",
+            "cores",
+            "sandbox",
+            "m1"
+          ],
+          "path": "content/08-claude/03-what-it-can-do.md"
+        },
+        {
+          "id": "claude/the-models",
+          "title": "The Claude models",
+          "section": "Claude Models",
+          "summary": "Four Claude models exist, and choosing between them is a trade-off between speed and depth, not a favourite",
+          "version": "v0.2.0",
+          "keywords": [
+            "claude",
+            "model",
+            "haiku",
+            "sonnet",
+            "opus",
+            "fable",
+            "speed",
+            "cost",
+            "parameter",
+            "size"
+          ],
+          "path": "content/08-claude/04-the-models.md"
+        },
+        {
           "id": "claude/the-plans",
           "title": "The plans",
-          "section": "Claude subscriptions",
+          "section": "Claude Models",
           "summary": "Four tiers, and the saving from one to the next is a multiple, not a step",
           "version": "v0.2.0",
           "keywords": [
@@ -1173,48 +1230,261 @@
             "cost",
             "tier"
           ],
-          "path": "content/08-claude/03-the-plans.md"
+          "path": "content/08-claude/05-the-plans.md"
+        }
+      ]
+    },
+    {
+      "slug": "09-other-models",
+      "title": "Other Models",
+      "level": "Level 2",
+      "articles": [
+        {
+          "id": "other-models/pointing-elsewhere",
+          "title": "Pointing the harness elsewhere",
+          "section": "Running Other Models",
+          "summary": "The harness and the model are separate, and the address between them is a setting you can change",
+          "version": "v0.2.10",
+          "keywords": [
+            "base url",
+            "auth token",
+            "redirect",
+            "endpoint",
+            "provider",
+            "credential",
+            "api"
+          ],
+          "path": "content/09-other-models/01-pointing-the-harness-elsewhere.md"
         },
         {
-          "id": "claude-code/why-claude-code",
-          "title": "Why Claude Code",
-          "section": "Claude Code",
-          "summary": "The model lives in a data centre and the harness lives on your Mac, and that split is what this article is really about",
-          "version": "v0.2.0",
+          "id": "other-models/what-you-give-up",
+          "title": "What you give up",
+          "section": "Running Other Models",
+          "summary": "Eight things a non-Claude endpoint cannot do, and everything else it still does",
+          "version": "v0.2.10",
           "keywords": [
-            "claude code",
-            "harness",
+            "tool_choice",
+            "prompt caching",
+            "token count",
+            "pdf",
+            "thinking budget",
+            "citations",
+            "batches",
+            "vision",
+            "compatibility"
+          ],
+          "path": "content/09-other-models/02-what-you-give-up.md"
+        },
+        {
+          "id": "other-models/signing-in",
+          "title": "Signing in",
+          "section": "Ollama",
+          "summary": "A local model asks nothing of you; a cloud one wants an account, and the account lives with the daemon, not with Claude Code",
+          "version": "v0.2.10",
+          "keywords": [
+            "ollama",
+            "signin",
+            "cloud",
+            "account",
+            "token",
+            "api key",
+            "cloud suffix",
+            "ollama.com",
+            "authentication"
+          ],
+          "path": "content/09-other-models/03-signing-in.md"
+        },
+        {
+          "id": "other-models/running-it",
+          "title": "Running it",
+          "section": "Ollama",
+          "summary": "Three environment variables and a model name, then the one command that sets all three for you",
+          "version": "v0.2.10",
+          "keywords": [
+            "ollama launch claude",
+            "ANTHROPIC_BASE_URL",
+            "ANTHROPIC_AUTH_TOKEN",
+            "ANTHROPIC_API_KEY",
             "model",
-            "terminal",
-            "local",
-            "permission",
-            "taught",
-            "data centre"
+            "cloud",
+            "config",
+            "yes",
+            "passthrough"
           ],
-          "path": "content/08-claude/04-why-claude-code.md"
+          "path": "content/09-other-models/04-running-it.md"
         },
         {
-          "id": "claude-code/what-it-can-do",
-          "title": "What it can do that the others cannot",
-          "section": "Claude Code",
-          "summary": "Standing inside your own machine is not only safer, it is more capable — real software and real hardware, not a fixed slice of someone else's",
-          "version": "v0.2.0",
+          "id": "other-models/choosing-a-model",
+          "title": "Choosing a model",
+          "section": "Ollama",
+          "summary": "Tool calling first, memory second, and today's best names are examples rather than a list worth memorising",
+          "version": "v0.2.10",
           "keywords": [
-            "claude code",
-            "claude cowork",
-            "package",
-            "homebrew",
-            "hardware",
-            "cores",
-            "sandbox",
-            "m1"
+            "tool calling",
+            "model choice",
+            "ollama",
+            "qwen3-coder",
+            "gpt-oss",
+            "glm-4.7",
+            "minimax-m2.1",
+            "vram",
+            "cloud model",
+            "alias"
           ],
-          "path": "content/08-claude/05-what-it-can-do.md"
+          "path": "content/09-other-models/05-choosing-a-model.md"
         },
+        {
+          "id": "other-models/context-length",
+          "title": "Context length",
+          "section": "Ollama",
+          "summary": "Ollama's default context window is a fraction of Claude's, and it runs out before the first prompt arrives",
+          "version": "v0.2.10",
+          "keywords": [
+            "context length",
+            "context window",
+            "ollama",
+            "OLLAMA_CONTEXT_LENGTH",
+            "ollama ps",
+            "vram",
+            "gpu",
+            "cpu",
+            "tokens",
+            "cloud"
+          ],
+          "path": "content/09-other-models/06-context-length.md"
+        },
+        {
+          "id": "other-models/when-ollama-breaks",
+          "title": "When Ollama breaks",
+          "section": "Ollama",
+          "summary": "Seven ways the redirect looks broken when it is not, in the order you will actually meet them",
+          "version": "v0.2.10",
+          "keywords": [
+            "ollama",
+            "troubleshooting",
+            "tool calling",
+            "context length",
+            "connection refused",
+            "ollama signin",
+            "web search",
+            "base url",
+            "model swap"
+          ],
+          "path": "content/09-other-models/07-when-ollama-breaks.md"
+        },
+        {
+          "id": "other-models/kimi-endpoint",
+          "title": "Kimi as an endpoint",
+          "section": "Kimi",
+          "summary": "The second worked example is the opposite shape to Ollama — a paid cloud service reached at one address, with nothing running on your machine",
+          "version": "v0.2.10",
+          "keywords": [
+            "kimi",
+            "moonshot",
+            "endpoint",
+            "base url",
+            "anthropic api",
+            "chat completions",
+            "coding",
+            "cloud",
+            "protocol"
+          ],
+          "path": "content/09-other-models/08-kimi-as-an-endpoint.md"
+        },
+        {
+          "id": "other-models/keys-and-membership",
+          "title": "Keys and membership",
+          "section": "Kimi",
+          "summary": "A Kimi key does not exist without a paid membership behind it, and the same tier decides what the key may be asked for",
+          "version": "v0.2.10",
+          "keywords": [
+            "kimi",
+            "api key",
+            "membership",
+            "subscription",
+            "console",
+            "secret",
+            "tier",
+            "context window",
+            "overflow",
+            "extra usage"
+          ],
+          "path": "content/09-other-models/09-keys-and-membership.md"
+        },
+        {
+          "id": "other-models/pointing-at-kimi",
+          "title": "Pointing Claude Code at Kimi",
+          "section": "Kimi",
+          "summary": "The same two variables Ollama used, then a model named five times over and a context ceiling matched by hand",
+          "version": "v0.2.10",
+          "keywords": [
+            "anthropic_model",
+            "anthropic_base_url",
+            "anthropic_api_key",
+            "subagent",
+            "k3",
+            "k3-256k",
+            "kimi-for-coding",
+            "context window",
+            "environment variables",
+            "model slot"
+          ],
+          "path": "content/09-other-models/10-pointing-claude-code-at-kimi.md"
+        },
+        {
+          "id": "other-models/thinking-and-effort",
+          "title": "Thinking and effort",
+          "section": "Kimi",
+          "summary": "Five Claude Code effort levels collapse to three on Kimi's side, and one more setting is not a level at all — it is a different, cheaper model",
+          "version": "v0.2.10",
+          "keywords": [
+            "effort",
+            "thinking",
+            "kimi",
+            "k3",
+            "k2.6",
+            "k2.7 code",
+            "reasoning",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "path": "content/09-other-models/11-thinking-and-effort.md"
+        },
+        {
+          "id": "other-models/when-kimi-breaks",
+          "title": "When Kimi breaks",
+          "section": "Kimi",
+          "summary": "Five ways the redirect looks broken when it worked, or looks fine when it has quietly fallen back",
+          "version": "v0.2.10",
+          "keywords": [
+            "kimi",
+            "status",
+            "base url",
+            "v1",
+            "k3",
+            "k3[1m]",
+            "context window",
+            "thinking",
+            "k2.6",
+            "model id",
+            "plan tier"
+          ],
+          "path": "content/09-other-models/12-when-kimi-breaks.md"
+        }
+      ]
+    },
+    {
+      "slug": "10-claude-code-setup",
+      "title": "Claude Code Setup",
+      "level": "Level 2",
+      "articles": [
         {
           "id": "claude-code/installing",
           "title": "Installing",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "It is already on your Mac — how to check, how to sign in, and how to put it on the next machine.",
           "version": "v0.1.0",
           "keywords": [
@@ -1227,12 +1497,12 @@
             "account",
             "doctor"
           ],
-          "path": "content/08-claude/06-installing.md"
+          "path": "content/10-claude-code-setup/01-installing.md"
         },
         {
           "id": "claude-code/launching",
           "title": "Launching Claude Code",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "Type claude and press enter — and understand the one thing that changes what happens next.",
           "version": "v0.1.0",
           "keywords": [
@@ -1245,12 +1515,12 @@
             "cwd",
             "session"
           ],
-          "path": "content/08-claude/07-launching-claude-code.md"
+          "path": "content/10-claude-code-setup/02-launching-claude-code.md"
         },
         {
           "id": "claude-code/claude-directory",
           "title": "The .claude directory",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "The harness lives in an ordinary hidden folder called .claude, not on a server.",
           "version": "v0.1.0",
           "keywords": [
@@ -1261,12 +1531,12 @@
             "user-level",
             "config"
           ],
-          "path": "content/08-claude/08-the-claude-directory.md"
+          "path": "content/10-claude-code-setup/03-the-claude-directory.md"
         },
         {
           "id": "claude-code/inside-claude",
           "title": "Inside .claude",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "A tour of what lives inside .claude — more than you need today, so the names are not strange later.",
           "version": "v0.1.0",
           "keywords": [
@@ -1278,12 +1548,12 @@
             "hooks",
             "plugins"
           ],
-          "path": "content/08-claude/09-inside-claude.md"
+          "path": "content/10-claude-code-setup/04-inside-claude.md"
         },
         {
           "id": "claude-code/more-directories",
           "title": "More .claude directories",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "You can have as many as you like, one per folder, and each one makes that folder a project.",
           "version": "v0.1.0",
           "keywords": [
@@ -1294,12 +1564,12 @@
             "multiple",
             "per-folder"
           ],
-          "path": "content/08-claude/10-more-claude-directories.md"
+          "path": "content/10-claude-code-setup/05-more-claude-directories.md"
         },
         {
           "id": "claude-code/what-a-session-sees",
           "title": "What a session sees",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "Claude walks up from the folder you launched in, collecting every .claude on the way.",
           "version": "v0.1.0",
           "keywords": [
@@ -1311,12 +1581,12 @@
             "discovery",
             "context"
           ],
-          "path": "content/08-claude/11-what-a-session-sees.md"
+          "path": "content/10-claude-code-setup/06-what-a-session-sees.md"
         },
         {
           "id": "claude-code/location-matters",
           "title": "Location matters",
-          "section": "Claude Code setup",
+          "section": "",
           "summary": "More is worse — so split what you build across folders and launch from the right one.",
           "version": "v0.1.0",
           "keywords": [
@@ -1328,12 +1598,12 @@
             "layout",
             "party trick"
           ],
-          "path": "content/08-claude/12-location-matters.md"
+          "path": "content/10-claude-code-setup/07-location-matters.md"
         }
       ]
     },
     {
-      "slug": "09-instructions",
+      "slug": "11-instructions",
       "title": "Instructions",
       "level": "Level 2",
       "articles": [
@@ -1355,7 +1625,7 @@
             "disclosure",
             "mid-session"
           ],
-          "path": "content/09-instructions/01-the-claude-md-file.md"
+          "path": "content/11-instructions/01-the-claude-md-file.md"
         },
         {
           "id": "instructions/claude-md-tips",
@@ -1375,7 +1645,7 @@
             "summary",
             "rule"
           ],
-          "path": "content/09-instructions/02-claude-md-tips.md"
+          "path": "content/11-instructions/02-claude-md-tips.md"
         },
         {
           "id": "instructions/rules",
@@ -1395,7 +1665,7 @@
             "condition",
             "chronology"
           ],
-          "path": "content/09-instructions/03-rules.md"
+          "path": "content/11-instructions/03-rules.md"
         },
         {
           "id": "instructions/rules-tips",
@@ -1415,12 +1685,12 @@
             "claude.md",
             "import"
           ],
-          "path": "content/09-instructions/04-rules-tips.md"
+          "path": "content/11-instructions/04-rules-tips.md"
         }
       ]
     },
     {
-      "slug": "10-agents",
+      "slug": "12-agents",
       "title": "Agents",
       "level": "Level 2",
       "articles": [
@@ -1439,7 +1709,7 @@
             "parallel",
             "terminal"
           ],
-          "path": "content/10-agents/01-what-an-agent-is.md"
+          "path": "content/12-agents/01-what-an-agent-is.md"
         },
         {
           "id": "agents/context",
@@ -1459,7 +1729,7 @@
             "fable",
             "size"
           ],
-          "path": "content/10-agents/02-context.md"
+          "path": "content/12-agents/02-context.md"
         },
         {
           "id": "agents/context-rot",
@@ -1476,7 +1746,7 @@
             "fifty percent",
             "the boss"
           ],
-          "path": "content/10-agents/03-context-rot.md"
+          "path": "content/12-agents/03-context-rot.md"
         },
         {
           "id": "agents/managing",
@@ -1494,7 +1764,7 @@
             "context management",
             "slash command"
           ],
-          "path": "content/10-agents/04-managing-context.md"
+          "path": "content/12-agents/04-managing-context.md"
         },
         {
           "id": "agents/ccstatusline",
@@ -1513,7 +1783,7 @@
             "session state",
             "configuration"
           ],
-          "path": "content/10-agents/05-ccstatusline.md"
+          "path": "content/12-agents/05-ccstatusline.md"
         },
         {
           "id": "perms/changing-modes",
@@ -1529,7 +1799,7 @@
             "ccstatusline",
             "session state"
           ],
-          "path": "content/10-agents/06-changing-permission-modes.md"
+          "path": "content/12-agents/06-changing-permission-modes.md"
         },
         {
           "id": "perms/modes-there-are",
@@ -1547,7 +1817,7 @@
             "dial",
             "risk"
           ],
-          "path": "content/10-agents/07-the-permission-modes-there-are.md"
+          "path": "content/12-agents/07-the-permission-modes-there-are.md"
         },
         {
           "id": "perms/auto-mode",
@@ -1564,7 +1834,7 @@
             "version control",
             "boss"
           ],
-          "path": "content/10-agents/08-the-boss-recommends-auto-mode.md"
+          "path": "content/12-agents/08-the-boss-recommends-auto-mode.md"
         },
         {
           "id": "perms/plan-mode",
@@ -1581,7 +1851,7 @@
             "dependencies",
             "boss"
           ],
-          "path": "content/10-agents/09-the-boss-recommends-plan-mode.md"
+          "path": "content/12-agents/09-the-boss-recommends-plan-mode.md"
         },
         {
           "id": "prompt/dos-and-donts",
@@ -1600,7 +1870,7 @@
             "skill",
             "the boss"
           ],
-          "path": "content/10-agents/10-prompt-dos-and-donts.md"
+          "path": "content/12-agents/10-prompt-dos-and-donts.md"
         },
         {
           "id": "prompt/engineering",
@@ -1617,7 +1887,7 @@
             "order",
             "chronological"
           ],
-          "path": "content/10-agents/11-prompt-engineering.md"
+          "path": "content/12-agents/11-prompt-engineering.md"
         },
         {
           "id": "prompt/long-prompts",
@@ -1634,7 +1904,7 @@
             "structure",
             "chat box"
           ],
-          "path": "content/10-agents/12-long-prompts.md"
+          "path": "content/12-agents/12-long-prompts.md"
         },
         {
           "id": "prompt/shorthands-and-key-words",
@@ -1652,7 +1922,7 @@
             "dollar sign",
             "matter folder"
           ],
-          "path": "content/10-agents/13-shorthands-and-key-words.md"
+          "path": "content/12-agents/13-shorthands-and-key-words.md"
         },
         {
           "id": "prompt/the-advisor-tool",
@@ -1670,7 +1940,7 @@
             "dual edged",
             "the boss"
           ],
-          "path": "content/10-agents/14-the-advisor-tool.md"
+          "path": "content/12-agents/14-the-advisor-tool.md"
         },
         {
           "id": "agents/default",
@@ -1687,7 +1957,7 @@
             "plain",
             "launch"
           ],
-          "path": "content/10-agents/15-the-default-agent.md"
+          "path": "content/12-agents/15-the-default-agent.md"
         },
         {
           "id": "agents/custom",
@@ -1704,7 +1974,7 @@
             "project",
             "launch"
           ],
-          "path": "content/10-agents/16-custom-agents.md"
+          "path": "content/12-agents/16-custom-agents.md"
         },
         {
           "id": "agents/definition",
@@ -1722,7 +1992,7 @@
             "markdown",
             "the boss"
           ],
-          "path": "content/10-agents/17-the-definition-file.md"
+          "path": "content/12-agents/17-the-definition-file.md"
         },
         {
           "id": "agents/fields",
@@ -1741,7 +2011,7 @@
             "agent engineering",
             "subagent"
           ],
-          "path": "content/10-agents/18-the-fields-that-matter.md"
+          "path": "content/12-agents/18-the-fields-that-matter.md"
         },
         {
           "id": "agents/output-styles",
@@ -1760,7 +2030,7 @@
             "subagent",
             "definition file"
           ],
-          "path": "content/10-agents/19-output-styles.md"
+          "path": "content/12-agents/19-output-styles.md"
         },
         {
           "id": "agents/building",
@@ -1778,12 +2048,12 @@
             "model choice",
             "tutor"
           ],
-          "path": "content/10-agents/20-building-one.md"
+          "path": "content/12-agents/20-building-one.md"
         }
       ]
     },
     {
-      "slug": "11-skills",
+      "slug": "13-skills",
       "title": "Skills",
       "level": "Level 2",
       "articles": [
@@ -1804,7 +2074,7 @@
             "correcting",
             "proofread"
           ],
-          "path": "content/11-skills/01-start-with-never.md"
+          "path": "content/13-skills/01-start-with-never.md"
         },
         {
           "id": "skills/what-a-skill-is",
@@ -1822,7 +2092,7 @@
             "project",
             "prompt"
           ],
-          "path": "content/11-skills/02-what-a-skill-is.md"
+          "path": "content/13-skills/02-what-a-skill-is.md"
         },
         {
           "id": "skills/frontmatter",
@@ -1840,7 +2110,7 @@
             "settings",
             "ignored silently"
           ],
-          "path": "content/11-skills/03-the-frontmatter.md"
+          "path": "content/13-skills/03-the-frontmatter.md"
         },
         {
           "id": "skills/body",
@@ -1858,7 +2128,7 @@
             "length",
             "order"
           ],
-          "path": "content/11-skills/04-the-body.md"
+          "path": "content/13-skills/04-the-body.md"
         },
         {
           "id": "skills/supporting-files",
@@ -1876,7 +2146,7 @@
             "folders",
             "pointer"
           ],
-          "path": "content/11-skills/05-supporting-files.md"
+          "path": "content/13-skills/05-supporting-files.md"
         },
         {
           "id": "skills/how-to-build-one",
@@ -1894,7 +2164,7 @@
             "examples",
             "leading by example"
           ],
-          "path": "content/11-skills/06-how-to-build-one.md"
+          "path": "content/13-skills/06-how-to-build-one.md"
         },
         {
           "id": "skills/start-with-examples",
@@ -1912,7 +2182,7 @@
             "precedent",
             "assets"
           ],
-          "path": "content/11-skills/07-start-with-examples.md"
+          "path": "content/13-skills/07-start-with-examples.md"
         },
         {
           "id": "skills/iterate",
@@ -1930,7 +2200,7 @@
             "variation",
             "machine learning"
           ],
-          "path": "content/11-skills/08-iterate-with-corrections.md"
+          "path": "content/13-skills/08-iterate-with-corrections.md"
         },
         {
           "id": "skills/building-first",
@@ -1949,7 +2219,7 @@
             "description",
             "user-invocable"
           ],
-          "path": "content/11-skills/09-building-your-first.md"
+          "path": "content/13-skills/09-building-your-first.md"
         },
         {
           "id": "skills/how-they-work",
@@ -1967,7 +2237,7 @@
             "main agent",
             "documentation"
           ],
-          "path": "content/11-skills/10-how-skills-work.md"
+          "path": "content/13-skills/10-how-skills-work.md"
         },
         {
           "id": "skills/invoke-manually",
@@ -1986,7 +2256,7 @@
             "visible",
             "location"
           ],
-          "path": "content/11-skills/11-always-invoke-manually.md"
+          "path": "content/13-skills/11-always-invoke-manually.md"
         },
         {
           "id": "skills/reading-your-prompt",
@@ -2004,12 +2274,12 @@
             "location",
             "diagnostic"
           ],
-          "path": "content/11-skills/12-reading-your-own-prompt.md"
+          "path": "content/13-skills/12-reading-your-own-prompt.md"
         }
       ]
     },
     {
-      "slug": "12-subagents",
+      "slug": "14-subagents",
       "title": "Subagents",
       "level": "Level 2",
       "articles": [
@@ -2029,7 +2299,7 @@
             "return",
             "delegate"
           ],
-          "path": "content/12-subagents/01-what-a-subagent-is.md"
+          "path": "content/14-subagents/01-what-a-subagent-is.md"
         },
         {
           "id": "subagents/chain-engineering",
@@ -2047,7 +2317,7 @@
             "project",
             "this wiki"
           ],
-          "path": "content/12-subagents/02-chain-engineering.md"
+          "path": "content/14-subagents/02-chain-engineering.md"
         },
         {
           "id": "subagents/out-of-the-box",
@@ -2065,7 +2335,7 @@
             "generic",
             "claude"
           ],
-          "path": "content/12-subagents/03-out-of-the-box.md"
+          "path": "content/14-subagents/03-out-of-the-box.md"
         },
         {
           "id": "subagents/designing",
@@ -2083,7 +2353,7 @@
             "mixing",
             "one skill per spawn"
           ],
-          "path": "content/12-subagents/04-designing-a-chain.md"
+          "path": "content/14-subagents/04-designing-a-chain.md"
         },
         {
           "id": "subagents/the-door",
@@ -2101,7 +2371,7 @@
             "chain",
             "silent failure"
           ],
-          "path": "content/12-subagents/05-the-door.md"
+          "path": "content/14-subagents/05-the-door.md"
         },
         {
           "id": "subagents/step-one",
@@ -2118,7 +2388,7 @@
             "sample documents",
             "bundle"
           ],
-          "path": "content/12-subagents/06-step-one-the-project.md"
+          "path": "content/14-subagents/06-step-one-the-project.md"
         },
         {
           "id": "subagents/step-two",
@@ -2138,7 +2408,7 @@
             "bundle-reader",
             "bundle-consolidator"
           ],
-          "path": "content/12-subagents/07-step-two-the-workers.md"
+          "path": "content/14-subagents/07-step-two-the-workers.md"
         },
         {
           "id": "subagents/step-three",
@@ -2156,7 +2426,7 @@
             "prompt",
             "bundle"
           ],
-          "path": "content/12-subagents/08-step-three-the-door.md"
+          "path": "content/14-subagents/08-step-three-the-door.md"
         },
         {
           "id": "subagents/step-four",
@@ -2175,7 +2445,7 @@
             "chronology",
             "checking"
           ],
-          "path": "content/12-subagents/09-step-four-run-it.md"
+          "path": "content/14-subagents/09-step-four-run-it.md"
         },
         {
           "id": "subagents/step-five",
@@ -2195,12 +2465,12 @@
             "chain",
             "workflows"
           ],
-          "path": "content/12-subagents/10-step-five-watch-it.md"
+          "path": "content/14-subagents/10-step-five-watch-it.md"
         }
       ]
     },
     {
-      "slug": "13-workflows",
+      "slug": "15-workflows",
       "title": "Workflows",
       "level": "Level 2",
       "articles": [
@@ -2220,7 +2490,7 @@
             "claude directory",
             "subagent"
           ],
-          "path": "content/13-workflows/01-what-a-workflow-is.md"
+          "path": "content/15-workflows/01-what-a-workflow-is.md"
         },
         {
           "id": "workflows/cost",
@@ -2238,7 +2508,7 @@
             "script",
             "chain"
           ],
-          "path": "content/13-workflows/02-what-they-buy-and-cost.md"
+          "path": "content/15-workflows/02-what-they-buy-and-cost.md"
         },
         {
           "id": "workflows/when-to-use",
@@ -2256,7 +2526,7 @@
             "session",
             "management"
           ],
-          "path": "content/13-workflows/03-when-to-use-one.md"
+          "path": "content/15-workflows/03-when-to-use-one.md"
         },
         {
           "id": "workflows/sessions-that-survive",
@@ -2274,7 +2544,7 @@
             "persistence",
             "lid"
           ],
-          "path": "content/13-workflows/04-sessions-that-survive.md"
+          "path": "content/15-workflows/04-sessions-that-survive.md"
         },
         {
           "id": "workflows/how-to-build",
@@ -2291,7 +2561,7 @@
             "chain",
             "script"
           ],
-          "path": "content/13-workflows/05-how-to-build-a-workflow.md"
+          "path": "content/15-workflows/05-how-to-build-a-workflow.md"
         },
         {
           "id": "workflows/making-it-thinner",
@@ -2310,12 +2580,12 @@
             "haiku",
             "sonnet"
           ],
-          "path": "content/13-workflows/06-making-it-thinner.md"
+          "path": "content/15-workflows/06-making-it-thinner.md"
         }
       ]
     },
     {
-      "slug": "14-version-control",
+      "slug": "16-version-control",
       "title": "Version Control",
       "level": "Level 2",
       "articles": [
@@ -2336,7 +2606,7 @@
             "ai agents",
             "insurance"
           ],
-          "path": "content/14-version-control/01-what-git-is.md"
+          "path": "content/16-version-control/01-what-git-is.md"
         },
         {
           "id": "files/how-git-works",
@@ -2356,7 +2626,7 @@
             "push",
             "pull"
           ],
-          "path": "content/14-version-control/02-how-git-works.md"
+          "path": "content/16-version-control/02-how-git-works.md"
         },
         {
           "id": "files/github",
@@ -2375,7 +2645,7 @@
             "data",
             "host"
           ],
-          "path": "content/14-version-control/03-github.md"
+          "path": "content/16-version-control/03-github.md"
         },
         {
           "id": "files/jj",
@@ -2393,7 +2663,7 @@
             "detached head",
             "commit"
           ],
-          "path": "content/14-version-control/04-jujutsu.md"
+          "path": "content/16-version-control/04-jujutsu.md"
         },
         {
           "id": "vcs/git-and-the-harness",
@@ -2411,7 +2681,7 @@
             "merge",
             "subagent"
           ],
-          "path": "content/14-version-control/05-git-and-the-harness.md"
+          "path": "content/16-version-control/05-git-and-the-harness.md"
         },
         {
           "id": "vcs/worktrees",
@@ -2429,7 +2699,7 @@
             "main agent",
             "branch"
           ],
-          "path": "content/14-version-control/06-worktrees.md"
+          "path": "content/16-version-control/06-worktrees.md"
         },
         {
           "id": "vcs/forking",
@@ -2447,12 +2717,12 @@
             "context",
             "specialisation"
           ],
-          "path": "content/14-version-control/07-forking.md"
+          "path": "content/16-version-control/07-forking.md"
         }
       ]
     },
     {
-      "slug": "15-hooks",
+      "slug": "17-hooks",
       "title": "Hooks",
       "level": "Level 2",
       "articles": [
@@ -2473,7 +2743,7 @@
             "chains",
             "workflows"
           ],
-          "path": "content/15-hooks/01-what-a-hook-is.md"
+          "path": "content/17-hooks/01-what-a-hook-is.md"
         },
         {
           "id": "hooks/triggers",
@@ -2498,7 +2768,7 @@
             "worktreecreate",
             "worktreeremove"
           ],
-          "path": "content/15-hooks/02-the-triggers.md"
+          "path": "content/17-hooks/02-the-triggers.md"
         },
         {
           "id": "hooks/scoping",
@@ -2516,7 +2786,7 @@
             "customisation",
             "location matters"
           ],
-          "path": "content/15-hooks/03-scoping-a-hook.md"
+          "path": "content/17-hooks/03-scoping-a-hook.md"
         },
         {
           "id": "hooks/sessionstart-and-subagentstart",
@@ -2534,7 +2804,7 @@
             "skill",
             "matter"
           ],
-          "path": "content/15-hooks/04-sessionstart-and-subagentstart.md"
+          "path": "content/17-hooks/04-sessionstart-and-subagentstart.md"
         },
         {
           "id": "hooks/pretooluse",
@@ -2552,7 +2822,7 @@
             "permission",
             "settings.json"
           ],
-          "path": "content/15-hooks/05-pretooluse.md"
+          "path": "content/17-hooks/05-pretooluse.md"
         },
         {
           "id": "hooks/posttooluse-and-filechanged",
@@ -2571,7 +2841,7 @@
             "subagent",
             "settings.json"
           ],
-          "path": "content/15-hooks/06-posttooluse-and-filechanged.md"
+          "path": "content/17-hooks/06-posttooluse-and-filechanged.md"
         },
         {
           "id": "hooks/sessionend-and-subagentstop",
@@ -2589,7 +2859,7 @@
             "audit",
             "settings.json"
           ],
-          "path": "content/15-hooks/07-sessionend-and-subagentstop.md"
+          "path": "content/17-hooks/07-sessionend-and-subagentstop.md"
         },
         {
           "id": "hooks/cwdchanged-and-directoryadded",
@@ -2607,7 +2877,7 @@
             "settings",
             "subdirectory"
           ],
-          "path": "content/15-hooks/08-cwdchanged-and-directoryadded.md"
+          "path": "content/17-hooks/08-cwdchanged-and-directoryadded.md"
         },
         {
           "id": "hooks/worktreecreate-and-worktreeremove",
@@ -2624,12 +2894,12 @@
             "isolation",
             "cleanup"
           ],
-          "path": "content/15-hooks/09-worktreecreate-and-worktreeremove.md"
+          "path": "content/17-hooks/09-worktreecreate-and-worktreeremove.md"
         }
       ]
     },
     {
-      "slug": "16-plugins",
+      "slug": "18-plugins",
       "title": "Plugins",
       "level": "Level 2",
       "articles": [
@@ -2650,7 +2920,7 @@
             "agents",
             "skills"
           ],
-          "path": "content/16-plugins/01-what-a-plugin-is.md"
+          "path": "content/18-plugins/01-what-a-plugin-is.md"
         },
         {
           "id": "plugins/when-to-make-one",
@@ -2668,7 +2938,7 @@
             "location matters",
             "context"
           ],
-          "path": "content/16-plugins/02-when-to-make-one.md"
+          "path": "content/18-plugins/02-when-to-make-one.md"
         },
         {
           "id": "plugins/inside",
@@ -2687,7 +2957,7 @@
             "commands",
             "manifest"
           ],
-          "path": "content/16-plugins/03-what-is-inside-one.md"
+          "path": "content/18-plugins/03-what-is-inside-one.md"
         },
         {
           "id": "plugins/how-it-works",
@@ -2707,7 +2977,7 @@
             "global",
             "project"
           ],
-          "path": "content/16-plugins/04-how-a-plugin-works.md"
+          "path": "content/18-plugins/04-how-a-plugin-works.md"
         },
         {
           "id": "plugins/building",
@@ -2724,7 +2994,7 @@
             "custom-agents",
             "custom-skills"
           ],
-          "path": "content/16-plugins/05-building-one.md"
+          "path": "content/18-plugins/05-building-one.md"
         },
         {
           "id": "plugins/exercises",
@@ -2741,12 +3011,12 @@
             "install",
             "second project"
           ],
-          "path": "content/16-plugins/06-exercises.md"
+          "path": "content/18-plugins/06-exercises.md"
         }
       ]
     },
     {
-      "slug": "17-headless-sessions",
+      "slug": "19-headless-sessions",
       "title": "Headless Sessions",
       "level": "Level 2",
       "articles": [
@@ -2768,7 +3038,7 @@
             "shell",
             "scripting"
           ],
-          "path": "content/17-headless-sessions/01-what-a-headless-session-is.md"
+          "path": "content/19-headless-sessions/01-what-a-headless-session-is.md"
         },
         {
           "id": "headless/when-to-use",
@@ -2787,7 +3057,7 @@
             "subagent",
             "quick job"
           ],
-          "path": "content/17-headless-sessions/02-when-to-use-one.md"
+          "path": "content/19-headless-sessions/02-when-to-use-one.md"
         },
         {
           "id": "headless/piping",
@@ -2807,7 +3077,7 @@
             "cat",
             "grep"
           ],
-          "path": "content/17-headless-sessions/03-piping.md"
+          "path": "content/19-headless-sessions/03-piping.md"
         },
         {
           "id": "headless/watching",
@@ -2827,12 +3097,12 @@
             "monitor",
             "split"
           ],
-          "path": "content/17-headless-sessions/04-watching.md"
+          "path": "content/19-headless-sessions/04-watching.md"
         }
       ]
     },
     {
-      "slug": "18-counter-recommendations",
+      "slug": "20-counter-recommendations",
       "title": "Counter-Recommendations",
       "level": "Level 2",
       "articles": [
@@ -2854,7 +3124,7 @@
             "context",
             "boss"
           ],
-          "path": "content/18-counter-recommendations/01-builtin-agents.md"
+          "path": "content/20-counter-recommendations/01-builtin-agents.md"
         },
         {
           "id": "counter/background-sessions",
@@ -2876,7 +3146,7 @@
             "headless",
             "tmux"
           ],
-          "path": "content/18-counter-recommendations/02-background-sessions-and-agent-view.md"
+          "path": "content/20-counter-recommendations/02-background-sessions-and-agent-view.md"
         },
         {
           "id": "counter/nested-subagents",
@@ -2896,7 +3166,7 @@
             "bug",
             "custom agent"
           ],
-          "path": "content/18-counter-recommendations/03-subagents-spawning-subagents.md"
+          "path": "content/20-counter-recommendations/03-subagents-spawning-subagents.md"
         },
         {
           "id": "counter/agent-teams",
@@ -2916,7 +3186,7 @@
             "experimental",
             "boss"
           ],
-          "path": "content/18-counter-recommendations/04-agent-teams.md"
+          "path": "content/20-counter-recommendations/04-agent-teams.md"
         }
       ]
     }

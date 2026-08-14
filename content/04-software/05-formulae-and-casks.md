@@ -57,7 +57,7 @@ article.
 ## Why the distinction exists at all
 
 A formula and a cask are handled differently under the surface — a
-formula usually compiles or links into place, a cask usually just moves
+formula usually compiles or links into place, a cask usually moves
 a finished app into Applications — so Homebrew needs to know which kind
 of job it is doing before it starts. `--cask` is how you tell it.
 
@@ -70,7 +70,6 @@ not look managed.
 
 You will use `brew install` far more than `brew install --cask`. Most
 of what this course points you towards is a command, not an app. But
-the distinction is worth having before the next article, which asks
-what Homebrew already has installed of both kinds.
+the distinction is worth having.
 
 Press `n`.

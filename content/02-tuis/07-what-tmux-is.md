@@ -24,8 +24,9 @@ That sentence is doing more work than it looks like, so slow down on it.
 A Ghostty tab is a window onto a process — a shell, running Claude Code,
 running whatever — and the process lives inside that window. Close the
 tab and the process it was showing you is killed along with it. This is
-true of every terminal in the last article, not only Ghostty. The tab
-and the thing it shows are one object, and closing one closes the other.
+true of every terminal in *The terminals people use*, not only Ghostty.
+The tab and the thing it shows are one object, and closing one closes
+the other.
 
 A tmux session breaks that link. tmux runs as its own separate program,
 detached entirely from any window, holding whatever is inside the
@@ -55,7 +56,5 @@ on a machine you did not own. tmux inherited that idiom rather than
 inventing a new one, and nothing since has replaced it, because the
 problem it solves has not gone away. A job that takes an hour still does
 not care whether you are watching it, and a laptop lid still closes.
-
-The next article is what you actually do with that.
 
 Press `n`.

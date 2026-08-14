@@ -67,7 +67,5 @@ mode at any point in either set, and leaves the pane exactly as it
 was, buffer or no buffer.
 
 None of this appears anywhere on screen once you are back out of it.
-The one thing that is always on screen, and always telling you
-something, is next.
 
 Press `n`.

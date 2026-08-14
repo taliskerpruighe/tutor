@@ -62,7 +62,6 @@ merely display it, that becomes the whole problem.
 Settings, instructions, skills, logs: every one of them, from here on,
 is a plain text file, because a plain text file is the only kind an
 agent can open, understand and change without help. Reach for it
-because it is plain, then reach for the shape that fits the job —
-which is what the next article sorts out.
+because it is plain, then reach for the shape that fits the job.
 
 Press `n`.

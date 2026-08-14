@@ -40,7 +40,7 @@ way up, so the variable exists before you have typed a single command:
 export CLIENT=okonjo
 ```
 
-Reload the current terminal with `source ~/.zshrc`, or simply open a new
+Reload the current terminal with `source ~/.zshrc`, or open a new
 tab — either reads the file again from the top.
 
 ## The one you already rely on
@@ -81,9 +81,5 @@ want remembered and let Claude Code write the line. *"Set a permanent
 variable called `MATTER_ROOT` pointing at `~/work`, so every terminal
 already knows where matters live."* It will add the export line to
 `~/.zshrc` and tell you how to make it live.
-
-A variable is a name for one exact piece of text. The next article is a
-different kind of shorthand — one that stands for many filenames at once,
-without naming any of them.
 
 Press `n`.

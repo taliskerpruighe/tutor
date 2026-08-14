@@ -18,7 +18,7 @@ talk to reads these same pages. Anthropic publishes its own documentation,
 and it is good: it tells you what every feature is. This is a different
 thing. It covers the **Party Tricks** — the Boss's hard-learned lessons
 about how Claude Code actually behaves, gathered from hours of practice,
-tests, and commiseration on GitHub with people who hit the same problems.
+tests and commiseration on GitHub with people who hit the same problems.
 The official docs are the reference; this is what someone found out by
 doing it.
 
@@ -38,8 +38,5 @@ reference material you dip into; each part assumes the one before it, and
 the parts that look least like Claude Code — the terminal, the shell, the
 software already on your Mac — are the ones the later parts lean on
 hardest.
-
-What this version covers, what it holds back for a later one, and why the
-order runs the way it does is the next article.
 
 Press `n`.

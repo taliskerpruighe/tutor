@@ -78,6 +78,5 @@ every time a new terminal opens. Ask Claude Code to add it for you rather
 than opening the file by hand.
 
 zoxide's line is the first thing you have put in `~/.zshrc` on purpose.
-The next article is what else that file is for.
 
 Press `n`.

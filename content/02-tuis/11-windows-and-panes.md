@@ -68,8 +68,6 @@ Closing the last pane in the last window ends the session along with
 it, the same as *Sessions*' own `kill-session` — there is nothing
 left for tmux to hold open.
 
-A pane you cannot see is still running. What happens to all of them
-when the window itself disappears — deliberately, this time — is
-next.
+A pane you cannot see is still running.
 
 Press `n`.

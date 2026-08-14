@@ -202,28 +202,61 @@ done
 #     with one file missing.
 #
 # The sample is read.json's own eligible ids — every article whose indexed
-# version equals "v" + the current release, i.e. every article that CAN
-# draw N — plus a scattering of older ones, because a frame that only ever
-# opened on an eligible article would never prove an older one stays quiet.
-# Ids are never hardcoded: the corpus is still being written as this script
-# is, so the eligible set is whatever version.txt and content/index.json
-# agree on at run time.
+# version is in the allowlist, i.e. every article that CAN draw N — plus a
+# scattering of older ones, because a frame that only ever opened on an
+# eligible article would never prove an older one stays quiet. Ids are never
+# hardcoded: the corpus is still being written as this script is, so the
+# eligible set is whatever go/layout.go and content/index.json agree on at
+# run time.
+#
+# The allowlist is GREPPED OUT OF go/layout.go rather than copied here. A
+# second hand-maintained list of the same versions is the bin/banner-preview.sh
+# failure this repo already documents: nothing would gate the two against each
+# other, and the copy would drift on the release after whichever one wrote it.
+# Note the consequence — this harness cannot catch the Go list itself being
+# wrong, only the Python mirror disagreeing with it, which is exactly the
+# division of labour parity.sh has everywhere else.
 mkdir -p "$TMP/state-new" "$TMP/state-new-installed"
 
 CURRENT_VERSION=$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$ROOT/version.txt")
 
-NEW_SAMPLE_IDS=$(python3 - "$TMP/state-new/read.json" "$CURRENT_VERSION" <<'PY'
+NEW_VERSIONS=$(sed -n 's/^var newVersions = \[\]string{\(.*\)}$/\1/p' "$ROOT/go/layout.go" \
+    | tr -d '" ' | tr ',' ' ')
+[ -n "$NEW_VERSIONS" ] || {
+    echo "could not read newVersions out of go/layout.go — the N-marker fixture has nothing to select on" >&2
+    exit 1
+}
+echo "new-marker allowlist from go/layout.go: $NEW_VERSIONS"
+
+NEW_SAMPLE_IDS=$(python3 - "$TMP/state-new/read.json" "$NEW_VERSIONS" <<'PY'
 import json
 import sys
 
-out, current = sys.argv[1], sys.argv[2]
+out, allow = sys.argv[1], set(sys.argv[2].split())
 with open("content/index.json", encoding="utf-8") as fh:
     index = json.load(fh)
 articles = [a for part in index.get("parts", []) for a in part.get("articles", [])]
 ids = [a["id"] for a in articles]
-eligible = [a["id"] for a in articles if a.get("version") == "v" + current]
+eligible = [a["id"] for a in articles if a.get("version") in allow]
 eligible_set = set(eligible)
 older = [i for i in ids if i not in eligible_set]
+
+# The allowlist must not have degenerated into "everything unread is new".
+# Without this the marker rule could be broken wide open and every frame
+# would still agree between the two implementations, because both would be
+# wrong in the same way.
+if not older:
+    sys.exit("every article in the corpus is in the N allowlist — the rule is not being exercised")
+
+# At least one article from a release well behind the allowlist must be in
+# the sample, negatively. v0.2.3 is named rather than merely "some older
+# version" because it is the oldest release the marker feature has ever
+# seen, and an allowlist that swallowed it would have swallowed everything.
+stale = [a["id"] for a in articles if a.get("version") == "v0.2.3"]
+if not stale:
+    sys.exit("no v0.2.3 article left in the corpus — the N-marker negative assertion is not being made")
+older = stale + [i for i in older if i not in set(stale)]
+print("stale-negative sample: " + stale[0], file=sys.stderr)
 
 # Marking is decided within the eligible list itself, not by a global
 # modulo over every id, so that even a small eligible set still lands at
@@ -253,7 +286,7 @@ printf '%s\n' "$CURRENT_VERSION" > "$TMP/state-new-installed/installed"
 new_sampled=$(printf '%s\n' $NEW_SAMPLE_IDS | grep -c .)
 new_total=$(printf '%s\n' $IDS | grep -c .)
 if [ "$new_sampled" -eq 0 ]; then
-    echo "WARNING: new-marker pass selected 0 articles at version v$CURRENT_VERSION — the N rule was not exercised this run" >&2
+    echo "WARNING: new-marker pass selected 0 articles at versions $NEW_VERSIONS — the N rule was not exercised this run" >&2
 else
     echo "new-marker pass: sampling $new_sampled of $new_total articles"
 fi
