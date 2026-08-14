@@ -321,8 +321,9 @@ they are the ones to check your own work with. `tutor update` is the reader's
 command, not a maintenance one: it fetches the newer version from GitHub and
 `applyUpdate` renames the whole `~/tutor` aside and deletes it. Do not run it
 from a tool call. `version.txt` is what it compares against, fetched raw from
-the trunk on GitHub, while the binary reports `go/main.go`'s `const version` —
-which `splash.go` also takes its tag from rather than hardcoding one. The
+GitHub and tried against each branch in `updateBranches` in turn until one
+answers, while the binary reports `go/main.go`'s `const version` — which
+`splash.go` also takes its tag from rather than hardcoding one. The
 version lives in four places, not three: `version.txt`, `go/main.go`'s
 `const version`, `tui/tutor.py`'s `VERSION`, and `bin/banner-preview.sh`,
 which hardcodes a fourth copy for the shell preview. `sh bin/build-tui.sh`
@@ -332,14 +333,21 @@ someone eyeballs `sh bin/banner-preview.sh` against the real splash. Four
 files, one number: move all four, and check the fourth by eye.
 
 The version in `version.txt` must have a tag behind it. `applyUpdate` builds
-its tarball URL by prefixing `updateTagPrefix`, and this repo's tags are
-namespaced by trunk — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — which is why that
-constant carries the `tori/` and why `versionURL` names the same branch a few
-lines above. Push `version.txt` ahead of the tag and readers are offered an
-update that 404s when they accept it, which is worse than offering none. Bump
-and tag together, and push the tag — `git push origin --tags` is separate from
-pushing the branch. Renaming the trunk breaks `tutor update` in two places at
-once, silently; the test suite makes no network call and would not catch it.
+its tarball URL from the tag namespaced to the branch it was cut on —
+`tori/MkI_v0.2.2`, not `MkI_v0.2.2` — and fetches that full namespaced tag.
+The updater does not name a single branch: `go/update.go` holds
+`updateBranches`, an ordered list tried in turn for both the `version.txt`
+probe and the tag namespace, first branch to answer wins. A trunk rename, or
+a second one added, needs its name added to `updateBranches`, with the old
+name left in place until every installed copy has taken a release that
+knows the new one — the list ships in the binary, so a copy that knows only
+the retired name never sees a `version.txt` cut under the new one, and
+readers on it are simply told no update exists at all; the test suite makes
+no network call and would not catch it either. Push
+`version.txt` ahead of the tag and readers are offered an update that 404s
+when they accept it, which is worse than offering none. Bump and tag
+together, and push the tag — `git push origin --tags` is separate from
+pushing the branch.
 
 ## What ships
 

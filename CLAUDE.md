@@ -333,9 +333,10 @@ without a terminal, so they are the ones you can use to check your own work.
 `tutor update` is the reader's command, not yours: it fetches the newer
 version from GitHub and `applyUpdate` renames her whole `~/tutor` aside and
 deletes it. Never run it from a tool call. `version.txt` is what it compares
-against — it is fetched raw from the trunk on GitHub — while the binary
-reports `go/main.go`'s `const version`, which is also where `splash.go` takes
-its tag from rather than hardcoding one. The version lives in **four**
+against — fetched raw from GitHub, tried against each branch in
+`updateBranches` in turn until one answers — while the binary reports
+`go/main.go`'s `const version`, which is also where `splash.go` takes its
+tag from rather than hardcoding one. The version lives in **four**
 places, not three: `version.txt`, `go/main.go`'s `const version`,
 `tui/tutor.py`'s `VERSION`, and `bin/banner-preview.sh`, which hardcodes a
 fourth copy for the shell preview. `sh bin/build-tui.sh` gates agreement
@@ -345,16 +346,23 @@ is checked by nothing and drifts silently unless someone eyeballs
 move all four, and check the fourth by eye.
 
 **The version in `version.txt` must have a tag behind it.** `applyUpdate`
-turns it into a tarball URL by prefixing `updateTagPrefix`, and this repo's
-tags are namespaced by trunk — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — which is
-why that constant carries the `tori/` and why `versionURL` names the same
-branch a few lines above it. Push `version.txt` ahead of the tag and every
-reader is told an update exists and then gets a 404 when she says yes, which
-is worse than not offering one. Bump the number and cut the tag together, and
-push the tag: `git push origin --tags` is a separate step from pushing the
-branch, and `git-ops push` is what does both. Renaming the trunk breaks
-`tutor update` in two places at once, silently, and nothing in the test suite
-would notice — the network is not exercised there.
+turns it into a tarball URL by prefixing the tag with the branch it was cut
+on: tags are namespaced by branch — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` —
+and the tarball comes from that full namespaced tag. The updater does not
+name a single branch for this: `go/update.go` holds `updateBranches`, an
+ordered list tried in turn for both the `version.txt` probe and the tag
+namespace, first branch to answer wins. Rename the trunk, or add a second
+one, and you add its name to `updateBranches` — and you leave the old name
+there until every installed copy has taken a release that knows the new
+one. The list ships inside the binary a reader is already running, so a
+copy that only knows the retired name never sees a `version.txt` cut under
+the new one: get this wrong and she is simply told no update exists at all,
+and nothing in the test suite would catch it, because the network is not
+exercised there. Push `version.txt` ahead of the tag and every reader is
+told an update exists and then gets a 404 when she says yes, which is worse
+than not offering one. Bump the number and cut the tag together, and push
+the tag: `git push origin --tags` is a separate step from pushing the
+branch, and `git-ops push` is what does both.
 
 ## What ships
 

@@ -24,17 +24,60 @@ import (
 	"time"
 )
 
+// updateBranches is the ordered list of branches the updater will look at,
+// first hit wins. "main" leads because it is where this repo is going;
+// "tori" trails because every copy installed before v0.2.11 was told to
+// look there, and nothing but this list makes the two names interchangeable
+// for a reader on either side of the rename. A branch that does not exist
+// 404s in milliseconds, so carrying a name that is not there yet costs a
+// round trip, not a stall.
+var updateBranches = []string{"main", "tori"}
+
+// versionURLFmt is a var rather than a const purely so update_test.go can
+// point it at an httptest server; nothing in the programme itself may write
+// it.
+var versionURLFmt = "https://raw.githubusercontent.com/taliskerpruighe/tutor/%s/version.txt"
+
 const (
 	// Tags in this repo are namespaced by the trunk they were cut on, so the
-	// real ref is "tori/MkI_v0.2.0", not "MkI_v0.2.0". Drop the "tori/" and
-	// every tarball fetch 404s.
-	updateTagPrefix = "tori/MkI_v"
-	versionURL      = "https://raw.githubusercontent.com/taliskerpruighe/tutor/tori/version.txt"
-	tarballURLFmt   = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
+	// real ref for branch "main" is "main/MkI_v0.2.11", not "MkI_v0.2.11" —
+	// and likewise for every other name in updateBranches. Drop the branch
+	// prefix and every tarball fetch 404s.
+	tagPrefixFmt  = "%s/MkI_v"
+	tarballURLFmt = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
+
 	// A cached remote version is trusted for this long before the network is
 	// asked again. Zero disables the cache entirely, so every launch checks.
 	updateCacheTTL = 0
+
+	// updateCheckBudget bounds fetchLatestVersion's TOTAL spend across every
+	// candidate branch combined, not per request. checkForUpdate runs this on
+	// every launch and must never make an offline reader wait longer than
+	// this no matter how long updateBranches grows — a naive "timeout per
+	// candidate" loop would instead make her wait the sum of every
+	// candidate's timeout, and that sum grows every time a branch is added
+	// to the list. An unreachable first candidate can still consume the
+	// whole budget and starve the fallback, but that only happens when the
+	// reader has no network at all, in which case the fallback would have
+	// failed too. A branch that merely does not exist 404s fast and leaves
+	// the budget almost untouched for the next candidate.
+	updateCheckBudget = 2 * time.Second
+
+	// updateFetchBudget is cmdUpdate's budget instead: the reader typed the
+	// word "update" herself, so she can afford to wait longer than the
+	// silent launch-time check may.
+	updateFetchBudget = 10 * time.Second
 )
+
+// versionURLFor is the per-branch version.txt URL.
+func versionURLFor(branch string) string {
+	return fmt.Sprintf(versionURLFmt, branch)
+}
+
+// updateTagFor is the per-branch, namespaced release tag for ver.
+func updateTagFor(branch, ver string) string {
+	return fmt.Sprintf(tagPrefixFmt, branch) + ver
+}
 
 // updateCacheFile is where the last-seen remote version is written after
 // every check. It is no longer what makes an ordinary launch skip the
@@ -92,12 +135,13 @@ func looksLikeVersion(s string) bool {
 	return true
 }
 
-// fetchLatestVersion makes the actual network call for the remote version
-// string. Callers decide how to handle failure: checkForUpdate swallows it,
-// cmdUpdate reports it.
-func fetchLatestVersion() (string, error) {
-	client := &http.Client{Timeout: 2 * time.Second}
-	resp, err := client.Get(versionURL)
+// fetchVersionOnce makes the actual network call against a single branch's
+// version.txt, bounded by timeout. It is the part of fetchLatestVersion that
+// talks to exactly one candidate; the loop in fetchLatestVersion is what
+// tries the rest of updateBranches when this returns an error.
+func fetchVersionOnce(url string, timeout time.Duration) (string, error) {
+	client := &http.Client{Timeout: timeout}
+	resp, err := client.Get(url)
 	if err != nil {
 		return "", err
 	}
@@ -116,6 +160,38 @@ func fetchLatestVersion() (string, error) {
 	return latest, nil
 }
 
+// fetchLatestVersion tries each branch in updateBranches in order, first
+// success wins. budget bounds the TOTAL time spent across every candidate
+// combined: one deadline is computed up front, and each candidate's client
+// timeout is whatever remains until that deadline, so the list can grow
+// without the launch-path wait growing with it (see updateCheckBudget's
+// comment for the full reasoning). Any failure at all — connect error,
+// non-200 status, or a looksLikeVersion rejection (the captive-portal
+// guard) — advances to the next candidate; if every candidate fails, or the
+// budget runs out before one is even tried, the returned error mentions the
+// last failure seen. Callers decide how to handle failure: checkForUpdate
+// swallows it, cmdUpdate reports it.
+func fetchLatestVersion(budget time.Duration) (string, error) {
+	deadline := time.Now().Add(budget)
+	var lastErr error
+	for _, branch := range updateBranches {
+		remaining := time.Until(deadline)
+		if remaining <= 0 {
+			break
+		}
+		v, err := fetchVersionOnce(versionURLFor(branch), remaining)
+		if err != nil {
+			lastErr = fmt.Errorf("%s: %w", branch, err)
+			continue
+		}
+		return v, nil
+	}
+	if lastErr == nil {
+		lastErr = fmt.Errorf("budget exhausted before any branch could be tried")
+	}
+	return "", fmt.Errorf("checking for updates: %w", lastErr)
+}
+
 // checkForUpdate answers "is a newer version available?" for the launch-time
 // prompt. It now runs the network call on every launch — the cache file is
 // still written below on every check, so it stays fresher than before rather
@@ -123,7 +199,9 @@ func fetchLatestVersion() (string, error) {
 // makes cachedUpdateVersion's answer for `tutor doctor` current within one
 // launch instead of within a day. Any failure at all — no network, timeout,
 // non-200, garbage body, unwritable cache — is silent: it returns ("", false)
-// and must never print anything or block startup.
+// and must never print anything or block startup. updateCheckBudget is what
+// keeps that promise bounded regardless of how many branches updateBranches
+// carries.
 func checkForUpdate() (latest string, available bool) {
 	cache := updateCacheFile()
 	// updateCacheTTL is 0, so this guard is what stops the bare comparison
@@ -150,7 +228,7 @@ func checkForUpdate() (latest string, available bool) {
 		}
 	}
 
-	fetched, err := fetchLatestVersion()
+	fetched, err := fetchLatestVersion(updateCheckBudget)
 	if err != nil {
 		return "", false
 	}
@@ -184,46 +262,57 @@ func cachedUpdateVersion() (latest string, available bool) {
 	return "", false
 }
 
-// applyUpdate downloads the tarball for tag "tori/MkI_v<ver>", unpacks it next to
-// root, sanity-checks the result, swaps it in, and delegates the actual
-// binary install to install.sh (this function must never copy a binary
-// itself — that is install.sh's job, and only it sheds the quarantine xattr
-// and survives ETXTBSY correctly).
-func applyUpdate(root string, ver string) error {
-	tag := updateTagPrefix + ver
+// fetchRelease downloads and unpacks the tarball for tag into a fresh temp
+// directory created under parent, and sanity-checks the unpacked tree. On
+// success it returns that directory's path and the caller owns it from
+// there.
+//
+// On ANY error return, fetchRelease removes the tmpdir it created before
+// returning ("", err) — it does not leave that to the caller. This matters
+// because applyUpdate now calls fetchRelease once per candidate branch: if
+// a candidate failed partway through, mid-download or mid-untar, and left
+// its cleanup to whoever eventually accepts a different candidate's
+// directory, every failed candidate before the winner would strand a
+// tutor-update-* directory in the reader's home — one per failed branch, on
+// every single update that needed more than one try. So this function's
+// self-cleanup is implemented with a defer guarded on a named `ok bool`,
+// set true just before the one successful return; every other return path
+// leaves `ok` false and the defer removes the directory. applyUpdate keeps
+// its own separate `swapped` guard, but that one covers only the single
+// tmpdir it ends up accepting, never a rejected candidate's.
+func fetchRelease(parent, tag string) (tmpdir string, err error) {
 	url := fmt.Sprintf(tarballURLFmt, tag)
 
 	client := &http.Client{Timeout: 5 * time.Minute}
 	resp, err := client.Get(url)
 	if err != nil {
-		return fmt.Errorf("downloading %s: %w", tag, err)
+		return "", fmt.Errorf("downloading %s: %w", tag, err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("downloading %s: unexpected status %s", tag, resp.Status)
+		return "", fmt.Errorf("downloading %s: unexpected status %s", tag, resp.Status)
 	}
 
 	gz, err := gzip.NewReader(resp.Body)
 	if err != nil {
-		return fmt.Errorf("opening tarball: %w", err)
+		return "", fmt.Errorf("opening tarball: %w", err)
 	}
 	defer gz.Close()
 
-	parent := filepath.Dir(root)
-	tmpdir, err := os.MkdirTemp(parent, "tutor-update-*")
+	tmpdir, err = os.MkdirTemp(parent, "tutor-update-*")
 	if err != nil {
-		return fmt.Errorf("creating temp dir: %w", err)
+		return "", fmt.Errorf("creating temp dir: %w", err)
 	}
-	swapped := false
+	ok := false
 	defer func() {
-		if !swapped {
+		if !ok {
 			os.RemoveAll(tmpdir)
 		}
 	}()
 
 	absTmp, err := filepath.Abs(tmpdir)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	tr := tar.NewReader(gz)
@@ -233,12 +322,16 @@ func applyUpdate(root string, ver string) error {
 			break
 		}
 		if err != nil {
-			return fmt.Errorf("reading tarball: %w", err)
+			return "", fmt.Errorf("reading tarball: %w", err)
 		}
 
-		// Every entry is prefixed with one directory: GitHub flattens the tag's
-		// slash, so tag "tori/MkI_v0.2.0" gives "tutor-tori-MkI_v0.2.0/".
-		// Strip exactly one leading path component.
+		// Every entry is prefixed with one directory: GitHub flattens the
+		// tag's slash, so tag "main/MkI_v0.2.11" gives
+		// "tutor-main-MkI_v0.2.11/" — and tag "tori/MkI_v0.2.11" gives
+		// "tutor-tori-MkI_v0.2.11/" just the same, since only the branch
+		// name inside the tag changes, never the shape of the tag. Strip
+		// exactly one leading path component regardless of which branch
+		// produced it.
 		parts := strings.SplitN(hdr.Name, "/", 2)
 		if len(parts) < 2 || parts[1] == "" {
 			continue
@@ -248,30 +341,30 @@ func applyUpdate(root string, ver string) error {
 		dest := filepath.Join(tmpdir, rel)
 		absDest, err := filepath.Abs(dest)
 		if err != nil {
-			return err
+			return "", err
 		}
 		if absDest != absTmp && !strings.HasPrefix(absDest, absTmp+string(os.PathSeparator)) {
-			return fmt.Errorf("tar-slip: entry %q escapes the destination", hdr.Name)
+			return "", fmt.Errorf("tar-slip: entry %q escapes the destination", hdr.Name)
 		}
 
 		switch hdr.Typeflag {
 		case tar.TypeDir:
 			if err := os.MkdirAll(dest, 0o755); err != nil {
-				return err
+				return "", err
 			}
 		case tar.TypeReg:
 			if err := os.MkdirAll(filepath.Dir(dest), 0o755); err != nil {
-				return err
+				return "", err
 			}
 			mode := os.FileMode(hdr.Mode) & 0o777
 			f, err := os.OpenFile(dest, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, mode)
 			if err != nil {
-				return err
+				return "", err
 			}
 			_, err = io.Copy(f, tr)
 			f.Close()
 			if err != nil {
-				return err
+				return "", err
 			}
 		default:
 			// No symlinks, no devices — skip anything that isn't a plain
@@ -283,11 +376,54 @@ func applyUpdate(root string, ver string) error {
 	// Sanity-check the unpacked tree before touching anything real: a
 	// truncated or wrong download must not replace a working install.
 	if info, err := os.Stat(filepath.Join(tmpdir, "content")); err != nil || !info.IsDir() {
-		return fmt.Errorf("update package looks incomplete: no content/ directory")
+		return "", fmt.Errorf("update package looks incomplete: no content/ directory")
 	}
 	if info, err := os.Stat(filepath.Join(tmpdir, "tui", "bin")); err != nil || !info.IsDir() {
-		return fmt.Errorf("update package looks incomplete: no tui/bin directory")
+		return "", fmt.Errorf("update package looks incomplete: no tui/bin directory")
 	}
+
+	ok = true
+	return tmpdir, nil
+}
+
+// applyUpdate tries each branch in updateBranches in turn, asking
+// fetchRelease to download and unpack the tarball for that branch's
+// namespaced tag ("<branch>/MkI_v<ver>") and taking the first one that
+// succeeds. If every branch fails, it returns an error naming every tag it
+// tried. From there — swapping the accepted directory in, rolling back on
+// failure, delegating to install.sh — nothing changed: this function must
+// never copy a binary itself, that is install.sh's job, and only it sheds
+// the quarantine xattr and survives ETXTBSY correctly.
+func applyUpdate(root string, ver string) error {
+	parent := filepath.Dir(root)
+
+	var tmpdir string
+	var triedTags []string
+	var lastErr error
+	for _, branch := range updateBranches {
+		tag := updateTagFor(branch, ver)
+		triedTags = append(triedTags, tag)
+		dir, err := fetchRelease(parent, tag)
+		if err != nil {
+			lastErr = err
+			continue
+		}
+		tmpdir = dir
+		break
+	}
+	if tmpdir == "" {
+		return fmt.Errorf("fetching release (tried %s): %w", strings.Join(triedTags, ", "), lastErr)
+	}
+
+	// swapped covers only the tmpdir this loop accepted — every other
+	// candidate's directory was already cleaned up by fetchRelease itself
+	// on its own error path, per the comment on that function.
+	swapped := false
+	defer func() {
+		if !swapped {
+			os.RemoveAll(tmpdir)
+		}
+	}()
 
 	oldPath := root + ".old"
 	if err := os.Rename(root, oldPath); err != nil {
@@ -322,7 +458,7 @@ func applyUpdate(root string, ver string) error {
 func cmdUpdate(root string) int {
 	fmt.Printf("Installed version: %s\n", version)
 
-	latest, err := fetchLatestVersion()
+	latest, err := fetchLatestVersion(updateFetchBudget)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "could not check for updates: %v\n", err)
 		return 1

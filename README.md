@@ -104,10 +104,20 @@ nothing checks it automatically — eyeball it against the real splash after a
 bump. Four files, one number: move all four.
 
 Whatever `version.txt` says must have a tag behind it on GitHub, because
-`applyUpdate` turns the number into a tarball URL. Tags here are namespaced by
-trunk — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — which is what `updateTagPrefix`
-in `go/update.go` encodes. Raise `version.txt` without cutting and pushing the
-matching tag and every reader is offered an update that 404s on acceptance.
+`applyUpdate` turns the number into a tarball URL. Tags here are namespaced
+by the branch they were cut on — `tori/MkI_v0.2.2`, not `MkI_v0.2.2` — and
+the updater fetches the release by that full name. It doesn't look for one
+branch only: `go/update.go` keeps `updateBranches`, an ordered list of
+branches to try, for both the `version.txt` check and the tag, and takes
+the first one that answers. Rename the trunk, or start publishing from a
+second one, and its name has to be added to `updateBranches` — with the old
+name left in place until every copy of the reader already out there has
+taken an update that knows the new one. That list travels inside the
+program itself, not on GitHub, so a copy that only knows the retired name
+simply tells its reader no update is available at all, and nothing checks
+for that automatically. Raise `version.txt` without cutting and
+pushing the matching tag and every reader is offered an update that 404s on
+acceptance.
 
 ## Layout
 
