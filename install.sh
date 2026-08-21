@@ -213,8 +213,12 @@ say "  docs        CLAUDE.md, AGENTS.md, README.md (reader-facing versions)"
 rm -rf "$TUTOR_HOME/go"
 rm -rf "$TUTOR_HOME/bin"
 rm -rf "$TUTOR_HOME/devlog"
-rm -rf "$TUTOR_HOME/content/_pipeline"
 rm -rf "$TUTOR_HOME/.github"
+
+# The branch's own work list and any job plans filed beside it. Development
+# bookkeeping for this repo, not course material, and nothing she runs
+# reads it.
+rm -rf "$TUTOR_HOME/jobs"
 
 # pipeline.md is the authoring backlog the course is currently being written
 # against — which part sits at which level, which articles are still to come.
@@ -228,6 +232,15 @@ rm -rf "$TUTOR_HOME/.github"
 rm -f "$TUTOR_HOME/content/pipeline.md"
 rm -f "$TUTOR_HOME/content/plan.md"
 rm -f "$TUTOR_HOME/content/outline.md"
+
+# The voice and visual guides are authoring instructions — how an article
+# should sound and how it should look. They are addressed to whoever writes
+# the course, not to the reader taking it. content/_pipeline/ used to hold
+# them and this line used to prune that whole directory; the directory is
+# gone and the two guides now sit beside pipeline.md, so they are pruned
+# by name for the same reason it is.
+rm -f "$TUTOR_HOME/content/voice-guide.md"
+rm -f "$TUTOR_HOME/content/visual-guide.md"
 find "$TUTOR_HOME/tui" -name '*.py' -type f -exec rm -f {} + 2>/dev/null || true
 rm -rf "$TUTOR_HOME/tui/__pycache__"
 
@@ -241,7 +254,7 @@ rm -f "$TUTOR_HOME/.dvcignore"
 # Rules about which files the repository ignores. There is no repository here.
 rm -f "$TUTOR_HOME/.gitignore"
 
-say "  pruned      go/ bin/ devlog/ content/_pipeline/ .github/ tui/*.py .dvc/"
+say "  pruned      go/ bin/ devlog/ jobs/ .github/ tui/*.py .dvc/"
 
 # Claude settings describe the development environment — plugins enabled
 # here, output styles chosen here — and none of it holds on her machine; a

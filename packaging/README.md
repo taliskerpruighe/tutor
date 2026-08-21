@@ -8,8 +8,8 @@ It comes in two halves. One you read; one answers questions.
 
 If you have not downloaded it yet: go to the course's page on GitHub, press
 the green **Code** button, and choose **Download ZIP**. Open the
-`tutor-tori.zip` that lands in your Downloads folder — it unpacks to a folder
-called `tutor-tori`. Rename that folder to `tutor` and move it into your home
+`tutor-main.zip` that lands in your Downloads folder — it unpacks to a folder
+called `tutor-main`. Rename that folder to `tutor` and move it into your home
 folder, so it sits at `~/tutor`.
 
 There is nothing to install first and nothing to build. The reader is a
