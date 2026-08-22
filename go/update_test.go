@@ -1,9 +1,15 @@
 package main
 
 import (
+	"archive/tar"
+	"bytes"
+	"compress/gzip"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 )
@@ -91,16 +97,62 @@ func TestVersionURLFor(t *testing.T) {
 	}
 }
 
-func TestUpdateTagFor(t *testing.T) {
-	cases := []struct {
-		branch, ver, want string
-	}{
-		{"main", "0.2.11", "main/MkI_v0.2.11"},
-		{"tori", "0.2.11", "tori/MkI_v0.2.11"},
+// TestUpdateTagsFor pins the exact candidate list and its order. The order is
+// the contract: namespaced entries first, one per name in updateBranches, so
+// no pre-v0.2.12 release changes the candidate it resolves on; the bare tag
+// last, because that is the shape v0.2.12 and v0.2.13 were published under
+// and the reason a reader could see v0.2.13 in version.txt and still fail to
+// download it.
+func TestUpdateTagsFor(t *testing.T) {
+	got := updateTagsFor("0.2.13")
+	want := []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13"}
+
+	if len(got) != len(want) {
+		t.Fatalf("updateTagsFor(%q) = %q, want %q", "0.2.13", got, want)
 	}
-	for _, c := range cases {
-		if got := updateTagFor(c.branch, c.ver); got != c.want {
-			t.Errorf("updateTagFor(%q, %q) = %q, want %q", c.branch, c.ver, got, c.want)
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("updateTagsFor(%q)[%d] = %q, want %q", "0.2.13", i, got[i], want[i])
+		}
+	}
+}
+
+// TestUpdateTagsForBareTagIsLast states the ordering requirement separately
+// from the exact-list check above, so that a future edit to updateBranches
+// cannot quietly promote the bare tag ahead of the namespaced ones and take
+// the historical releases' resolution with it.
+func TestUpdateTagsForBareTagIsLast(t *testing.T) {
+	got := updateTagsFor("0.2.13")
+	if len(got) == 0 {
+		t.Fatal("updateTagsFor returned no candidates")
+	}
+	if last := got[len(got)-1]; last != "MkI_v0.2.13" {
+		t.Errorf("last candidate = %q, want the bare tag %q", last, "MkI_v0.2.13")
+	}
+	for i, tag := range got[:len(got)-1] {
+		if !strings.Contains(tag, "/") {
+			t.Errorf("candidate %d = %q, want a namespaced tag before the bare one", i, tag)
+		}
+	}
+}
+
+// TestUpdateTagsForDerivesFromUpdateBranches proves the namespaced entries
+// are built from updateBranches rather than hardcoded, so adding a branch
+// stays a one-line change in exactly one place.
+func TestUpdateTagsForDerivesFromUpdateBranches(t *testing.T) {
+	orig := updateBranches
+	updateBranches = []string{"alpha", "beta", "gamma"}
+	t.Cleanup(func() { updateBranches = orig })
+
+	got := updateTagsFor("1.0.0")
+	want := []string{"alpha/MkI_v1.0.0", "beta/MkI_v1.0.0", "gamma/MkI_v1.0.0", "MkI_v1.0.0"}
+
+	if len(got) != len(want) {
+		t.Fatalf("updateTagsFor = %q, want %q", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("candidate %d = %q, want %q", i, got[i], want[i])
 		}
 	}
 }
@@ -261,5 +313,209 @@ func TestFetchLatestVersionBudgetIsTotalNotPerCandidate(t *testing.T) {
 
 	if elapsed >= 2*budget {
 		t.Fatalf("fetchLatestVersion took %v with a %v budget, want comfortably under %v", elapsed, budget, 2*budget)
+	}
+}
+
+// withTarballURL points tarballURLFmt at a test server for the duration of
+// the calling test, restoring it on cleanup so no later test in the package
+// observes the override. It is the sibling of withUpdateBranches above, and
+// it is the reason tarballURLFmt is a var: while it was a const, nothing
+// below this line could be written at all, and the tag-prefix bug shipped
+// through exactly that hole.
+func withTarballURL(t *testing.T, srv *httptest.Server) {
+	t.Helper()
+	orig := tarballURLFmt
+	tarballURLFmt = srv.URL + "/tar/%s"
+	t.Cleanup(func() { tarballURLFmt = orig })
+}
+
+// pinUpdateBranches fixes updateBranches for the duration of the calling
+// test, restoring it on cleanup. The tarball tests below spell out the exact
+// tags they expect a server to be asked for, so they must not silently change
+// meaning — or start failing — the day a name is added to updateBranches.
+// That the real list stays derivable is TestUpdateTagsForDerivesFromUpdateBranches'
+// job, not theirs.
+func pinUpdateBranches(t *testing.T, branches ...string) {
+	t.Helper()
+	orig := updateBranches
+	updateBranches = branches
+	t.Cleanup(func() { updateBranches = orig })
+}
+
+// fakeReleaseTarball builds, in memory, a gzipped tar shaped the way GitHub
+// serves one: every entry under a single leading directory named after the
+// flattened tag. It carries the two directories fetchRelease's completeness
+// check insists on (content/ and tui/bin/) plus an install.sh, so a tree
+// unpacked from it can survive applyUpdate all the way through.
+func fakeReleaseTarball(t *testing.T, prefix string) []byte {
+	t.Helper()
+	var buf bytes.Buffer
+	gz := gzip.NewWriter(&buf)
+	tw := tar.NewWriter(gz)
+
+	dirs := []string{prefix + "/", prefix + "/content/", prefix + "/tui/", prefix + "/tui/bin/"}
+	for _, d := range dirs {
+		if err := tw.WriteHeader(&tar.Header{Name: d, Typeflag: tar.TypeDir, Mode: 0o755}); err != nil {
+			t.Fatalf("writing tar dir %q: %v", d, err)
+		}
+	}
+
+	files := map[string]string{
+		prefix + "/content/index.md": "# fake\n",
+		prefix + "/tui/bin/tutor":    "#!/bin/sh\nexit 0\n",
+		prefix + "/install.sh":       "#!/bin/bash\nexit 0\n",
+		prefix + "/version.txt":      "0.2.13\n",
+	}
+	for name, body := range files {
+		hdr := &tar.Header{Name: name, Typeflag: tar.TypeReg, Mode: 0o755, Size: int64(len(body))}
+		if err := tw.WriteHeader(hdr); err != nil {
+			t.Fatalf("writing tar header %q: %v", name, err)
+		}
+		if _, err := tw.Write([]byte(body)); err != nil {
+			t.Fatalf("writing tar body %q: %v", name, err)
+		}
+	}
+
+	if err := tw.Close(); err != nil {
+		t.Fatalf("closing tar: %v", err)
+	}
+	if err := gz.Close(); err != nil {
+		t.Fatalf("closing gzip: %v", err)
+	}
+	return buf.Bytes()
+}
+
+// releaseServer serves a fake tarball for exactly one tag and 404s every
+// other, recording the tags it was asked for in the order they arrived.
+func releaseServer(t *testing.T, serveTag string, asked *[]string) *httptest.Server {
+	t.Helper()
+	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		tag := strings.TrimPrefix(r.URL.Path, "/tar/")
+		*asked = append(*asked, tag)
+		if tag != serveTag {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+		w.Header().Set("Content-Type", "application/gzip")
+		_, _ = w.Write(fakeReleaseTarball(t, "tutor-"+strings.ReplaceAll(tag, "/", "-")))
+	}))
+}
+
+// TestFetchReleaseAcceptsBareTag is the regression test for the bug itself.
+// v0.2.13 was published as the bare tag "MkI_v0.2.13", and a fetch for it
+// must succeed and unpack a usable tree.
+func TestFetchReleaseAcceptsBareTag(t *testing.T) {
+	var asked []string
+	srv := releaseServer(t, "MkI_v0.2.13", &asked)
+	defer srv.Close()
+	withTarballURL(t, srv)
+
+	dir, err := fetchRelease(t.TempDir(), "MkI_v0.2.13")
+	if err != nil {
+		t.Fatalf("fetchRelease on the bare tag failed: %v", err)
+	}
+	if info, err := os.Stat(filepath.Join(dir, "content")); err != nil || !info.IsDir() {
+		t.Errorf("unpacked tree has no content/ directory: %v", err)
+	}
+	if info, err := os.Stat(filepath.Join(dir, "tui", "bin")); err != nil || !info.IsDir() {
+		t.Errorf("unpacked tree has no tui/bin directory: %v", err)
+	}
+}
+
+// TestFetchReleaseCleansUpOnFailure holds fetchRelease to the self-cleanup
+// contract its doc comment promises: a candidate that 404s must not strand a
+// tutor-update-* directory, or every failed candidate before the winner would
+// leave one behind on every update that needed more than one try.
+func TestFetchReleaseCleansUpOnFailure(t *testing.T) {
+	var asked []string
+	srv := releaseServer(t, "MkI_v0.2.13", &asked)
+	defer srv.Close()
+	withTarballURL(t, srv)
+
+	parent := t.TempDir()
+	if _, err := fetchRelease(parent, "main/MkI_v0.2.13"); err == nil {
+		t.Fatal("fetchRelease succeeded on a tag the server 404s")
+	}
+	entries, err := os.ReadDir(parent)
+	if err != nil {
+		t.Fatalf("reading parent: %v", err)
+	}
+	if len(entries) != 0 {
+		t.Errorf("failed fetch stranded %d entries in parent: %v", len(entries), entries)
+	}
+}
+
+// TestApplyUpdateWalksPastNamespacedTagsToBareTag is the end-to-end proof
+// that the candidate loop does what updateTagsFor's ordering promises: both
+// namespaced tags are tried and 404, and the bare tag — the shape v0.2.13 was
+// actually published under — is reached and installed. Against the pre-fix
+// code this test cannot even compile, and against a fix that emitted only the
+// namespaced tags it fails on the error applyUpdate returns.
+func TestApplyUpdateWalksPastNamespacedTagsToBareTag(t *testing.T) {
+	var asked []string
+	srv := releaseServer(t, "MkI_v0.2.13", &asked)
+	defer srv.Close()
+	withTarballURL(t, srv)
+	pinUpdateBranches(t, "main", "tori")
+
+	parent := t.TempDir()
+	root := filepath.Join(parent, "tutor")
+	if err := os.MkdirAll(filepath.Join(root, "content"), 0o755); err != nil {
+		t.Fatalf("seeding root: %v", err)
+	}
+
+	if err := applyUpdate(root, "0.2.13"); err != nil {
+		t.Fatalf("applyUpdate failed on a release published under the bare tag: %v", err)
+	}
+
+	want := []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13"}
+	if len(asked) != len(want) {
+		t.Fatalf("server was asked for %q, want %q", asked, want)
+	}
+	for i := range want {
+		if asked[i] != want[i] {
+			t.Errorf("request %d was for %q, want %q", i, asked[i], want[i])
+		}
+	}
+
+	// The swap really happened: the tree now on disk is the downloaded one.
+	if _, err := os.Stat(filepath.Join(root, "tui", "bin", "tutor")); err != nil {
+		t.Errorf("root was not replaced by the downloaded tree: %v", err)
+	}
+	if _, err := os.Stat(root + ".old"); !os.IsNotExist(err) {
+		t.Errorf("the .old rollback directory was left behind")
+	}
+}
+
+// TestApplyUpdateReportsEveryTagItTried covers the failure path a reader
+// actually sees. When no candidate resolves, the error must name all three,
+// because that message is what distinguishes a genuinely missing release from
+// one tagged in a shape the candidate list does not cover — the distinction
+// nobody could make while the bug was live.
+func TestApplyUpdateReportsEveryTagItTried(t *testing.T) {
+	var asked []string
+	srv := releaseServer(t, "no-such-tag", &asked)
+	defer srv.Close()
+	withTarballURL(t, srv)
+	pinUpdateBranches(t, "main", "tori")
+
+	parent := t.TempDir()
+	root := filepath.Join(parent, "tutor")
+	if err := os.MkdirAll(root, 0o755); err != nil {
+		t.Fatalf("seeding root: %v", err)
+	}
+
+	err := applyUpdate(root, "0.2.13")
+	if err == nil {
+		t.Fatal("applyUpdate succeeded with no resolvable tag")
+	}
+	for _, tag := range []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13"} {
+		if !strings.Contains(err.Error(), tag) {
+			t.Errorf("error %q does not name tried tag %q", err, tag)
+		}
+	}
+	// A failed update must leave the existing install untouched.
+	if _, err := os.Stat(root); err != nil {
+		t.Errorf("failed update destroyed the existing root: %v", err)
 	}
 }
