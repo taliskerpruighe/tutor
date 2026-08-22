@@ -284,7 +284,7 @@ type sidebarEntry struct {
 // bin/parity.sh greps this literal rather than keeping its own copy; a
 // second hand-maintained list of the same versions would drift silently the
 // release after it was written.
-var newVersions = []string{"v0.2.10", "v0.2.11"}
+var newVersions = []string{"v0.2.12", "v0.2.13"}
 
 // isNewArticle applies the "N" rule once, for both call sites in
 // sidebarEntries below that build an article entry: an article is new when

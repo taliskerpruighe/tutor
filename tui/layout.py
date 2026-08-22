@@ -207,7 +207,7 @@ def _status_bar(app, cols):
 #: the oldest, add the one being cut. Both files carry the same literal and
 #: ``bin/parity.sh`` reads the Go one, so a disagreement between them shows
 #: up as a frame diff rather than as silence.
-NEW_VERSIONS = ("v0.2.10", "v0.2.11")
+NEW_VERSIONS = ("v0.2.12", "v0.2.13")
 
 
 def _is_new(article, is_read, installed):

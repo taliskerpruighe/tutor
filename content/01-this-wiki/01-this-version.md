@@ -10,41 +10,37 @@ keywords: [version, roadmap, agents, skills, subagents, workflows, hooks, plugin
 
 # This version
 
-*v0.2.10*
+*v0.2.13*
 
-This is version 0.2.10, and it still covers the whole path from
+This is version 0.2.13, and it still covers the whole path from
 opening a terminal for the first time to running an agent that works
 unattended, with nobody watching it. The path has not changed. The
 ground it covers along the way has grown considerably, and this
 article is about where.
 
-The course now runs to 165 articles, up from 152.
+The course now runs to 166 articles, up from 165.
 
 ## What is new
 
-**Other Models** is a whole new part, twelve articles, covering how to
-point Claude Code at a model that is not Claude and what you give up
-by doing it. Two worked examples sit at opposite ends of the range:
-Ollama, running on your own machine, and Kimi, a paid cloud endpoint
-reached over the internet. Ollama is met earlier than that, in
-**Agentic AI**'s LLMs section, where a new article — *Running one
-yourself* — is the first word on running a model locally rather than
-renting one.
+**Challenges** is a new part, and it closes Level 2. It holds a single
+article — *Challenge one* — and it is not a lesson. It is a brief. A
+law firm wants a plugin that turns a folder of client documents into a
+finished naturalization packet on one command, and the article hands
+you the firm's own examples to work from: past clients with the input
+they gave the firm and the output the firm produced, plus further
+inputs with no output, left there for you to build and prove your
+plugin against. The materials ship with the course, in
+`materials/challenge-one/` beside the article.
 
-Level 2 was reordered around the addition. The **Claude** part now
-opens with the harness itself — Claude Code met before its
-alternatives, the alternatives before the models it can run — and
-**Claude Code Setup**, which used to be a section inside that part, is
-promoted to a part of its own, sitting after Other Models.
-
-Read marks are kept against an article's own identity rather than its
-place in the course, so all of that renumbering moved nothing you had
-already ticked.
+Nothing else moved. Every other part is where the last version left
+it, and the reading path through Levels 1 and 2 is unchanged — the
+challenge sits at the end of it, using what those two levels already
+taught and nothing beyond them.
 
 None of it is a reading assignment. A green `N` sits beside
-an article in the same slot the read tick occupies, and it now marks
-two versions' worth of new material rather than one: upgrading to
-0.2.10 shows you everything added in 0.2.9 and 0.2.10 both, not only
+an article in the same slot the read tick occupies, and it marks two
+versions' worth of new material rather than one: upgrading to
+0.2.13 shows you everything added in 0.2.12 and 0.2.13 both, not only
 the newest batch, so nothing you missed by skipping a release goes
 unmarked. It clears the moment you read the article. A fresh install
 still shows no `N` anywhere — there is nothing new to a reader who has

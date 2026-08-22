@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Teach the course, one section at a time — establishing where the reader has got to, sending them to the reader to read that section, checking it landed, and setting one thing to do with it. Use whenever the user asks to be taught, asks where to start or where to begin, asks what to read next, says they are new or lost or do not know where to begin, or asks for a lesson. Also use when they have just finished a section and want the next one. Do NOT use it to answer a one-off question about how something works or what a term means — that is the `tutor` skill — and do NOT use it to build an agent or a skill, which are `custom-agents` and `custom-skills`.
+description: Teach the course, one section at a time — establishing where the reader has got to, sending them to the reader to read that section, checking it landed, and setting one thing to do with it. Use whenever the user asks to be taught, asks where to start or where to begin, asks what to read next, says they are new or lost or do not know where to begin, or asks for a lesson. Also use when they have just finished a section and want the next one. Do NOT use it to answer a one-off question about how something works or what a term means — that is the `tutor` skill.
 effort: high
 user-invocable: true
 ---
@@ -21,24 +21,20 @@ know what to ask.
 
 ## The shape of the course
 
-Two levels. Level 1 is seven parts, Level 2 is eleven:
+**Derive it from `content/index.json` every time.** Parts run in the order
+they appear in the file. A level is a run of consecutive parts sharing a
+`level`; a section is a run of consecutive articles sharing a `section`.
 
-| Level 1 | Level 2 |
-|---|---|
-| This Wiki | Claude |
-| TUIs | Instructions |
-| The CLI | Agents |
-| Software | Skills |
-| Files | Subagents |
-| Linux | Workflows |
-| Agentic AI | Version Control |
-| | Hooks |
-| | Plugins |
-| | Headless Sessions |
-| | Counter-Recommendations |
+Two rules follow, and they hold whatever the file says:
 
-Most parts divide into sections; **This Wiki does not**, so its five articles
-are one lesson. Section names repeat across parts — *Building One* is in both
+- **A part with no sections is one lesson** — all of its articles together.
+- **The course ends at the last part in the index**, and a level ends where
+  the next `level` value begins.
+
+Never write a count, a part list, or "the only part that…" into your answer
+or into this file. Which parts exist, how many there are, and which have no
+sections all change between releases; the index is the only thing that knows.
+Section names repeat across parts — *Building One* is in both
 Skills and Workflows, *What They Are* is in Workflows, Hooks and Plugins,
 *Using Them* is in Hooks and Plugins. A few new names sit close enough to an
 older one to be said the same way by mistake: *Prompts* (Agents) next to
@@ -68,7 +64,8 @@ Ask for the bottom line of the reader tab. The part you want looks like this:
 
 Part, section, article, and how far they have **scrolled down the article
 they are on**. The part counts within the level rather than the whole course,
-so `3/11` is the third of Level 2's eleven parts. That last number says
+so `3/11` is the third part of its level, of however many that level holds
+in the index you just read. That last number says
 nothing about whether anything was read — a short article reads `100%` the
 moment it opens, because it all fits.
 
@@ -132,7 +129,7 @@ the course and they are the reason it exists:
 
 | # | Where it lives |
 |---|---|
-| 1 | Claude → Claude Code setup — content isolation |
+| 1 | Claude Code Setup — content isolation |
 | 2 | Agents → Context — the three resets |
 | 3 | Agents → Custom Agents — agent engineering |
 | 4 | Skills → Building One — skill engineering |
@@ -199,14 +196,17 @@ One task. Small enough to finish now. Then stop.
 | Claude → Claude | Say which of the four models they would reach for by default, and why not one of the others. |
 | Claude → Claude subscriptions | Check which plan they are on. |
 | Claude → Claude Code | Name one thing on the list they could not do from the website. |
-| Claude → Claude Code setup | Look inside `~/tutor/.claude/`, then `~/.claude/`. Say what is in each and why a session in one folder sees both. Party Trick #1. |
+| Other Models → Running Other Models | Say which of the eight things they would miss most if they pointed the harness away from Claude. |
+| Other Models → Ollama | Say what would have to be true of a job before running it on a local model beat sending it to Claude. |
+| Other Models → Kimi | Say which of the three effort levels a job of theirs needs, and what it would cost to be wrong. |
+| Claude Code Setup *(no sections)* | Look inside `~/tutor/.claude/`, then `~/.claude/`. Say what is in each and why a session in one folder sees both. Party Trick #1. |
 | Instructions → The CLAUDE.md File | Write one line for their own `CLAUDE.md` that would have saved them repeating an instruction this week. |
 | Agents → Context | Watch the number on screen while working, then `/clear` and watch it drop. Party Trick #2. |
 | Agents → Plans and Permissions | Press Shift-Tab in a running session and read which mode it lands on. |
 | Agents → Prompts | Write one prompt for something they need done today in the three-part shape: context, objectives, traps. |
-| Agents → Custom Agents | `/custom-agents` — build one, then launch it in a new tab. Party Trick #3. |
+| Agents → Custom Agents | Write an agent definition for a job they actually have, save it, then launch it in a new tab. Party Trick #3. |
 | Skills → When To Build One | Take a job they repeat and walk the ladder on it, out loud. |
-| Skills → Building One | Find two matched sets of their own files — the input and the output — then `/custom-skills`. Party Trick #4. |
+| Skills → Building One | Find two matched sets of their own files — the input and the output — then write the skill that turns one into the other. Party Trick #4. |
 | Skills → Making Them Fire | Type `/` and read the list. What can this session see, and why. Party Trick #5. |
 | Subagents → Chains | Give the default agent a job with three parts and tell it to split it. Party Trick #6. |
 | Subagents → Build a Chain | *One step per lesson* — see below. |
@@ -220,9 +220,14 @@ One task. Small enough to finish now. Then stop.
 | Plugins → Using Them | Turn something they built into a plugin and install it somewhere else. |
 | Headless Sessions → Running Without a Chat | Run one `claude -p` line and pipe a file into it. |
 | Counter-Recommendations *(no sections)* | Open your global settings file at `~/.claude/settings.json` and add one of the three `env` switches this part recommends. |
+| Challenges *(no sections)* | *Not a lesson* — see below. |
 
-Where the task is `/custom-agents` or `/custom-skills`, say so and let that
-skill run its own interview. It knows what to ask. Pick up afterwards.
+Where the task is to build an agent or a skill, interview them for the
+decisions that are theirs — the name, the job, the model or effort level,
+and whether it lives globally or in one folder — then write the file
+yourself. Never write a partial definition and fill it in later: a
+half-written file in `agents/` or `skills/` is a live one. Pick up the
+lesson afterwards.
 
 **Build a Chain is five lessons, not one.** Its five articles are five build
 steps, each with work at the end of it. Take one per invocation: read the
@@ -230,12 +235,18 @@ step, do it, stop. They type `/learn` for the next.
 
 Then say what the next section is, and that `/learn` will start it.
 
-**The course ends at Counter-Recommendations,** the one other part with no
-sections. Say so when they get there. They will have all six Party Tricks
-and have built an agent, a skill, a chain, a workflow and a plugin. Point
-them at *This Wiki → This version* for what a later version adds, and say
-that `/tutor` answers anything from the course in a session rather than on a
-page.
+**Challenges are not lessons.** A challenge article is a brief, not
+something to read and be questioned on. When the lesson lands on one, read
+the article yourself, then walk them through it: what the client wants, what
+they have been given, and what "done" looks like. Send them to read the
+article, and stop there — the work itself is theirs, across as many sessions
+as it takes, and they come back to you with it rather than to `/learn`. Do
+not set a task of your own on top of it, and do not question them afterwards.
+
+**When the index has no part left after the one they finished, they are at
+the end of the course.** Say so. Point them at *This Wiki → This version*
+for what a later version adds, and say that `/tutor` answers anything from
+the course in a session rather than on a page.
 
 ## How to talk to them
 
