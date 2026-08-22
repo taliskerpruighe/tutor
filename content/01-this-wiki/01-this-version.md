@@ -10,9 +10,9 @@ keywords: [version, roadmap, agents, skills, subagents, workflows, hooks, plugin
 
 # This version
 
-*v0.2.13*
+*v0.2.14*
 
-This is version 0.2.13, and it still covers the whole path from
+This is version 0.2.14, and it still covers the whole path from
 opening a terminal for the first time to running an agent that works
 unattended, with nobody watching it. The path has not changed. The
 ground it covers along the way has grown considerably, and this
@@ -40,7 +40,7 @@ taught and nothing beyond them.
 None of it is a reading assignment. A green `N` sits beside
 an article in the same slot the read tick occupies, and it marks two
 versions' worth of new material rather than one: upgrading to
-0.2.13 shows you everything added in 0.2.12 and 0.2.13 both, not only
+0.2.14 shows you everything added in 0.2.13 and 0.2.14 both, not only
 the newest batch, so nothing you missed by skipping a release goes
 unmarked. It clears the moment you read the article. A fresh install
 still shows no `N` anywhere — there is nothing new to a reader who has
