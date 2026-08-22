@@ -38,13 +38,32 @@ var updateBranches = []string{"main", "tori"}
 // it.
 var versionURLFmt = "https://raw.githubusercontent.com/taliskerpruighe/tutor/%s/version.txt"
 
+// tarballURLFmt is a var rather than a const purely so update_test.go can
+// point it at an httptest server; nothing in the programme itself may write
+// it. It was a const until the tag-prefix bug, and that is precisely why the
+// bug shipped: with no way to redirect a tarball fetch, neither fetchRelease
+// nor applyUpdate could be tested at all, and the candidate loop below went
+// unexercised.
+var tarballURLFmt = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
+
 const (
-	// Tags in this repo are namespaced by the trunk they were cut on, so the
-	// real ref for branch "main" is "main/MkI_v0.2.11", not "MkI_v0.2.11" —
-	// and likewise for every other name in updateBranches. Drop the branch
-	// prefix and every tarball fetch 404s.
-	tagPrefixFmt  = "%s/MkI_v"
-	tarballURLFmt = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
+	// Release tags in this repo come in two shapes, because the convention
+	// changed mid-flight and the old tags were never renamed.
+	//
+	// Up through v0.2.11 every tag was namespaced by the trunk it was cut
+	// on: "main/MkI_v0.2.11", or "tori/MkI_v0.2.11" on the other side of the
+	// rename. From v0.2.12 onward the branch prefix was simply left off and
+	// the tags are bare: "MkI_v0.2.12", "MkI_v0.2.13".
+	//
+	// So neither shape can be assumed. updateTagsFor builds both, namespaced
+	// first (every historical release resolves exactly as it always has) and
+	// bare last (which is what catches v0.2.12 onward). Emitting only the
+	// namespaced form is the bug this pair of constants exists to prevent
+	// recurring: the reader would find v0.2.13 in version.txt, correctly
+	// announce it, then 404 on both namespaced candidates and report the
+	// release missing while it sat on GitHub under the shorter name.
+	bareTagPrefix = "MkI_v"
+	tagPrefixFmt  = "%s/" + bareTagPrefix
 
 	// A cached remote version is trusted for this long before the network is
 	// asked again. Zero disables the cache entirely, so every launch checks.
@@ -74,9 +93,25 @@ func versionURLFor(branch string) string {
 	return fmt.Sprintf(versionURLFmt, branch)
 }
 
-// updateTagFor is the per-branch, namespaced release tag for ver.
-func updateTagFor(branch, ver string) string {
-	return fmt.Sprintf(tagPrefixFmt, branch) + ver
+// updateTagsFor returns every release tag ver might have been published
+// under, in the order applyUpdate should try them: one namespaced tag per
+// name in updateBranches, then the bare tag last.
+//
+// The order is the whole point. Namespaced first means a pre-v0.2.12 release
+// resolves on the same candidate it always did, so nothing about an older
+// reader's update path changes. Bare last means a release tagged without the
+// branch prefix is still found, one extra round trip later — and a tag that
+// does not exist 404s in milliseconds, so that trip costs essentially
+// nothing.
+//
+// The namespaced entries are derived from updateBranches rather than spelled
+// out, so adding a branch stays the one-line change it is today.
+func updateTagsFor(ver string) []string {
+	tags := make([]string, 0, len(updateBranches)+1)
+	for _, branch := range updateBranches {
+		tags = append(tags, fmt.Sprintf(tagPrefixFmt, branch)+ver)
+	}
+	return append(tags, bareTagPrefix+ver)
 }
 
 // updateCacheFile is where the last-seen remote version is written after
@@ -269,11 +304,11 @@ func cachedUpdateVersion() (latest string, available bool) {
 //
 // On ANY error return, fetchRelease removes the tmpdir it created before
 // returning ("", err) — it does not leave that to the caller. This matters
-// because applyUpdate now calls fetchRelease once per candidate branch: if
+// because applyUpdate now calls fetchRelease once per candidate tag: if
 // a candidate failed partway through, mid-download or mid-untar, and left
 // its cleanup to whoever eventually accepts a different candidate's
 // directory, every failed candidate before the winner would strand a
-// tutor-update-* directory in the reader's home — one per failed branch, on
+// tutor-update-* directory in the reader's home — one per failed tag, on
 // every single update that needed more than one try. So this function's
 // self-cleanup is implemented with a defer guarded on a named `ok bool`,
 // set true just before the one successful return; every other return path
@@ -325,13 +360,13 @@ func fetchRelease(parent, tag string) (tmpdir string, err error) {
 			return "", fmt.Errorf("reading tarball: %w", err)
 		}
 
-		// Every entry is prefixed with one directory: GitHub flattens the
-		// tag's slash, so tag "main/MkI_v0.2.11" gives
-		// "tutor-main-MkI_v0.2.11/" — and tag "tori/MkI_v0.2.11" gives
-		// "tutor-tori-MkI_v0.2.11/" just the same, since only the branch
-		// name inside the tag changes, never the shape of the tag. Strip
-		// exactly one leading path component regardless of which branch
-		// produced it.
+		// Every entry is prefixed with exactly one directory, whichever tag
+		// shape produced it: GitHub flattens a namespaced tag's slash, so
+		// "main/MkI_v0.2.11" gives "tutor-main-MkI_v0.2.11/" and
+		// "tori/MkI_v0.2.11" gives "tutor-tori-MkI_v0.2.11/", while a bare
+		// tag like "MkI_v0.2.13" simply gives "tutor-MkI_v0.2.13/". The
+		// slash is flattened, never preserved, so the depth is one in every
+		// case. Strip exactly one leading path component regardless.
 		parts := strings.SplitN(hdr.Name, "/", 2)
 		if len(parts) < 2 || parts[1] == "" {
 			continue
@@ -386,22 +421,22 @@ func fetchRelease(parent, tag string) (tmpdir string, err error) {
 	return tmpdir, nil
 }
 
-// applyUpdate tries each branch in updateBranches in turn, asking
-// fetchRelease to download and unpack the tarball for that branch's
-// namespaced tag ("<branch>/MkI_v<ver>") and taking the first one that
-// succeeds. If every branch fails, it returns an error naming every tag it
-// tried. From there — swapping the accepted directory in, rolling back on
-// failure, delegating to install.sh — nothing changed: this function must
-// never copy a binary itself, that is install.sh's job, and only it sheds
-// the quarantine xattr and survives ETXTBSY correctly.
+// applyUpdate tries each tag in updateTagsFor(ver) in turn — the namespaced
+// ones first, the bare one last — asking fetchRelease to download and unpack
+// the tarball for it and taking the first that succeeds. If every tag fails,
+// it returns an error naming every one it tried, which is what tells a reader
+// whether the release is genuinely missing or merely tagged in a shape this
+// list does not cover. From there — swapping the accepted directory in,
+// rolling back on failure, delegating to install.sh — nothing changed: this
+// function must never copy a binary itself, that is install.sh's job, and
+// only it sheds the quarantine xattr and survives ETXTBSY correctly.
 func applyUpdate(root string, ver string) error {
 	parent := filepath.Dir(root)
 
 	var tmpdir string
 	var triedTags []string
 	var lastErr error
-	for _, branch := range updateBranches {
-		tag := updateTagFor(branch, ver)
+	for _, tag := range updateTagsFor(ver) {
 		triedTags = append(triedTags, tag)
 		dir, err := fetchRelease(parent, tag)
 		if err != nil {
