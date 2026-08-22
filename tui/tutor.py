@@ -30,7 +30,7 @@ else:
     from . import content, state, term
     from .app import App
 
-VERSION = "0.2.11"
+VERSION = "0.2.13"
 
 MIN_PYTHON = (3, 9)
 

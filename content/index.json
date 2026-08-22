@@ -10,7 +10,7 @@
           "title": "This version",
           "section": "",
           "summary": "What this version of the course covers, what it leaves out on purpose, and what a later one adds",
-          "version": "v0.2.10",
+          "version": "v0.2.13",
           "keywords": [
             "version",
             "roadmap",
@@ -53,7 +53,7 @@
           "title": "Changelog",
           "section": "",
           "summary": "What changed in each version before this one, kept so a returning reader can find the delta",
-          "version": "v0.2.10",
+          "version": "v0.2.13",
           "keywords": [
             "changelog",
             "version",
@@ -64,7 +64,8 @@
             "0.2.1",
             "0.2.2",
             "0.2.9",
-            "0.2.10"
+            "0.2.10",
+            "0.2.13"
           ],
           "path": "content/01-this-wiki/03-changelog.md"
         },

@@ -5,17 +5,41 @@ level: Level 1
 part: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
-keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9, 0.2.10]
+keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9, 0.2.10, 0.2.13]
 ---
 
 # Changelog
 
-*v0.2.10*
+*v0.2.13*
 
 This page exists for exactly one reader: someone who has already been
 through this course once, came back after an update, and does not want
 to reread all of it to find out what is new. Skip it the first time
 through.
+
+## 0.2.13 — a challenge to finish on
+
+*This version* covers the shape of the course as it now stands. This
+page covers only the difference between that and what was here
+before.
+
+New material, not present before:
+
+- **Challenges** is a new part at the end of Level 2, holding one
+  article, *Challenge one*. It is a brief rather than a lesson: a law
+  firm wants a plugin that turns a folder of client documents into a
+  finished naturalization packet on one command.
+- The firm's own examples ship with it, in `materials/challenge-one/`
+  beside the article — past clients with both the input they gave the
+  firm and the output the firm produced, plus further inputs with no
+  output, there to build and prove a plugin against.
+
+No articles were removed or moved, and nothing in Levels 1 and 2
+changed underneath it. The challenge asks only for what those two
+levels already teach.
+
+As in every version that adds articles, a green `N` marks exactly the
+ones new to a returning reader.
 
 ## 0.2.10 — other models, and a longer memory for the marker
 
