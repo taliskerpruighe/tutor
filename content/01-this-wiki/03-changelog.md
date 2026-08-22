@@ -5,17 +5,40 @@ level: Level 1
 part: This Wiki
 order: 3
 summary: What changed in each version before this one, kept so a returning reader can find the delta
-keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9, 0.2.10, 0.2.13]
+keywords: [changelog, version, history, update, 0.1.0, 0.2.0, 0.2.1, 0.2.2, 0.2.9, 0.2.10, 0.2.13, 0.2.14]
 ---
 
 # Changelog
 
-*v0.2.13*
+*v0.2.14*
 
 This page exists for exactly one reader: someone who has already been
 through this course once, came back after an update, and does not want
 to reread all of it to find out what is new. Skip it the first time
 through.
+
+## 0.2.14 — updates that actually arrive
+
+*This version* covers the shape of the course as it now stands. This
+page covers only the difference between that and what was here
+before.
+
+No articles were added, removed, or moved. Levels 1 and 2 are exactly
+as 0.2.13 left them, and there is nothing new to read.
+
+What changed is the update mechanism itself. Releases used to be
+tagged under the branch they were cut on, and the updater only ever
+looked for that longer name. From 0.2.12 the tags were published under
+a shorter one, so a reader running `tutor update` would be told
+correctly that a new version existed, then fail to download it and be
+told the release was missing — while it sat on GitHub the whole time
+under the name the updater never asked for. The updater now tries both
+shapes, so every release reachable before stays reachable and the
+newer ones are found too.
+
+If you were stuck on 0.2.13 and could not update past it, this is the
+version that unsticks you, and you will not have to do anything for
+the next one.
 
 ## 0.2.13 — a challenge to finish on
 

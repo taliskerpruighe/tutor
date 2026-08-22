@@ -23,7 +23,7 @@ import (
 	"syscall"
 )
 
-const version = "0.2.13"
+const version = "0.2.14"
 
 const usage = `tutor                 open the course
 tutor <words>         open it with a search already running
