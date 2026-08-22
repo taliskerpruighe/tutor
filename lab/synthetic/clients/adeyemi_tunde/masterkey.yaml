@@ -1,0 +1,652 @@
+# masterkey.yaml — T3 adeyemi_tunde — Phase 2b
+# Authority chain: brief.md (binding) > registry.yaml clients:adeyemi_tunde entry >
+# STYLE-SPEC.md (§16 first) > SPEC-DELTA.md > BUILD-PLAN.md §3 schema.
+# Written from ONLY: brief.md, voice-card.md, BUILD-PLAN §3, STYLE-SPEC (whole,
+# §12/§9/§4.5/§16 closely), SPEC-DELTA, document-catalog.yaml, n400-part-map.md,
+# registry.yaml. No corpus file under lab/jacobs_brent, lab/zhu_vivian,
+# lab/izaguirre_jesus, lab/malone_kyle or lab/ossola_ylenia was opened.
+# NO FIRM IDENTITY ANYWHERE (STYLE-SPEC §16 ruling 7): no firm name, preparer
+# name, preparer address, firm phone or email exists in this file.
+
+# ---------------------------------------------------------------------------
+# N-400 PART-NUMBERING FINDING — read this before consuming any Part-labeled
+# fact below. lab/synthetic/tools/n400-part-map.md and SPEC-DELTA D-H claim the
+# committed 01/20/25 blank's PRINTED Parts are: applicant contact = printed
+# Part 10, preparer = printed Part 12, "no Part 13 at all" — derived from the
+# AcroForm /TU tooltips. Direct extraction of the blank's own page text
+# contradicts this:
+#   pdftotext -f 1 -l 5  -layout blanks/n-400.pdf -   -> Part 3. Biographic
+#     Information (ethnicity/race/height/weight/eye/hair) is printed Part 3,
+#     immediately after Part 2, on page 2 of 14.
+#   pdftotext -f 6 -l 11 -layout blanks/n-400.pdf -   -> Part 10 is printed
+#     "Request for a Fee Reduction"; Part 11 is printed "Applicant's Contact
+#     Information, Certification, and Signature" — NOT Part 10.
+#   pdftotext -f 12 -l 14 -layout blanks/n-400.pdf -  -> Part 12 is printed
+#     "Interpreter's Contact Information..."; Part 13 IS printed, and reads
+#     "Contact Information, Certification, and Signature of the Person
+#     Preparing this Application, if..." — the preparer block, and it exists.
+# The /TU tooltips are stale by one further step than the field-name prefixes
+# the map already flagged (e.g. field P12_SignatureApplicant[2] is tooltipped
+# "Part 12. Applicant's Statement..." though it is visibly the *preparer's*
+# signature per the printed page). The map conflated tooltip text with printed
+# heading text. CONSEQUENCE: this edition's printed Part numbers match the
+# NUMBERING STYLE-SPEC §16 and brief.md line 101 already assume (contact =
+# Part 11, preparer = Part 13) — §16 ruling 10/11 and the brief's "Part 11
+# filled; Part 13 empty; form unsigned" are literally correct as written on
+# THIS edition. This masterkey uses the PRINTED numbers (Part 3, Part 11,
+# Part 13) throughout, sourced from the pdftotext runs above.
+# UPDATE 2026-08-22: this finding was raised upstream and is now RESOLVED —
+# SPEC-DELTA.md was patched in place (D-H marked "SUPERSEDED BY D-H2") and
+# lab/synthetic/tools/n400-part-map.md was corrected on disk to the same
+# printed-page-text method used here. Both now agree with this masterkey.
+# Left in place for traceability, not as an open dispute.
+# ---------------------------------------------------------------------------
+
+client: adeyemi_tunde
+ships_as: to-do   # test input only — answer key, not a worked example
+
+identity:
+  family_name: "Adeyemi"
+  given_name: "Tunde"
+  middle_name: "Olusegun"
+  full_legal_name: "Tunde Olusegun Adeyemi"
+  other_names_used: []
+  name_change_requested: false
+  honorific: "Mr."
+  pronoun_subject: "he"
+  pronoun_possessive: "his"
+  dob: "1985-11-09"
+  sex: "M"
+  country_of_birth: "Nigeria"
+  country_of_citizenship: "Nigeria"
+  nationality_adjective: "Nigerian"
+  nationality_article: "a"
+  ssn: "396-70-2841"
+  uscis_online_account_number: null
+  first_entered_us: "2016-01-11"   # age 30 at first entry -> Part 9 Item 22.a is No (registry D15)
+  # Part 3. Biographic Information (printed Part 3, page 2 of 14 — see finding above)
+  ethnicity: "Not Hispanic or Latino"
+  race: ["Black or African American"]
+  height: {feet: 6, inches: 1}
+  weight_lb: 185
+  eye_color: "Brown"
+  hair_color: "Black"
+
+contact:
+  daytime_phone: "(608) 555-0171"
+  mobile_phone: "(608) 555-0171"
+  email: "tunde.adeyemi@quillmail.com"     # the ONE used on the form (Part 11 — see finding above): the address he gives when asked for his contact details
+  secondary_email_not_on_form: "t.adeyemi@cardinalpolymer.com"   # work address; used only when he replies on shift — the "multiple e-mail addresses" mess (BUILD-PLAN §5.3)
+
+immigration:
+  a_number: "216540923"
+  a_number_formatted: "A-216540923"
+  lpr_date: "2021-03-04"
+  class_of_admission: "E21"
+  basis: "316a"
+  classification_basis_string: "INA 316(a)"
+  conditional_resident: {was_cr: false}
+  derived:
+    early_filing_date: "2025-12-04"        # LPR + 5y - 90d = 2021-03-04 + 5y = 2026-03-04; -90d = 2025-12-04
+    residence_years_at_filing: 5.3415       # (2026-07-07 - 2021-03-04).days / 365.25, recomputed below
+    filing_margin_days: 215                 # 2026-07-07 - 2025-12-04
+
+addresses:   # gap-free, 2019-09-20 -> filing date, all Wisconsin, so lockbox never moves off Chicago
+  list:
+    - street: "412 Wren Street"
+      unit: null
+      city: "Verona"
+      state: "WI"
+      zip: "53593"
+      country: "USA"
+      from: "2019-09-20"
+      to: "2021-06-14"
+    - street: "908 Foundry Street"
+      unit: "Apt 12"
+      city: "Middleton"
+      state: "WI"
+      zip: "53562"
+      country: "USA"
+      from: "2021-06-15"
+      to: "2023-01-31"
+    - street: "5127 Copperleaf Lane"
+      unit: null
+      city: "Fitchburg"
+      state: "WI"
+      zip: "53711"
+      country: "USA"
+      from: "2023-02-01"
+      to: null
+      present: true
+  gap_check: "Verona.to (2021-06-14) + 1d = Middleton.from (2021-06-15); Middleton.to (2023-01-31) + 1d = Fitchburg.from (2023-02-01). Zero gap days both joins. Contiguous 2019-09-20 through the filing date."
+  lockbox: "Chicago"
+  carrier: "U.S. POSTAL SERVICE (USPS)"
+  state_of_residence: "WI"    # WI -> Chicago per STYLE-SPEC §7 table, throughout all three addresses
+
+employment:
+  - employer: "Cardinal Polymer Systems"
+    city: "Fitchburg"
+    state: "WI"
+    zip: "53711"
+    country: "USA"
+    occupation: "Process Engineer"
+    from: "2019-09-30"
+    to: null
+    present: true
+    note: "Single employer spans the entire address/residence window; no employment gap."
+
+family:
+  marital_status: "Married"
+  times_married: 1
+  marriage_date: "2017-12-16"
+  spouse:
+    name: "Folake Adeyemi"
+    dob: "1988-04-16"
+    ssn: "402-88-1937"
+    a_number: null
+    usc: false
+    usc_since: null
+    immigration_status: "lawful permanent resident"
+    employer: "Silverwood Pharmacy"
+    employer_city: "Fitchburg"
+    employer_state: "WI"
+    employer_title: "Pharmacy Technician"
+    address_same_as_applicant: true
+    times_married: 1
+    prior_marriages: []
+    note: >
+      NOT a U.S. citizen. Basis is 316(a), so STYLE-SPEC §9.3 rule 2 bars the
+      whole spousal evidentiary cluster (no C1 spouse passport, no C2, no
+      C3a/b/c). Full spouse block carried here as DATA ONLY — see exhibits:
+      below for the negative control. 319(a) (which would need C3c/etc.) is
+      unavailable to her because she is not a citizen.
+  children:
+    - name: "Ayodele Adeyemi"
+      dob: "2022-07-19"
+      country_of_birth: "USA"
+      pob_city_state: "Fitchburg, WI"
+      relationship: "Daughter"
+      lives_with_applicant: true
+      address: "5127 Copperleaf Lane, Fitchburg, WI 53711"
+      usc: true
+      note: "U.S. citizen by birth. No exhibit — C3c needs basis 319(a) (registry D11)."
+  parents:
+    - name: "Segun Adeyemi"
+      usc: false
+      married_before_applicant_18: true
+    - name: "Bisi Adeyemi"
+      usc: false
+      married_before_applicant_18: true
+
+travel:
+  # Order here is CHRONOLOGICAL (oldest first) for masterkey bookkeeping; the
+  # rendered addendum reverses this to most-recent-first per STYLE-SPEC §4.5.
+  list:
+    - depart: "2021-08-10"
+      return: "2021-08-24"
+      countries: ["Nigeria"]
+      days: 15
+      on_form: false
+      why_excluded: "exceeds the Part 8 table's 6 rows — oldest of 7 countable trips, dropped from the FORM table only; it stays IN the addendum (STYLE-SPEC §9.3 rule 5, addendum is a superset). Not a day trip; §9.2 C4's day-trip disjunct (registry D7) is not in play for this client — zero day trips were supplied."
+    - depart: "2022-03-02"
+      return: "2022-03-09"
+      countries: ["Canada"]
+      days: 8
+      on_form: true
+      why_excluded: null
+    - depart: "2022-12-20"
+      return: "2023-01-03"
+      countries: ["Nigeria"]
+      days: 15
+      on_form: true
+      why_excluded: null
+    - depart: "2023-07-15"
+      return: "2023-07-22"
+      countries: ["United Kingdom"]
+      days: 8
+      on_form: true
+      why_excluded: null
+    - depart: "2024-04-05"
+      return: "2024-04-19"
+      countries: ["Nigeria"]
+      days: 15
+      on_form: true
+      why_excluded: null
+    - depart: "2024-11-27"
+      return: "2024-12-08"
+      countries: ["Ghana"]
+      days: 12
+      on_form: true
+      why_excluded: null
+    - depart: "2025-08-14"
+      return: "2025-08-28"
+      countries: ["Nigeria"]
+      days: 15
+      on_form: true
+      why_excluded: null
+  derived:
+    countable_trips: 7
+    part_8_table_rows: 6
+    trips_on_form: 6            # rows 2-7 chronologically = the 6 most recent
+    trips_in_addendum_only: 1   # trip 1 (2021-08-10, oldest)
+    total_days_outside_us: 88   # 15+8+15+8+15+12+15
+    c4_fires: true
+    c4_reason: "7 countable trips > 6 Part 8 rows (row-count disjunct only; zero day trips supplied, so D7's other disjunct never engages)"
+  addendum_meta:
+    residence_window_years: 5
+    part_8_page: 6              # confirmed: `pdftotext -f 6 -l 6` shows Part 8's table on the same page as the Part 9 items 1.-5.b. header, "Page 6 of 14"
+    intro_sentence: >
+      The following is a full list of the Applicant's trips to countries other
+      than the United States within the last 5 years, excluding day trips. It
+      combines the trips listed in Page 6, Part 8, Question 1, with the trips
+      listed in the addendum thereto.
+    order_in_rendered_addendum: "most recent first (2025-08-14 down to 2021-08-10), per STYLE-SPEC §4.5"
+
+moral_character:   # full printed Part 9 set (page 6-10 of 14), item numbers as printed on the 01/20/25 blank
+  q_1:  {answer: "No"}
+  q_2:  {answer: "No"}
+  q_3:  {answer: "No"}
+  q_4:  {answer: "No"}
+  q_5a: {answer: "No"}
+  q_5b: {answer: "No"}
+  q_6a: {answer: "No"}
+  q_6b: {answer: "No"}
+  q_6c: {answer: "No"}
+  q_7a: {answer: "No"}
+  q_7b: {answer: "No"}
+  q_7c: {answer: "No"}
+  q_7d: {answer: "No"}
+  q_7e: {answer: "No"}
+  q_7f: {answer: "No"}
+  q_7g: {answer: "No"}
+  q_8a: {answer: "No"}
+  q_8b: {answer: "No"}
+  q_9:  {answer: "No"}
+  q_10a: {answer: "No"}
+  q_10b: {answer: null, not_applicable: true, reason: "conditional on 10.a = Yes; 10.a is No"}
+  q_10c: {answer: null, not_applicable: true, reason: "conditional on 10.a = Yes; 10.a is No"}
+  q_11: {answer: "No"}
+  q_12: {answer: "No"}
+  q_13: {answer: "No"}
+  q_14: {answer: "No"}
+  q_15a: {answer: "No"}
+  q_15b:
+    answer: "Yes"
+    triggers: ["C5"]
+    explanation: null   # STYLE-SPEC §9.2 C5's own table carries this fact; brief.md is explicit that "the written explanation does NOT" exist for this item — Item 15's Yes routes to the Item 15 TABLE below, not to a Part 14 narrative (unlike Items 20/21, which route to Part 14 and would trigger C6)
+    detail_row:
+      offense: "Operating a Motor Vehicle with a Suspended License"   # LOCKED spelling: American "license" — identical string in this table and in the court records exhibit (STYLE-SPEC §9.4 lock, brief.md explicit instruction)
+      date_of_offense: "2023-06-24"
+      date_of_conviction_or_plea: null      # no conviction — dismissed
+      place: "Fitchburg, Wisconsin, USA"
+      disposition: "dismissed"
+      sentence: null
+    spelling_note: >
+      The applicant's own prose (e-mail) spells it "licence" — a
+      Nigerian-education tell recorded on his voice card. The Item 15 table
+      and the court records exhibit use the American "license" identically;
+      the "licence" spelling exists ONLY on the input side (his e-mail text)
+      and must never leak into either locked output artefact.
+  q_16: {answer: null, not_applicable: true, reason: "conditional on having received a suspended sentence/probation/parole; none applies — the charge was dismissed, no sentence"}
+  q_17a: {answer: "No"}
+  q_17b: {answer: "No"}
+  q_17c: {answer: "No"}
+  q_17d: {answer: "No"}
+  q_17e: {answer: "No"}
+  q_17f: {answer: "No"}
+  q_17g: {answer: "No"}
+  q_17h: {answer: "No"}
+  q_18: {answer: "No"}
+  q_19: {answer: "No"}
+  q_20: {answer: "No", note: "PROOF C6 does not fire. Never in removal, rescission or deportation proceedings. Routes to Part 14 if Yes — it is not."}
+  q_21: {answer: "No", note: "PROOF C6 does not fire. Never removed or deported. Routes to Part 14 if Yes — it is not."}
+  q_22a: {answer: "No", note: "first entered the U.S. 2016-01-11 at age 30, after his 26th birthday (registry D15) — never lived in the U.S. between 18 and 26"}
+  q_22b: {answer: null, not_applicable: true, reason: "conditional on 22.a = Yes; 22.a is No"}
+  q_22c: {answer: null, not_applicable: true, reason: "conditional on 22.b = Yes; 22.b not applicable"}
+  q_23: {answer: "No"}
+  q_24: {answer: "No"}
+  q_25: {answer: "No", note: "never served in the U.S. armed forces; form instruction: 'If you answered No to 25, go to 30.a.' — skips 26-29 entirely"}
+  q_26a: {answer: null, not_applicable: true, reason: "skipped — 25 is No, form routes straight to 30.a"}
+  q_26b: {answer: null, not_applicable: true, reason: "skipped — 25 is No"}
+  q_26c: {answer: null, not_applicable: true, reason: "skipped — 25 is No"}
+  q_26d: {answer: null, not_applicable: true, reason: "skipped — 25 is No"}
+  q_27: {answer: null, not_applicable: true, reason: "skipped — 25 is No"}
+  q_28: {answer: null, not_applicable: true, reason: "skipped — 25 is No"}
+  q_29: {answer: null, not_applicable: true, reason: "skipped — 25 is No"}
+  q_30a: {answer: "No"}
+  q_30b: {answer: null, not_applicable: true, reason: "form instruction: 30.a No skips to Item 31"}
+  q_31: {answer: "Yes"}
+  q_32: {answer: "Yes"}
+  q_33: {answer: "No"}
+  q_34: {answer: "Yes"}
+  q_35: {answer: "Yes"}
+  q_36: {answer: "Yes"}
+  q_37: {answer: "Yes"}
+
+fee_reduction:   # printed Part 10 (see finding above)
+  item_1_household_income_le_400pct_fpg: "No"
+  note: "No -> skip to Part 11 (contact/certification/signature). No fee-reduction fields filled."
+
+matter:
+  engagement_date: "2026-05-11"
+  filed_date: "2026-07-07"
+  lockbox: "Chicago"
+  carrier: "U.S. POSTAL SERVICE (USPS)"
+  fee: "760.00"
+  form_edition: "01/20/25"
+  lockbox_block:    # USPS variant, Chicago (STYLE-SPEC §7 — the P.O. Box row, not the FedEx street-address row)
+    line1: "Department of Homeland Security"
+    line2: "United States Citizenship and Immigration Services"
+    line3: "USCIS Chicago Lockbox"
+    line4: "Attn: N-400"
+    line5: "P.O. Box 4380"
+    line6: "Chicago, IL 60680-4380"
+    via_line: "VIA U.S. POSTAL SERVICE (USPS)"
+
+documents:
+  passport:
+    issuing_country: "Nigeria"
+    passport_number: "A04871562"
+    surname_printed: "ADEYEMI"
+    given_names_printed: "TUNDE OLUSEGUN"
+    nationality: "NGA"
+    dob: "1985-11-09"
+    sex: "M"
+    place_of_birth: "Nigeria"
+    issue_date: "2019-08-12"
+    expiry_date: "2029-08-11"
+    issuing_authority: "Nigeria Immigration Service"
+    mrz:
+      line1: "P<NGAADEYEMI<<TUNDE<OLUSEGUN<<<<<<<<<<<<<<<<"
+      line2: "A048715627NGA8511098M2908111<<<<<<<<<<<<<<06"
+    mrz_check_digits:   # ICAO 9303 weighting 7,3,1, recomputed in python
+      passport_number_cd: 7
+      dob_cd: 8
+      expiry_cd: 1
+      personal_number_cd: 0    # personal number field unused, all filler '<'
+      composite_cd: 6
+      verification: "python3 recompute, see derived.mrz_verification below — all five check digits match the two MRZ lines as written"
+  green_card:
+    surname: "ADEYEMI"
+    given_name: "TUNDE OLUSEGUN"
+    uscis_number: "216540923"     # == A-number
+    category_class_of_admission: "E21"
+    country_of_birth: "Nigeria"
+    dob: "1985-11-09"
+    sex: "M"
+    resident_since: "2021-03-04"   # == immigration.lpr_date == cover letter's 316(a) date
+    card_expiry: "2031-03-04"      # 10-year card; conditional_resident.was_cr = false
+    sides: ["front", "back"]
+  tax_return:
+    year: 2025
+    blank: "f1040.pdf"
+    filing_status: "Married Filing Jointly"
+    taxpayer_name: "Tunde Olusegun Adeyemi"
+    taxpayer_ssn: "396-70-2841"
+    spouse_name: "Folake Adeyemi"
+    spouse_ssn: "402-88-1937"
+    address_printed: "5127 Copperleaf Lane, Fitchburg, WI 53711"    # locked to addresses[2] (current)
+    wages: 133200.00
+    agi: 131800.00
+    total_tax: 15240.00
+    refund: 2315.00
+    preparer_name: "Bettina Wachtel, CPA"    # the TAX preparer (a different professional from the immigration petition preparer; HARD CONSTRAINT #2 deletes the latter entirely — no address/phone recorded for either)
+    delivery_note: "Arrived as a password-protected PDF; the password itself and its two-e-mail-later arrival are an INPUT-SIDE mess event (see mess_events below), not an output fact — none of the figures above are consumed until the password is supplied."
+  evidence:
+    - type: "court_records"
+      court_name_and_location: "Circuit Court, Fitchburg, Wisconsin"
+      police_case_number: "FPD-2023-006721"
+      docket_number: "2023TR014892"
+      charges:
+        - statute: "Wis. Stat. § 343.44(1)(b)"
+          offense: "Operating a Motor Vehicle with a Suspended License"   # LOCKED spelling — identical to moral_character.q_15b.detail_row.offense
+          offense_date: "2023-06-24"
+      plea: "Not Guilty (entered 2023-07-10)"
+      disposition: "Dismissed"
+      disposition_date: "2023-09-12"
+      judge: "Judge Owen Pruitt"
+      clerk_certification:
+        clerk: "Ellen Voss, Deputy Clerk of Circuit Court"
+        certification_date: "2023-09-20"
+        seal: "raised court seal present on the certified copy, visible in the supplied photograph"
+      note: "Single certified document; one legible phone photograph carries every fact above, per brief.md's 'difficulty is in the count and the format, never in the pixels'."
+  resume:
+    employer: "Cardinal Polymer Systems"
+    title: "Process Engineer"
+    city: "Fitchburg"
+    state: "WI"
+    from: "2019-09-30"
+    to: "present"
+    education: "B.Eng., Chemical Engineering, University of Ibadan, 2004-2009"
+    arrival_form: "phone photograph of a printed resume page (not a PDF export) — consistent with brief.md's 'every document arrives as a photograph'; the ONE stated exception to the photo-only modality is the tax return, which arrives as a password-protected PDF per brief.md"
+    locked_to: "employment[0] — same employer, same city/state, same from-date, 'present' to-date"
+
+exhibits:   # derived from the 4-argument rule (basis, moral answers, immigration history, supplied evidence). 8 documents, precedence order per STYLE-SPEC §9.2 / document-catalog.yaml
+  list:
+    - doc: 1
+      id: table_of_contents
+      tab: "A"
+      file: "A-1. Table of Contents"
+      divider_title: "TABLE OF CONTENTS"
+      toc_line: "Table of contents"
+      trigger: "core"
+      why: "unconditional core, every packet (STYLE-SPEC §9.1)"
+    - doc: 2
+      id: cover_letter
+      tab: "A"
+      file: "A-2. Cover Letter"
+      divider_title: "COVER LETTER"
+      toc_line: "Cover letter"
+      trigger: "core"
+      why: "unconditional core, every packet (STYLE-SPEC §9.1)"
+    - doc: 3
+      id: n400
+      tab: "B"
+      file: "B-3. Form N-400, Application for Naturalization"
+      divider_title: "FORM N-400"
+      toc_line: "Form N-400, Application for Naturalization"
+      trigger: "core"
+      why: "the application itself; unsigned, Part 13 blank (§16 rulings 10/11, honoured LITERALLY on this edition — see finding above)"
+    - doc: 4
+      id: applicant_passport
+      tab: "B"
+      file: "B-4. Bio Page of Passport"
+      divider_title: "PASSPORT"
+      toc_line: "Bio page of latest passport of the applicant"
+      trigger: "core"
+      why: "identity; supplies name, DOB, COB, MRZ"
+    - doc: 5
+      id: green_card
+      tab: "B"
+      file: "B-5. Permanent Resident Card"
+      divider_title: "PERMANENT RESIDENT CARD"
+      toc_line: "Form I-551, Permanent Resident Card"
+      trigger: "core"
+      why: "supplies A-number and LPR date; front and back"
+    - doc: 6
+      id: tax_return
+      tab: "B"
+      file: "B-6. 2025 Income Tax Return"
+      divider_title: "2025 INCOME TAX RETURN"
+      toc_line: "Latest tax return"
+      trigger: "core"
+      why: "continuous-residence and good-moral-character evidence; joint filing status means this slot ALSO absorbs the marriage evidence (STYLE-SPEC §9.3 rule 1) — it is never duplicated, and it is the ONLY marriage-adjacent document in the packet, because basis 316(a) bars C1/C2/C3 outright"
+    - doc: 7
+      id: travel_addendum
+      tab: "B"
+      file: "B-7. Travel Addendum"
+      divider_title: "TRAVEL ADDENDUM"
+      toc_line: "Travel addendum"
+      trigger: "C4"
+      why: "7 countable trips > the Part 8 table's 6 rows — demonstrated by W1 Almeida"
+    - doc: 8
+      id: court_records
+      tab: "B"
+      file: "B-8. Court Records"
+      divider_title: "COURT RECORDS"
+      toc_line: "Court records"
+      trigger: "C5"
+      why: "Part 9 Item 15.b is Yes (arrest/citation/charge) — demonstrated by W3 Nowak"
+  not_triggered:
+    C1_C2_C3: "basis is 316(a) — STYLE-SPEC §9.3 rule 2, '316(a) admits no spousal evidence at all'. He has a spouse (family.spouse, full block above) AND a child (family.children[0]); NEITHER produces a document. Deliberate negative control (registry D11) against the 'married -> spouse's passport' mis-rule."
+    C6: "Item 20 and Item 21 are both No (moral_character.q_20, q_21) — no non-tabulable Yes exists anywhere in Part 9. Mirror of T2 Stavros (C6 alone, no C5): here C5 fires alone, C6 does not ride along with it. All four cells of the {C5,C6} x {Yes,No} truth table are populated across the six-client set (registry coverage_matrix.moral_character_truth_table)."
+  document_count: 8
+
+input_surfaces:   # every output-consumed fact -> at least one unambiguous input surface. Modality: phone photographs only + prose; NO questionnaire of any kind. Thread numbering: email:NNNNNN, 2026-05-11 (engagement) .. 2026-06-17, all inside the 2026-07-07 filing date (registry D16's 5-9-week window).
+  identity.family_name:            [photo:passport_bio@email:000002]
+  identity.given_name:             [photo:passport_bio@email:000002]
+  identity.middle_name:            [photo:passport_bio@email:000002]
+  identity.dob:                    [photo:passport_bio@email:000002]
+  identity.sex:                    [photo:passport_bio@email:000002]
+  identity.country_of_birth:       [photo:passport_bio@email:000002]
+  identity.ssn:                    [email:000004]
+  identity.height:                 [email:000006]
+  identity.weight_lb:              [email:000006]
+  identity.eye_color:              [email:000006]
+  identity.hair_color:             [email:000006]
+  identity.ethnicity:              [email:000006]
+  identity.race:                   [email:000006]
+  identity.first_entered_us:       [email:000004]
+  contact.daytime_phone:           [email:000004]
+  contact.mobile_phone:            [email:000004]
+  contact.email:                   [email:000004, email:000008]   # given at 000004, RE-CONFIRMED as the form address at 000008 after the firm asks which of his two addresses to use — resolves the multiple-e-mail-addresses mess
+  documents.passport.passport_number: [photo:passport_bio@email:000002]
+  documents.passport.issue_date:      [photo:passport_bio@email:000002]
+  documents.passport.expiry_date:     [photo:passport_bio@email:000002]
+  documents.passport.mrz:             [photo:passport_bio@email:000002]
+  immigration.a_number:            [photo:green_card_front@email:000002]
+  immigration.lpr_date:            [photo:green_card_front@email:000002, note: "printed as 'Resident Since'"]
+  immigration.class_of_admission:  [photo:green_card_front@email:000002]
+  documents.green_card.card_expiry: [photo:green_card_front@email:000002]
+  documents.green_card.sides:      [photo:green_card_front@email:000002, photo:green_card_back@email:000002]
+  addresses.2_fitchburg (current): [email:000004]
+  addresses.1_middleton:           [email:000006]
+  addresses.0_verona:              [email:000008, note: "supplied only after the firm flags the Middleton->2019 gap — the 'blank field, supplied later by prose' mess, escalated per brief.md: there is no questionnaire at all to have asked it on"]
+  employment.0:                    [email:000004, photo:resume@email:000008]
+  family.marital_status:           [email:000004]
+  family.marriage_date:            [email:000004]
+  family.spouse.name:              [email:000004]
+  family.spouse.usc:               [email:000004, note: "'My wife is a permanent resident. She is not a citizen.'"]
+  family.spouse.employer:          [email:000004]
+  family.spouse.dob:               [documents.tax_return@email:000010+000012, note: "printed on the joint 1040; legible only after the password unlocks the PDF"]
+  family.spouse.ssn:               [documents.tax_return@email:000010+000012]
+  family.children.0:               [email:000004]
+  family.parents:                  [email:000004]
+  travel[*]:                       [email:000008]
+  moral_character.q_15b:           [email:000006, photo:court_record@email:000006]
+  moral_character.q_15b.detail_row: [photo:court_record@email:000006]
+  moral_character.q_20:            [email:000006, note: "part of the blanket 'All other Part 9 questions: No' line"]
+  moral_character.q_21:            [email:000006, note: "part of the blanket 'All other Part 9 questions: No' line"]
+  moral_character.blanket_no:      [email:000006, note: "single blanket statement 'All other Part 9 questions: No.' covers every item not individually itemised above (q_1-q_14, q_16-q_19, q_22a-q_30a) — a per-item text match is NOT expected; Phase 4's input-coverage script must treat this as one surface for the whole set, not 55 separate ones"]
+  moral_character.oath_yes:        [email:000006, note: "single blanket statement 'Oath questions: Yes.' covers q_31, q_32, q_34, q_35, q_36, q_37"]
+  moral_character.q_33:            [email:000006, note: "covered by the same blanket 'All other Part 9 questions: No' — 33 is a No-branch item, not an oath-Yes item"]
+  documents.evidence.0(court_records).*: [photo:court_record@email:000006, note: "ONE certified single-page document photograph carries court name/location, police case number, docket number, statute, offense date, plea, disposition, disposition date, judge, clerk certification date, and the visible seal — brief.md: 'every fact on every photograph is legible'"]
+  documents.tax_return.year:            [email:000010]
+  documents.tax_return.filing_status:   [email:000010]
+  documents.tax_return.wages:           [email:000010(attachment)+email:000012(password), note: "figures are IN the PDF sent at 000010 but unreadable until the password arrives at 000012 — see mess_events.password_chase"]
+  documents.tax_return.agi:             [email:000010(attachment)+email:000012(password)]
+  documents.tax_return.total_tax:       [email:000010(attachment)+email:000012(password)]
+  documents.tax_return.refund:          [email:000010(attachment)+email:000012(password)]
+  documents.tax_return.address_printed: [email:000010(attachment)+email:000012(password), note: "must equal addresses[2] (current, Fitchburg) once read"]
+  documents.tax_return.preparer_name:   [email:000010(attachment)+email:000012(password)]
+  documents.resume:                     [photo:resume@email:000008]
+
+mess_events:
+  - type: "phone-photo documents"
+    fact: "identity, immigration.a_number, documents.passport.*, documents.green_card.*"
+    wrong_surface: null
+    right_surface: "photo:passport_bio, photo:green_card_front, photo:green_card_back, all attached to email:000002"
+    resolution: "every fact on every photograph is legible; difficulty is in the count and format only (brief.md), never the pixels"
+  - type: "multiple e-mail addresses, the applicant himself"
+    fact: "contact.email"
+    wrong_surface: "email:000006 sent from t.adeyemi@cardinalpolymer.com (work address, sent while on shift)"
+    right_surface: "email:000004 and email:000008, both from tunde.adeyemi@quillmail.com (personal), the latter an explicit confirmation: 'Use tunde.adeyemi@quillmail.com for the form.'"
+    resolution: "one person, one thread; Part 11 (contact — see finding above) takes the personal address because that is the address he gives when asked for his contact details, per brief.md"
+  - type: "blank questionnaire field, supplied later by e-mail prose — escalated (no questionnaire exists at all)"
+    fact: "addresses.0 (412 Wren Street, Verona)"
+    wrong_surface: "none — the field was simply never supplied in email:000004 or email:000006, leaving a 2019-09-20..2021-06-14 gap"
+    right_surface: "email:000008, after the firm flags the gap at email:000007: 'Correction. Middleton was June 2021 to January 2023. Verona was before that, from September 2019.'"
+    resolution: "every consumed fact is stated exactly once, unambiguously, somewhere in the thread — chronological precedence: the later, complete statement in email:000008 wins and closes the gap"
+  - type: "password-protected attachment, password in a LATER e-mail — escalated from W3 (where the password was in the SAME message)"
+    fact: "documents.tax_return.* (every figure inside the 1040)"
+    sequence:
+      - {seq: 1, email: "000010", event: "attachment f1040_2025.pdf sent, password-protected. 'The 1040 is attached. It is the joint return for 2025.' NO password included."}
+      - {seq: 2, email: "000011", event: "firm: 'The attached return is password-protected. Please send the password.'"}
+      - {seq: 3, email: "000012", event: "applicant: 'Password is Cx7-Marlow-2025. It applies to the tax return only.'"}
+    resolution: "the password opens the file; there is exactly one password and exactly one protected attachment (brief.md). Password arrives TWO e-mails after the attachment (000010 -> 000012), not in the same message as W3's benign version — the escalation the brief specifies."
+
+consistency_locks:   # §9.4, instantiated for this client
+  - lock: "surname/given name identical on N-400, passport MRZ, cover letter"
+    values: {n400_and_cover_letter: "Tunde Olusegun Adeyemi", passport_mrz: "ADEYEMI<<TUNDE<OLUSEGUN"}
+  - lock: "DOB identical everywhere it appears"
+    value: "1985-11-09"
+  - lock: "place of birth identical on N-400 and passport"
+    value: "Nigeria"
+  - lock: "A-number identical on green card, every N-400 page header"
+    value: "216540923"
+    note: "no I-797C in this packet (was_cr: false), so that leg of the lock does not apply"
+  - lock: "green card 'Resident Since' == N-400 Part 2 LPR date == cover letter's 316(a) date"
+    value: "2021-03-04"
+  - lock: "tax-return printed address appears in the N-400 address history"
+    value: "5127 Copperleaf Lane, Fitchburg, WI 53711 == addresses[2] (current)"
+  - lock: "resume employer and dates equal Part 7"
+    value: "Cardinal Polymer Systems, Fitchburg, WI, Process Engineer, 2019-09-30-present == employment[0]"
+  - lock: "travel addendum superset of the Part 8 table"
+    value: "addendum lists 7 trips; Part 8 table lists 6 (the 2021-08-10 Nigeria trip is addendum-only)"
+  - lock: "Item 15 table row agrees with the court records exhibit line for line"
+    values:
+      offense: "Operating a Motor Vehicle with a Suspended License (American spelling, both artefacts)"
+      offense_date: "2023-06-24"
+      place: "Fitchburg, Wisconsin"
+      disposition: "dismissed"
+      disposition_date: "2023-09-12"
+    excluded_variant: "'licence' (applicant's own prose spelling) never appears in either locked artefact"
+  - lock: "TOC line count == divider count == DOCUMENT count"
+    value: 8
+  - lock: "merged page count == sum of component page counts"
+    value: "asserted at render time (Phase 3); not a fixed number in the masterkey"
+
+derived:   # computed in python, reproduced here for the record
+  filing_window:
+    rule: "316(a): filing >= LPR + 5y - 90d"
+    lpr_date: "2021-03-04"
+    plus_5y: "2026-03-04"
+    minus_90d: "2025-12-04"
+    filed_date: "2026-07-07"
+    margin_days: 215
+  residence_years_at_filing: 5.3415   # (date(2026,7,7)-date(2021,3,4)).days / 365.25 = 5.3415...
+  mrz_verification:
+    method: "ICAO 9303 check-digit algorithm, weights [7,3,1] cyclic, digit=value, '<'=0, letter=ord(c)-55"
+    passport_number: "A04871562"
+    passport_number_check_digit: 7
+    dob: "851109"
+    dob_check_digit: 8
+    expiry: "290811"
+    expiry_check_digit: 1
+    personal_number_field: "<<<<<<<<<<<<<<"
+    personal_number_check_digit: 0
+    composite_input: "A048715627851109829081114<<<<<<<<<<<<<<0"
+    composite_check_digit: 6
+    line1_length: 44
+    line2_length: 44
+    result: "all five check digits recomputed independently; match the digits embedded in documents.passport.mrz"
+  address_contiguity:
+    verona_to_plus_1d: "2021-06-15 == middleton_from"
+    middleton_to_plus_1d: "2023-02-01 == fitchburg_from"
+    gap_days: [0, 0]
+  travel_totals:
+    countable_trips: 7
+    total_days_outside_us: 88
+    per_trip_days: [15, 8, 15, 8, 15, 12, 15]
+    part_8_page_reference: 6
+
+self_check:
+  yaml_parses: "verify by loading this file with a YAML parser before use"
+  filing_window: "PASS — 2025-12-04 earliest, filed 2026-07-07, margin +215d (see derived.filing_window)"
+  mrz_check_digits: "PASS — recomputed independently, matches documents.passport.mrz (see derived.mrz_verification)"
+  address_employment_contiguity: "PASS — 0-day gaps at both joins (see derived.address_contiguity); single employer spans the entire window"
+  c4_fires: "PASS — 7 countable trips > 6 Part 8 rows (travel.derived.c4_fires: true)"
+  c5_fires_dismissed: "PASS — moral_character.q_15b.answer = Yes, detail_row.disposition = dismissed, disposition_date = 2023-09-12; documents.evidence[0] type court_records carries the full fact set"
+  c6_does_not_fire: "PASS — moral_character.q_20.answer = No, q_21.answer = No; no other non-tabulable Yes exists anywhere in the full Part 9 set above"
+  spouse_present_no_c1: "PASS — family.spouse fully populated (name, DOB, SSN, employer, address, prior marriages); exhibits.not_triggered.C1_C2_C3 confirms zero spousal documents; exhibits list (8 items) contains no spouse passport"
+  leakage_grep: "PASS, 0 hits in the masterkey as written — every invented proper noun, digit-string (>=6 chars), e-mail, phone, street, employer, court/judge/clerk/docket/police-case number whole-token grepped with `grep -ixF` against lab/synthetic/blocklist.txt (12,454 tokens). TWO candidate tokens were rejected during drafting, before being written into any fact field: the real-world county name and county-seat city name for a Fitchburg, WI venue (both were blocklist hits) — replaced with the blocklist-clean 'Circuit Court, Fitchburg, Wisconsin', which appears nowhere in this file's leakage-token surface. (Deliberately not naming the two rejected tokens literally in this note either, so a downstream token-scan of this masterkey file itself never has to see them.) Full token list checked: A04871562, 04871562, 851109, 290811, 216540923, 396-70-2841, 402-88-1937, 2023TR014892, FPD-2023-006721, Owen Pruitt, Ellen Voss, Bettina Wachtel, University of Ibadan, Cardinal Polymer Systems, Silverwood Pharmacy, Copperleaf/Foundry/Wren street names, Fitchburg/Middleton/Verona/Wisconsin, quillmail.com/cardinalpolymer.com addresses, Nigeria/Canada/United Kingdom/Ghana (travel), AGI/wage/tax figures, all client names — 0 hits."

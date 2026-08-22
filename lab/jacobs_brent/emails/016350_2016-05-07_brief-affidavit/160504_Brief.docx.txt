@@ -1,0 +1,154 @@
+
+UNITED STATES DEPARTMENT OF HOMELAND SECURITY
+UNITED STATES CITIZENSHIP AND IMMIGRATION SERVICES
+MILWAUKEE FIELD OFFICE
+
+
+In the matter of: 					)
+							)
+BRENT STEVEN JACOBS,				)        
+							)	
+Petitioner, 					)		
+							) 	USCIS A#: 206854142
+and							)	USCIS Case No.: MSC1591454171
+						)	
+LAUREN RAE GARTH,		                        )
+							)
+	Beneficiary.					)
+							
+
+PETITIONER BRENT S. JACOBS’
+BRIEF IN SUPPORT OF 
+COMBINED MOTION FOR REOPENING AND RECONSIDERATION
+
+
+Respectfully submitted by: 
+
+OLIVEIRA LAW GROUP
+	Marcel S. Oliveira, Esq.
+Wisconsin State Bar No. 1093754
+Attorney for Petitioner Brent S. Jacobs
+22 East Mifflin Street, Suite 302
+Madison, WI 53703
+Phone: (608) 446-2000
+Fax: (608) 446-2001
+Marcel.Oliveira@OliveiraLawGroup.com
+
+TABLE OF CONTENTS
+
+INTRODUCTION	1
+BACKGROUND	1
+STATEMENT OF FACTS	2
+I.	The Received Notices	2
+II.	The Returned Notice	3
+III.	The Denial	4
+OPERATIVE LAW	4
+ARGUMENT	6
+I.	The Service has Discretion to Reopen this Case and to Reconsider its Decision.	6
+II.	The Service Should Reopen this Case based on New Evidence from this Motion.	6
+A.	New evidence from this motion shows that Mr. Jacobs did not abandon his petition in this case.	6
+B.	New evidence from this motion shows that this case presents reasons for reopening contemplated in the Code of Federal Regulations.	7
+III.	The Service Should Reconsider its Decision in this Case.	8
+CONCLUSION	9
+
+TABLE OF AUTHORITIES
+
+United States Code of Federal Regulations Provisions
+8 C.F.R. § 103.5(a)	1, 4
+8 C.F.R. § 103.5(a)(1)(i)	4, 5
+8 C.F.R. § 103.5(a)(1)(iii)(C)	4
+8 C.F.R. § 103.5(a)(2)(iii)	1, 4, 6, 7
+8 C.F.R. § 103.5(a)(3)	4, 8
+United States Circuit Court of Appeals Cases
+Dabrota v. INS, 311 F.3d 1206 (9th Cir. 2002)	5
+
+
+INTRODUCTION
+
+	Petitioner Brent Steven Jacobs, through his counsel Marcel S. Oliveira, hereby moves for reopening of the above-captioned case or, in the alternative, reconsideration of the April 29, 2016 decision in the case.  See 8 C.F.R. § 103.5(a).  Mr. Jacobs bases his motion on the fact that the United States Postal Service (“USPS”) failed to deliver notice of the interview to his address.  See id. at § 103.5(a)(2)(iii). 
+BACKGROUND
+
+	Mr. Jacobs, the petitioner, is a U.S. citizen by birth.  (Ex. 1).  Ms. Garth, the applicant and beneficiary, is an Australia citizen.  (Ex. 6).  On May 7, 2015, Ms. Garth was inspected and lawfully admitted into the United States pursuant to a K-1 non-immigrant visa that Mr. Jacobs had previously petitioned on her behalf.  (Garth Affidavit, ¶3).  On June 12, 2015, Mr. Jacobs and Ms. Garth were married in Oshkosh, Wisconsin.  (Jacobs Affidavit, ¶4; Garth Affidavit, ¶4; Ex. 2).  Since then, Mr. Jacobs and Ms. Garth have both resided at 212 Olde Pulley Lane, Apartment L, Menasha, WI 54952.  (Jacobs Affidavit, ¶3; Garth Affidavit, ¶3). 
+	On July 29, 2015, Mr. Jacobs filed the petition that initiated this case.  (Jacobs Affidavit, ¶5; Garth Affidavit, ¶5; Oliveira Affidavit, ¶7; Ex. 10).  The petition asked that the United States Citizenship and Immigration Services (the “Service”) adjust Ms. Garth’s status to that of a permanent resident of the United States pursuant to her marriage to Mr. Jacobs.  (Ex. 10).  The petition identified the address in which both Mr. Jacobs and Ms. Garth resided as the mailing address for the Service’s use.  (Id.)
+	Accompanying Mr. Jacobs’ petition was a Form G-28, Notice of Entry of Appearance as Attorney or Accredited Representative.  (Id.; Oliveira Affidavit, ¶6).  Pursuant to that Form G-28, Mr. Jacobs designated the undersigned counsel as his attorney in this case, and requested that copies of all notices in this case be sent to the undersigned counsel.  (Id.).    
+STATEMENT OF FACTS
+
+The Received Notices
+
+	On August 8, 2015, Mr. Jacobs and Ms. Garth received a Form I-797C, Notice of Action, from the Service (the “receipt notice”).  (Jacobs Affidavit, ¶5; Garth Affidavit, ¶5; Oliveira Affidavit, ¶7; Ex. 3).  The receipt notice provided that the Service had received and begun to process Mr. Jacobs’ petition.  (Id.)   The undersigned counsel also received a copy of the receipt notice.  (Oliveira Affidavit, ¶7). 
+Soon thereafter, Mr. Jacobs and Ms. Garth received another Form I-797C, Notice of Action, from the Service (the “biometrics notice”).  (Jacobs Affidavit, ¶6; Garth Affidavit, ¶6; Ex. 4).  The biometrics notice provided that the Service had scheduled Ms. Garth’s biometrics appointment for August 25, 2015.  (Id.)  Ms. Garth attended and successfully completed her biometrics appointment.  (Garth Affidavit, ¶6).  The undersigned counsel did not receive a copy of the biometrics notice.  (Oliveira Affidavit, ¶8).  
+	Mr. Jacobs and Ms. Garth received both the receipt notice and the biometrics notice without problems or delay.  (Jacobs Affidavit, ¶¶5–6; Garth Affidavit, ¶¶5–6).  USPS delivered both notices to the address in which Mr. Jacobs and Ms. Garth have resided since the inception of this case.  (Id.)  That address is the same address originally identified in the petition.  (Ex. 10).    
+	On the other hand, the undersigned counsel received no indication as to why counsel had received the receipt notice, but not the biometrics notice.  (Oliveira Affidavit, ¶9).  While the undersigned counsel changed mailing addresses in November of 2015, that change came after USPS failed to deliver the August-issued biometrics notice.  (Id.)  When counsel’s address changed, the undersigned counsel enacted a mail-forwarding system with USPS to continue receiving correspondence regularly.  (Id.)  That system has since worked: the undersigned counsel has received forwarded correspondence from multiple sources – including correspondence from the Service in different cases.  (Id.) 
+The Returned Notice
+	 Between August 25, 2015 and April 17, 2016, Mr. Jacobs, Ms. Garth and the undersigned counsel received no communications from the Service or from USPS.  (Jacobs Affidavit, ¶7; Garth Affidavit, ¶7; Oliveira Affidavit, ¶10).  On March 15, 2016, Mr. Jacobs and Ms. Garth requested that the undersigned counsel contact the Service to inquire about the status of the case.  (Jacobs Affidavit, ¶8; Garth Affidavit, ¶8; Oliveira Affidavit, ¶11).  At that time, the undersigned counsel submitted a written inquiry to the Service.  (Oliveira Affidavit, ¶11).  
+	On April 15, 2016, having received no response from the written inquiry, the undersigned counsel contacted the Service’s national customer service line.  (Id.).  On April 17, 2016, the Service directed the undersigned counsel to a status update as follows:
+On February 16, 2016, the Post Office returned a notice we sent you for your Form I-485, Application to Register Permanent Residence or to Adjust Status, Receipt Number MSC1591454170, because they could not deliver it. This could have a serious effect on your case. Please go to www.uscis.gov/e-request to request a copy of the notice immediately. If you move, go to www.uscis.gov/addresschange to give us your new mailing address.
+
+(Oliveira Affidavit, ¶12).  The undersigned counsel immediately relayed the message to Mr. Jacobs and Ms. Garth.  (Id.; Jacobs Affidavit, ¶8; Garth Affidavit, ¶8; Oliveira Affidavit, ¶13).  
+	That same day, in response to the Service’s instructions, Ms. Garth requested a copy of the missing notice (the “interview notice”) to the Service via the link www.uscis.gov/e-request.  (Garth Affidavit, ¶9; Oliveira Affidavit, ¶13 Ex. 7).  The Service replied by noting that it would respond to the request by May 9, 2016.  (Garth Affidavit, ¶10; Oliveira Affidavit, ¶13; Ex. 8).
+The Denial
+	However, on May 3, 2016, Mr. Jacobs and Ms. Garth received letters indicating the Service’s decision to deny Mr. Jacobs’ petition in this case.  (Jacobs Affidavit, ¶9; Garth Affidavit, ¶11; Oliveira Affidavit, ¶14; Ex. 5; Ex. 9).  According to the letters, the Service, through the interview notice, had scheduled Ms. Garth’s interview in this case for February 17, 2016, at 11 a.m.  (Id.)  The letters noted that, since Mr. Jacobs and Ms. Garth had both failed to either appear for the interview or explain their absence, the Service had deemed their petition abandoned.  (Id.) 
+	To date, Mr. Jacobs, Ms. Garth and the undersigned counsel have not received the interview notice.  (Jacobs Affidavit, ¶10; Garth Affidavit, ¶12; Oliveira Affidavit, ¶15).  Since the inception of this case, all three parties have been receiving correspondence at their respective mailing addresses through USPS with no problem or delay.  (Jacobs Affidavit, ¶7; Garth Affidavit, ¶7; Oliveira Affidavit, ¶9).    
+	Mr. Jacobs now respectfully requests that the Service either reopen the case or reconsider its decision.  See 8 C.F.R. § 103.5(a).  The validity of the Service’s decision has not and is not currently the subject of any judicial proceeding.  See id. at § 103.5(a)(1)(iii)(C).
+OPERATIVE LAW
+
+	The Service has the discretion to reconsider a prior decision and reopen a previously dismissed or denied case.  Id. at § 103.5(a)(1)(i).  The Service can exercise its discretion upon a petitioner’s motion to reopen or reconsider a case made within thirty (30) calendar days of the Service’s decision.  Id. 
+The Service may reopen a case denied for abandonment based on new evidence that:
+The request for additional information or appearance was sent to an address other than that on the application, petition, or notice of representation, or that the applicant or petitioner advised the Service, in writing, of a change of address or change of representation subsequent to filing and before the Service’s request was sent, and the request did not go to the new address.  
+
+Id. at § 103.5(a)(2)(iii).  The Service may reconsider a petition denial if a motion for reconsideration establishes that the decision was, based on the evidence in the record at the time the decision was made, contrary to law or the Service’s policy.  Id. at § 103.5(a)(3). 
+Courts have provided guidance on the effect that a returned notice has on a petitioner’s ability to seek reopening of an adverse decision due to abandonment.  Dabrota v. INS, while distinguishable as a deportation case, offers guidance by analogy.  311 F.3d 1206 (9th Cir. 2002).  
+In Dabrota, Mr. Dabrota changed his address in the middle of a deportation proceeding without notifying the Service.  Id. at 1208.  Subsequently, the Service issued a notice of hearing to the outdated address – which USPS returned as undeliverable.  Id. at 1209.  USPS did not deliver a copy of the notice to Mr. Dabrota’s attorney of record.  Id.  The Service held a hearing in absentia, adjudged Mr. Dabrota deportable, and issued its decision to Mr. Dabrota’s attorney of record.  Id.  
+When Mr. Dabrota sought to reopen the proceeding on account of the returned notice, the Service denied his motion.  Id.  The Service reasoned that the notice had been sent to the address the Service had on file for Mr. Dabrota, and that the sending alone sufficed under the law.  Id.
+Ultimately, the Court of Appeals for the Ninth Circuit reversed and reopened Mr. Dabrota’s case.  Id. at 1212.  The Court held that, since the notice of hearing was not delivered to either Mr. Dabrota or his attorney, Mr. Dabrota had the right to reopen his proceeding.  Id. at 1213.
+
+
+ARGUMENT
+
+The Service has Discretion to Reopen this Case and to Reconsider its Decision.
+
+	The Service has the discretion to reopen the case or reconsider its decision in the case.  See 8 C.F.R. § 103.5(a)(1)(i).  Mr. Jacobs is filing this motion within ten (10) days of the decision in this case.  (See Ex. 5; Ex. 9).  That places Mr. Jacobs’ request well within the period of thirty (30) days in which to file a motion for reopening or reconsideration.  See 8 C.F.R. § 103.5(a)(1)(i). 
+The Service Should Reopen this Case based on New Evidence from this Motion.
+New evidence from this motion shows that Mr. Jacobs did not abandon his petition in this case.
+
+	The Service should exercise its discretion to reopen the case based on new evidence being submitted with this motion.  See 8 C.F.R. § 103.5(a)(2)(iii).  This motion, as supported by affidavits, includes the following evidence not previously available to the service:
+Mr. Jacobs and Ms. Garth failed to appear to their interview, and failed to explain their absence, because they, as well as their counsel, were not aware that an interview had been scheduled; 
+
+Mr. Jacobs and Ms. Garth, as well as their counsel, were not aware that the Service had issued an interview notice, and that USPS had returned that interview notice, until more than two months after the date of the interview; 
+
+Mr. Jacobs and Ms. Garth did not change their physical or mailing address since the inception of the case; and
+
+Mr. Jacobs and Ms. Garth, as well as their counsel, have been receiving other notices from the Service without problem or delay since the inception of the case. 
+
+(Jacobs Affidavit, ¶¶7, 8, 10, 11; Garth Affidavit, ¶¶3, 8, 12, 13; Oliveira Affidavit, ¶¶9, 10, 16).  This new evidence directly addresses the Service’s reason for denial: that Mr. Jacobs and Ms. Garth had failed to appear for their interviews, and failed to explain their absences.  (Ex. 5; Ex. 9). 
+New evidence from this motion shows that this case presents reasons for reopening contemplated in the Code of Federal Regulations.
+
+	This new evidence also places this case in the purview of section 103.5, Title 8, Code of Federal Regulations.  See 8 C.F.R. § 103.5(a)(2)(iii).  This section specifically allows reopening for cases where notice of need to appear or provide more evidence does not reach the petitioner by reason other than the petitioner’s fault.  See id.  Concededly, the language of this section is tailored for the occasion in which the Service sends the notice to an incorrect or outdated address.  See id.  That said, the underlying purpose of the section is to allow petitioners who could not have retrieved their notices on account of mailing problems to gain a second opportunity in their proceedings.  
+	The new evidence presented in this motion shows that this is such a case.  Here, for reasons unknown to the petitioner, USPS returned the interview notice to the Service.  (Jacobs Affidavit, ¶8; Garth Affidavit, ¶8; Oliveira Affidavit; ¶12).  The petitioner has no way to know whether USPS or the Service sent the interview notice to the wrong address, as contemplated by section 103.5, Title 8, Code of Federal Regulations.  See 8 C.F.R. § 103.5(a)(2)(iii).  That said, the evidence presented in this motion shows that Mr. Jacobs, Ms. Garth and the undersigned counsel had no warning that the Service had sent the interview notice, and no warning that the interview notice had not reached them.  (Jacobs Affidavit, ¶8; Garth Affidavit, ¶8; Oliveira Affidavit; ¶11).  That, in effect, is the equivalent of the circumstances envisioned by section 103.5, Title 8, Code of Federal Regulations: a petitioner missing an interview of which he or she had no warning.  See 8 C.F.R. § 103.5(a)(2)(iii).
+	An unannounced change of address on the part of Mr. Jacobs, Ms. Garth or the undersigned counsel would not explain why USPS returned the interview notice to the Service.  Concededly, section 103.5, Title 8, Code of Federal Regulations supports reopening where the Service sends a notice to an outdated address despite notice from the parties.  See id.  However, in this case, an unannounced change of address could not have been the cause of the returned notice.  
+Mr. Jacobs and Ms. Garth did not change addresses throughout the case.  (Jacobs Affidavit, ¶3; Garth Affidavit, ¶3).  Yet, they received two receipts at that address in August, but not the interview notice.  (Jacobs Affidavit, ¶¶5, 6, 8; Garth Affidavit, ¶¶5, 6, 8).  The undersigned counsel did change addresses in the case, but not until November of 2015.  (Oliveira Affidavit, ¶9).  Yet, counsel received only one of two notices issued before the change of address.  (Id. at ¶¶7, 8).  Moreover, the undersigned counsel has been receiving communications from the Service via a mail forwarding system in other cases without problem or delay.  (Id. at ¶9).  
+The Service Should Reconsider its Decision in this Case.	
+The Service should also exercise its discretion to reconsider its decision in this case.  8 C.F.R. § 103.5(a)(3).  Evidence available to the Service at the time of the decision supports reconsideration.  See id.  
+	At the time the Service made its decision, the Service had evidence that Mr. Jacobs and Ms. Garth could not have known of their interview date.  (Oliveira Affidavit, ¶12).  The key is the language of the records the Service had of the returned interview notice: 
+On February 16, 2016, the Post Office returned a notice we sent you for your Form I-485, Application to Register Permanent Residence or to Adjust Status, Receipt Number MSC1591454170, because they could not deliver it. This could have a serious effect on your case. Please go to www.uscis.gov/e-request to request a copy of the notice immediately. If you move, go to www.uscis.gov/addresschange to give us your new mailing address.
+
+(Id.).  According to this language, the Service received the returned interview notice on February 16, 2016.  (Id.)  The Service’s denial letters indicate that the interview was scheduled for February 17, 2016 – just one day after USPS returned the interview notice to the Service.  (Ex. 5; Ex. 9).  If these dates are correct, there is no way that Mr. Jacobs, Ms. Garth or the undersigned counsel could have retrieved the notice in time for the interview.   
+CONCLUSION
+
+	For the foregoing reasons, Mr. Jacobs respectfully requests that the Service grant his motion and reopen the case or, alternatively, reconsider the decision. 
+
+Dated May 6, 2016.
+
+Respectfully submitted, 
+
+OLIVEIRA LAW GROUP
+
+__________________________
+By: 	Marcel S. Oliveira, Esq.
+Wisconsin State Bar No. 1093754
+Attorney for Petitioner Brent S. Jacobs
+22 East Mifflin Street, Suite 302
+Madison, WI 53703
+Phone: (608) 446-2000
+Fax: (608) 446-2001
+Marcel.Oliveira@OliveiraLawGroup.com

@@ -1,0 +1,440 @@
+Form
+(Rev. October 2018)
+                                       W-9                                                Request for Taxpayer
+                                                                                Identification Number and Certification
+                                                                                                                                                                                      Give Form to the
+                                                                                                                                                                                      requester. Do not
+Department of the Treasury                                                                                                                                                            send to the IRS.
+Internal Revenue Service                                                    ▶ Go to www.irs.gov/FormW9 for instructions and the latest information.
+
+                                       1 Name (as shown on your income tax return). Name is required on this line; do not leave this line blank.
+
+
+                                       2 Business name/disregarded entity name, if different from above
+
+
+
+
+           Print or type.
+                                       3 Check appropriate box for federal tax classification of the person whose name is entered on line 1. Check only one of the        4 Exemptions (codes apply only to
+                                         following seven boxes.                                                                                                           certain entities, not individuals; see
+                                                                                                                                                                          instructions on page 3):
+                                            Individual/sole proprietor or         C Corporation         S Corporation          Partnership             Trust/estate
+                                            single-member LLC                                                                                                         Exempt payee code (if any)
+                                            Limited liability company. Enter the tax classification (C=C corporation, S=S corporation, P=Partnership) ▶
+                                            Note: Check the appropriate box in the line above for the tax classification of the single-member owner. Do not check Exemption from FATCA reporting
+
+
+
+
+See Specific Instructions on page 3.
+                                            LLC if the LLC is classified as a single-member LLC that is disregarded from the owner unless the owner of the LLC is
+                                                                                                                                                                  code (if any)
+                                            another LLC that is not disregarded from the owner for U.S. federal tax purposes. Otherwise, a single-member LLC that
+                                            is disregarded from the owner should check the appropriate box for the tax classification of its owner.
+                                           Other (see instructions) ▶                                                                                                 (Applies to accounts maintained outside the U.S.)
+
+                                       5 Address (number, street, and apt. or suite no.) See instructions.                                         Requester’s name and address (optional)
+
+                                                                                                                                                   Symply Inc.
+                                       6 City, state, and ZIP code
+                                                                                                                                                   421 8th Ave #8542
+                                                                                                                                                   New York, NY 10116
+                                       7 List account number(s) here (optional)
+
+
+         Part I                                 Taxpayer Identification Number (TIN)
+Enter your TIN in the appropriate box. The TIN provided must match the name given on line 1 to avoid                                                       Social security number
+backup withholding. For individuals, this is generally your social security number (SSN). However, for a
+resident alien, sole proprietor, or disregarded entity, see the instructions for Part I, later. For other                                                                    –               –
+entities, it is your employer identification number (EIN). If you do not have a number, see How to get a
+TIN, later.                                                                                                                                               or
+Note: If the account is in more than one name, see the instructions for line 1. Also see What Name and                                                     Employer identification number
+Number To Give the Requester for guidelines on whose number to enter.
+                                                                                                                                                                      –
+
+       Part II                                  Certification
+Under penalties of perjury, I certify that:
+1. The number shown on this form is my correct taxpayer identification number (or I am waiting for a number to be issued to me); and
+2. I am not subject to backup withholding because: (a) I am exempt from backup withholding, or (b) I have not been notified by the Internal Revenue
+   Service (IRS) that I am subject to backup withholding as a result of a failure to report all interest or dividends, or (c) the IRS has notified me that I am
+   no longer subject to backup withholding; and
+3. I am a U.S. citizen or other U.S. person (defined below); and
+4. The FATCA code(s) entered on this form (if any) indicating that I am exempt from FATCA reporting is correct.
+Certification instructions. You must cross out item 2 above if you have been notified by the IRS that you are currently subject to backup withholding because
+you have failed to report all interest and dividends on your tax return. For real estate transactions, item 2 does not apply. For mortgage interest paid,
+acquisition or abandonment of secured property, cancellation of debt, contributions to an individual retirement arrangement (IRA), and generally, payments
+other than interest and dividends, you are not required to sign the certification, but you must provide your correct TIN. See the instructions for Part II, later.
+
+Sign                                        Signature of
+Here                                        U.S. person ▶                                                                                      Date ▶
+
+
+General Instructions                                                                                                     • Form 1099-DIV (dividends, including those from stocks or mutual
+                                                                                                                         funds)
+Section references are to the Internal Revenue Code unless otherwise                                                     • Form 1099-MISC (various types of income, prizes, awards, or gross
+noted.                                                                                                                   proceeds)
+Future developments. For the latest information about developments                                                       • Form 1099-B (stock or mutual fund sales and certain other
+related to Form W-9 and its instructions, such as legislation enacted                                                    transactions by brokers)
+after they were published, go to www.irs.gov/FormW9.
+                                                                                                                         • Form 1099-S (proceeds from real estate transactions)
+Purpose of Form                                                                                                          • Form 1099-K (merchant card and third party network transactions)
+An individual or entity (Form W-9 requester) who is required to file an                                                  • Form 1098 (home mortgage interest), 1098-E (student loan interest),
+information return with the IRS must obtain your correct taxpayer                                                        1098-T (tuition)
+identification number (TIN) which may be your social security number                                                     • Form 1099-C (canceled debt)
+(SSN), individual taxpayer identification number (ITIN), adoption
+                                                                                                                         • Form 1099-A (acquisition or abandonment of secured property)
+taxpayer identification number (ATIN), or employer identification number
+(EIN), to report on an information return the amount paid to you, or other                                                  Use Form W-9 only if you are a U.S. person (including a resident
+amount reportable on an information return. Examples of information                                                      alien), to provide your correct TIN.
+returns include, but are not limited to, the following.                                                                     If you do not return Form W-9 to the requester with a TIN, you might
+• Form 1099-INT (interest earned or paid)                                                                                be subject to backup withholding. See What is backup withholding,
+                                                                                                                         later.
+
+                                                                                              Cat. No. 10231X                                                                        Form W-9 (Rev. 10-2018)
+Form W-9 (Rev. 10-2018)                                                                                                                                Page 2
+
+   By signing the filled-out form, you:                                             Example. Article 20 of the U.S.-China income tax treaty allows an
+    1. Certify that the TIN you are giving is correct (or you are waiting for a   exemption from tax for scholarship income received by a Chinese
+number to be issued),                                                             student temporarily present in the United States. Under U.S. law, this
+                                                                                  student will become a resident alien for tax purposes if his or her stay in
+    2. Certify that you are not subject to backup withholding, or                 the United States exceeds 5 calendar years. However, paragraph 2 of
+    3. Claim exemption from backup withholding if you are a U.S. exempt           the first Protocol to the U.S.-China treaty (dated April 30, 1984) allows
+payee. If applicable, you are also certifying that as a U.S. person, your         the provisions of Article 20 to continue to apply even after the Chinese
+allocable share of any partnership income from a U.S. trade or business           student becomes a resident alien of the United States. A Chinese
+is not subject to the withholding tax on foreign partners' share of               student who qualifies for this exception (under paragraph 2 of the first
+effectively connected income, and                                                 protocol) and is relying on this exception to claim an exemption from tax
+    4. Certify that FATCA code(s) entered on this form (if any) indicating        on his or her scholarship or fellowship income would attach to Form
+that you are exempt from the FATCA reporting, is correct. See What is             W-9 a statement that includes the information described above to
+FATCA reporting, later, for further information.                                  support that exemption.
+Note: If you are a U.S. person and a requester gives you a form other               If you are a nonresident alien or a foreign entity, give the requester the
+than Form W-9 to request your TIN, you must use the requester’s form if           appropriate completed Form W-8 or Form 8233.
+it is substantially similar to this Form W-9.
+                                                                                  Backup Withholding
+Definition of a U.S. person. For federal tax purposes, you are
+considered a U.S. person if you are:                                              What is backup withholding? Persons making certain payments to you
+                                                                                  must under certain conditions withhold and pay to the IRS 24% of such
+• An individual who is a U.S. citizen or U.S. resident alien;                     payments. This is called “backup withholding.” Payments that may be
+• A partnership, corporation, company, or association created or                  subject to backup withholding include interest, tax-exempt interest,
+organized in the United States or under the laws of the United States;            dividends, broker and barter exchange transactions, rents, royalties,
+• An estate (other than a foreign estate); or                                     nonemployee pay, payments made in settlement of payment card and
+                                                                                  third party network transactions, and certain payments from fishing boat
+• A domestic trust (as defined in Regulations section 301.7701-7).                operators. Real estate transactions are not subject to backup
+Special rules for partnerships. Partnerships that conduct a trade or              withholding.
+business in the United States are generally required to pay a withholding            You will not be subject to backup withholding on payments you
+tax under section 1446 on any foreign partners’ share of effectively              receive if you give the requester your correct TIN, make the proper
+connected taxable income from such business. Further, in certain cases            certifications, and report all your taxable interest and dividends on your
+where a Form W-9 has not been received, the rules under section 1446              tax return.
+require a partnership to presume that a partner is a foreign person, and
+pay the section 1446 withholding tax. Therefore, if you are a U.S. person         Payments you receive will be subject to backup withholding if:
+that is a partner in a partnership conducting a trade or business in the             1. You do not furnish your TIN to the requester,
+United States, provide Form W-9 to the partnership to establish your                 2. You do not certify your TIN when required (see the instructions for
+U.S. status and avoid section 1446 withholding on your share of                   Part II for details),
+partnership income.
+                                                                                     3. The IRS tells the requester that you furnished an incorrect TIN,
+    In the cases below, the following person must give Form W-9 to the
+partnership for purposes of establishing its U.S. status and avoiding                4. The IRS tells you that you are subject to backup withholding
+withholding on its allocable share of net income from the partnership             because you did not report all your interest and dividends on your tax
+conducting a trade or business in the United States.                              return (for reportable interest and dividends only), or
+• In the case of a disregarded entity with a U.S. owner, the U.S. owner              5. You do not certify to the requester that you are not subject to
+of the disregarded entity and not the entity;                                     backup withholding under 4 above (for reportable interest and dividend
+                                                                                  accounts opened after 1983 only).
+• In the case of a grantor trust with a U.S. grantor or other U.S. owner,
+generally, the U.S. grantor or other U.S. owner of the grantor trust and             Certain payees and payments are exempt from backup withholding.
+not the trust; and                                                                See Exempt payee code, later, and the separate Instructions for the
+                                                                                  Requester of Form W-9 for more information.
+• In the case of a U.S. trust (other than a grantor trust), the U.S. trust
+(other than a grantor trust) and not the beneficiaries of the trust.                 Also see Special rules for partnerships, earlier.
+Foreign person. If you are a foreign person or the U.S. branch of a
+foreign bank that has elected to be treated as a U.S. person, do not use
+                                                                                  What is FATCA Reporting?
+Form W-9. Instead, use the appropriate Form W-8 or Form 8233 (see                 The Foreign Account Tax Compliance Act (FATCA) requires a
+Pub. 515, Withholding of Tax on Nonresident Aliens and Foreign                    participating foreign financial institution to report all United States
+Entities).                                                                        account holders that are specified United States persons. Certain
+                                                                                  payees are exempt from FATCA reporting. See Exemption from FATCA
+Nonresident alien who becomes a resident alien. Generally, only a
+                                                                                  reporting code, later, and the Instructions for the Requester of Form
+nonresident alien individual may use the terms of a tax treaty to reduce
+                                                                                  W-9 for more information.
+or eliminate U.S. tax on certain types of income. However, most tax
+treaties contain a provision known as a “saving clause.” Exceptions
+specified in the saving clause may permit an exemption from tax to
+                                                                                  Updating Your Information
+continue for certain types of income even after the payee has otherwise           You must provide updated information to any person to whom you
+become a U.S. resident alien for tax purposes.                                    claimed to be an exempt payee if you are no longer an exempt payee
+    If you are a U.S. resident alien who is relying on an exception               and anticipate receiving reportable payments in the future from this
+contained in the saving clause of a tax treaty to claim an exemption              person. For example, you may need to provide updated information if
+from U.S. tax on certain types of income, you must attach a statement             you are a C corporation that elects to be an S corporation, or if you no
+to Form W-9 that specifies the following five items.                              longer are tax exempt. In addition, you must furnish a new Form W-9 if
+    1. The treaty country. Generally, this must be the same treaty under          the name or TIN changes for the account; for example, if the grantor of a
+which you claimed exemption from tax as a nonresident alien.                      grantor trust dies.
+    2. The treaty article addressing the income.
+    3. The article number (or location) in the tax treaty that contains the
+                                                                                  Penalties
+saving clause and its exceptions.                                                 Failure to furnish TIN. If you fail to furnish your correct TIN to a
+    4. The type and amount of income that qualifies for the exemption             requester, you are subject to a penalty of $50 for each such failure
+from tax.                                                                         unless your failure is due to reasonable cause and not to willful neglect.
+    5. Sufficient facts to justify the exemption from tax under the terms of      Civil penalty for false information with respect to withholding. If you
+the treaty article.                                                               make a false statement with no reasonable basis that results in no
+                                                                                  backup withholding, you are subject to a $500 penalty.
+Form W-9 (Rev. 10-2018)                                                                                                                           Page 3
+
+Criminal penalty for falsifying information. Willfully falsifying               IF the entity/person on line 1 is     THEN check the box for . . .
+certifications or affirmations may subject you to criminal penalties            a(n) . . .
+including fines and/or imprisonment.
+Misuse of TINs. If the requester discloses or uses TINs in violation of        • Corporation                       Corporation
+federal law, the requester may be subject to civil and criminal penalties.     • Individual                        Individual/sole proprietor or single-
+                                                                               • Sole proprietorship, or           member LLC
+Specific Instructions                                                          • Single-member limited liability
+                                                                               company (LLC) owned by an
+Line 1                                                                         individual and disregarded for U.S.
+You must enter one of the following on this line; do not leave this line       federal tax purposes.
+blank. The name should match the name on your tax return.
+                                                                               • LLC treated as a partnership for     Limited liability company and enter
+   If this Form W-9 is for a joint account (other than an account              U.S. federal tax purposes,             the appropriate tax classification.
+maintained by a foreign financial institution (FFI)), list first, and then     • LLC that has filed Form 8832 or      (P= Partnership; C= C corporation;
+circle, the name of the person or entity whose number you entered in           2553 to be taxed as a corporation,     or S= S corporation)
+Part I of Form W-9. If you are providing Form W-9 to an FFI to document        or
+a joint account, each holder of the account that is a U.S. person must
+provide a Form W-9.                                                            • LLC that is disregarded as an
+                                                                               entity separate from its owner but
+   a. Individual. Generally, enter the name shown on your tax return. If       the owner is another LLC that is
+you have changed your last name without informing the Social Security          not disregarded for U.S. federal tax
+Administration (SSA) of the name change, enter your first name, the last       purposes.
+name as shown on your social security card, and your new last name.
+Note: ITIN applicant: Enter your individual name as it was entered on          • Partnership                          Partnership
+your Form W-7 application, line 1a. This should also be the same as the        • Trust/estate                         Trust/estate
+name you entered on the Form 1040/1040A/1040EZ you filed with your
+application.                                                                   Line 4, Exemptions
+   b. Sole proprietor or single-member LLC. Enter your individual              If you are exempt from backup withholding and/or FATCA reporting,
+name as shown on your 1040/1040A/1040EZ on line 1. You may enter               enter in the appropriate space on line 4 any code(s) that may apply to
+your business, trade, or “doing business as” (DBA) name on line 2.             you.
+   c. Partnership, LLC that is not a single-member LLC, C                      Exempt payee code.
+corporation, or S corporation. Enter the entity's name as shown on the         • Generally, individuals (including sole proprietors) are not exempt from
+entity's tax return on line 1 and any business, trade, or DBA name on          backup withholding.
+line 2.                                                                        • Except as provided below, corporations are exempt from backup
+   d. Other entities. Enter your name as shown on required U.S. federal        withholding for certain payments, including interest and dividends.
+tax documents on line 1. This name should match the name shown on the          • Corporations are not exempt from backup withholding for payments
+charter or other legal document creating the entity. You may enter any         made in settlement of payment card or third party network transactions.
+business, trade, or DBA name on line 2.
+                                                                               • Corporations are not exempt from backup withholding with respect to
+   e. Disregarded entity. For U.S. federal tax purposes, an entity that is     attorneys’ fees or gross proceeds paid to attorneys, and corporations
+disregarded as an entity separate from its owner is treated as a               that provide medical or health care services are not exempt with respect
+“disregarded entity.” See Regulations section 301.7701-2(c)(2)(iii). Enter     to payments reportable on Form 1099-MISC.
+the owner's name on line 1. The name of the entity entered on line 1
+should never be a disregarded entity. The name on line 1 should be the            The following codes identify payees that are exempt from backup
+name shown on the income tax return on which the income should be              withholding. Enter the appropriate code in the space in line 4.
+reported. For example, if a foreign LLC that is treated as a disregarded         1—An organization exempt from tax under section 501(a), any IRA, or
+entity for U.S. federal tax purposes has a single owner that is a U.S.         a custodial account under section 403(b)(7) if the account satisfies the
+person, the U.S. owner's name is required to be provided on line 1. If         requirements of section 401(f)(2)
+the direct owner of the entity is also a disregarded entity, enter the first     2—The United States or any of its agencies or instrumentalities
+owner that is not disregarded for federal tax purposes. Enter the
+disregarded entity's name on line 2, “Business name/disregarded entity           3—A state, the District of Columbia, a U.S. commonwealth or
+name.” If the owner of the disregarded entity is a foreign person, the         possession, or any of their political subdivisions or instrumentalities
+owner must complete an appropriate Form W-8 instead of a Form W-9.               4—A foreign government or any of its political subdivisions, agencies,
+This is the case even if the foreign person has a U.S. TIN.                    or instrumentalities
+Line 2                                                                           5—A corporation
+                                                                                 6—A dealer in securities or commodities required to register in the
+If you have a business name, trade name, DBA name, or disregarded
+                                                                               United States, the District of Columbia, or a U.S. commonwealth or
+entity name, you may enter it on line 2.
+                                                                               possession
+Line 3                                                                           7—A futures commission merchant registered with the Commodity
+Check the appropriate box on line 3 for the U.S. federal tax                   Futures Trading Commission
+classification of the person whose name is entered on line 1. Check only         8—A real estate investment trust
+one box on line 3.                                                               9—An entity registered at all times during the tax year under the
+                                                                               Investment Company Act of 1940
+                                                                               10—A common trust fund operated by a bank under section 584(a)
+                                                                               11—A financial institution
+                                                                               12—A middleman known in the investment community as a nominee or
+                                                                               custodian
+                                                                               13—A trust exempt from tax under section 664 or described in section
+                                                                               4947
+Form W-9 (Rev. 10-2018)                                                                                                                              Page 4
+
+   The following chart shows types of payments that may be exempt                  M—A tax exempt trust under a section 403(b) plan or section 457(g)
+from backup withholding. The chart applies to the exempt payees listed          plan
+above, 1 through 13.                                                            Note: You may wish to consult with the financial institution requesting
+IF the payment is for . . .            THEN the payment is exempt               this form to determine whether the FATCA code and/or exempt payee
+                                       for . . .                                code should be completed.
+
+Interest and dividend payments         All exempt payees except                 Line 5
+                                       for 7                                    Enter your address (number, street, and apartment or suite number).
+Broker transactions                    Exempt payees 1 through 4 and 6          This is where the requester of this Form W-9 will mail your information
+                                       through 11 and all C corporations.       returns. If this address differs from the one the requester already has on
+                                       S corporations must not enter an         file, write NEW at the top. If a new address is provided, there is still a
+                                       exempt payee code because they           chance the old address will be used until the payor changes your
+                                       are exempt only for sales of             address in their records.
+                                       noncovered securities acquired
+                                       prior to 2012.
+                                                                                Line 6
+                                                                                Enter your city, state, and ZIP code.
+Barter exchange transactions and       Exempt payees 1 through 4
+patronage dividends                                                             Part I. Taxpayer Identification Number (TIN)
+Payments over $600 required to be Generally, exempt payees                      Enter your TIN in the appropriate box. If you are a resident alien and
+reported and direct sales over    1 through 52                                  you do not have and are not eligible to get an SSN, your TIN is your IRS
+$5,0001                                                                         individual taxpayer identification number (ITIN). Enter it in the social
+                                                                                security number box. If you do not have an ITIN, see How to get a TIN
+Payments made in settlement of      Exempt payees 1 through 4                   below.
+payment card or third party network
+                                                                                   If you are a sole proprietor and you have an EIN, you may enter either
+transactions
+                                                                                your SSN or EIN.
+1                                                                                  If you are a single-member LLC that is disregarded as an entity
+    See Form 1099-MISC, Miscellaneous Income, and its instructions.
+2
+                                                                                separate from its owner, enter the owner’s SSN (or EIN, if the owner has
+   However, the following payments made to a corporation and                    one). Do not enter the disregarded entity’s EIN. If the LLC is classified as
+  reportable on Form 1099-MISC are not exempt from backup                       a corporation or partnership, enter the entity’s EIN.
+  withholding: medical and health care payments, attorneys’ fees, gross
+ proceeds paid to an attorney reportable under section 6045(f), and             Note: See What Name and Number To Give the Requester, later, for
+ payments for services paid by a federal executive agency.                      further clarification of name and TIN combinations.
+Exemption from FATCA reporting code. The following codes identify               How to get a TIN. If you do not have a TIN, apply for one immediately.
+payees that are exempt from reporting under FATCA. These codes                  To apply for an SSN, get Form SS-5, Application for a Social Security
+apply to persons submitting this form for accounts maintained outside           Card, from your local SSA office or get this form online at
+of the United States by certain foreign financial institutions. Therefore, if   www.SSA.gov. You may also get this form by calling 1-800-772-1213.
+you are only submitting this form for an account you hold in the United         Use Form W-7, Application for IRS Individual Taxpayer Identification
+States, you may leave this field blank. Consult with the person                 Number, to apply for an ITIN, or Form SS-4, Application for Employer
+requesting this form if you are uncertain if the financial institution is       Identification Number, to apply for an EIN. You can apply for an EIN
+subject to these requirements. A requester may indicate that a code is          online by accessing the IRS website at www.irs.gov/Businesses and
+not required by providing you with a Form W-9 with “Not Applicable” (or         clicking on Employer Identification Number (EIN) under Starting a
+any similar indication) written or printed on the line for a FATCA              Business. Go to www.irs.gov/Forms to view, download, or print Form
+exemption code.                                                                 W-7 and/or Form SS-4. Or, you can go to www.irs.gov/OrderForms to
+                                                                                place an order and have Form W-7 and/or SS-4 mailed to you within 10
+   A—An organization exempt from tax under section 501(a) or any                business days.
+individual retirement plan as defined in section 7701(a)(37)
+                                                                                   If you are asked to complete Form W-9 but do not have a TIN, apply
+   B—The United States or any of its agencies or instrumentalities              for a TIN and write “Applied For” in the space for the TIN, sign and date
+   C—A state, the District of Columbia, a U.S. commonwealth or                  the form, and give it to the requester. For interest and dividend
+possession, or any of their political subdivisions or instrumentalities         payments, and certain payments made with respect to readily tradable
+   D—A corporation the stock of which is regularly traded on one or             instruments, generally you will have 60 days to get a TIN and give it to
+more established securities markets, as described in Regulations                the requester before you are subject to backup withholding on
+section 1.1472-1(c)(1)(i)                                                       payments. The 60-day rule does not apply to other types of payments.
+                                                                                You will be subject to backup withholding on all such payments until
+   E—A corporation that is a member of the same expanded affiliated             you provide your TIN to the requester.
+group as a corporation described in Regulations section 1.1472-1(c)(1)(i)
+                                                                                Note: Entering “Applied For” means that you have already applied for a
+   F—A dealer in securities, commodities, or derivative financial               TIN or that you intend to apply for one soon.
+instruments (including notional principal contracts, futures, forwards,
+and options) that is registered as such under the laws of the United            Caution: A disregarded U.S. entity that has a foreign owner must use
+States or any state                                                             the appropriate Form W-8.
+   G—A real estate investment trust                                             Part II. Certification
+   H—A regulated investment company as defined in section 851 or an             To establish to the withholding agent that you are a U.S. person, or
+entity registered at all times during the tax year under the Investment         resident alien, sign Form W-9. You may be requested to sign by the
+Company Act of 1940                                                             withholding agent even if item 1, 4, or 5 below indicates otherwise.
+   I—A common trust fund as defined in section 584(a)                              For a joint account, only the person whose TIN is shown in Part I
+   J—A bank as defined in section 581                                           should sign (when required). In the case of a disregarded entity, the
+   K—A broker                                                                   person identified on line 1 must sign. Exempt payees, see Exempt payee
+                                                                                code, earlier.
+   L—A trust exempt from tax under section 664 or described in section
+4947(a)(1)                                                                      Signature requirements. Complete the certification as indicated in
+                                                                                items 1 through 5 below.
+Form W-9 (Rev. 10-2018)                                                                                                                                         Page 5
+
+  1. Interest, dividend, and barter exchange accounts opened                                   For this type of account:                    Give name and EIN of:
+before 1984 and broker accounts considered active during 1983.
+                                                                                        14. Account with the Department of             The public entity
+You must give your correct TIN, but you do not have to sign the
+                                                                                            Agriculture in the name of a public
+certification.
+                                                                                            entity (such as a state or local
+  2. Interest, dividend, broker, and barter exchange accounts                               government, school district, or
+opened after 1983 and broker accounts considered inactive during                            prison) that receives agricultural
+1983. You must sign the certification or backup withholding will apply. If                  program payments
+you are subject to backup withholding and you are merely providing
+your correct TIN to the requester, you must cross out item 2 in the                     15. Grantor trust filing under the Form        The trust
+certification before signing the form.                                                      1041 Filing Method or the Optional
+                                                                                            Form 1099 Filing Method 2 (see
+  3. Real estate transactions. You must sign the certification. You may
+                                                                                            Regulations section 1.671-4(b)(2)(i)(B))
+cross out item 2 of the certification.
+  4. Other payments. You must give your correct TIN, but you do not                     1
+                                                                                          List first and circle the name of the person whose number you furnish.
+have to sign the certification unless you have been notified that you                   If only one person on a joint account has an SSN, that person’s number
+have previously given an incorrect TIN. “Other payments” include                        must be furnished.
+payments made in the course of the requester’s trade or business for                    2
+                                                                                            Circle the minor’s name and furnish the minor’s SSN.
+rents, royalties, goods (other than bills for merchandise), medical and
+                                                                                        3
+health care services (including payments to corporations), payments to                    You must show your individual name and you may also enter your
+a nonemployee for services, payments made in settlement of payment                      business or DBA name on the “Business name/disregarded entity”
+card and third party network transactions, payments to certain fishing                  name line. You may use either your SSN or EIN (if you have one), but the
+boat crew members and fishermen, and gross proceeds paid to                             IRS encourages you to use your SSN.
+attorneys (including payments to corporations).                                         4
+                                                                                          List first and circle the name of the trust, estate, or pension trust. (Do
+  5. Mortgage interest paid by you, acquisition or abandonment of                       not furnish the TIN of the personal representative or trustee unless the
+secured property, cancellation of debt, qualified tuition program                       legal entity itself is not designated in the account title.) Also see Special
+payments (under section 529), ABLE accounts (under section 529A),                       rules for partnerships, earlier.
+IRA, Coverdell ESA, Archer MSA or HSA contributions or                                  *Note: The grantor also must provide a Form W-9 to trustee of trust.
+distributions, and pension distributions. You must give your correct
+                                                                                        Note: If no name is circled when more than one name is listed, the
+TIN, but you do not have to sign the certification.
+                                                                                        number will be considered to be that of the first name listed.
+What Name and Number To Give the Requester                                              Secure Your Tax Records From Identity Theft
+     For this type of account:                     Give name and SSN of:
+                                                                                        Identity theft occurs when someone uses your personal information
+ 1. Individual                                The individual                            such as your name, SSN, or other identifying information, without your
+ 2. Two or more individuals (joint            The actual owner of the account or, if    permission, to commit fraud or other crimes. An identity thief may use
+    account) other than an account            combined funds, the first individual on   your SSN to get a job or may file a tax return using your SSN to receive
+    maintained by an FFI                      the account
+                                                              1                         a refund.
+ 3. Two or more U.S. persons                  Each holder of the account                   To reduce your risk:
+    (joint account maintained by an FFI)                                                • Protect your SSN,
+ 4. Custodial account of a minor              The minor
+                                                          2
+                                                                                        • Ensure your employer is protecting your SSN, and
+    (Uniform Gift to Minors Act)                                                        • Be careful when choosing a tax preparer.
+                                                                      1
+ 5. a. The usual revocable savings trust      The grantor-trustee                          If your tax records are affected by identity theft and you receive a
+    (grantor is also trustee)
+                                                                  1                     notice from the IRS, respond right away to the name and phone number
+    b. So-called trust account that is not    The actual owner                          printed on the IRS notice or letter.
+    a legal or valid trust under state law
+                                                                                           If your tax records are not currently affected by identity theft but you
+ 6. Sole proprietorship or disregarded                    3
+                                              The owner                                 think you are at risk due to a lost or stolen purse or wallet, questionable
+    entity owned by an individual                                                       credit card activity or credit report, contact the IRS Identity Theft Hotline
+ 7. Grantor trust filing under Optional       The grantor*                              at 1-800-908-4490 or submit Form 14039.
+    Form 1099 Filing Method 1 (see                                                         For more information, see Pub. 5027, Identity Theft Information for
+    Regulations section 1.671-4(b)(2)(i)                                                Taxpayers.
+    (A))                                                                                   Victims of identity theft who are experiencing economic harm or a
+     For this type of account:                     Give name and EIN of:                systemic problem, or are seeking help in resolving tax problems that
+ 8. Disregarded entity not owned by an        The owner                                 have not been resolved through normal channels, may be eligible for
+    individual                                                                          Taxpayer Advocate Service (TAS) assistance. You can reach TAS by
+ 9. A valid trust, estate, or pension trust   Legal entity
+                                                              4                         calling the TAS toll-free case intake line at 1-877-777-4778 or TTY/TDD
+                                                                                        1-800-829-4059.
+10. Corporation or LLC electing               The corporation                           Protect yourself from suspicious emails or phishing schemes.
+    corporate status on Form 8832 or                                                    Phishing is the creation and use of email and websites designed to
+    Form 2553                                                                           mimic legitimate business emails and websites. The most common act
+11. Association, club, religious,             The organization                          is sending an email to a user falsely claiming to be an established
+    charitable, educational, or other tax-                                              legitimate enterprise in an attempt to scam the user into surrendering
+    exempt organization                                                                 private information that will be used for identity theft.
+
+12. Partnership or multi-member LLC           The partnership
+13. A broker or registered nominee            The broker or nominee
+Form W-9 (Rev. 10-2018)                                                                                                                              Page 6
+
+   The IRS does not initiate contacts with taxpayers via emails. Also, the   Privacy Act Notice
+IRS does not request personal detailed information through email or ask
+taxpayers for the PIN numbers, passwords, or similar secret access           Section 6109 of the Internal Revenue Code requires you to provide your
+information for their credit card, bank, or other financial accounts.        correct TIN to persons (including federal agencies) who are required to
+                                                                             file information returns with the IRS to report interest, dividends, or
+   If you receive an unsolicited email claiming to be from the IRS,          certain other income paid to you; mortgage interest you paid; the
+forward this message to phishing@irs.gov. You may also report misuse         acquisition or abandonment of secured property; the cancellation of
+of the IRS name, logo, or other IRS property to the Treasury Inspector       debt; or contributions you made to an IRA, Archer MSA, or HSA. The
+General for Tax Administration (TIGTA) at 1-800-366-4484. You can            person collecting this form uses the information on the form to file
+forward suspicious emails to the Federal Trade Commission at                 information returns with the IRS, reporting the above information.
+spam@uce.gov or report them at www.ftc.gov/complaint. You can                Routine uses of this information include giving it to the Department of
+contact the FTC at www.ftc.gov/idtheft or 877-IDTHEFT (877-438-4338).        Justice for civil and criminal litigation and to cities, states, the District of
+If you have been the victim of identity theft, see www.IdentityTheft.gov     Columbia, and U.S. commonwealths and possessions for use in
+and Pub. 5027.                                                               administering their laws. The information also may be disclosed to other
+  Visit www.irs.gov/IdentityTheft to learn more about identity theft and     countries under a treaty, to federal and state agencies to enforce civil
+how to reduce your risk.                                                     and criminal laws, or to federal law enforcement and intelligence
+                                                                             agencies to combat terrorism. You must provide your TIN whether or
+                                                                             not you are required to file a tax return. Under section 3406, payers
+                                                                             must generally withhold a percentage of taxable interest, dividend, and
+                                                                             certain other payments to a payee who does not give a TIN to the payer.
+                                                                             Certain penalties may also apply for providing false or fraudulent
+                                                                             information.
+

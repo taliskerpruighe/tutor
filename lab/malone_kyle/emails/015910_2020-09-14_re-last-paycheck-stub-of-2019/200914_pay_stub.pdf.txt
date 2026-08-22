@@ -1,0 +1,54 @@
+Statement of Earnings For:        Kyle Edward Malone                                                                             Lumenance, LLC
+Employee #:     68137            Department        401S20        Period Begin:   2/4/2019       Check Date:     2/22/2019        131 King Street
+Clock Number:                                                    Period End:     2/17/2019      Pay Group:      86199 Bi-        Sun Prairie, WI 53590
+SSN:            XXX-XX-1967      Federal Filing:   Married       Exemptions:     3              Additional Tax: Weekly
+Company Id:     086199           State Filing:     Married       Exemptions:     3              Additional Tax:
+   Voucher Id           Check Amount                 Gross Pay              Net Pay                                                     Check Message
+      V9986064                 $0.00                 $3,800.00             $2,811.11
+                                       EARNINGS                       *Not included in Totals                         TAXES                                        DEDUCTIONS
+Description             Rate      Hours      Dollars         YTD Hours           YTD Dollars Description               Current               YTD Description            Current           YTD
+SALARY                            80.00    2,700.00             273.75             9,450.00 SOC SEC EE                  227.71             782.42 PRETAX HEALTH         119.97          871.39
+BONUS                              0.00    1,100.00               0.00             2,200.00 MED EE                       53.26             182.99 PRETAX DENTAL            7.31          64.60
+REGULAR                            0.00        0.00              40.00             1,600.00 FEDERAL WH                  313.19           1,004.22 PRETAX VISION            0.00          14.30
+PTO                                0.00        0.00               8.00               320.00 WISCONSIN WH                216.41             735.66 LIFE INSURANCE         51.04          191.98
+*REIMBURSEMENT                     0.00        0.00               0.00               220.84
+
+
+
+
+Gross Wages:                       80.00    3,800.00             321.75           13,570.00 Total:                      810.57        2,705.29 Total:                       178.32     1,142.27
+                                    LEAVE ACCRUAL                                                                                DISTRIBUTION OF NET PAY
+Accrual Type                                                                                    Checking                     Account: ####5144                     Deposit Amount:       250.00
+                                                                                                Savings                      Account: ####0066                     Deposit Amount:        25.00
+                                                                                                Checking                     Account: ####6107                     Deposit Amount:       150.00
+                                                                                                Checking                     Account: ####9335                     Deposit Amount:      2,386.11
+
+
+
+
+         Lumenance, LLC
+         131 King Street
+         Sun Prairie, WI 53590
+                                                                                                                                             CHECK DATE                   VOUCHER ID
+                                                                                                                                              2/22/2019                     V9986064
+                                                                                                                                                                     TOTAL NET PAY
+
+                                                                                                                                                                    ******$2,811.11
+                               68137 401S20
+                               Kyle Edward Malone
+                               5112 Brookside Dr. Apt #301
+                               MADISON, WI 53718
+                                                                                                                                                NOT NEGOTIABLE
+                                                     Employee Pay Details
+                                                         Lumenance, LLC
+
+Kyle Edward Malone
+For Pay Period: 2/4/2019 - 2/17/2019
+Pay Date:       2/22/2019
+Earning                Rate      Hours    Dollars        Department
+
+SALARY                            80.00   2,700.00       401S20
+
+BONUS                                     1,100.00       401S20
+                                  80.00   3,800.00
+

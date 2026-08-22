@@ -1,0 +1,94 @@
+# toc.yaml — DOCUMENT 1, the table of contents.
+# Governed by STYLE-SPEC §4.4 (wording, list mechanics), §6 (order),
+# §9 (which lines exist), §3 (typography).
+#
+# THE TOC IS THE PACKET. Its line count equals the DOCUMENT count equals the
+# divider count, and merge order is TOC order (STYLE-SPEC §4.4 lock).
+
+template: table_of_contents
+produces:
+  docx: "A-1. Table of Contents.docx"
+  pdf:  "A-1. Table of Contents.pdf"
+  divider: "A-1.pdf"          # rendered from divider.yaml, DIVIDER_TITLE=TABLE OF CONTENTS
+  pages: 1
+
+page:
+  size: letter
+  orientation: portrait
+  margins_in: {top: 1.0, bottom: 1.0, left: 1.0, right: 1.0}
+
+defaults:
+  font: Times New Roman
+  size_pt: 12
+  line_spacing: 1.15
+  align: left
+
+list:
+  # one Word numbered list spanning BOTH tab headings; the heading interrupts
+  # the layout, never the numbering. numId 1, ilvl 0.
+  style: decimal_dot            # "1." "2." ...
+  number_indent_in: 0.25        # w:ind left=720 hanging=360 -> number at 0.25"
+  text_indent_in: 0.5
+  continuous_across_tab_headings: true
+  first_number: 1               # DOCUMENT 1 is the table of contents itself
+
+blocks:
+  - type: paragraph
+    align: center
+    runs:
+      - {text: "TABLE OF CONTENTS", bold: true, underline: true}
+  - {type: blank}
+  - type: paragraph
+    align: left
+    indent_in: 0.25
+    runs:
+      - {text: "Tab A (Summary)", bold: true}
+  - {type: blank}
+  - type: repeat
+    over: TAB_A_ITEMS
+    emit:
+      - {type: list_item, runs: [{text: "{ITEM}"}]}
+      - {type: blank}
+  - type: paragraph
+    align: left
+    indent_in: 0.25
+    runs:
+      - {text: "Tab B (Biographical Information)", bold: true}
+  - {type: blank}
+  - type: repeat
+    over: TAB_B_ITEMS
+    emit:
+      - {type: list_item, runs: [{text: "{ITEM}"}]}
+      - {type: blank}
+
+slots:
+  TAB_A_ITEMS:
+    type: list_of_string
+    fixed: true
+    value: ["Table of contents", "Cover letter"]
+  TAB_B_ITEMS:
+    type: list_of_string
+    desc: >
+      Computed by the four-argument exhibit rule (STYLE-SPEC §9) in the fixed
+      order of §6 and §9.2. Core lines are always present and always in this
+      order; conditional lines append in precedence order C1..C6.
+    core:
+      - "Form N-400, Application for Naturalization"
+      - "Bio page of latest passport of the applicant"
+      - "Form I-551, Permanent Resident Card"
+      - "Latest tax return"
+    conditional:                      # key = trigger id from STYLE-SPEC §9.2
+      C1: "Bio page of latest passport of the applicant's spouse"
+      C2: "Form I-797C, Notice of Action"
+      C3a: "Joint deed"
+      C3b: "Joint automobile insurance policy"
+      C3c: "Bio page of latest passport of the applicant's child"
+      C4: "Travel addendum"
+      C5: "Court records"
+      C6: "Written explanation"
+
+geometry_check:
+  title_top_pt: 72.5
+  line_pitch_pt: 31.74          # one blank paragraph between every line
+  list_number_x_pt: 90.0
+  list_text_x_pt: 108.0

@@ -1,0 +1,59 @@
+# divider.yaml — the one-page document divider.
+# Governed by STYLE-SPEC §4.3, §3 and §16 (BINDING).
+# RECONCILED to §16 in Phase 2: dividers are 12 pt; green-card title is
+# PERMANENT RESIDENT CARD; auto-policy title carries "INSURANCE".
+# Rendered once per DOCUMENT, saved as the BARE numbered pdf: A-1.pdf, B-3.pdf.
+# See STYLE-SPEC §2 for the divider/content naming collision.
+
+template: divider
+produces:
+  docx: "{TAB}-{N}. Divider.docx"      # working file only, not shipped
+  pdf:  "{TAB}-{N}.pdf"                # SHIPPED — the bare numbered pdf
+  pages: 1
+
+page:
+  size: letter                          # 12240 x 15840 twips, portrait
+  orientation: portrait
+  margins_in: {top: 1.0, bottom: 1.0, left: 1.0, right: 1.0}
+
+defaults:
+  font: Times New Roman
+  size_pt: 12                           # STYLE-SPEC §16 ruling 3 (OVERTURNS taste call 3)
+  line_spacing: 1.15                    # w:line=276 lineRule=auto
+  align: center
+  all_caps: true                        # applied by the author, not by w:caps
+
+blocks:
+  - {type: paragraph, align: center, runs: [{text: "DOCUMENT {N}", bold: true}]}
+  - {type: blank}
+  - {type: paragraph, align: center, runs: [{text: "{DIVIDER_TITLE}", bold: false}]}
+
+slots:
+  N:
+    desc: DOCUMENT number, continuous across tabs, 1-based
+    type: integer
+    from: masterkey-derived packet order (STYLE-SPEC §6, §9)
+  DIVIDER_TITLE:
+    desc: all-caps document title
+    type: string
+    enum_source: STYLE-SPEC §4.3 table
+    values:
+      table_of_contents: "TABLE OF CONTENTS"
+      cover_letter:      "COVER LETTER"
+      n400:              "FORM N-400"
+      passport:          "PASSPORT"
+      green_card:        "PERMANENT RESIDENT CARD"   # §16 ruling 4
+      tax_return:        "{TAX_YEAR} INCOME TAX RETURN"
+      travel_addendum:   "TRAVEL ADDENDUM"
+      court_records:     "COURT RECORDS"
+      spouse_passport:   "SPOUSE'S PASSPORT"
+      i797c:             "FORM I-797C, NOTICE OF ACTION"
+      joint_deed:        "JOINT DEED"
+      auto_policy:       "JOINT AUTOMOBILE INSURANCE POLICY"  # aligned to TOC, ruling-4 precedent
+      child_passport:    "CHILD'S PASSPORT"
+      written_explanation: "WRITTEN EXPLANATION"
+
+geometry_check:               # what Phase 5 may assert on the rendered pdf
+  line1_top_pt: 72            # 1-inch top margin
+  lines_centred_on_x_pt: 306  # whole line centred on the page centre
+  line_count: 3               # title, blank, subtitle

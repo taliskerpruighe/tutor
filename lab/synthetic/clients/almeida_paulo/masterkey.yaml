@@ -1,0 +1,553 @@
+# masterkey.yaml — almeida_paulo (W1)
+# Phase 2b. Single source of truth for this client. Consumed by Phase 3
+# renderers, Phase 4 input fabricators, Phase 5 verify_client.py. Nothing
+# outside this file is authoritative for almeida_paulo.
+#
+# Sources read, in order: brief.md, voice-card.md, BUILD-PLAN.md §3,
+# STYLE-SPEC.md §12 (+§9, §4.5, §16), SPEC-DELTA.md, document-catalog.yaml,
+# n400-part-map.md, registry.yaml. Corpus quarantine honoured — no file
+# under lab/jacobs_brent, lab/zhu_vivian, lab/izaguirre_jesus, lab/malone_kyle
+# or lab/ossola_ylenia was read.
+#
+# *** N-400 PART-NUMBERING CORRECTION — READ BEFORE TRUSTING ANY "Part N" KEY
+# BELOW ***
+# n400-part-map.md (and the task prompt paraphrasing it) states the applicant's
+# contact block is "printed Part 10" and the preparer block "printed Part 12",
+# with "no Part 13". Direct `pdftotext -layout` extraction of the committed
+# blank (`lab/synthetic/blanks/n-400.pdf`, verified below) shows this is WRONG
+# for the actual page text. The real printed structure is:
+#   Part 9  — Additional Information About You — items 1-37 (pages 6-10)
+#   Part 10 — Request for a Fee Reduction (page 11)
+#   Part 11 — Applicant's Contact Information, Certification, and Signature (page 11)
+#   Part 12 — Interpreter's Contact Information... (page 12)
+#   Part 13 — Contact Information... of the Person Preparing this Application (page 12)
+#   Part 14 — Additional Information (pages 12-13)
+#   Part 15 — Signature at Interview (page 14)
+#   Part 16 — Oath of Allegiance (page 14)
+# Root cause: the AcroForm fields' /TU tooltips are STALE (they carry the
+# PREVIOUS edition's part numbers — e.g. the Part-11 contact fields are
+# tooltip-labelled "Part 10", the Part-9 oath pre-questions 26d/34 are
+# tooltip-labelled "Part 12"). n400-part-map.md was built from the tooltips,
+# not from the rendered page text, which is why it dropped Part 10 (Fee
+# Reduction) from its table and shifted everything after Part 9 down by one.
+# THE FIELD NAMES AND FILL/EMPTY SEMANTICS in n400-part-map.md ARE CORRECT
+# (verified against pypdf's field list below) — only its human "printed Part
+# N" labels are off by one from Part 10 onward. This masterkey uses the
+# numbers actually printed on the page. See REPORT for the full finding.
+n400_numbering_note: >
+  Verified 2026-08-21 via `pdftotext -layout lab/synthetic/blanks/n-400.pdf -`
+  and `pypdf` field enumeration. Printed Part 10 = Fee Reduction, Part 11 =
+  Applicant's Contact Info, Part 12 = Interpreter, Part 13 = Preparer. The
+  AcroForm /TU tooltips are stale by one part-number from Part 10 onward;
+  field NAMES (P12_Line3_Telephone etc.) and the FILL/EMPTY instructions in
+  n400-part-map.md are unaffected and are followed as written.
+
+client: almeida_paulo
+ships_as: examples
+
+identity:
+  family_name: "Almeida"
+  given_name: "Paulo"
+  middle_name: "Miguel"
+  full_legal_name: "Paulo Miguel Almeida"
+  honorific: "Mr."
+  pronoun_subject: "he"
+  pronoun_possessive: "his"
+  other_names_used_since_birth: []          # none — brief names no alias
+  name_change:
+    requested: false
+    new_family_name: null
+    new_given_name: null
+    new_middle_name: null
+  dob: "1988-03-22"                          # form: 03/22/1988 · prose: 22 March
+  sex: "M"
+  cob: "Brazil"
+  coc: "Brazil"
+  nationality_adjective: "Brazilian"
+  nationality_article: "a"                   # "a Brazilian national"
+  cover_page_cob_con: "Brazil"                # §4.1 COB/CON line
+  ssn: "037-84-2196"
+  uscis_online_account_number: null           # none supplied
+  first_entered_us: "2015-09-02"              # age 27 at entry
+  # Part 3. Biographic Information (confirmed printed Part 3 — no numbering
+  # bug this early in the form)
+  ethnicity: "Not Hispanic or Latino"          # field state N
+  race: ["White"]                              # field state W
+  height: {feet: 5, inches: 10}
+  weight_lbs: 175                              # entered as 3 digit boxes: 1,7,5
+  eye_color: "Brown"                            # field state BRO
+  hair_color: "Black"                           # field state BLK
+
+contact:
+  daytime_phone: "(617) 555-0142"
+  mobile_phone: "(617) 555-0142"
+  email: "paulo.almeida@quillmail.com"
+
+immigration:
+  a_number: "208451772"
+  a_number_formatted: "A-208451772"
+  lpr_date: "2020-06-19"
+  class_of_admission: "E21"
+  basis: "316a"
+  classification_basis_string: "INA 316(a)"
+  eligibility_citation: "INA § 316(a); 8 C.F.R. § 316.2"
+  part1_eligibility_box: "A"                   # "A. General Provision" — Item 1.a
+  conditional_resident:
+    was_cr: false
+    i751: null
+  derived:
+    # Recomputed in python (see REPORT for the run and its output):
+    #   anniv5 = lpr_date + 5y = 2025-06-19
+    #   earliest_filing_date = anniv5 - 90d = 2025-03-21
+    #   filing_margin_days = (filed_date - earliest_filing_date).days = 262
+    #   residence_years_at_filing = (filed_date - lpr_date).days / 365.25 = 5.47
+    early_filing_date: "2025-03-21"
+    filing_margin_days: 262
+    residence_years: 5.47
+
+family:
+  marital_status: "Single"
+  times_married: 0
+  spouse: null
+  children: []
+  parents:
+    - {name: "Joao Almeida", usc: false, married_before_applicant_18: null}
+    - {name: "Rosa Almeida", usc: false, married_before_applicant_18: null}
+    # married_before_applicant_18 only meaningfully asserted when a parent is
+    # a USC (it feeds derivative-citizenship analysis); neither parent is a
+    # USC, so null is the honest value, not an unsourced "Yes".
+  prior_marriages_of_applicant: []
+
+addresses:
+  # Gap-free across the 5-year 316(a) window (filing 2025-12-08 minus 5y =
+  # 2020-12-08); current address alone (from 2019-11-01) already spans the
+  # whole window, and the prior address closes the gap back to 2016-02-15
+  # with zero-day discontinuity (ended 2019-10-31, current starts 2019-11-01).
+  - street: "47 Larkspur Street"
+    unit: "Apt 3"
+    city: "Somerville"
+    state: "MA"
+    zip: "02143"
+    country: "United States"
+    from: "2019-11-01"
+    to: null
+    present: true
+    is_mailing_address: true                  # same as physical — Part 4 Item 2 = Yes
+  - street: "118 Hollis Avenue"
+    unit: null
+    city: "Medford"
+    state: "MA"
+    zip: "02155"
+    country: "United States"
+    from: "2016-02-15"
+    to: "2019-10-31"
+    present: false
+
+residence_lockbox:
+  state_of_residence: "MA"
+  lockbox: "Elgin"
+  carrier: "U.S. POSTAL SERVICE (USPS)"
+  lockbox_block:                               # STYLE-SPEC §7 x §16 ruling 8
+    - "U.S. Department of Homeland Security"    # ruling 8: jacobs' longer form, not zhu's
+    - "United States Citizenship and Immigration Services"
+    - "USCIS Elgin Lockbox"
+    - "Attn: N-400"
+    - "P.O. Box 4060"
+    - "Carol Stream, IL 60197-4060"
+  via_line: "VIA U.S. POSTAL SERVICE (USPS)"
+
+employment:
+  # Gap-free across the residence window; the 4-day interval between jobs
+  # (2019-04-04 -> 2019-04-08) is the brief's own stated fact ("There is no
+  # gap" — voice-card.md), not an omission.
+  - employer: "Harborline Structural Engineering LLC"
+    city: "Somerville"
+    state: "MA"
+    zip: "02143"
+    country: "United States"
+    occupation: "Structural Engineer"
+    from: "2019-04-08"
+    to: null
+    present: true
+  - employer: "Dunmore Precision Castings"
+    city: "Medford"
+    state: "MA"
+    zip: "02155"
+    country: "United States"
+    occupation: "Design Engineer"
+    from: "2016-03-01"
+    to: "2019-04-04"
+    present: false
+
+travel:
+  # 7 countable trips (Part 8 window: last 5 years) + 1 day trip supplied but
+  # excluded from BOTH the Part 8 table and the travel addendum (decision D7).
+  # `days` = (return - depart).days + 1, both endpoints inclusive.
+  # Part 8 table holds exactly 6 rows (page 6 of 14, confirmed by direct field
+  # count on the committed blank — D7 verified_fact); the 7th countable trip
+  # (oldest) is on the addendum only, per §9.3.5's superset rule.
+  trips:
+  - depart: "2025-09-05"
+    return: "2025-09-14"
+    countries: ["Brazil"]
+    days: 10
+    on_form: true
+    on_addendum: true
+    why_excluded: null
+  - depart: "2025-02-20"
+    return: "2025-02-27"
+    countries: ["Brazil"]
+    days: 8
+    on_form: true
+    on_addendum: true
+    why_excluded: null
+  - depart: "2024-05-14"
+    return: "2024-05-14"
+    countries: ["Canada"]
+    days: 1
+    on_form: false
+    on_addendum: false
+    why_excluded: "day trip — entire trip completed within 24 hours (drove to Toronto and back same day); excluded from both the Part 8 table and the travel addendum per the form's own instruction and decision D7, not counted toward the 7 countable trips"
+  - depart: "2024-03-10"
+    return: "2024-03-17"
+    countries: ["Brazil"]
+    days: 8
+    on_form: true
+    on_addendum: true
+    why_excluded: null
+  - depart: "2023-08-18"
+    return: "2023-08-25"
+    countries: ["Germany"]
+    days: 8
+    on_form: true
+    on_addendum: true
+    why_excluded: null
+  - depart: "2023-01-05"
+    return: "2023-01-12"
+    countries: ["Brazil"]
+    days: 8
+    on_form: true
+    on_addendum: true
+    why_excluded: null
+  - depart: "2022-06-02"
+    return: "2022-06-09"
+    countries: ["Portugal"]
+    days: 8
+    on_form: true                              # 6th most-recent countable trip — the last that fits the table
+    on_addendum: true
+    why_excluded: null
+  - depart: "2021-11-20"
+    return: "2021-11-27"
+    countries: ["Brazil"]
+    days: 8
+    on_form: false                             # 7th (oldest) countable trip — exceeds the 6-row table
+    on_addendum: true
+    why_excluded: "row-count only — the Part 8 table holds 6 rows, most recent first; this is the 7th (oldest) countable trip and does not fit. Carried on the travel addendum, which is a superset of the table (STYLE-SPEC §9.3.5)"
+  derived:
+    # Recomputed in python — see REPORT. Sum of the 7 countable trips' `days`
+    # values only; the day trip (1 day) is NOT counted, matching its exclusion
+    # from both the table and the addendum.
+    total_days_outside_us_countable_trips: 58
+    addendum_triggered: true                   # C4 — row count 7 > 6
+    part8_page_number: 6                        # of 14 — STYLE-SPEC §4.5 slot {p}
+    addendum_residence_years_phrase: 5           # "last 5 years" per §4.5
+
+moral_character:
+  # Keyed to the printed Part 9 item numbers of the committed 01/20/25 blank
+  # (verified via `pdftotext -f 6 -l 11 -layout`), NOT to the stale /TU
+  # tooltip numbering. Gated items that the form's own skip logic never
+  # reaches carry answer: null (not "No") — a renderer must leave them blank,
+  # not write a false negative.
+  q1: {answer: "No"}
+  q2: {answer: "No"}
+  q3: {answer: "No"}
+  q4: {answer: "No"}
+  q5a: {answer: "No"}
+  q5b: {answer: "No"}
+  q6a: {answer: "No"}
+  q6b: {answer: "No"}
+  q6c: {answer: "No"}
+  q7a: {answer: "No"}
+  q7b: {answer: "No"}
+  q7c: {answer: "No"}
+  q7d: {answer: "No"}
+  q7e: {answer: "No"}
+  q7f: {answer: "No"}
+  q7g: {answer: "No"}
+  q8a: {answer: "No"}
+  q8b: {answer: "No"}
+  q9: {answer: "No"}
+  q10a: {answer: "No"}
+  q10b: {answer: "No"}
+  q10c: {answer: "No"}
+  q11: {answer: "No"}
+  q12: {answer: "No"}
+  q13: {answer: "No"}
+  q14: {answer: "No"}
+  q15a: {answer: "No"}
+  q15b: {answer: "No"}
+  q16: {answer: null, gated_by: "item 15b", note: "not reached — item 15b answered No"}
+  q17a: {answer: "No"}
+  q17b: {answer: "No"}
+  q17c: {answer: "No"}
+  q17d: {answer: "No"}
+  q17e: {answer: "No"}
+  q17f: {answer: "No"}
+  q17g: {answer: "No"}
+  q17h: {answer: "No"}
+  q18: {answer: "No"}
+  q19: {answer: "No"}
+  q20: {answer: "No"}
+  q21: {answer: "No"}
+  q22a: {answer: "No"}                          # first entered US at 27 — decision D15
+  q22b: {answer: null, gated_by: "item 22a", note: "not reached — item 22a answered No"}
+  q22c: {answer: null, gated_by: "item 22b", note: "not reached — item 22b answered No"}
+  q23: {answer: "No"}
+  q24: {answer: "No"}
+  q25: {answer: "No"}
+  q26a: {answer: null, gated_by: "item 25", note: "not reached — item 25 answered No"}
+  q26b: {answer: null, gated_by: "item 26a", note: "not reached — item 26a not answered"}
+  q26c: {answer: null, gated_by: "item 26a", note: "not reached — item 26a not answered"}
+  q26d: {answer: null, gated_by: "item 25", note: "not reached — item 25 answered No"}
+  q27: {answer: null, gated_by: "item 25", note: "not reached — item 25 answered No"}
+  q28: {answer: null, gated_by: "item 25", note: "not reached — item 25 answered No"}
+  q29: {answer: null, gated_by: "item 25", note: "not reached — item 25 answered No"}
+  q30a: {answer: "No"}
+  q30b: {answer: null, gated_by: "item 30a", note: "not reached — item 30a answered No (skip to 31)"}
+  q31: {answer: "Yes"}                          # support the Constitution
+  q32: {answer: "Yes"}                          # understand the Oath
+  q33: {answer: "No"}                           # not unable to take the Oath
+  q34: {answer: "Yes"}                          # willing to take the full Oath
+  q35: {answer: "Yes"}                          # willing to bear arms
+  q36: {answer: "Yes"}                          # willing to perform noncombatant service
+  q37: {answer: "Yes"}                          # willing to perform work of national importance
+  none_triggers_c5_or_c6: true                  # no arrest/citation (q15a/b No) and no non-tabulable Yes (q20/q21 No)
+
+fee_reduction:
+  printed_part: 10                              # see n400_numbering_note
+  q1_household_income_le_400pct: "No"           # skip to Part 11
+
+n400:
+  edition: "01/20/25"
+  part_numbering_verified_from: "lab/synthetic/blanks/n-400.pdf text layer, pdftotext -layout, 2026-08-21; cross-checked against pypdf field enumeration"
+  applicant_contact:
+    printed_part: 11
+    fill: true
+    fields:
+      daytime_telephone: "form1[0].#subform[10].P12_Line3_Telephone[0]"
+      mobile_telephone: "form1[0].#subform[10].P12_Line3_Mobile[0]"
+      email: "form1[0].#subform[10].P12_Line5_Email[0]"
+  applicant_signature:
+    printed_part: 11
+    fill: false                                 # §16 ruling 11 — ships unsigned
+    fields:
+      signature: "form1[0].#subform[10].P12_SignatureApplicant[0]"
+      date: "form1[0].#subform[10].P13_DateofSignature[0]"
+  interpreter_block:
+    printed_part: 12
+    fill: false                                 # no interpreter engaged
+  preparer_block:
+    printed_part: 13
+    fill: false                                 # §16 ruling 7 + ruling 10 — no firm identity anywhere
+  interview_and_oath_signatures:
+    printed_parts: [15, 16]
+    fill: false                                 # executed at the USCIS interview, never by the firm
+
+documents:
+  passport:
+    country: "Brazil"
+    number: "FZ318842"
+    surname: "ALMEIDA"
+    given_names: "PAULO MIGUEL"
+    nationality: "BRA"
+    dob: "1988-03-22"
+    sex: "M"
+    pob: "Brazil"
+    issue_date: "2021-08-10"
+    expiry_date: "2031-08-09"
+    issuing_authority: "Brazil"
+    mrz:
+      # ICAO 9303 TD3, weights 7,3,1 repeating, computed and verified in
+      # python (see REPORT for the script and its printed check digits).
+      line1: "P<BRAALMEIDA<<PAULO<MIGUEL<<<<<<<<<<<<<<<<<<"
+      line2: "FZ318842<6BRA8803229M3108099<<<<<<<<<<<<<<06"
+      check_digits: {passport_number: 6, dob: 9, expiry: 9, personal_number: 0, composite: 6}
+  green_card:
+    surname: "ALMEIDA"
+    given_name: "PAULO MIGUEL"
+    a_number: "208451772"
+    category: "E21"
+    cob: "Brazil"
+    dob: "1988-03-22"
+    sex: "M"
+    resident_since: "2020-06-19"                # locked to immigration.lpr_date and the cover letter's eligibility clause
+    card_expiry: "2030-06-19"                    # 10-year card
+    sides: ["front", "back"]
+  tax_return:
+    year: 2024
+    blank: "f1040--2024.pdf"
+    filing_status: "Single"
+    taxpayer_name: "Paulo Miguel Almeida"
+    taxpayer_ssn: "037-84-2196"
+    address_as_printed: "47 Larkspur Street, Apt 3, Somerville, MA 02143"   # locks to addresses[0] — STYLE-SPEC §9.4
+    wages: 92460
+    agi: 92460
+    total_tax: 13215
+    refund_or_owed: {direction: "refund", amount: 890}
+    preparer_name: "Diane Whitfield"             # the personal tax preparer (CPA), NOT the immigration "Petition Preparer" — no conflict with §16 ruling 7
+  evidence: []                                    # no C3a/C3b/C3c items — basis is 316(a); STYLE-SPEC §9.3 rule 2
+  resume:
+    format: "docx"
+    employers_and_dates_must_equal: "employment"  # STYLE-SPEC §9.4 lock — resume ⟷ Part 7
+  over_delivered:
+    # Mess event "over-delivery" — supplied on the input side, triggers no
+    # §9.2 rule, enters no output document. Facts kept minimal since nothing
+    # downstream consumes them beyond Phase 4 fabrication.
+    - type: "expired_passport"
+      description: "Applicant's own expired Brazilian passport"
+      number: "EA204471"
+      issue_date: "2004-03-16"
+      expiry_date: "2014-03-15"                  # expired well before filing
+    - type: "residential_lease"
+      description: "Residential lease agreement for the current address"
+      address: "47 Larkspur Street, Apt 3, Somerville, MA 02143"
+      term: {from: "2019-11-01", to: "2020-10-31"}
+    - type: "vaccination_record"
+      description: "Personal vaccination record card — no fact any output consumes"
+
+matter:
+  engagement_date: "2025-10-14"
+  filed_date: "2025-12-08"
+  lockbox: "Elgin"
+  carrier: "U.S. POSTAL SERVICE (USPS)"
+  fee: "760.00"
+  form_edition: "01/20/25"
+
+exhibits:
+  # Derived from STYLE-SPEC §9's four-argument rule and matched against
+  # document-catalog.yaml ids. seq is the DOCUMENT number (append order).
+  list:
+  - {doc: table_of_contents, seq: 1, trigger: core, why: "unconditional core"}
+  - {doc: cover_letter,      seq: 2, trigger: core, why: "unconditional core"}
+  - {doc: n400,              seq: 3, trigger: core, why: "unconditional core — the application"}
+  - {doc: applicant_passport, seq: 4, trigger: core, why: "unconditional core — identity, DOB, COB, MRZ"}
+  - {doc: green_card,        seq: 5, trigger: core, why: "unconditional core — A-number and LPR date"}
+  - {doc: tax_return,        seq: 6, trigger: core, why: "unconditional core — continuous residence / GMC evidence; TY2024 filed before mid-April 2026"}
+  - {doc: travel_addendum,   seq: 7, trigger: C4,   why: "7 countable trips in the 5-year window exceed the Part 8 table's 6 rows (row-count disjunct); the 8th supplied trip is a day trip, excluded from both table and addendum per D7, and never the firing reason"}
+  barred:
+    C1_C2_C3: "basis == 316(a) admits no spousal evidence at all (STYLE-SPEC §9.3 rule 2) — applicant is single, no spouse exists regardless"
+    C5: "no Part 9 arrest/citation/detention/charge answer is Yes (q15a, q15b both No)"
+    C6: "no non-tabulable Part 9 Yes (q20, q21 both No)"
+  pre_documents:
+    # No DOCUMENT number; still required in the render — carried separately
+    # per document-catalog.yaml's pre_documents list.
+    - applicant_cover_page
+    - tab_a_cover
+    - tab_b_cover
+  document_count: 7
+  toc_line_count: 7
+  divider_count: 7
+
+input_surfaces:
+  # Client modality: questionnaire docx returned filled + phone photos of the
+  # green card (front/back) and passport bio page + a PDF of the 2024 1040 +
+  # a resume docx. Grouped by fact, per BUILD-PLAN §3's ledger convention.
+  identity.family_name: [questionnaire]
+  identity.given_name: [questionnaire]
+  identity.middle_name: [questionnaire]
+  identity.dob: [questionnaire, phone_photo_passport]
+  identity.cob: [questionnaire, phone_photo_passport]
+  identity.ssn: [questionnaire]
+  identity.ethnicity_race_height_weight_eye_hair: [questionnaire]
+  family.marital_status: [questionnaire]
+  family.times_married: [questionnaire]
+  family.children_none: [questionnaire]
+  family.parents: [questionnaire]
+  fee_reduction.q1: [questionnaire]
+  contact.daytime_phone: [questionnaire]
+  contact.mobile_phone: [questionnaire]
+  contact.email: [questionnaire]
+  immigration.a_number: [questionnaire, phone_photo_green_card_front]
+  immigration.lpr_date: [questionnaire, phone_photo_green_card_front]
+  immigration.class_of_admission: [questionnaire, phone_photo_green_card_front]
+  addresses.0_current: [questionnaire, tax_return_pdf]
+  addresses.1_prior_medford: [questionnaire]
+  addresses.1_end_date_2019-10-31: ["email:0002"]     # voice-card sample: "The Medford address ended 31 October 2019 — I moved the next day."
+  employment.harborline: [questionnaire, resume_docx]
+  employment.dunmore: [questionnaire, resume_docx]
+  employment.dates_confirmed: ["email:0003"]          # voice-card sample: "2016-03-01 to 2019-04-04 at Dunmore, then Harborline from 2019-04-08."
+  travel.seven_countable_trips: [questionnaire]
+  travel.day_trip_2024-05-14: [questionnaire, "email:0001"]  # voice-card sample: "the Toronto trip on 14 May was one day only ... I have left it in the list but marked it."
+  moral_character.all_items: [questionnaire]
+  documents.passport.bio_page: [phone_photo_passport]
+  documents.green_card.front: [phone_photo_green_card_front]
+  documents.green_card.back: [phone_photo_green_card_back]
+  documents.tax_return: [tax_return_pdf]
+  documents.resume: [resume_docx]
+  documents.over_delivered.expired_passport: ["email attachment, unrequested"]
+  documents.over_delivered.lease: ["email attachment, unrequested"]
+  documents.over_delivered.vaccination_record: ["email attachment, unrequested"]
+  matter.engagement_date: ["firm-side — retainer / first email date, not a client-supplied fact"]
+  matter.filed_date: ["firm-side — internal filing record, not a client-supplied fact"]
+  matter.lockbox: ["firm policy — function of state of residence (STYLE-SPEC §7), not client-supplied"]
+  matter.carrier: ["firm policy choice"]
+  matter.fee: ["firm policy constant — STYLE-SPEC §5.2 / §11"]
+  matter.form_edition: ["firm policy constant — STYLE-SPEC §8"]
+
+mess_events:
+  # W1 demonstrates 4 of the 9 mess types (BUILD-PLAN §5.3), all listed in
+  # brief.md's "Mess events" table.
+  - type: "day_trip_exclusion"
+    fact: "travel (Canada, 2024-05-14)"
+    wrong_surface: "if trimmed into the Part 8 table or the travel addendum — WOULD be wrong"
+    right_surface: "excluded from BOTH the Part 8 table and the travel addendum"
+    resolution: "firm instruction (day trips <24h are excluded from both, per the form's own Part 8 text and STYLE-SPEC §4.5); registry decision D7. Not chronological — a standing rule, not a supersession."
+  - type: "phone_photo_texture"
+    fact: "documents.passport, documents.green_card (front and back)"
+    wrong_surface: "none — no ambiguity is introduced"
+    right_surface: "questionnaire-typed values, corroborated by the (rotated, shadowed) phone photo"
+    resolution: "texture only — every fact on the photographed documents is legible and agrees with the questionnaire by construction"
+  - type: "over_delivery"
+    fact: "documents.over_delivered (expired 2014 passport, lease, vaccination record)"
+    wrong_surface: "none — no §9.2 rule is triggered by any of the three"
+    right_surface: "excluded from the packet entirely; still agree with the masterkey where they overlap it (e.g. the lease address matches addresses.0)"
+    resolution: "excluded by rule (not triggered), not by chronology"
+  - type: "unrelated_matter_noise"
+    fact: "none — a cousin's B-2 visitor-visa question, mentioned in passing"
+    wrong_surface: "none"
+    right_surface: "not this matter; touches no packet fact; produces no document"
+    resolution: "excluded, out of scope"
+
+consistency_locks:
+  # STYLE-SPEC §9.4, instantiated with this client's values.
+  name_identical: "Almeida / Paulo Miguel Almeida — N-400, passport MRZ, cover letter"
+  dob_identical: "1988-03-22 (03/22/1988) — cover page, cover letter, N-400, passport, green card"
+  pob_identical: "Brazil — N-400 and passport"
+  a_number_identical: "208451772 — green card, every N-400 page header (Line1_AlienNumber, one per page)"
+  lpr_date_triple_lock: "2020-06-19 — green card Resident Since == N-400 Part 2 LPR date == cover letter's 316(a) eligibility clause date"
+  tax_address_in_history: "47 Larkspur Street, Apt 3, Somerville, MA 02143 — tax return's printed address == addresses[0] (current, N-400 Part 4)"
+  resume_equals_part7: "Harborline Structural Engineering LLC 2019-04-08–present; Dunmore Precision Castings 2016-03-01–2019-04-04 — resume == employment == N-400 Part 7"
+  addendum_superset_of_part8: "travel addendum lists all 7 countable trips (C1-C7); Part 8 table lists 6 (C1-C6); addendum ⊇ table"
+  toc_divider_document_count_lock: "TOC line count == divider count == DOCUMENT count == 7"
+  merged_page_count: "computed at render time == sum of component page counts (Phase 3/5 obligation, not a Phase 2 fact)"
+
+leakage:
+  # Whole-token grep of every invented proper noun and every digit-string of
+  # 6+ characters against lab/synthetic/blocklist.txt (12,454 tokens),
+  # `grep -ixF`. Full list and result in REPORT.
+  tokens_checked: 40
+  hits: 0
+  note: >
+    40 tokens extracted programmatically from this file (names, streets,
+    cities, ZIPs, phone, SSN, A-number, passport/expired-passport numbers and
+    their digit-strings, MRZ lines with filler stripped, tax preparer name,
+    tax figures, employer names, countries, dates-as-digit-strings, fee).
+    One prior candidate ("Diane Foster") hit the blocklist and was replaced
+    with "Diane Whitfield" before being written here. One prior candidate
+    (the bare document-type tag "lease" — a common noun, not a proper noun or
+    digit-string, and so not actually in the rule's scope) also matched a
+    blocklist line case-insensitively; the tag was renamed to
+    "residential_lease" to remove the ambiguity even though the rule did not
+    require it. Employer names, city/street names, DOB, SSN and A-number were
+    already fixed by brief.md / registry.yaml (Phase 2a, pre-vetted) and are
+    re-checked here for completeness.

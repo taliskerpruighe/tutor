@@ -1,0 +1,692 @@
+# masterkey.yaml — tran_daniel (T1)
+# Phase 2b. Written from brief.md + voice-card.md + BUILD-PLAN §3 schema +
+# STYLE-SPEC §12 (+ §9, §4.5, §5.1, §16) + SPEC-DELTA + document-catalog.yaml
+# + n400-part-map.md + registry.yaml. Corpus quarantine honoured: nothing
+# under lab/jacobs_brent, lab/zhu_vivian, lab/izaguirre_jesus, lab/malone_kyle
+# or lab/ossola_ylenia was opened.
+#
+# READ THIS FIRST: the folder is named for the correspondent, Daniel Quang
+# Tran (a U.S. citizen by naturalization). The APPLICANT is his wife,
+# Vu Thanh Ha, a Vietnamese national. Every field below keyed `identity`,
+# `applicant`, or unprefixed is Ha's. `family.spouse` is Daniel's.
+
+client: tran_daniel
+ships_as: to-do            # input files only; this masterkey is the unshipped answer key
+folder_named_for: correspondent
+correspondent:
+  name: "Daniel Quang Tran"
+  relationship: "the applicant's husband, a U.S. citizen by naturalization; he writes almost every message"
+  phone: "(614) 555-0176"
+  email: "dtran@trestlefp.com"
+  note: "Never appears on the N-400 applicant contact block. Contact facts there are Ha's own (614) 555-0129 / ha.vu@quillmail.com."
+
+# ---------------------------------------------------------------------------
+# IDENTITY — the applicant, Vu Thanh Ha
+# ---------------------------------------------------------------------------
+identity:
+  family_name: "Vu"
+  given_name: "Ha"
+  middle_name: "Thanh"
+  full_legal_name: "Vu Thanh Ha"          # Vietnamese order; passport prints VU THANH HA
+  other_names_used: []
+  name_change:
+    requested: true
+    new_family_name: "Tran"
+    new_given_name: "Ha"
+    new_middle_name: "Thanh"
+    new_full_name: "Ha Thanh Tran"
+    single_field_of_record: "N-400 Part 2, Item Number 3 (Name Change (Optional)) — verified against blanks/n-400.pdf text layer, `pdftotext -f 1 -l 5 -layout`, page 1 of 14: item 3 reads 'Would you like to legally change your name?' with the new family/given/middle name lines immediately under it. Not renumbered on this edition — Parts 1-3 are unaffected by the Part 10 (Fee Reduction) insertion that shifts everything from Part 10 onward. See `disagreements.n400_part_numbering` below."
+    note: >
+      `Ha Thanh Tran` appears ONLY at that one field. Every other artefact —
+      applicant cover page, cover letter Re: block, her own passport and its
+      MRZ, the green card, the joint tax return, every divider — carries her
+      CURRENT LEGAL NAME, `Vu Thanh Ha`. Registry decision D13. A requested
+      name is a request, not a fact about any document that exists at filing.
+  honorific: "Ms."
+  pronoun_subject: "she"
+  pronoun_possessive: "her"
+  dob: "1991-06-18"
+  sex: "F"
+  country_of_birth: "Vietnam"
+  country_of_citizenship: "Vietnam"
+  nationality_adjective: "Vietnamese"     # cover letter "a Vietnamese national" — registry D14
+  nationality_article: "a"
+  cover_page_cob_con: "Vietnam"
+  ssn: "289-63-4157"
+  uscis_online_account_number: "none"
+  # Part 3. Biographic Information (verified against blanks/n-400.pdf p.2: items 1-6)
+  ethnicity: "Not Hispanic or Latino"
+  race: ["Asian"]
+  height_feet: 5
+  height_inches: 3
+  weight_lbs: 128
+  eye_color: "Brown"
+  hair_color: "Black"
+  first_entered_us: "2020-05-27"
+
+contact:
+  daytime_phone: "(614) 555-0129"
+  mobile_phone: "(614) 555-0129"
+  email: "ha.vu@quillmail.com"
+  n400_field_note: >
+    Fills the applicant's own contact block (fields P12_Line3_Telephone /
+    P12_Line3_Mobile / P12_Line5_Email — verified present in n400-field-dump.tsv).
+    The preparer block stays entirely empty (no firm identity anywhere,
+    STYLE-SPEC §16 r7/r10) and the form ships unsigned (r11). See
+    `disagreements.n400_part_numbering` for why this masterkey does not cite
+    a printed Part number for this block.
+
+# ---------------------------------------------------------------------------
+# IMMIGRATION STATUS
+# ---------------------------------------------------------------------------
+immigration:
+  a_number: "214902186"
+  a_number_formatted: "A-214902186"
+  lpr_date: "2022-11-30"
+  class_of_admission: "IR6"               # unconditional immediate-relative spouse
+  basis: "319a"
+  classification_basis_string: "INA 319(a)"
+  conditional_resident:
+    was_cr: false
+    # C2 trigger (STYLE-SPEC §9.2) is a TWO-conjunct AND. Both evaluate false,
+    # by the facts, not by omission:
+    conjunct_1_marriage_predates_lpr_by_2y:
+      marriage_date: "2020-03-14"
+      lpr_date: "2022-11-30"
+      gap_days: 991
+      threshold_days: 730
+      result: "991 > 730 (2 years 8 months > 2 years) — admission was NOT conditional under INA 216"
+    conjunct_2_unconditional_card_in_hand_at_filing:
+      card_type: "10-year IR6 card (unconditional)"
+      card_issued: "2023-01-18"
+      card_expires: "2033-01-17"
+      filing_date: "2026-06-15"
+      result: "the card in hand at filing has always been the unconditional 10-year card; no 2-year conditional card was ever issued"
+    i751: null
+    i751_note: "No I-751 exists, pending or otherwise. Both C2 conjuncts are false by the facts (registry decision D10). C2 does not fire; Form I-797C is not in the packet."
+  derived:
+    earliest_filing_date: "2025-09-01"      # LPR (2022-11-30) + 3y - 90d, recomputed 2026-08-21
+    filing_date: "2026-06-15"
+    filing_margin_days: 287
+    residence_years_at_filing: 3.54
+    window_check: "filed >= lpr_date + 3y - 90d: 2026-06-15 >= 2025-09-01 -> TRUE"
+
+# ---------------------------------------------------------------------------
+# RESIDENCE — gap-free
+# ---------------------------------------------------------------------------
+addresses:
+  - street: "3155 Sandpiper Drive"
+    city: "Westerville"
+    state: "OH"
+    zip: "43081"
+    country: "USA"
+    from: "2023-04-20"
+    to: "present"
+    current: true
+  - street: "690 Bellhaven Court"
+    city: "Gahanna"
+    state: "OH"
+    zip: "43230"
+    country: "USA"
+    from: "2020-05-27"
+    to: "2023-04-19"
+    current: false
+address_gap_check: "2020-05-27 (first entry to the U.S., per identity.first_entered_us) -> 2023-04-19 -> 2023-04-20 -> present. Zero-day gap. See disagreements.registry_date_divergence — registry.yaml's Gahanna from-date (2020-06-01) is not used here."
+mailing_address_same_as_physical: true      # §12.4 — no separate mailing address; the N-400 uses the physical address for both
+
+# ---------------------------------------------------------------------------
+# EMPLOYMENT — gap-free
+# ---------------------------------------------------------------------------
+employment:
+  - employer: "Not employed (homemaker, at home with the child)"
+    city: "Gahanna"
+    state: "OH"
+    zip: "43230"
+    country: "USA"
+    occupation: null
+    from: "2020-05-27"
+    to: "2023-01-08"
+    present: false
+  - employer: "Scioto Clinical Laboratories"
+    city: "Westerville"
+    state: "OH"
+    zip: "43081"
+    country: "USA"
+    occupation: "Medical Laboratory Technician"
+    from: "2023-01-09"
+    to: null
+    present: true
+employment_gap_check: "2020-05-27 -> 2023-01-08 -> 2023-01-09 -> present. Zero-day gap. See disagreements.registry_date_divergence."
+
+# ---------------------------------------------------------------------------
+# MARITAL AND FAMILY — full Part 7 (marital history) / Part 6 (children) set
+# ---------------------------------------------------------------------------
+family:
+  marital_status: "Married"
+  times_married_applicant: 1
+  prior_marriages_applicant: []          # first marriage for Ha
+  marriage_date: "2020-03-14"
+  spouse:
+    full_name: "Daniel Quang Tran"
+    honorific: "Mr."                      # cover letter's 319(a) clause consumes this: "... spouse, Mr. Daniel Quang Tran"
+    family_name: "Tran"
+    given_name: "Daniel"
+    middle_name: "Quang"
+    dob: "1988-01-09"
+    a_number: null
+    a_number_note: "now a U.S. citizen; no A-number carried on this application"
+    usc: true
+    usc_since: "naturalized"
+    naturalization_date: "2009-05-21"
+    naturalization_place: "Cleveland, Ohio"
+    employer: "Trestle Fire Protection LLC"
+    employer_city: "Westerville"
+    employer_state: "OH"
+    employer_title: "Fire Protection Technician"
+    address_same_as_applicant: true
+    times_married: 1
+    prior_marriages: []                  # first marriage for Daniel too
+  children:
+    - full_name: "Mai Linh Tran"
+      family_name: "Tran"
+      given_name: "Mai"
+      middle_name: "Linh"
+      dob: "2021-08-02"
+      country_of_birth: "USA"
+      place_of_birth: "Westerville, Ohio, USA"
+      relationship: "biological child of the marriage"
+      address: "3155 Sandpiper Drive, Westerville, OH 43081 (same as applicant)"
+      lives_with_applicant: true
+      passport_supplied: true             # C3c evidence
+  parents:
+    - name: "Vu Van Thang"
+      usc: false
+      married_before_applicant_18: true
+    - name: "Pham Thi Nga"
+      usc: false
+      married_before_applicant_18: true
+
+# ---------------------------------------------------------------------------
+# TRAVEL — Part 8 has exactly 6 rows, page 6 of 14 (verified: `pdftotext -f 6
+# -l 6 -layout` footer reads "Page 6 of 14"; registry D7). 7 countable trips
+# exceed it, so C4 fires on the row-count disjunct alone — no day trip is in
+# play for this client (unlike W1/T2).
+# ---------------------------------------------------------------------------
+travel:
+  residence_window_years: 3               # 319(a) — the addendum's "last 3 years"
+  part_8_page: 6
+  part_8_rows: 6
+  day_count_convention: "days = (return_date - depart_date).days — a single delta per trip, not inclusive of both endpoints"
+  trips:                                  # most recent first, per §4.5
+    - depart: "2026-04-02"
+      return: "2026-04-12"
+      countries: ["Vietnam"]
+      days: 10
+      on_form: true
+      why_excluded: null
+    - depart: "2025-12-20"
+      return: "2026-01-03"
+      countries: ["Vietnam"]
+      days: 14
+      on_form: true
+      why_excluded: null
+    - depart: "2025-08-15"
+      return: "2025-08-22"
+      countries: ["Mexico"]
+      days: 7
+      on_form: true
+      why_excluded: null
+    - depart: "2025-03-10"
+      return: "2025-03-17"
+      countries: ["Canada"]
+      days: 7
+      on_form: true
+      why_excluded: null
+    - depart: "2024-11-27"
+      return: "2024-12-05"
+      countries: ["Vietnam"]
+      days: 8
+      on_form: true
+      why_excluded: null
+    - depart: "2024-06-05"
+      return: "2024-06-14"
+      countries: ["Bahamas"]
+      days: 9
+      on_form: true
+      why_excluded: null
+    - depart: "2023-09-08"
+      return: "2023-09-16"
+      countries: ["Vietnam"]
+      days: 8
+      on_form: false
+      why_excluded: "7th of 7 countable trips (oldest); exceeds the Part 8 table's 6 rows. Row-count disjunct only — this trip is not a day trip and is not trimmed for any other reason (contrast registry D7, which the day-trip disjunct governs for W1/T2, not T1)."
+  derived:
+    countable_trip_count: 7
+    total_days_outside_us: 63
+    c4_fires: true
+    c4_reason: "7 countable trips > Part 8's 6 rows"
+
+# ---------------------------------------------------------------------------
+# MORAL CHARACTER — full Part 9 set, printed items verified against
+# `pdftotext -f 6 -l 11 -layout blanks/n-400.pdf` (THIS edition, 01/20/25).
+# Every item is No except the oath-of-allegiance items (31-37), which the
+# brief confirms are Yes/willing throughout, and 33, which is "unable?" = No
+# (she is able). Not C5, not C6 (registry: "every Part 9 answer is No").
+# ---------------------------------------------------------------------------
+moral_character:
+  q_1:  {answer: "No"}
+  q_2:  {answer: "No"}
+  q_3:  {answer: "No"}
+  q_4:  {answer: "No"}
+  q_5a: {answer: "No"}
+  q_5b: {answer: "No"}
+  q_6a: {answer: "No"}
+  q_6b: {answer: "No"}
+  q_6c: {answer: "No"}
+  q_7a: {answer: "No"}
+  q_7b: {answer: "No"}
+  q_7c: {answer: "No"}
+  q_7d: {answer: "No"}
+  q_7e: {answer: "No"}
+  q_7f: {answer: "No"}
+  q_7g: {answer: "No"}
+  q_8a: {answer: "No"}
+  q_8b: {answer: "No"}
+  q_9:  {answer: "No"}
+  q_10a: {answer: "No"}
+  q_10b: {answer: "No"}
+  q_10c: {answer: "No"}
+  q_11: {answer: "No"}
+  q_12: {answer: "No"}
+  q_13: {answer: "No"}
+  q_14: {answer: "No"}
+  q_15a: {answer: "No"}
+  q_15b: {answer: "No", detail_rows: []}
+  q_16: {answer: "N/A", explanation: "no arrest under 15.b; item not reached"}
+  q_17a: {answer: "No"}
+  q_17b: {answer: "No"}
+  q_17c: {answer: "No"}
+  q_17d: {answer: "No"}
+  q_17e: {answer: "No"}
+  q_17f: {answer: "No"}
+  q_17g: {answer: "No"}
+  q_17h: {answer: "No"}
+  q_18: {answer: "No"}
+  q_19: {answer: "No"}
+  q_20: {answer: "No"}
+  q_21: {answer: "No"}
+  q_22a: {answer: "N/A", explanation: "applicant is female; Selective Service item applies to males only (registry D15 covers the three male applicants elsewhere in the set, not T1)"}
+  q_22b: {answer: "N/A", explanation: "22.a not applicable"}
+  q_22c: {answer: "N/A", explanation: "22.b not applicable"}
+  q_23: {answer: "No"}
+  q_24: {answer: "No"}
+  q_25: {answer: "No"}
+  q_26a: {answer: "N/A", explanation: "25 = No; form instructs skip to 30.a"}
+  q_26b: {answer: "N/A"}
+  q_26c: {answer: "N/A"}
+  q_26d: {answer: "N/A"}
+  q_27: {answer: "N/A"}
+  q_28: {answer: "N/A"}
+  q_29: {answer: "N/A"}
+  q_30a: {answer: "No"}
+  q_30b: {answer: "N/A", explanation: "30.a = No"}
+  q_31: {answer: "Yes"}                    # support the Constitution
+  q_32: {answer: "Yes"}                    # understands the Oath
+  q_33: {answer: "No"}                     # NOT unable to take the Oath
+  q_34: {answer: "Yes"}                    # willing to take the full Oath
+  q_35: {answer: "Yes"}                    # willing to bear arms
+  q_36: {answer: "Yes"}                    # willing to perform noncombatant service
+  q_37: {answer: "Yes"}                    # willing to perform work of national importance
+fee_reduction: "No"                        # Part 10 (Request for a Fee Reduction), item 1
+
+# ---------------------------------------------------------------------------
+# DOCUMENTS — exhibit facts, §12.10. MRZ check digits computed in python,
+# ICAO 9303, weighting 7/3/1, validated against the ICAO worked example
+# (L898902C3 / 740812 / 120415 -> 6 / 2 / 9, reproduced exactly before use).
+# ---------------------------------------------------------------------------
+documents:
+  passport:                                # applicant — Ha's Vietnamese passport
+    issuing_country: "Vietnam"
+    passport_number: "C6820451"
+    surname_printed: "VU"
+    given_names_printed: "THANH HA"
+    nationality: "VNM"
+    dob: "1991-06-18"
+    sex: "F"
+    place_of_birth: "Vietnam"
+    issue_date: "2019-08-05"
+    expiry_date: "2029-08-04"
+    issuing_authority: "Ministry of Public Security, Socialist Republic of Vietnam"
+    mrz:
+      line1: "P<VNMVU<<THANH<HA<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+      line2: "C6820451<6VNM9106189F2908041<<<<<<<<<<<<<<04"
+    check_digits: {passport_number: 6, dob: 9, expiry: 1, personal_number: 0, composite: 4}
+    name_lock_rule: >
+      MRZ given-names field 'THANH HA' == upper(identity.middle_name + ' ' +
+      identity.given_name) == upper('Thanh Ha'). This is NOT a literal match
+      against identity.given_name alone — §9.4's "given name identical on
+      N-400, passport MRZ and cover letter" lock must be read through the
+      Vietnamese family/given/middle ordering (family=Vu, given=Ha,
+      middle=Thanh; passport prints VU THANH HA), or a verifier will
+      false-flag every field on this client.
+
+  green_card:
+    surname: "VU"
+    given_name: "THANH HA"
+    a_number: "A-214902186"
+    category: "IR6"
+    country_of_birth: "Vietnam"
+    dob: "1991-06-18"
+    sex: "F"
+    resident_since: "2022-11-30"           # == immigration.lpr_date, locked
+    card_number: "EAC2345678901"
+    issued: "2023-01-18"
+    expires: "2033-01-17"
+    sides: ["front", "back"]
+
+  spouse_passport:                          # C1 — Daniel's U.S. passport
+    issuing_country: "USA"
+    passport_number: "548219307"
+    surname_printed: "TRAN"
+    given_names_printed: "DANIEL QUANG"
+    nationality: "USA"
+    dob: "1988-01-09"
+    sex: "M"
+    place_of_birth: "Vietnam"
+    issue_date: "2021-02-10"
+    expiry_date: "2031-02-09"
+    issuing_authority: "United States Department of State"
+    mrz:
+      line1: "P<USATRAN<<DANIEL<QUANG<<<<<<<<<<<<<<<<<<<<<"
+      line2: "5482193079USA8801096M3102097<<<<<<<<<<<<<<04"
+    check_digits: {passport_number: 9, dob: 6, expiry: 7, personal_number: 0, composite: 4}
+    note: "Surname on this passport legitimately reads TRAN — that is Daniel's own name, not Ha's requested name. The two TRANs are unrelated facts (his existing surname; her Part-2 request) and must not be cross-checked against each other."
+
+  child_passport:                           # C3c — Mai Linh's U.S. passport
+    issuing_country: "USA"
+    passport_number: "671048823"
+    surname_printed: "TRAN"
+    given_names_printed: "MAI LINH"
+    nationality: "USA"
+    dob: "2021-08-02"
+    sex: "F"
+    place_of_birth: "Westerville, Ohio, USA"
+    issue_date: "2021-10-15"
+    expiry_date: "2026-10-14"
+    issuing_authority: "United States Department of State"
+    mrz:
+      line1: "P<USATRAN<<MAI<LINH<<<<<<<<<<<<<<<<<<<<<<<<<"
+      line2: "6710488239USA2108025F2610140<<<<<<<<<<<<<<08"
+    check_digits: {passport_number: 9, dob: 5, expiry: 0, personal_number: 0, composite: 8}
+    lock: "surname/given/DOB here == family.children[0] exactly (Tran / Mai Linh / 2021-08-02)"
+
+  tax_return:                               # DOCUMENT 6 — core, and the marriage evidence (§9.3 rule 1)
+    tax_year: 2025
+    tax_blank: "f1040.pdf"
+    filing_status: "Married Filing Jointly"
+    taxpayer_name: "Daniel Quang Tran"
+    spouse_name: "Vu Thanh Ha"               # current legal name, not the requested one — §9.4/D13
+    taxpayer_ssn: "301-88-6274"
+    spouse_ssn: "289-63-4157"
+    address_as_printed: "3155 Sandpiper Drive, Westerville, OH 43081"
+    wages: 126180
+    agi: 126180
+    total_tax: 14970
+    refund_or_owed: {type: "refund", amount: 1240}
+    preparer_name: "Self-Prepared"
+    note: "Joint return IS the marriage evidence. Appears once as DOCUMENT 6; never duplicated inside the C3 cluster."
+
+  evidence:
+    - type: "deed"
+      grantors: "Robert J. Whitfield and Laura K. Whitfield, husband and wife"
+      grantees: "Daniel Quang Tran and Vu Thanh Ha, husband and wife"
+      property_address: "3155 Sandpiper Drive, Westerville, OH 43081"
+      county: "Franklin County, Ohio"
+      recording_date: "2023-04-14"
+      instrument_number: "202304140098765"
+      consideration: "$342,000.00"
+      preparer: "Heather M. Collins, Attorney at Law"
+      supplied: true
+      triggers: "C3a"
+      reconciliation: "recording date (2023-04-14) is one day before the Westerville from-date (2023-04-20) — closed 04-14, moved in 04-20, per the brief. Property address == addresses[0] exactly."
+    - type: "auto_policy"
+      supplied: false
+      supplied_note: "Asked; not supplied. Daniel confirmed by e-mail that the only policy is through his employer's group plan and is in his name only, so it does not evidence a joint asset (voice-card sample line 3)."
+      triggers: "none — C3b does not fire (supplied evidence, not basis; STYLE-SPEC §9.3 rule 3)"
+    - type: "child_passport"
+      ref: "documents.child_passport (above)"
+      supplied: true
+      triggers: "C3c"
+
+  resume:
+    employer: "Scioto Clinical Laboratories"
+    title: "Medical Laboratory Technician"
+    city: "Westerville"
+    state: "OH"
+    from: "2023-01-09"
+    to: "present"
+    lock: "equals employment[1] exactly (employer, city, state, from-date) — §9.4 resume/Part 7 lock. The pre-2023 homemaker period is not on the resume, which is normal and does not break the lock (the lock binds what the resume DOES list, not the full employment history)."
+
+# ---------------------------------------------------------------------------
+# MATTER — firm-identity facts are DELETED per STYLE-SPEC §16 r7 / registry D4.
+# Only these six survive.
+# ---------------------------------------------------------------------------
+matter:
+  engagement_date: "2026-04-27"
+  filed_date: "2026-06-15"
+  lockbox: "Chicago"
+  carrier: "FEDERAL EXPRESS"
+  fee: "760.00"
+  form_edition: "01/20/25"
+
+# ---------------------------------------------------------------------------
+# EXHIBITS — derived from the four-argument rule (STYLE-SPEC §9), matching
+# document-catalog.yaml's ids/titles and the brief's 10-document set exactly.
+# ---------------------------------------------------------------------------
+exhibits:
+  - {doc: "table_of_contents", seq: 1, trigger: "core", why: "firm-authored"}
+  - {doc: "cover_letter",      seq: 2, trigger: "core", why: "firm-authored"}
+  - {doc: "n400",              seq: 3, trigger: "core", why: "the application"}
+  - {doc: "applicant_passport",seq: 4, trigger: "core", why: "identity — name, DOB, COB, MRZ"}
+  - {doc: "green_card",        seq: 5, trigger: "core", why: "A-number and LPR date"}
+  - {doc: "tax_return",        seq: 6, trigger: "core", why: "continuous-residence and good-moral-character evidence; also the marriage evidence (joint return, §9.3 rule 1)"}
+  - {doc: "spouse_passport",   seq: 7, trigger: "C1",  why: "basis == 319(a)"}
+  - {doc: "joint_deed",        seq: 8, trigger: "C3a", why: "basis == 319(a) AND the joint deed to the Westerville house was supplied"}
+  - {doc: "child_passport",    seq: 9, trigger: "C3c", why: "basis == 319(a) AND a child of the marriage exists AND her passport was supplied"}
+  - {doc: "travel_addendum",   seq: 10, trigger: "C4", why: "7 countable trips exceed the Part 8 table's 6 rows"}
+not_triggered:
+  C2: "not a conditional resident — both conjuncts false by the facts (see immigration.conditional_resident above). No I-751, no I-797C."
+  C3b: "no joint automobile policy was supplied (documents.evidence[1]). Asked; declined by Daniel with a stated reason. Supplied evidence, not basis, decides C3a/C3b/C3c independently of each other."
+  C5: "no Part 9 arrest/citation/detention/charge answer is Yes (q_15a, q_15b = No)"
+  C6: "no Part 9 Yes the form's table cannot carry — q_20, q_21 = No"
+document_count: 10
+
+# ---------------------------------------------------------------------------
+# INPUT SURFACES — delegated correspondence. Daniel writes almost every
+# message; Ha appears two or three times, briefly, per the brief and voice
+# card. Every output-consumed fact below traces to at least one surface.
+# ---------------------------------------------------------------------------
+input_surfaces:
+  identity.family_name/given_name/middle_name: ["email:0001 (Daniel, engagement)", "scan:passport_ha.pdf"]
+  identity.dob/sex/country_of_birth: ["email:0001", "scan:passport_ha.pdf"]
+  identity.ssn: ["email:0001"]
+  identity.height/weight/eye_color/hair_color/ethnicity/race: ["email:0008 (Daniel, biographic-detail follow-up, answering the firm's Part 3 checklist on Ha's behalf)"]
+  identity.name_change: ["ha_email:0002 (Ha's own clarification: 'she wants to take my surname when this goes through ... does that create a problem anywhere?', quoted in voice-card.md)", "email:0009 (Daniel confirms she wants to proceed)"]
+  contact.*: ["email:0001 — Daniel supplies Ha's own phone/e-mail explicitly, distinct from his own"]
+  immigration.a_number/lpr_date/class_of_admission: ["scan:green_card_front.jpg", "email:0001"]
+  immigration.conditional_resident: ["scan:green_card_front.jpg (shows the 10-year, not 2-year, card)", "email:0001 (states the 2020 marriage / 2022 LPR dates)"]
+  addresses.0 (current): ["email:0001", "scan:deed.pdf"]
+  addresses.1 (prior, Gahanna): ["email:0002 (Daniel, address history)"]
+  employment.0 (unemployed period): ["email:0002"]
+  employment.1 (Scioto): ["email:0002 (Daniel, states 'January 2022' in error)", "ha_email:0001 (Ha's correction: 'The lab start date is 9 January 2023, not January 2022', voice-card.md sample line)"]
+  family.marriage_date/spouse.*: ["email:0001"]
+  family.spouse.naturalization_date/place: ["email:0001 (prose statement)", "scan:passport_daniel.pdf (issuing country only; naturalization date/place is not itself printed on a passport and rests on Daniel's own prose statement)"]
+  family.children: ["email:0001", "photo:child_passport_photo.jpg then scan:child_passport_full.pdf (voice-card sample: 'Photo attached, I'll do a proper scan tonight')"]
+  family.parents: ["email:0008"]
+  travel.trips: ["email:0006 (Daniel, full trip history recalled from his and Ha's calendars)"]
+  documents.passport (Ha): ["scan:passport_ha.pdf (email:0004)"]
+  documents.green_card: ["scan:green_card_front.jpg", "scan:green_card_back.jpg (email:0004)"]
+  documents.spouse_passport: ["scan:passport_daniel.pdf (email:0004)"]
+  documents.child_passport: ["photo:child_passport_photo.jpg", "scan:child_passport_full.pdf (email:0003, then email:0007)"]
+  documents.tax_return: ["scan:tax_return_2025.pdf (email:0005)"]
+  documents.evidence.deed: ["scan:deed.pdf (email:0003, voice-card sample line 1: 'I have the recorded copy from the county, it's a PDF, attached')"]
+  documents.evidence.auto_policy (absence): ["email:0003, voice-card sample line 3 (Daniel declines to send it, with reason)"]
+  documents.resume: ["email:0002"]
+  moral_character.*: ["email:0008 (Daniel relays her answers to the firm's Part 9 checklist)"]
+  matter.engagement_date: ["engagement letter, dated 2026-04-27 (firm-generated, countersigned by e-mail; not itself a fact ABOUT the client)"]
+  matter.filed_date: ["firm filing log — an operational fact set by the firm at submission, not sourced from client correspondence; no client input surface exists or is expected for it"]
+
+# ---------------------------------------------------------------------------
+# MESS EVENTS — both from registry.yaml's mess_types for this client.
+# ---------------------------------------------------------------------------
+mess_events:
+  - type: "correspondent_folder_naming"
+    fact: "identity — who the applicant is"
+    wrong_surface: "the shipped folder name and the header of nearly every e-mail, both keyed to Daniel"
+    right_surface: "scan:passport_ha.pdf and scan:green_card_front.jpg, both under Vu Thanh Ha"
+    resolution: "the applicant is the person named on the passport and the green card, never the correspondent. Reuses the W2 (kavanagh_liam) mess type, per BUILD-PLAN §7."
+  - type: "e_signature_channel_switch"
+    fact: "none — inert. No packet fact depends on which route the signature page took."
+    wrong_surface: "a failed e-signature attempt (link kicked him out twice, per voice-card.md)"
+    right_surface: "email:0007 — printed, signed, scanned page returned instead"
+    resolution: "no consequence for any output fact: the N-400 ships UNSIGNED in every case (STYLE-SPEC §16 r11), so neither route ever reaches the packet. Texture, not a load-bearing mess (T1-only)."
+  - type: "superseded"
+    fact: "employment.1.from (Scioto Clinical Laboratories start date)"
+    wrong_surface: "email:0002 ('January 2022')"
+    right_surface: "ha_email:0001 ('9 January 2023')"
+    resolution: "chronological — the later, more specific correction from the person with firsthand knowledge wins. Ha's correction post-dates Daniel's e-mail."
+
+# ---------------------------------------------------------------------------
+# CONSISTENCY LOCKS — STYLE-SPEC §9.4, instantiated with this client's values.
+# ---------------------------------------------------------------------------
+consistency_locks:
+  - name: "name_lock"
+    rule: "family_name + given_name identical across N-400 current-name fields, passport MRZ, green card, tax return, and every cover/divider page"
+    value: "Vu / Thanh / Ha everywhere EXCEPT N-400 Part 2 Item 3, which alone carries Tran / Ha / Thanh (the request)"
+    comparison_mode: "see documents.passport.name_lock_rule — MRZ given-names field compares against upper(middle_name + ' ' + given_name), not given_name alone, because of Vietnamese name ordering"
+  - name: "dob_lock"
+    rule: "DOB identical everywhere it appears"
+    value: "1991-06-18 — cover page, cover letter, N-400, passport, green card"
+  - name: "pob_lock"
+    rule: "place of birth identical on N-400 and passport"
+    value: "Vietnam"
+  - name: "a_number_lock"
+    rule: "A-number identical on green card, every N-400 page header, and any I-797C"
+    value: "A-214902186 (no I-797C exists — C2 does not fire, so there is nothing else to reconcile against)"
+  - name: "resident_since_lock"
+    rule: "green card 'Resident Since' == N-400 Part 2 LPR date"
+    value: "2022-11-30"
+  - name: "tax_address_lock"
+    rule: "tax-return address appears in the address history"
+    value: "3155 Sandpiper Drive, Westerville, OH 43081 == addresses[0]"
+  - name: "resume_employment_lock"
+    rule: "resume employers and dates equal Part 7"
+    value: "Scioto Clinical Laboratories, Medical Laboratory Technician, 2023-01-09-present == employment[1]"
+  - name: "travel_superset_lock"
+    rule: "the travel addendum is a superset of the form's Part 8 table"
+    value: "addendum lists all 7 trips; Part 8 lists the 6 most recent (on_form: true); the 7th (oldest, 2023-09-08) is addendum-only"
+  - name: "toc_divider_document_count_lock"
+    rule: "TOC line count == divider count == DOCUMENT count, and TOC line n names document n"
+    value: 10
+  - name: "deed_address_lock"
+    rule: "joint deed property address == current residence address == N-400 current address"
+    value: "3155 Sandpiper Drive, Westerville, OH 43081"
+  - name: "child_passport_lock"
+    rule: "child's passport name/DOB == N-400 children entry"
+    value: "Mai Linh Tran, 2021-08-02"
+  - name: "spouse_passport_lock"
+    rule: "spouse's passport name == N-400 Part 7 (Marital History) spouse name and naturalization date/place"
+    value: "Daniel Quang Tran; naturalized 2009-05-21, Cleveland, Ohio"
+  - name: "c2_non_trigger_lock"
+    rule: "conditional_resident.was_cr == false AND the card in hand at filing is unconditional => C2 must not appear"
+    value: "both true — see immigration.conditional_resident"
+  - name: "c3b_non_trigger_lock"
+    rule: "C3a/C3b/C3c are independent functions of SUPPLIED evidence, not of basis alone"
+    value: "C3a and C3c fire (deed, child passport supplied); C3b does not (auto policy not supplied) — same basis, same marriage, different supply outcomes per document"
+
+# ---------------------------------------------------------------------------
+# DERIVED — top-level summary, computed in python (see report for the scripts run).
+# ---------------------------------------------------------------------------
+derived:
+  filing_window:
+    earliest_filing_date: "2025-09-01"
+    filed: "2026-06-15"
+    margin_days: 287
+    meets_window: true
+  marriage_lpr_gap:
+    days: 991
+    years: 2.71
+    threshold_days: 730
+    exceeds_threshold: true
+  c2_fires: false
+  c4_fires: true
+  c4_trip_count: 7
+  total_travel_days: 63
+  document_count: 10
+  mrz_validation: "check-digit function reproduced the ICAO 9303 worked example (passport L898902C3 / DOB 740812 / expiry 120415 -> check digits 6 / 2 / 9) before being run against this client's three passports"
+
+# ---------------------------------------------------------------------------
+# DISAGREEMENTS — surfaced per the run instructions, not silently resolved
+# where resolving them would mean editing a file outside this one.
+# ---------------------------------------------------------------------------
+disagreements:
+  n400_part_numbering_verified:
+    finding: >
+      At draft time, `lab/synthetic/tools/n400-part-map.md` (and SPEC-DELTA
+      D-H, which depended on it) stated the committed 01/20/25 blank's
+      applicant-contact block is printed Part 10 and its preparer block is
+      printed Part 12, with "no Part 13." That table was built from the
+      blank's AcroForm /TU tooltips. This masterkey writer checked the
+      primary source instead — `pdftotext -f 9 -l 14 -layout blanks/n-400.pdf
+      -` — and found the tooltips internally scrambled (e.g. field
+      `P10_Line1_Citizen` on page 11 is tooltipped "Part 7. Marital History,"
+      nowhere near its actual content), while the PRINTED page text runs
+      Part 9 (Additional Information About You) -> Part 10 (Request for a Fee
+      Reduction) -> **Part 11 (Applicant's Contact Information,
+      Certification, and Signature)** -> Part 12 (Interpreter's Contact
+      Information...) -> **Part 13 (Contact Information, Certification, and
+      Signature of the Person Preparing this Application)** -> Part 14
+      (Additional Information) -> Part 15 (Signature at Interview) -> Part 16
+      (Oath of Allegiance). brief.md's own wording ("Part 11 filled ... Part
+      13 empty") already matched the printed numbering.
+    status: >
+      CONFIRMED UPSTREAM 2026-08-22. `lab/synthetic/spec/SPEC-DELTA.md` now
+      carries D-H2 (superseding D-H) and `lab/synthetic/tools/n400-part-map.md`
+      now carries the corrected table, both crediting this finding and both
+      stating: printed Part 11 = applicant contact (FILL daytime/mobile/email,
+      LEAVE EMPTY signature+date), printed Part 13 = preparer block (LEAVE
+      EMPTY entirely). §16 rulings 10 and 11 apply LITERALLY, with no
+      reinterpretation needed. No open disagreement remains; this entry is
+      kept as the provenance record for that upstream correction.
+    consequence_for_this_masterkey: >
+      None — this masterkey is fact-domain organised per BUILD-PLAN §3 and
+      carries no printed-Part-number labels for the contact/preparer blocks
+      (see identity.contact.n400_field_note); it names the actual field IDs,
+      which are independently verified to exist in n400-field-dump.tsv and
+      are what `render_n400.py` keys on regardless of which Part label is
+      correct.
+  registry_date_divergence:
+    finding: >
+      registry.yaml gives Ha's Gahanna address as 2020-06-01 to 2023-04-19,
+      and her pre-Scioto employment as 2020-06-01 to 2023-01-06. Both leave a
+      short gap against other facts already fixed elsewhere: the address gap
+      is against identity.first_entered_us (2020-05-27, from brief.md, four
+      days before the registry's address start), and the employment gap
+      (2023-01-06 to 2023-01-09) is a bare three days against her verified lab
+      start date. The HARD CONSTRAINTS for this masterkey require gap-free
+      addresses AND gap-free employment.
+    resolution_in_this_masterkey: >
+      addresses[1].from and employment[0].from are both set to 2020-05-27
+      (her first entry to the U.S. — she cannot have a pre-entry U.S. address
+      or U.S. employment), and employment[0].to is set to 2023-01-08 (the day
+      before the verified 2023-01-09 Scioto start, per ha_email:0001). Both
+      closures are internally consistent with the brief and with each other;
+      neither changes any fact registry.yaml treats as load-bearing
+      (marriage date, LPR date, class of admission, basis, exhibit set,
+      lockbox/carrier, tax year — all unchanged).
+  county_and_generic_geography_blocklist_hits: >
+    See the leakage-grep report. "Franklin," "County," and "Republic" are
+    single-word blocklist hits that are not corpus proper-noun leakage; see
+    the grep report for the discriminator and recommendation. No worked pair
+    carries a deed (only T1 does, via C3a), so this is the first client that
+    could have hit the gap.

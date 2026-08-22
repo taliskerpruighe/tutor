@@ -1,0 +1,207 @@
+# document-catalog.yaml — THE JOIN TABLE. Written in Phase 2, reconciled to
+# STYLE-SPEC §16 (BINDING).
+#
+# WHY THIS FILE EXISTS. Every document carries three different strings living in
+# three different STYLE-SPEC sections: the component FILE NAME (§2.1), the
+# DIVIDER TITLE (§4.3) and the TOC LINE (§4.4). Three sources guarantee drift,
+# and §4.4's lock exists precisely to catch it. Renderers and verify_client.py
+# both read THIS file; neither re-derives a string from prose.
+#
+# RECONCILED AGAINST §16:
+#   ruling 4  -> green-card divider is PERMANENT RESIDENT CARD, not GREEN CARD.
+#   ruling 4 precedent (formal over colloquial), applied to the still-open
+#             spousal-cluster titles of §16 "Still open" item 1:
+#             auto policy gains INSURANCE, matching its own TOC line; the other
+#             four spousal titles were already formal and stand unchanged.
+#   ruling 11 -> the N-400 ships unsigned; nothing here renders a signature.
+#
+# ordering: `seq` is the append order. Core 1..6 are unconditional and fixed.
+# Conditionals append in §9.2 precedence C1,C2,C3a,C3b,C3c,C4,C5,C6 and take the
+# next DOCUMENT numbers. The DOCUMENT number IS the file-name number (§2).
+
+pre_documents:      # no DOCUMENT number, no divider
+  - id: applicant_cover_page
+    file: "00. Applicant Cover Page"
+    ships: [docx, pdf]
+    authored_by: firm
+    spec: "STYLE-SPEC §4.1"
+  - id: tab_a_cover
+    file: "Tab A (Content + Cover)/A-0. Tab Cover Page"
+    ships: [docx, pdf]
+    authored_by: firm
+    strings: {line1: "TAB A", line2: "SUMMARY"}       # §16 ruling 2
+    spec: "STYLE-SPEC §4.2 as amended by §16 ruling 2"
+  - id: tab_b_cover
+    file: "Tab B (Biographical Info)/B-0. Tab Cover Page"
+    ships: [docx, pdf]
+    authored_by: firm
+    strings: {line1: "TAB B", line2: "BIOGRAPHICAL INFORMATION"}   # §16 ruling 2
+    spec: "STYLE-SPEC §4.2 as amended by §16 ruling 2"
+
+documents:
+  # ---- TAB A, unconditional --------------------------------------------
+  - id: table_of_contents
+    seq: 1
+    tab: A
+    trigger: core
+    file_stem: "Table of Contents"
+    divider_title: "TABLE OF CONTENTS"
+    toc_line: "Table of contents"
+    ships: [docx, pdf]
+    authored_by: firm
+    renderer: render_docs.py
+
+  - id: cover_letter
+    seq: 2
+    tab: A
+    trigger: core
+    file_stem: "Cover Letter"
+    divider_title: "COVER LETTER"
+    toc_line: "Cover letter"
+    ships: [docx, pdf]
+    authored_by: firm
+    renderer: render_docs.py
+
+  # ---- TAB B, unconditional --------------------------------------------
+  - id: n400
+    seq: 3
+    tab: B
+    trigger: core
+    file_stem: "Form N-400, Application for Naturalization"
+    divider_title: "FORM N-400"
+    toc_line: "Form N-400, Application for Naturalization"
+    ships: [pdf]
+    authored_by: form
+    renderer: render_n400.py
+    notes: "UNSIGNED (§16 r11). Part 13 blank (§16 r10). Part 11 filled."
+
+  - id: applicant_passport
+    seq: 4
+    tab: B
+    trigger: core
+    file_stem: "Bio Page of Passport"
+    divider_title: "PASSPORT"
+    toc_line: "Bio page of latest passport of the applicant"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: fabricate_ids.py
+
+  - id: green_card
+    seq: 5
+    tab: B
+    trigger: core
+    file_stem: "Permanent Resident Card"
+    divider_title: "PERMANENT RESIDENT CARD"        # §16 ruling 4 (was GREEN CARD)
+    toc_line: "Form I-551, Permanent Resident Card"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: fabricate_ids.py
+    notes: "front and back"
+
+  - id: tax_return
+    seq: 6
+    tab: B
+    trigger: core
+    file_stem: "{TAX_YEAR} Income Tax Return"
+    divider_title: "{TAX_YEAR} INCOME TAX RETURN"
+    toc_line: "Latest tax return"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: render_1040.py
+    notes: "§9.3.1 — when the return is joint it IS the marriage evidence; never duplicated."
+
+  # ---- TAB B, conditional, in §9.2 append precedence --------------------
+  - id: spouse_passport
+    trigger: C1
+    condition: "basis == 319a"
+    tab: B
+    file_stem: "Bio Page of Spouse Passport"
+    divider_title: "SPOUSE'S PASSPORT"
+    toc_line: "Bio page of latest passport of the applicant's spouse"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: fabricate_ids.py
+
+  - id: i797c
+    trigger: C2
+    condition: "conditional_resident.was_cr AND unconditional I-551 not in hand at filing"
+    tab: B
+    file_stem: "Form I-797C, Notice of Action"
+    divider_title: "FORM I-797C, NOTICE OF ACTION"
+    toc_line: "Form I-797C, Notice of Action"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: render_evidence.py
+
+  - id: joint_deed
+    trigger: C3a
+    condition: "basis == 319a AND joint deed supplied"
+    tab: B
+    file_stem: "Joint Deed"
+    divider_title: "JOINT DEED"
+    toc_line: "Joint deed"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: render_evidence.py
+
+  - id: auto_policy
+    trigger: C3b
+    condition: "basis == 319a AND joint auto policy supplied"
+    tab: B
+    file_stem: "Joint Automobile Insurance Policy"   # aligned to divider + TOC
+    divider_title: "JOINT AUTOMOBILE INSURANCE POLICY"
+    toc_line: "Joint automobile insurance policy"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: render_evidence.py
+
+  - id: child_passport
+    trigger: C3c
+    condition: "basis == 319a AND child of the marriage exists AND child passport supplied"
+    tab: B
+    file_stem: "Bio Page of Child Passport"
+    divider_title: "CHILD'S PASSPORT"
+    toc_line: "Bio page of latest passport of the applicant's child"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: fabricate_ids.py
+
+  - id: travel_addendum
+    trigger: C4
+    condition: "countable trips exceed the Part 8 table rows OR any supplied trip was trimmed (day trip)"
+    tab: B
+    file_stem: "Travel Addendum"
+    divider_title: "TRAVEL ADDENDUM"
+    toc_line: "Travel addendum"
+    ships: [docx, pdf]
+    authored_by: firm
+    renderer: render_addendum.py
+
+  - id: court_records
+    trigger: C5
+    condition: "any Part 9 arrest / citation / detention / charge answer is Yes"
+    tab: B
+    file_stem: "Court Records"
+    divider_title: "COURT RECORDS"
+    toc_line: "Court records"
+    ships: [pdf]
+    authored_by: exhibit
+    renderer: render_court_records.py
+
+  - id: written_explanation
+    trigger: C6
+    condition: "any Part 9 Yes the form's own table cannot carry (removal, deportation, benefit denial)"
+    tab: B
+    file_stem: "Written Explanation"
+    divider_title: "WRITTEN EXPLANATION"
+    toc_line: "Written explanation"
+    ships: [docx, pdf]
+    authored_by: firm
+    renderer: render_docs.py
+
+# ships_rule (STYLE-SPEC §15.5, decided in Phase 2 without asking):
+#   authored_by: firm    -> docx + pdf
+#   authored_by: form    -> pdf only
+#   authored_by: exhibit -> pdf only
+# Component file name = "<TAB>-<seq>. <file_stem>.<ext>"; the bare "<TAB>-<seq>.pdf"
+# is the DIVIDER (STYLE-SPEC §2, the naming collision).

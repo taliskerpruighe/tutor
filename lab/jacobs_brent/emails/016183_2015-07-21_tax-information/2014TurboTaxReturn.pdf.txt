@@ -1,0 +1,452 @@
+Form                        Department of the Treasury—Internal Revenue Service
+1040A                       U.S. Individual Income Tax Return (99)                                                2014              IRS Use Only—Do not write or staple in this space.
+Your first name and initial                                       Last name                                                                                           OMB No. 1545-0074
+                                                                                                                                                                 Your social security number
+Brent S                                                            Jacobs                                                                                        399               06     0234
+If a joint return, spouse’s first name and initial                Last name                                                                                      Spouse’s social security number
+
+
+Home address (number and street). If you have a P.O. box, see instructions.                                                                 Apt. no.
+                                                                                                                                                                c Make sure the SSN(s) above
+212 Olde Pulley Lane                                                                                                                    L                                 and on line 6c are correct.
+City, town or post office, state, and ZIP code. If you have a foreign address, also complete spaces below (see instructions).                           Presidential Election Campaign
+Menasha WI 54952                                                                                                                                     Check here if you, or your spouse if filing
+                                                                                                                                                     jointly, want $3 to go to this fund. Checking
+Foreign country name                                                              Foreign province/state/county                  Foreign postal code a box below will not change your tax or
+                                                                                                                                                     refund.                 You          Spouse
+
+Filing                        1   Single                                                  4      Head of household (with qualifying person). (See instructions.)
+status                        2   Married filing jointly (even if only one had income)           If the qualifying person is a child but not your dependent,
+Check only                    3   Married filing separately. Enter spouse’s SSN above and        enter this child’s name here. a
+one box.                          full name here.  a                                      5      Qualifying widow(er) with dependent child (see instructions)
+
+                                                                                                                                                                     }
+Exemptions                    6a    Yourself. If someone can claim you as a dependent, do not check                                    Boxes
+                                                                                                                                       checked on
+                                                   box 6a.                                                                             6a and 6b
+                               b    Spouse                                                                                             No. of children
+                                                                                                                                       on 6c who:
+                               c Dependents:                                                                      (4)  if child under
+                                                                                            (3) Dependent’s
+                                                                                  (2) Dependent’s social                               • lived with
+                                                                                                                                            age 17 qualifying for
+If more than six                                                                      security number                                                                            you
+                                                                                                                  relationship to you       child tax credit (see
+dependents, see                     (1) First name            Last name                                                                         instructions)                    • did not live
+instructions.                                                                                                                                                                    with you due to
+                                                                                                                                                                                 divorce or
+                                                                                                                                                                                 separation (see
+                                                                                                                                                                                 instructions)
+                                                                                                                                                                                 Dependents
+                                                                                                                                                                                 on 6c not
+                                                                                                                                                                                 entered above
+
+                                                                                                                                                                                 Add numbers
+                                                                                                                                                                                 on lines
+                               d Total number of exemptions claimed.                                                                                                             above a
+
+Income
+                              7     Wages, salaries, tips, etc. Attach Form(s) W-2.                                                                                7                      21,130.
+Attach
+Form(s) W-2                 8a Taxable interest. Attach Schedule B if required.                                                                                  8a
+here. Also                   b Tax-exempt interest. Do not include on line 8a. 8b
+attach
+Form(s)                        Ordinary dividends. Attach Schedule B if required.                                                                                9a
+1099-R if tax                b Qualified dividends (see instructions).            9b
+was                        10 Capital gain distributions (see instructions).                                                                                     10
+withheld.                  11a IRA                                             11b Taxable amount
+If you did not                 distributions.     11a                               (see instructions).                                                         11b
+get a W-2, see             12a Pensions and                                    12b Taxable amount
+instructions.
+                               annuities.         12a                               (see instructions).                                                         12b
+
+                           13 Unemployment compensation and Alaska Permanent Fund dividends.                                                                     13
+                           14a Social security                         14b Taxable amount
+                               benefits.       14a                          (see instructions).                                                                 14b
+
+                           15       Add lines 7 through 14b (far right column). This is your total income.                                           a           15                       21,130.
+Adjusted
+gross                      16       Educator expenses (see instructions).                                              16
+income                     17       IRA deduction (see instructions).                                                  17
+                           18       Student loan interest deduction (see instructions).                                18
+
+                           19       Tuition and fees. Attach Form 8917.               19
+                           20       Add lines 16 through 19. These are your total adjustments.                                                                   20
+
+                           21       Subtract line 20 from line 15. This is your adjusted gross income.                                                a          21                       21,130.
+For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see separate instructions.                                                                                      Form 1040A (2014)
+                                                                                                                                  BAA            REV 01/20/15 Intuit.cg.cfp.sp
+Form 1040A (2014)                                                                                                                                                             Page 2
+Tax, credits, 22 Enter the amount from line 21 (adjusted gross income).                                                                              22                    21,130.
+and
+payments
+              23a Check
+                  if:               {
+                            You were born before January 2, 1950,
+                            Spouse was born before January 2, 1950,
+                                                                    Blind Total boxes
+                                                                    Blind checked a 23a                                  }
+                       b If you are married filing separately and your spouse itemizes
+Standard                 deductions, check here                                                 a 23b
+Deduction
+for—                24 Enter your standard deduction.                                                        24                                                             6,200.
+• People who        25 Subtract line 24 from line 22. If line 24 is more than line 22, enter -0-.            25                                                            14,930.
+check any
+box on line         26 Exemptions. Multiply $3,950 by the number on line 6d.                                 26                                                                 0.
+23a or 23b or
+who can be          27 Subtract line 26 from line 25. If line 26 is more than line 25, enter -0-.
+claimed as a             This is your taxable income.                                                      a 27                                                            14,930.
+dependent,
+see                 28 Tax, including any alternative minimum tax (see instructions). 28           1,785.
+instructions.
+                    29 Excess advance premium tax credit repayment. Attach
+• All others:
+Single or                Form 8962.                                                   29
+Married filing       30 Add lines 28 and 29.                                                                 30                                                              1,785.
+separately,
+$6,200              31 Credit for child and dependent care expenses. Attach
+Married filing           Form 2441.                                                   31
+jointly or
+Qualifying          32 Credit for the elderly or the disabled. Attach
+widow(er),
+$12,400                  Schedule R.                                                  32
+Head of             33 Education credits from Form 8863, line 19.                     33            1,500.
+household,
+$9,100              34 Retirement savings contributions credit. Attach Form 8880. 34
+                    35 Child tax credit. Attach Schedule 8812, if required.           35
+                    36 Add lines 31 through 35. These are your total credits.                                36                                                              1,500.
+                    37 Subtract line 36 from line 30. If line 36 is more than line 30, enter -0-.            37                                                                285.
+                     38 Health care: individual responsibility (see instructions). Full-year coverage        38
+                    39 Add line 37 and line 38. This is your total tax.                                      39                                                                   285.
+                    40 Federal income tax withheld from Forms W-2 and 1099. 40                     2,719.
+If you have
+                    41 2014 estimated tax payments and amount applied
+a qualifying             from 2013 return.                                            41
+child, attach       42a Earned income credit (EIC).                                   42a
+Schedule
+EIC.                   b Nontaxable combat pay election. 42b
+                    43 Additional child tax credit. Attach Schedule 8812.             43
+                    44 American opportunity credit from Form 8863, line 8.            44           1,000.
+                    45 Net premium tax credit. Attach Form 8962.                      45
+                    46 Add lines 40, 41, 42a, 43, 44, and 45. These are your total payments.              a 46                                                               3,719.
+                    47 If line 46 is more than line 39, subtract line 39 from line 46.
+Refund                   This is the amount you overpaid.                                                    47                                                              3,434.
+Direct              48a Amount of line 47 you want refunded to you. If Form 8888 is attached, check here a   48a                                                             3,434.
+deposit?
+See                 a b
+                         Routing                                 a c Type:       Checking       Savings
+instructions             number 0 7 1 0 2 5 6 6 1
+and fill in
+48b, 48c,           a d
+                         Account
+and 48d or               number 4 1 2 4 0 4 7 4
+Form 8888.          49 Amount of line 47 you want applied to your
+                         2015 estimated tax.                                          49
+Amount              50 Amount you owe. Subtract line 46 from line 39. For details on how to pay,
+you owe                  see instructions.                                                                 a 50
+                    51 Estimated tax penalty (see instructions).                      51
+Third party            Do you want to allow another person to discuss this return with the IRS (see instructions)?                         Yes. Complete the following.                 No
+                       Designee’s                                                       Phone                                   Personal identification
+designee               name         a                                                   no.    a                                number (PIN)            a
+
+                       Under penalties of perjury, I declare that I have examined this return and accompanying schedules and statements, and to the best of my knowledge
+Sign                   and belief, they are true, correct, and accurately list all amounts and sources of income I received during the tax year. Declaration of preparer (other
+                       than the taxpayer) is based on all information of which the preparer has any knowledge.
+here                   Your signature                                                  Date           Your occupation                      Daytime phone number
+
+
+
+                 F
+Joint return?
+See instructions.                                                                                                   Wellness Coordinator         (920)946-5834
+                       Spouse’s signature. If a joint return, both must sign.        Date                           Spouse’s occupation          If the IRS sent you an Identity Protection
+Keep a copy                                                                                                                                      PIN, enter it
+for your records.                                                                                                                                here (see inst.)
+                       Print/type preparer's name                         Preparer’s signature                                      Date                          PTIN
+Paid                                                                                                                                          Check a     if
+                                                                                                                                              self-employed
+preparer               Firm's name a                                                                                                           Firm's EIN a
+                                              Self-Prepared
+use only               Firm's address a                                                                                                        Phone no.
+                                                                                    REV 01/20/15 Intuit.cg.cfp.sp                                               Form 1040A (2014)
+       8863                                           Education Credits
+                                      (American Opportunity and Lifetime Learning Credits)
+                                                                                                                                            OMB No. 1545-0074
+
+
+                                                                                                                                                2014
+Form
+                                                         ▶ Attach to Form 1040 or Form 1040A.
+Department of the Treasury                                                                                                          Attachment
+Internal Revenue Service (99)   ▶ Information about Form 8863 and its separate instructions is at www.irs.gov/form8863.             Sequence No. 50
+Name(s) shown on return                                                                                                Your social security number
+ Brent S Jacobs                                                                                                           399-06-0234
+
+
+▲ Complete
+!           a separate Part III on page 2 for each student for whom you are claiming either credit
+  before you complete Parts I and II.
+CAUTION
+
+ Part I          Refundable American Opportunity Credit
+   1     After completing Part III for each student, enter the total of all amounts from all Parts III, line 30 .                1                   2,500.
+   2     Enter: $180,000 if married filing jointly; $90,000 if single, head of
+         household, or qualifying widow(er) . . . . . . . . . . . . .                      2               90,000.
+   3     Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you
+         are filing Form 2555, 2555-EZ, or 4563, or you are excluding income from
+         Puerto Rico, see Pub. 970 for the amount to enter . . . . . . . .               3      21,130.
+   4     Subtract line 3 from line 2. If zero or less, stop; you cannot take any
+         education credit . . . . . . . . . . . . . . . . . . .                          4      68,870.
+   5     Enter: $20,000 if married filing jointly; $10,000 if single, head of household,
+         or qualifying widow(er) . . . . . . . . . . . . . . . . .                       5      10,000.
+   6     If line 4 is:
+         • Equal to or more than line 5, enter 1.000 on line 6 . . . . . . . . . . . .
+         • Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to
+            at least three places) . . . . . . . . . . . . . . . . . . . . .
+                                                                                                 . . . .
+                                                                                                          }                      6                     1.000
+
+   7     Multiply line 1 by line 6. Caution: If you were under age 24 at the end of the year and meet
+         the conditions described in the instructions, you cannot take the refundable American opportunity
+         credit; skip line 8, enter the amount from line 7 on line 9, and check this box   . . . . ▶                             7                   2,500.
+   8     Refundable American opportunity credit. Multiply line 7 by 40% (.40). Enter the amount here and
+         on Form 1040, line 68, or Form 1040A, line 44. Then go to line 9 below. . . . . . . . . .                               8                   1,000.
+ Part II         Nonrefundable Education Credits
+  9      Subtract line 8 from line 7. Enter here and on line 2 of the Credit Limit Worksheet (see instructions)                  9                   1,500.
+ 10      After completing Part III for each student, enter the total of all amounts from all Parts III, line 31. If
+         zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19 . . . . . . . . . .                           10
+ 11      Enter the smaller of line 10 or $10,000 . . . . . . . . . . . . . . . . . . . .                                       11
+ 12      Multiply line 11 by 20% (.20) . . . . . . . . . . . . . . . . . . . . . . .                                           12
+ 13      Enter: $128,000 if married filing jointly; $64,000 if single, head of
+         household, or qualifying widow(er)      . . . . . . . . . . . . .               13
+ 14      Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you
+         are filing Form 2555, 2555-EZ, or 4563, or you are excluding income from
+         Puerto Rico, see Pub. 970 for the amount to enter . . . . . . . .                14
+ 15      Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0-
+         on line 18, and go to line 19     . . . . . . . . . . . . . . .                  15
+ 16      Enter: $20,000 if married filing jointly; $10,000 if single, head of household,
+         or qualifying widow(er) . . . . . . . . . . . . . . . . .                        16
+ 17      If line 15 is:
+         • Equal to or more than line 16, enter 1.000 on line 17 and go to line 18
+         • Less than line 16, divide line 15 by line 16. Enter the result as a decimal (rounded to at least three
+            places) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                                17
+ 18      Multiply line 12 by line 17. Enter here and on line 1 of the Credit Limit Worksheet (see instructions) ▶              18
+ 19      Nonrefundable education credits. Enter the amount from line 7 of the Credit Limit Worksheet (see
+         instructions) here and on Form 1040, line 50, or Form 1040A, line 33 . . . . . . . . . .                              19                    1,500.
+For Paperwork Reduction Act Notice, see your tax return instructions.                           BAA             REV 10/16/14 Intuit.cg.cfp.sp   Form 8863 (2014)
+Form 8863 (2014)                                                                                                                              Page 2
+Name(s) shown on return                                                                                             Your social security number
+
+ Brent S Jacobs                                                                                                       399-06-0234
+             Complete Part III for each student for whom you are claiming either the American
+▲
+!
+CAUTION
+             opportunity credit or lifetime learning credit. Use additional copies of Page 2 as needed for
+             each student.
+Part III      Student and Educational Institution Information
+              See instructions.
+ 20 Student name (as shown on page 1 of your tax return)                   21 Student social security number (as shown on page 1 of your tax return)
+        Brent S
+        Jacobs                                                                                          399-06-0234
+ 22      Educational institution information (see instructions)
+      a. Name of first educational institution                                b. Name of second educational institution (if any)
+
+         University of Wisconsin - La Crosse
+      (1) Address. Number and street (or P.O. box). City, town or             (1) Address. Number and street (or P.O. box). City, town or
+          post office, state, and ZIP code. If a foreign address, see             post office, state, and ZIP code. If a foreign address, see
+          instructions.                                                           instructions.
+         121 Graff Main Hall 1725 State St.
+         La Crosse WI 54601
+     (2) Did the student receive Form 1098-T        Yes        No        (2) Did the student receive Form 1098-T         Yes        No
+         from this institution for 2014?                                     from this institution for 2014?
+     (3) Did the student receive Form 1098-T                             (3) Did the student receive Form 1098-T
+         from this institution for 2013 with Box    Yes        No            from this institution for 2013 with Box 2   Yes        No
+         2 filled in and Box 7 checked?                                      filled in and Box 7 checked?
+ If you checked “No” in both (2) and (3), skip (4).                  If you checked “No” in both (2) and (3), skip (4).
+     (4) If you checked “Yes” in (2) or (3), enter the institution's     (4) If you checked “Yes” in (2) or (3), enter the institution's
+         federal identification number (from Form 1098-T).                   federal identification number (from Form 1098-T).
+                          39-1805963
+
+ 23     Has the Hope Scholarship Credit or American opportunity                Yes — Stop!
+        credit been claimed for this student for any 4 tax years               Go to line 31 for this student.       No — Go to line 24.
+        before 2014?
+ 24     Was the student enrolled at least half-time for at least one
+        academic period that began or is treated as having begun in
+        2014 at an eligible educational institution in a program
+                                                                               Yes — Go to line 25.                  No — Stop! Go to line 31
+        leading towards a postsecondary degree, certificate, or
+                                                                                                                     for this student.
+        other recognized postsecondary educational credential?
+        (see instructions)
+ 25     Did the student complete the first 4 years of post-secondary           Yes — Stop!
+        education before 2014?                                                 Go to line 31 for this                No — Go to line 26.
+                                                                               student.
+ 26     Was the student convicted, before the end of 2014, of a                Yes — Stop!                           No — Complete lines 27
+        felony for possession or distribution of a controlled                  Go to line 31 for this                through 30 for this student.
+        substance?                                                             student.
+
+! You
+▲     cannot take the American opportunity credit and the lifetime learning credit for the same student in the same year. If
+  you complete lines 27 through 30 for this student, do not complete line 31.
+CAUTION
+        American Opportunity Credit
+ 27     Adjusted qualified education expenses (see instructions). Do not enter more than $4,000 . . . .                      27           4,000.
+ 28     Subtract $2,000 from line 27. If zero or less, enter -0- . . . . . . . . . . . . . . . . .                           28           2,000.
+ 29     Multiply line 28 by 25% (.25) . . . . . . . . . . . . . . . . . . . . . . . . .                                      29             500.
+ 30     If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 and
+        enter the result. Skip line 31. Include the total of all amounts from all Parts III, line 30 on Part I, line 1 .     30           2,500.
+        Lifetime Learning Credit
+ 31     Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts
+        III, line 31, on Part II, line 10 . . . . . . . . . . . . . . . . . . . . . . . . .                                  31
+                                                                                                                                   Form 8863 (2014)
+                                  1A         Wisconsin
+                                             income tax                                                                                                                                         2014
+                                   Complete form using BLACK INK
+                                    Your legal last name                                  Legal first name                                M.I.    Your social security number
+
+                                       JACOBS                                               BRENT                                           S       399060234
+                                    If a joint return, spouse’s legal last name           Spouse’s legal first name                       M.I.    Spouse’s social security number
+
+
+
+
+                 DO NOT STAPLE
+                                    Home address (number and street). If you have a PO Box, see page 6.                        Apt. No.
+                                                                                                                                                  Tax district Check below then fill in either the
+                                       212 OLDE PULLEY LANE                                                                      L                name of city, village, or town and the county in
+                                    City or post office                                               State         Zip code
+                                                                                                                                                  which you lived at the end of 2014.
+                                                                                                                                                                 X City  Village                                Town
+                                       MENASHA                                                               WI       54952                       City, village,
+                                                                                                                                                  or town        MENASHA
+                                   Filing status
+                                     X    Single                                                                                                  County of        WINNEBAGO
+                                          Married filing joint return (even if only one had income)                                               School district number (see page 23) 3430
+
+                                          Head of household                            Fill in qualifying person’s name
+                                                                                                                                                  Special
+                                          Also, check here if married.
+                                                                                                                                                  conditions
+
+                                   Print numbers like this                                                       Not like this                                            NO COMMAS; NO CENTS
+
+                                   1 Wages, salaries, tips, etc. (see page 7) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1                                21130 .00
+                                   2 Interest (see page 7) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  2                                        .00
+                                   3 Ordinary dividends (from line 9a of federal Form 1040A or 1040) . . . . . . . . . . . . . . . . . . . .  3                                                                  .00
+
+
+
+
+ENCLOSE withholding statements
+                                   4 Capital gain distributions (see page 8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4                                                  .00
+                                   5 Unemployment compensation (from worksheet, page 8) . . . . . . . . . . . . . . . . . . . . . . . . . . .  5                                                                 .00
+                                   6 Taxable IRA distributions, pensions, and annuities (see page 8) . . . . . . . . . . . . . . . . . . . .  6                                                     0 .00
+                                   7 Add lines 1 through 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  7                       21130 .00
+                                   8 IRA deduction (see page 10) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8                                .00
+                                   9 Student loan interest deduction (see page 10) . . . . . . . . . . . . . . . . . . . 9                                          .00
+                                 10 Medical care insurance deduction (see page 10) . . . . . . . . . . . . . . . . . 10                                             .00
+                                  11 Add lines 8 through 10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  11                                        .00
+                                  12 Subtract line 11 from line 7. This is your Wisconsin income . . . . . . . . . . . . . . . . . . . . . . . .  12                                            21130 .00
+                                  13 If your parent (or someone else) can claim you (or your spouse) as a dependent, check here 		13 X
+                                 14 Fill in the standard deduction for your filing status from table, page 31. But if
+                                 		 you checked line 13, fill in amount from worksheet, page 11 . . . . . . . . . . . . . . . . . . . . . . . .  14                                              9274 .00
+                                  15 Subtract line 14 from line 12. If line 14 is larger than line 12, fill in 0 . . . . . . . . . . . . . . . . .  15                                          11856 .00
+                                 16 Exemptions (Caution: see page 11)
+                                    a Fill in exemptions from your federal return . . . . .                                 x $700 . . .16a                         .00
+                                       b Check if 65 or older                     You +          Spouse =                   x $250 . . .16b                         .00
+
+
+
+
+PAPER CLIP payment here
+                                 		c Add lines 16a and 16b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16c                                             .00
+                                  17 Subtract line 16c from line 15. If line 16c is larger than line 15, fill in 0. This is your taxable income . 17                                            11856 .00
+                                 18 Tax. Use amount on line 17 to find your tax using table, page 24 . . . . . . . . . . . . . . . . . . . .  18                                                  491 .00
+                                 19 Armed forces member credit (must be stationed outside U.S., see page 11) . 19                                                   .00
+                                 20 School property tax credit
+                                 		 a Rent paid in 2014–heat included
+
+                                 			 Rent paid in 2014–heat not included
+                                                                                                  3255 .00
+                                                                                                              .00
+                                                                                                                    }   Find credit from
+                                                                                                                        table page 12 ... 20a                 78 .00
+                                                                                                                                                                                REV 11/03/14 INTUIT.CG.CFP.SP
+                                                                                                                        Find credit from
+                                 		b Property taxes paid on home in 2014                                      .00       table page 13 ... 20b                       .00
+
+
+
+     I-080i (R. 10-14)
+                                 21 Married couple credit. Complete schedule on reverse side . . . . . . . . . . 21                                                 .00
+                                 22 Add lines 19 through 21. This is the total of your credits . . . . . . . . . . . . . . . . . . . . . . . . . . .  22                                                78 .00
+                                 23 Subtract line 22 from line 18. If line 22 is larger than line 18, fill in 0. This is your net tax . .  23                                                          413 .00
+
+                             INTUIT
+2014 Form 1A         Name       BRENT S JACOBS                                                                      SSN 399060234                                Page 2 of 2
+                                                                                                                                                NO COMMAS; NO CENTS
+ 24 Fill in net tax from line 23 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  24                          413 .00
+25 Sales and use tax due on Internet, mail order, or other out-of-state purchases (see page 14) . 25                                                                           .00
+		 If you certify that no sales or use tax is due, check here . . . . . . . . . . . . . . . . . . . . . . . . . . . X
+ 26 Donations (decreases refund or increases amount owed)
+ a Endangered resources .
+		                                                           .00             f Firefighters memorial . . . . .                              .00
+ b Packers football stadium
+		                                                           .00             g Military family relief . . . . . .                           .00
+ c Cancer research . . . . .
+		                                                           .00             h Second Harvest/Feeding Amer.                                 .00
+		                              .00
+ d Veterans trust fund . . . . 	 i  Red Cross WI Disaster Relief                                                                            .00
+ e Multiple sclerosis . . . . .
+		                               .00
+                                	    j Special Olympics Wisconsin                                                                           .00
+		                                                                                    Total (add lines a through j) . . . .  26k                                               .00
+ 27 Add lines 24, 25, and 26k . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  27                               413.00
+ 28 Wisconsin income tax withheld. Enclose withholding statements . . . . . .  28                                                1060.00
+ 29 2014 estimated tax payments and amount applied from 2013 return . . .  29                                                               .00
+30 Earned income credit (see page 16)
+		 Qualifying           Federal
+		children              credit . .                                         .00 x                 % =. . . 30                                .00
+ 31 Homestead credit. Attach Schedule H or H‑EZ . . . . . . . . . . . . . . . . . . . .  31                                                 .00
+ 32 Eligible veterans and surviving spouses property tax credit (see page 16) 32                                                            .00
+ 33 Add lines 28 through 32 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  33                        1060 .00
+ 34 If line 33 is more than line 27, subtract line 27 from line 33. This is the AMOUNT YOU OVERPAID . . 34                                                        647 .00
+ 35 Amount of line 34 you want REFUNDED TO YOU . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  35                                            647 .00
+ 36 Amount of line 34 you want applied to your 2015 estimated tax . . . . .  36                                                          0.00
+ 37 If line 33 is less than line 27, subtract line 33 from line 27. This is the AMOUNT YOU OWE . .  37                                                                         .00
+38 Underpayment interest. Fill in exception code – See Sch. U                                               38                             .00
+		(See page 18)
+Third Do you want to allow another person to discuss this return with the department (see page 19)?                                Yes Complete the following.          X     No
+Party      Designee’s                                             Phone
+                                                                                                                               Personal
+                                                                                                                               identification
+Designee name                                                     no.    (      )                                              number (PIN)
+
+Sign below              Under penalties of law, I declare that this return and all attachments are true, correct, and complete to the best of my knowledge and belief.
+Your signature                                   Spouse’s signature (if filing jointly, BOTH must sign)              Date               Daytime phone
+                                                                                                           02 16 2015 (920 ) 9465834
+Mail your return to: Wisconsin Department of Revenue                            If tax due....................................... PO Box 268, Madison WI 53790-0001
+		                                                                              If homestead credit claimed.......... PO Box 34, Madison WI 53786-0001
+		                                                                              If refund or no tax due.................. PO Box 59, Madison WI 53785-0001
+
+                            Married Couple Credit When Both Spouses Are Employed
+                                                                                                                  (A) YOURSELF                    (B) YOUR SPOUSE
+ 1 Wages, salaries, tips, and other employee compensation from
+ 		 line 1 of Form 1A. Do not include deferred compensation or
+ 		 scholarships and fellowships that are not reported on a W‑2. . . . . . 1                                                          .00                                      .00
+  2 IRA deduction, if any, from line 8 of Form 1A. . . . . . . . . . . . . . . . . . 2                                                .00                                      .00
+ 3 Subtract line 2 from line 1. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3                                     .00                                      .00
+ 4 Compare amounts in columns (A) and (B) of line 3. Fill in the
+ 		 smaller amount here. If more than $16,000, fill in $16,000. . . . . . . . . . . . . . . . . . . 4                                                   .00
+ 5 Rate of credit is .03 (3%) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5                            X    .03
+ 6 Multiply line 4 by line 5. Round the result and fill in here and on line 21
+ 		 of Form 1A . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Do NOT fill in more than $480 6                                                .00
+
+                                                                                                                                                   For Department Use Only
+                                                                                                                                    C
+
+
+INTUIT
+                                                                                                                                                                  REV 11/03/14 INTUIT.CG.CFP.SP
+

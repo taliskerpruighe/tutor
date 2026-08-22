@@ -1,0 +1,222 @@
+From: Vivian Zhu <v.zhuxy@gmail.com>
+To: Marcel Oliveira <marcel@trysymple.com>
+Date: Wed, 18 Jun 2025 20:04:23 -0500
+Subject: Re: USCIS Service Request Confirmation
+Message-ID: <CAKfbWtZByayjrWHstCZX=q5=-SkR-_u5Q51ObvoS7svrzgXA4g@mail.gmail.com>
+
+So in conclusion you’re saying USCIS system is messed up? And that the case
+number is most likely valid?
+
+
+On Wed, Jun 18, 2025 at 8:02 PM Marcel Oliveira <marcel@trysymple.com>
+wrote:
+
+> There’s no separate number. The case number and the receipt are the same.
+>
+> I’ll proceed as mentioned before and pass it to you overnight
+>
+>
+> Marcel Oliveira
+>
+> On Wed, Jun 18, 2025 at 9:00 PM Vivian Zhu <v.zhuxy@gmail.com> wrote:
+>
+>> Do we have a receipt number?
+>>
+>> On Wed, Jun 18, 2025 at 6:08 PM Marcel Oliveira <marcel@trysymple.com>
+>> wrote:
+>>
+>>> I did some digging. Even USCIS gave me the wrong case number, that
+>>> December date doesn't make much sense.
+>>>
+>>>    1. The week of December 23rd, no one was working on my team except
+>>>    me--so I doubt anyone would have sent off a packet without me knowing.
+>>>    2. Also, if the packet had been delivered on December 23rd, that
+>>>    would mean the case would have been recorded on December 24th (they always
+>>>    do it next day). And they were closed
+>>>    <https://www.instagram.com/p/DD7NRVnTlDe/?hl=en> on December 24th
+>>>    and December 25th.
+>>>    3. Your packet was delivered to USCIS and signed for on January 14,
+>>>    2025. I am attaching delivery confirmation. I checked and this is your
+>>>    packet: it matches the tracking number Venny sent you via email.
+>>>    4. When I called USCIS, I gave them that delivery date--and that was
+>>>    part of the information used to get that case number.
+>>>    5. And when they gave me the case number, I checked it against
+>>>    historical USCIS data and verified that it was created on January 15th,
+>>>    2025--one day after delivery on January 14th, 2025. That data
+>>>    <https://hilites.today/uscis_cases/search> still checks out: says
+>>>    the case number did not exist before then.
+>>>
+>>> Either way, the answer to your question is both.
+>>>
+>>> You already took care of requesting the new I-797C via the SR request
+>>> online. If that request took the information you used, they are processing
+>>> a case with your name: that "wrong applicant" error prevents you from
+>>> submitting a request if there is no name match at all. Otherwise people
+>>> would be able to mess with other people's cases.
+>>>
+>>> Considering the mess, refiling in parallel is the way to go. It will not
+>>> mess up anything pending, as you can have multiple cases going at once (one
+>>> is considered abandoned upon approval of the previous one). But at this
+>>> stage, it is worth the insurance policy. I may have mentioned this before,
+>>> but your case--or at least your receipt--likely got caught up in this
+>>> mess
+>>> <https://www.aila.org/library/aila-and-benach-collopy-file-complaint-over-uscis-form-changes-with-no-notice-or-grace-period>.
+>>> You saw how long it takes them just to reply to the SR you put in online:
+>>> everything happens in increments of 30 days. I see no advantage in waiting.
+>>>
+>>> That being said, if your employer is putting pressure on you (not sure
+>>> why considering your green card), you need to level the expectations with
+>>> them. The current published wait time for N-400's is 9 months. And that
+>>> does *not* mean that your case is guaranteed resolution within 9 months of
+>>> filing--even dating back to December. The published wait times mean that,
+>>> out of all the cases USCIS resolved last month, 80% of them were pending
+>>> for 9 months or less. In other words, that only captures the cases resolved
+>>> last month--and would not catch any backlogs developed within the last 9
+>>> months. And then there is no word on the other 20%: one in five cases they
+>>> resolved last month were pending for more than 9 months--and we have no
+>>> idea how long. They purposefully game the published number to keep people
+>>> from complaining. Long story short, your employer needs to understand and
+>>> accept that there is no way to predict how long an individual case will
+>>> take, even if everything runs perfectly smoothly.
+>>>
+>>>
+>>> Marcel Oliveira
+>>>
+>>>
+>>>
+>>> On Wed, Jun 18, 2025 at 5:45 PM Vivian Zhu <v.zhuxy@gmail.com> wrote:
+>>>
+>>>> That’s what I thought. Which is why the December submission date in
+>>>> USCIS system caught me by surprise. Something is mixed up here?
+>>>>
+>>>> Do you mean request to resend 797C instead of refilling? Won’t
+>>>> refilling cause more issue/delays?
+>>>>
+>>>>
+>>>>
+>>>> On Wed, Jun 18, 2025 at 4:34 PM Marcel Oliveira <marcel@trysymple.com>
+>>>> wrote:
+>>>>
+>>>>> I see in our email history that we held off in December. I doubt Nesha
+>>>>> would have sent something out without me reviewing it.
+>>>>>
+>>>>> I will proceed as planned. I am going to do a new filing, get a new
+>>>>> 797C, and hand you the file along with a refund. You can take it from there.
+>>>>>
+>>>>>
+>>>>> Marcel Oliveira
+>>>>>
+>>>>>
+>>>>>
+>>>>> On Wed, Jun 18, 2025 at 5:23 PM Vivian Zhu <v.zhuxy@gmail.com> wrote:
+>>>>>
+>>>>>> Answering no arrest history/ not disclosing the dropped charges that
+>>>>>> were added in the 2nd submission.
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> On Wed, Jun 18, 2025 at 4:21 PM Marcel Oliveira <marcel@trysymple.com>
+>>>>>> wrote:
+>>>>>>
+>>>>>>> What do you mean the wrong materials?
+>>>>>>>
+>>>>>>>
+>>>>>>> Marcel Oliveira
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> On Wed, Jun 18, 2025 at 5:20 PM Vivian Zhu <v.zhuxy@gmail.com>
+>>>>>>> wrote:
+>>>>>>>
+>>>>>>>> Yes. I entered it correctly that’s how I learned it was submitted
+>>>>>>>> in Dec with the wrong materials. I’m afraid this will mess things up
+>>>>>>>> especially we did not disclose the arrest records in the first submission.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> On Wed, Jun 18, 2025 at 4:17 PM Marcel Oliveira <
+>>>>>>>> marcel@trysymple.com> wrote:
+>>>>>>>>
+>>>>>>>>> Money order. Checks add weeks to the processing time. There’s a
+>>>>>>>>> stub with the money order number in the file. We always keep that; I’ll
+>>>>>>>>> find it when I’m back.
+>>>>>>>>>
+>>>>>>>>> Did you keep a copy of what you entered into that online form to
+>>>>>>>>> match the applicant name? What you put in there matched something in their
+>>>>>>>>> system, or it wouldn’t have gone through. I’ll want that to chase the
+>>>>>>>>> liaison later.
+>>>>>>>>>
+>>>>>>>>> I’m on the road for now so I’ll be delayed replying.
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Marcel Oliveira
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> On Wed, Jun 18, 2025 at 5:12 PM Vivian Zhu <v.zhuxy@gmail.com>
+>>>>>>>>> wrote:
+>>>>>>>>>
+>>>>>>>>>> Can you confirm what payment method you used to pay USCIS? was it
+>>>>>>>>>> check? and if so, can you confirm whether they have cash out? This way we
+>>>>>>>>>> know whether it was processed and that should have given us a receipt
+>>>>>>>>>> number.
+>>>>>>>>>>
+>>>>>>>>>> On Wed, Jun 18, 2025 at 11:16 AM Vivian Zhu <v.zhuxy@gmail.com>
+>>>>>>>>>> wrote:
+>>>>>>>>>>
+>>>>>>>>>>> Thank you. This is a bitch gov. And I’m pressured by company to
+>>>>>>>>>>> complete this asap. They don’t want to raise questions when time comes to
+>>>>>>>>>>> applying for IPO.
+>>>>>>>>>>>
+>>>>>>>>>>>
+>>>>>>>>>>>
+>>>>>>>>>>>
+>>>>>>>>>>> On Wed, Jun 18, 2025 at 11:13 AM Marcel Oliveira <
+>>>>>>>>>>> marcel@trysymple.com> wrote:
+>>>>>>>>>>>
+>>>>>>>>>>>> See below. You got assigned a service request number. Which
+>>>>>>>>>>>> means whatever you put in for applicant information matched; you would just
+>>>>>>>>>>>> get an error if it did not.
+>>>>>>>>>>>>
+>>>>>>>>>>>> This says reply in 30 days. But that hasn't happened in 2
+>>>>>>>>>>>> years. I'll still send you the stuff tonight. This isn't late for another 3
+>>>>>>>>>>>> months, but you should use the congressional liaison or if that fails
+>>>>>>>>>>>> this
+>>>>>>>>>>>> <https://www.uscis.gov/forms/filing-guidance/expedite-requests> to
+>>>>>>>>>>>> make sure you get the interview by August or September.
+>>>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>> Marcel Oliveira
+>>>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>> ---------- Forwarded message ---------
+>>>>>>>>>>>> From: <USCIS-CaseStatus@dhs.gov>
+>>>>>>>>>>>> Date: Wed, Jun 18, 2025 at 12:00 PM
+>>>>>>>>>>>> Subject: USCIS Service Request Confirmation
+>>>>>>>>>>>> To: <marcel@trysymple.com>
+>>>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>> *** DO NOT RESPOND TO THIS EMAIL ***
+>>>>>>>>>>>>
+>>>>>>>>>>>> Thank you for your request:
+>>>>>>>>>>>> USCIS will review and process the request.
+>>>>>>>>>>>> Expect a reply by July 18, 2025.
+>>>>>>>>>>>> Your request ID Number is SR11692501375SAC
+>>>>>>>>>>>>
+>>>>>>>>>>>> Sincerely,
+>>>>>>>>>>>>
+>>>>>>>>>>>> System Support Team
+>>>>>>>>>>>> ------------------------------
+>>>>>>>>>>>>
+>>>>>>>>>>>> [image: U.S. Department of Homeland Security Seal, U.S.
+>>>>>>>>>>>> Citizenship and Immigration Services] National Customer
+>>>>>>>>>>>> Service Center
+>>>>>>>>>>>> 1-800-375-5283
+>>>>>>>>>>>>
+>>>>>>>>>>>> TDD for the Hearing Impaired
+>>>>>>>>>>>> 1-800-767-1833
+>>>>>>>>>>>>
+>>>>>>>>>>>

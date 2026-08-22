@@ -1,0 +1,158 @@
+# cover-letter.docx.yaml — DOCUMENT 2, the cover letter.
+# Governed by STYLE-SPEC §5 (every literal string and its source), §7 (lockbox),
+# §3 (typography). Taste calls 6, 7, 8 live here.
+#
+# NO LETTERHEAD, NO TEXT BOXES, NO HEADER/FOOTER, NO PAGE NUMBER.
+# STYLE-SPEC §16 ruling 7 (UPHELD AND EXTENDED): NO FIRM IDENTITY ANYWHERE.
+# {FIRM_NAME} and {PREPARER_NAME} are DEAD slots. The signature block closes on
+# the unattributed role line 'Petition Preparer' only.
+
+template: cover_letter
+produces:
+  docx: "A-2. Cover Letter.docx"
+  pdf:  "A-2. Cover Letter.pdf"
+  divider: "A-2.pdf"            # DIVIDER_TITLE = COVER LETTER
+  pages: 1
+
+page:
+  size: letter
+  orientation: portrait
+  margins_in: {top: 1.0, bottom: 1.0, left: 1.0, right: 1.0}
+
+defaults:
+  font: Times New Roman
+  size_pt: 12
+  line_spacing: 1.15
+  align: left
+
+tab_stops_in: [0.5, 1.0, 1.5, 2.0]   # the Re: block is tab-aligned (jacobs)
+
+blocks:
+  - type: paragraph
+    runs: [{text: "{FILING_DATE_LONG}"}]
+  - {type: blank}
+
+  - type: paragraph
+    spacing_after: 0
+    runs:
+      - {text: "VIA {CARRIER_UPPER}", bold: true, underline: true}
+  - type: paragraph
+    spacing_after: 0
+    runs: [{text: "Department of Homeland Security"}]
+  - type: paragraph
+    spacing_after: 0
+    runs: [{text: "United States Citizenship and Immigration Services"}]
+  - type: repeat
+    over: LOCKBOX_BLOCK
+    emit:
+      - {type: paragraph, spacing_after: 0, runs: [{text: "{LINE}"}]}
+  - {type: blank}
+
+  - type: paragraph
+    runs: [{text: "\tRe:\tForm N-400, Application for Naturalization"}]
+  - {type: blank}
+  - type: paragraph
+    runs: [{text: "\t\tApplicant:\t{HONORIFIC} {FULL_LEGAL_NAME}"}]
+  - type: paragraph
+    runs: [{text: "\t\tDOB:\t\t{DOB_LONG}"}]
+  - type: paragraph
+    runs: [{text: "\t\tCOB/CON:\t{COUNTRY}"}]
+  - {type: blank}
+
+  - type: paragraph
+    runs: [{text: "To Whom It May Concern:"}]
+  - {type: blank}
+
+  - type: paragraph
+    align: both
+    spacing_after: 0
+    runs:
+      - text: >-
+          Enclosed please find one (1) Form N-400, Application for
+          Naturalization, along with the accompanying filing fee of ${FEE} and
+          supporting documentation, for {HONORIFIC} {FULL_LEGAL_NAME},
+          {ARTICLE} {NATIONALITY_ADJ} national. {HONORIFIC} {SURNAME} is
+          eligible for naturalization {ELIGIBILITY_CLAUSE}. See {CITATION}.
+  - {type: blank}
+
+  - type: paragraph
+    align: both
+    spacing_after: 0
+    runs:
+      - text: >-
+          All supporting documents in this packet are photocopies of originals.
+          {HONORIFIC} {SURNAME} understands that {PRONOUN_SUBJ} may have to
+          present originals as part of the adjudication process.
+  - {type: blank}
+
+  - type: paragraph
+    align: both
+    spacing_after: 0
+    runs:
+      - text: >-
+          We look forward to your speedy and favorable adjudication of this
+          application.
+  - {type: blank}
+
+  - type: paragraph
+    spacing_after: 0
+    runs: [{text: "Sincerely,"}]
+  - {type: blank}
+  - {type: blank}
+  - {type: blank}
+  - type: paragraph
+    spacing_after: 0
+    runs: [{text: "Petition Preparer"}]   # §16 r7: role only, never a name
+
+slots:
+  FILING_DATE_LONG:
+    type: date
+    format: "Month D, YYYY"
+    desc: the filing date, written in full. jacobs has it; zhu has none (§13 D6).
+  CARRIER_UPPER:
+    type: string
+    enum: ["U.S. POSTAL SERVICE (USPS)", "FEDERAL EXPRESS"]
+    locked_to: LOCKBOX_BLOCK        # STYLE-SPEC §7: f(state, carrier)
+  LOCKBOX_BLOCK:
+    type: list_of_string
+    desc: >
+      Lines 3..n of the address block, derived from the state of residence and
+      the carrier. 4 lines for Elgin/Phoenix/Chicago and for Dallas-USPS;
+      5 lines for Dallas-courier (it carries a Suite line).
+      Table: STYLE-SPEC §7.
+  HONORIFIC:        {type: string, enum: ["Mr.", "Ms."]}
+  FULL_LEGAL_NAME:  {type: string}
+  SURNAME:          {type: string}
+  DOB_LONG:         {type: date, format: "Month D, YYYY"}
+  COUNTRY:          {type: string}
+  FEE:              {type: string, fixed: "760.00"}
+  ARTICLE:          {type: string, enum: ["a", "an"], desc: agrees with NATIONALITY_ADJ}
+  NATIONALITY_ADJ:  {type: string, desc: e.g. "Australian", "Brazilian"}
+  PRONOUN_SUBJ:     {type: string, enum: ["he", "she"]}
+  PRONOUN_POSS:     {type: string, enum: ["his", "her"]}
+  ELIGIBILITY_CLAUSE:
+    type: string
+    desc: one of two, selected by basis. STYLE-SPEC §5.1.
+    variants:
+      "319a": >-
+        having three (3) years of permanent residency combined with continuous
+        residence with {PRONOUN_POSS} U.S. citizen spouse,
+        {SPOUSE_HONORIFIC} {SPOUSE_FULL_NAME}
+      "316a": >-
+        as it has been more than five (5) years since {PRONOUN_SUBJ} became a
+        permanent resident on {LPR_DATE_LONG}
+  CITATION:
+    type: string
+    variants:
+      "319a": "8 U.S.C. § 1430(a); 8 C.F.R. § 319.1"
+      "316a": "INA § 316(a); 8 C.F.R. § 316.2"
+  SPOUSE_HONORIFIC: {type: string, enum: ["Mr.", "Ms."], required_when: "basis == 319a"}
+  SPOUSE_FULL_NAME: {type: string, required_when: "basis == 319a"}
+  LPR_DATE_LONG:    {type: date, format: "Month D, YYYY", required_when: "basis == 316a"}
+  # FIRM_NAME / PREPARER_NAME: DELETED. §16 ruling 7 forbids any firm identity.
+
+geometry_check:
+  first_line_top_pt: 72
+  body_left_pt: 72
+  body_justified: true
+  body_first_line_indent_in: 0.0

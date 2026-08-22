@@ -1,0 +1,53 @@
+# blocklist-exclusions.txt — the §11 exclusion set, extended during Phase 2.
+#
+# STYLE-SPEC §11 states the rule this file implements: a string the house style
+# REQUIRES every packet to contain is not leakage, and a hit on one means
+# build_blocklist.py's exclusion set needs extending — not the packet changing.
+# SPEC-DELTA D-F makes that non-halting and requires it to be recorded. This is
+# the record. verify_set.py reads this file too.
+#
+# blocklist.txt is not regenerated (the run order forbids the OCR pass), so the
+# exclusions live here instead of in build_blocklist.py's KEEP_ALWAYS.
+#
+# one token per line, lowercase, matched whole-token.
+
+# --- Form 1040 paid-preparer section vocabulary --------------------------
+# Every synthetic 1040 is self-prepared, so this string is rendered by the
+# build itself. Flagged independently by the kavanagh_liam and tran_daniel
+# masterkey agents. §11 already excuses "1040 line labels" as a class.
+self-prepared
+self
+prepared
+preparer
+paid
+
+# --- ordinary possessives and pronouns that survived tokenisation --------
+firm's
+person's
+personal
+husband
+wife
+spouse
+daughter
+father
+
+# --- generic legal / geographic nouns §11 excuses by class but not by name
+# §11 excuses "US state names and abbreviations ... generic address nouns" and
+# "deed and recorder terms ... court disposition terms". County names and
+# court-type words belong to the same class. Raised by the tran_daniel agent,
+# which is the first client to carry a deed (no worked pair has one).
+county
+circuit
+district
+superior
+municipal
+clerk
+seal
+recorder
+grantor
+grantee
+instrument
+notary
+republic
+ministry
+affairs

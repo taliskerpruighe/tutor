@@ -1,0 +1,149 @@
+From: Marcel Oliveira <marcel@trysymple.com>
+To: Kyle Malone <engineer.kyle@icloud.com>
+Date: Thu, 3 Jul 2025 00:12:54 -0400
+Subject: Re: Tax ID number…
+Message-ID: <CAMOiGMjL3mCtE0+L-8E9x1qj7ETyZM6Cgkm3C5zA2ZzYi_HBsw@mail.gmail.com>
+
+Kyle:
+
+Just a quick update. I tried getting that EIN (the tax ID) for CC LLC
+online, and got error 102. Error 102 happens when there is an issue with
+the SSN entered in as the "responsible party" for the EIN. The error can
+happen for a variety of reasons, like some mismatch between name and SSN in
+their database.
+
+I can try using Luwilyn's instead, if that is okay with you.
+
+
+Marcel Oliveira
+
+
+On Tue, Jul 1, 2025 at 12:07 PM Marcel Oliveira <marcel@trysymple.com>
+wrote:
+
+> Understood. That one’s on me—I misread the original plan.
+>
+> I had assumed CC LLC was meant to be a multi-purpose vehicle, with its
+> primary role being Caren’s business and a secondary role for you and
+> Luwilyn to use for work, income, and expensing. But now that I’m following
+> what you’re saying, you’re right: there should be two LLCs.
+>
+> So let’s split it cleanly. I’ll go ahead and request the EIN for your LLC
+> now—since, as you noted, you might have expenses (phones, printers, etc.)
+> that aren’t tied to Caren’s visa activities. No downside there.
+>
+> Separately, I’ll set up a new LLC for Caren. That way, she isn’t waiting
+> on you, and you aren’t waiting on her.
+>
+> I’ll revert with the EIN within 24 hours.
+>
+>
+> Marcel Oliveira
+>
+> On Mon, Jun 30, 2025 at 7:26 PM Kyle Malone <engineer.kyle@icloud.com>
+> wrote:
+>
+>> Marcel,
+>> I thought and intended for Creative Coconuts, LLC to be our company (Luwi
+>> and myself). We will use our company to help Caren’s company if need be, at
+>> some point. My understanding was Caren would have her own company. If I
+>> work again, I want to do it under my own LLC.
+>> Now, if understand what you replied… the tax ID isn’t needed until the
+>> company earns? What about purchasing items for the LLC ? Phones, printers,
+>> PC’s? I can wait if that’s better. But I never intended for Caren to be
+>> part of CC, LLC. Our company can be there to help her grow at some point.
+>> Plan on Caren having her own LLC.
+>> Sorry for not knowing…but I was never in on such discussions at
+>> Luminance.
+>> If there is no downside to getting our EIN, then let’s do it. But if it
+>> complicates tax filings EVEN if CC, LLC doesn’t earn, then we wait until we
+>> have a gig. My only fear is most companies who would allow me to sub
+>> contract with my own company are going to need my EIN before any deal can
+>> move forward.
+>> What do you think?
+>> Kyle Malone
+>> *Sent from my iPad*
+>>
+>> On Jun 30, 2025, at 4:06 PM, Marcel Oliveira <marcel@trysymple.com>
+>> wrote:
+>>
+>> ﻿
+>>
+>> Kyle:
+>>
+>> Apologies—I genuinely thought I had replied to your last email.
+>>
+>> *LLC Tax Registration*
+>>
+>> The LLC’s tax registration will come into play when Creative Coconuts LLC
+>> (CC LLC) actually starts doing business. At that point, we’ll request the
+>> EIN from the IRS and file a Form 8832 to lock in the tax classification. We
+>> can get an EIN early if you want; just let me know.
+>>
+>> Keep in mind that for visa purposes, it’s much cleaner for Caren to be
+>> the sole owner of CC LLC. That can change after she gets the visa, but for
+>> now, it’s important that she be listed alone. Accordingly, we won’t be able
+>> to do a net election for this LLC—at least until she’s been physically
+>> present in the U.S. for more than six months (i.e., six months after
+>> arrival).
+>>
+>> *LOC Business Plan*
+>>
+>> Speaking of the LOC and business activities—we finally got approved for
+>> pre-registration at the U.S. Embassy in the Philippines for E-1 visa
+>> purposes. That was supposed to take an average of three months and it took
+>> twice as long. So it might be a good time to revisit what the LOC will be
+>> doing, at least in part for Caren’s visa.
+>>
+>> I don’t know that we ever settled on what that would be. I had some easy
+>> ideas in mind based on what I know about the market, my own experience (I
+>> have an assistant in the Philippines myself), and your own experience
+>> working with engineering and engineers overseas.
+>>
+>> Here are just three options off the top of my head:
+>>
+>> – Remote executive VA services for U.S. clients. Caren could manage a
+>> team out of the Philippines that delivers calendar, travel, CRM, email, and
+>> admin support to U.S.-based founders and execs. These would be customized
+>> for U.S. time zones and industries, and paid by U.S. clients—with funds
+>> flowing through CC LLC. She’d manage the relationships and operations from
+>> both sides.
+>>
+>> – U.S. relocation services for Philippine nationals. Caren could help
+>> folks in the Philippines who are moving to the U.S.—for work, school,
+>> business, whatever—by coordinating logistics, housing, onboarding, etc.
+>> Some of that would be handled via U.S. vendors, some by her team locally.
+>> Clients would pay CC LLC for bundled services that span both countries.
+>>
+>> – Offshore engineer staffing for U.S. tech companies. She could source
+>> and manage a remote engineering team from the Philippines—software devs,
+>> QA, tech support—and contract them to startups in the U.S. Caren would do
+>> the recruiting and client work on both ends. Again, U.S. clients pay CC
+>> LLC, and CC LLC pays the engineers directly.
+>>
+>> Do keep in mind: for visa purposes, the business can do absolutely any
+>> exchange of product or service between the Philippines and the U.S., and it
+>> doesn’t have to be profitable. For practical purposes, it can also do more
+>> than one thing—including your own activities in the States. And none of
+>> this is binding. After Caren gets her visa, you’re free to change, mix, or
+>> scrap this entirely.
+>>
+>>
+>> Marcel Oliveira
+>>
+>>
+>>
+>>
+>> On Sun, Jun 29, 2025 at 12:33 PM Kyle Malone <engineer.kyle@icloud.com>
+>> wrote:
+>>
+>>> Hi Marcel,
+>>> I hope you are well. I’m following up on the LLC tax ID. I don’t mind
+>>> looking up my own ID if possible, but I’m not sure where to do that or how
+>>> to do that currently.
+>>> This is my second follow-up on this topic. Please guide me a little.
+>>> Thanks,
+>>> Kyle Malone
+>>> *Sent from my iPad*
+>>>
+>>

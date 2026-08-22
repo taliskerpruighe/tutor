@@ -1,0 +1,2228 @@
+                                 Notes about the return
+                                                                   2021 PAGE 1
+Name(s) as shown on return                                         Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                  350-84-3760
+
+058 NO PRIOR-YEAR TAX FOR FORM 2210: Because no prior-year tax is entered
+    for Form 2210 (Underpayment of Estimated Tax) computations, the
+    program assumes that last year's tax was higher than this year's tax
+    OR that the prior-year tax was entered as zero ("0") and no Form 2210
+    is necessary.
+
+293 ESTIMATED PAYMENT OPTION: If the taxpayer chooses to pay the estimated
+    tax payments via credit card, you can use the Drake e-Payment Center
+    website to make the payment: www.1040paytax.com. The Drake e-Payment
+    Center also allows you to schedule e-mail reminders to help the
+    taxpayer make timely estimated tax payments.
+
+         Note: You can also provide the taxpayer this website address so he or
+         she can make the payment when convenient.
+
+483 PAYMENT VOUCHERS GENERATED: The program has automatically produced
+    federal estimated payment vouchers for this return because the
+    taxpayer's taxes due are more than $1,000 greater than the taxpayer's
+    withholdings. The amount of the payments can be adjusted on the ES
+    screen.
+
+         To suppress the automatic generation of ES payment vouchers, from the
+         Home window, go to Setup > Options > Forms & Schedule Options tab.
+
+
+
+
+NOTES.LD
+       EFSTATUS                                            EF Transmission Status
+                                                                                                                                   2021
+                                       (This page is not filed with the return. It is for your records only.)
+Name(s) as shown on return                                                                                             Your social security number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                      350-84-3760
+
+The following will be
+transmitted to the IRS.        X 1040, 1040-SR              1040-X            4868            2350          9465   FinCEN 114            Form 56
+                                  or 1040-NR
+
+
+The following state returns will be transmitted:
+
+
+    IL1040
+
+
+
+
+The following returns have been suppressed or are not eligible and will NOT be transmitted.
+
+
+
+
+EF Notes
+
+
+
+
+EFSTATUS.LD
+                                                               Department of the Treasury - Internal Revenue Service
+   Form 9325
+  (January 2017)
+                                                 Acknowledgement and General Information for
+                                                   Taxpayers Who File Returns Electronically
+Thank you for participating in IRS e-file.
+
+Taxpayer name
+CHRISTIAN JACKSON & YLENIA OSSOLA
+
+Taxpayer address (optional)
+5175 WEST 88TH PLACE
+OAK LAWN, IL 60453
+                                                                                                                                                                .
+
+
+
+  1.           Your federal income tax return for      2021               was filed electronically with the IRS    Submission
+               Processing Center. The electronic filing services were provided by     DLC TAX SERVICES AND ACCOUNTING INC                                       .
+
+
+  2.           Your return was accepted on                           using a Personal Identification Number (PIN) as your electronic
+               signature. You entered a PIN or authorized the Electronic Return Originator (ERO) to enter or generate a PIN
+               for you. The Submission ID assigned to your return is                                            .
+
+
+  3.           Your return was accepted on                       . Allow 4 to 6 weeks for the processing of your return.
+               The Earned Income Credit or a dependent's exemption on your return may be reduced or disallowed due to a
+               child's name and social security number mismatch.
+
+
+  4.           Your electronic funds withdrawal payment request was accepted for processing.
+
+
+  5.           Your electronic funds withdrawal payment request was not accepted for processing. Refer to the "If You Owe Tax" section.
+
+
+  6.           Your Form 4868, Application for Automatic Extension of Time to File U.S. Individual Income Tax Return, was
+               accepted on                                . The Submission ID assigned to your extension
+               is                                     .
+
+
+
+                          DO NOT SEND A PAPER COPY OF YOUR RETURN TO THE IRS.
+                         IF YOU DO, IT WILL DELAY THE PROCESSING OF THE RETURN.
+
+
+                                              If You Need to Make a Change to Your Return
+       If you need to make a change or correct the return you filed electronically, you should send a Form 1040X, Amended U.S.
+       Individual Income Tax Return, to the IRS Submission Processing Center that processes paper returns for your area. The
+       address is available at www.irs.gov, or you can call the IRS toll-free at 1-800-829-1040.
+
+                                                   If You Need to Ask About Your Refund
+       The IRS notifies your Electronic Return Originator (ERO) when your return is accepted, usually within 48 hours. If your
+       return was not accepted, the IRS notifies your ERO of the reasons for rejection. If it has been more than three weeks
+       since the IRS accepted your return and you have not received your refund, go to www.irs.gov and click on "Where's My
+       Refund?" to view your refund status. Exception: If box 3 above is checked, allow 4 to 6 weeks for processing of your
+       return. A notice will be sent to you advising of changes to your return.
+
+
+       Also, you can call the TeleTax line at 1-800-829-4477, for automated refund information. You should have available the
+       first social security number shown on your return, your filing status, and the exact amount of the refund you expect.
+       TeleTax gives you the date for mailing or depositing your refund. You should receive your refund check within 30 days of
+       the date given by TeleTax, or within one week of that date, if you chose direct deposit. If you do not receive it by then, or if
+       TeleTax does not give your refund information, call the Refund Hotline at 1-800-829-1954.
+
+
+
+
+EEA                                                                      www.irs.gov                                                      Form 9325 (Rev. 1-2017)
+The IRS uses refunds to cover overdue taxes and notifies you when this occurs. The Fiscal Service offsets refunds
+through the Treasury Offset Program to cover past due child support, federal agency non-tax debts such as student loans
+and state income tax obligations. Fiscal Service sends you an offset notice if it applies your refund or part of your refund
+to non-tax debts. If you have questions about the offset, contact the agency identified in the notice. You may also call the
+Treasury Offset Program Call Center at 1-800-304-3107, if you have additional questions.
+
+                                                             If You Owe Tax
+If your return has a balance due, you must pay the amount you owe by the prescribed due date. If you paid by electronic
+funds withdrawal (direct debit) or by credit card, no voucher is needed. The credit card service providers will charge a
+convenience fee based on the amount of taxes you are paying. The fees and the type of credit or debit cards accepted
+may vary between providers. You will be told the amount of the fee during the transaction and you will be given the option
+to either continue or end the transaction. For information on paying your taxes electronically, including by credit or debit
+card, go to www.irs.gov/e-pay.
+
+
+If you are not paying electronically you may use Form 1040-V, Payment Voucher, which you can obtain from your
+Electronic Return Originator. If the IRS does not receive your payment by the prescribed due date, you will receive a
+notice that requests full payment of the tax due, plus penalties and interest. If you can not pay the amount in full, complete
+Form 9465, Installment Agreement Request, which you may file electronically. To apply for an installment agreement
+online, go to www.irs.gov. You may also order Form 9465 by calling 1-800-TAX-FORM (1-800-829-3676). If approved, the
+IRS charges a user fee to set up an installment agreement.
+
+                     If You Need to Inquire About Your Electronic Funds Withdrawal Payment
+You may call 1-888-353-4537 to inquire about the status of your electronic funds withdrawal payment. If there is a change
+to the bank account information included on your return, you should call this number to cancel a scheduled payment. You
+should have available the social security number of the first person listed on the tax return, the payment amount, and the
+bank account number. Cancellation requests must be received no later than 11:59 p.m. E.T. two business days prior to
+the scheduled payment date.
+
+                                                  Tax Refund Related Financial Products
+Financial institutions offer a variety of financial products to taxpayers based on their refunds. Contracts for financial
+products are between you and the financial institution. The IRS is not associated with the contract. If you have questions
+about tax refund related products, contact your Electronic Return Originator or the lender.
+
+
+                                               Instructions for Electronic Return Originators
+
+Line 2 - PIN Presence Indicator - Check box 2 if the taxpayer entered a PIN or authorized the ERO to enter or generate
+the PIN for the taxpayer, and the Acknowledgement File PIN Presence Indicator is a "Practitioner PIN," "Self-Select PIN"
+or "Online Filer PIN." Form 8879, IRS e-file Signature Authorization, is required if the ERO enters or generates the PIN or
+if the Practitioner PIN method is used. Use Form 8453, U.S. Individual Income Tax Transmittal for an IRS e-file
+Return, to send required paper forms or supporting documentation listed next to the form check boxes (do not
+send Forms W-2, W-2G, or 1099R).
+
+
+Line 3 - Exception Processing - Check box 3 if the Acknowledgement File Acceptance Code equals "Exception." The
+acceptance code indicates that this return has been previously rejected and this subsequent submission still has invalid
+data.
+
+
+Line 4 - Payment Acknowledgement Literal - Check box 4 if the taxpayer requested to use electronic funds withdrawal to
+pay the balance due, and the Acknowledgement File Payment Acknowledgement Literal field equals "Payment Request
+Received."
+
+
+Line 5 - Payment Acknowledgement Literal - Check box 5 if the taxpayer requested to use electronic funds withdrawal to
+pay the balance due, and the Acknowledgement File Payment Acknowledgement Literal field does not equal "Payment
+Request Received." If box 5 is checked, inform the taxpayer that he/she must pay by check, money order, debit card, or
+credit card.
+
+
+Note: EROs can use the Acknowledgement File information, translated by the transmitter, to complete Form 9325.
+
+
+
+
+CHRISTIAN JACKSON & YLENIA OSSOLA
+
+EEA                                                                 www.irs.gov                                                  Form 9325 (Rev. 1-2017)
+                       Department of the Treasury-Internal Revenue Service          (99)
+   1040 U.S. Individual Income Tax Return
+Form                                                                                         2021                  OMB No. 1545-0074         IRS Use Only-Do not write or staple in this space.
+
+ Filing Status              Single X Married filing jointly     Married filing separately (MFS)      Head of household (HOH)       Qualifying widow(er) (QW)
+ Check only            If you checked the MFS box, enter the name of your spouse. If you checked the HOH or QW box, enter the child's name if the qualifying
+ one box.
+                       person is a child but not your dependent
+   Your first name and middle initial                                        Last name                                                                     Your social security number
+CHRISTIAN                                                                    JACKSON                                                                       350-84-3760
+   If joint return, spouse's first name and middle initial                   Last name                                                                     Spouse's social security number
+YLENIA                                                                       OSSOLA                                                                        769-87-6561
+   Home address (number and street). If you have a P.O. box, see instructions.                                                           Apt. no.          Presidential Election Campaign
+5175 WEST 88TH PLACE                                                                                                                                       Check here if you, or your
+   City, town, or post office. If you have a foreign address, also complete spaces below.                  State                 ZIP code                  spouse if filing jointly, want $3
+                                                                                                                                                           to go to this fund. Checking a
+OAK LAWN                                                                                                            IL            60453                    box below will not change
+   Foreign country name                                                           Foreign province/state/county                  Foreign postal code       your tax or refund.
+
+                                                                                                                                                                           You           Spouse
+
+At any time during 2021, did you receive, sell, exchange, or otherwise dispose of any financial interest in any virtual currency?                                          Yes      X No
+Standard         Someone can claim:             You as a dependent          Your spouse as a dependent
+Deduction             Spouse itemizes on a separate return or you were a dual-status alien
+
+Age/Blindness You:                 Were born before January 2, 1957                  Are blind       Spouse:             Was born before January 2, 1957                    Is blind
+Dependents (see instructions):                                                                (2) Social security     (3) Relationship       (4) Check if qualifies for (see instructions):
+                                                                                                   number                  to you
+                       (1) First name                    Last name                                                                             Child tax credit    Credit for other dependents
+If more
+than four        MATTEO                                  JACKSON                             683-77-6012                 Son                          X
+dependents,
+see instructions
+and check
+here
+                        1    Wages, salaries, tips, etc. Attach Form(s) W-2 . . . . . . . . . . . . . . . . . . . . . . . . . .                                   1                175,810
+  Attach
+                        2a   Tax-exempt interest . . . .          2a                             b Taxable interest . . . . . . . . .                            2b
+  Sch. B if
+  required.
+                        3a   Qualified dividends . . . . .        3a                             b Ordinary dividends . . . . . . . .                            3b
+                        4a   IRA distributions . . . . . .        4a                             b Taxable amount . . . . . . . . .                              4b
+                        5a   Pensions and annuities . . .         5a                             b Taxable amount . . . . . . . . .                              5b
+Standard                6a   Social security benefits . . .       6a                             b Taxable amount . . . . . . . . .                              6b
+Deduction for-
+                        7    Capital gain or (loss). Attach Schedule D if required. If not required, check here . . . . . . . .                                   7
+  Single or
+  Married filing        8    Other income from Schedule 1, line 10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                  8
+  separately,
+  $12,550               9    Add lines 1, 2b, 3b, 4b, 5b, 6b, 7, and 8. This is your total income . . . . . . . . . . . . . . . .                                 9                175,810
+  Married filing       10    Adjustments to income from Schedule 1, line 26       .........................                                                      10
+  jointly or
+  Qualifying           11    Subtract line 10 from line 9. This is your adjusted gross income . . . . . . . . . . . . . . . .                                    11                175,810
+  widow(er),
+  $25,100
+                       12a   Standard deduction or itemized deductions (from Schedule A). . . . .               12a          25,100
+  Head of                b   Charitable contributions if you take the standard deduction (see instructions)     12b
+  household,
+  $18,800                c   Add lines 12a and 12b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                  12c                  25,100
+   If you checked      13    Qualified business income deduction from Form 8995 or Form 8995-A            ..............                                         13
+   any box under
+   Standard            14    Add lines 12c and 13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                  14                 25,100
+   Deduction,
+   see instructions.
+                       15    Taxable income. Subtract line 14 from line 11. If zero or less, enter -0-. . . . . . . . . . . . . . .                              15                150,710
+
+ For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see separate instructions.                                                                                 Form 1040 (2021)
+
+EEA
+Form 1040 (2021)          CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                    350-84-3760                 Page 2
+
+                    16   Tax (see instructions). Check if any from Form(s): 1          8814 2         4972 3                   ...      16                              24,653
+                    17   Amount from Schedule 2, line 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             17
+                    18   Add lines 16 and 17 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              18                              24,653
+                    19   Nonrefundable child tax credit or credit for other dependents from Schedule 8812 . . . . . . . . . .           19
+                    20   Amount from Schedule 3, line 8 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             20
+                    21   Add lines 19 and 20 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              21                                   0
+                    22   Subtract line 21 from line 18. If zero or less, enter -0- . . . . . . . . . . . . . . . . . . . . . . .        22                              24,653
+                    23   Other taxes, including self-employment tax, from Schedule 2, line 21 . . . . . . . . . . . . . . . .           23
+                    24   Add lines 22 and 23. This is your total tax. . . . . . . . . . . . . . . . . . . . . . . . . . . .             24                              24,653
+                    25   Federal income tax withheld from:
+                      a  Form(s) W-2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               25a           21,173
+                      b  Form(s) 1099 . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                25b
+                      c  Other forms (see instructions) . . . . . . . . . . . . . . . . . . . . .              25c
+                      d  Add lines 25a through 25c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             25d                              21,173
+ If you have a      26   2021    estimated tax payments  and  amount   applied from   2020 return    . . . . . . . . . . . . . . . .    26
+qualifying child,   27a  Earned income credit (EIC) . . . . . . . . . . . . . . . . . . . . . . .              27a
+attach Sch. EIC.
+                         Check here if you were born after January 1, 1998, and before
+                         January 2, 2004, and you satisfy all the other requirements for
+                         taxpayers who are at least age 18, to claim the EIC. See instructions
+                    b Nontaxable combat pay election . . . . . . . .                27b
+                    c Prior year (2019) earned income . . . . . . .                 27c
+                  28     Refundable child tax credit or additional child tax credit from Schedule 8812          28             2,300
+                  29     American opportunity credit from Form 8863, line 8 . . . . . . . . . . .               29
+                  30     Recovery rebate credit. See instructions . . . . . . . . . . . . . . . .               30                   0
+                  31     Amount from Schedule 3, line 15 . . . . . . . . . . . . . . . . . . . .                31
+                  32     Add lines 27a and 28 through 31. These are your total other payments and refundable .credits          ..      32                                2,300
+                  33     Add lines 25d, 26, and 32. These are your total payments. . . . . . . . . . . . . . . . . . . .               33                               23,473
+Refund            34     If line 33  is more than line 24, subtract line 24 from  line 33. This is the amount you  overpaid. . . . .    34                                   0
+                  35a Amount of line 34 you want refunded to you. If Form 8888 is attached, check here           .......               35a                                   0
+Direct deposit?     b Routing number                                                            c Type:      Checking        Savings
+See instructions.
+                    d Account number
+                  36     Amount of line 34 you want applied to your 2022 estimated tax. . . .                   36
+Amount            37     Amount you owe. Subtract line 33 from line 24. For details on how to pay, see instructions      .....          37                               1,180
+You Owe 38 Estimated tax penalty (see instructions) . . . . . . . . . . . . . . . .                             38
+Third Party Do you want to allow another person to discuss this return with the IRS? See
+Designee            instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                  Yes. Complete below.                  X No
+                     Designee's                                                        Phone                                      Personal identification
+                     name                                                              no.                                        number (PIN)
+                     Under penalties of perjury, I declare that I have examined this return and accompanying schedules and statements, and to the best of my knowledge and
+Sign                 belief, they are true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
+Here                                                                                                                                         If the IRS sent you an Identity
+                     Your signature                                        Date                Your occupation
+                                                                                                                                             Protection PIN, enter it here
+Joint return?                                                                                                                                (see inst.)
+                    08689                                                  03-06-2022
+See instructions.
+                     Spouse's signature. If a joint return, both must sign. Date               Spouse's occupation                           If the IRS sent your spouse an
+Keep a copy for
+                                                                                                                                             Identity Protection PIN, enter it here
+your records.
+                                                                                                                                             (see inst.)
+                    87352                                                  03-06-2022
+                      Phone no. 312-532-2442                               Email address yle.ossola@gmail.com
+                     Preparer's signature                                                                      Date                 PTIN                    Check if:
+Paid     GIOVANNI L BERNARDI                                                                                  03-15-2022 P00643590                              Self-employed
+Preparer  Preparer's name GIOVANNI L BERNARDI                                                                 Phone no. 847-721-4477
+Use Only Firm's name      DLC TAX SERVICES AND ACCOUNTING INC
+                     Firm's address    1520 WASHINGTON STREET
+                                       WAUKEGAN, IL 60085                                                                                   Firm's EIN      87-2909865
+Go to www.irs.gov/Form1040 for instructions and the latest information.                                                                                       Form 1040 (2021)
+
+EEA
+SCHEDULE 8812                                    Credits for Qualifying Children                                                         OMB No. 1545-0074
+(Form 1040)                                         and Other Dependents
+                                                         Attach to Form 1040, 1040-SR, or 1040-NR.
+                                                                                                                                           2021
+Department of the Treasury                                                                                                               Attachment
+Internal Revenue Service (99)           Go to www.irs.gov/Schedule8812 for instructions and the latest information.                      Sequence No. 47
+
+Name(s) shown on return                                                                                                     Your social security number
+  CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                             350-84-3760
+ Part I-A           Child Tax Credit and Credit for Other Dependents
+    1     Enter the amount from line 11 of your Form 1040, 1040-SR, or 1040-NR . . . . . . . . . . . . . . . . . . . . .        1                 175,810
+    2a    Enter income from Puerto Rico that you excluded       ..................                     2a
+     b    Enter the amounts from lines 45 and 50 of your Form 2555      ..............                 2b
+     c    Enter the amount from line 15 of your Form 4563 . . . . . . . . . . . . . . . . . . .        2c
+     d    Add lines 2a through 2c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      2d
+    3     Add lines 1 and 2d      ..............................................                                                3                 175,810
+    4a    Number of qualifying children under age 18 with the required social security number . .      4a                    1
+     b    Number of children included on line 4a who were under age 6 at the end of 2021 . . . .       4b                    1
+     c    Subtract line 4b from line 4a . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      4c
+    5     If line 4a is more than zero, enter the amount from the Line 5 Worksheet; otherwise, enter -0- . . . . . . . . . .    5                    2,300
+    6     Number of other dependents, including any qualifying children who are not under age
+          18 or who do not have the required social security number . . . . . . . . . . . . . .         6
+          Caution: Do not include yourself, your spouse, or anyone who is not a U.S. citizen, U.S. national, or U.S. resident
+          alien. Also, do not include anyone you included on line 4a.
+    7     Multiply line 6 by $500 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         7
+    8     Add lines 5 and 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           8                2,300
+    9     Enter the amount shown below for your filing status.
+          • Married filing jointly-$400,000
+          • All other filing statuses-$200,000  }      ....................................                                         9             400,000
+  10      Subtract line 9 from line 3.
+          • If zero or less, enter -0-.
+
+
+
+  11
+          • If more than zero and not a multiple of $1,000, enter the next multiple of $1,000. For
+                                                                                                  }
+          example, if the result is $425, enter $1,000; if the result is $1,025, enter $2,000, etc. ...........
+          Multiply line 10 by 5% (0.05) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+                                                                                                                                    10
+                                                                                                                                    11
+                                                                                                                                                             0
+
+  12      Subtract line 11 from line 8. If zero or less, enter -0- ..............................                                   12               2,300
+  13      Check all the boxes that apply to you (or your spouse if married filing jointly).
+          A Check here if you (or your spouse if married filing jointly) have a principal place of abode in the United States
+              for more than half of 2021 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . X
+          B Check here if you (or your spouse if married filing jointly) are a bona fide resident of Puerto Rico for 2021 . .
+ Part I-B            Filers Who Check a Box on Line 13
+Caution: If you did not check a box on line 13, do not complete Part I-B; instead, skip to Part I-C.
+  14a Enter the smaller of line 7 or line 12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          14a                      0
+    b Subtract line 14a from line 12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            14b               2,300
+    c If line 14a is zero, enter -0-; otherwise, enter the amount from the Credit Limit Worksheet A . . . . . . . . . .           14c                      0
+    d Enter the smaller of line 14a or line 14c       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14d                          0
+    e Add lines 14b and 14d . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             14e               2,300
+    f Enter the aggregate amount of advance child tax credit payments you (and your spouse if filing jointly) received
+       for 2021. See your Letter(s) 6419 for the amounts to include on this line. If you are missing Letter 6419, see the
+       instructions before entering an amount on this line. If you didn't receive any advance child tax credit payments
+       for 2021, enter -0-      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14f                            0
+       Caution: If the amount on this line doesn't match the aggregate amounts reported to you (and your spouse if
+       filing jointly) on your Letter(s) 6419, the processing of your return will be delayed.
+    g Subtract line 14f from line 14e. If zero or less, enter -0- on lines 14g through 14i and go to Part III . . . . . . . . .   14g               2,300
+    h Enter the smaller of line 14d or line 14g. This is your credit for other dependents. Enter this amount on line
+       19 of your Form 1040, 1040-SR, or 1040-NR            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14h                          0
+    i Subtract line 14h from line 14g. This is your refundable child tax credit. Enter this amount on line 28 of
+       your Form 1040, 1040-SR, or 1040-NR              . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14i                   2,300
+For Paperwork Reduction Act Notice, see your tax return instructions.                                                         Schedule 8812 (Form 1040) 2021
+EEA
+Schedule 8812 (Form 1040) 2021      CHRISTIAN JACKSON & YLENIA OSSOLA                                                                  350-84-3760       Page 2
+ Part I-C          Filers Who Do Not Check a Box on Line 13
+Caution: If you checked a box on line 13, do not complete Part I-C.
+ 15a Enter the amount from the Credit Limit Worksheet A . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      15a
+   b Enter the smaller of line 12 or line 15a . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                  15b
+       Additional child tax credit. Complete Parts II-A through II-C if you meet each of the following items.
+       1. You are not filing Form 2555.
+       2. Line 4a is more than zero.
+       3. Line 12 is more than line 15a.
+   c If you completed Parts II-A through II-C, enter the amount from line 27; otherwise, enter -0- . . . . . . . . . . . .               15c
+   d Add lines 15b and 15c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                     15d
+       e   Enter the aggregate amount of advance child tax credit payments you (and your spouse if filing jointly) received
+           for 2021. See your Letter(s) 6419 for the amounts to include on this line. If you are missing Letter 6419, see the
+           instructions before entering an amount on this line. If you didn't receive any advance child tax credit payments
+           for 2021, enter -0-       ..............................................                                                      15e
+           Caution: If the amount on this line doesn't match the aggregate amounts reported to you (and your spouse if
+           filing jointly) on your Letter(s) 6419, the processing of your return will be delayed.
+      f    Subtract line 15e from line 15d. If zero or less, enter -0- on lines 15f through 15h and go to Part III . . . . . . . . .     15f
+      g    Enter the smaller of line 15b or line 15f. This is your nonrefundable child tax credit and credit for other
+           dependents. Enter this amount on line 19 of your Form 1040, 1040-SR, or 1040-NR                .............                  15g
+      h    Subtract line 15g from line 15f. This is your additional child tax credit. Enter this amount on line 28 of your
+           Form 1040, 1040-SR, or 1040-NR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                  15h
+Part II-A          Additional Child Tax Credit (use only if completing Part I-C)
+Caution: If you file Form 2555, do not complete Parts II-A through II-C; you cannot claim the additional child tax credit.
+Caution: If you checked a box on line 13, do not complete Parts II-A through II-C; you cannot claim the additional child tax credit.
+ 16a Subtract line 15b from line 12. If zero, skip Parts II-A and II-B and enter -0- on line 27   . . . . . . . . . . . . . . 16a
+   b Number of qualifying children under 18 with the required social security number:                                 x $1,400.
+       Enter the result. If zero, skip Parts II-A and II-B and enter -0- on line 27 . . . . . . . . . . . . . . . . . . . . .    16b
+       TIP: The number of children you use for this line is the same as the number of children you used for line 4a.
+ 17    Enter the smaller of line 16a or line 16b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           17
+ 18a Earned income (see instructions)           . . . . . . . . . . . . . . . . . . . . . . . . . . 18a
+   b Nontaxable combat pay (see instructions)           . . . . . . . . . 18b
+ 19    Is the amount on line 18a more than $2,500?
+            No. Leave line 19 blank and enter -0- on line 20.
+            Yes. Subtract $2,500 from the amount on line 18a. Enter the result        .......           19
+ 20    Multiply the amount on line 19 by 15% (0.15) and enter the result . . . . . . . . . . . . . . . . . . . . . . . .           20
+       Next. On line 16b, is the amount $4,200 or more?
+            No. If line 20 is zero, enter -0- on line 15c. Otherwise, skip Part II-B and enter the smaller of line 17 or line
+                    20 on line 27.
+               Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27.
+                    Otherwise, go to line 21.
+Part II-B          Certain Filers Who Have Three or More Qualifying Children
+  21       Withheld social security, Medicare, and Additional Medicare taxes from Form(s) W-2,
+           boxes 4 and 6. If married filing jointly, include your spouse’s amounts with yours. If
+           your employer withheld or you paid Additional Medicare Tax or tier 1 RRTA taxes, see
+           instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             21
+  22       Enter the total of the amounts from Schedule 1 (Form 1040), line 15; Schedule 2 (Form
+           1040), line 5; Schedule 2 (Form 1040), line 6; and Schedule 2 (Form 1040), line 13 . . .           22
+  23       Add lines 21 and 22 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              23
+  24       1040 and
+           1040-SR filers:    Enter the total of the amounts from Form 1040 or 1040-SR, line 27a,
+
+
+
+  25
+                              and Schedule 3 (Form 1040), line 11.
+           1040-NR filers: Enter the amount from Schedule 3 (Form 1040), line 11.                    }     24
+           Subtract line 24 from line 23. If zero or less, enter -0- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         25
+  26       Enter the larger of line 20 or line 25 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            26
+           Next, enter the smaller of line 17 or line 26 on line 27.
+Part II-C          Additional Child Tax Credit
+  27                               ..........................................
+           Enter this amount on line 15c                                                                                                 27
+EEA                                                                                                                               Schedule 8812 (Form 1040) 2021
+Schedule 8812 (Form 1040) 2021   CHRISTIAN JACKSON & YLENIA OSSOLA                                                          350-84-3760            Page 3
+ Part III       Additional Tax (use only if line 14g or line 15f, whichever applies, is zero)
+  28a   Enter the amount from line 14f or line 15e, whichever applies ..........................                                 28a
+    b   Enter the amount from line 14e or line 15d, whichever applies . . . . . . . . . . . . . . . . . . . . . . . . . .        28b
+  29    Excess advance child tax credit payments. Subtract line 28b from line 28a. If zero, stop; you do not owe the
+        additional tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         29
+  30    Enter the number of qualifying children taken into account in determining the annual advance amount you
+        received for 2021. See your Letter 6419 for this number. If you are missing your Letter 6419, you are filing a joint
+        return, or you received more than one Letter 6419, see the instructions before entering a number on this line      ...   30
+        Caution: If the amount on this line doesn’t match the number of qualifying children reported to you (and your
+        spouse if filing jointly) on your Letter(s) 6419, the processing of your return will be delayed.
+
+  31    Enter the smaller of line 4a or line 30 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      31
+  32    Subtract line 31 from line 30. If zero, skip to line 40 and enter the amount from line 29; otherwise, continue to
+        line 33 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        32
+  33    Enter the amount shown below for your filing status.
+        • Married filing jointly or Qualifying widow(er)—$60,000
+
+
+
+  34
+        • Head of household—$50,000
+        • All other filing statuses—$40,000
+        Subtract line 33 from line 3. If zero or less, enter -0-
+                                                                }         ...........................
+                                                                    ..............................
+                                                                                                                                 33
+                                                                                                                                 34
+  35    Enter the amount from line 33 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          35
+  36    Divide line 34 by line 35. Enter the result as a decimal (rounded to at least three places). If the result is 1.000 or
+        more, enter 1.000 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          36
+  37    Multiply line 32 by $2,000 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         37
+  38    Multiply line 37 by line 36 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        38
+  39    Subtract line 38 from line 37 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        39
+  40    Subtract line 39 from line 29. If zero or less, enter -0-. This is your additional tax. If more than zero, enter
+        this amount on Schedule 2 (Form 1040), line 19              ..............................                               40
+EEA                                                                                                                         Schedule 8812 (Form 1040) 2021
+Form   8867                                  Paid Preparer's Due Diligence Checklist
+                                              Earned Income Credit (EIC), American Opportunity Tax Credit (AOTC),             OMB No. 1545-0074
+(Rev. December 2021)                       Child Tax Credit (CTC) (including the Additional Child Tax Credit (ACTC) and
+                                         Credit for Other Dependents (ODC)), and Head of Household (HOH) Filing Status
+Department of the Treasury       To be completed by preparer and filed with Form 1040, 1040-SR, 1040-NR, 1040-PR, or 1040-SS. Attachment
+Internal Revenue Service                                                                                                      Sequence No. 70
+                                            Go to www.irs.gov/Form8867 for instructions and the latest information.
+Taxpayer name(s) shown on return                                                                             Taxpayer identification number
+
+  CHRISTIAN JACKSON & YLENIA OSSOLA                                                                           350-84-3760
+Enter preparer's name and PTIN
+
+  GIOVANNI L BERNARDI                                                P00643590
+ Part I          Due Diligence Requirements
+Please check the appropriate box for the credit(s) and/or HOH filing status claimed on the return and complete the related Parts I–V
+for the benefit(s) claimed (check all that apply).                                 EIC X CTC/ ACTC/ODC                   AOTC     HOH
+   1 Did you complete the return based on information for the applicable tax year provided by the taxpayer                Yes No   N/A
+        or reasonably obtained by you? (See instructions if relying on prior year earned income.) . . . . . . . .          X
+   2 If credits are claimed on the return, did you complete the applicable EIC and/or CTC/ACTC/ODC
+        worksheets found in the Form 1040, 1040-SR, 1040-NR, 1040-PR, or 1040-SS, or Schedule 8812 (Form
+        1040) instructions, and/or the AOTC worksheet found in the Form 8863 instructions, or your own
+        worksheet(s) that provides the same information, and all related forms and schedules for each credit
+        claimed? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   X
+   3 Did you satisfy the knowledge requirement? To meet the knowledge requirement, you must do both of
+        the following.
+        • Interview the taxpayer, ask questions, and contemporaneously document the taxpayer's responses to
+          determine that the taxpayer is eligible to claim the credit(s) and/or HOH filing status.
+      • Review information to determine that the taxpayer is eligible to claim the credit(s) and/or HOH filing
+        status and to figure the amount(s) of any credit(s) . . . . . . . . . . . . . . . . . . . . . . . . . . . .            X
+   4 Did any information provided by the taxpayer or a third party for use in preparing the return, or
+      information reasonably known to you, appear to be incorrect, incomplete, or inconsistent? (If "Yes,"
+      answer questions 4a and 4b. If "No," go to question 5.) . . . . . . . . . . . . . . . . . . . . . . . . . .                      X
+    a Did you make reasonable inquiries to determine the correct, complete, and consistent information? . .                    X
+    b Did you contemporaneously document your inquiries? (Documentation should include the questions
+      you asked, whom you asked, when you asked, the information that was provided, and the impact the
+      information had on your preparation of the return.) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            X
+   5 Did you satisfy the record retention requirement? To meet the record retention requirement, you must
+      keep a copy of your documentation referenced in question 4b, a copy of this Form 8867, a copy of any
+      applicable worksheet(s), a record of how, when, and from whom the information used to prepare Form
+      8867 and any applicable worksheet(s) was obtained, and a copy of any document(s) provided by the
+      taxpayer that you relied on to determine eligibility for the credit(s) and/or HOH filing status or to figure
+      the amount(s) of the credit(s) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         X
+      List those documents provided by the taxpayer, if any, that you relied on:
+      Medical Records
+
+
+
+
+   6  Did you ask the taxpayer whether he/she could provide documentation to substantiate eligibility for the
+      credit(s) and/or HOH filing status and the amount(s) of any credit(s) claimed on the return if his/her
+      return is selected for audit? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        X
+   7 Did you ask the taxpayer if any of these credits were disallowed or reduced in a previous year? . . . .                   X
+      (If credits were disallowed or reduced, go to question 7a; if not, go to question 8.)
+    a Did you complete the required recertification Form 8862? . . . . . . . . . . . . . . . . . . . . . . . . .                              X
+   8 If the taxpayer is reporting self-employment income, did you ask questions to prepare a complete and
+      correct Schedule C (Form 1040)? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+For Paperwork Reduction Act Notice, see separate instructions.                                                             Form 8867 (Rev. 12-2021)
+EEA
+Form 8867 (Rev. 12-2021) CHRISTIAN    JACKSON & YLENIA OSSOLA                                                    350-84-3760                    Page 2
+Part II      Due Diligence Questions for Returns Claiming EIC (If the return does not claim EIC, go to Part III.)
+  9a Have you determined that the taxpayer is eligible to claim the EIC for the number of qualifying children                     Yes     No     N/A
+     claimed, or is eligible to claim the EIC without a qualifying child? (If the taxpayer is claiming the EIC
+     and does not have a qualifying child, go to question 10.) . . . . . . . . . . . . . . . . . . . . . . . .
+   b Did you ask the taxpayer if the child lived with the taxpayer for over half of the year, even if the taxpayer
+     has supported the child the entire year? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+   c Did you explain to the taxpayer the rules about claiming the EIC when a child is the qualifying child of
+     more than one person (tiebreaker rules)? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Part III     Due Diligence Questions for Returns Claiming CTC/ACTC/ODC (If the return does not claim CTC, ACTC,
+             or ODC, go to Part IV.)
+ 10    Have you determined that each qualifying person for the CTC/ACTC/ODC is the taxpayer's dependent who is                    Yes     No     N/A
+       a citizen, national, or resident of the United States? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      X
+ 11    Did you explain to the taxpayer that he/she may not claim the CTC/ACTC if the child has not lived with
+       the taxpayer for over half of the year, even if the taxpayer has supported the child, unless the child's
+       custodial parent has released a claim to exemption for the child? . . . . . . . . . . . . . . . . . . . . .                 X
+ 12    Did you explain to the taxpayer the rules about claiming the CTC/ACTC/ODC for a child of divorced or
+       separated parents (or parents who live apart), including any requirement to attach a Form 8332 or similar
+       statement to the return? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            X
+Part IV      Due Diligence Questions for Returns Claiming AOTC (If the return does not claim AOTC, go to Part V.)
+ 13    Did the taxpayer provide substantiation for the credit, such as a Form 1098-T and/or receipts for the qualified                    Yes    No
+       tuition and related expenses for the claimed AOTC? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Part V       Due Diligence Questions for Claiming HOH (If the return does not claim HOH filing status, go to Part VI.)
+ 14    Have you determined that the taxpayer was unmarried or considered unmarried on the last day of the tax year                        Yes    No
+       and provided more than half of the cost of keeping up a home for the year for a qualifying person? . . . . . . .
+Part VI      Eligibility Certification
+           You will have complied with all due diligence requirements for claiming the applicable credit(s) and/or HOH filing
+           status on the return of the taxpayer identified above if you:
+           A. Interview the taxpayer, ask adequate questions, contemporaneously document the taxpayer’s responses on the return or
+              in your notes, review adequate information to determine if the taxpayer is eligible to claim the credit(s) and/or HOH filing
+              status and to figure the amount(s) of the credit(s);
+           B. Complete this Form 8867 truthfully and accurately and complete the actions described in this checklist for any applicable
+              credit(s) claimed and HOH filing status, if claimed;
+           C. Submit Form 8867 in the manner required; and
+           D. Keep all five of the following records for 3 years from the latest of the dates specified in the Form 8867 instructions under
+              Document Retention.
+              1. A copy of this Form 8867.
+              2. The applicable worksheet(s) or your own worksheet(s) for any credit(s) claimed.
+              3. Copies of any documents provided by the taxpayer on which you relied to determine the taxpayer's eligibility for the
+                 credit(s) and/or HOH filing status and to figure the amount(s) of the credit(s).
+              4. A record of how, when, and from whom the information used to prepare this form and the applicable worksheet(s) was
+                 obtained.
+              5. A record of any additional information you relied upon, including questions you asked and the taxpayer's responses, to
+                 determine the taxpayer's eligibility for the credit(s) and/or HOH filing status and to figure the amount(s) of the credit(s).
+
+           If you have not complied with all due diligence requirements, you may have to pay a penalty for each failure to
+           comply related to a claim of an applicable credit or HOH filing status (see instructions for more information).
+
+ 15    Do you certify that all of the answers on this Form 8867 are, to the best of your knowledge, true, correct, and                    Yes    No
+       complete? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             X
+EEA                                                                                                                             Form 8867 (Rev. 12-2021)
+     Form PMT                                              ACH Payment                                                           2021
+                                  (This information is e-filed with the return. Do not include it if paper-filing)
+
+
+Name(s) shown on return                                                                                              Taxpayer's SSN
+ CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                   350-84-3760
+                                                                                                                     Spouse's SSN
+                                                                                                                     769-87-6561
+Routing Transit Number
+ 081904808
+Bank Account Number
+ 002913041086
+Type of Account:
+ 1       Checking
+Amount of Tax Payment
+                   1,180
+Requested Payment Date
+ 04-15-2022
+Taxpayer's Daytime Phone Number
+ 312-532-2442
+Type of Form being filed
+ 1040
+
+
+
+
+Taxpayer's Signature                                                                                                 Date
+
+
+Spouse's Signature                                                                                                   Date
+
+
+
+
+                                                                                                                             Form PMT (2021)
+                                                                     Due Diligence
+                                             (This page is not filed with the return. It is for your records only.)                                2021
+Name(s) as shown on return                                                                                                                         Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                                  350-84-3760
+Age - Qualifying Child (complete only if qualifying child is over age 18)
+For children over age 18 who are students or permanently and totally disabled, the following         Child 1                                    Child 2            Child 3
+additional information and documentation should be available:
+1. Children who are students . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   Not a                                      Not a              Not a
+                                                                                                       student                                    student            student
+   a. What school does the child attend? . . . . . . . . . . Child 1
+                                                                  Child 2
+                                                                  Child 3
+   b. Can you provide documentation showing that the child was a full-time student
+       for at least 5 months? The school records need to show the dates of attendance.
+       The months don't have to be consecutive . . . . . . . . . . . . . . . . . . . . . . . . . . .                         Yes     No           Yes     No         Yes     No
+2. Children with a permanent and total disability . . . . . . . . . . . . . . . . . . . . . . . . . . .                      Not                  Not                Not
+   a. What type of disability does the child have? . . . . . . Child 1                                                       disabled             disabled           disabled
+                                                                  Child 2
+                                                                  Child 3
+   b. Does the child receive SSI or other disability payments? . . . . . . . . . . . . . . . . . . . .                       Yes           No     Yes       No       Yes       No
+   c. Do you have a letter from the child's doctor, other healthcare provider, or
+       any social service program or agency verifying that the child is permanently
+       and totally disabled? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                       Yes           No     Yes       No       Yes       No
+
+
+Relationship - Qualifying Child
+
+1. If the biological parent is NOT living with the child, where is the parent? Did he or she provide support?
+                        Child 1                          Child 2                          Child 3
+     Mother                                                                                                      Yes                       No     Yes       No       Yes       No
+     Father
+                                                                                                               Child 1                          Child 2            Child 3
+2. Adopted children:
+     a. Is the adoption final or pending? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+     b. If the adoption is pending, do you have a letter from an authorized adoption agency?          . . . . . Yes                        No     Yes       No       Yes       No
+3. Foster children:
+     a. Do you have a letter from the authorized placement agency or applicable court document? . . .            Yes                       No     Yes       No       Yes       No
+4. Brother, sister, niece, nephew, grandchild, great-grandchild:
+     a. Can you provide a birth certificate that verifies your relationship to the child? . . . . . . . . . .    Yes                       No     Yes       No       Yes       No
+5. Stepchildren or descendent of them, step-grandchildren, step-great-grandchildren:
+                                                                                                        ...
+     a. Can you provide a birth certificate & marriage certificate verifying the relationship to the child?      Yes                       No     Yes       No       Yes       No
+Residency - Qualifying Child
+Can you provide any of the following documentation to prove that your child lived with you for more than half
+of the year? More than one type of documentation may be required by the IRS.
+Child 1                                  Child 2                                    Child 3
+    School records                          School records                             School records
+    Medical records                         Medical records                            Medical records
+    Letter*                                 Letter*                                    Letter*
+    Social service records                  Social service records                     Social service records
+    Daycare records                         Daycare records                            Daycare records
+Daycare provider                         Daycare provider                           Daycare provider
+
+*The letter must be on official letterhead from one of the following: school, medical provider, social service agency, place of worship, or other
+acceptable entity. The letter must include the name of the child, name of the child's parent or guardian, child's address, and dates during the
+year child lived with taxpayer.
+Adjusted Gross Income - Qualifying Child
+For tax years beginning after December 31, 2020 a taxpayer other than the parents of a qualifying
+child can claim the child, but only if the adjusted gross income (AGI) of the taxpayer is higher than   Child 1                                 Child 2            Child 3
+the AGI of any parent of the child. If you are not a parent of the qualifying child, is your AGI higher
+than any parent of the child? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   Yes                              No     Yes       No       Yes       No
+Your signature                                                Date                  Spouse's signature. If joint return, BOTH must sign.            Date
+
+
+
+Paid preparer's signature                                     Date
+
+                                                            03-15-2022
+DD_QC.LD
+                                                            Income Due Diligence
+                                           (This page is not filed with the return. It is for your records only.)            2021
+Name(s) as shown on return                                                                                                   Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                            350-84-3760
+
+Does the income appear to be sufficient to support the taxpayer and qualifying children?
+If "No," some additional inquiries might be needed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . X Yes     No
+
+
+Taxpayers with self-employment income:
+   Not applicable
+1. How long have you owned your business? .....
+    Brief description of business ............
+    Where do you conduct business?   ..........
+
+2. What services do you perform? . . . . . . . . . . .
+   How much do you charge for these services?  ....
+
+3. Approximately how many clients do you have? . . . .
+   How often do you provide services for each client? . .
+
+4. What types of items do you need to operate? . . . . .
+   How often are these items replenished? . . . . . . .
+
+
+5. Do you travel for business?      Yes           No           How do you keep track of mileage? . .
+   When and where do you have to travel for business?
+
+
+6. Can you provide any documentation to substantiate your business?
+      Business cards                                                 Business/occupational license (if required)
+      Business stationary                                            Other tax returns (sales/excise, employment, etc.)
+      Receipts or receipt book (with company header)                 Advertisements (newspaper, flyer, yellow pages, etc.)
+   Other (list any other documentation you can provide to substantiate your business):
+
+
+
+7. Who maintains the business records?      ..........
+
+8. Do you maintain separate banking accounts for personal and business transactions?             ....................                  Yes   No
+   a. If "Yes," what form of records were provided?
+
+
+    b. If "No," how do you differentiate between personal and business transactions and monetary assets?
+
+
+
+9. Were satisfactory records of income and expense provided? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           Yes   No
+   a. If "Yes," in what form were these records provided?
+          Accounting records                   Log books
+          Paid invoices/receipts               Ledgers
+          Computer records                     Business bank accounts
+          Car/truck expenses
+      Other (list any other forms of documentation you can provide to support your business):
+
+
+    b. If "No," how did you determine:
+       The amount of income?
+       The amount of expense?
+
+
+10. Form 1099-NEC:
+    a. Do you have any Forms 1099-NEC to support the income? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             Yes   No
+    b. If not, is it reasonable that the business type would not receive Form 1099-NEC? ....................                           Yes   No
+
+
+
+
+DD_INC.LD
+                                                             Income Due Diligence
+                                            (This page is not filed with the return. It is for your records only.)                        2021
+Name(s) as shown on return                                                                                                                Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                         350-84-3760
+
+11. Are the expenses consistent with the type of business?          ............................                                          Yes          No
+
+
+12. Are the amounts of expense reasonable?        ....................................                                                    Yes          No
+
+
+13. Are any expenses that are typical for this type of business missing?       .......................                                    Yes          No
+
+
+14. If no (or low) expenses, why are they so low?
+
+
+
+15. If high expenses or a loss, why are they so high?
+
+
+
+16. If high expenses or a loss, how are you able to pay these expenses and keep this business open?
+
+
+
+17. List any other information you can provide related to your business:
+
+
+
+
+ Your signature                                              Date                  Spouse's signature. If joint return, BOTH must sign.         Date
+
+
+
+ Paid preparer's signature                                   Date
+
+                                                              03-15-2022
+
+
+
+
+DD_INC.LD2
+Form   8879                                      IRS e-file Signature Authorization
+(Rev. January 2021)                                                                                                                       OMB No. 1545-0074
+
+Department of the Treasury
+Internal Revenue Service
+                                                   ERO must obtain and retain completed Form 8879.
+                                                  Go to www.irs.gov/Form8879 for the latest information.
+                                                                                                                                              2021
+Submission Identification Number (SID)
+Taxpayer's name                                                                                                      Social security number
+
+CHRISTIAN JACKSON                                                                                                     350-84-3760
+Spouse's name                                                                                                        Spouse's social security number
+
+YLENIA OSSOLA                                                                                                         769-87-6561
+ Part I           Tax Return Information - Tax Year Ending December 31, 2021                           (Enter year you are authorizing.)
+Enter whole dollars only on lines 1 through 5.
+Note: Form 1040-SS filers use line 4 only. Leave lines 1, 2, 3, and 5 blank.
+  1 Adjusted gross income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                       1                175,810
+  2 Total tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 2                 24,653
+  3 Federal income tax withheld from Form(s) W-2 and Form(s) 1099 . . . . . . . . . . . . . . . . . . . .                             3                 21,173
+  4 Amount you want refunded to you . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                       4
+  5 Amount you owe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      5                  1,180
+ Part II          Taxpayer Declaration and Signature Authorization (Be sure you get and keep a copy of your return)
+Under penalties of perjury, I declare that I have examined a copy of the income tax return (original or amended) I am now authorizing, and to the best of
+my knowledge and belief, it is true, correct, and complete. I further declare that the amounts in Part I above are the amounts from the income tax
+return (original or amended) I am now authorizing. I consent to allow my intermediate service provider, transmitter, or electronic return originator (ERO)
+to send my return to the IRS and to receive from the IRS (a) an acknowledgement of receipt or reason for rejection of the transmission, (b) the reason
+for any delay in processing the return or refund, and (c) the date of any refund. If applicable, I authorize the U.S. Treasury and its designated Financial
+Agent to initiate an ACH electronic funds withdrawal (direct debit) entry to the financial institution account indicated in the tax preparation software for
+payment of my federal taxes owed on this return and/or a payment of estimated tax, and the financial institution to debit the entry to this account. This
+authorization is to remain in full force and effect until I notify the U.S. Treasury Financial Agent to terminate the authorization. To revoke (cancel) a
+payment, I must contact the U.S. Treasury Financial Agent at 1-888-353-4537. Payment cancellation requests must be received no later than 2
+business days prior to the payment (settlement) date. I also authorize the financial institutions involved in the processing of the electronic payment of
+taxes to receive confidential information necessary to answer inquiries and resolve issues related to the payment. I further acknowledge that the
+personal identification number (PIN) below is my signature for the income tax return (original or amended) I am now authorizing and, if applicable, my
+Electronic Funds Withdrawal Consent.
+
+Taxpayer's PIN: check one box only           Amount owed will be debited from: RTN:081904808 DAN:002913041086
+       X    I authorize      DLC TAX SERVICES AND ACCOUNTING INC    to enter or generate my PIN 08689    as my
+                                                 ERO firm name                                                                  Enter five digits, but
+            signature on the income tax return (original or amended) I am now authorizing.                                      don't enter all zeros
+
+            I will enter my PIN as my signature on the income tax return (original or amended) I am now authorizing. Check this box only
+            if you are entering your own PIN and your return is filed using the Practitioner PIN method. The ERO must complete Part III
+            below.
+
+Your signature                                                                                          Date
+
+Spouse's PIN: check one box only
+    X I authorize DLC TAX SERVICES AND ACCOUNTING INC                                       to enter or generate my PIN 87352                            as my
+                                                 ERO firm name                                                                  Enter five digits, but
+                                                                                                                                don't enter all zeros
+            signature on the income tax return (original or amended) I am now authorizing.
+            I will enter my PIN as my signature on the income tax return (original or amended) I am now authorizing. Check this box only
+            if you are entering your own PIN and your return is filed using the Practitioner PIN method. The ERO must complete Part III
+            below.
+
+Spouse's signature                                                                                      Date
+                                  Practitioner PIN Method Returns Only - continue below
+ Part III         Certification and Authentication - Practitioner PIN Method Only
+ERO's EFIN/PIN. Enter your six-digit EFIN followed by your five-digit self-selected PIN.                         360474-01212
+                                                                                                                          Don't enter all zeros
+
+I certify that the above numeric entry is my PIN, which is my signature for the electronic individual income tax return (original or amended) I am now
+authorized to file for tax year indicated above for the taxpayer(s) indicated above. I confirm that I am submitting this return in accordance with the
+requirements of the Practitioner PIN method and Pub. 1345, Handbook for Authorized IRS e-file Providers of Individual Income Tax Returns.
+
+
+ERO's signature           GIOVANNI L BERNARDI                                                           Date           03-15-2022
+                                         ERO Must Retain This Form - See Instructions
+                                 Don't Submit This Form to the IRS Unless Requested To Do So
+For Paperwork Reduction Act Notice, see your tax return instructions.                                                                Form 8879 (Rev. 01-2021)
+EEA
+                                              Estimated Tax Worksheet for Next Year
+                                                                 (Keep for your records)                                          2021
+Name(s) as shown on return                                                                                                        Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                 350-84-3760
+
+   1. Wages . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.
+   2. Interest and Dividend income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.
+   3. Capital gain income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.
+   4. Taxable IRA/Pension income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4.
+   5. Taxable Social Security income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5.
+   6. Business income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6.
+   7. Other income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7.
+   8. Total income (add lines 1 thru 7) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8.
+   9. Adjustments to income . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9.
+  10. Adjusted gross income (subtract line 9 from line 8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.
+  11a. Itemized deductions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11a.
+  11b. Standard deduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11b.
+  12. Taxable income (subtract the larger of line 11a or 11b from line 10) . . . . . . . . . . . . . . . . . . .. . . . . 12.
+  13. Estimated Section 199A deduction for qualified trade or business income            . . . . . . . . . . . . . . . . . . . . 13.
+  14. Projected taxable income (subtract line 13 from line 12) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14.
+  15. Projected Tax. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15.
+  16. Alternative Minimum Tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16.
+  17. Total tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17.
+  18a. Child Tax Credit and Other Dependent Credit . . . . . . . . . . . . . . . . . . . . 18a.
+  18b. Other projected Credits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18b.
+  18c. Total projected credits. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18c.
+  19. Subtract line 18d from line 17 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19.
+  20. Projected SE Tax - Taxpayer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20.
+  21. Projected SE Tax - Spouse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21.
+  22. Other taxes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22.
+  23a. Add lines 19 through 22 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23a.
+     b. Earned income credit, additional child tax credit, fuel tax credit, net premium tax credit,
+        refundable American opportunity credit, and refundable credit from Form 8885           . . . . . . . . . . . . . . . . 23b.
+     c. Total 2022 estimated tax. Subtract line 23b from line 23a. If zero or less enter -0- . . . . . . . . . . . . . . . 23c.
+  24a. Multiply line 23c by 90% (66 2/3% for farmers and fishermen) . . . . . . . . . . . . 24a.
+     b. Required annual payment based on prior year's tax (see instructions)         ..
+                                                                                     110%. . . . . . 24b.               24,588
+     c. Required annual payment to avoid a penalty. Enter the smaller of line 24a or 24b . . . . . . . . . . . . . 24c.                           24,588
+  25. Projected Withholding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25.                         21,173
+  26. Projected Net Tax (subtract line 25 from line 24c) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26.                       3,415
+
+
+Estimates will be computed on $3,415. This is line 26.
+
+Use screen ETA to provide accurate estimates of next year's income,
+deductions, and credits. If screen ETA is used, lines 1-24a of
+this worksheet will be autofilled.
+
+
+
+
+WK_ES.LD
+                                            Summary of Estimates                                              2022
+Name(s) as shown on return                                                                     Your SSN/EIN
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                    350-84-3760
+Federal
+Form: 1040-ES
+                                                  Payment Schedule
+Due Date                     04-18-2022         06-15-2022           09-15-2022         01-17-2023                   Total
+Total Installment Amount                  860                860                  860                860                     3,440
+Overpayment Applied                         0                  0                    0                  0                         0
+Net Installment Due                       860                860                  860                860                     3,440
+                                                  Taxpayer Records
+Amount Actually Paid
+Date Paid
+Check #/Confirmation
+
+
+
+
+ES_SUM1.LD
+         2022 Form 1040-ES Estimated Tax Voucher and Filing Instructions
+                       CHRISTIAN JACKSON & YLENIA OSSOLA
+
+     Due date:
+
+                  04-18-2022
+
+     Balance due:
+
+                  $860
+
+     Transaction method:
+
+                  To pay by check or money order, write "2022 Form 1040-ES,"
+                  your name, address, SSN or ITIN, and daytime phone number on
+                  the payment, make it payable to "United States Treasury,"
+                  and mail to the address below. To pay using your bank
+                  account (at no extra cost to you), go to IRS.gov/Payments.
+                  To pay by credit or debit card (for a fee), go to
+                  1040paytax.com.
+
+     Other information:
+
+                  Detach the voucher below along the line and mail the voucher
+                  with your payment. Do not staple or attach the payment to
+                  the voucher.
+
+     Mail-to address:
+
+                  Internal Revenue Service
+                  P.O. Box 931100
+                  Louisville, KY 40293-1100
+
+     Taxpayer records:
+
+                  Amount paid                     ____________________
+                  Check number                    ____________________
+                  Date mailed                     ____________________
+                                                                         (Cut here)
+  Form 1040-ES (OCR)
+                                    2022                                                                                                    Calendar year -
+  Department of the Treasury
+  Internal Revenue Service       OMB No. 1545-0074         Estimated Tax
+                                                                                                             Payment
+                                                                                                             Voucher           1            Due April 18, 2022
+
+   Make your check or money order payable to "United States Treasury."                Amount of estimated tax you are
+   Enter your SSN and "2022 Form 1040-ES" on your payment.                            paying by check or money order.                                       860
+   If your name, address, or SSN is incorrect, see instructions.
+                                                                                                  For Privacy Act and Paperwork Reduction Act Notice, see instructions.
+
+                                                                                                                1024
+
+
+
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                             Internal Revenue Service
+5175 WEST 88TH PLACE                                                          P.O. Box 931100
+OAK LAWN, IL 60453                                                            Louisville, KY 40293-1100
+
+
+
+
+                                     350843760 NI JACK 30 0 202212 430
+         2022 Form 1040-ES Estimated Tax Voucher and Filing Instructions
+                       CHRISTIAN JACKSON & YLENIA OSSOLA
+
+     Due date:
+
+                  06-15-2022
+
+     Balance due:
+
+                  $860
+
+     Transaction method:
+
+                  To pay by check or money order, write "2022 Form 1040-ES,"
+                  your name, address, SSN or ITIN, and daytime phone number on
+                  the payment, make it payable to "United States Treasury,"
+                  and mail to the address below. To pay using your bank
+                  account (at no extra cost to you), go to IRS.gov/Payments.
+                  To pay by credit or debit card (for a fee), go to
+                  1040paytax.com.
+
+     Other information:
+
+                  Detach the voucher below along the line and mail the voucher
+                  with your payment. Do not staple or attach the payment to
+                  the voucher.
+
+     Mail-to address:
+
+                  Internal Revenue Service
+                  P.O. Box 931100
+                  Louisville, KY 40293-1100
+
+     Taxpayer records:
+
+                  Amount paid                     ____________________
+                  Check number                    ____________________
+                  Date mailed                     ____________________
+                                                                         (Cut here)
+  Form 1040-ES (OCR)
+                                    2022                                                                                                    Calendar year -
+  Department of the Treasury
+  Internal Revenue Service       OMB No. 1545-0074         Estimated Tax
+                                                                                                             Payment
+                                                                                                             Voucher           2            Due June 15, 2022
+
+   Make your check or money order payable to "United States Treasury."                Amount of estimated tax you are
+   Enter your SSN and "2022 Form 1040-ES" on your payment.                            paying by check or money order.                                       860
+   If your name, address, or SSN is incorrect, see instructions.
+                                                                                                  For Privacy Act and Paperwork Reduction Act Notice, see instructions.
+
+                                                                                                                1024
+
+
+
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                             Internal Revenue Service
+5175 WEST 88TH PLACE                                                          P.O. Box 931100
+OAK LAWN, IL 60453                                                            Louisville, KY 40293-1100
+
+
+
+
+                                     350843760 NI JACK 30 0 202212 430
+         2022 Form 1040-ES Estimated Tax Voucher and Filing Instructions
+                       CHRISTIAN JACKSON & YLENIA OSSOLA
+
+     Due date:
+
+                  09-15-2022
+
+     Balance due:
+
+                  $860
+
+     Transaction method:
+
+                  To pay by check or money order, write "2022 Form 1040-ES,"
+                  your name, address, SSN or ITIN, and daytime phone number on
+                  the payment, make it payable to "United States Treasury,"
+                  and mail to the address below. To pay using your bank
+                  account (at no extra cost to you), go to IRS.gov/Payments.
+                  To pay by credit or debit card (for a fee), go to
+                  1040paytax.com.
+
+     Other information:
+
+                  Detach the voucher below along the line and mail the voucher
+                  with your payment. Do not staple or attach the payment to
+                  the voucher.
+
+     Mail-to address:
+
+                  Internal Revenue Service
+                  P.O. Box 931100
+                  Louisville, KY 40293-1100
+
+     Taxpayer records:
+
+                  Amount paid                     ____________________
+                  Check number                    ____________________
+                  Date mailed                     ____________________
+                                                                         (Cut here)
+  Form 1040-ES (OCR)
+                                    2022                                                                                                    Calendar year -
+  Department of the Treasury
+  Internal Revenue Service       OMB No. 1545-0074         Estimated Tax
+                                                                                                             Payment
+                                                                                                             Voucher           3            Due Sept. 15, 2022
+
+   Make your check or money order payable to "United States Treasury."                Amount of estimated tax you are
+   Enter your SSN and "2022 Form 1040-ES" on your payment.                            paying by check or money order.                                       860
+   If your name, address, or SSN is incorrect, see instructions.
+                                                                                                  For Privacy Act and Paperwork Reduction Act Notice, see instructions.
+
+                                                                                                                1024
+
+
+
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                             Internal Revenue Service
+5175 WEST 88TH PLACE                                                          P.O. Box 931100
+OAK LAWN, IL 60453                                                            Louisville, KY 40293-1100
+
+
+
+
+                                     350843760 NI JACK 30 0 202212 430
+         2022 Form 1040-ES Estimated Tax Voucher and Filing Instructions
+                       CHRISTIAN JACKSON & YLENIA OSSOLA
+
+     Due date:
+
+                  01-17-2023
+
+     Balance due:
+
+                  $860
+
+     Transaction method:
+
+                  To pay by check or money order, write "2022 Form 1040-ES,"
+                  your name, address, SSN or ITIN, and daytime phone number on
+                  the payment, make it payable to "United States Treasury,"
+                  and mail to the address below. To pay using your bank
+                  account (at no extra cost to you), go to IRS.gov/Payments.
+                  To pay by credit or debit card (for a fee), go to
+                  1040paytax.com.
+
+     Other information:
+
+                  Detach the voucher below along the line and mail the voucher
+                  with your payment. Do not staple or attach the payment to
+                  the voucher.
+
+     Mail-to address:
+
+                  Internal Revenue Service
+                  P.O. Box 931100
+                  Louisville, KY 40293-1100
+
+     Taxpayer records:
+
+                  Amount paid                     ____________________
+                  Check number                    ____________________
+                  Date mailed                     ____________________
+                                                                         (Cut here)
+  Form 1040-ES (OCR)
+                                    2022                                                                                                    Calendar year -
+  Department of the Treasury
+  Internal Revenue Service       OMB No. 1545-0074         Estimated Tax
+                                                                                                             Payment
+                                                                                                             Voucher           4            Due Jan. 17, 2023
+
+   Make your check or money order payable to "United States Treasury."                Amount of estimated tax you are
+   Enter your SSN and "2022 Form 1040-ES" on your payment.                            paying by check or money order.                                       860
+   If your name, address, or SSN is incorrect, see instructions.
+                                                                                                  For Privacy Act and Paperwork Reduction Act Notice, see instructions.
+
+                                                                                                                1024
+
+
+
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                             Internal Revenue Service
+5175 WEST 88TH PLACE                                                          P.O. Box 931100
+OAK LAWN, IL 60453                                                            Louisville, KY 40293-1100
+
+
+
+
+                                     350843760 NI JACK 30 0 202212 430
+                                             Computation of Regular Tax
+                                   (This page is not filed with the return. It is for your records only.)              2021
+Name(s) as shown on return                                                                                             Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                     350-84-3760
+
+
+
+                                 Statement for line 16 of Form 1040
+
+         Tax Rate Schedule for Married Filing Joint Filing Status
+         If taxable income is                                                                               of the
+                         but not                                                         % on               amount
+            over         over                          pay               plus            excess             over
+               0               19,900               0.00                                   10%                    0
+          19,900               81,050           1,990.00                                   12%               19,900
+          81,050              172,750           9,328.00                                   22%               81,050
+         172,750              329,850          29,502.00                                   24%              172,750
+         329,850              418,850          67,206.00                                   32%              329,850
+         418,850              628,300          95,686.00                                   35%              418,850
+         628,300             . . . . .        168,993.50                                   37%              628,300
+
+         $9,328.00 + (($150,710.00 - $81,050.00) x 22.0%) = $24,653
+
+         Tax from Tax Rate Schedule                                                                          $       24,653
+
+         $         24,653        Tax computed using only available method
+
+
+
+
+TAX_COMP.LD
+                                                   Recovery Rebate Credit Worksheet
+                                                                    (keep for your records)                                       2021
+Name(s) as shown on return                                                                                                        Tax ID Number
+
+ CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                350-84-3760
+
+   1.    Can you be claimed as a dependent on another person's 2021 return? If filing a joint return, go to line 2.
+         X No.      Go to line 2.
+            Yes. STOP You can't take the credit. Don’t complete the rest of this worksheet and
+                             don’t enter any amount on line 30.
+   2.    Does your 2021 return include a social security number that was issued on or before the due date of your 2021
+         return (including extensions) for you and, if filing a joint return, your spouse?
+         X Yes. Go to line 6.
+            No.     If you are filing a joint return, go to line 3.
+                    If you aren't filing a joint return, go to line 5.
+   3.    Was at least one of you a member of the U.S. Armed Forces at any time during 2021, and does at least one of you
+         have a social security number that was issued on or before the due date of your 2021 return (including extensions)?
+            Yes. Your credit is not limited. Go to line 6.
+            No.     Go to line 4.
+   4.    Does one of you have a social security number that was issued on or before the due date of your 2021 return
+         (including extensions)?
+            Yes. Your credit is limited. Go to line 6.
+            No.     Go to line 5.
+   5.    Do you have any dependents listed in the Dependents section on page 1 of Form 1040 or 1040-SR for whom you
+         entered a social security number that was issued on or before the due date of your 2021 return (including
+         extensions) or an adoption taxpayer identification number?
+            Yes. Enter zero on line 6 and go to line 7.
+            No.     STOP You can’t take the credit. Don’t complete the rest of this worksheet and
+                             don’t enter any amount on line 30.
+   6.    Enter:
+            • $1,400 if single, head of household, married filing separately, or qualifying widow(er),
+            • $1,400 if married filing jointly and you answered “Yes” to question 4, or
+            • $2,800 if married filing jointly and you answered “Yes” to question 2 or 3 . . . . . . . . . . . . . . . . . . . . 6.                 2,800
+   7.    Multiply $1,400 by the number of dependents listed in the Dependents section on page 1 of Form 1040 or
+         1040-SR for whom you entered a social security number that was issued on or before the due date of your 2021
+         return (including extensions) or an adoption taxpayer identification number . . . . . . . . . . . . . . . . . . . . . 7.                   1,400
+   8.    Add lines 6 and 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8.                     4,200
+   9.    Is the amount on line 11 of Form 1040 or 1040-SR more than the amount shown below for your filing status?
+             • Single or Married filing separately—$75,000
+             • Married filing jointly or qualifying widow(er)—$150,000
+             • Head of household—$112,500
+         X Yes.     Enter the amount from line 11 of Form 1040 or 1040-SR and go to line 10 . . . . . . . . . . . . . . . . . . 9.                175,810
+             No.    Enter the amount from line 8 on line 12 and skip lines 10 and 11.
+  10.    Is line 9 more than the amount shown below for your filing status?
+             • Single or married filing separately—$80,000
+             • Married filing jointly or qualifying widow(er)—$160,000
+             • Head of household—$120,000
+                              You can’t take the credit. Don’t complete the rest of this worksheet and
+         X Yes.       STOP
+                              don’t enter any amount on line 30.
+             No.     Subtract line 9 from the amount shown above for your filing status    . . . . . . . . . . . . . . . . . . . . 10.
+  11.    Divide line 10 by the amount shown below for your filing status. Enter the result as a decimal (rounded to at least
+         2 places).
+            • Single or married filing separately—$5,000
+            • Married filing jointly or qualifying widow(er)—$10,000
+            • Head of household—$7,500 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11.
+  12.    Multiply line 8 by line 11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12.
+  13.    Enter the amount, if any, of EIP 3 that was issued to you. If filing a joint return, include the amount, if any, of
+         your spouse’s EIP 3. You may refer to Notice 1444-C or your tax account information at IRS.gov/Account for the
+         amount to enter here       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13.
+  14.    Recovery rebate credit. Subtract line 13 from line 12. If zero or less, enter -0-. If line 13 is more than line 12,
+         you don’t have to pay back the difference. Enter the result here and, if more than zero, on line 30 of Form 1040 or
+         1040-SR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14.                            0
+
+
+
+
+WK_RRC.LD
+                                                   Mortgage Insurance Premiums
+                                                   Deduction Worksheet - Line 8d
+Schedule A                                                        (Keep for your records)                                       2021
+Name(s) as shown on return                                                                                                      Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                               350-84-3760
+  Before you begin:          See the instructions for line 8d to see if you must use this worksheet to figure your deduction.
+
+
+  1. Enter the total premiums you paid in 2021 for qualified mortgage insurance for a contract issued after
+     December 31, 2006 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.                       2,040
+  2. Enter the amount from Form 1040 or 1040-SR, line 11 . . . . . . . . . . . . . . . . . . . 2.                 175,810
+  3. Enter $100,000 ($50,000 if married filing separately) . . . . . . . . . . . . . . . . . . . . 3.             100,000
+  4. Is the amount on line 2 more than the amount on line 3?
+         No.     Your deduction isn't limited. Enter the amount from line 1 of this worksheet on
+                 Schedule A, line 8d. Don't complete the rest of this worksheet.
+     X Yes. Subtract line 3 from line 2. If the result isn't a multiple of $1,000 ($500
+                 if married filing separately), increase it to the next multiple of $1,000
+                 ($500 if married filing separately). For example, increase $425 to $1,000,
+                 increase $2,025 to $3,000; or if married filing separately, increase $425 to
+                 $500, increase $2,025 to $2,500, etc. . . . . . . . . . . . . . . . . . . . . . . 4.               76,000
+  5. Divide line 4 by $10,000 ($5,000 if married filing separately). Enter the result as a decimal. If the result
+     is 1.0 or more, enter 1.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5.                       1.0
+  6. Multiply line 1 by line 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6.                   2,040
+  7. Mortgage insurance premiums deduction. Subtract line 6 from line 1. Enter the result here
+     and on Schedule A, line 8d . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7.
+
+
+
+
+WK_PMI.LD
+                                                   Worksheet for Schedule 8812, Line 5
+Schedule 8812                                                        (Keep for your records)                                         2021
+Name(s) as shown on return                                                                                                           Tax ID Number
+
+  CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                  350-84-3760
+
+
+   1.    Multiply Schedule 8812, line 4b, by $3,600     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1.                       3,600
+
+   2.    Multiply Schedule 8812, line 4c, by $3,000     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.
+
+   3.    Add line 1 and line 2   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.                        3,600
+
+   4.    Multiply Schedule 8812, line 4a, by $2,000     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4.                       2,000
+
+   5.    Subtract line 4 from line 3   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5.                        1,600
+
+   6.    Enter the amount shown below for your filing status
+              • Married filing jointly - $12,500
+              • Qualifying widow(er) - $2,500
+              • Head of household - $4,375
+              • All other filing statuses - $6,250 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6.                       12,500
+
+   7.    Enter the smaller of line 5 or line 6   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7.                      1,600
+
+   8.    Enter the amount shown below for your filing status
+              • Married filing jointly or Qualifying widow(er) - $150,000
+              • Head of household - $112,500
+              • All other filing statuses - $75,000 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8.                       150,000
+
+   9.    Subtract line 8 from Schedule 8812, line 3
+              • If zero or less, enter -0-
+              • If more than zero and not a multiple of $1,000, enter the next multiple of $1,000
+         For example, if the result is $425, enter $1,000; if the result is $1,025, enter $2,000, etc   . . . . . . . . . . . . . . 9.                26,000
+
+  10.    Multiply line 9 by 5% (0.05) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10.                        1,300
+
+  11.    Enter the smaller of line 7 or line 10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11.                      1,300
+
+  12.    Subtract line 11 from line 3. Enter on Schedule 8812, line 5     . . . . . . . . . . . . . . . . . . . . . . . . . . . 12.                    2,300
+
+
+
+
+WK_8812.LD5
+                                                 Carryover Worksheet
+                                List of items that will carryover to the 2022 tax return
+                                        (This page is not filed with the return. It is for your records only.)                   2021
+Name(s) as shown on return                                                                                                       Tax ID Number
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                350-84-3760
+
+  Itemized Deductions                                                                                                                 Carryover Amount
+    Contributions subject to 100% of AGI limitations    ...................................
+    Contributions subject to 60% of AGI limitations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Contributions subject to 30% of AGI limitations (50% capital gains appreciated property) . . . . . . . . . . . . . . . . .
+    Contributions subject to 30% of AGI limitations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Contributions subject to 20% of AGI limitations (30% capital gains appreciated property) . . . . . . . . . . . . . . . . .
+    Taxable state and local refunds to Schedule 1 (Form 1040) line 1 . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    State/local taxes paid in 2022 to flow to the Schedule A    ...............................
+    State donations and contributions carryover     .....................................
+    State overpayment applied to next year . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  Expenses
+    Office in home operating expenses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Office in home excess casualty losses and depreciation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Disallowed investment interest expense   . . . . . . . . . . . . . . . . AMT                                 Reg. Tax
+    Section 179 expense . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Operating expenses, from Form WK_E, Sch E - Rental limitation on deductions when used for personal use . . . . . . .
+    Excess depreciation, from Form WK_E, Sch E - Rental limitation on deductions when used for personal use . . . . . . .
+  Losses
+    Short-term capital loss . . . . . . . . . . . . . . . . . . . . . . . . . AMT                                Reg. Tax
+    Long-term capital loss . . . . . . . . . . . . . . . . . . . . . . . . . AMT                                 Reg. Tax
+    Net operating loss . . . . . . . . . . . . . . . . . . . . . . . . . . . AMT                                 Reg. Tax
+    Excess business loss from Form 461 (becomes part of NOL next year)        AMT                                Reg. Tax
+    Qualified REIT and PTP loss carryover . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    QBI loss carryover . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Nonrecaptured net section 1231 losses from WK_1231C . . . . . . . . AMT                                      Reg. Tax
+  Credits
+    Mortgage interest credit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Credit for prior year minimum tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Foreign Tax credit . . . . . . . . . . . . . . . . . . . . . . . . . . . . AMT                                  Reg. Tax
+    District of Columbia first time home owner's credit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Res. energy efficient property credit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  Other
+    Preparer Fee . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Overpayment applied to next year's estimates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    Estimated Tax Payment 1                           860                                            Estimated Tax Payment 2                        860
+    Estimated Tax Payment 3                           860                                            Estimated Tax Payment 4                        860
+    Federal tax liability for 2210 calculation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                   22,353
+    State tax liability for state 2210 calculation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                    8,350
+    IRA basis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Taxpayer                                     Spouse
+    Disaster distributions taxable in 2022 . . . . . . . . . . . . . . . . Taxpayer                                   Spouse
+    Disaster distributions taxable in 2023 . . . . . . . . . . . . . . . . Taxpayer                                   Spouse
+    Excess repayments from 8915-F . . . . . . . . . . . . . . . . . . Taxpayer                                        Spouse
+    Deferred SE tax to be repaid by 12/31/2022 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+
+
+  Passive Activity
+
+
+  At Risk Limitations
+
+
+
+
+WK_CARRY.LD
+       FOR TAX YEAR 2021
+ CHRISTIAN JACKSON & YLENIA OSSOLA
+
+
+
+
+DLC TAX SERVICES AND ACCOUNTING INC
+
+      1520 WASHINGTON STREET
+
+        WAUKEGAN, IL 60085
+
+           (847)721-4477
+                                2021 Filing Instructions
+                            CHRISTIAN JACKSON & YLENIA OSSOLA
+
+         Form filed:
+
+               Form 1040 and supplemental forms and schedules
+
+         Filing method:
+
+               Your return will be e-filed once your signed and dated Form
+               8879 has been received by this office. Do not mail your
+               return to the IRS.
+
+         Due date:
+
+               04-18-2022
+
+         Balance due:
+
+               $1,180
+
+         Transaction method:
+
+               Your payment will be withdrawn on 04-15-2022 from your BANK
+               OF AMERICA checking account ending in 1086. To cancel this
+               payment, contact the IRS E-file Payment Inquiry and
+               Cancellation Service at (888) 353-4537 no later than two
+               business days before the scheduled payment date.
+
+
+
+
+FILEINST.LD
+                                                               Individual
+1040                                                                                                                                     2021
+                                                          Diagnostic Summary
+Name(s)                                                                                                                     Social Security No.
+
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                           350-84-3760
+                                                                                                                            Spouse SSN No.
+
+                                                                                                                            769-87-6561
+Mailing Address:                                                                             Taxpayer                         Spouse
+  5175 WEST 88TH PLACE                                                   Daytime Phone:
+  OAK LAWN, IL 60453                                                     Evening Phone:
+                                                                         Cell Phone:         312-532-2442                     312-532-2442
+                                                                         TP email:
+Resident State:      IL                                                  SP email:           yle.ossola@gmail.com
+Date of Birth:     Taxpayer     12-07-1989                     Spouse      08-19-1987
+
+Dependent Information:        (*If more than 5 dependents see last page of summary)
+ Name                                                      SSN                    Relationship          Date of Birth           Dependent Status
+MATTEO JACKSON                                           683-77-6012             SON                    11-29-2021             Dependent
+
+
+
+
+Preparer:   GIOVANNI L BERNARDI                                    Invoice:                             Date:   03-15-2022
+
+Return Information            Form Type: 1040
+
+
+                                                                       2021                                             2020 Federal
+              Item on Return
+                                                                      Federal                                           (If available)
+ Filing Status                                                                            2
+ Exemptions (suspended until tax year 2025)                                             N\A                                                         N\A
+ Total Income                                                                       175,810
+ AGI                                                                                175,810
+ Deductions                                                                          25,100
+ Taxable Income                                                                     150,710
+ Tax (before credits)                                                                24,653
+ Tax Rate Percentage                                                                     22
+ SE Tax
+ Tax (after credits)                                                                   24,653
+ EIC
+ Additional CTC                                                                         2,300
+ Overpayment
+ Refund
+ Refund Applied to ES
+ Balance Due                                                                            1,180
+
+Form of Refund/Payment: The client has chosen to pay by direct debit.
+
+
+State/City Information    (* If more than 8 states see last page of summary)
+                                                                                  Taxable                                            Refund/
+   T/S/J           State/City                          AGI                        Income                  Tax                     (Balance Due)
+      J              IL1040                        175,810                      168,685                 8,156                                 544
+                                                     TAX RETURN COMPARISON
+                                                                                                                                    2021
+                                                          2019 / 2020 / 2021
+                                        (This page is not filed with the return. It is for your records only.)
+ Name(s) as shown on return                                                                                                 Identifying number
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                           350-84-3760
+
+                                                      2019                        2020                       2021              Difference 2020-2021
+ Filing Status . . . . . . . . . . . . . .                                                          Married Joint
+ Number of Dependents . . . . . . . . .                                                                     1                             1
+
+ Income
+   Wages, salaries, tips, etc. . . . . . . .                                                                     175,810                      175,810
+   Taxable interest and dividends . . . .
+   Taxable state and local refunds . . . .
+   Alimony. . . . . . . . . . . . . . . .
+   Business income (loss) . . . . . . . .
+   Gains (losses) . . . . . . . . . . . .
+   Pensions and IRA distributions . . . .
+   Rent and royalty income (loss) . . . .
+   Part, S-corps, trusts income (loss) . . .
+   Farm income (loss) . . . . . . . . . .
+   Unemployment compensation . . . . .
+   Total SS benefits received. . . . . . .
+   Taxable SS benefits. . . . . . . . . .
+   Other income (loss) . . . . . . . . . .
+   Total Income . . . . . . . . . . . . .                                                                        175,810                      175,810
+ Adjusted Gross Income
+   Half of self-employment tax . . . . . .
+   IRA deduction. . . . . . . . . . . . .
+   Other adjustments . . . . . . . . . .
+   Total Adjusted Gross Income . . . .                                                                           175,810                      175,810
+ Deductions
+   Medical deductions . . . . . . . . . .
+   State and local taxes . . . . . . . . .
+   Interest . . . . . . . . . . . . . . . .
+   Contributions . . . . . . . . . . . . .
+   Employee business expenses . . . . .
+   Standard or other deductions . . . . .                                                                         25,100                         25,100
+   Total deductions claimed . . . . . .                                                                           25,100                         25,100
+ Qualified Business Income Deduction .
+ Tax and Credits
+   Taxable Income . . . . . . . . . . .                                                                          150,710                      150,710
+   Tax. . . . . . . . . . . . . . . . . .                                                                         24,653                       24,653
+   Credits . . . . . . . . . . . . . . . .
+   Self-employment tax . . . . . . . . .
+   Other taxes . . . . . . . . . . . . . .
+   Total Tax . . . . . . . . . . . . . . .                                                                        24,653                         24,653
+ Payments
+   Withholdings . . . . . . . . . . . . .                                                                         21,173                         21,173
+   Estimated tax payments . . . . . . . .
+   Earned income credit . . . . . . . . .
+   Other payments and credits . . . . . .                                                                           2,300                         2,300
+   Estimated tax penalty . . . . . . . .
+ Overpayment         ............
+   Overpayment Applied . . . . . . . . .
+ Refund . . . . . . . . . . . . . . . .
+ Balance Due . . . . . . . . . . . . . .                                                                            1,180                         1,180
+Marginal tax rate . . . . . . . . . . . . .                                                                         22.00                         22.00
+Effective tax rate . . . . . . . . . . . . .                                                                        16.36                         16.36
+                                            Account Transaction Summary                                                        2021
+    Name(s) as shown on return                                                                                    Your ID Number
+
+      CHRISTIAN JACKSON & YLENIA OSSOLA                                                                            XXX-XX-3760
+
+    Account #1
+    Financial Institution                              BANK OF AMERICA
+    Routing Transit Number                             081904808
+    Account Number                                     002913041086
+    Account Type                                       checking
+
+        Federal Main Form
+        Federal Debit                                    (1,180)                     Date of Debit                   04-15-2022
+
+        State Main Form(s)
+        IL Deposit                                        544
+                                                    __________
+        Net Debit                                        (636)
+
+
+
+
+      PLEASE VERIFY BANK INFORMATION
+      1. Bank Name
+      2. Bank Routing Transit Number
+      3. Bank Account Number
+      4. Bank Account Type
+
+
+      This information is used to deposit your refund or to pay any amount due. If you have provided incorrect information,
+      or you have closed the account, you are responsible.
+
+
+      I have reviewed the above information and certify that this information is correct and authorize DLC TAX SERVICES AND ACCOUNTING INC
+      to use this account.
+
+
+
+
+      Your Signature                                   Date                Spouse's Signature (If Married Filing Jointly)          Date
+
+
+DD_PMT.LD
+                                                                        2021
+    ILNOTES                      Notes about the return               PAGE 1
+    Name(s) as shown on return                                    SSN/FEIN
+  CHRISTIAN JACKSON & YLENIA OSSOLA                                   350-84-3760
+
+
+
+  27         State Refund Expectations:
+
+             The Illinois Department of Revenue (IDOR) is required to review
+             returns and ensure the amounts requested as refunds are issued
+             accurately and to the legitimate recipient. Once a return is
+             received by IDOR, many different factors can affect the timing of a
+             refund.
+
+             https://www2.illinois.gov/rev/individuals/Pages/refunds.aspx
+
+             Some returns take longer to review than others for many reasons
+             including, but not limited to,
+
+             * when and how the return was filed,
+             * our current return inventory levels,
+             * identity theft and fraud security measures,
+             * the types of income tax credits claimed, and
+             * the type and amount of a refund.
+
+  32         By using a computer system and software to prepare and transmit my
+             client's return electronically, I consent to the disclosure of all
+             information pertaining to my use of the system and software to
+             create my client's return and to the electronic transmission of my
+             client's tax return to the Illinois Department of Revenue, as
+             applicable by law.
+
+
+
+
+ILNOTES.LD
+                   2021 IL1040 Filing Instructions
+                   CHRISTIAN JACKSON & YLENIA OSSOLA
+
+Form filed:
+
+      IL1040 and supplemental forms and schedules
+
+Filing method:
+
+      Your return will be e-filed, do not mail your return
+
+Due date:
+
+      04-18-2022
+
+Refund:
+
+      $544.00
+
+Transaction method:
+
+      The refund will be directly deposited into your checking
+      account at Bank Of America ending in 1086.
+
+Other instructions:
+
+      Electronically filed voucher, Do NOT mail. This estimated
+      voucher is for your documentation purposes ONLY.
+                  Illinois Department of Revenue                                                                                            Submission ID
+
+                  2021 IL-8453 Illinois Individual Income Tax Electronic Filing Declaration
+                  (Do not mail Form IL-8453 to the Illinois Department of Revenue unless it is requested for review.)
+ Step 1: Provide taxpayer information
+          CHRISTIAN JACKSON & YLENIA OSSOLA                                                                                                                      350-84-3760
+ Print     First name and middle initial                 Spouse's first name (and last name if different)                    Last name                           Social Security number
+ or
+ type     5175 WEST 88TH PLACE                                                                                                                                   769-87-6561
+           Mailing address                                                                                                                                       Spouse's Social Security number
+
+          OAK LAWN, IL                              60453                                                                                                        312-532-2442
+           City                                                                   State                                ZIP                                       Daytime phone number
+
+ Step 2: Complete information from tax return
+ 1 Net income from Form IL-1040, Line 11                                                                                                                                    1              168,685 00
+ 2 Tax from Form IL-1040, Line 14                                                                                                                                           2                8,350 00
+ 3 Illinois Income Tax withheld from Form IL-1040, Line 25 only (enter "0" if none)                                                                                         3                8,700 00
+ 4 Overpayment from Form IL-1040, Line 36                                                                                                                                   4                  544 00
+ 5 Total amount due from Form IL-1040, Line 40                                                                                                                              5                                 00
+ 6 Filing status:      Single     X Married filing jointly    Married filing separately                                                  Widowed                Head of household
+
+
+ Step 3: Complete direct deposit of refund or electronic funds withdrawal information (Optional)
+ To initiate a payment or refund transaction, the information in this Step must be included within the electronic transmission. Illinois
+ does not support international ACH transactions. IDOR will only perform direct transactions (e.g., debit, deposit) with financial institutions located
+ within the United States or those not funded by international funds. Electronic payments will not be accepted and refunds will be via paper check.
+ 7 Routing no. (RN): 081904808
+ 8 Account no. (AN): 002913041086
+ 9 Type of account: X Checking              Savings
+ 10 Date the payment is to be electronically withdrawn:
+ 11 Electronic funds withdrawal amount:                                 00
+ 12 Name on account:
+
+ Step 4: Taxpayer declaration and signature (Sign only after completing Step 2 and, if applicable, Step 3.)
+
+         X Icorrect.
+             consent that my refund may be directly deposited as designated in Step 3 and declare the information on Lines 7 through 9 is
+                     If I have filed a joint return, this is an irrevocable appointment of the other spouse as an agent to receive the refund.
+          I authorize the Illinois Department of Revenue (IDOR) and its designated financial agent to initiate an ACH electronic funds
+          withdrawal as designated in the electronic portion of my 2021 Illinois Individual Income Tax return. I authorize the financial institutions
+          involved in the processing of an electronic overpayment of taxes to receive confidential information necessary to answer inquiries
+          and resolve issues related to the payment.
+          I do not want direct deposit of my refund, or an electronic funds withdrawal (direct debit) of my balance due.
+ Under penalties of perjury, I declare the information on my electronic Form IL-1040 and the information I provided to my electronic return
+ originator (ERO) are identical. To the best of my knowledge, my return is true, correct, and complete. I consent that my return, this declaration,
+ and accompanying information may be sent to IDOR by my ERO. I authorize IDOR to inform my ERO and/or the transmitter when my return has
+ been accepted or rejected. If rejected, I authorize IDOR to identify the reason(s) so the return may be corrected and retransmitted if possible.
+
+ Sign
+ here               Your signature                                                                    Date                   Spouse's signature (if joint return, both must sign)                  Date
+
+
+
+ Step 5: Electronic return originator (ERO) and paid preparer declaration and signature
+ I declare that I have examined this taxpayer's electronic Form IL-1040, the information on this Form IL-8453, and accompanying information. I
+ have followed all requirements of this program and declare, under penalties of perjury, that to the best of my knowledge the taxpayer's return
+ and accompanying information are true, correct, and complete.
+                                                                                                                       03-15-2022                          Check if paid preparer:           X     (See instructions.)
+                  ERO's signature                                                                                   Date
+
+
+ ERO
+                  DLC TAX SERVICES AND ACCOUNTING INC                                                                                                      P00643590
+                  Firm's name or your name if self-employed                                                                                                Your PTIN
+ use
+ only
+                  1520 WASHINGTON STREET                                                                                                                   87-2909865
+                  Mailing address                                                                                                                          Federal employer identification no. (FEIN)
+
+                  WAUKEGAN, IL 60085                                                                                                                       847-721-4477
+                  City                                                            State                             ZIP                                    Daytime phone number
+
+
+Step 6:                  Attach required documents (e.g., W-2 forms, 1099 forms, IL-1310).
+                         Do not mail Form IL-8453 and these documents unless requested for review.
+                                                              This form is authorized as outlined under the Illinois Income Tax Act. Disclosure of
+Printed by the authority of the State of Illinois
+IL-8453 (R-12/21)                                             this information is required. Failure to provide information could result in a penalty.
+ID: 2EB
+                                              Illinois Department of Revenue
+                                              2021 Form IL-1040                                                                                or for fiscal year ending      /
+                                              Individual Income Tax Return
+                                              Over 80% of taxpayers file electronically. It is easy and you will get your refund faster. Visit tax.illinois.gov.
+
+
+
+
+                                                                                                                                                                                     NO HANDWRITTEN ENTRIES ON THIS FORM
+                                   Step 1: Personal Information
+
+
+                                   350-84-3760                                         769-87-6561
+                                   1989                                                1987
+                                   CHRISTIAN JACKSON
+                                   YLENIA OSSOLA
+
+                                   5175 WEST 88TH PLACE
+                                   OAK LAWN, IL 60453
+                                   COOK
+                                   B Filing status: Single X Married filing jointly           Married filing separately        Widowed        Head of household
+                                   C   Check If someone can claim you, or your spouse if filing jointly, as a dependent. See instructions.     You       Spouse
+                                   D   Check the box if this applies to you during 2021:    Nonresident - Attach Sch. NR       Part-year resident - Attach Sch. NR
+                                   Step 2: Income                                                                                             (Whole dollars only)
+                                   1 Federal adjusted gross income from your federal Form 1040 or 1040-SR, Line 11.                         1      175,810.00
+                                   2 Federally tax-exempt interest and dividend income from your federal Form 1040 or 1040-SR, Line 2a.     2                      .00
+                                   3 Other additions. Attach Schedule M.                                                                    3                      .00
+                                   4 Total income. Add Lines 1 through 3.                                                                   4      175,810.00
+                                   Step 3: Base Income
+                                   5 Social Security benefits and certain retirement plan income
+                                      received if included in Line 1. Attach Page 1 of federal return.                    5             .00
+                                   6 Illinois Income Tax overpayment included in federal Form 1040 or 1040-SR,
+                                      Schedule 1, Ln. 1.                                                                   6            .00
+
+
+
+
+  Staple W-2 and 1099 forms here
+                                   7  Other subtractions. Attach Schedule M.                                               7            .00
+                                       Check if Line 7 includes any amount from Schedule 1299-C.
+                                   8 Add Lines 5, 6, and 7.This is the total of your subtractions.                                                               8                 .00
+                                   9 Illinois base income. Subtract Line 8 from Line 4.                                                                          9         175,810.00
+                                   Step 4: Exemptions
+                                   10 a Enter the exemption amount for yourself and your spouse. See instructions.                        a     4,750 .00
+                                       b Check if 65 or older:           You +        Spouse       # of checkboxes x $1,000 =             b                .00
+                                       c Check if legally blind:         You +        Spouse        # of checkboxes x $1,000 =            c                .00
+                                       d If you are claiming dependents, enter the amount from Schedule IL-E/EIC, Step 2, Line 1.
+                                         Attach Schedule IL-E/EIC.                                                                        d     2,375 .00
+                                       Exemption allowance. Add Line 10a through 10d.                                                                            10          7,125.00
+                                   Step 5: Net Income and Tax
+                                   11 Residents: Net income. Subtract Line 10 from Line 9.
+                                       Nonresidents and part-year residents: Enter the Illinois net income from Schedule NR. Attach Schedule NR.                 11        168,685.00
+                                   12 Residents: Multiply Line 11 by 4.95% (.0495). Cannot be less than zero.
+                                       Nonresidents and part-year residents: Enter the tax from Schedule NR.                                                     12          8,350.00
+                                   13 Recapture of investment tax credits. Attach Schedule 4255.                                                                 13
+
+
+
+
+Staple your check and IL-1040-V
+                                                                                                                                                                                   .00
+                                   14 Income tax. Add Lines 12 and 13. Cannot be less than zero.                                                                 14          8,350.00
+                                   Step 6: Tax After Nonrefundable Credits
+                                   15 Income tax paid to another state while an Illinois resident. Attach Schedule CR.                    15               .00
+                                   16 Property tax and K-12 education expense credit amount from Schedule ICR.
+                                       Attach Schedule ICR.                                                                    16        194 .00
+                                   17 Credit amount from Schedule 1299-C. Attach Schedule 1299-C.                              17            .00
+                                   18 Add Lines 15, 16, and 17.This is the total of your credits. Cannot exceed the tax amount on Line 14.        18       194.00
+                                   19 Tax after nonrefundable credits. Subtract Line 18 from Line 14.                                             19     8,156.00
+                                   Step 7: Other Taxes
+                                   20 Household employment tax. See instructions.                                                                 20          .00
+                                   21 Use tax on internet, mail order, or other out-of-state purchases from UT Worksheet or UT Table
+                                      in the instructions. Do not leave blank.                                                                    21         0.00
+                                   22 Compassionate Use of Medical Cannabis Program Act and sale of assets by gaming licensee surcharges. 22                  .00
+                                      23 Total Tax. Add Lines 19, 20, 21, and 22.                                                       23       8,156 .00
+                                       IL-1040 2D Front (R-12/21)                      This form is authorized as outlined under
+                                       Printed by authority of the State of Illinois   the Illinois Income Tax Act. Disclosure of
+                                       ID: 2EB                                         this information is required. Failure to provide
+                                                                                       information could result in a penalty.
+                                                                                                                                                                   NO HANDWRITTEN ENTRIES OTHER THAN SIGNATURE ON THIS FORM
+        24 Total tax from Page 1, Line 23.                                                                                  24           8,156.00
+  Step 8: Payments and Refundable Credit
+  25 Illinois Income Tax withheld. Attach Schedule IL-WIT.                                                     25         8,700.00
+  26 Estimated payments from Forms IL-1040-ES and IL-505-I,
+        including any overpayment applied from a prior year return.                                            26                  .00
+  27 Pass-through withholding. Attach Schedule K-1-P or K-1-T.                                                 27                  .00
+  28 Pass-through entity tax credit. Attach Schedule K-1-P or K-1-T.                                           28                  .00
+  29 Earned Income Credit from Schedule IL-E/EIC, Step 4, Line 8. Attach Schedule IL-E/EIC.                    29                  .00
+  30 Total payments and refundable credit. Add Lines 25 through 28.                                                                      30        8,700.00
+  Step 9: Total
+  31 If Line 30 is greater than Line 24, subtract Line 24 from Line 30.                                                                  31            544.00
+  32 If Line 24 is greater than Line 30, subtract Line 30 from Line 24.                                                                  32                  .00
+
+  Step 10: Underpayment of Estimated Tax Penalty and Donations-Only complete Step 10 for late-payment penalty
+  for underpayment of estimated tax or to make a voluntary charitable donation.
+  33 Late-payment penalty for underpayment of estimated tax.                                33            .00
+      a    Check if at least two-thirds of your federal gross income is from farming.
+      b    Check if you or your spouse are 65 or older and permanently living in a nursing home.
+      c    Check if your income was not received evenly during the year and you annualized your income on Form IL-2210.
+           Attach Form IL-2210.
+        d  Check if you were not required to file an Illinois Individual Income Tax return in the previous tax year.
+   34 Voluntary charitable donations. Attach Schedule G.                                        34                .00
+   35 Total penalty and donations. Add Lines 33 and 34.                                                               35                                     .00
+
+  Step 11: Refund
+  36 If you have an amount on Line 31 and this amount is greater than Line 35, subtract Line 35 from Line 31.
+        This is your overpayment.                                                                                                        36            544.00
+  37 Amount from Line 36 you want refunded to you. Check one box on Line 38. See instructions.                                           37            544.00
+  38 I choose to receive my refund by
+     a X direct deposit - Complete the information below if you check this box.
+                   You may contribute
+                to college savings funds     Routing number    081904808                                       X Checking or         Savings
+                  here. See instructions!
+                                             Account number    002913041086
+    b   paper check.
+  39 Amount to be credited forward. Subtract Line 37 from Line 36. See instructions.                                                     39                  .00
+
+  Step 12: Amount You Owe
+  40 If you have an amount on Line 32, add Lines 32 and 35. - or -
+     If you have an amount on Line 31 and this amount is less than Line 35,
+     subtract Line 31 from Line 35.This is the amount you owe.See instructions.                                                          40                0.00
+   Step 13: If this is a joint return, both you and your spouse must sign below.
+               Under penalties of perjury, I state that I have examined this return and, to the best of my knowledge, it is true, correct, and complete.
+Sign         Your signature                      Date (mm/dd/yyyy) Spouse's signature                      Date (mm/dd/yyyy) Daytime phone number
+Here                                                                                                                              312-532-2442
+             Print/Type paid preparer's name                        Paid preparer's signature               Date (mm/dd/yyyy)                  Paid Preparer's PTIN
+                                                                                                                                      Check if
+Paid     GIOVANNI L BERNARDI                                                                                03/15/2022           self-employed P00643590
+Preparer
+         Firm's name    DLC TAX SERVICES AND ACCOUNTING I                                                 Firm's FEIN            87-2909865
+Use Only                1520 WASHINGTON STREET
+             Firm's address                 WAUKEGAN, IL 60085                                            Firm's phone           847-721-4477
+Third    Designee's name (please print)                                           Designee's phone number                           Check if the Department may
+Party                                                                                                                            discuss this return with the third
+Designee                                                                                                                         party designee shown in this step.
+
+
+
+
+                                     Refer to the 2021 IL-1040 Instructions for the address to mail your return.
+
+
+       IL-1040 2D Back (R-12/21) ID: 2EB
+                                                   DR                   AP                      RR     DC      IR    ID
+          Illinois Department of Revenue
+          2021 Schedule ICR                                    Illinois Credits
+          Attach to your Form IL-1040                                                                                                                  IL Attachment No. 23
+
+Read this information first                                                      You must complete Form IL-1040 through Line 14 and
+Complete this schedule only if you are eligible for the                          Schedule CR, if applicable, before completing this schedule.
+  Illinois Property Tax Credit - See Publication 108.
+                                                                                 The total amount of Illinois Property Tax Credit and K-12
+  K-12 Education Expense Credit - See Publications 112, 119,
+                                                                                 Education Expense Credit cannot exceed tax due.
+  and 132.
+
+
+Step 1: Provide the following information
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                       350-84-3760
+Your name as shown on your Form IL-1040                                                 Your Social Security number
+
+Step 2: Figure your nonrefundable credit
+1    Enter the amount of tax from your Form IL-1040, Line 14.                                                                                 1                     8,350 .00
+2    Enter the amount of credit for tax paid to other states from your Form IL-1040, Line 15.                                                 2                         0 .00
+3    Subtract Line 2 from Line 1.                                                                                                             3                     8,350 .00
+Section A - Illinois Property Tax Credit                    (See instructions for directions on how to obtain your property number)
+4    a Enter the total amount of Illinois Property Tax paid during the
+       tax year for the real estate that includes your principal residence.                          4a             3,871 .00
+     b Enter the county and property number of your principal residence. See instructions.
+       4b COOK                                                 24-04-226-012-0000
+                               County                                      Property number
+     c Enter the county and property number of an adjoining lot, if included in Line 4a.
+         4c
+                               County                                      Property number
+     d Enter the county and property number of another adjoining lot, if included in Line 4a.
+         4d
+                               County                                      Property number
+     e Enter the portion of your tax bill that is deductible as a business
+       expense on U.S. income tax forms or schedules, even
+       if you did not take the federal deduction.                                                    4e                       .00
+     f Subtract Line 4e from Line 4a.                                                                4f             3,871 .00
+     g Multiply Line 4f by 5% (.05).                                                                 4g                 194 .00
+5    Compare Lines 3 and 4g, and enter the lesser amount here.                                                                    5                                         194 .00
+6    Subtract Line 5 from Line 3.                                                                     6             8,156 .00
+Section B - K-12 Education Expense Credit
+ Note You must complete the K-12 Education Expense Credit Worksheet on the back
+of this schedule and attach any receipt(s) you received from your student's school to claim
+an education expense credit.
+
+7    a Enter the total amount of K-12 education expenses from Line 11
+       of the worksheet on the back of this schedule.                                                7a                                   .00
+     b You may not take a credit for the first $250 paid.                                            7b                               250.00
+     c Subtract Line 7b from Line 7a. If the result is negative, enter "zero."                       7c                                   .00
+     d Multiply Line 7c by 25% (.25). Compare the result and $750, and
+       enter the lesser amount here.                                                                 7d                                     .00
+8    Compare Lines 6 and 7d, and enter the lesser amount here.                                                                                8                                     .00
+
+
+Section C - Total Nonrefundable Credit
+9    Add Lines 5 and 8. This is your nonrefundable credit amount. Enter this amount on
+     Form IL-1040, Line 16.                                                                                                                   9                           194 .00
+IL-1040 Schedule ICR Front (R-12/21)                                                             This form is authorized as outlined under the Illinois Income Tax Act. Disclosure of
+Printed by authority of the State of Illinois                                                    this information is required. Failure to provide information could result in a penalty.
+ID: 2EB
+          Illinois Department of Revenue
+          2021 Schedule IL-E/EIC                                    Illinois Exemption and Earned Income Credit
+          Attach to your Form IL-1040                                                                                                                IL Attachment No. 30
+
+Read this information first
+Complete this schedule only if you are claiming dependents or are                You must have claimed the federal Earned Income Credit in order to
+eligible for the Illinois Earned Income Credit. If you fraudulently claim        claim the Illinois Earned Income Credit. The total amount of Illinois
+the Earned Income Credit, you may not be allowed to claim the credit             Earned Income Credit may exceed the amount of tax.
+for up to ten years.You also may have to pay penalties.
+ Note   If claiming the Illinois Earned Income Credit, you must attach a copy of pages 1 and 2 of your federal Form 1040 or 1040-SR to this schedule.
+
+Step 1: Provide the following information
+CHRISTIAN JACKSON & YLENIA OSSOLA                                                  350-84-3760
+Your name as shown on your Form IL-1040                                           Your Social Security number
+
+Illinois Dependent Exemption Allowance
+Step 2: Dependent information
+Complete the table for each person you are claiming as a dependent. Note: If you are claiming more than ten dependents, complete
+and attach additional Dependent information tables.
+
+                                                                                                                                                    Number               Eligible
+                                                                                  Dependent's            Dependent's               Full   Person       of                   for
+   Dependent's first             Dependent's last name     Social Security        relationship           date of birth             time     with
+        name                                                  number                                                                                months               Earned
+                                                                                     to you             (mm/dd/yyyy)             student disability living               Income
+                                                                                                                                                   with you               Credit
+
+                                                                                                                                                                  12        X
+MATTEO                     JACKSON                       683-77-6012             SON                   11/29/2021
+
+
+
+
+1 Multiply the total number of dependents you are claiming by $2,375.                     1       X $ 2,375
+  Enter the result here and on Form IL-1040, Line 10d.                                                                                    1                            2,375 .00
+
+
+
+
+    Continue to Page 2 to calculate Illinois Earned Income Credit
+
+
+        IL-1040 Schedule IL-E/EIC Front (R-12/21)                            This form is authorized as outlined under the Illinois Income Tax Act. Disclosure of
+        Printed by authority of the State of Illinois                        this information is required. Failure to provide information could result in a penalty.
+        ID:2EB
+                                                   Three-year State Tax Return Comparison
+    IL-COMP                                                                                                     2021
+      Name(s) as shown on return                                                                         Taxpayer ID Number
+   CHRISTIAN JACKSON & YLENIA OSSOLA                                                                     350-84-3760
+
+
+    [State] Income Tax Return                            2019             2020              2021         Difference 2020-2021
+      Filing Status . . . . . . . . . . . . . .                                         MFJ
+      Gross Income. . . . . . . . . . . . . .                                            175,810                 175,810
+      Additions . . . . . . . . . . . . . . . .
+      Subtractions . . . . . . . . . . . . . .
+      Exemptions . . . . . . . . . . . . . .                                                  7,125                  7,125
+      Standard Deduction . . . . . . . . . . .
+      Itemized Deduction . . . . . . . . . . .
+      Deductions . . . . . . . . . . . . . . .
+      Taxable Income. . . . . . . . . . . . .                                               168,685              168,685
+      Actual State Income. . . . . . . . . . .                                              168,685              168,685
+      State Income Tax . . . . . . . . . . . .                                                8,156                8,156
+      Local Taxes . . . . . . . . . . . . . .
+      Use Tax . . . . . . . . . . . . . . . .
+      Contributions . . . . . . . . . . . . . .
+      Income Tax Withheld . . . . . . . . . .                                                 8,700                  8,700
+      Estimates and Extension payments . . .
+      Underpayment Penalty . . . . . . . . .
+      Overpayment Applied to Next Year . . .
+      Refund . . . . . . . . . . . . . . . . .                                                     544                   544
+      Balance Due . . . . . . . . . . . . . .
+      Marginal tax rate . . . . . . . . . . . .                                         4.950000               4.950000
+      Effective tax rate . . . . . . . . . . . .                                        4.835000               4.835000
+
+
+
+
+IL-COMP.LD
+                                                     For your records only.                                2021 AGI
+    ILWK_AGI                                  Adjusted Gross Income Split Worksheet                   FD/ST     Summary
+     Name(s) as shown on state return                                                                 Social Security Number
+    CHRISTIAN JACKSON & YLENIA OSSOLA                                                                 350-84-3760
+                                                                                 Federal                           State
+         Federal 1040 Income and Adjustments
+                                                                        Col. A              Col. B      Col. A             Col. B
+                                                                      Taxpayer             Spouse    Taxpayer           Spouse
+    Federal 1040
+     1 Wages, salaries, tips, etc. . . . . . . . . . . . . . .   1      75,872              99,938      75,872             99,938
+     2b Taxable interest . . . . . . . . . . . . . . . . . .     2b
+     3b Ordinary dividends . . . . . . . . . . . . . . . . .     3b
+     4b Taxable amount of IRA distributions . . . . . . . . .    4b
+     5b Taxable amount of Pensions and annuities . . . . . .     5b
+     6b Taxable amount of Social security benefits . . . . . .   6b
+     7 Capital gain or (loss) . . . . . . . . . . . . . . . .    7
+     8 Other income from Schedule 1 . . . . . . . . . . .        8
+     9 Total income (Sum of Lines 1-8) . . . . . . . . . .       9      75,872              99,938      75,872             99,938
+     10 Adjustments to income from Schedule 1      ......        10
+     11 Adjusted Gross Income (line 9 - line 10) . . . . . .     11     75,872              99,938      75,872             99,938
+
+    Schedule 1 - Additional Income
+     1  Taxable refunds, credits, or offsets
+        of state and local income taxes . . . . . . . . . . .    1
+     2a Alimony received . . . . . . . . . . . . . . . . . .     2a
+     3 Business income or (loss) . . . . . . . . . . . . . .     3
+     4 Other gains or (losses) . . . . . . . . . . . . . . .     4
+     5 Rental real estate, royalties, partnerships,
+        S corporations, trusts, etc. . . . . . . . . . . . . .   5
+     6 Farm income or (loss). . . . . . . . . . . . . . . .      6
+     7 Unemployment compensation . . . . . . . . . . . .         7
+     8 Other income.. . . . . . . . . . . . . . . . . . . .      8
+     10 Total Additional Income (Sum of lines 1-8) . . . . . .   10
+
+
+    Schedule 1 - Adjustments to Income
+    11  Educator Expenses . . . . . . . . . . . . . . . . . 11
+    12  Certain business expenses of reservists,
+        performing artists, & fee-basis gov. officials           12
+    13 Health savings account deduction . . . . . . . . . . 13
+    14 Moving expenses . . . . . . . . . . . . . . . . . . 14
+    15 Deductible part of self-employment tax . . . . . . . 15
+    16 Self-employed SEP, SIMPLE, and
+        qualified plans . . . . . . . . . . . . . . . . . . . 16
+    17 Self-employed health insurance deduction        . . . . . 17
+    18 Penalty on early withdrawal of savings . . . . . . . 18
+    19a Alimony paid . . . . . . . . . . . . . . . . . . . . 19a
+    20 IRA deduction. . . . . . . . . . . . . . . . . . . . 20
+    21 Student loan interest deduction . . . . . . . . . . . 21
+    22 Reserved . . . . . . . . . . . . . . . . . . . . . 22
+    23 Archer MSA Deduction . . . . . . . . . . . . . . . 23
+    24 Other Deductions (see STWK_ADJ) . . . . . . . . 24
+    26 Total Adjustments to income (Sum of lines 11-24) . . 26
+
+
+
+
+ILWK_AGI.LD
+       Illinois Department of Revenue
+       2021 Schedule IL-WIT Illinois Income Tax Withheld
+       Attach to your Form IL-1040. If you have more than five withholding forms, complete multiple copies of this schedule.                                               IL Attachment No. 31
+                                                          Use the reference for Column A shown in the chart below.
+                                        Form Type                   Letter Code for               Form Type                      Letter Code for
+                                                                      Column A                                                     Column A
+                                              W-2                          W                        1099-DIV                                 D
+                                             W-2G                         WG                        1099-INT                                  I
+                                            1099-R                         R                          1042-S                                  S
+                                            1099-G                         G                          1099-B                                  B
+                                        1099-MISC                          M                          1099-K                                  K
+                                          1099-OID                         O                       1099-NEC                                   N
+
+
+Step 1: Provide your withholding records (include all W-2 and 1099 forms that show Illinois withholding)
+
+
+CHRISTIAN JACKSON                                                                           350-84-3760
+Your name as shown on Form IL-1040                                                           Your Social Security number
+
+     Column A                             Column B                                Column C                                            Column D                                  Column E
+      Form type                        Employer/Payer                  Federal Wages, Winnings, Gross                  Illinois Wages, Winnings, Gross                         Illinois Income
+                                    Identification Number              Distributions, Compensation, etc.              Distributions, Compensation, etc.                          Tax Withheld
+
+1     W                     31-0934851                                       $         75,872 .00                            $            75,872 .00                       $        3,756 .00
+2                                                                            $                          .00                  $                              .00           $                      .00
+3                                                                            $                          .00                  $                              .00           $                      .00
+4                                                                            $                          .00                  $                              .00           $                      .00
+5                                                                            $                          .00                  $                              .00           $                      .00
+
+
+Step 2: Provide spouse's withholding records (include all W-2 and 1099 forms that show Illinois withholding)
+
+YLENIA OSSOLA                                                                              769-87-6561
+Your spouse's name as shown on Form IL-1040                                                Your spouse's Social Security number
+
+
+     Column A                             Column B                               Column C                                            Column D                                   Column E
+     Form type                        Employer/Payer                   Federal Wages, Winnings, Gross                 Illinois Wages, Winnings, Gross                          Illinois Income
+                                   Identification Number               Distributions, Compensation, etc.             Distributions, Compensation, etc.                           Tax Withheld
+
+6     W                     362992650 0                                     $          99,938 .00                           $             99,938 .00                      $         4,944 .00
+7                                                                           $                           .00                 $                               .00           $                      .00
+8                                                                           $                           .00                 $                               .00           $                      .00
+9                                                                           $                           .00                 $                               .00           $                      .00
+10                                                                          $                           .00                 $                               .00           $                      .00
+
+
+Step 3:Total Illinois withholding
+11 Add the amounts in Column E for Lines 1 through 10 (and the amounts from Column E of any
+   additional copies you attached). This is the total amount of your Illinois income tax withheld.
+   Enter this amount here and on Form IL-1040, Line 25.                                                                                                             11 $            8,700 .00
+                                                   Attach all Schedules IL-WIT to your IL-1040.
+                                                                                     This form is authorized as outlined under the Illinois Income Tax Act. Disclosure of
+                                                                                     this information is required. Failure to provide information could result in a penalty.
+                                                          ID: 2EB
+          IL-1040 Schedule IL-WIT Front (N-12/21)
+          Printed by authority of the State of Illinois
+

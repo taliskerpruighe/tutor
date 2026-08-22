@@ -1,0 +1,17 @@
+=== sheet: Deliverables-Grid view.csv ===
+Document | Attachments | Status
+0. Index | Jesus Izaguirre 0_ Index.pdf (https://dl.airtable.com/.attachments/7813a09b671d1c12fa8326229d2a6ca9/c57a6e61/JesusIzaguirre0_Index.pdf) | Done
+1. G-1145 | 1_ G-1145.pdf (https://dl.airtable.com/.attachments/3d9fd42e058cacfaa4806b0a071349a5/37c86a75/1_G-1145.pdf) | Done
+2. Cover Letter | 2_ Cover Letter.pdf (https://dl.airtable.com/.attachments/eaf54f52a358efff5e0909460d6aad51/f59b08ef/2_CoverLetter.pdf) | Done
+3. G-1450 | Jesus Izaguirre 4_ G-1450.pdf (https://dl.airtable.com/.attachments/0e62e109dc56b7ecdfc759e4d9cec95f/d051304d/JesusIzaguirre4_G-1450.pdf) | Done
+4. N-400 | Jesus Izaguirre 3_ N-400.pdf (https://dl.airtable.com/.attachments/3e679b4c094ca3672fe91aa23dd898ba/b436bbe9/JesusIzaguirre3_N-400.pdf) | Complete for Review
+5. Passport | Jesus Izaguirre 5_ Passport.pdf (https://dl.airtable.com/.attachments/ec1124feb988dcc54301896075389d88/0648eb01/JesusIzaguirre5_Passport.pdf) | Done
+6. Green Card | 6_ Green Card.pdf (https://dl.airtable.com/.attachments/36566db0c1ff29025087edd023b1b350/03572e0c/6_GreenCard.pdf) | Done
+7. Written Explanation | 7b_ Written Explanation.pdf (https://dl.airtable.com/.attachments/e01dc664c906ae076eb267ba500aeef2/adbaf83e/7b_WrittenExplanation.pdf) | Done
+A. Exhibit A | 7c_ Exhibit A.pdf (https://dl.airtable.com/.attachments/183d5bf22b9aa532224db809608d2592/eb643ed4/7c_ExhibitA.pdf) | Done
+B. Exhibit B | 7d_ Exhibit B.pdf (https://dl.airtable.com/.attachments/7b9ce099697daf9f045e4bca2c1ea8ce/60315cb9/7d_ExhibitB.pdf) | Done
+C. Exhibit C | 7e_ Exhibit C.pdf (https://dl.airtable.com/.attachments/db59572fcf8bafe72be2a88117215527/f8aded45/7e_ExhibitC.pdf) | Done
+D. Exhibit D | 7f_ Exhibit D.pdf (https://dl.airtable.com/.attachments/87e75bdbaf18d07730635176e452eb49/c849a58a/7f_ExhibitD.pdf) | Done
+E. Exhibit E | 7g_ Exhibit E.pdf (https://dl.airtable.com/.attachments/0902e866592530eae6509150f1bcb4c6/c77d486d/7g_ExhibitE.pdf) | Done
+F. Exhibit F | 7h. Exhibit F.pdf (https://dl.airtable.com/.attachments/229349fd233018e8b026e2715117bb3a/789820a9/7h.ExhibitF.pdf) | Done
+G. Exhibit G | 7i_ Exhibit G.pdf (https://dl.airtable.com/.attachments/7b0e15146c92667d81ea6889a71d58ff/f619a814/7i_ExhibitG.pdf) | Done

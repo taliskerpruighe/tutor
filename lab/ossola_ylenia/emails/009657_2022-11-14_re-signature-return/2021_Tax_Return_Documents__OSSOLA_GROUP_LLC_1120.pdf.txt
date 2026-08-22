@@ -1,0 +1,1608 @@
+                               Notes about the return
+                                                                   2021
+Name(s) as shown on return                                         Tax ID Number
+
+OSSOLA GROUP LLC                                                   83-1659369
+
+
+013 Direct debit information has been entered on the PMT screen and EF
+    Messages have been detected. Electronic funds withdrawal of payments
+    is not allowed unless the return is transmitted electronically. All EF
+    Messages must be cleared and the return transmitted for the payment to
+    be withdrawn electronically.
+
+150 PAYMENT SCREEN SELECTION: The type of return selected on screen PMT
+    for a federal payment does not match the type of return selected
+    for e-file on the EF screen.
+
+         Review screens PMT and EF to confirm the return type selected is
+         correct.
+
+
+
+
+NOTES.LD
+       1120EF                                              EF Transmission Status
+                                                                                                                                      2021
+                                       (This page is not filed with the return. It is for your records only.)
+Name(s) as shown on return                                                                                               EIN number
+
+OSSOLA GROUP LLC                                                                                                         83-1659369
+
+
+The following will be transmitted to the IRS.                        1120          7004          Amended        FinCEN 114
+
+
+
+The following state returns will be transmitted:
+
+
+
+
+The following returns have been suppressed or are not eligible and will NOT be transmitted.
+
+    IL1120
+
+
+
+
+EF Notes
+
+
+    Federal return has a MESSAGE PAGE.
+    T already accepted by state.
+
+
+
+
+1120EF.LD
+                                   Acknowledgement and General Information for
+                                      Entities That File Returns Electronically                                                       2021
+    Name(s) as shown on return                                                                                          Employer Identification Number
+
+    OSSOLA GROUP LLC                                                                                                     **-***9369
+
+
+
+
+   Entity address
+
+
+      1727 SOUTH INDIANA AVENUE
+
+      CHICAGO, IL 60616
+
+   Thank you for participating in IRS e-file.
+
+
+   1. X     2021      1120                   income tax return for Federal                was filed electronically.
+            The electronic filing services were provided by DLC TAX SERVICES AND ACCOUNTING INC                                           .
+
+   2. X         1120                  income tax return was accepted on        03-15-2022                using a Personal Identification Number (PIN) as
+            an electronic signature. The entity entered a PIN or authorized the Electronic Return Originator (ERO) to enter or generate a PIN signature.
+            The submission ID assigned to this return is 36047420220740ssvypd                                                        .
+
+
+
+
+              PLEASE DO NOT SEND A PAPER COPY OF ENTITY'S RETURN TO THE
+              IRS. IF YOU DO, IT WILL DELAY THE PROCESSING OF THE RETURN.
+
+
+
+
+EF_ACK.LD
+Form                                                               1120                                                   U.S. Corporation Income Tax Return                                                                              OMB No. 1545-0123
+
+                                                                                                  For calendar year 2021 or tax year beginning                             , 2021, ending                              , 20
+Department of the Treasury
+Internal Revenue Service                                                                                        Go to www.irs.gov/Form1120 for instructions and the latest information.
+                                                                                                                                                                                                                                                2021
+A Check if:                                                                                             Name                                                                                                               B Employer identification number
+1a Consolidated return
+                                              (attach Form 851)                 ..                        OSSOLA GROUP LLC                                                                                                       83-1659369
+ b Life/nonlife consoli-                                                                                                                                                                                                   C Date incorporated
+                                              dated return                ...                  TYPE Number, street, and room or suite no. If a P.O. box, see instructions.
+                                                                                                                                                                         STE 310
+2                                             Personal holding co.                             OR
+                                              (attach Sch. PH)                  .                    % YLENIA OSSOLA                                                                                                             08-14-2018
+                                                                                               PRINT
+3                                             Personal service corp.                                      1727 SOUTH INDIANA AVENUE                                                                                        D Total assets (see instructions)
+                                              (see instructions)                .                       City or town, state or province, country and ZIP or foreign postal code
+4                                             Schedule M-3 attached
+                                                                                                  CHICAGO                                          IL        60616                  $
+                                                                                       E Check if: (1)      Initial return      (2)   Final return       (3)    Name change        (4)   Address change
+
+                                                                    1a Gross receipts or sales. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          1a
+                                                                     b Returns and allowances . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            1b
+                                                                     c Balance. Subtract line 1b from line 1a . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       1c
+                                                                    2   Cost of goods sold (attach Form 1125-A) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          2
+                                                                    3   Gross profit. Subtract line 2 from line 1c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3
+
+
+    Income
+                                                                    4   Dividends and inclusions (Schedule C, line 23). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        4
+                                                                    5   Interest . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         5
+                                                                    6   Gross rents . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          6
+                                                                    7   Gross royalties . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          7
+                                                                    8   Capital gain net income (attach Schedule D (Form 1120)) . . . . . . . . . . . . . . . . . . . . . . . . . .          8                                                            31,034
+                                                                    9   Net gain or (loss) from Form 4797, Part II, line 17 (attach Form 4797). . . . . . . . . . . . . . . . . . . . .      9
+                                                                   10   Other income (see instructions - attach statement) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        10
+                                                                   11   Total income. Add lines 3 through 10        ...................................                                     11                                                            31,034
+                                                                   12   Compensation of officers (see instructions - attach Form 1125-E) . . . . . . . . . . . . . . . . . . . . .          12
+                                                                   13   Salaries and wages (less employment credits) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          13
+
+
+
+
+    Deductions (See instructions for limitations on deductions.)
+                                                                   14   Repairs and maintenance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           14
+                                                                   15   Bad debts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           15
+                                                                   16   Rents . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           16
+                                                                   17   Taxes and licenses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          17
+                                                                   18   Interest (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       18
+                                                                   19   Charitable contributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        19
+                                                                   20   Depreciation from Form 4562 not claimed on Form 1125-A or elsewhere on return (attach Form 4562) . . . . .          20
+                                                                   21   Depletion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         21
+                                                                   22   Advertising . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         22
+                                                                   23   Pension, profit-sharing, etc., plans . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      23
+                                                                   24   Employee benefit programs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           24
+                                                                   25   Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         25
+                                                                   26   Other deductions (attach statement) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         26
+                                                                   27   Total deductions. Add lines 12 through 26 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             27
+                                                                   28   Taxable income before net operating loss deduction and special deductions. Subtract line 27 from line 11. . . .     28                                                            31,034
+                                                                   29a Net operating loss deduction (see instructions) . . . . . . . . . . . . . . . . . .        29a
+                                                                      b Special deductions (Schedule C, line 24) . . . . . . . . . . . . . . . . . . . . .        29b
+                                                                      c Add lines 29a and 29b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        29c
+                                                                   30   Taxable income. Subtract line 29c from line 28. See instructions     .......................                        30                                                            31,034
+
+
+    Tax, Refundable Credits, &
+                                                                   31   Total tax (Schedule J, Part I, line 11) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     31                                                             6,517
+                                                                   32   Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         32
+                                                                   33   Total payments and credits (Schedule J, Part III, line 23) . . . . . . . . . . . . . . . . . . . . . . . . . .      33
+                                                                   34   Estimated tax penalty. See instructions. Check if Form 2220 is attached . . . . . . . . . . . . . . . .             34
+
+
+            Payments
+                                                                   35   Amount owed. If line 33 is smaller than the total of lines 31 and 34, enter amount owed . . . . . . . . . . .       35                                                              6,517
+                                                                   36   Overpayment. If line 33 is larger than the total of lines 31 and 34, enter amount overpaid . . . . . . . . . .      36
+                                                                   37   Enter amount from line 36 you want: Credited to 2022 estimated tax                                 Refunded         37
+                                                                      Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct,
+                                                                      and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.
+Sign                                                                                                                                                                                                                          May the IRS discuss this return
+Here                                                                    YLENIA OSSOLA                                                                                      PRESIDENT                                          with the preparer shown below?
+                                                                        Signature of officer                                             Date                             Title                                               See instructions.          Yes X No
+
+                                                                            Print/Type preparer's name                             Preparer's signature                                   Date                        Check         if   PTIN
+
+Paid                                                                        GIOVANNI L BERNARDI            GIOVANNI L BERNARDI                                                              03-15-2022                self-employed  P00643590
+Preparer                                                                    Firm's name    DLC TAX SERVICES AND ACCOUNTING INC                                                                                Firm's EIN      87-2909865
+Use Only                                                                    Firm's address 1520 WASHINGTON STREET                                                                                             Phone no.
+
+                                                                                           WAUKEGAN IL 60085                                                                                                     (847)721-4477
+For Paperwork Reduction Act Notice, see separate instructions.                                                                                                                                                                                Form 1120 (2021)
+EEA
+Form 1120 (2021)          OSSOLA GROUP LLC                                                                                 83-1659369                    Page 2
+ Schedule C             Dividends, Inclusions, and Special Deductions (see                             (a) Dividends and
+                                                                                                                              (b) %
+                                                                                                                                           (c) Special deductions
+                        instructions)                                                                     inclusiions                             (a) x (b)
+
+ 1    Dividends from less-than-20%-owned domestic corporations (other than debt-financed
+      stock) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                    50
+ 2    Dividends from 20%-or-more-owned domestic corporations (other than debt-financed
+      stock) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                    65
+                                                                                                                                See
+                                                                                                                            instructions
+ 3    Dividends on certain debt-financed stock of domestic and foreign corporations    ......
+
+ 4    Dividends on certain preferred stock of less-than-20%-owned public utilities. . . . . . . .                               23.3
+
+
+ 5    Dividends on certain preferred stock of 20%-or-more-owned public utilities . . . . . . . .                                26.7
+
+
+ 6    Dividends from less-than-20%-owned foreign corporations and certain FSCs . . . . . . .                                    50
+
+
+ 7    Dividends from 20%-or-more-owned foreign corporations and certain FSCs . . . . . . . .                                    65
+
+
+  8   Dividends from wholly owned foreign subsidiaries . . . . . . . . . . . . . . . . . . . .                                100
+                                                                                                                                See
+                                                                                                                            instructions
+ 9                                                                   ..............
+      Subtotal. Add lines 1 through 8. See instructions for limitations
+10    Dividends from domestic corporations received by a small business investment
+      company operating under the Small Business Investment Act of 1958. . . . . . . . . . .                                  100
+
+
+11    Dividends from affiliated group members    ........................                                                     100
+
+
+12    Dividends from certain FSCs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 100
+13    Foreign-source portion of dividends received from a specified 10%-owned foreign
+      corporation (excluding hybrid dividends) (see instructions) . . . . . . . . . . . . . . . .                             100
+14    Dividends from foreign corporations not included on line 3, 6, 7, 8, 11, 12, or 13
+      (including any hybrid dividends) . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+15   Reserved for future use       ...............................
+16a Subpart F inclusions derived from the sale by a controlled foreign corporation (CFC) of
+     the stock of a lower-tier foreign corporation treated as a dividend (attach Form(s) 5471)
+     (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 100
+   b Subpart F inclusions derived from hybrid dividends of tiered corporations (attach Form(s)
+     5471) (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+   c Other inclusions from CFCs under subpart F not included on line 16a, 16b, or 17 (attach
+     Form(s) 5471) (see instructions)      ...........................
+
+17                                                                                .....
+      Global Intangible Low-Taxed Income (GILTI) (attach Form(s) 5471 and Form 8992)
+
+
+18    Gross-up for foreign taxes deemed paid . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+19    IC-DISC and former DISC dividends not included on line 1, 2, or 3 . . . . . . . . . . . .
+
+
+20    Other dividends . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+21    Deduction for dividends paid on certain preferred stock of public utilities. . . . . . . . . .
+
+
+22    Section 250 deduction (attach Form 8993) . . . . . . . . . . . . . . . . . . . . . . .
+23    Total dividends and inclusions. Add column (a), lines 9 through 20. Enter here and on
+      page 1, line 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+24    Total special deductions. Add column (c), lines 9 through 22. Enter here and on page 1, line . ............
+                                                                                                   29b
+EEA                                                                                                                                        Form 1120 (2021)
+Form 1120 (2021)  OSSOLA GROUP LLC                                                                                    83-1659369                Page 3
+ Schedule J         Tax Computation and Payment (see instructions)
+Part I - Tax Computation
+1     Check if the corporation is a member of a controlled group (attach Schedule O (Form 1120)). See instructions
+2     Income tax. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           2             6,517
+3     Base erosion minimum tax amount (attach Form 8991) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               3
+4     Add lines 2 and 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          4             6,517
+5a    Foreign tax credit (attach Form 1118) . . . . . . . . . . . . . . . . . . . . . . . . .          5a                    0
+  b   Credit from Form 8834 (see instructions) . . . . . . . . . . . . . . . . . . . . . . . .         5b
+  c   General business credit (attach Form 3800) . . . . . . . . . . . . . . . . . . . . . .           5c
+  d   Credit for prior year minimum tax (attach Form 8827) . . . . . . . . . . . . . . . . . .         5d
+  e   Bond credits from Form 8912 . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            5e
+6     Total credits. Add lines 5a through 5e. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          6
+7     Subtract line 6 from line 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        7             6,517
+8     Personal holding company tax (attach Schedule PH (Form 1120)) . . . . . . . . . . . . . . . . . . . . . . . . .            8                 0
+9a    Recapture of investment credit (attach Form 4255) . . . . . . . . . . . . . . . . . . .          9a
+ b    Recapture of low-income housing credit (attach Form 8611) . . . . . . . . . . . . . . .          9b
+ c    Interest due under the look-back method - completed long-term contracts (attach
+      Form 8697) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             9c
+ d    Interest due under the look-back method - income forecast method (attach Form 8866) . .          9d
+ e    Alternative tax on qualifying shipping activities (attach Form 8902) . . . . . . . . . . . .     9e
+ f    Interest/tax due under Section 453A(c) and/or Section 453(l) . . . . . . . . . . . . .           9f
+ g    Other (see instructions - attach statement) . . . . . . . . . . . . . . . . . . . . . . .        9g
+10    Total. Add lines 9a through 9g. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          10
+11    Total tax. Add lines 7, 8, and 10. Enter here and on page 1, line .  31. . . . . . . . . . . . . . . . . . . . . . . .     11            6,517
+Part II - Reserved For Future Use
+12    Reserved for future use   ............................................                                                     12
+Part III - Payments and Refundable Credits
+13    2020 overpayment credited to 2021 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            13
+14    2021 estimated tax payments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            14
+15    2021 refund applied for on Form 4466 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           15 (                 )
+16    Combine lines 13, 14, and 15 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           16
+17    Tax deposited with Form 7004 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           17
+18    Withholding (see instructions) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         18
+19    Total payments. Add lines 16, 17, and 18. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            19
+20    Refundable credits from:
+  a   Form 2439 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20a
+  b   Form 4136 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20b
+  c   Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20c
+  d   Other (attach statement - see instructions) . . . . . . . . . . . . . . . . . . . . . . .   20d
+21    Total credits. Add lines 20a through 20d. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          21
+22    Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            22
+23    Total payments and credits. Add lines 19 and 21. Enter here and on page 1, line 33. . . . . . . . . . . . . . .            23
+EEA                                                                                                                                     Form 1120 (2021)
+Form 1120 (2021)         OSSOLA GROUP LLC                                                                                                    83-1659369                     Page 4
+ Schedule K           Other Information (see instructions)
+   1      Check accounting method: a X Cash b          Accrual           c     Other (specify)                                                                           Yes      No
+   2   See the instructions and enter the:
+     a Business activity code no.      531390
+     b Business activity        REAL ESTATE
+     c Product or service       REAL ESTATE FLIPPING
+   3                                                                                                 ....................
+       Is the corporation a subsidiary in an affiliated group or a parent-subsidiary controlled group?                                                                            X
+       If "Yes," enter name and EIN of the parent corporation
+
+
+   4      At the end of the tax year:
+       a Did any foreign or domestic corporation, partnership (including any entity treated as a partnership), trust, or tax-exempt
+          organization own directly 20% or more, or own, directly or indirectly, 50% or more of the total voting power of all classes of the
+          corporation's stock entitled to vote? If "Yes," complete Part I of Schedule G (Form 1120) (attach Schedule G)   ............                                            X
+       b Did any individual or estate own directly 20% or more, or own, directly or indirectly, 50% or more of the total voting power of all
+          classes of the corporation's stock entitled to vote? If "Yes," complete Part II of Schedule G (Form 1120) (attach Schedule .G). . . .                                   X
+ 5     At the end of the tax year, did the corporation:
+  a Own directly 20% or more, or own, directly or indirectly, 50% or more of the total voting power of all classes of stock entitled to vote of
+       any foreign or domestic corporation not included on Form 851, Affiliations Schedule? For rules of constructive ownership, see instructions. . . . . . .                    X
+       If "Yes," complete (i) through (iv) below.
+                                                                                                    (ii) Employer                (iii) Country of             (iv) Percentage
+                                    (i) Name of Corporation                                     Identification Number              Incorporation               Owned in Voting
+                                                                                                         (if any)                                                   Stock
+
+
+
+
+ b Own directly an interest of 20% or more, or own, directly or indirectly, an interest of 50% or more in any foreign or domestic partnership
+    (including an entity treated as a partnership) or in the beneficial interest of a trust? For rules of constructive ownership, see instructions . . . . . . . .                X
+    If "Yes," complete (i) through (iv) below.
+                                                                                                    (ii) Employer                 (iii) Country of              (iv) Maximum
+                                       (i) Name of Entity                                       Identification Number               Organization             Percentage Owned in
+                                                                                                         (if any)                                            Profit, Loss, or Capital
+
+
+
+
+  6 During this tax year, did the corporation pay dividends (other than stock dividends and distributions in exchange for stock) in
+    excess of the corporation's current and accumulated earnings and profits? See sections 301 and 316. . . . . . . . . . . . . . . . .                   X
+    If "Yes," file Form 5452, Corporate Report of Nondividend Distributions. See the instructions for Form 5452.
+    If this is a consolidated return, answer here for the parent corporation and on Form 851 for each subsidiary.
+  7 At any time during the tax year, did one foreign person own, directly or indirectly, at least 25% of the total voting power of all
+    classes of the corporation's stock entitled to vote or at least 25% of the total value of all classes of the corporation's stock? . . . . . .         X
+    For rules of attribution, see section 318. If "Yes," enter:
+    (a) Percentage owned                                     and (b) Owner's country
+    (c) The corporation may have to file Form 5472, Information Return of a 25% Foreign-Owned U.S. Corporation or a Foreign
+    Corporation Engaged in a U.S. Trade or Business. Enter the number of Forms 5472 attached                          0
+  8 Check this box if the corporation issued publicly offered debt instruments with original issue discount . . . . . . . . . . . . . .
+    If checked, the corporation may have to file Form 8281, Information Return for Publicly Offered Original Issue Discount Instruments.
+  9 Enter the amount of tax-exempt interest received or accrued during the tax year              $
+ 10 Enter the number of shareholders at the end of the tax year (if 100 or fewer)                  1
+ 11 If the corporation has an NOL for the tax year and is electing to forego the carryback period, check here (see instructions) . . . .
+    If the corporation is filing a consolidated return, the statement required by Regulations section 1.1502-21(b)(3) must be attached
+    or the election will not be valid.
+ 12 Enter the available NOL carryover from prior tax years (do not reduce it by any deduction reported on
+    page 1, line 29a.) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               $
+EEA                                                                                                                                         Form 1120 (2021)
+Form 1120 (2021)         OSSOLA GROUP LLC                                                                                 83-1659369                Page 5
+ Schedule K              Other Information (continued from page 4)
+13     Are the corporation's total receipts (page 1, line 1a, plus lines 4 through 10) for the tax year and its total assets at the end of the    Yes No
+       tax year less than $250,000? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                X
+       If "Yes," the corporation is not required to complete Schedules L, M-1, and M-2. Instead, enter the total amount of cash
+       distributions and the book value of property distributions (other than cash) made during the tax year           $
+14     Is the corporation required to file Schedule UTP (Form 1120), Uncertain Tax Position Statement? See instructions . . . . . . . . .                  X
+       If "Yes," complete and attach Schedule UTP.
+15a    Did the corporation make any payments in 2021 that would require it to file Form(s) 1099? . . . . . . . . . . . . . . . . . . . .                   X
+   b   If "Yes," did or will the corporation file required Form(s) 1099?. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+ 16    During this tax year, did the corporation have an 80%-or-more change in ownership, including a change due to redemption of its
+       own stock? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                        X
+17     During or subsequent to this tax year, but before the filing of this return, did the corporation dispose of more than 65% (by value)
+       of its assets in a taxable, non-taxable, or tax deferred transaction?. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                X
+18     Did the corporation receive assets in a section 351 transfer in which any of the transferred assets had a fair market basis or fair
+       market value of more than $1 million? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                     X
+19     During the corporation's tax year, did the corporation make any payments that would require it to file Forms 1042 and 1042-S
+       under chapter 3 (sections 1441 through 1464) or chapter 4 (sections 1471 through 1474) of the Code?         ...............                         X
+20     Is the corporation operating on a cooperative basis? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                    X
+21     During the tax year, did the corporation pay or accrue any interest or royalty for which the deducton is not allowed under section
+       267A? See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      X
+       If "Yes," enter the total amount of the disallowed deductions           $
+22     Does the corporation have gross receipts of at least $500 million in any of the 3 preceding tax years? (See sections 59A(e)(2)
+       and (3)) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      X
+       If "Yes," complete and attach Form 8991.
+23     Did the corporation have an election under section 163(j) for any real property trade or business or any farming business in effect
+       during the tax year? See instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                     X
+24     Does the corporation satisfy one or more of the following conditions? See instructions. . . . . . . . . . . . . . . . . . . . . . .                 X
+  a    The corporation owns a pass-through entity with current, or prior year carryover, excess business interest expense.
+  b    The corporation's aggregate average annual gross receipts (determined under section 448(c)) for the 3 tax years preceding the
+       current tax year are more than $26 million and the corporation has business interest expense.
+  c    The corporation is a tax shelter and the corporation has business interest expense.
+       If "Yes," complete and attach Form 8990.
+25     Is the corporation attaching Form 8996 to certify as a Qualified Opportunity Fund?. . . . . . . . . . . . . . . . . . . . . . . .                   X
+       If "Yes," enter amount from Form 8996, line 15 . . . . . . . .          $                     0
+26     Since December 22, 2017, did a foreign corporation directly or indirectly acquire substantially all of the properties held directly or
+       indirectly by the corporation, and was the ownership percentage (by vote or value) for purposes of section 7874 greater than
+       50% (for example, the shareholders held more than 50% of the stock of the foreign corporation)? If “Yes,” list the ownership
+       percentage by vote and by value. See instructions        ......................................                                                     X
+       Percentage: By Vote                                                            By Value
+EEA                                                                                                                                            Form 1120 (2021)
+Form 1120 (2021)            OSSOLA GROUP LLC                                                                                      83-1659369                 Page 6
+Schedule L            Balance Sheets per Books                          Beginning of tax year                                       End of tax year
+                         Assets                                       (a)                     (b)                           (c)                        (d)
+ 1 Cash . . . . . . . . . . . . . . . . . . . . . .
+ 2a Trade notes and accounts receivable . . . . . . .
+  b Less allowance for bad debts . . . . . . . . . . .            (              )                                 (                        )
+ 3 Inventories . . . . . . . . . . . . . . . . . . .
+ 4 U.S. government obligations . . . . . . . . . . .
+ 5 Tax-exempt securities (see instructions) . . . . . .
+ 6 Other current assets (attach statement) . . . . . .
+ 7 Loans to shareholders . . . . . . . . . . . . . .
+ 8 Mortgage and real estate loans . . . . . . . . . .
+ 9 Other investments (attach statement) . . . . . . .
+10a Buildings and other depreciable assets . . . . . .
+  b Less accumulated depreciation . . . . . . . . . .             (              )                                 (                        )
+11a Depletable assets . . . . . . . . . . . . . . . .
+  b Less accumulated depletion . . . . . . . . . . .              (              )                                 (                        )
+12 Land (net of any amortization) . . . . . . . . . .
+13a Intangible assets (amortizable only) . . . . . . . .
+  b Less accumulated amortization . . . . . . . . . .             (              )                                 (                        )
+14 Other assets (attach statement) . . . . . . . . . .
+15 Total assets . . . . . . . . . . . . . . . . . . .
+      Liabilities and Shareholders' Equity
+16    Accounts payable      ................
+17    Mortgages, notes, bonds payable in less than 1 year . . .
+18    Other current liabilities (attach statement) . . . . .
+19    Loans from shareholders . . . . . . . . . . . . .
+20    Mortgages, notes, bonds payable in 1 year or more. . . .
+21    Other liabilities (attach statement) . . . . . . . .
+22    Capital stock:     a Preferred stock . . . . . . . .
+                         b Common stock . . . . . . . .
+23    Additional paid-in capital . . . . . . . . . . . . .
+24    Retained earnings-Appropriated (attach statement) . . . .
+25    Retained earnings-Unappropriated         ........
+26    Adjustments to shareholders' equity (attach statement)
+27    Less cost of treasury stock . . . . . . . . . . . .                            (                         )                                (                  )
+28    Total liabilities and shareholders' equity . . . . . .
+Schedule M-1                  Reconciliation of Income (Loss) per Books With Income per Return
+                          Note: The corporation may be required to file Schedule M-3. See instructions.
+ 1  Net income (loss) per books . . . . . . . . . . .                               7 Income recorded on books this year
+ 2  Federal income tax per books . . . . . . . . . . .                                  not included on this return (itemize):
+ 3  Excess of capital losses over capital gains . . . .                                 Tax-exempt interest $
+ 4  Income subject to tax not recorded on books
+    this year (itemize):
+                                                                                    8 Deductions on this return not charged
+ 5 Expenses recorded on books this year not                                             against book income this year (itemize):
+    deducted on this return (itemize):                                               a Depreciation . . . . . $
+  a Depreciation. . . . . . . . . . $                                                b Charitable contributions $
+  b Charitable contributions . . . . $
+  c Travel and entertainment . . . $
+
+
+                                                                                          9   Add lines 7 and 8 . . . . . . . . . .
+ 6    Add lines 1 through 5        .............                                         10   Income (page 1, line 28)-line 6 less line 9
+Schedule M-2                  Analysis of Unappropriated Retained Earnings per Books (Schedule L, Line 25)
+ 1    Balance at beginning of year. . . . . . . . . . . .                                 5   Distributions:   a Cash . . . . . .
+ 2    Net income (loss) per books . . . . . . . . . . . .                                                      b Stock . . . . . .
+ 3    Other increases (itemize):                                                                               c Property . . . . .
+                                                                                          6   Other decreases (itemize):
+                                                                                          7   Add lines 5 and 6 . . . . . . . . . .
+ 4    Add lines 1, 2, and 3    ...............                                            8   Balance at end of year (line 4 less line 7)
+EEA                                                                                                                                                 Form 1120 (2021)
+SCHEDULE D                                                 Capital Gains and Losses                                                                   OMB No. 1545-0123
+
+(Form 1120)                           Attach to Form 1120, 1120-C, 1120-F, 1120-FSC, 1120-H, 1120-IC-DISC, 1120-L, 1120-ND, 1120-PC,
+
+Department of the Treasury
+Internal Revenue Service
+                                                   1120-POL, 1120-REIT, 1120-RIC, 1120-SF, or certain Forms 990-T.
+
+                                              Go to www.irs.gov/Form1120 for instructions and the latest information.
+                                                                                                                                                           2021
+Name                                                                                                                         Employer identification number
+
+  OSSOLA GROUP LLC                                                                                                            83-1659369
+Did the corporation dispose of any investment(s) in a qualified opportunity fund during the tax year? . . . . . . . . . . . . . .                          Yes       X No
+If "Yes," attach Form 8949 and see its instructions for additional requirements for reporting your gain or loss.
+ Part I         Short-Term Capital Gains and Losses - Assests Held One Year or Less
+       See instructions for how to figure the amounts to enter on                (d)                   (e)         (g) Adjustments to gain           (h) Gain or (loss)
+       the lines below.                                                       Proceeds               Cost          or loss from Form(s)              Subtract column (e) from
+       This form may be easier to complete if you round off cents to        (sales price)       (or other basis)   8949, Part I, line 2,             column (d) and combine
+       whole dollars.                                                                                              column (g)                        the result with column (g)
+  1a Totals for all short-term transactions reported on Form
+     1099-B for which basis was reported to the IRS and for
+     which you have no adjustments (see instructions). However,
+     if you choose to report all these transactions on Form 8949,
+     leave this line blank and go to line 1b . . . . . . . . .
+  1b Totals for all transactions reported on Form(s) 8949
+     with Box A checked . . . . . . . . . . . . . . . . .
+  2 Totals for all transactions reported on Form(s) 8949
+     with Box B checked . . . . . . . . . . . . . . . . .
+  3 Totals for all transactions reported on Form(s) 8949
+     with Box C checked . . . . . . . . . . . . . . . . .
+
+
+  4 Short-term capital gain from installment sales from Form 6252, line 26 or 37            ...................                              4
+
+
+  5 Short-term capital gain or (loss) from like-kind exchanges from Form 8824               ...................                              5
+
+
+  6 Unused capital loss carryover (attach computation)            ..............................                                             6   (                                )
+
+
+                                                                 ..................
+  7 Net short-term capital gain or (loss). Combine lines 1a through 6 in column h                                                            7
+ Part II         Long-Term Capital Gains and Losses - Assets Held More Than One Year
+       See instructions for how to figure the amounts to enter on                (d)                   (e)         (g) Adjustments to gain           (h) Gain or (loss)
+       the lines below.                                                       Proceeds               Cost          or loss from Form(s)              Subtract column (e) from
+       This form may be easier to complete if you round off cents to        (sales price)       (or other basis)   8949, Part II, line 2,            column (d) and combine
+       whole dollars.                                                                                              column (g)                        the result with column (g)
+  8a Totals for all long-term transactions reported on Form
+     1099-B for which basis was reported to the IRS and for
+     which you have no adjustments (see instructions). However,
+     if you choose to report all these transactions on Form 8949,
+     leave this line blank and go to line 8b . . . . . . . . .
+  8b Totals for all transactions reported on Form(s) 8949
+     with Box D checked . . . . . . . . . . . . . . . . .
+  9 Totals for all transactions reported on Form(s) 8949
+     with Box E checked . . . . . . . . . . . . . . . . .
+ 10 Totals for all transactions reported on Form(s) 8949
+     with Box F checked . . . . . . . . . . . . . . . . .
+
+
+ 11 Enter gain from Form 4797, line 7 or 9        .....................................                                                  11                         31,034
+
+ 12 Long-term capital gain from installment sales from Form 6252, line 26 or 37             ...................                          12
+
+
+ 13 Long-term capital gain or (loss) from like-kind exchanges from Form 8824                ...................                          13
+
+
+ 14 Capital gain distributions (see instructions)      ...................................                                               14
+
+
+ 15 Net long-term capital gain or (loss). Combine lines 8a through 14 in column h . . . . . . . . . . . . . . . . . .                    15                         31,034
+ Part III        Summary of Parts I and II
+ 16 Enter excess of net short-term capital gain (line 7) over net long-term capital loss (line 15) . . . . . . . . . . . .               16
+                                                                                                                   .....
+ 17 Net capital gain. Enter excess of net long-term capital gain (line 15) over net short-term capital loss (line 7)                     17                         31,034
+ 18 Add lines 16 and 17. Enter here and on Form 1120, page 1, line 8, or the applicable line on other returns . . . . . .                18                         31,034
+     Note: If losses exceed gains, see Capital Losses in the instructions.
+For Paperwork Reduction Act Notice, see the Instructions for Form 1120.                                                                      Schedule D (Form 1120) 2021
+EEA
+                                                                                                                                                OMB No. 1545-0184
+                                                            Sales of Business Property
+Form      4797                            (Also Involuntary Conversions and Recapture Amounts
+                                                     Under Sections 179 and 280F(b)(2))                                                           2021
+Department of the Treasury                                      Attach to your tax return.                                     Attachment
+Internal Revenue Service                  Go to www.irs.gov/Form4797 for instructions and the latest information.              Sequence No.                      27
+Name(s) shown on return                                                                                       Identifying number
+OSSOLA GROUP LLC                                                                                                            83-1659369
+   1a     Enter the gross proceeds from sales or exchanges reported to you for 2021 on Form(s) 1099-B or 1099-S (or
+          substitute statement) that you are including on line 2, 10, or 20. See instructions . . . . . . . . . . . . . . . . . .          1a
+      b   Enter the total amount of gain that you are including on lines 2, 10, and 24 due to the partial dispositions of
+          MACRS assets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                   1b
+      c   Enter the total amount of loss that you are including on lines 2 and 10 due to the partial dispositions of MACRS
+          assets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 1c
+ Part I       Sales or Exchanges of Property Used in a Trade or Business and Involuntary Conversions From Other
+              Than Casualty or Theft - Most Property Held More Than 1 Year (see instructions)
+                                                                                                      (e) Depreciation     (f) Cost or other
+                                                                                                                                                   (g) Gain or (loss)
+   2        (a) Description             (b) Date acquired     (c) Date sold        (d) Gross              allowed or           basis, plus
+                                                                                                                                                  Subtract (f) from the
+              of property                 (mo., day, yr.)     (mo., day, yr.)      sales price         allowable since     improvements and
+                                                                                                          acquisition        expense of sale       sum of (d) and (e)
+
+
+
+
+   3      Gain, if any, from Form 4684, line 39 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              3
+   4      Section 1231 gain from installment sales from Form 6252, line 26 or 37 . . . . . . . . . . . . . . . . . . . . . . .             4
+   5      Section 1231 gain or (loss) from like-kind exchanges from Form 8824 . . . . . . . . . . . . . . . . . . . . . . . .              5
+   6      Gain, if any, from line 32, from other than casualty or theft . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          6                  31,034
+   7      Combine lines 2 through 6. Enter the gain or (loss) here and on the appropriate line as follows . . . . . . . . . . . .          7                  31,034
+          Partnerships and S corporations. Report the gain or (loss) following the instructions for Form 1065, Schedule K,
+          line 10, or Form 1120-S, Schedule K, line 9. Skip lines 8, 9, 11, and 12 below.
+          Individuals, partners, S corporation shareholders, and all others. If line 7 is zero or a loss, enter the amount
+          from line 7 on line 11 below and skip lines 8 and 9. If line 7 is a gain and you didn't have any prior year section
+          1231 losses, or they were recaptured in an earlier year, enter the gain from line 7 as a long-term capital gain on the
+          Schedule D filed with your return and skip lines 8, 9, 11, and 12 below.
+   8      Nonrecaptured net section 1231 losses from prior years. See instructions . . . . . . . . . . . . . . . . . . . . . .             8
+   9      Subtract line 8 from line 7. If zero or less, enter -0-. If line 9 is zero, enter the gain from line 7 on line 12 below. If
+          line 9 is more than zero, enter the amount from line 8 on line 12 below and enter the gain from line 9 as a long-term
+          capital gain on the Schedule D filed with your return. See instructions . . . . . . . . . . . . . . . . . . . . . . . .          9
+ Part II      Ordinary Gains and Losses (see instructions)
+ 10       Ordinary gains and losses not included on lines 11 through 16 (include property held 1 year or less):
+
+
+
+
+ 11       Loss, if any, from line 7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            11 (                           )
+ 12       Gain, if any, from line 7 or amount from line 8, if applicable . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         12
+ 13       Gain, if any, from line 31 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             13                             0
+ 14       Net gain or (loss) from Form 4684, lines 31 and 38a . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              14
+ 15       Ordinary gain from installment sales from Form 6252, line 25 or 36 . . . . . . . . . . . . . . . . . . . . . . . . .             15
+ 16       Ordinary gain or (loss) from like-kind exchanges from Form 8824 . . . . . . . . . . . . . . . . . . . . . . . . . .              16
+ 17       Combine lines 10 through 16 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                17                             0
+ 18       For all except individual returns, enter the amount from line 17 on the appropriate line of your return and skip lines
+          a and b below. For individual returns, complete lines a and b below.
+       a If the loss on line 11 includes a loss from Form 4684, line 35, column (b)(ii), enter that part of the loss here. Enter the loss
+         from income-producing property on Schedule A (Form 1040), line 16. (Do not include any loss on property used as an
+         employee.) Identify as from "Form 4797, line 18a." See instructions     . . . . . . . . . . . . . . . . . . . . . . . . 18a
+     b Redetermine the gain or (loss) on line 17 excluding the loss, if any, on line 18a. Enter here and on Schedule 1
+       (Form 1040), Part I, line 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18b
+For Paperwork Reduction Act Notice, see separate instructions.                                                                                    Form 4797 (2021)
+EEA
+Form 4797 (2021)      OSSOLA GROUP LLC                                                                                   83-1659369                Page 2
+Part III      Gain From Disposition of Property Under Sections 1245, 1250, 1252, 1254, and 1255
+              (see instructions)
+                                                                                                                  (b) Date acquired      (c) Date sold
+ 19 (a) Description of section 1245, 1250, 1252, 1254, or 1255 property:                                            (mo., day, yr.)      (mo., day, yr.)
+  A315 NOKOMIS STREET PARK FOREST IL                                                                               01-24-2020           08-02-2021
+  B
+  C
+  D
+
+                                                                                      Property A   Property B       Property C          Property D
+      These columns relate to the properties on lines 19A through 19D.
+20    Gross sales price (Note: See line 1a before completing.).                 20       185,000
+21    Cost or other basis plus expense of sale . . . . . . . .                  21       153,966
+22    Depreciation (or depletion) allowed or allowable . . . .                  22
+23    Adjusted basis. Subtract line 22 from line 21 . . . . . .                 23       153,966
+
+24    Total gain. Subtract line 23 from line 20 . . . . . . . .                 24        31,034
+25    If section 1245 property:
+  a   Depreciation allowed or allowable from line 22 . . . . .                  25a
+  b   Enter the smaller of line 24 or 25a . . . . . . . . . .                   25b            0
+26    If section 1250 property: If straight line depreciation was used,
+      enter -0- on line 26g, except for a corporation subject to section 291.
+  a Additional depreciation after 1975. See instructions . .                    26a
+  b Applicable percentage multiplied by the smaller of line
+    24 or line 26a. See instructions . . . . . . . . . . . .                    26b
+  c Subtract line 26a from line 24. If residential rental property
+    or line 24 isn't more than line 26a, skip lines 26d and 26e                 26c
+  d Additional depreciation after 1969 and before 1976 . . .                    26d
+  e Enter the smaller of line 26c or 26d . . . . . . . . . .                    26e
+  f Section 291 amount (corporations only) . . . . . . . .                      26f
+  g Add lines 26b, 26e, and 26f . . . . . . . . . . . . . .                     26g
+27 If section 1252 property: Skip this section if you didn't
+    dispose of farmland or if this form is being completed
+    for a partnership.
+  a Soil, water, and land clearing expenses . . . . . . . .                     27a
+  b Line 27a multiplied by applicable percentage. See instructions .            27b
+  c Enter the smaller of line 24 or 27b . . . . . . . . . .                     27c
+28 If section 1254 property:
+  a Intangible drilling and development costs, expenditures
+    for development of mines and other natural deposits,
+    mining exploration costs, and depletion. See instructions                   28a
+  b Enter the smaller of line 24 or 28a. . . . . . . . . . .                    28b
+29 If section 1255 property:
+  a Applicable percentage of payments excluded from
+    income under section 126. See instructions . . . . . .                      29a
+  b Enter the smaller of line 24 or 29a. See instructions . .                   29b
+Summary of Part III Gains. Complete property columns A through D through line 29b before going to line 30.
+
+30    Total gains for all properties. Add property columns A through D, line 24 . . . . . . . . . . . . . . . . . . . . . . .      30         31,034
+31    Add property columns A through D, lines 25b, 26g, 27c, 28b, and 29b. Enter here and on line 13 . . . . . . . . . . .         31              0
+32    Subtract line 31 from line 30. Enter the portion from casualty or theft on Form 4684, line 33. Enter the portion from
+      other than casualty or theft on Form 4797, line 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        32         31,034
+Part IV       Recapture Amounts Under Sections 179 and 280F(b)(2) When Business Use Drops to 50% or Less
+              (see instructions)
+                                                                                                                     (a) Section         (b) Section
+                                                                                                                          179             280F(b)(2)
+33    Section 179 expense deduction or depreciation allowable in prior years . . . . . . . . . . . . .       33
+34    Recomputed depreciation. See instructions . . . . . . . . . . . . . . . . . . . . . . . . . .          34
+35    Recapture amount. Subtract line 34 from line 33. See the instructions for where to report . . . .      35
+EEA                                                                                                                                     Form 4797 (2021)
+    Form PMT                                               ACH Payment                                                           2021
+                                  (This information is e-filed with the return. Do not include it if paper-filing)
+
+
+Name(s) shown on return                                                                                              Taxpayer's SSN
+OSSOLA GROUP LLC                                                                                                     83-1659369
+                                                                                                                     Spouse's SSN
+
+
+Routing Transit Number
+081904808
+Bank Account Number
+291026574442
+Type of Account:
+CHECKING
+Amount of Tax Payment
+                6,517
+Requested Payment Date
+03-15-2022
+Taxpayer's Daytime Phone Number
+(312)532-2442
+Type of Form being filed
+Form 7004
+
+
+
+
+Taxpayer's Signature                                                                                                 Date
+
+
+Spouse's Signature                                                                                                   Date
+
+
+
+
+                                                                                                                             Form PMT (2021)
+                                    Application for Automatic Extension of Time To File Certain
+Form   7004
+(Rev. December 2018)
+                                      Business Income Tax, Information, and Other Returns                                                                       OMB No. 1545-0233
+
+Department of the Treasury                                     File a separate application for each return.
+Internal Revenue Service                           Go to www.irs.gov/Form7004 for instructions and the latest information.
+                   Name                                                                                                                       Identifying number
+                             OSSOLA GROUP LLC
+Print                                                                                               STE 310                                    83-1659369
+or                 Number, street, and room or suite no. (If P.O. box, see instructions.)
+Type                         1727 SOUTH INDIANA AVENUE
+                   City, town, state, and ZIP code (If a foreign address, enter city, province or state, and country (follow the country's practice for entering postal code).)
+                             CHICAGO                                                        IL        60616
+Note: File request for extension by the due date of the return. See instructions before completing this form.
+Part I       Automatic Extension for Certain Business Income Tax, Information, and Other Returns. See instructions.
+  1 Enter the form code for the return listed below that this application is for . . . . . . . . . . . . . . . . . . . . . . . . 1 2
+Application                                                                  Form             Application                                                                  Form
+Is For:                                                                      Code             Is For:                                                                      Code
+Form 706-GS(D)                                                                01              Form 1120-ND (section 4951 taxes)                                             20
+Form 706-GS(T)                                                                02              Form 1120-PC                                                                  21
+Form 1041 (bankruptcy estate only)                                            03              Form 1120-POL                                                                 22
+Form 1041 (estate other than a bankruptcy estate)                             04              Form 1120-REIT                                                                23
+Form 1041 (trust)                                                             05              Form 1120-RIC                                                                 24
+Form 1041-N                                                                   06              Form 1120S                                                                    25
+Form 1041-QFT                                                                 07              Form 1120-SF                                                                  26
+Form 1042                                                                     08              Form 3520-A                                                                   27
+Form 1065                                                                     09              Form 8612                                                                     28
+Form 1066                                                                     11              Form 8613                                                                     29
+Form 1120                                                                     12              Form 8725                                                                     30
+Form 1120-C                                                                   34              Form 8804                                                                     31
+Form 1120-F                                                                   15              Form 8831                                                                     32
+Form 1120-FSC                                                                 16              Form 8876                                                                     33
+Form 1120-H                                                                   17              Form 8924                                                                     35
+Form 1120-L                                                                   18              Form 8928                                                                     36
+Form 1120-ND                                                                  19
+ Part II         All Filers Must Complete This Part
+   2  If the organization is a foreign corporation that does not have an office or place of business in the United States,
+      check here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+   3 If the organization is a corporation and is the common parent of a group that intends to file a consolidated return,
+      check here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      If checked, attach a statement listing the name, address, and employer identification number (EIN) for each member
+      covered by this application.
+   4 If the organization is a corporation or partnership that qualifies under Regulations section 1.6081-5, check here . .
+   5a The application is for calendar year 20 21 , or tax year beginning                       , 20      , and ending                                                      , 20      .
+    b Short tax year. If this tax year is less than 12 months, check the reason:           Initial return        Final return
+               Change in accounting period                      Consolidated return to be filed                       Other (See instructions-attach explanation.)
+
+   6      Tentative total tax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                 6                             6,517
+
+   7      Total payments and credits. See instructions                      ...........................                                             7                                    0
+
+   8      Balance due. Subtract line 7 from line 6. See instructions                         ....................                                   8                             6,517
+For Privacy Act and Paperwork Reduction Act Notice, see separate instructions.                                                                                Form 7004 (Rev. 12-2018)
+EEA
+Form      8878-A                              IRS e-file Electronic Funds Withdrawal                                                          OMB No. 1545-1927
+(Rev. December 2008)                               Authorization for Form 7004
+Department of the Treasury
+Internal Revenue Service             See instructions. Do not send to the IRS. Keep for your records.
+For calendar year 2021 or tax year beginning                      , 2021, ending                   , 20
+Name on Form 7004                                                                                           Identifying number
+
+  OSSOLA GROUP LLC                                                                                           83-1659369
+ Part I      Information From Form 7004 (Whole Dollars Only)
+  1    Tentative total tax (Form 7004, line 6) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 1                   6,517
+  2    Total payments and credits (Form 7004, line 7) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                    2
+  3    Balance due (Form 7004, line 8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                     3                   6,517
+ Part II     Authorized Person's Declaration and Signature Authorization
+Under penalties of perjury, I declare that I have been authorized by the above taxpayer to make this authorization and that I have
+examined a copy of the taxpayer's electronic Form 7004 for the tax year indicated above. I further declare that the amounts in Part
+I above are the amounts shown on the copy of the taxpayer's electronic Form 7004. I consent to allow my electronic return originator
+(ERO), transmitter, or intermediate service provider to send this authorization to the IRS with the electronic Form 7004 and to receive
+from the IRS (a) an acknowledgement of receipt or reason for rejection of the transmission, and (b) the reason for any delay in
+processing the form. I authorize the U.S. Treasury and its designated Financial Agent to initiate an electronic funds withdrawal
+(direct debit) entry to the financial institution account indicated in the tax preparation software for payment of the taxpayer's balance
+due on Form 7004, and the financial institution to debit the entry to this account. To revoke a payment, I must contact the U.S.
+Treasury Financial Agent at 1-888-353-4537 no later than 2 business days prior to the payment (settlement) date. I also authorize
+the financial institutions involved in the processing of the electronic payment of taxes to receive confidential information necessary
+to answer inquiries and resolve issues related to the payment. I have selected a personal identification number (PIN) as my signature
+for the taxpayer's consent to electronic funds withdrawal.
+
+Authorized Person's PIN: check one box only
+
+      X   I authorize DLC TAX SERVICES AND ACCOUNTIN                                 to enter my PIN       99602                     as my signature
+                                             ERO firm name                                                do not enter all zeros
+
+          for the taxpayer's consent to electronic funds withdrawal for the balance due on the taxpayer's electronic Form 7004 for
+          the tax year indicated above.
+
+
+          I will enter my PIN as my signature for the taxpayer's consent to electronic funds withdrawal for the balance due on the
+          taxpayer's electronic Form 7004 for the tax year indicated above.
+
+
+Authorized person's signature                                                      Date    03-06-2022                      Title     PRESIDENT
+
+
+ Part III          Certification and Authentication
+ERO's EFIN/PIN. Enter your six-digit EFIN followed by your five-digit self-selected PIN.
+                                                                                                    360474              01212
+                                                                                                                     do not enter all zeros
+
+I certify that the above numeric entry is my PIN, which is my signature to authorize submission of the electronic funds withdrawal
+authorization with the electronic Form 7004 for the taxpayer indicated above. I confirm that I am submitting this authorization with
+Form 7004 in accordance with the requirements of Pub. 3112, IRS e-file Application and Participation, and Pub. 4163, Modernized
+e-File (MeF) Information for Authorized IRS e-file Providers for Business Returns.
+
+
+
+ERO's signature        GIOVANNI L BERNARDI                                                         Date
+
+
+
+                                        ERO Must Retain This Form - See Instructions
+                                Do Not Submit This Form to the IRS Unless Requested To Do So
+For Paperwork Reduction Act Notice, see instructions.                                                                              Form 8878-A (Rev. 12-2008)
+EEA
+                                                                                                                                        OMB No. 1545-0123
+Form   8879-C                        IRS e-file Signature Authorization for Form 1120
+
+Department of the Treasury
+                             For calendar year 2021, or tax year beginning          , 2021, ending
+                                                        Do not send to the IRS. Keep for your records.
+                                                                                                                   ,20
+                                                                                                                                             2021
+Internal Revenue Service                            Go to www.irs.gov/Form8879C for the latest information.
+Name of corporation                                                                                      Employer identification number
+
+OSSOLA GROUP LLC                                                                                        83-1659369
+ Part I         Tax Return Information (Whole dollars only)
+   1       Total income (Form 1120, line 11). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .               1           31,034
+   2       Taxable income (Form 1120, line 30) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                2           31,034
+   3       Total tax (Form 1120, line 31) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             3            6,517
+   4       Amount owed (Form 1120, line 35) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 4            6,517
+   5       Overpayment (Form 1120, line 36) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 5                0
+ Part II          Declaration and Signature Authorization of Officer. Be sure to get a copy of the corporation's return.
+Under penalties of perjury, I declare that I am an officer of the above corporation and that I have examined a copy of the corporation's
+2021 electronic income tax return and accompanying schedules and statements and to the best of my knowledge and belief, it is
+true, correct, and complete. I further declare that the amounts in Part I above are the amounts shown on the copy of the corporation's
+electronic income tax return. I consent to allow my electronic return originator (ERO), transmitter, or intermediate service provider to
+send the corporation's return to the IRS and to receive from the IRS (a) an acknowledgement of receipt or reason for rejection of the
+transmission, (b) the reason for any delay in processing the return or refund, and (c) the date of any refund. If applicable, I authorize
+the U.S. Treasury and its designated Financial Agent to initiate an electronic funds withdrawal (direct debit) entry to the financial
+institution account indicated in the tax preparation software for payment of the corporation's federal taxes owed on this return, and
+the financial institution to debit the entry to this account. To revoke a payment, I must contact the U.S. Treasury Financial Agent at
+1-888-353-4537 no later than 2 business days prior to the payment (settlement) date. I also authorize the financial institutions involved
+in the processing of the electronic payment of taxes to receive confidential information necessary to answer inquiries and resolve
+issues related to the payment. I have selected a personal identification number (PIN) as my signature for the corporation's electronic
+income tax return and, if applicable, the corporation's consent to electronic funds withdrawal.
+
+Officer's PIN: check one box only
+
+       X      I authorize DLC TAX SERVICES AND ACCOUNT                                    to enter my PIN 99602                         as my signature
+                                                      ERO firm name                                            do not enter all zeros
+              on the corporation's 2021 electronically filed income tax return.
+
+               As an officer of the corporation, I will enter my PIN as my signature on the corporation's 2021 electronically filed income tax
+               return.
+Officer's signature                                                          Date    03-06-2022          Title PRESIDENT
+
+ Part III         Certification and Authentication
+
+ERO's EFIN/PIN. Enter your six-digit EFIN followed by your five-digit self-selected PIN.                      360474        01212
+                                                                                                                          do not enter all zeros
+
+I certify that the above numeric entry is my PIN, which is my signature on the 2021 electronically filed income tax return for the
+corporation indicated above. I confirm that I am submitting this return in accordance with the requirements of Pub. 3112, IRS e-file
+Application and Participation, and Pub. 4163, Modernized e-File (MeF) Information for Authorized IRS e-file Providers for Business
+Returns.
+
+ERO's signature     GIOVANNI L BERNARDI                                                               Date        03-15-2022
+
+
+                                           ERO Must Retain This Form - See Instructions
+                                   Do Not Submit This Form to the IRS Unless Requested To Do So
+
+For Paperwork Reduction Act Notice, see instructions.                                                                                       Form 8879-C (2021)
+EEA
+                                          Summary of Estimates                                   2022
+Name(s) as shown on return                                                        Your SSN/EIN
+
+OSSOLA GROUP LLC                                                                       83-1659369
+Federal
+Form: 1120W
+                                             Payment Schedule
+Due Date                     04-18-2022     06-15-2022          09-15-2022   12-15-2022                 Total
+Total Installment Amount         1,629          1,629               1,629        1,629                  6,516
+Overpayment Applied
+Net Installment Due              1,629           1,629              1,629        1,629                  6,516
+                                             Taxpayer Records
+Amount Actually Paid
+Date Paid
+Check #/Confirmation
+
+
+
+
+ES_SUM1.LD
+Form    1120-W                                     Estimated Tax for Corporations                                                 OMB No. 1545-0123
+       (WORKSHEET)            For calendar year 2022, or tax year beginning           , 2022, and ending            , 20
+
+Department of the Treasury
+                                           Go to www.irs.gov/Form1120W for instructions and the latest information.                    2022
+Internal Revenue Service                Keep for the corporation's records - Do not send to the Internal Revenue Service.
+        Estimated Tax Computation                    OSSOLA GROUP LLC                                                             83-1659369
+
+  1     Taxable income expected for the tax year     ....................                       1             31,034
+
+  2     Multiply line 1 by 21% (0.21)   .........................................                                           2                 6,517
+
+  3     Tax credits. See instructions   .........................................                                           3
+
+
+  4     Subtract line 3 from line 2     ..........................................                                          4                 6,517
+
+  5     Other taxes. See instructions   .........................................                                           5
+
+
+  6     Total tax. Add lines 4 and 5    .........................................                                           6                 6,517
+
+  7  Credit for federal tax paid on fuels and other refundable credits. See instructions . . . . . . . . . . . . . . . .    7
+  8  Subtract line 7 from line 6. Note: If the result is less than $500, the corporation is not required to
+     make estimated tax payments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            8                 6,517
+  9a Enter the tax shown on the corporation's 2021 tax return. See instructions. Caution: If the tax is zero or
+     the tax year was for less than 12 months, skip this line and enter the amount from line 8 on line 9b . . . . . . . .   9a                6,517
+   b Enter the smaller of line 8 or line 9a. If the corporation is required to skip line 9a, enter the
+     amount from line 8      .............................................                                                  9b                6,517
+                                                                      (a)                       (b)                  (c)                (d)
+ 10 Installment due dates. See
+     instructions . . . . . . . . . . . . .             10     04-18-2022               06-15-2022          09-15-2022           12-15-2022
+
+ 11     Required installments. Enter
+        25% of line 9b in columns (a)
+        through (d). If the corporation uses
+        the annualized income installment
+        method or adjusted seasonal
+        installment method or is a "large
+     corporation," see the instructions
+     for the amount to enter . . . . . . . . .   11                           1,629             1,629                 1,629                   1,629
+For Paperwork Reduction Act Notice, see instructions.                                                                             Form 1120-W (2022)
+EEA
+                                                Carryover/Carryforward Worksheet
+Form 1120                                                    (Keep for your records)                                       2021
+Name(s) as shown on return                                                                                                 Tax ID Number
+
+OSSOLA GROUP LLC                                                                                                           83-1659369
+                                                                                                                                 To Next Year
+  Form 1120
+         Contributions carryover . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+         Net Operating Loss Carryover . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+  Schedule D (Form 1120)
+        Unused capital loss carryover . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        Carryover expiring this year . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        Capital loss carryover to next year . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+  Form 2220
+         Tax       .....................................................                                                                   6,517
+
+  Form 3800
+         General business credit carryforward    ....................................
+
+  Form 4562
+         Section 179 Carryover . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+  Form 4797
+         Nonrecaptured net section 1231 losses from WK_1231C . . . . . . . . . . . . . . . . . . . . . . . . . . .
+         Reserved for future use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+
+  Reserved
+         Reserved for future use   ...........................................
+
+  Form 8827
+         Minimum tax credit carryforward   .......................................
+
+
+
+
+WK_CO.LD
+       FOR TAX YEAR 2021
+         OSSOLA GROUP LLC
+
+
+
+
+DLC TAX SERVICES AND ACCOUNTING INC
+
+      1520 WASHINGTON STREET
+
+        WAUKEGAN, IL 60085
+
+           (847)721-4477
+                                2021 Filing Instructions
+                                    OSSOLA GROUP LLC
+                               Tax year ending 12-31-2021
+
+         Form filed:
+
+               Form 1120 and supplemental forms and schedules
+
+         Filing method:
+
+               The return has been e-filed, do not mail.
+
+         Due date:
+
+               10-17-2022
+
+         Balance due:
+
+               $6,517
+
+         Transaction method:
+
+               The balance due is being paid by electronic funds withdrawal
+               from your checking account ending in 4442 at BANK OF AMERICA
+               and will be withdrawn on 03-15-2022.
+
+         Other information:
+
+               To cancel this payment, contact the IRS E-file Payment
+               Inquiry and Cancellation Service at (888) 353-4537 no later
+               than two business days before the scheduled payment date.
+
+
+
+
+FILEINST.LD
+                       7004 Filing Instructions
+                           OSSOLA GROUP LLC
+                      Tax year ending 12-31-2021
+
+Form filed:
+
+      Form 7004
+
+Filing method:
+
+      The extension will be e-filed once the signed and dated Form
+      8878-A has been received by this office. Do not mail the
+      extension to the IRS.
+
+Due date:
+
+      04-18-2022
+
+Balance due:
+
+      $6,517
+
+Transaction method:
+
+      The balance due is being paid by electronic funds withdrawal
+      from your checking account ending in 4442 at BANK OF AMERICA
+      and will be withdrawn on 03-15-2022.
+
+Other information:
+
+      To cancel this payment, contact the IRS E-file Payment
+      Inquiry and Cancellation Service at (888) 353-4537 no later
+      than two business days before the scheduled payment date.
+                                                   Corporation
+1120                                                                                                                 2021
+                                               Diagnostic Summary
+Name                                                                                                    Employer Identification #
+
+OSSOLA GROUP LLC                                                                                        83-1659369
+
+Demographics
+Mailing Address:                                                         Phone:   (312)532-2442
+                     % YLENIA OSSOLA
+                     1727 SOUTH INDIANA AVENUE                STE 310
+                     CHICAGO, IL 60616
+Resident State:      IL
+
+Diagnostics
+Preparer: GIOVANNI L BERNAR               Invoice:                                      Date:   03-15-2022
+
+Return Information
+
+
+                                                           2021                                     2020 Federal
+              Item on Return
+                                                          Federal                                   (If available)
+Total Assets
+Gross Receipts/Sales
+Total Income                                                        31,034
+Total Deductions
+Taxable Income                                                      31,034
+Tax                                                                  6,517
+Overpayment
+Refund
+Refund Applied to ES
+Balance Due                                                           6,517
+2220 Penalty
+Total Equity
+
+
+State/City Information
+
+
+       State/City           Gross          Taxable                  Income Tax         Other Tax                   Refund/
+                           Income          Income                                                               (Balance Due)
+
+
+IL1120                         31,034            31,034                                         2,948                               (2,948)
+                                                1120 TAX RETURN COMPARISON
+                                                      2019 / 2020 / 2021
+                                                                                                                                       2021
+                                      (This page is not filed with the return. It is for your records only.)
+Name(s) as shown on return                                                                                                   Identifying number
+OSSOLA GROUP LLC                                                                                                             83-1659369
+
+                                                  2019                        2020                       2021                     DIFFERENCE
+                                                FEDERAL                     FEDERAL                    FEDERAL                 BETWEEN 2020 & 2021
+Net receipts     .............
+Cost of goods sold . . . . . . . . . . .
+Gross profit . . . . . . . . . . . . . .
+Dividends . . . . . . . . . . . . . . .
+Interest . . . . . . . . . . . . . . . . .
+Gross rents . . . . . . . . . . . . . .
+Gross royalties . . . . . . . . . . . . .
+Capital gain net income . . . . . . . . .                                                                           31,034                    31,034
+Net gain/loss from 4797 . . . . . . . . .
+Other income . . . . . . . . . . . . . .
+Total income . . . . . . . . . . . . .                                                                              31,034                    31,034
+
+Compensation of officers . . . . . . . .
+Salaries and wages . . . . . . . . . . .
+Repairs and maintenance . . . . . . .
+Bad debts . . . . . . . . . . . . . . .
+Rents . . . . . . . . . . . . . . . . .
+Taxes and licenses . . . . . . . . . . .
+Interest . . . . . . . . . . . . . . . .
+Charitable contributions . . . . . . . .
+Depreciation . . . . . . . . . . . . . .
+Depletion . . . . . . . . . . . . . . . .
+Advertising . . . . . . . . . . . . . .
+Pension, profit-sharing . . . . . . . . .
+Employee benefits . . . . . . . . . . .
+Domestic production activities ded . . .
+Other deductions . . . . . . . . . . .
+Total deductions . . . . . . . . . . .
+NOL deduction . . . . . . . . . . . . .
+Special deductions . . . . . . . . . . .
+
+Taxable income . . . . . . . . . . . .                                                                              31,034                    31,034
+Total tax . . . . . . . . . . . . . . . .                                                                            6,517                     6,517
+
+Estimated taxes paid . . . . . . . . . .
+Total payments line 33 . . . . . . . . .
+
+
+Amount owed . . . . . . . . . . . . .                                                                                6,517                        6,517
+Overpayment . . . . . . . . . . . . .
+Applied to estimate . . . . . . . . . . .
+Refund . . . . . . . . . . . . . . . .
+
+
+RESIDENT STATE. . . . . . . . . . . .                                                                          IL
+Taxable . . . . . . . . . . . . . . . .                                                                             31,034                    31,034
+Tax. . . . . . . . . . . . . . . . . . .                                                                             2,948                     2,948
+Overpayment . . . . . . . . . . . . . .
+Balance Due . . . . . . . . . . . . . .                                                                              2,948                        2,948
+                                                    2019                        2020                       2021                   DIFFERENCE
+
+
+
+
+COMPARE.LD
+                                                Account Transaction Summary                                                    2021
+    Name(s) as shown on return                                                                                    Your ID Number
+
+      OSSOLA GROUP LLC                                                                                             83-1659369
+
+    Account #1
+    Financial Institution                                     BANK OF AMERICA
+    Routing Transit Number                                    081904808
+    Account Number                                            291026574442
+    Account Type                                              checking
+
+        Federal Extension Form
+        Federal Debit                                          (6,517)                       Date of Debit           03-15-2022
+
+        State Main Form(s)
+        IL Debit                                            (2,948)                          Date of Debit           04-18-2022
+                                                         __________
+        Net Debit                                           (9,465)
+
+
+
+
+      PLEASE VERIFY BANK INFORMATION
+      1. Bank Name
+      2. Bank Routing Transit Number
+      3. Bank Account Number
+      4. Bank Account Type
+
+
+      This information is used to deposit your refund or to pay any amount due. If you have provided incorrect information,
+      or you have closed the account, you are responsible.
+
+
+      I have reviewed the above information and certify that this information is correct and authorize   DLC TAX SERVICES AND ACCOUNTING INC
+      to use this account.
+
+
+
+
+      Signature                                        Date
+
+
+DD_PMT.LD
+                   2021 IL1120 Filing Instructions
+                           OSSOLA GROUP LLC
+
+Form filed:
+
+      IL1120 and supplemental forms and schedules
+
+Filing method:
+
+      Your return has been e-filed, do not mail your return
+
+Due date:
+
+      04-18-2022
+
+Payment:
+
+      $2,948.00
+
+Transaction method:
+
+      The amount of $2,948.00 will be paid by direct debit from
+      your Checking account number ending in 4442 and will be
+      withdrawn from your account on 04-18-2022.
+                                     Acknowledgement and General Information for
+     ILEF_ACK                           Taxpayers Who File Returns Electronically                                                      2021
+     Name(s) as shown on return                                                                                          Identification Number
+
+    OSSOLA GROUP LLC                                                                                                      **-***9369
+
+     Address
+
+
+    1727 SOUTH INDIANA AVENUE
+    CHICAGO, IL 60616
+
+
+    Thank you for participating in IRS e-file.
+
+
+       1.     X     Your 2021 state income tax return for       IL1120                  was filed electronically.
+                    The electronic filing services were provided by DLC      TAX SERVICES AND ACCOUNTING INC
+                                                                                                   .
+
+       2.           Your return was accepted on                        using a Personal Identification Number (PIN) as your electronic
+                    signature. You entered a PIN or authorized the Electronic Return Originator (ERO) to enter or generate a PIN
+                    for you.
+                    The submission ID assigned to this return is                                                                             .
+
+
+
+
+                  PLEASE DO NOT SEND A PAPER COPY OF THE TAX RETURN TO THE
+                  STATE. IF YOU DO, IT WILL DELAY THE PROCESSING OF THE RETURN.
+
+
+
+
+ILEF_ACK.LD
+                                       Illinois Department of Revenue
+
+                                       2021 Form IL-1120
+                                       Corporation Income and Replacement Tax Return
+                                       See "When should I file?" in the Form IL-1120 instructions for a list of due dates.
+
+ If this return is not for calendar year 2021, enter your fiscal tax year here.                                                                                                  Enter the amount you are paying.
+ Tax year beginning                             , ending
+                                                 month   day           year                       month        day     year
+                                      This form is for tax years ending on or after December 31, 2021, and before December 31, 2022.                                                                 2,948
+                                      For all other situations, see instructions to determine the correct form to use.                                                           $
+
+Step 1: Identify your corporation                                                                                                                       N   Enter your federal employer identification no. (FEIN).
+ A Enter your complete legal business name.                                                                                                                     83-1659369
+                           If you have a name change, check this box.                                                                                   O If you are a member of a group filing a federal
+                           Name:         OSSOLA GROUP LLC                                                                                                   consolidated return, enter the FEIN of the parent.
+
+       B Enter your mailing address.
+                       Check this box if either of the following apply:                                                                                 P Enter your North American Industry Classification
+                            this is your first return, or                                                                                                   System (NAICS) Code. See instructions.
+                            you have an address change.                                                                                                         531390
+                           C/O:          % YLENIA OSSOLA
+                                                                                                                                                        Q Enter your corporate file (charter) number
+                           Mailing address:1727 SOUTH INDIANA AVENUE                                                                                        assigned to you by the Secretary of State.
+                           City:         CHICAGO             State: IL                                                  ZIP:   60616
+      C If this is the first or final return, check the applicable box(es).
+                                                                                                                                                        R Enter the city, state, and zip code where your
+                                   First return
+                                                                                                                                                            accounting records are kept. (Use the two-letter
+                                   Final return (Enter the date of termination.                                                )
+                                                                                                                                                            postal abbreviation, e.g. , IL, GA, etc.)
+                                                                                                  mm      dd         yyyy
+       D If this is a final return because you sold this business, enter the date sold                                                                      CHICAGO                        IL        60616
+                           (mm dd yyyy)                                       , and the new owner's FEIN.                                                   City                                  State           Zip
+                                                                                                                                                        S   If you are making the business income election
+       E Check the box and see the instructions if your business is a:                                                                                      to treat all nonbusiness income as business income,
+                                   Unitary Filer (Combined return)                          Foreign insurer                                                 check this box and enter zero on Lines 24 and 32.
+                                                                                                                                                        T Check your method of accounting.
+       F If you completed the following, check the box and attach the federal                                                                               X      Cash           Accrual            Other
+                            form(s) to this return.
+                                                                                                                                                        U   If you are making a discharge of indebtedness
+                               Federal Form 8886
+                                              Federal Schedule M-3,
+                                                                                                                                                            adjustment on Form IL-1120, Line 36, check this
+                                              Part II, Line 12
+                                                                                                                                                            box and attach federal Form 982 and a
+    G Apportionment Formulas. Mark the appropriate box or boxes and see                                                                                     detailed statement.
+      Apportionment Formula instructions.    Sales companies
+                                                                                                                                                        V Check this box if you attached
+         Insurance companies                 Financial organizations
+                                                                                                                                                            Schedule INL.
+         Transportation companies            Federally regulated exchanges
+                                                                                                                                                        W   If you annualized your income on Form IL-2220,
+                                                                                                                                                            check this box and attach Form IL-2220.
+
+       H Check this box if you attached Illinois Schedule UB.
+                                                                                                                                                        X Check this box if your business activity is
+        I Check this box if you attached the Subgroup Schedule.
+                                                                                                                                                            protected under Public Law 86-272.
+       J Check this box if you attached Illinois Schedule 1299-D.
+       K Check this box if you attached Form IL-4562.                                                                                                   Y Check this box if you are a 52/53 week filer.
+       L Check this box if you attached Illinois Schedule M (for businesses).
+       M Check this box if you attached Schedule 80/20.
+
+                                    If you owe tax on Line 67, make an electronic payment at Tax.Illinois.gov. If you must mail your payment, complete a
+                                    payment voucher, Form IL-1120-V. Write your FEIN, tax year ending, and "IL-1120-V" on your check or money order and
+
+ Attach your payment and
+                                    make it payable to "Illinois Department of Revenue." Attach your voucher and payment here.
+
+                                    Enter the amount of your payment on the top of this page in the space provided.
+                                    If a payment is not enclosed, mail this return to:                                                                             If a payment is enclosed, mail this return to:
+
+
+  Form IL-1120-V here.
+                                    ILLINOIS DEPARTMENT OF REVENUE                                                                                                 ILLINOIS DEPARTMENT OF REVENUE
+                                    PO BOX 19048                                                                                                                   PO BOX 19038
+                                                                                                                                                                   SPRINGFIELD IL 62794-9038
+                                    SPRINGFIELD IL 62794-9048
+
+                                                               This form is authorized as outlined by the Illinois Income Tax Act. Disclosure of this        IR          NS          DR
+                                                               information is REQUIRED. Failure to provide information could result in a penalty.
+                                   Page 1 of 4                                                                                                                                         IL-1120 (R12/21) ID: 2EB
+         83-1659369
+Step 2: Figure your income or loss                                                                                                  (Whole dollars only)
+  1 Federal taxable income from U.S. Form 1120, Line 30.
+    Attach a copy of your federal return.                                                                                   1                 31,034 .00
+  2 Net operating loss deduction from U.S. Form 1120, Line 29a. This amount cannot be negative.                             2                        .00
+  3 State, municipal, and other interest income excluded from Line 1.                                                       3                        .00
+  4 Illinois income and replacement tax and surcharge deducted in arriving at Line 1.                                       4                        .00
+  5 Illinois Special Depreciation addition. Attach Form IL-4562.                                                            5                        .00
+  6 Related-Party Expenses additions. Attach Schedule 80/20.                                                                6                        .00
+  7 Distributive share of additions. Attach Schedule(s) K-1-P or K-1-T.                                                     7                        .00
+  8 Other additions. Attach Schedule M (for businesses).                                                                    8                        .00
+  9 Add Lines 1 through 8. This amount is your income or loss.                                                              9                 31,034 .00
+
+Step 3: Figure your base income or loss
+10   Interest income from U.S. Treasury and other exempt federal obligations.                   10                       .00
+11   River Edge Redevelopment Zone Dividend subtraction.
+     Attach Schedule 1299-B.                                                                    11                       .00
+12   River Edge Redevelopment Zone Interest subtraction.
+     Attach Schedule 1299-B.                                                                    12                       .00
+13   High Impact Business Dividend subtraction. Attach Schedule 1299-B.                         13                       .00
+14   High Impact Business Interest subtraction. Attach Schedule 1299-B.                         14                       .00
+15   Contribution subtraction. Attach Schedule 1299-B.                                          15                       .00
+16   Contributions to certain job training projects. See instructions.                          16                       .00
+17   Foreign Dividend subtraction. Attach Schedule J. See instructions.                         17                       .00
+18   Illinois Special Depreciation subtraction. Attach Form IL-4562.                            18                       .00
+19   Related-Party Expenses subtraction. Attach Schedule 80/20.                                 19                       .00
+20   Distributive share of subtractions. Attach Schedule(s) K-1-P or K-1-T.                     20                       .00
+21   Other subtractions. Attach Schedule M (for businesses).                                    21                       .00
+22   Total subtractions. Add Lines 10 through 21.                                                                           22                             .00
+23   Base income or loss. Subtract Line 22 from Line 9.                                                                     23                31,034 .00
+         A    If the amount on Line 23 is derived inside Illinois only, check this box and enter the amount from Step 3, Line 23
+              on Step 5, Line 35. You may not complete Step 4. (You must leave Step 4, Lines 24 through 34 blank.)                                     X
+              Note If you are a unitary filer, do not check this box. Check the box on Line B and complete Step 4.
+ STOP
+         B    If any portion of the amount on Line 23 is derived outside Illinois, or you are a unitary filer, check this box and
+              complete all lines of Step 4. (Do not leave Lines 28 through 30 blank.) See instructions.
+
+Step 4: Figure your income allocable to Illinois (Complete only if you checked the box on Line B, above.)
+24   Nonbusiness income or loss. Attach Schedule NB.                                             24                      .00
+25   Business income or loss included in Line 23 from non-unitary partnerships,
+     partnerships included on a Schedule UB, S corporations, trusts,
+     or estates. See instructions.                                                               25                      .00
+26   Add Lines 24 and 25.                                                                                                   26                             .00
+27   Business income or loss. Subtract Line 26 from Line 23.                                                                27                             .00
+28   Total sales everywhere. This amount cannot be negative.                                     28
+29   Total sales inside Illinois. This amount cannot be negative.                                29
+30   Apportionment Factor. Divide Line 29 by Line 28. Round to six decimal places.               30
+31   Business income or loss apportionable to Illinois. Multiply Line 27 by Line 30.                                        31                             .00
+32   Nonbusiness income or loss allocable to Illinois. Attach Schedule NB.                                                  32                             .00
+33   Business income or loss apportionable to Illinois from non-unitary partnerships, partnerships
+     included on a Schedule UB, S corporations, trusts, or estates. See instructions.                                       33                             .00
+34   Base income or loss allocable to Illinois. Add Lines 31 through 33.                                                    34                             .00
+
+
+
+
+        Page 2 of 4                                                                                                            IL-1120 (R-12/21)
+        ID: 2EB
+   83-1659369
+ Step 5: Figure your net income
+ 35   Base income or net loss from Step 3, Line 23, or Step 4, Line 34.                                                                        35          31,034 .00
+ 36   Discharge of indebtedness adjustment. Attach federal Form 982. See instructions.                                                         36                         .00
+ 37   Adjusted base income or net loss. Add Lines 35 and 36. See instructions.                                                                 37          31,034 .00
+ 38   Illinois net loss deduction. If Line 37 is zero or a negative amount, enter zero.
+      Check this box and attach a detailed statement if you have merged losses.                                                                38                         .00
+ 39   Net income. Subtract Line 38 from Line 37.                                                                                               39          31,034 .00
+ Step 6: Figure your replacement tax after credits
+ 40   Replacement tax. Multiply Line 39 by 2.5% (.025).                                                                                        40                     776 .00
+ 41   Recapture of investment credits. Attach Schedule 4255.                                                                                   41                         .00
+ 42   Replacement tax before credits. Add Lines 40 and 41.                                                                                     42                     776 .00
+ 43   Investment credits. Attach Form IL-477.                                                                                                  43                         .00
+ 44   Replacement tax after credits. Subtract Line 43 from Line 42. If the amount is negative, enter zero.                                     44                     776 .00
+ Step 7: Figure your income tax after credits
+ 45   Income tax. Multiply Line 39 by 7.0 (.07).                                                                                               45                2,172 .00
+ 46   Recapture of investment credits. Attach Schedule 4255.                                                                                   46                         .00
+ 47   Income tax before credits. Add Lines 45 and 46.                                                                                          47                2,172 .00
+ 48   Income tax credits. Attach Schedule 1299-D.                                                                                              48                         .00
+ 49   Income tax after credits. Subtract Line 48 from Line 47. If the amount is negative, enter zero.                                          49                2,172 .00
+ Step 8: Figure your refund or balance due
+ 50   Replacement tax before reductions. Enter the amount from Line 44.                                                                        50                     776 .00
+ 51   Foreign Insurer replacement tax reduction. Attach Schedule INS or UB/INS. See instructions.                                              51                         .00
+ 52   Subtract Line 51 from Line 50. This is your net replacement tax.                                                                         52                  776 .00
+ 53   Income tax before reductions. Enter the amount from Line 49.                                                                             53                2,172 .00
+ 54   Foreign Insurer income tax reduction. Attach Schedule INS or UB/INS. See instructions.                                                   54                         .00
+ 55   Subtract Line 54 from Line 53. This is your net income tax.                                                                              55                2,172 .00
+ 56   Compassionate Use of Medical Cannabis Program Act surcharge. See instructions.                                                           56                      .00
+ 57   Sale of assets by gaming licensee surcharge. See instructions.                                                                           57                      .00
+ 58   Total net income and replacement taxes and surcharges. Add Lines 52, 55, 56, and 57.                                                     58                2,948 .00
+ 59   Underpayment of estimated tax penalty from Form IL-2220. See instructions.                                                               59                      .00
+ 60   Total taxes, surcharges, and penalty. Add Lines 58 and 59.                                                                               60                2,948 .00
+ 61   Payments. See instructions.
+       a Credits from previous overpayments.                                                   61a                                      .00
+       b Total payments made before the date this return is filed.                             61b                                      .00
+       c Pass-through withholding payments reported to you.
+          Attach Schedule(s) K-1-P or K-1-T.                                                   61c                                      .00
+       d Pass-though entity tax credit reported to you.
+          Attach Schedule(s) K-1-P or K-1-T.                                                   61d                                      .00
+       e Illinois income tax withholding. Attach Form(s) W-2G.                                 61e                                      .00
+ 62   Total payments. Add Lines 61a through 61e.                                                                                               62                         .00
+ 63   Overpayment. If Line 62 is greater than Line 60, subtract Line 60 from Line 62.                                                          63                         .00
+ 64   Amount to be credited forward. See instructions.                                                                                         64                         .00
+      Check this box and attach a detailed statement if this carryforward is going to a different FEIN.
+ 65   Refund. Subtract Line 64 from Line 63. This is the amount to be refunded.                                                                65                         .00
+ 66   Complete to direct deposit your refund.
+      Routing Number                                                   Checking or                   Savings
+
+      Account Number
+
+
+ 67   Tax due. If Line 60 is greater than Line 62, subtract Line 62 from Line 60. This is the amount you owe.                                  67                2,948 .00
+Step 9: Sign below - Under penalties of perjury, I state that I have examined this return and, to the best of my knowledge, it is true, correct, and complete.
+ Sign                                                                                                        Check if the Department
+ Here                                             03-06-2022 PRESIDENT                                    312-532-2442
+                                                                                                      may discuss this return with the
+       Signature of authorized officer    Date (mm/dd/yyyy)   Title         Phone                     paid preparer shown in this step.
+
+ Paid
+           GIOVANNI L BERNARDI                                               03-15-2022               Check if P00643590
+ Preparer   Print/Type paid preparer's name       Paid preparer's signature   Date (mm/dd/yyyy) self-employed    Paid Preparer's PTIN
+ Use Only Firm's name           DLC TAX SERVICES AND ACCOUNTING IN Firm's FEIN                          87-2909865
+            Firm's address      1520 WASHINGTON STREET                               Firm's phone       847-721-4477
+               IL-1120 (R-12/20)     WAUKEGAN,      IL 60085
+                                        Enter the amount of your payment in the space provided on the top of page 1.
+                                                                                                                                                        Page 3 of 4
+               ID: 2EB
+                                                         Printed by the authority of the State of Illinois
+Attach supporting documents to your Form IL-1120.                                                              83-1659369
+If you completed:                                                                  Attach
+    Form IL-1120                                                                 U.S. 1120, Pages 1 through 6, or equivalent
+    Step 1, Line E (unitary) only                                                Schedule UB/Subgroup Schedule
+                                                                                    Note      Check the box on Form IL-1120, Step 1, Line H
+  Step 1, Line E (foreign insurer) only                                          Schedule INS
+  Step 1, Line E (unitary) and (foreign insurer)                                 Schedule UB/Subgroup Schedule and Schedule UB/INS
+                                                                                    Note      Check the box on Form IL-1120, Step 1, Line H
+  Step 1, Line F                                                                 Federal Form 8886 or Federal Schedule M-3 (as applicable)
+  Step 1, Line U                                                                 Federal Form 982
+  Step 1, Line V                                                                 Schedule INL
+  Step 1, Line W                                                                 Schedule 2220
+  Lines 5 and 18                                                                 Form IL-4562
+      Special Depreciation addition                                                 Note      Check the box on Form IL-1120, Step 1, Line K
+      Special Depreciation subtraction
+  Lines 6 and 19                                                                 Schedule 80/20
+      Related-Party Expenses addition                                              Note       Check the box on Form IL-1120, Step 1, Line M
+      Related-Party Expenses subtraction
+  Lines 7 and 20                                                                 Schedule(s) K-1-P or K-1-T
+      Distributive share of additions
+      Distributive share of subtractions
+  Lines 8 and 21                                                                 Schedule M and any required support listed on Schedule M
+      Other additions                                                              Note       Check the box on Form IL-1120, Step 1, Line L
+      Other subtractions
+  Lines 11 through 15                                                            Schedule 1299-B and any required support listed on Schedule
+      River Edge Redevelopment Zone                                              1299-B
+      Dividend subtraction
+      River Edge Redevelopment Zone
+      Interest subtraction
+      High Impact Business Dividend subtraction
+      High Impact Business Interest subtractions
+      Contributions subtraction
+  Line 17 Foreign Dividend Subtraction                                           Illinois Schedule J, and U.S. 1120, Schedule C or equivalent
+  Lines 24 and 32                                                                Schedule NB
+      Nonbusiness income or loss
+      Nonbusiness income or loss allocable to Illinois
+  Lines 25 and 33                                                                Schedule(s) K-1-P or K-1-T
+      Business income or loss from non-unitary
+      partnerships, partnerships included on a Schedule UB,
+      S corporations, trusts, or estates
+      Business income or loss apportionable to Illinois from
+      non-unitary partnerships, partnerships included on a
+      Schedule UB, S corporations, trusts, or estates
+  Line 36 Discharge of indebtedness adjustment                                   Federal Form 982
+                                                                                    Note      Check the box on Form IL-1120, Step 1, Line U
+  Lines 41 and 46 Recapture of investment credit                                 Schedule 4255
+  Line 43    Investment credits                                                  Form IL-477 and any required support listed on Form IL-477
+  Line 48        Income tax credits                                              Schedule 1299-D and any required support listed in the Schedule
+                                                                                 1299-D instructions or Schedule 1299-I
+                                                                                     Note       Check the box on Form IL-1120, Step 1, Line J
+  Lines 51 and 54        Foreign Insurer tax reduction                           Schedule INS or Schedule UB/INS (for unitary filers)
+                                                                                     Note Check the box on Form IL-1120, Step 1, Line E
+  Line 59        Underpayment of estimated tax penalty                           Form IL-2220
+                                                                                     Note       If you annualized your income on Form IL-2220, Step 6,
+                                                                                 check the box on Form IL-1120, Step 1, Line W
+  Line 61c       Pass-through withholding reported                               All Schedules K-1-P and K-1-T you received showing
+                 to you                                                          pass-through withholding
+  Line 61d       Pass-throuogh entity tax credit                                 All Schedules K-1-P and K-1-T you received showing
+                 reported to you                                                 pass-through withholding
+  Line 61e       IIlinois income tax withholding                                 Copies of all Forms W-2G
+   Page 4 of 4     **Failure to attach the required documents may result in the disallowance of the corresponding line item.**   IL-1120 (R-12/21)
+   ID: 2EB
+                                  2021 IL1120V1 Voucher Instructions
+                                           OSSOLA GROUP LLC
+
+       Filing method:
+
+                      Your return was e-filed and accepted. The balance due was
+                      direct debited. Do not mail your voucher.
+
+       Due date:
+
+                      04-18-2022
+
+       Payment:
+
+                      $2,948.00
+
+       Transaction method:
+
+                      The amount of $2,948.00 will be paid by direct debit from
+                      your Checking account number ending in 4442 and will be
+                      withdrawn from your account on 04-18-2022.
+
+
+
+
+                                                                                                                           (cut here)
+       Illinois Department of Revenue
+                                             Payment Voucher for Corporation
+       2021 IL-1120-V                         Income and Replacement Tax
+       IL-1120-V (R-12/19)        ID: 2EB                                                              Official use only
+
+              Mail to: Illinois Department of Revenue, P.O. Box 19038, Springfield, IL 62794-9038
+       STOP: If no payment is due or you make your payment electronically, do not file this form.
+                                                                                            Tax year ending
+FEIN   83-1659369 000                 1
+                                                                                          12                  21
+ THIS VOUCHER IS SCHEDULED
+OSSOLA GROUP LLC
+                                                                                         Month                Year
+
+1727 SOUTH INDIANA AVENUE                                                   $
+ TO BE DIRECT DEBITED ON 04-18-2022
+CHICAGO IL 60616                                                                Payment Amount (Whole dollars only)
+                                                                                Write your FEIN, tax year ending, and "IL-1120-V"
+                                                                                on your check or money order and make it payable
+
+ DO NOT     MAIL
+      847-721-4477
+Preparer's Phone
+                                                                                to "Illinois Department of Revenue."
+

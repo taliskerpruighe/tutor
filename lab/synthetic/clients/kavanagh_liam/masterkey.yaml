@@ -1,0 +1,575 @@
+# masterkey.yaml — kavanagh_liam (W2) — Phase 2b MASTERKEY
+# Applicant: Siobhan Maire Brennan. The slug/correspondent is her husband,
+# Liam Patrick Kavanagh, a U.S. citizen who writes the whole thread — see
+# `correspondent:` below and mess_events[0]. Basis INA 319(a).
+#
+# Schema: BUILD-PLAN.md §3, extended per its own instruction ("extend where a
+# fact needs a home; never rename an existing key"). NO firm identity anywhere
+# (STYLE-SPEC §16 ruling 7) — see NOTE ON PART NUMBERS below for why no
+# `preparer` block is carried.
+#
+# NOTE ON PART NUMBERS (found during the required primary-source check,
+# `pdftotext -f 6 -l 11 -layout lab/synthetic/blanks/n-400.pdf -`, then cross-
+# checked against pages 1-4 and 12-14 and against registry.yaml's own
+# `n400_policy` block): the committed 01/20/25 blank's VISIBLE PRINTED TEXT
+# gives Part 9 = Additional Information (items 1-37, unchanged from the
+# assignment prompt and from `n400-part-map.md`) — but Part 10 = Request for a
+# Fee Reduction, Part 11 = Applicant's Contact Info/Certification/Signature,
+# Part 12 = Interpreter, Part 13 = Preparer, Part 14 = Additional Information
+# space, Part 15 = Signature at Interview, Part 16 = Oath. This is the
+# STANDARD current-edition numbering and it is what registry.yaml's own
+# `n400_policy` block already uses (`part_11: FILLED`, `part_13: EMPTY`).
+# `n400-part-map.md`'s table is mislabelled: its "printed Part (tooltip)"
+# column is read from the AcroForm `/TU` tooltip strings (which ARE stale —
+# they still carry the prior edition's Part 10/12 numbering) and calls that
+# "printed", but the tooltip is invisible metadata, not page text. The FIELD
+# NAMES in that file's FILL/LEAVE-EMPTY lists (`P12_Line3_Telephone[0]` etc.)
+# are still correct — they were pulled from the real AcroForm — only the Part
+# LABEL attached to them is wrong. Net effect on this masterkey: none. The
+# only Part-numbered facts this masterkey carries are Part 9 items 1-37,
+# which are identical under both readings, and the brief's own prose ("Part
+# 11 is filled ... Part 13 stays empty") is literally correct as printed. No
+# `preparer_title` field is carried per client — that string is a registry
+# (set-level) constant, not a per-client fact (see registry.yaml `firm:`).
+
+client: kavanagh_liam
+ships_as: examples
+
+identity:
+  family_name: "Brennan"
+  given_name: "Siobhan"
+  middle_name: "Maire"
+  other_names_used: []              # none — Part 2
+  name_change_requested: false      # she keeps her own surname on marriage
+  honorific: "Ms."
+  pronoun_subject: "she"
+  pronoun_possessive: "her"
+  dob: "1990-11-27"
+  sex: "F"
+  cob: "Ireland"                    # country of birth
+  coc: "Ireland"                    # country of citizenship/nationality
+  nationality_adjective: "Irish"
+  nationality_article: "an"         # "an Irish national" — registry D14
+  ssn: "341-27-8065"
+  uscis_online_account_number: null # none — first-time paper filer
+  height_ft: 5
+  height_in: 6
+  weight_lbs: 145
+  eye_color: "Blue"
+  hair_color: "Brown"
+  ethnicity: "Not Hispanic or Latino"
+  race: ["White"]
+  first_entered_us: "2021-08-19"
+
+immigration:
+  a_number: "213668041"
+  a_number_formatted: "A-213668041"
+  lpr_date: "2022-09-15"
+  class_of_admission: "CR6"
+  basis: "319a"
+  classification_basis_string: "INA 319(a)"
+  eligibility_clause_spouse: "Mr. Liam Patrick Kavanagh"   # names the spouse, STYLE-SPEC §5.1
+  conditional_resident:
+    was_cr: true
+    reason: >
+      Married 2022-02-19, became a permanent resident 2022-09-15 — seven
+      months after the marriage, inside the two-year INA 216 window — so she
+      was admitted as a CONDITIONAL resident (class CR6), not IR6.
+    i751:
+      filed: "2024-07-02"
+      receipt_number: "MSC0918452207"
+      received_date: "2024-07-08"
+      notice_date: "2024-07-11"
+      notice_type: "Receipt Notice"
+      status_at_filing: "pending"
+      approved: "2026-04-30"          # after N-400 filing date — still pending at filing
+      unconditional_card_in_hand_at_filing: false
+  derived:
+    # recomputed 2026-08-21, python: date(2025,9,15) - timedelta(days=90)
+    early_filing_date: "2025-06-17"      # LPR (2022-09-15) + 3y - 90d
+    filing_margin_days: 238              # (2026-02-10 - 2025-06-17).days
+    residence_years_at_filing: 3.41      # (2026-02-10 - 2022-09-15).days / 365.25
+    residence_window:
+      basis_years: 3
+      start: "2023-02-10"                # filed_date - 3y
+      end: "2026-02-10"                  # filed_date
+    green_card_expired_at_filing: true   # 2024-09-15 (CR6, LPR+2y) < 2026-02-10 — this is why C2 exists
+    c2_condition_evaluated:
+      was_cr: true
+      unconditional_i551_in_hand_at_filing: false
+      i751_pending_or_late_approval: true   # approved 2026-04-30, AFTER filed 2026-02-10
+      c2_fires: true
+
+residence:
+  state: "IL"
+  lockbox: "Chicago"
+  carrier: "FEDERAL EXPRESS"
+
+addresses:            # gap-free; covers derived.residence_window (2023-02-10 .. 2026-02-10)
+  list:
+    - street: "5417 Quarry Lane"
+      unit: null
+      city: "Cicero"
+      state: "IL"
+      zip: "60804"
+      country: "United States"
+      from: "2022-01-10"
+      to: "2024-04-30"
+      current: false
+    - street: "2214 Wexford Road"
+      unit: null
+      city: "Berwyn"
+      state: "IL"
+      zip: "60402"
+      country: "United States"
+      from: "2024-05-01"
+      to: "present"
+      current: true
+  mailing_same_as_physical: true
+  contiguity_check: "Cicero ends 2024-04-30, Berwyn starts 2024-05-01 — zero-day gap, confirmed by python date arithmetic"
+
+employment:            # covers residence window with room to spare (starts before window)
+  - employer: "Riverbend Veterinary Clinic"
+    city: "Berwyn"
+    state: "IL"
+    zip: "60402"
+    country: "United States"
+    occupation: "Veterinary Technician"
+    from: "2022-11-14"
+    to: "present"
+    present_flag: true
+
+family:
+  marital_status: "Married"
+  times_married: 1
+  marriage_date: "2022-02-19"
+  marriage_place: "Illinois"
+  spouse:
+    family_name: "Kavanagh"
+    given_name: "Liam"
+    middle_name: "Patrick"
+    dob: "1987-05-08"
+    a_number: null                     # USC by birth, no A-number
+    usc: true
+    usc_since: "birth"
+    usc_naturalized_date: null
+    usc_naturalized_place: null
+    employer: "Halsted Freight Systems"
+    employer_city: "Chicago"
+    employer_state: "IL"
+    employer_title: "Dispatcher"
+    times_married: 1
+    ssn: "329-54-1187"
+    address_same_as_applicant: true
+  prior_marriages_of_applicant: []      # she has been married once, to Liam
+  prior_marriages_of_spouse: []         # he has been married once, to her
+  children: []                          # no children of the marriage
+  parents:
+    - family_name: "Brennan"
+      given_name: "Declan"
+      usc: false
+      married_before_applicant_18: true   # inference — no output consumes this on a 319(a) petition; flagged in report
+    - family_name: "Brennan"
+      given_name: "Nuala"
+      usc: false
+      married_before_applicant_18: true   # inference, see above
+
+travel:                                   # 4 countable trips, most-recent-first; all fit the 6-row Part 8 table
+  list:
+    - depart: "2025-12-20"
+      return: "2026-01-02"
+      countries: ["Ireland"]
+      days: 14
+      on_form: true
+      why_excluded: null
+    - depart: "2025-06-14"
+      return: "2025-06-21"
+      countries: ["Mexico"]
+      days: 8
+      on_form: true
+      why_excluded: null
+    - depart: "2024-08-02"
+      return: "2024-08-16"
+      countries: ["Ireland"]
+      days: 15
+      on_form: true
+      why_excluded: null
+    - depart: "2023-07-05"
+      return: "2023-07-12"
+      countries: ["Canada"]
+      days: 8
+      on_form: true
+      why_excluded: null
+  derived:
+    total_days_outside_us: 45            # 14+8+15+8, python-recomputed inclusive of both endpoints
+    part_8_rows_used: 4
+    part_8_rows_available: 6             # registry D7, confirmed against the blank
+    addendum_triggered: false            # 4 <= 6, and zero day trips supplied — neither C4 disjunct fires
+    day_trips_supplied: 0
+
+moral_character:       # keyed to the PRINTED Part 9 item numbers of the 01/20/25 blank (verified: identical
+                        # under both readings in the header note above). Skipped items carry answer: null +
+                        # skipped_by, distinct from an answered "No", per the form's own skip logic.
+  q_1: {answer: "No"}
+  q_2: {answer: "No"}
+  q_3: {answer: "No"}
+  q_4: {answer: "No"}
+  q_5a: {answer: "No"}
+  q_5b: {answer: "No"}
+  q_6a: {answer: "No"}
+  q_6b: {answer: "No"}
+  q_6c: {answer: "No"}
+  q_7a: {answer: "No"}
+  q_7b: {answer: "No"}
+  q_7c: {answer: "No"}
+  q_7d: {answer: "No"}
+  q_7e: {answer: "No"}
+  q_7f: {answer: "No"}
+  q_7g: {answer: "No"}
+  q_8a: {answer: "No"}
+  q_8b: {answer: "No"}
+  q_9: {answer: "No"}
+  q_10a: {answer: "No"}
+  q_10b: {answer: null, skipped_by: "item_10a"}
+  q_10c: {answer: null, skipped_by: "item_10a"}
+  q_11: {answer: "No"}
+  q_12: {answer: "No"}
+  q_13: {answer: "No"}
+  q_14: {answer: "No"}
+  q_15a: {answer: "No"}
+  q_15b: {answer: "No"}          # no arrest/citation/detention/charge — table stays empty, C5 not triggered
+  q_16: {answer: null, skipped_by: "item_15"}   # no suspended sentence/probation/parole to have completed
+  q_17a: {answer: "No"}
+  q_17b: {answer: "No"}
+  q_17c: {answer: "No"}
+  q_17d: {answer: "No"}
+  q_17e: {answer: "No"}
+  q_17f: {answer: "No"}
+  q_17g: {answer: "No"}
+  q_17h: {answer: "No"}
+  q_18: {answer: "No"}
+  q_19: {answer: "No"}
+  q_20: {answer: "No"}           # no removal/rescission/deportation proceedings — C6 not triggered
+  q_21: {answer: "No"}
+  q_22a: {answer: "No"}          # she is not male — item is categorically No, not applicable
+  q_22b: {answer: null, skipped_by: "item_22a"}
+  q_22c: {answer: null, skipped_by: "item_22a"}
+  q_23: {answer: "No"}
+  q_24: {answer: "No"}
+  q_25: {answer: "No"}           # never served in US armed forces — routes to Item 30.a per the form
+  q_26a: {answer: null, skipped_by: "item_25"}
+  q_26b: {answer: null, skipped_by: "item_25"}
+  q_26c: {answer: null, skipped_by: "item_25"}
+  q_26d: {answer: null, skipped_by: "item_25"}
+  q_27: {answer: null, skipped_by: "item_25"}
+  q_28: {answer: null, skipped_by: "item_25"}
+  q_29: {answer: null, skipped_by: "item_25"}
+  q_30a: {answer: "No"}          # no hereditary title/order of nobility — routes to Item 31 per the form
+  q_30b: {answer: null, skipped_by: "item_30a"}
+  q_31: {answer: "Yes"}          # oath block — support the Constitution
+  q_32: {answer: "Yes"}          # understand the Oath
+  q_33: {answer: "No"}           # not unable to take the Oath (disability/impairment)
+  q_34: {answer: "Yes"}          # willing to take the full Oath
+  q_35: {answer: "Yes"}          # willing to bear arms
+  q_36: {answer: "Yes"}          # willing to perform noncombatant service
+  q_37: {answer: "Yes"}          # willing to perform work of national importance
+  c5_c6_check: "no Yes answer among items 15a/15b/20/21/17a-h — neither C5 nor C6 fires"
+
+fee_reduction: "No"      # Part 10 (printed) — Item 1 = No, skip to Part 11; items 2-5.b not applicable
+
+contact:                 # Part 11 (printed) — FILLED, applicant's own. §16 r10/D-H.
+  daytime_phone: "(773) 555-0118"
+  mobile_phone: "(773) 555-0118"
+  email: "s.brennan@quillmail.com"
+
+signature_policy:
+  applicant_signature: "UNSIGNED — no cursive rendering, no signature date (§16 r11)"
+  interpreter_block: "EMPTY — no interpreter engaged (D-H)"
+  preparer_block: "EMPTY — no preparer name, business name, address, phone, e-mail, or signature (§16 r7, r10)"
+
+correspondent:            # NOT the applicant — see mess_events[0]. Kept for input-surface traceability only;
+                          # none of these facts are consumed by the packet's contact fields.
+  name: "Liam Patrick Kavanagh"
+  relationship: "applicant's husband, U.S. citizen by birth, writes the whole e-mail thread"
+  dob: "1987-05-08"
+  mobile_phone: "(312) 555-0187"
+  emails:
+    - address: "liam.kavanagh@brightpost.net"
+      kind: "personal"
+    - address: "l.kavanagh@halstedfreight.com"
+      kind: "work — used when on shift; sometimes unsigned (voice card)"
+
+documents:
+  applicant_passport:
+    issuing_country: "Ireland"
+    issuing_authority: "Passport Service, Ireland"
+    passport_number: "PC7726154"
+    surname_printed: "BRENNAN"
+    given_names_printed: "SIOBHAN MAIRE"
+    nationality: "IRL"
+    dob: "1990-11-27"
+    sex: "F"
+    place_of_birth: "Ireland"
+    issue_date: "2019-05-10"
+    expiry_date: "2029-05-09"
+    mrz:
+      line1: "P<IRLBRENNAN<<SIOBHAN<MAIRE<<<<<<<<<<<<<<<<<"
+      line2: "PC77261545IRL9011274F2905095<<<<<<<<<<<<<<02"
+    mrz_check_digits:                 # ICAO 9303 weights 7,3,1, recomputed in python
+      passport_number_check: 5
+      dob_check: 4
+      expiry_check: 5
+      personal_number_check: 0        # personal number field unused, all filler
+      composite_check: 2
+
+  spouse_passport:
+    issuing_country: "United States of America"
+    issuing_authority: "U.S. Department of State"
+    passport_number: "549302871"
+    surname_printed: "KAVANAGH"
+    given_names_printed: "LIAM PATRICK"
+    nationality: "USA"
+    dob: "1987-05-08"
+    sex: "M"
+    place_of_birth: "Chicago, Illinois, USA"
+    issue_date: "2017-08-22"
+    expiry_date: "2027-08-21"
+    mrz:
+      line1: "P<USAKAVANAGH<<LIAM<PATRICK<<<<<<<<<<<<<<<<<"
+      line2: "5493028717USA8705080M2708218<<<<<<<<<<<<<<02"
+    mrz_check_digits:
+      passport_number_check: 7
+      dob_check: 0
+      expiry_check: 8
+      personal_number_check: 0
+      composite_check: 2
+
+  green_card:
+    surname_printed: "BRENNAN"
+    given_name_printed: "SIOBHAN MAIRE"
+    a_number: "A-213668041"           # USCIS#
+    card_number: "SRC2209145501"      # separate optical card number
+    category: "CR6"
+    country_of_birth: "Ireland"
+    dob: "1990-11-27"
+    sex: "F"
+    resident_since: "2022-09-15"
+    card_expires: "2024-09-15"        # CR6 = 2-year card; EXPIRED at filing (2026-02-10) — this fact fires C2
+    sides: ["front", "back"]
+
+  tax_return:
+    tax_year: 2024
+    blank: "f1040--2024.pdf"          # filed 2026-02-10 < mid-April 2026, so TY2024 per §13 D11 / registry D6
+    filing_status: "Married Filing Jointly"
+    taxpayer_name: "Siobhan M Brennan"
+    taxpayer_ssn: "341-27-8065"
+    spouse_name: "Liam P Kavanagh"
+    spouse_ssn: "329-54-1187"
+    address_printed: "2214 Wexford Road, Berwyn, IL 60402"   # == current address; §9.4 lock
+    wages:
+      liam: 58400
+      siobhan: 41200
+      total: 99600
+    adjusted_gross_income: 99600
+    total_tax: 8412
+    federal_tax_withheld: 9562
+    refund_or_owed: {direction: "refund", amount: 1150}       # 9562 - 8412 = 1150, python-checked
+    preparer: "Self-Prepared"
+    preparer_blocklist_note: >
+      "Self-Prepared" is a whole-token hit on blocklist.txt. Treated per
+      SPEC-DELTA D-F as an exclusion-set bug, not a halt: it is standard Form
+      1040 paid-preparer-section vocabulary (STYLE-SPEC §11's "1040 line
+      labels" carve-out), not a real person's or firm's identity. Reported,
+      not silently swapped.
+    note: "core DOCUMENT 6 AND the marriage evidence — not duplicated (STYLE-SPEC §9.3 rule 1, §16 r13, registry D12)."
+
+  i797c:
+    receipt_number: "MSC0918452207"
+    case_type: "I751"
+    received_date: "2024-07-08"
+    notice_date: "2024-07-11"
+    notice_type: "Receipt Notice"
+    applicant_name: "Siobhan Maire Brennan"
+    a_number: "A-213668041"
+    fee_paid: "750.00"
+    reconciles_with: "immigration.conditional_resident.i751 — receipt_number, notice_date, a_number identical"
+
+  evidence:
+    - type: "auto_policy"
+      insurer: "Lakeshore Mutual Insurance Company"
+      policy_number: "AUT-58291046"
+      named_insureds: ["Liam Patrick Kavanagh", "Siobhan Maire Brennan"]
+      policy_period: {effective: "2025-08-15", expiry: "2026-08-15"}
+      garaging_address: "2214 Wexford Road, Berwyn, IL 60402"
+      vehicles: ["2020 Toyota RAV4", "2015 Ford F-150"]
+      coverages:
+        - "Bodily Injury Liability 100/300"
+        - "Property Damage Liability 100"
+        - "Collision"
+        - "Comprehensive"
+        - "Uninsured Motorist 100/300"
+
+  resume:
+    note: >
+      Input-side only (STYLE-SPEC §12.10) — NOT one of the 9 mailed exhibits
+      (the brief fixes that set at 9 and a resume is not among them). Carried
+      here solely so Phase 4/5 can lock it against the Part 7 employment
+      entry, per STYLE-SPEC §9.4 ("resume employers and dates equal Part 7").
+    employer: "Riverbend Veterinary Clinic"
+    title: "Veterinary Technician"
+    city: "Berwyn, IL"
+    from: "2022-11-14"
+    to: "present"
+
+matter:                             # exactly the six keys the hard constraints allow — no firm identity
+  engagement_date: "2025-12-02"
+  filed_date: "2026-02-10"
+  lockbox: "Chicago"
+  carrier: "FEDERAL EXPRESS"
+  fee: "760.00"
+  form_edition: "01/20/25"
+
+exhibits:                           # derived from STYLE-SPEC §9's four-argument rule; ids from document-catalog.yaml
+  list:
+    - {doc: table_of_contents, seq: 1, trigger: core, why: "firm-authored — every packet"}
+    - {doc: cover_letter,      seq: 2, trigger: core, why: "firm-authored — every packet"}
+    - {doc: n400,              seq: 3, trigger: core, why: "the application"}
+    - {doc: applicant_passport, seq: 4, trigger: core, why: "identity — name, DOB, COB, MRZ"}
+    - {doc: green_card,        seq: 5, trigger: core, why: "A-number and LPR date"}
+    - {doc: tax_return,        seq: 6, trigger: core, why: "continuous-residence and good-moral-character evidence; also the marriage evidence (joint, §9.3 r1)"}
+    - {doc: spouse_passport,   seq: 7, trigger: "C1", why: "basis == 319(a)"}
+    - {doc: i797c,             seq: 8, trigger: "C2", why: "was_cr == true AND unconditional I-551 not in hand at filing (green card expired 2024-09-15, I-751 still pending 2026-02-10)"}
+    - {doc: auto_policy,       seq: 9, trigger: "C3b", why: "basis == 319(a) AND a joint automobile insurance policy was supplied"}
+  not_triggered:
+    C3a: "no joint deed supplied — they rent (2214 Wexford Road is a rental, per brief)"
+    C3c: "basis == 319(a) but no child of the marriage exists — family.children == []"
+    C4: "4 countable trips <= 6 Part 8 rows, and 0 day trips supplied — neither disjunct fires"
+    C5: "no Part 9 arrest/citation/detention/charge answer is Yes (q_15a, q_15b both No)"
+    C6: "no Part 9 Yes the table can't carry — q_20, q_21 both No"
+  document_count: 9
+
+input_surfaces:                     # THE input-coverage ledger. Modality: e-mail prose only, no questionnaire
+                                     # (registry.kavanagh_liam.input_modality). Every §12 fact narrated somewhere
+                                     # in an invented 11-message thread, engagement_date .. filed_date.
+  identity.family_name: ["email:0001"]
+  identity.given_name: ["email:0001"]
+  identity.middle_name: ["email:0001"]
+  identity.dob: ["email:0001"]
+  identity.cob: ["email:0001"]
+  identity.ssn: ["email:0003"]
+  identity.other_names_used: ["email:0011"]
+  identity.name_change_requested: ["email:0011"]
+  identity.uscis_online_account_number: ["email:0011"]
+  identity.ethnicity: ["email:0010"]
+  identity.race: ["email:0010"]
+  identity.height_ft: ["email:0010"]
+  identity.height_in: ["email:0010"]
+  identity.weight_lbs: ["email:0010"]
+  identity.eye_color: ["email:0010"]
+  identity.hair_color: ["email:0010"]
+  identity.first_entered_us: ["email:0007"]
+  immigration.a_number: ["email:0001"]
+  immigration.lpr_date: ["email:0006", "documents.green_card scan attached email:0006"]
+  immigration.class_of_admission: ["email:0006"]
+  immigration.conditional_resident: ["email:0004"]         # the I-751-worry email — voice card's centrepiece
+  immigration.conditional_resident.i751.receipt_number: ["email:0004", "phone photo of I-797C attached to email:0004"]
+  addresses.0: ["email:0001"]           # WRONG — Cicero given as current; superseded, see mess_events
+  addresses.1: ["email:0005"]           # RIGHT — Berwyn correction, chronologically later
+  employment.0: ["email:0003"]
+  family.marriage_date: ["email:0002"]
+  family.spouse: ["email:0002", "email:0003"]
+  family.parents: ["email:0010"]
+  family.children: ["email:0002"]        # "no children" stated directly
+  travel: ["email:0007"]
+  moral_character: ["email:0010"]
+  fee_reduction: ["email:0011"]
+  contact: ["email:0003"]
+  documents.applicant_passport: ["email:0006", "passport scan attached email:0006"]
+  documents.spouse_passport: ["email:0006", "passport scan attached email:0006"]
+  documents.green_card: ["email:0006", "green card scan (front+back) attached email:0006"]
+  documents.tax_return: ["email:0008", "1040 scan attached email:0008"]
+  documents.i797c: ["email:0004", "phone photo attached email:0004 (voice card: 'the lighting is terrible')"]
+  documents.evidence.0 (auto_policy): ["email:0009", "policy scan attached email:0009"]
+  matter.engagement_date: ["email:0001"]
+  matter.filed_date: ["registry.yaml matter.filing_date — filing-side fact, not narrated by the client"]
+
+mess_events:
+  - type: "folder_named_for_correspondent"
+    fact: "identity vs. correspondent"
+    description: >
+      The shipped folder `kavanagh_liam` is named for Liam, who writes every
+      message; the applicant is his wife, Siobhan Maire Brennan, who never
+      writes a word in the thread.
+    wrong_surface: null
+    right_surface: "documents.applicant_passport, documents.green_card — the applicant is whoever's name is on those"
+    resolution: "structural — the packet follows the person named on the passport and green card, not the thread's signer"
+
+  - type: "superseded"
+    fact: "addresses.current"
+    description: >
+      Liam's first message gives 5417 Quarry Lane, Cicero as their address —
+      by then over a year stale, since they moved 2024-05-01 and he forgot to
+      update it (voice card: "it's on my licence, it's muscle memory"). A
+      later message corrects it to 2214 Wexford Road, Berwyn.
+    wrong_surface: "email:0001"
+    right_surface: "email:0005"
+    resolution: "chronological — the later e-mail wins. Cicero becomes addresses[0], a prior address 2022-01-10 to 2024-04-30; Berwyn is addresses[1], current since 2024-05-01. Both IL, so the Chicago lockbox is unaffected either way."
+
+  - type: "multiple_surfaces_one_person"
+    fact: "correspondent.emails"
+    description: >
+      Liam writes from two addresses — liam.kavanagh@brightpost.net
+      (personal) and l.kavanagh@halstedfreight.com (work, used when he is on
+      shift; voice card notes he sometimes forgets to sign from the work
+      address).
+    wrong_surface: null
+    right_surface: "email:0001, email:0002, email:0004, email:0005 (personal) + email:0003 (work)"
+    resolution: "one person, one thread — both addresses belong to Liam the correspondent; neither belongs to the applicant Siobhan, whose own contact fields (Part 11) are (773) 555-0118 / s.brennan@quillmail.com."
+
+consistency_locks:            # STYLE-SPEC §9.4, instantiated with this client's real values
+  - name: "name_lock"
+    values: "Brennan, Siobhan Maire — identical on N-400 Part 2, passport MRZ, cover letter Re: block, applicant cover page, green card"
+    mode: "exact string match, ASCII"
+  - name: "dob_lock"
+    values: "1990-11-27 — identical on cover page, cover letter, N-400, passport, green card"
+    mode: "exact date match"
+  - name: "pob_lock"
+    values: "Ireland — identical on N-400 and passport"
+    mode: "exact string match"
+  - name: "a_number_lock"
+    values: "A-213668041 — identical on green card, every N-400 page header, and the I-797C"
+    mode: "exact string match, comb field whitespace-stripped"
+  - name: "resident_since_lock"
+    values: "green_card.resident_since 2022-09-15 == immigration.lpr_date 2022-09-15"
+    mode: "exact date match"
+  - name: "tax_address_lock"
+    values: "documents.tax_return.address_printed == addresses[1] (2214 Wexford Road, Berwyn, IL 60402)"
+    mode: "exact string match"
+  - name: "resume_employer_lock"
+    values: "documents.resume.{employer,from,to} == employment[0].{employer,from,to} (Riverbend Veterinary Clinic, 2022-11-14, present)"
+    mode: "exact match"
+  - name: "i751_receipt_lock"
+    values: "documents.i797c.receipt_number == immigration.conditional_resident.i751.receipt_number == MSC0918452207"
+    mode: "exact string match"
+  - name: "travel_addendum_superset_lock"
+    values: "NOT APPLICABLE — no addendum is rendered (derived.addendum_triggered == false); vacuously satisfied"
+    mode: "n/a"
+  - name: "toc_divider_document_count_lock"
+    values: "TOC line count == divider count == DOCUMENT count == 9 (exhibits list above)"
+    mode: "computed at Phase 3 render time from the exhibits list"
+  - name: "merged_page_count_lock"
+    values: "merged page count == sum of component page counts"
+    mode: "computed at Phase 3 render time — not a masterkey-side fact"
+
+derived:                       # every value here is python-recomputed, not asserted; see report for the arithmetic
+  early_filing_date: "2025-06-17"
+  filing_margin_days: 238
+  residence_years_at_filing: 3.41
+  green_card_expired_at_filing: true
+  c2_fires: true
+  total_travel_days: 45
+  addendum_triggered: false
+  address_gap_days: 0
+  mrz_siobhan_composite_check: 2
+  mrz_liam_composite_check: 2
+  document_count: 9

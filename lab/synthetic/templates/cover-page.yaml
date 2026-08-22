@@ -1,0 +1,79 @@
+# cover-page.yaml — the two kinds of cover page.
+# Governed by STYLE-SPEC §4.1, §4.2, §16 (BINDING).
+# NOTE: tab cover pages STAY at 24 pt. §16 ruling 3 lowers the DIVIDERS only.
+# Governed also by
+# typography §3. Both are INVENTED FILE NAMES: neither exists as a loose
+# component in the corpus (STYLE-SPEC §13 D9).
+
+page: &page
+  size: letter
+  orientation: portrait
+  margins_in: {top: 1.0, bottom: 1.0, left: 1.0, right: 1.0}
+
+# ---------------------------------------------------------------------------
+templates:
+
+  applicant_cover_page:
+    produces:
+      docx: "00. Applicant Cover Page.docx"
+      pdf:  "00. Applicant Cover Page.pdf"
+      pages: 1
+    position: first page of the merged packet, before TAB A
+    page: *page
+    defaults:
+      font: Times New Roman
+      size_pt: 12
+      line_spacing: 1.15
+      align: left
+    blocks:
+      - {type: paragraph, align: center,
+         runs: [{text: "APPLICATION FOR NATURALIZATION", underline: true}]}
+      - {type: blank}
+      - {type: blank}
+      - {type: paragraph, align: left, runs: [{text: "APPLICANT:"}]}
+      - {type: blank}
+      - {type: paragraph, align: left, runs: [{text: "{HONORIFIC} {FULL_LEGAL_NAME}"}]}
+      - {type: paragraph, align: left, runs: [{text: "DOB: {DOB_NUMERIC}"}]}
+      - {type: paragraph, align: left, runs: [{text: "COB/CON: {COUNTRY}"}]}
+      - {type: blank}
+      - {type: paragraph, align: left, runs: [{text: "Classification Basis: {CLASSIFICATION_BASIS}"}]}
+    slots:
+      HONORIFIC:            {type: string, enum: ["Mr.", "Ms."]}
+      FULL_LEGAL_NAME:      {type: string, desc: given + middle + family, mixed case}
+      DOB_NUMERIC:          {type: date, format: "MM/DD/YYYY"}
+      COUNTRY:              {type: string, desc: country of birth / country of nationality; mixed case}
+      CLASSIFICATION_BASIS: {type: string, enum: ["INA 316(a)", "INA 319(a)"]}
+    geometry_check:
+      title_top_pt: 72
+      title_underlined: true
+      body_left_pt: 72
+
+  tab_cover_page:
+    produces:
+      docx: "{TAB}-0. Tab Cover Page.docx"
+      pdf:  "{TAB}-0. Tab Cover Page.pdf"
+      pages: 1
+    position: immediately before the first DOCUMENT divider of its tab
+    page: *page
+    defaults:
+      font: Times New Roman
+      size_pt: 24
+      line_spacing: 1.15
+      align: center
+    blocks:
+      - {type: paragraph, align: center, runs: [{text: "TAB {TAB}", bold: true}]}
+      - {type: blank}
+      - {type: paragraph, align: center, runs: [{text: "{TAB_TITLE}", bold: false}]}
+    slots:
+      TAB:       {type: string, enum: ["A", "B"]}
+      TAB_TITLE:
+        type: string
+        desc: >
+          STYLE-SPEC §16 ruling 2 (OVERTURNS taste call 2): ONE STRING PER TAB,
+          harmonised on the TOC wording. "SUMMARIES" and bare "BIOGRAPHICAL"
+          are DEAD.
+        values: {A: "SUMMARY", B: "BIOGRAPHICAL INFORMATION"}
+    geometry_check:
+      line1_top_pt: 73.4
+      line2_top_pt: 136.8
+      lines_centred_on_x_pt: 306
