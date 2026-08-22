@@ -38,6 +38,8 @@ The firm is also providing a few more client input folders with no output
 folder. Those packets still need to be built, and they are there for you to
 test and prove your plugin on.
 
+All of it is in `materials/challenge-one/`, right next to this article.
+
 ## What the firm would like the plugin to do
 
 - **Run on a Claude Code harness.** The plugin can run on your computer. The

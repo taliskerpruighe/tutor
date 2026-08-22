@@ -215,6 +215,14 @@ rm -rf "$TUTOR_HOME/bin"
 rm -rf "$TUTOR_HOME/devlog"
 rm -rf "$TUTOR_HOME/.github"
 
+# lab/ is the workshop that built the challenge materials that DO ship (under
+# content/21-challenges/materials/): authoring inputs, not course content, and
+# nothing she runs ever looks inside it. The shipped copies already live
+# outside lab/, so this is defence in depth rather than a dependency — but it
+# is the single highest-consequence thing this script must strip, so it stays
+# even though nothing else in the repo would break without it.
+rm -rf "$TUTOR_HOME/lab"
+
 # The branch's own work list and any job plans filed beside it. Development
 # bookkeeping for this repo, not course material, and nothing she runs
 # reads it.
@@ -254,7 +262,7 @@ rm -f "$TUTOR_HOME/.dvcignore"
 # Rules about which files the repository ignores. There is no repository here.
 rm -f "$TUTOR_HOME/.gitignore"
 
-say "  pruned      go/ bin/ devlog/ jobs/ .github/ tui/*.py .dvc/"
+say "  pruned      go/ bin/ devlog/ lab/ jobs/ .github/ tui/*.py .dvc/"
 
 # Claude settings describe the development environment — plugins enabled
 # here, output styles chosen here — and none of it holds on her machine; a
