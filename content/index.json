@@ -3189,6 +3189,33 @@
           "path": "content/20-counter-recommendations/04-agent-teams.md"
         }
       ]
+    },
+    {
+      "slug": "21-challenges",
+      "title": "Challenges",
+      "level": "Level 2",
+      "articles": [
+        {
+          "id": "challenges/one",
+          "title": "Challenge one",
+          "section": "",
+          "summary": "A law firm wants a plugin that turns a folder of client documents into a finished naturalization packet, on one command",
+          "version": "v0.2.13",
+          "keywords": [
+            "challenge",
+            "plugin",
+            "naturalization",
+            "packet",
+            "n-400",
+            "command",
+            "agents",
+            "skills",
+            "workflows",
+            "examples"
+          ],
+          "path": "content/21-challenges/01-challenge-one.md"
+        }
+      ]
     }
   ]
 }

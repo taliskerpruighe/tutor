@@ -323,3 +323,7 @@
 - Background sessions and agent view
 - Subagents spawning subagents
 - Agent teams
+
+## Challenges
+
+- Challenge one
