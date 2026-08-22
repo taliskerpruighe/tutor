@@ -1,6 +1,6 @@
 ---
 name: tutor
-description: Answer questions about Claude Code — the terminal, tmux, the shell, software and packages, files and version control including worktrees and forking, Linux, LLMs and harnesses, Claude and its setup, agents, context, permission and plan modes, prompt engineering, skills, subagents, chains, workflows, hooks, plugins, output styles, the status line, headless sessions — using the course content in this folder. Use whenever the user asks how something in Claude Code works, what a term means, or how to do something with it, and when they ask where to read more. Do NOT use it to run a lesson or take them through the course in order — that is the `learn` skill — and do NOT use it to actually build something for them, which is `custom-agents` for an agent and `custom-skills` for a skill.
+description: Answer questions about Claude Code — the terminal, tmux, the shell, software and packages, files and version control including worktrees and forking, Linux, LLMs and harnesses, Claude and its setup, agents, context, permission and plan modes, prompt engineering, skills, subagents, chains, workflows, hooks, plugins, output styles, the status line, headless sessions — using the course content in this folder. Use whenever the user asks how something in Claude Code works, what a term means, or how to do something with it, and when they ask where to read more. Do NOT use it to run a lesson or take them through the course in order — that is the `learn` skill.
 user-invocable: true
 ---
 
@@ -42,18 +42,19 @@ place.
 
 ## The shape of the course
 
-Eighteen parts across two levels, in this order:
+**Derive it from `content/index.json` every time. Never from memory, and
+never from a list written here.** Parts run in the order they appear in the
+file. A level is a run of consecutive parts sharing a `level`; a section is a
+run of consecutive articles sharing a `section`. Some parts have no sections
+at all, and which ones those are changes between releases — read it, do not
+recall it.
 
-- **Level 1** — This Wiki, TUIs, The CLI, Software, Files, Linux,
-  Agentic AI
-- **Level 2** — Claude, Instructions, Agents, Skills, Subagents, Workflows,
-  Version Control, Hooks, Plugins, Headless Sessions, Counter-Recommendations
-
-This Wiki and Counter-Recommendations are the two parts with no sections.
-Everything else divides into two to four of them.
+The same goes for how many parts there are, where a level ends, and where the
+course ends. Every one of those is a fact about the file in front of you, and
+any count written into this skill is a count that will be wrong later.
 
 Six Party Tricks run through the course and are what it exists for:
-content isolation (Claude → Claude Code setup), the three resets and agent
+content isolation (Claude Code Setup), the three resets and agent
 engineering (Agents), skill engineering and always invoking manually
 (Skills), and chain engineering (Subagents → Chains). If a question lands on
 one, say which it is.
