@@ -33,6 +33,11 @@ identity:
   weight_lb: 185
   eye_color: Brown
   hair_color: Black
+  cob: Nigeria
+  coc: Nigeria
+  cover_page_cob_con: Nigeria
+  weight_lbs: 185
+  other_names_used_since_birth: []
 immigration:
   a_number: '216540923'
   a_number_formatted: A-216540923
@@ -46,6 +51,7 @@ immigration:
     early_filing_date: '2025-12-04'
     residence_years_at_filing: 5.3415
     filing_margin_days: 215
+  part1_eligibility_box: A
 family:
   marital_status: Married
   times_married: 1
@@ -71,6 +77,7 @@ family:
       to her because she is not a citizen.
 
       '
+    full_name: Folake Adeyemi
   children:
   - name: Ayodele Adeyemi
     dob: '2022-07-19'
@@ -81,6 +88,7 @@ family:
     address: 5127 Copperleaf Lane, Fitchburg, WI 53711
     usc: true
     note: U.S. citizen by birth. No exhibit — C3c needs basis 319(a) (registry D11).
+    full_name: Ayodele Adeyemi
   parents:
   - name: Segun Adeyemi
     usc: false
@@ -150,8 +158,10 @@ input_surfaces:
   immigration.a_number:
   - photo:green_card_front@email:000002
   immigration.lpr_date:
-  - photo:green_card_front@email:000002
-  - note: printed as 'Resident Since'
+  - photo:green_card_back@email:000002
+  - note: printed as 'Resident Since' — the card's BACK face carries this row, not the front (verified
+      against the actual fabricate_ids.py card layout during Phase 4; the front face carries surname/given
+      name/USCIS#/category/country of birth/DOB/sex/card-expiry only)
   immigration.class_of_admission:
   - photo:green_card_front@email:000002
   documents.green_card.card_expiry:
@@ -181,9 +191,7 @@ input_surfaces:
   - note: '''My wife is a permanent resident. She is not a citizen.'''
   family.spouse.employer:
   - email:000004
-  family.spouse.dob:
-  - documents.tax_return@email:000010+000012
-  - note: printed on the joint 1040; legible only after the password unlocks the PDF
+  family.spouse.dob: []
   family.spouse.ssn:
   - documents.tax_return@email:000010+000012
   family.children.0:
@@ -265,6 +273,7 @@ documents:
       composite_cd: 6
       verification: python3 recompute, see derived.mrz_verification below — all five check digits match
         the two MRZ lines as written
+    number: A04871562
   green_card:
     surname: ADEYEMI
     given_name: TUNDE OLUSEGUN
@@ -278,6 +287,7 @@ documents:
     sides:
     - front
     - back
+    a_number: '216540923'
   tax_return:
     year: 2025
     blank: f1040.pdf
@@ -538,6 +548,7 @@ addresses:
   country: USA
   from: '2019-09-20'
   to: '2021-06-14'
+  present: false
 - street: 908 Foundry Street
   unit: Apt 12
   city: Middleton
@@ -546,6 +557,7 @@ addresses:
   country: USA
   from: '2021-06-15'
   to: '2023-01-31'
+  present: false
 - street: 5127 Copperleaf Lane
   unit: null
   city: Fitchburg
@@ -555,6 +567,7 @@ addresses:
   from: '2023-02-01'
   to: null
   present: true
+  is_mailing_address: true
 addresses_derived:
   gap_check: Verona.to (2021-06-14) + 1d = Middleton.from (2021-06-15); Middleton.to (2023-01-31) + 1d
     = Fitchburg.from (2023-02-01). Zero gap days both joins. Contiguous 2019-09-20 through the filing
@@ -773,13 +786,6 @@ moral_character:
     triggers:
     - C5
     explanation: null
-    detail_row:
-      offense: Operating a Motor Vehicle with a Suspended License
-      date_of_offense: '2023-06-24'
-      date_of_conviction_or_plea: null
-      place: Fitchburg, Wisconsin, USA
-      disposition: dismissed
-      sentence: null
     spelling_note: 'The applicant''s own prose (e-mail) spells it "licence" — a Nigerian-education tell
       recorded on his voice card. The Item 15 table and the court records exhibit use the American "license"
       identically; the "licence" spelling exists ONLY on the input side (his e-mail text) and must never
@@ -789,6 +795,13 @@ moral_character:
     item: 15b
     classification: arrest
     text: EVER been arrested, cited, detained or confined by any law enforcement officer
+    arrest_detail:
+      offense: Operating a Motor Vehicle with a Suspended License
+      offense_date: '2023-06-24'
+      conviction_date: null
+      place: Fitchburg, Wisconsin, USA
+      disposition: dismissed
+      sentence: null
   q16:
     answer: null
     not_applicable: true
@@ -976,10 +989,13 @@ rule_inputs:
   arrest_items_yes:
   - 15b
   part14_items_yes: []
+  part14_order_source: numeric
   oath_items_not_yes: []
   trip_count: 7
   trips_on_form: 6
   trips_trimmed: 1
+  trips_overflow_from_part8: 1
+  trips_day_excluded: 0
   part8_rows: 6
   evidence_types:
   - court_records
@@ -990,6 +1006,7 @@ rule_inputs:
   c3b_fires: false
   c3c_fires: false
   c4_fires: true
+  c4_reason: row-count overflow
   c5_fires: true
   c6_fires: false
 _authored_notes:

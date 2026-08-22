@@ -38,6 +38,8 @@ identity:
   weight_lbs: 175
   eye_color: Brown
   hair_color: Black
+  country_of_birth: Brazil
+  country_of_citizenship: Brazil
 immigration:
   a_number: '208451772'
   a_number_formatted: A-208451772
@@ -87,6 +89,8 @@ input_surfaces:
   identity.cob:
   - questionnaire
   - phone_photo_passport
+  identity.coc:
+  - questionnaire
   identity.ssn:
   - questionnaire
   identity.ethnicity_race_height_weight_eye_hair:
@@ -109,20 +113,21 @@ input_surfaces:
   - questionnaire
   immigration.a_number:
   - questionnaire
-  - phone_photo_green_card_front
+  - phone_photo_green_card
   immigration.lpr_date:
   - questionnaire
-  - phone_photo_green_card_front
+  - phone_photo_green_card
   immigration.class_of_admission:
   - questionnaire
-  - phone_photo_green_card_front
+  - phone_photo_green_card
   addresses.0_current:
   - questionnaire
   - tax_return_pdf
   addresses.1_prior_medford:
   - questionnaire
   addresses.1_end_date_2019-10-31:
-  - email:0002
+  - questionnaire
+  - email:000003
   employment.harborline:
   - questionnaire
   - resume_docx
@@ -130,30 +135,30 @@ input_surfaces:
   - questionnaire
   - resume_docx
   employment.dates_confirmed:
-  - email:0003
+  - email:000004
   travel.seven_countable_trips:
   - questionnaire
   travel.day_trip_2024-05-14:
   - questionnaire
-  - email:0001
+  - email:000001
   moral_character.all_items:
   - questionnaire
   documents.passport.bio_page:
   - phone_photo_passport
   documents.green_card.front:
-  - phone_photo_green_card_front
+  - phone_photo_green_card
   documents.green_card.back:
-  - phone_photo_green_card_back
+  - phone_photo_green_card
   documents.tax_return:
   - tax_return_pdf
   documents.resume:
   - resume_docx
   documents.over_delivered.expired_passport:
-  - email attachment, unrequested
+  - email:000002 attachment, unrequested
   documents.over_delivered.lease:
-  - email attachment, unrequested
+  - email:000002 attachment, unrequested
   documents.over_delivered.vaccination_record:
-  - email attachment, unrequested
+  - email:000002 attachment, unrequested
   matter.engagement_date:
   - firm-side — retainer / first email date, not a client-supplied fact
   matter.filed_date:
@@ -188,6 +193,7 @@ documents:
         expiry: 9
         personal_number: 0
         composite: 6
+    passport_number: FZ318842
   green_card:
     surname: ALMEIDA
     given_name: PAULO MIGUEL
@@ -201,6 +207,7 @@ documents:
     sides:
     - front
     - back
+    uscis_number: '208451772'
   tax_return:
     year: 2024
     blank: f1040--2024.pdf
@@ -398,25 +405,34 @@ mess_events:
 - type: day_trip_exclusion
   fact: travel (Canada, 2024-05-14)
   wrong_surface: if trimmed into the Part 8 table or the travel addendum — WOULD be wrong
-  right_surface: excluded from BOTH the Part 8 table and the travel addendum
+  right_surface: questionnaire.docx travel table (row 3, with note) and email:000001 body — both list
+    the trip and both are correctly excluded from BOTH the N-400 Part 8 table and B-7. Travel Addendum.pdf
   resolution: firm instruction (day trips <24h are excluded from both, per the form's own Part 8 text
     and STYLE-SPEC §4.5); registry decision D7. Not chronological — a standing rule, not a supersession.
 - type: phone_photo_texture
   fact: documents.passport, documents.green_card (front and back)
   wrong_surface: none — no ambiguity is introduced
-  right_surface: questionnaire-typed values, corroborated by the (rotated, shadowed) phone photo
-  resolution: texture only — every fact on the photographed documents is legible and agrees with the questionnaire
-    by construction
+  right_surface: questionnaire-typed values, corroborated by input/000001.../passport_photo.pdf and input/000001.../green_card_photo.pdf
+    (fabricate_ids.py, finish=photo; both card faces on one page). The passport render visibly carries
+    the desk/shadow photo texture behind the data (finish=photo differs from finish=scan in both page
+    fill and background image, confirmed by rendering both to PNG and comparing); the green-card render
+    currently differs from finish=scan only in page-fill tone (245-grey vs white) — fabricate_ids.py's
+    _draw_card_face accepts a finish argument but does not yet apply _apply_photo_finish to the card faces,
+    a tool gap outside this client folder's scope, not hand-waved here
+  resolution: texture only — every fact on both photographed documents is legible and agrees with the
+    questionnaire by construction (verified by pdftotext on both PDFs)
 - type: over_delivery
   fact: documents.over_delivered (expired 2014 passport, lease, vaccination record)
   wrong_surface: none — no §9.2 rule is triggered by any of the three
-  right_surface: excluded from the packet entirely; still agree with the masterkey where they overlap
-    it (e.g. the lease address matches addresses.0)
+  right_surface: input/000002_2025-10-20_additional-documents/ (expired_passport_photo.pdf, lease.docx,
+    vaccination_record.pdf) — sent unprompted, excluded from the packet entirely; still agree with the
+    masterkey where they overlap it (e.g. the lease address matches addresses.0)
   resolution: excluded by rule (not triggered), not by chronology
 - type: unrelated_matter_noise
   fact: none — a cousin's B-2 visitor-visa question, mentioned in passing
   wrong_surface: none
-  right_surface: not this matter; touches no packet fact; produces no document
+  right_surface: input/000005_2025-11-04_cousin-visa-question/body.txt — not this matter; touches no packet
+    fact; produces no document
   resolution: excluded, out of scope
 consistency_locks:
 - lock: name_identical
@@ -761,10 +777,13 @@ rule_inputs:
   unconditional_card_in_hand_at_filing: true
   arrest_items_yes: []
   part14_items_yes: []
+  part14_order_source: numeric
   oath_items_not_yes: []
   trip_count: 8
   trips_on_form: 6
   trips_trimmed: 2
+  trips_overflow_from_part8: 1
+  trips_day_excluded: 1
   part8_rows: 6
   evidence_types: []
   evidence_declined: []
@@ -774,6 +793,7 @@ rule_inputs:
   c3b_fires: false
   c3c_fires: false
   c4_fires: true
+  c4_reason: row-count overflow
   c5_fires: false
   c6_fires: false
 _authored_notes:

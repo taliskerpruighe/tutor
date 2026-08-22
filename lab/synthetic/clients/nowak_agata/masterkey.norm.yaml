@@ -32,6 +32,9 @@ identity:
   ethnicity: Not Hispanic or Latino
   race:
   - White
+  country_of_birth: Poland
+  country_of_citizenship: Poland
+  cover_page_cob_con: Poland
 immigration:
   a_number: '212337509'
   a_number_formatted: A-212337509
@@ -58,6 +61,7 @@ immigration:
     earliest_filing_date: '2025-11-13'
     filing_margin_days: 194
     residence_years_at_filing: 5.28
+  part1_eligibility_box: A
 family:
   marital_status: Divorced
   times_married: 1
@@ -80,6 +84,8 @@ family:
     note: NEGATIVE CONTROL (registry decision D11). A child exists and is fully present here — but basis
       is 316(a), and C3c (child's passport) requires basis == 319(a). No exhibit is triggered. See exhibits.not_triggered
       below.
+    name: Jakub Nowak
+    full_name: Jakub Nowak
   parents:
   - name: Henryk Nowak
     usc: false
@@ -95,6 +101,8 @@ matter:
   fee: '760.00'
   form_edition: 01/20/25
 input_surfaces:
+  contact.daytime_phone:
+  - email:0002
   identity.family_name:
   - questionnaire
   - passport_scan
@@ -131,12 +139,12 @@ input_surfaces:
   - email:0002
   immigration.a_number:
   - email:0002
-  - green_card_scan_front
+  - green_card_scan
   immigration.lpr_date:
-  - green_card_scan_front
+  - green_card_scan
   - questionnaire
   immigration.class_of_admission:
-  - green_card_scan_front
+  - green_card_scan
   addresses:
   - questionnaire
   employment:
@@ -155,10 +163,11 @@ input_surfaces:
   moral_character.q_15b.answer:
   - questionnaire
   moral_character.q_15b.explanation:
-  - email:0004
+  - email:0003
   moral_character.q_15b.arrest_detail:
   - questionnaire
   - court_disposition_scan
+  - email:0003
   moral_character.q_20.answer:
   - questionnaire
   moral_character.q_20.explanation:
@@ -168,15 +177,14 @@ input_surfaces:
   documents.passport:
   - passport_scan
   documents.green_card:
-  - green_card_scan_front
-  - green_card_scan_back
+  - green_card_scan
   documents.tax_return:
   - tax_return_scan
   documents.resume:
   - resume_file
   documents.court_records:
   - court_disposition_scan
-  - email:0004
+  - email:0003
   documents.written_explanation:
   - email:0004
   matter.engagement_date:
@@ -228,10 +236,11 @@ documents:
         \ == 7\nassert check_digit(\"860930\") == 6\nassert check_digit(\"290519\") == 8\ncomposite =\
         \ pn_field+\"7\"+\"860930\"+\"6\"+\"290519\"+\"8\"+\"<\"*14+\"0\"\nassert check_digit(composite)\
         \ == 6\n"
+    number: AT4827193
   green_card:
     surname: NOWAK
     given_name: AGATA ZOFIA
-    a_number: A212337509
+    a_number: '212337509'
     uscis_hash_number: CA9284710035
     category: E31
     country_of_birth: POLAND
@@ -242,6 +251,7 @@ documents:
     sides:
     - front
     - back
+    uscis_number: '212337509'
   tax_return:
     blank: f1040.pdf
     filing_status: Head of Household
@@ -399,6 +409,7 @@ addresses:
   country: United States
   from: '2015-08-15'
   to: '2019-05-31'
+  present: false
 - street: 806 Brightwood Terrace
   unit: null
   city: Ann Arbor
@@ -407,6 +418,8 @@ addresses:
   country: United States
   from: '2019-06-01'
   to: null
+  present: true
+  is_mailing_address: true
 employment:
 - employer: Ferndale Type Works
   city: Ypsilanti
@@ -417,6 +430,7 @@ employment:
   from: '2016-05-02'
   to: '2020-08-14'
   present: false
+  occupation: Graphic Designer
 - employer: Kestrel Field Design
   city: Ann Arbor
   state: MI
@@ -426,6 +440,7 @@ employment:
   from: '2020-08-17'
   to: null
   present: true
+  occupation: Senior Graphic Designer
 mess_events:
 - type: blank_supplied_later
   fact:
@@ -437,7 +452,9 @@ mess_events:
   wrong_surface: questionnaire
   right_surface: email:0002
   resolution: chronological — the prose value in email:0002 is the value used; the questionnaire cells
-    stay blank in the input and are never treated as data
+    stay blank in the input and are never treated as data. The green-card scan itself also arrives no
+    earlier than email:0002 (she says the card 'is not with me today' in email:0001), so the A-number
+    is never visible on a surface that predates its own prose disclosure.
   voice_evidence: 'voice-card.md sample #1 (''some fields I could not complete... I will measure and send...
     the card is not with me today'') and #2 (''Here are answers: 1. Height... 2. Weight... 3. Eyes...
     4. The number on the card is A-212337509, I checked twice.'')'
@@ -624,11 +641,11 @@ moral_character:
 
       '
     arrest_detail:
-      offence_date: '2019-11-08'
+      offense_date: '2019-11-08'
       place: Ann Arbor, Michigan
-      crime_or_offense: Disorderly Conduct
+      offense: Disorderly Conduct
       statute: MCL 750.167(1)(e)
-      conviction_or_plea_date: null
+      conviction_date: null
       plea: Not Guilty
       disposition: Charges dismissed
       sentence: null
@@ -810,10 +827,13 @@ rule_inputs:
   - 15b
   part14_items_yes:
   - '20'
+  part14_order_source: numeric
   oath_items_not_yes: []
   trip_count: 3
   trips_on_form: 3
   trips_trimmed: 0
+  trips_overflow_from_part8: 0
+  trips_day_excluded: 0
   part8_rows: 6
   evidence_types: []
   evidence_declined: []
@@ -823,6 +843,7 @@ rule_inputs:
   c3b_fires: false
   c3c_fires: false
   c4_fires: false
+  c4_reason: does not fire
   c5_fires: true
   c6_fires: true
 _authored_notes:

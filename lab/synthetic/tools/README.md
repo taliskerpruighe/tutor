@@ -51,9 +51,37 @@ depends on the filing date (STYLE-SPEC §13 D11).
 
 ---
 
-## Phase 3 must build
+## Phase 3 — the spine (BUILT)
 
-### `fieldmap_n400.yaml`
+The toolsmith built the spine; four workers build the exhibit fabricators
+against it. **`RENDER-CONTRACT.md` is the interface every renderer implements
+and it is the first thing to read.**
+
+### `RENDER-CONTRACT.md`  — BUILT
+The `render(masterkey, outdir, doc) -> list[str]` signature, the `doc` dict's
+exact shape, the component/divider naming collision, the shared helpers, the
+no-firm-identity and unsigned-N-400 rules, and the determinism requirement.
+Also records the six masterkey shape collisions fixed in the normaliser (§2.3)
+and the rule that `outdir` is SHARED and must never be cleared (§0.5).
+
+### `mklib.py`  — BUILT
+The shared spine every renderer imports: `load_masterkey` (`.norm.yaml` only),
+`doc_entries` (the catalog/masterkey join, `{TAX_YEAR}` resolved), path helpers
+(`tab_dir`, `component_path`, `divider_path`), page/typography constants,
+`new_canvas`, docx helpers + `docx_to_pdf`, the two house date formats,
+`pdf_pagecount`/`pdf_text`, AcroForm helpers (`field_names`, `btn_on_states`,
+`fill_acroform`), ICAO 9303 MRZ, `lockbox_block` = f(state, carrier), the §5.1
+eligibility clause and citation, and `stamp_deterministic`.
+
+**Determinism is not automatic and cost three separate fixes**, all now in
+`mklib`: reportlab's timestamp (`invariant=1`), python-docx's `core.xml` clock
+AND its zip entry mtimes (`save_docx`), and LibreOffice's XMP packet, which
+carries a second wall clock that `/Info` does not cover (`_freeze_xmp`). Two
+independent renders of all 18 components are now byte-identical.
+
+## Phase 3 file notes
+
+### `fieldmap_n400.yaml`  — BUILT
 - **in:** `../blanks/n-400.pdf` field dump (488 names) + the masterkey schema.
 - **out:** a masterkey-path → PDF-field-name map, including the Part 8 travel
   table's row count (which sets the addendum threshold) and the Part 9
@@ -64,7 +92,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
 - **verified by:** scripted round trip (fill → extract → diff) plus one
   page-by-page `pdftoppm` visual pass.
 
-### `render_n400.py`
+### `render_n400.py`  — BUILT
 - **in:** masterkey + `fieldmap_n400.yaml` + `../blanks/n-400.pdf`.
 - **out:** `B-3. Form N-400, Application for Naturalization.pdf`, 14 pp, fields
   populated, `/XFA` deleted, `NeedAppearances` set. **NO signature, NO signature
@@ -77,7 +105,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
   they are empty. An assertion against a non-existent field name passes
   vacuously — the parts were renumbered between editions (§13 D1).
 
-### `render_docs.py`
+### `render_docs.py`  — BUILT (also owns EVERY divider)
 - **in:** masterkey + `../templates/{cover-page,toc,cover-letter.docx,divider}.yaml`.
 - **out:** every firm-authored page as docx **and** pdf via
   `soffice --headless --convert-to pdf` — `00. Applicant Cover Page`,
@@ -88,7 +116,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
   (cover letter), §7 (lockbox as `f(state, carrier)`), §9 (which TOC lines
   exist).
 
-### `render_addendum.py`
+### `render_addendum.py`  — worker-owned, against RENDER-CONTRACT.md
 - **in:** masterkey travel list + the filled N-400's Part 8 page number.
 - **out:** `B-n. Travel Addendum.docx` / `.pdf`.
 - **governed by:** STYLE-SPEC §4.5 (verbatim intro sentence, en-dash
@@ -98,20 +126,20 @@ depends on the filing date (STYLE-SPEC §13 D11).
   firm-authored prose-and-list page, not a spreadsheet. Render it with the
   same python-docx → soffice path as the other firm pages.
 
-### `render_1040.py`
+### `render_1040.py`  — worker-owned, against RENDER-CONTRACT.md
 - **in:** masterkey tax facts + `../blanks/f1040.pdf` or `f1040--2024.pdf`.
 - **out:** `B-n. {YEAR} Income Tax Return.pdf`, pp. 1–2 filled.
 - **governed by:** STYLE-SPEC §12.10 (fact set), §9.1 (it is a core document),
   §13 D11 (which year).
 
-### `render_evidence.py`
+### `render_evidence.py`  — worker-owned, against RENDER-CONTRACT.md
 - **in:** masterkey `documents.evidence[]`.
 - **out:** one PDF per supplied-evidence exhibit, via reportlab — joint deed
   with recorder stamp, auto-policy declarations page, Form I-797C receipt
   notice.
 - **governed by:** STYLE-SPEC §9.2 C2/C3 (triggers) and §12.10 (fields).
 
-### `render_court_records.py`
+### `render_court_records.py`  — worker-owned, against RENDER-CONTRACT.md
 - **in:** masterkey moral-character detail rows.
 - **out:** `B-n. Court Records.pdf` — a certified copy of a state court
   charging document showing the disposition (the corpus example is a
@@ -119,7 +147,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
   a clerk's certification and a raised seal).
 - **governed by:** STYLE-SPEC §9.2 C5 and §12.10.
 
-### `fabricate_ids.py`
+### `fabricate_ids.py`  — worker-owned, against RENDER-CONTRACT.md
 - **in:** masterkey passport/green-card facts.
 - **out:** passport bio-page and Form I-551 (front and back) images and PDFs
   for the **applicant, spouse and child**, with MRZ check digits computed.
@@ -132,7 +160,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
   core exhibits depend on it: it is an output tool that Phase 4 also reuses on
   the input side.
 
-### `merge_packet.py`
+### `merge_packet.py`  — BUILT
 - **in:** the rendered components + the TOC order.
 - **out:** `N-400 Packet.pdf` — merged and flattened, **0 form fields**.
 - **governed by:** STYLE-SPEC §2 (merge order is TOC order, never a directory
@@ -145,7 +173,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
   `gs -o out.pdf -sDEVICE=pdfwrite -dPreserveAnnots=false`.
   **Never `pdfunite`** — it corrupts the AcroForm ("Can't get Fields array").
 
-### `verify_client.py`
+### `verify_client.py`  — BUILT
 - **in:** one masterkey + that client's rendered output folder.
 - **out:** a pass/fail report; any diff is a build bug, zero tolerance.
 - **checks:** re-extract N-400 field values from the unflattened component and
@@ -157,7 +185,7 @@ depends on the filing date (STYLE-SPEC §13 D11).
 - **governed by:** STYLE-SPEC §9.4 (the lock list) and §12 (the fact list).
 - Written in Phase 3, run from Phase 3 onward (BUILD-PLAN §4, §6).
 
-### `verify_set.py`
+### `verify_set.py`  — BUILT
 - **in:** all six masterkeys + `../registry.yaml` + the six rendered sets.
 - **out:** a set-level report.
 - **checks:** leakage — every synthetic proper noun and digit-string grepped

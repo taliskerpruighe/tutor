@@ -31,6 +31,13 @@ identity:
   race:
   - White
   first_entered_us: '2021-08-19'
+  country_of_birth: Ireland
+  country_of_citizenship: Ireland
+  cover_page_cob_con: Ireland
+  height:
+    feet: 5
+    inches: 6
+  other_names_used_since_birth: []
 immigration:
   a_number: '213668041'
   a_number_formatted: A-213668041
@@ -69,6 +76,7 @@ immigration:
       unconditional_i551_in_hand_at_filing: false
       i751_pending_or_late_approval: true
       c2_fires: true
+  part1_eligibility_box: B
 family:
   marital_status: Married
   times_married: 1
@@ -91,6 +99,8 @@ family:
     times_married: 1
     ssn: 329-54-1187
     address_same_as_applicant: true
+    full_name: Liam Patrick Kavanagh
+    honorific: Mr.
   prior_marriages_of_applicant: []
   prior_marriages_of_spouse: []
   children: []
@@ -112,94 +122,102 @@ matter:
   form_edition: 01/20/25
 input_surfaces:
   identity.family_name:
-  - email:0001
+  - email:0001 body.txt
   identity.given_name:
-  - email:0001
+  - email:0001 body.txt
   identity.middle_name:
-  - email:0001
+  - email:0001 body.txt
   identity.dob:
-  - email:0001
+  - email:0001 body.txt
   identity.cob:
-  - email:0001
+  - email:0001 body.txt
   identity.ssn:
-  - email:0003
+  - email:0003 body.txt
   identity.other_names_used:
-  - email:0011
+  - email:0011 body.txt
   identity.name_change_requested:
-  - email:0011
+  - email:0011 body.txt
   identity.uscis_online_account_number:
-  - email:0011
+  - email:0011 body.txt
   identity.ethnicity:
-  - email:0010
+  - email:0010 body.txt
   identity.race:
-  - email:0010
+  - email:0010 body.txt
   identity.height_ft:
-  - email:0010
+  - email:0010 body.txt
   identity.height_in:
-  - email:0010
+  - email:0010 body.txt
   identity.weight_lbs:
-  - email:0010
+  - email:0010 body.txt
   identity.eye_color:
-  - email:0010
+  - email:0010 body.txt
   identity.hair_color:
-  - email:0010
+  - email:0010 body.txt
   identity.first_entered_us:
-  - email:0007
+  - email:0007 body.txt
   immigration.a_number:
-  - email:0001
+  - email:0001 body.txt
   immigration.lpr_date:
-  - email:0006
-  - documents.green_card scan attached email:0006
+  - email:0006 body.txt
+  - email:0006/green_card_front_and_back_scan.pdf
   immigration.class_of_admission:
-  - email:0006
+  - email:0006 body.txt
   immigration.conditional_resident:
-  - email:0004
+  - email:0004 body.txt
   immigration.conditional_resident.i751.receipt_number:
-  - email:0004
-  - phone photo of I-797C attached to email:0004
+  - email:0004 body.txt
+  - email:0004/IMG_i797c_photo.jpg
+  immigration.conditional_resident.i751.received_date:
+  - 'email:0004 body.txt (read off the notice: ''received date is July 8, 2024'')'
+  - email:0004/IMG_i797c_photo.jpg
+  immigration.conditional_resident.i751.notice_date:
+  - 'email:0004 body.txt (read off the notice: ''notice itself is dated July 11, 2024'')'
+  - email:0004/IMG_i797c_photo.jpg
   addresses.0:
-  - email:0001
+  - email:0001 body.txt (WRONG — Cicero given as current; superseded, see mess_events)
+  - email:0011 body.txt (from-date 01/10/2022, supplied on request)
   addresses.1:
-  - email:0005
+  - email:0005 body.txt
   employment.0:
-  - email:0003
+  - email:0003 body.txt
   family.marriage_date:
-  - email:0002
+  - email:0002 body.txt
   family.spouse:
-  - email:0002
-  - email:0003
+  - email:0002 body.txt
+  - email:0003 body.txt
+  - email:0006/liam_passport_scan.pdf (Liam's own DOB)
   family.parents:
-  - email:0010
+  - email:0010 body.txt
   family.children:
-  - email:0002
+  - email:0002 body.txt
   travel:
-  - email:0007
+  - email:0007 body.txt
   moral_character:
-  - email:0010
+  - email:0010 body.txt
   fee_reduction:
-  - email:0011
+  - email:0011 body.txt
   contact:
-  - email:0003
+  - email:0003 body.txt
   documents.applicant_passport:
-  - email:0006
-  - passport scan attached email:0006
+  - email:0006 body.txt
+  - email:0006/siobhan_passport_scan.pdf
   documents.spouse_passport:
-  - email:0006
-  - passport scan attached email:0006
+  - email:0006 body.txt
+  - email:0006/liam_passport_scan.pdf
   documents.green_card:
-  - email:0006
-  - green card scan (front+back) attached email:0006
+  - email:0006 body.txt
+  - email:0006/green_card_front_and_back_scan.pdf
   documents.tax_return:
-  - email:0008
-  - 1040 scan attached email:0008
+  - email:0008 body.txt
+  - email:0008/2024_joint_tax_return_scan.pdf
   documents.i797c:
-  - email:0004
-  - 'phone photo attached email:0004 (voice card: ''the lighting is terrible'')'
+  - email:0004 body.txt
+  - 'email:0004/IMG_i797c_photo.jpg (voice card: ''the lighting is terrible'')'
   documents.evidence.0 (auto_policy):
-  - email:0009
-  - policy scan attached email:0009
+  - email:0009 body.txt
+  - email:0009/auto_insurance_policy_scan.pdf
   matter.engagement_date:
-  - email:0001
+  - email:0001 body.txt
   matter.filed_date:
   - registry.yaml matter.filing_date — filing-side fact, not narrated by the client
 documents:
@@ -224,6 +242,7 @@ documents:
       expiry_check: 5
       personal_number_check: 0
       composite_check: 2
+    number: PC7726154
   spouse_passport:
     issuing_country: United States of America
     issuing_authority: U.S. Department of State
@@ -245,10 +264,11 @@ documents:
       expiry_check: 8
       personal_number_check: 0
       composite_check: 2
+    number: '549302871'
   green_card:
     surname_printed: BRENNAN
     given_name_printed: SIOBHAN MAIRE
-    a_number: A-213668041
+    a_number: '213668041'
     card_number: SRC2209145501
     category: CR6
     country_of_birth: Ireland
@@ -259,6 +279,7 @@ documents:
     sides:
     - front
     - back
+    uscis_number: '213668041'
   tax_return:
     blank: f1040--2024.pdf
     filing_status: Married Filing Jointly
@@ -444,6 +465,7 @@ addresses:
   from: '2022-01-10'
   to: '2024-04-30'
   current: false
+  present: false
 - street: 2214 Wexford Road
   unit: null
   city: Berwyn
@@ -453,6 +475,8 @@ addresses:
   from: '2024-05-01'
   to: present
   current: true
+  present: true
+  is_mailing_address: true
 addresses_derived:
   mailing_same_as_physical: true
   contiguity_check: Cicero ends 2024-04-30, Berwyn starts 2024-05-01 — zero-day gap, confirmed by python
@@ -467,6 +491,7 @@ employment:
   from: '2022-11-14'
   to: present
   present_flag: true
+  present: true
 mess_events:
 - type: folder_named_for_correspondent
   fact: identity vs. correspondent
@@ -498,7 +523,8 @@ mess_events:
 
     '
   wrong_surface: null
-  right_surface: email:0001, email:0002, email:0004, email:0005 (personal) + email:0003 (work)
+  right_surface: email:0001, 0002, 0004, 0005, 0006, 0007, 0008, 0009, 0010, 0011 (personal, liam.kavanagh@brightpost.net)
+    + email:0003 (work, l.kavanagh@halstedfreight.com, sent unsigned)
   resolution: one person, one thread — both addresses belong to Liam the correspondent; neither belongs
     to the applicant Siobhan, whose own contact fields (Part 11) are (773) 555-0118 / s.brennan@quillmail.com.
 consistency_locks:
@@ -829,10 +855,13 @@ rule_inputs:
   unconditional_card_in_hand_at_filing: false
   arrest_items_yes: []
   part14_items_yes: []
+  part14_order_source: numeric
   oath_items_not_yes: []
   trip_count: 4
   trips_on_form: 4
   trips_trimmed: 0
+  trips_overflow_from_part8: 0
+  trips_day_excluded: 0
   part8_rows: 6
   evidence_types:
   - auto_policy
@@ -843,6 +872,7 @@ rule_inputs:
   c3b_fires: true
   c3c_fires: false
   c4_fires: false
+  c4_reason: does not fire
   c5_fires: false
   c6_fires: false
 _authored_notes:

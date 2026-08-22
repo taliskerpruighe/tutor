@@ -1,0 +1,637 @@
+# fieldmap_n400.yaml — masterkey path -> AcroForm field name, for the COMMITTED
+# blank `../blanks/n-400.pdf`, edition 01/20/25, 14 pages, 488 fields.
+#
+# HOW THIS WAS BUILT, AND WHY IT IS NOT GUESSABLE
+# ----------------------------------------------------------------------------
+# Every entry below was derived from WIDGET POSITION (/Rect) on the page, cross-
+# read against the PRINTED page text (`pdftotext -layout` and `-bbox`). Nothing
+# was derived from a field-name prefix or a /TU tooltip.
+#
+# `n400-part-map.md` warns that the prefixes lag the printed Parts by no
+# constant offset. It is worse than that, and these are the four traps that a
+# name-based reading walks straight into:
+#
+#   1. The Part 6 CHILDREN table is named with a `P7_` prefix
+#      (P7_EmployerName1 is a CHILD'S NAME). The Part 7 EMPLOYMENT table's
+#      employer column is named `P5_EmployerName1`. They are on the same page.
+#   2. Part 8's travel table row 1 country cell is `P9_Line1_Countries1` —
+#      a `P9_` name inside the Part 8 table. Rows 2-6 are `P8_Line1_Countries2..6`.
+#   3. Part 4's current-address dates are index-REVERSED:
+#      `P4_Line1_DatesofResidence[1]` is FROM (x=228) and `[0]` is TO (x=480).
+#      Row 1 of the address history has no `To1`; its TO cell is the stray
+#      `P4_Line3_From1[1]` (x=510, the TO column).
+#   4. The Part 9 item-15 arrest table's columns are not in field-index order:
+#      left to right the cells are why / Date / DateOfConv / Outcome[1] /
+#      Outcome[0] / Outcome[2]. `Outcome[1]` is the PLACE column, `Outcome[0]`
+#      is the DISPOSITION column and `Outcome[2]` is the SENTENCE column.
+#
+# BUTTONS. A /Btn on this blank is NOT a Yes/No checkbox. Each widget's /AP /N
+# holds exactly ONE key, and that key is the only value that checks the box;
+# anything else stores as /Off and the box prints blank. Yes and No are separate
+# FIELDS, and the widget index does NOT encode the answer — `P9_Line1[0]` is /N
+# but `P9_Line3[0]` is /Y. render_n400.py therefore resolves every button
+# through mklib.btn_on_states(): it looks up the wanted state, finds the widget
+# carrying it, sets that one, and sets its siblings to /Off. Never hardcode
+# "Yes", "On" or "/1".
+#
+# GOVERNED BY: STYLE-SPEC §8, §12; n400-part-map.md (the Part question, and the
+# FILL / LEAVE-EMPTY lists, which are reproduced at the foot of this file).
+
+meta:
+  blank: ../blanks/n-400.pdf
+  edition: "01/20/25"
+  pages: 14
+  fields: 488
+  built: 2026-08-22
+  method: widget /Rect position cross-read against printed page text
+  authority: tools/n400-part-map.md
+
+# ===========================================================================
+# The A-number page header — one per page, all 14. STYLE-SPEC §8: the firm puts
+# the A-number on every page header; §9.4 locks it to the green card.
+# These are COMB fields: they extract space-separated under pdftotext, so the
+# verifier must strip whitespace before comparing.
+# ===========================================================================
+a_number_headers:
+  source: immigration.a_number
+  fields:
+    - 'form1[0].#subform[0].#area[0].Line1_AlienNumber[0]'
+    - 'form1[0].#subform[1].#area[1].Line1_AlienNumber[1]'
+    - 'form1[0].#subform[2].#area[2].Line1_AlienNumber[2]'
+    - 'form1[0].#subform[3].#area[3].Line1_AlienNumber[3]'
+    - 'form1[0].#subform[4].#area[4].Line1_AlienNumber[4]'
+    - 'form1[0].#subform[5].#area[6].Line1_AlienNumber[5]'
+    - 'form1[0].#subform[6].#area[7].Line1_AlienNumber[6]'
+    - 'form1[0].#subform[7].#area[8].Line1_AlienNumber[7]'
+    - 'form1[0].#subform[8].#area[9].Line1_AlienNumber[8]'
+    - 'form1[0].#subform[9].#area[10].Line1_AlienNumber[9]'
+    - 'form1[0].#subform[10].#area[11].Line1_AlienNumber[10]'
+    - 'form1[0].#subform[11].#area[12].Line1_AlienNumber[11]'
+    - 'form1[0].#subform[12].#area[13].Line1_AlienNumber[12]'
+    - 'form1[0].#subform[13].#area[14].Line1_AlienNumber[13]'
+
+# ===========================================================================
+# SIMPLE TEXT  — masterkey dotted path -> field name.
+# `date:` entries are formatted MM/DD/YYYY (mklib.fmt_numeric) by render_n400.
+# ===========================================================================
+text:
+  # ---- printed Part 2, Information About You (page 1) --------------------
+  identity.family_name:  'form1[0].#subform[0].P2_Line1_FamilyName[0]'
+  identity.given_name:   'form1[0].#subform[0].P2_Line1_GivenName[0]'
+  identity.middle_name:  'form1[0].#subform[0].P2_Line1_MiddleName[0]'
+
+  # Part 2 item 2, other names used since birth — two rows on the blank
+  other_names.0.family_name: 'form1[0].#subform[0].Line2_FamilyName1[0]'
+  other_names.0.given_name:  'form1[0].#subform[0].Line3_GivenName1[0]'
+  other_names.0.middle_name: 'form1[0].#subform[0].Line3_MiddleName1[0]'
+  other_names.1.family_name: 'form1[0].#subform[0].Line2_FamilyName2[0]'
+  other_names.1.given_name:  'form1[0].#subform[0].Line3_GivenName2[0]'
+  other_names.1.middle_name: 'form1[0].#subform[0].Line3_MiddleName2[0]'
+
+  # Part 2 item 3, name change (OPTIONAL). Only tran_daniel requests one, and
+  # STYLE-SPEC / registry D13 is explicit: the requested name appears at THIS
+  # FIELD AND NOWHERE ELSE. Every other artefact carries the current legal name.
+  identity.name_change.new_family_name: 'form1[0].#subform[1].Part2Line3_FamilyName[0]'
+  identity.name_change.new_given_name:  'form1[0].#subform[1].Part2Line4a_GivenName[0]'
+  identity.name_change.new_middle_name: 'form1[0].#subform[1].Part2Line4a_MiddleName[0]'
+
+  identity.uscis_online_account_number: 'form1[0].#subform[1].P2_Line6_USCISELISAcctNumber[0]'
+  identity.ssn:                         'form1[0].#subform[1].Line12b_SSN[0]'
+
+  # ---- printed Part 3, Biographic Information (page 3) -------------------
+  identity.weight_lbs.0: 'form1[0].#subform[2].P7_Line4_Pounds1[0]'
+  identity.weight_lbs.1: 'form1[0].#subform[2].P7_Line4_Pounds2[0]'
+  identity.weight_lbs.2: 'form1[0].#subform[2].P7_Line4_Pounds3[0]'
+
+  # ---- printed Part 5, Marital History (pages 4-5) -----------------------
+  family.times_married:         'form1[0].#subform[3].Part9Line3_TimesMarried[0]'
+  family.spouse.family_name:    'form1[0].#subform[3].P10_Line4a_FamilyName[0]'
+  family.spouse.given_name:     'form1[0].#subform[3].P10_Line4a_GivenName[0]'
+  family.spouse.middle_name:    'form1[0].#subform[3].P10_Line4a_MiddleName[0]'
+  family.spouse.a_number:       'form1[0].#subform[4].#area[5].P7_Line6_ANumber[0]'
+  # printed Part 5 Item 7 -- "How many times has your current spouse been
+  # married?" The widget over it is named P10_Line4g_Employer[0]. That name is
+  # WRONG, in the same way this blank's /TU tooltips are wrong (n400-part-map.md):
+  # the form vendor's internal names do not track the printed form. Verified by
+  # geometry, which is the only reliable authority here -- the widget sits at
+  # y=102 from the page top against printed Item 7 at y=103, and it is 42pt
+  # wide, a count box. The first mapping took the names at face value and
+  # swapped Items 7 and 8, printing a clipped "re Prot" fragment of the
+  # spouse's employer into the times-married box on every 319(a) packet.
+  family.spouse.times_married:  'form1[0].#subform[4].P10_Line4g_Employer[0]'
+  # printed Part 5 Item 8 -- "Current Spouse's Current Employer or Company",
+  # the 318pt-wide text box at y=162 against printed Item 8 at y=167.
+  # DELIBERATELY UNMAPPED. The form's own instruction directly beneath it reads
+  # "Only answer Item Number 8. if you are filing under Part 1., Item Number
+  # 1.d., Spouse of U.S. Citizen in Qualified Employment Abroad." No client in
+  # this set files under 1.d, so the correct value is BLANK for all six, and
+  # the spouse's employer stays a masterkey fact that no form field consumes.
+  # family.spouse.employer:     'form1[0].#subform[4].TextField1[0]'
+
+  # ---- printed Part 6, Children (page 5) ---------------------------------
+  family.children_under_18_count: 'form1[0].#subform[4].P11_Line1_TotalChildren[0]'
+
+dates:
+  identity.dob:                        'form1[0].#subform[1].P2_Line8_DateOfBirth[0]'
+  immigration.lpr_date:                'form1[0].#subform[1].P2_Line9_DateBecamePermanentResident[0]'
+  family.spouse.dob:                   'form1[0].#subform[3].P10_Line4d_DateofBirth[0]'
+  family.marriage_date:                'form1[0].#subform[3].P10_Line4e_DateEnterMarriage[0]'
+  family.spouse.naturalization_date:   'form1[0].#subform[3].P10_Line5b_DateBecame[0]'
+
+countries:
+  identity.cob: 'form1[0].#subform[1].P2_Line10_CountryOfBirth[0]'
+  identity.coc: 'form1[0].#subform[1].P2_Line11_CountryOfNationality[0]'
+
+# ===========================================================================
+# BUTTON GROUPS — exclusive selections.
+#   by: state  -> render_n400 finds the widget whose /AP /N key == the mapped
+#                 state. Robust against index scrambling; use wherever the
+#                 states are distinct.
+#   by: index  -> the states are NOT unique within the group, so the widget is
+#                 chosen by index. Verified against printed left-to-right order.
+# ===========================================================================
+button_groups:
+
+  # printed Part 1 item 1, Reason for Filing. The on-state IS the printed box
+  # letter, which the index is NOT: Part1_Eligibility[2] is box A.
+  # STYLE-SPEC §12: 316(a) -> box A (General Provision);
+  #                 319(a) -> box B (Spouse of U.S. Citizen).
+  part1_eligibility:
+    source: immigration.part1_eligibility_box
+    group: 'form1[0].#subform[0].Part1_Eligibility'
+    by: state
+    values: {A: /A, B: /B, C: /C, D: /D, E: /E, F: /F, G: /G}
+
+  # printed Part 2 item 3 — would you like to legally change your name?
+  name_change_requested:
+    source: identity.name_change.requested
+    group: 'form1[0].#subform[1].P2_Line34_NameChange'
+    by: state
+    values: {true: /Y, false: /N}
+
+  sex:
+    source: identity.sex
+    group: 'form1[0].#subform[1].P2_Line7_Gender'
+    by: state
+    values: {M: /M, F: /F}
+
+  # Part 2 items 10 and 11 disability/impairment accommodation claims.
+  # STYLE-SPEC §8: No for all six clients.
+  claim_disability_10:
+    const: "No"
+    group: 'form1[0].#subform[1].P2_Line10_claimdisability'
+    by: state
+    values: {"Yes": /Y, "No": /N}
+  claim_disability_11:
+    const: "No"
+    group: 'form1[0].#subform[1].P2_Line11_claimdisability'
+    by: state
+    values: {"Yes": /Y, "No": /N}
+  ssn_item_12a:
+    const: "Yes"          # do you have an SSN
+    group: 'form1[0].#subform[1].Line12a_Checkbox'
+    by: state
+    values: {"Yes": /Y, "No": /N}
+  ssn_item_12c:
+    const: "No"           # do you want a replacement/new card issued
+    group: 'form1[0].#subform[1].Line12\.c_Checkbox'
+    by: state
+    values: {"Yes": /Y, "No": /N}
+
+  # printed Part 3 item 1
+  ethnicity:
+    source: identity.ethnicity
+    group: 'form1[0].#subform[2].P7_Line1_Ethnicity'
+    by: state
+    values: {"Hispanic or Latino": /Y, "Not Hispanic or Latino": /N}
+
+  # printed Part 3 item 2 — MULTI-SELECT, and BY INDEX: two of the five widgets
+  # both carry the state /A (Asian at index 1, Native Hawaiian at index 3), so
+  # the state does not identify the box. Index order was verified equal to the
+  # printed left-to-right order by /Rect x (61, 169, 223, 325, 445).
+  race:
+    source: identity.race
+    group: 'form1[0].#subform[2].P7_Line2_Race'
+    by: index
+    multi: true
+    values:
+      "American Indian or Alaska Native": 0
+      "Asian": 1
+      "Black or African American": 2
+      "Native Hawaiian or Other Pacific Islander": 3
+      "White": 4
+
+  # printed Part 3 items 5 and 6 — states are self-describing, use them.
+  eye_color:
+    source: identity.eye_color
+    group: 'form1[0].#subform[2].P7_Line5_Eye'
+    by: state
+    values: {Black: /BLK, Blue: /BLU, Brown: /BRO, Gray: /GRY, Green: /GRN,
+             Hazel: /HAZ, Maroon: /MAR, Pink: /PNK, Other: /XXX}
+  hair_color:
+    source: identity.hair_color
+    group: 'form1[0].#subform[2].P7_Line6_Hair'
+    by: state
+    values: {Bald: /BAL, Black: /BLK, Blond: /BLN, Brown: /BRO, Gray: /GRY,
+             Red: /RED, Sandy: /SDY, White: /WHI, Other: /XXX}
+
+  # printed Part 4 item 1 — unit type of the CURRENT address
+  current_unit_type:
+    source: addresses.current.unit_type
+    group: 'form1[0].#subform[2].P4_Line1_Unit'
+    by: state
+    values: {Flr: /FLR, Ste: /STE, Apt: /APT}
+
+  # printed Part 4 item 2 — is your physical address also your mailing address?
+  mailing_same_as_physical:
+    source: addresses.current.is_mailing_address
+    group: 'form1[0].#subform[2].Pt3_Line2a_Checkbox'
+    by: state
+    values: {true: /Y, false: /N}
+
+  # printed Part 4 item 3 — unit type of the MAILING address (only when it differs)
+  mailing_unit_type:
+    source: addresses.mailing.unit_type
+    group: 'form1[0].#subform[3].P5_Line1b_Unit'
+    by: state
+    values: {Flr: /FLR, Ste: /STE, Apt: /APT}
+
+  # printed Part 5 item 1 — verified left-to-right by /Rect x
+  # (60 /S, 174 /M, 234 /D, 300 /W, 366 /E, 432 /A)
+  marital_status:
+    source: family.marital_status
+    group: 'form1[0].#subform[3].P10_Line1_MaritalStatus'
+    by: state
+    values: {"Single, Never Married": /S, "Single": /S, "Married": /M,
+             "Divorced": /D, "Widowed": /W, "Separated": /E, "Marriage Annulled": /A}
+
+  # printed Part 5 item 2 — spouse a current member of the U.S. armed forces
+  spouse_armed_forces:
+    source: family.spouse.armed_forces
+    default: "No"
+    group: 'form1[0].#subform[3].P7_Line2_Forces'
+    by: state
+    values: {"Yes": /Y, "No": /N}
+
+  # printed Part 5 item 4.d — spouse's address same as yours (y 145 /Y, 127 /N)
+  spouse_address_same:
+    source: family.spouse.address_same_as_applicant
+    group: 'form1[0].#subform[3].P10_Line5_Citizen'
+    by: state
+    values: {true: /Y, false: /N}
+
+  # printed Part 5 item 5.a — when did your spouse become a U.S. citizen
+  # (y 91 /B "By Birth in the United States", y 73 /O "Other")
+  spouse_usc_when:
+    source: family.spouse.usc_since
+    group: 'form1[0].#subform[3].P10_Line5a_When'
+    by: state
+    # 'naturalized' is tran's spelling, 'naturalization' kavanagh's;
+    # both mean printed 5.a 'Other', which routes to item 5.b's date.
+    values: {birth: /B, naturalization: /O, naturalized: /O, other: /O}
+
+# ===========================================================================
+# printed Part 4 — RESIDENCE
+# ===========================================================================
+part4_current_address:
+  in_care_of:   'form1[0].#subform[2].P4_Line1_InCareOfName[0]'
+  street:       'form1[0].#subform[2].P4_Line1_StreetName[0]'
+  unit_number:  'form1[0].#subform[2].P4_Line1_Number[0]'
+  city:         'form1[0].#subform[2].P4_Line1_City[0]'
+  state:        'form1[0].#subform[2].P4_Line1_State[0]'      # /Ch dropdown
+  zip:          'form1[0].#subform[2].P4_Line1_ZipCode[0]'
+  province:     'form1[0].#subform[2].P4_Line1_Province[0]'
+  postal_code:  'form1[0].#subform[2].P4_Line1_PostalCode[0]'
+  country:      'form1[0].#subform[2].P4_Line1_Country[0]'
+  # INDEX-REVERSED, verified by /Rect x: [1] is at x=228 (the FROM column),
+  # [0] is at x=480 (the TO column). Reading these in index order silently
+  # swaps every applicant's residence dates.
+  from:         'form1[0].#subform[2].P4_Line1_DatesofResidence[1]'
+  to:           'form1[0].#subform[2].P4_Line1_DatesofResidence[0]'
+
+part4_mailing_address:      # only filled when is_mailing_address is false
+  in_care_of:   'form1[0].#subform[3].P5_Line1b_InCareOfName[0]'
+  street:       'form1[0].#subform[3].P5_Line1b_StreetName[0]'
+  unit_number:  'form1[0].#subform[3].P5_Line1b_Number[0]'
+  city:         'form1[0].#subform[3].P5_Line1b_City[0]'
+  state:        'form1[0].#subform[3].P4_Line1_State[1]'      # /Ch, note the [1]
+  zip:          'form1[0].#subform[3].P5_Line1b_ZipCode[0]'
+  province:     'form1[0].#subform[3].P5_Line1b_Province[0]'
+  postal_code:  'form1[0].#subform[3].P5_Line1b_PostalCode[0]'
+  country:      'form1[0].#subform[3].P5_Line1b_Country[0]'
+
+# Prior addresses, most recent first. 3 rows on this edition; a fourth prior
+# address goes to Part 14 (no client has one).
+part4_address_history:
+  rows: 3
+  columns: [street, city, state, zip, country, from, to]
+  fields:
+    1: {street: 'form1[0].#subform[2].P4_Line3_PhysicalAddress1[0]',
+        city:   'form1[0].#subform[2].P4_Line3_CityTown1[0]',
+        state:  'form1[0].#subform[2].P4_Line3_State1[0]',
+        zip:    'form1[0].#subform[2].P4_Line3_ZipCode1[0]',
+        country: 'form1[0].#subform[2].P4_Line3_Country1[0]',
+        from:   'form1[0].#subform[2].P4_Line3_From1[0]',
+        # row 1 has NO `To1`. Its TO cell is this stray, at x=510, the TO column.
+        to:     'form1[0].#subform[2].P4_Line3_From1[1]'}
+    2: {street: 'form1[0].#subform[2].P4_Line3_PhysicalAddress2[0]',
+        city:   'form1[0].#subform[2].P4_Line3_CityTown2[0]',
+        state:  'form1[0].#subform[2].P4_Line3_State2[0]',
+        zip:    'form1[0].#subform[2].P4_Line3_ZipCode2[0]',
+        country: 'form1[0].#subform[2].P4_Line3_Country2[0]',
+        from:   'form1[0].#subform[2].P4_Line3_From2[0]',
+        to:     'form1[0].#subform[2].P4_Line3_To2[0]'}
+    3: {street: 'form1[0].#subform[2].P4_Line3_PhysicalAddress3[0]',
+        city:   'form1[0].#subform[2].P4_Line3_CityTown3[0]',
+        state:  'form1[0].#subform[2].P4_Line3_State3[0]',
+        zip:    'form1[0].#subform[2].P4_Line3_ZipCode3[0]',
+        country: 'form1[0].#subform[2].P4_Line3_Country3[0]',
+        from:   'form1[0].#subform[2].P4_Line3_From3[0]',
+        to:     'form1[0].#subform[2].P4_Line3_To3[0]'}
+
+# ===========================================================================
+# printed Part 6 — CHILDREN.
+# NOTE THE PREFIX TRAP: this table is named P7_*. `P7_EmployerName1` is a
+# CHILD'S NAME, not an employer. The employment table below is named P5_*.
+# Verified by /Rect y: this block sits at y 366/336/306 on page 5, under the
+# printed heading "Part 6. Information About Your Children"; the employment
+# block sits at y 90/66/42.
+# ===========================================================================
+part6_children:
+  rows: 3
+  fields:
+    1: {name: 'form1[0].#subform[4].P7_EmployerName1[0]',
+        dob:  'form1[0].#subform[4].P7_From1[0]',
+        residence: 'form1[0].#subform[4].P7_OccupationFieldStudy1[0]',
+        relationship: 'form1[0].#subform[4].P7_OccupationFieldStudy1[1]',
+        support_group: 'form1[0].#subform[4].P9_Line5a'}
+    2: {name: 'form1[0].#subform[4].P7_EmployerName2[0]',
+        dob:  'form1[0].#subform[4].P7_From2[0]',
+        residence: 'form1[0].#subform[4].P7_OccupationFieldStudy2[0]',
+        relationship: 'form1[0].#subform[4].P7_OccupationFieldStudy2[1]',
+        support_group: 'form1[0].#subform[4].P6_ChildTwo'}
+    3: {name: 'form1[0].#subform[4].P7_EmployerName3[0]',
+        dob:  'form1[0].#subform[4].P7_From3[0]',
+        residence: 'form1[0].#subform[4].P7_OccupationFieldStudy3[0]',
+        relationship: 'form1[0].#subform[4].P7_OccupationFieldStudy3[1]',
+        support_group: 'form1[0].#subform[4].P6_ChildThree'}
+  support_values: {"Yes": /Y, "No": /N}
+
+# ===========================================================================
+# printed Part 7 — EMPLOYMENT AND SCHOOLS. Most recent first, 3 rows.
+# Column order verified against the printed header's word positions:
+# Name 96 | City/Town 166 | State/Province 224 | ZIP 266 | Country 327 |
+# From 390 | To 456 | Occupation or Field of Study 504.
+# Row 1 has NO `To` cell — the printed form prints PRESENT there.
+# ===========================================================================
+part7_employment:
+  rows: 3
+  fields:
+    1: {employer: 'form1[0].#subform[4].P5_EmployerName1[0]',
+        city:     'form1[0].#subform[4].P7_City1[0]',
+        state:    'form1[0].#subform[4].P7_State1[0]',
+        zip:      'form1[0].#subform[4].P7_ZipCode1[0]',
+        country:  'form1[0].#subform[4].P7_Country1[0]',
+        from:     'form1[0].#subform[4].P7_From1[1]',
+        to:       null,
+        occupation: 'form1[0].#subform[4].P7_OccupationFieldStudy1[2]'}
+    2: {employer: 'form1[0].#subform[4].P5_EmployerName2[0]',
+        city:     'form1[0].#subform[4].P7_City2[0]',
+        state:    'form1[0].#subform[4].P7_State2[0]',
+        zip:      'form1[0].#subform[4].P7_ZipCode2[0]',
+        country:  'form1[0].#subform[4].P7_Country2[0]',
+        from:     'form1[0].#subform[4].P7_From2[1]',
+        to:       'form1[0].#subform[4].P7_To2[0]',
+        occupation: 'form1[0].#subform[4].P7_OccupationFieldStudy2[2]'}
+    3: {employer: 'form1[0].#subform[4].P5_EmployerName3[0]',
+        city:     'form1[0].#subform[4].P7_City3[0]',
+        state:    'form1[0].#subform[4].P7_State3[0]',
+        zip:      'form1[0].#subform[4].P7_ZipCode3[0]',
+        country:  'form1[0].#subform[4].P7_Country3[0]',
+        from:     'form1[0].#subform[4].P7_From3[1]',
+        to:       'form1[0].#subform[4].P7_To3[0]',
+        occupation: 'form1[0].#subform[4].P7_OccupationFieldStudy3[2]'}
+
+# ===========================================================================
+# printed Part 8 — TIME OUTSIDE THE UNITED STATES.
+# SIX ROWS. This row count IS the travel-addendum threshold (STYLE-SPEC §9.2
+# C4) and it agrees with every masterkey's rule_inputs.part8_rows == 6.
+# Most recent trip first. Day trips are excluded from the table entirely.
+# Row 1's country cell is `P9_Line1_Countries1` — a P9_ name inside Part 8.
+# ===========================================================================
+part8_travel:
+  rows: 6
+  fields:
+    1: {left: 'form1[0].#subform[5].P8_Line1_DateLeft1[0]',
+        returned: 'form1[0].#subform[5].P8_Line1_DateReturn1[0]',
+        countries: 'form1[0].#subform[5].P9_Line1_Countries1[0]'}
+    2: {left: 'form1[0].#subform[5].P8_Line1_DateLeft2[0]',
+        returned: 'form1[0].#subform[5].P8_Line1_DateReturn2[0]',
+        countries: 'form1[0].#subform[5].P8_Line1_Countries2[0]'}
+    3: {left: 'form1[0].#subform[5].P8_Line1_DateLeft3[0]',
+        returned: 'form1[0].#subform[5].P8_Line1_DateReturn3[0]',
+        countries: 'form1[0].#subform[5].P8_Line1_Countries3[0]'}
+    4: {left: 'form1[0].#subform[5].P8_Line1_DateLeft4[0]',
+        returned: 'form1[0].#subform[5].P8_Line1_DateReturn4[0]',
+        countries: 'form1[0].#subform[5].P8_Line1_Countries4[0]'}
+    5: {left: 'form1[0].#subform[5].P8_Line1_DateLeft5[0]',
+        returned: 'form1[0].#subform[5].P8_Line1_DateReturn5[0]',
+        countries: 'form1[0].#subform[5].P8_Line1_Countries5[0]'}
+    6: {left: 'form1[0].#subform[5].P8_Line1_DateLeft6[0]',
+        returned: 'form1[0].#subform[5].P8_Line1_DateReturn6[0]',
+        countries: 'form1[0].#subform[5].P8_Line1_Countries6[0]'}
+
+# ===========================================================================
+# printed Part 9 — ADDITIONAL INFORMATION ABOUT YOU.
+# Every item is a Yes/No pair of SEPARATE fields sharing one base name. The
+# index does not encode the answer; render_n400.py resolves through
+# btn_on_states(). The item keys match the masterkey's moral_character keys
+# with the leading `q` stripped (mk `q15b` -> item `15b`).
+# The prefixes here are pure noise: item 6a is P12_, 7d is P11_, 17a is P11_,
+# 22b is Pt9_. They were read off page position, not off the name.
+# ===========================================================================
+part9_items:
+  "1":   'form1[0].#subform[5].P9_Line1'
+  "2":   'form1[0].#subform[5].P9_Line2'
+  "3":   'form1[0].#subform[5].P9_Line3'
+  "4":   'form1[0].#subform[5].P9_Line4'
+  "5a":  'form1[0].#subform[5].P9_5a'
+  "5b":  'form1[0].#subform[5].P9_5b'
+  "6a":  'form1[0].#subform[6].P12_6a'
+  "6b":  'form1[0].#subform[6].P12_6b'
+  "6c":  'form1[0].#subform[6].P12_6c'
+  "7a":  'form1[0].#subform[6].P9_Line7a'
+  "7b":  'form1[0].#subform[6].P9_Line7\.b\.'
+  "7c":  'form1[0].#subform[6].P9_Line7\.c'
+  "7d":  'form1[0].#subform[6].P11_7d'
+  "7e":  'form1[0].#subform[6].P9_Line7\.e'
+  "7f":  'form1[0].#subform[6].P9_Line7\.f'
+  "7g":  'form1[0].#subform[6].P9_Line7\.g'
+  "8a":  'form1[0].#subform[6].P9_Line8a'
+  "8b":  'form1[0].#subform[6].P9_Line8b'
+  "9":   'form1[0].#subform[6].P9_Line9'
+  "10a": 'form1[0].#subform[6].P9_Line10a'
+  "10b": 'form1[0].#subform[6].P9_Line10b'
+  "10c": 'form1[0].#subform[6].P9_Line10c'
+  "11":  'form1[0].#subform[6].P9_Line11'
+  "12":  'form1[0].#subform[6].P9_Line12'
+  "13":  'form1[0].#subform[6].P9_Line13'
+  "14":  'form1[0].#subform[6].P9_Line14'
+  "15a": 'form1[0].#subform[7].P9_Line15a'
+  "15b": 'form1[0].#subform[7].P9_Line15b'
+  "16":  'form1[0].#subform[7].P12_Line16'
+  "17a": 'form1[0].#subform[8].P11_Line17A'
+  "17b": 'form1[0].#subform[8].P11_Line17B'
+  "17c": 'form1[0].#subform[8].P11_Line17C'
+  "17d": 'form1[0].#subform[8].P12_Line17d'
+  "17e": 'form1[0].#subform[8].P12_Line17e'
+  "17f": 'form1[0].#subform[8].P12_Line17f'
+  "17g": 'form1[0].#subform[8].P12_Line17g'
+  "17h": 'form1[0].#subform[8].P12_Line17h'
+  "18":  'form1[0].#subform[8].P12_Line18'
+  "19":  'form1[0].#subform[8].P12_Line19'
+  "20":  'form1[0].#subform[8].P12_Line20'
+  "21":  'form1[0].#subform[8].P12_Line21'
+  "22a": 'form1[0].#subform[8].P9_Line22a'
+  "22b": 'form1[0].#subform[8].Pt9_Line22b'
+  "23":  'form1[0].#subform[8].P12_Line23'
+  "24":  'form1[0].#subform[8].P12_Line24'
+  "25":  'form1[0].#subform[8].P12_Line25'
+  "26a": 'form1[0].#subform[9].P12_Line26a'
+  "26b": 'form1[0].#subform[9].P12_Line26b'
+  "26c": 'form1[0].#subform[9].P12_Line26c'
+  "26d": 'form1[0].#subform[9].P11_Line26d'
+  "27":  'form1[0].#subform[9].P12_Line27'
+  "28":  'form1[0].#subform[9].P12_Line28'
+  "29":  'form1[0].#subform[9].P9_Line29'
+  "30a": 'form1[0].#subform[9].P12_Line30a'
+  "30b": 'form1[0].#subform[9].P12_Line30b'
+  "31":  'form1[0].#subform[9].P12_Line31'
+  "32":  'form1[0].#subform[9].P12_Line32'
+  "33":  'form1[0].#subform[9].P12_Line33'
+  "34":  'form1[0].#subform[9].P12_Line34'
+  "35":  'form1[0].#subform[9].P12_Line35'
+  "36":  'form1[0].#subform[9].P12_Line36'
+  "37":  'form1[0].#subform[9].P12_Line37'
+
+part9_item_values: {"Yes": /Y, "No": /N}
+
+# Text cells that hang off particular Part 9 items.
+part9_text:
+  "22c_date":  'form1[0].#subform[8].P9_Line22c_Date[0]'
+  "22c_ssn":   'form1[0].#subform[8].P9_Line22c_SSNumber[0]'
+  "33_title":  'form1[0].#subform[9].P9_NobilityTitles[0]'
+  "1_explain": 'form1[0].#subform[0].Part1Line5_OtherExplain[0]'   # Part 1 item 1.g "Other"
+
+# The item-15 crime/offense table, 5 rows. COLUMN ORDER IS NOT INDEX ORDER —
+# verified by /Rect x: why 36 | Date 156 | DateOfConv 234 | Outcome[1] 312 |
+# Outcome[0] 402 | Outcome[2] 510, against the printed headers
+# "What was the crime or offense?" | "Date of the Crime or Offense" |
+# "Date of your conviction or guilty plea" | "Place of Crime or Offense" |
+# "What was the result or disposition...?" | "What was your sentence?".
+# Source: moral_character.<item>.arrest_detail, canonicalised by
+# normalize_masterkeys.py to {offense, offense_date, conviction_date, place,
+# disposition, sentence}.
+part9_arrest_table:
+  rows: 5
+  fields:
+    1: {offense: 'form1[0].#subform[7].P12_Line29_why1[0]',
+        offense_date: 'form1[0].#subform[7].P12_Line29_Date1[0]',
+        conviction_date: 'form1[0].#subform[7].P12_Line29_DateOfConv1[0]',
+        place: 'form1[0].#subform[7].P12_Line29_Outcome1[1]',
+        disposition: 'form1[0].#subform[7].P12_Line29_Outcome1[0]',
+        sentence: 'form1[0].#subform[7].P12_Line29_Outcome1[2]'}
+    2: {offense: 'form1[0].#subform[7].P12_Line29_why2[0]',
+        offense_date: 'form1[0].#subform[7].P12_Line29_Date2[0]',
+        conviction_date: 'form1[0].#subform[7].P12_Line29_DateOfConv2[0]',
+        place: 'form1[0].#subform[7].P12_Line29_Outcome2[1]',
+        disposition: 'form1[0].#subform[7].P12_Line29_Outcome2[0]',
+        sentence: 'form1[0].#subform[7].P12_Line29_Outcome2[2]'}
+    3: {offense: 'form1[0].#subform[7].P12_Line29_why3[0]',
+        offense_date: 'form1[0].#subform[7].P12_Line29_Date3[0]',
+        conviction_date: 'form1[0].#subform[7].P12_Line29_DateOfConv3[0]',
+        place: 'form1[0].#subform[7].P12_Line29_Outcome3[1]',
+        disposition: 'form1[0].#subform[7].P12_Line29_Outcome3[0]',
+        sentence: 'form1[0].#subform[7].P12_Line29_Outcome3[2]'}
+    4: {offense: 'form1[0].#subform[7].P12_Line29_why4[0]',
+        offense_date: 'form1[0].#subform[7].P12_Line29_Date4[0]',
+        conviction_date: 'form1[0].#subform[7].P12_Line29_DateOfConv4[0]',
+        place: 'form1[0].#subform[7].P12_Line29_Outcome4[1]',
+        disposition: 'form1[0].#subform[7].P12_Line29_Outcome4[0]',
+        sentence: 'form1[0].#subform[7].P12_Line29_Outcome4[2]'}
+    5: {offense: 'form1[0].#subform[7].P12_Line29_why5[0]',
+        offense_date: 'form1[0].#subform[7].P12_Line29_Date5[0]',
+        conviction_date: 'form1[0].#subform[7].P12_Line29_DateOfConv5[0]',
+        place: 'form1[0].#subform[7].P12_Line29_Outcome5[1]',
+        disposition: 'form1[0].#subform[7].P12_Line29_Outcome5[0]',
+        sentence: 'form1[0].#subform[7].P12_Line29_Outcome5[2]'}
+
+# ===========================================================================
+# printed Part 10 — REQUEST FOR A FEE REDUCTION.
+# "No" for all six clients (STYLE-SPEC §12.8), so the household-income and
+# household-size fields stay EMPTY. Listed so the verifier can assert that.
+# ===========================================================================
+part10_fee_reduction:
+  answer_group: 'form1[0].#subform[10].P10_Line1_Citizen'
+  answer_values: {"Yes": /Y, "No": /N}
+  answer_const: "No"
+  leave_empty:
+    - 'form1[0].#subform[10].P10_Line2_TotalHouseholdIn[0]'
+    - 'form1[0].#subform[10].P10_Line3_HouseHoldSize[0]'
+    - 'form1[0].#subform[10].P10_Line5b_NameOfHousehold[0]'
+    - 'form1[0].#subform[10].P11_Line1_TotalChildren[1]'
+  leave_empty_groups:
+    - 'form1[0].#subform[10].P10_Line5a'
+
+# ===========================================================================
+# printed Part 11 — APPLICANT'S CONTACT INFORMATION, CERTIFICATION, SIGNATURE.
+# §16 ruling 10, first half: items 3, 4, 5 ARE FILLED. Reproduced verbatim from
+# n400-part-map.md's FILL list — exactly three fields, no more.
+# ===========================================================================
+part11_fill:
+  contact.daytime_phone: 'form1[0].#subform[10].P12_Line3_Telephone[0]'
+  contact.mobile_phone:  'form1[0].#subform[10].P12_Line3_Mobile[0]'
+  contact.email:         'form1[0].#subform[10].P12_Line5_Email[0]'
+
+# ===========================================================================
+# LEAVE EMPTY — assert, do not merely omit.
+# Verbatim from n400-part-map.md. verify_client.py must FIRST prove every one
+# of these names EXISTS in the blank's 488-name set (SPEC-DELTA D-E: an
+# assertion against a non-existent name passes vacuously while a filled
+# preparer block ships), and only THEN assert it is empty.
+# ===========================================================================
+leave_empty:
+  part11_signature:        # §16 r11 — the form ships UNSIGNED, no signature date
+    - 'form1[0].#subform[10].P12_SignatureApplicant[0]'
+    - 'form1[0].#subform[10].P13_DateofSignature[0]'
+  part13_preparer:         # §16 r10 + r7 — no firm identity anywhere
+    - 'form1[0].#subform[11].P15_Line1_PreparerFamilyName[0]'
+    - 'form1[0].#subform[11].P15_Line1_PreparerGivenName[0]'
+    - 'form1[0].#subform[11].P15_Line2_NameofBusinessorOrgName[0]'
+    - 'form1[0].#subform[11].P15_Line4_Telephone[0]'
+    - 'form1[0].#subform[11].P15_Line5_Mobile[0]'
+    - 'form1[0].#subform[11].P15_Line6_Email[0]'
+    - 'form1[0].#subform[11].P15_DateofSignature[0]'
+    - 'form1[0].#subform[11].P12_SignatureApplicant[2]'
+  part12_interpreter:      # no interpreter is engaged on any of the six matters
+    - 'form1[0].#subform[11].P14_Line1_nterpreterFamilyName[0]'   # sic, the blank misspells it
+    - 'form1[0].#subform[11].P14_Line1_nterpreterGivenName[0]'
+    - 'form1[0].#subform[11].P14_Line2_NameofBusinessorOrgName[0]'
+    - 'form1[0].#subform[11].P14_Line4_Telephone[0]'
+    - 'form1[0].#subform[11].P14_Line5_Mobile[0]'
+    - 'form1[0].#subform[11].P14_Line5_EmailAddress[0]'
+    - 'form1[0].#subform[11].P14_NameOfLanguage[0]'
+    - 'form1[0].#subform[11].P14_DateofSignature[0]'
+    - 'form1[0].#subform[11].P12_SignatureApplicant[1]'
+  parts_15_16:             # executed at the USCIS interview, never by the firm
+    - 'form1[0].#subform[13].Part15ApplicantsSignature[0]'
+    - 'form1[0].#subform[13].Part15DateofSignature[0]'
+    - 'form1[0].#subform[13].Part15USCISSignature[0]'
+    - 'form1[0].#subform[13].Part15USCISName[0]'
+    - 'form1[0].#subform[13].ApplicantsSignature[0]'
+    - 'form1[0].#subform[13].Part15DateofSignature[1]'
+
+# The 14 2D-barcode fields, one per page. Left empty.
+barcodes_leave_empty:
+  pattern: 'form1[0].#pageSet[0].Page1[n].PDF417BarCode1[0]'
+  count: 14

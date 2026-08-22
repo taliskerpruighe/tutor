@@ -4,7 +4,7 @@ the decisions-without-asking from the original prompt are unchanged and are NOT
 restated here. Do not re-derive them and do not re-do completed work — the six
 masterkeys and their normalised copies are done and Phase 2 barrier (a) is green.
 
-Resume at the Phase 2 reviewer and run through Phase 6.
+Resume at the Phase 2 reviewer and run through Phase 5, then the §8 landing. (There is no Phase 6; the landing is BUILD-PLAN §8.)
 
 ## You are not finished until every one of these is true
 
@@ -16,7 +16,7 @@ Resume at the Phase 2 reviewer and run through Phase 6.
    components, and an **input** folder of fabricated client material.
 4. Every scripted lock, the leakage scan and at least one dogfood run have been
    executed and their results written to disk.
-5. The Phase 6 landing has been done.
+5. The BUILD-PLAN §8 landing has been done.
 
 Check that list before you end your turn. If an item is unmet and no stop
 condition has fired, you are not done: spawn the next agent.

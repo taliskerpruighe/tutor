@@ -33,6 +33,9 @@ identity:
   race:
   - White
   first_entered_us: '2011-05-14'
+  country_of_birth: Greece
+  country_of_citizenship: Greece
+  other_names_used_since_birth: []
 immigration:
   a_number: '207115634'
   a_number_formatted: A-207115634
@@ -42,13 +45,25 @@ immigration:
   classification_basis_string: INA 316(a)
   conditional_resident:
     was_cr: false
+  written_explanation_structure:
+    covers: Part 9 Item 20 (removal proceedings) FIRST and at length; then, in a short closing paragraph,
+      Items 8.a and 12 (routine Greek compulsory military service), which the form's own instruction also
+      routes to Part 14.
+    order:
+    - q20
+    - q8a
+    - q12
+    lead_paragraph_is: q20
+    render_note: render_docs.py must emit the paragraphs in `order`. The Item 20 narrative is the substance
+      of the document; the military-service paragraph is a closing formality and must not open it.
   history_for_the_written_explanation:
   - date: '2013-06-18'
     event: Daphne Stavros, a U.S. citizen since 2009-06-11, files Form I-130 for her father with a concurrent
       Form I-485.
   - date: '2015-02-11'
-    event: The Form I-485 is DENIED. The denial notice and the underlying NOID went to a superseded address;
-      he did not appear or respond.
+    event: The Form I-485 is DENIED. The NOID and the denial notice both went to his daughter's former
+      address — she had filed the petition and given her own address for correspondence, then moved in
+      2014 without updating it — so neither of them saw either notice and no response was filed.
   - date: '2015-09-14'
     event: A Notice to Appear issues and he is placed in removal proceedings. This is the Part 9 Item
       20 'Yes'.
@@ -64,6 +79,7 @@ immigration:
     residence_years_at_filing: 6.15
     age_at_first_entry: 54
     age_at_filing: 68
+  part1_eligibility_box: A
 family:
   marital_status: Widowed
   times_married: 1
@@ -100,6 +116,7 @@ family:
 
       '
     exhibit: none
+    full_name: Daphne Stavros
   parents:
   - name: Georgios Stavros
     usc: false
@@ -201,9 +218,11 @@ input_surfaces:
   travel.trips (8 countable + 1 day trip):
   - table_export
   moral_character.q8a:
-  - military_discharge_scan
+  - email:0004
+  - greek_military_discharge_scan
   moral_character.q12:
-  - military_discharge_scan
+  - email:0004
+  - greek_military_discharge_scan
   moral_character.q15a:
   - table_export
   moral_character.q15b:
@@ -262,6 +281,7 @@ documents:
       expiry_check: 4
       personal_number_check: 0
       composite_check: 0
+    passport_number: AL5729184
   green_card:
     surname: STAVROS
     given_name: KONSTANTINOS
@@ -275,6 +295,7 @@ documents:
     card_number_back: MSC2119487321
     note: Resident Since == immigration.lpr_date == the cover letter's 316(a) eligibility date (STYLE-SPEC
       §9.4 lock).
+    a_number: '207115634'
   tax_return:
     year: 2024
     blank: f1040--2024.pdf
@@ -496,6 +517,8 @@ addresses:
   from: '2024-08-15'
   to: present
   current: true
+  present: true
+  is_mailing_address: true
 - street: 231 Ridgeline Avenue
   unit: null
   city: Bloomfield
@@ -505,6 +528,7 @@ addresses:
   from: '2011-05-20'
   to: '2024-08-14'
   current: false
+  present: false
 employment:
 - employer: Bellwether Baking Company
   city: Bloomfield
@@ -557,8 +581,30 @@ mess_events:
   resolution: 'No STYLE-SPEC §9.2 exhibit rule triggers on any of these five items; none becomes a packet
     document. All five still AGREE with the masterkey: the death certificate corroborates `family.prior_marriage`,
     the expired passports and utility bill are superseded/irrelevant but not contradictory, and the Greek
-    military discharge paper corroborates `moral_character.q8a` and `.q12` (both correctly set to Yes
-    — see `_notes.item_8a_finding`). This is deliberately NOT "chronological"; it is a no-op resolution.
+    military discharge paper CORROBORATES (does not solely carry) `moral_character.q8a` and `.q12` (both
+    correctly set to Yes — see `_notes.item_8a_finding`). The discharge scan sits inertly in this pile
+    exactly like the other four items — it produces no exhibit and a solver correctly generalising the
+    W1 over-delivery rule (documents in this pile are inert) will still land on the right q8a/q12 answer,
+    because those two facts are ALSO, and primarily, stated in prose in email:0004 (see the next mess
+    event). This entry is deliberately NOT "chronological"; it is a no-op resolution for the pile as a
+    whole.
+
+    '
+- type: blocking-finding fix — Items 8.a/12 given a second, narrated, load-bearing surface
+  fact: moral_character.q8a and moral_character.q12 (routine Greek compulsory military service, 1976-1978)
+  wrong_surface: greek_military_discharge_scan alone (over_delivered_not_used pile) — the ORIGINAL, defective
+    single surface identified by the Phase 2 review
+  right_surface: email:0004 — Daphne states her father's Hellenic Army service (branch, rank, dates) and
+    his basic weapons/military-type training in her own words, as a closing paragraph after the Item 20
+    removal-proceedings narrative, mirroring `immigration.written_explanation_structure.order` ([q20,
+    q8a, q12])
+  resolution: 'Not chronological — both surfaces are simultaneously true and neither supersedes the other.
+    The fix is that the fact is no longer SOLELY locatable in the inert over-delivery pile next to two
+    expired passports, a death certificate and a utility bill (which W1 Almeida demonstrates a solver
+    should correctly treat as inert). email:0004 states the same fact in prose, in the register of someone
+    answering a question, distinct in kind from "here is a document you probably don''t need" — so a solver
+    generalising the over-delivery rule from W1 still finds q8a/q12 answered correctly from the narrated
+    surface, and the discharge scan remains genuine (if redundant) corroboration.
 
     '
 - type: unrelated-matter noise in the mailbox
@@ -825,11 +871,17 @@ moral_character:
   q20:
     text: EVER been placed in removal, rescission, or deportation proceedings
     answer: 'Yes'
-    explanation: 'Placed in removal proceedings 2015-09-14 following the 2015-02-11 denial of a Form I-485
-      filed on his behalf (notices went to a superseded address); proceedings TERMINATED 2018-11-06 without
-      any order of removal. Full narrative in `immigration.history_for_the_written_explanation`.
-
-      '
+    explanation: On June 18, 2013, the applicant's daughter, a United States citizen, filed a Form I-130
+      petition on his behalf together with a concurrent Form I-485 application to adjust status. Because
+      she prepared and filed the petition, her own address was given as the mailing address for all correspondence.
+      She moved in 2014 and did not file a change of address for the pending case. On February 11, 2015,
+      the Form I-485 was denied; the notice of intent to deny and the denial notice were both sent to
+      her former address and neither reached her or the applicant, who had himself remained at the same
+      residence throughout. A Notice to Appear issued on September 14, 2015, and he was placed in removal
+      proceedings. On November 6, 2018, those proceedings were terminated. He was never ordered removed,
+      and he has never been removed or deported from the United States. A re-filed Form I-130 and Form
+      I-485 were approved, and he became a lawful permanent resident on January 23, 2020, class of admission
+      IR5.
     routes_to: Part 14. Additional Information
     triggers: C6 — the form's own table cannot carry this item; it routes to Part 14 only. THE DIFFERENTIATOR
       (registry D1).
@@ -977,13 +1029,16 @@ rule_inputs:
   unconditional_card_in_hand_at_filing: true
   arrest_items_yes: []
   part14_items_yes:
-  - '12'
   - '20'
   - 8a
+  - '12'
+  part14_order_source: authored (written_explanation_structure.order)
   oath_items_not_yes: []
   trip_count: 9
   trips_on_form: 6
   trips_trimmed: 3
+  trips_overflow_from_part8: 2
+  trips_day_excluded: 1
   part8_rows: 6
   evidence_types: []
   evidence_declined: []
@@ -993,6 +1048,7 @@ rule_inputs:
   c3b_fires: false
   c3c_fires: false
   c4_fires: true
+  c4_reason: row-count overflow
   c5_fires: false
   c6_fires: true
 _authored_notes:
@@ -1053,6 +1109,18 @@ _authored_notes:
       20) in one document. Left at registry''s stated "No" for 8.a, the masterkey would directly contradict
       a document the client actually sent — precisely the "unlocatable/contradictory fact" class the task
       calls a challenge-breaking bug for this dogfooded client.
+
+      PHASE 4 UPDATE (2026-08-22): the Phase 2 set review found the residual defect this note left in
+      place — the discharge scan was the ONLY input surface for q8a/q12, sitting inertly in the over-delivery
+      pile next to two expired passports, a death certificate and a utility bill, right where the voice
+      card has Daphne say "ignore whatever isn''t useful." A solver correctly generalising W1 Almeida''s
+      demonstrated rule (pile contents are inert) would read the discharge paper as inert too and answer
+      both items `No`. Fixed here: email:0004 now states the same facts (Hellenic Army, Infantry, Private,
+      1976-03-01 to 1978-02-28, honorable discharge, ordinary conscript weapons/basic training) in Daphne''s
+      own prose, as a closing paragraph after the Item 20 narrative, per `immigration.written_explanation_structure.order`.
+      `input_surfaces` now lists email:0004 first for both moral_character.q8a and .q12; the discharge
+      scan remains a secondary, corroborating surface only. See mess_events "blocking-finding fix" for
+      the full resolution.
 
       '
     mrz_arithmetic: "Computed in Python (ICAO 9303 weights 7,3,1 cyclic; digit value = itself, letter\

@@ -1,1180 +1,1680 @@
-# registry.yaml — the set-level namespace for the six synthetic N-400 packets.
-# Phase 2a (CASTING). Authority chain, highest first:
-#   1. spec/STYLE-SPEC.md §16   (the user's binding rulings)
-#   2. spec/STYLE-SPEC.md       (the frozen house style)
-#   3. spec/SPEC-DELTA.md       (D-A..D-G, already decided, not relitigated here)
-#   4. templates/document-catalog.yaml  (the join table: file / divider / TOC line)
-#   5. lab/BUILD-PLAN.md        (§3 schema, §5.3 mess catalogue, §7 profiles, §8 layout)
-#
-# NOTHING IN THIS FILE WAS READ FROM THE CORPUS. Phase 1 consumed lab/<client>/;
-# this agent never opened it. Every proper noun, street, employer, telephone,
-# e-mail address and identifier below is invented and was whole-token grepped
-# against blocklist.txt (12,454 tokens) before it was written down.
-
 build:
-  phase: "2a — casting"
+  phase: 2a — casting
   produced:
-    - "lab/synthetic/registry.yaml"
-    - "lab/synthetic/clients/<slug>/brief.md   (x6)"
-    - "lab/synthetic/clients/<slug>/voice-card.md (x6)"
+  - lab/synthetic/registry.yaml
+  - lab/synthetic/clients/<slug>/brief.md   (x6)
+  - lab/synthetic/clients/<slug>/voice-card.md (x6)
   consumed:
-    - "lab/synthetic/spec/STYLE-SPEC.md (§16 first, then whole)"
-    - "lab/synthetic/spec/SPEC-DELTA.md"
-    - "lab/synthetic/templates/document-catalog.yaml"
-    - "lab/BUILD-PLAN.md §3, §5.3, §7, §8"
-    - "lab/synthetic/blanks/n-400.pdf (field dump + text layer, no OCR)"
-    - "lab/synthetic/blocklist.txt (leakage scan)"
-  reconciliation_ledger: "lab/synthetic/spec/SPEC-DELTA.md"
-  corpus_quarantine: "honoured — the five corpus matter folders under lab/ were not read, listed or opened. Phase 1 consumed them; STYLE-SPEC replaces them."
-  in_world_window: "2025-11-01 .. 2026-07-31 (all six matters)"
-  next_phase: "2b — six masterkey writers, one per client, each given ONLY its brief + the BUILD-PLAN §3 schema + STYLE-SPEC §12"
-
-# ---------------------------------------------------------------------------
-# DECISIONS
-# Every choice made without asking, with its reason. D1 is the one the run
-# order names explicitly; the rest are this agent's.
-# ---------------------------------------------------------------------------
+  - lab/synthetic/spec/STYLE-SPEC.md (§16 first, then whole)
+  - lab/synthetic/spec/SPEC-DELTA.md
+  - lab/synthetic/templates/document-catalog.yaml
+  - lab/BUILD-PLAN.md §3, §5.3, §7, §8
+  - lab/synthetic/blanks/n-400.pdf (field dump + text layer, no OCR)
+  - lab/synthetic/blocklist.txt (leakage scan)
+  reconciliation_ledger: lab/synthetic/spec/SPEC-DELTA.md
+  corpus_quarantine: honoured — the five corpus matter folders under lab/ were not read, listed or opened.
+    Phase 1 consumed them; STYLE-SPEC replaces them.
+  in_world_window: 2025-11-01 .. 2026-07-31 (all six matters)
+  next_phase: 2b — six masterkey writers, one per client, each given ONLY its brief + the BUILD-PLAN §3
+    schema + STYLE-SPEC §12
 decisions:
+- id: D1
+  title: 'T2 Stavros''s differentiator: C6, a written explanation, triggered by Part 9 Item 20'
+  supersedes: STYLE-SPEC §13 D13 and §16 'Still open' item 2
+  decision: 'T2 Stavros stays on INA 316(a) and gains C6, a written explanation. Its conditional set becomes
+    {C4 travel addendum, C6 written explanation} = 8 documents, which is no longer W1 Almeida''s {C4}
+    = 7. The trigger is a Part 9 `Yes` that the form''s own table cannot carry, and it is NOT an arrest,
+    so C5 (court records) is NOT triggered.
 
-  - id: D1
-    title: "T2 Stavros's differentiator: C6, a written explanation, triggered by Part 9 Item 20"
-    supersedes: "STYLE-SPEC §13 D13 and §16 'Still open' item 2"
-    decision: >
-      T2 Stavros stays on INA 316(a) and gains C6, a written explanation. Its
-      conditional set becomes {C4 travel addendum, C6 written explanation} = 8
-      documents, which is no longer W1 Almeida's {C4} = 7. The trigger is a
-      Part 9 `Yes` that the form's own table cannot carry, and it is NOT an
-      arrest, so C5 (court records) is NOT triggered.
-    reason: >
-      BUILD-PLAN §7 promises "no test client's exhibit set equals any worked
-      example's", and as written T2 was W1 exactly: same basis, same single
-      conditional, same seven documents — copyable, which is precisely what
-      the plan says must fail. Four differentiators were available and three
-      were rejected. (a) Spousal evidence (C1/C2/C3) is barred outright:
-      STYLE-SPEC §9.3 rule 2, "316(a) admits no spousal evidence at all".
-      (b) C5 court records would make T2 identical to T3 Adeyemi's {C4, C5}.
-      (c) Moving T2 to 319(a) would cost T2 its ossola-register voice, its
-      whole §5.3 mess catalogue and the plan's difficulty ramp. (d) C6 changes
-      exactly one fact on the form and one document in the packet. C6 it is.
-    form_binding_correction: >
-      STYLE-SPEC §9.2 C6 names three example triggers — "removal proceedings,
-      deportation, benefit denial". The committed blank was checked field by
-      field and text layer by text layer: on edition 01/20/25 there is NO Part
-      9 question asking whether an immigration benefit was ever denied. The
-      non-tabulable hooks that do exist are Item 20, verbatim "Have you EVER
-      been placed in removal, rescission, or deportation proceedings?", and
-      Item 21, "Have you EVER been removed or deported from the United
-      States?" (both route the applicant to Part 14. Additional Information,
-      not to a table). T2's form hook is therefore ITEM 20 = Yes; the denied
-      benefit survives as the NARRATIVE the written explanation carries — a
-      2013 I-130/I-485 filed by his U.S. citizen daughter, the I-485 denied
-      2015-02-11, an NTA issued 2015-09-14, proceedings terminated 2018-11-06,
-      lawful permanent residence granted 2020-01-23. This keeps the spirit of
-      the instruction (an immigration-history denial, not an arrest, so no C5)
-      while binding to a field that exists. Stated loudly rather than diverged
-      from silently.
-    consequence_for_w3: >
-      W3 Nowak must demonstrate C6 independently of C5 or T2's C6-without-C5
-      is unlearnable. W3 therefore carries BOTH an arrest (Part 9 Item 15.b =
-      Yes, disorderly conduct 2019-11-08, dismissed 2020-02-14 → C5) AND a
-      separate, unrelated Item 20 = Yes (removal proceedings 2015-03-11,
-      terminated 2017-09-22 → C6). The resulting truth table is fully
-      separable across the six clients and is set out in
-      coverage_matrix.moral_character_truth_table.
+    '
+  reason: 'BUILD-PLAN §7 promises "no test client''s exhibit set equals any worked example''s", and as
+    written T2 was W1 exactly: same basis, same single conditional, same seven documents — copyable, which
+    is precisely what the plan says must fail. Four differentiators were available and three were rejected.
+    (a) Spousal evidence (C1/C2/C3) is barred outright: STYLE-SPEC §9.3 rule 2, "316(a) admits no spousal
+    evidence at all". (b) C5 court records would make T2 identical to T3 Adeyemi''s {C4, C5}. (c) Moving
+    T2 to 319(a) would cost T2 its ossola-register voice, its whole §5.3 mess catalogue and the plan''s
+    difficulty ramp. (d) C6 changes exactly one fact on the form and one document in the packet. C6 it
+    is.
 
-  - id: D2
-    title: "BUILD-PLAN §8's T1 slug is renamed `tran_daniel`"
-    supersedes: "BUILD-PLAN §8's shipped folder name for T1 (the original is not reproduced here — see the leakage note)"
-    decision: "T1's correspondent is Daniel Quang Tran; the shipped folder is `tran_daniel/`."
-    reason: >
-      The given name in BUILD-PLAN §8's original slug is on blocklist.txt as
-      a whole token (1 occurrence). It is a real corpus proper noun that this
-      agent cannot inspect (quarantine), and RUN-PHASE-2-6.md makes any
-      leakage hit a halt condition. A folder name ships, so the token would
-      ship. BUILD-PLAN §7 states its own facts are "placeholders for the
-      registry to finalise", which is the authority to change it; `Daniel`
-      returns zero hits and `Tran` returns zero hits. Phase 6 must land
-      `tran_daniel/`, not the original path. Fifteen common given names were
-      tested against the blocklist and NINE of them are on it, so given-name
-      choice is a leakage decision throughout this registry and not a taste
-      one. (The nine are not spelled out here: this file is scanned too, and a
-      registry that documents a blocklisted token by quoting it trips the very
-      halt it is explaining. Re-derive them by running the check.)
+    '
+  form_binding_correction: 'STYLE-SPEC §9.2 C6 names three example triggers — "removal proceedings, deportation,
+    benefit denial". The committed blank was checked field by field and text layer by text layer: on edition
+    01/20/25 there is NO Part 9 question asking whether an immigration benefit was ever denied. The non-tabulable
+    hooks that do exist are Item 20, verbatim "Have you EVER been placed in removal, rescission, or deportation
+    proceedings?", and Item 21, "Have you EVER been removed or deported from the United States?" (both
+    route the applicant to Part 14. Additional Information, not to a table). T2''s form hook is therefore
+    ITEM 20 = Yes; the denied benefit survives as the NARRATIVE the written explanation carries — a 2013
+    I-130/I-485 filed by his U.S. citizen daughter, the I-485 denied 2015-02-11, an NTA issued 2015-09-14,
+    proceedings terminated 2018-11-06, lawful permanent residence granted 2020-01-23. This keeps the spirit
+    of the instruction (an immigration-history denial, not an arrest, so no C5) while binding to a field
+    that exists. Stated loudly rather than diverged from silently.
 
-  - id: D3
-    title: "Three folders are correspondent-named, not two"
-    decision: >
-      `kavanagh_liam` (applicant is his wife, Siobhan Brennan), `tran_daniel`
-      (applicant is his wife, Vu Thanh Ha) and `stavros_daphne` (applicant is
-      her father, Konstantinos Stavros).
-    reason: >
-      BUILD-PLAN §8 marks two folders correspondent-named; §5.3's mess table
-      lists the mess type as W2-demonstrated, T1-reused. But §7 describes T2's
-      register as "Greek-American", and an applicant for naturalization cannot
-      be American. The plain reading is that T2's correspondent is the
-      American member of a Greek household — the daughter — and the applicant
-      is her father. The third instance is recorded explicitly in
-      coverage_matrix.mess_types so nobody mistakes it for an unlisted mess.
-    mitigation: >
-      T2 is the median difficulty and BUILD-PLAN §6 layer 4 dogfoods it first,
-      and it now carries five mess types. The folder-name indirection must
-      therefore be SIGNPOSTED, not puzzled: Daphne names her father in full in
-      the first e-mail of the thread, signs every message as his daughter, and
-      never refers to the applicant as "me". Written into her brief and her
-      voice card.
+    '
+  consequence_for_w3: 'W3 Nowak must demonstrate C6 independently of C5 or T2''s C6-without-C5 is unlearnable.
+    W3 therefore carries BOTH an arrest (Part 9 Item 15.b = Yes, disorderly conduct 2019-11-08, dismissed
+    2020-02-14 → C5) AND a separate, unrelated Item 20 = Yes (removal proceedings 2015-03-11, terminated
+    2017-09-22 → C6). The resulting truth table is fully separable across the six clients and is set out
+    in coverage_matrix.moral_character_truth_table.
 
-  - id: D4
-    title: "Six firm-identity fact slots in STYLE-SPEC §12.9 are DELETED, not filled"
-    decision: >
-      firm name · preparer name · preparer daytime telephone · preparer e-mail ·
-      preparer business address · and §13 D4's sentence "The registry still
-      invents a firm address — Phase 3 needs it for the N-400's Part 13
-      preparer block" are all DEAD. The registry invents none of them. Only
-      `preparer_title` survives, unattributed.
-    reason: >
-      §16 ruling 7 forbids a firm identity anywhere in any artefact and §16
-      ruling 10 empties the Part 13 preparer block, which was the only
-      remaining consumer of a business address. §12.9 and §13 D4 were written
-      before those rulings and were not rewritten. A masterkey writer reading
-      §12.9 as a checklist would dutifully invent all five. They are named
-      here as deleted so that does not happen. Per SPEC-DELTA D-B the
-      signature block closes `Sincerely,` · blank · blank · `Petition
-      Preparer` — the role line with no name and no `By:`.
+    '
+- id: D2
+  title: BUILD-PLAN §8's T1 slug is renamed `tran_daniel`
+  supersedes: BUILD-PLAN §8's shipped folder name for T1 (the original is not reproduced here — see the
+    leakage note)
+  decision: T1's correspondent is Daniel Quang Tran; the shipped folder is `tran_daniel/`.
+  reason: 'The given name in BUILD-PLAN §8''s original slug is on blocklist.txt as a whole token (1 occurrence).
+    It is a real corpus proper noun that this agent cannot inspect (quarantine), and RUN-PHASE-2-6.md
+    makes any leakage hit a halt condition. A folder name ships, so the token would ship. BUILD-PLAN §7
+    states its own facts are "placeholders for the registry to finalise", which is the authority to change
+    it; `Daniel` returns zero hits and `Tran` returns zero hits. Phase 6 must land `tran_daniel/`, not
+    the original path. Fifteen common given names were tested against the blocklist and NINE of them are
+    on it, so given-name choice is a leakage decision throughout this registry and not a taste one. (The
+    nine are not spelled out here: this file is scanned too, and a registry that documents a blocklisted
+    token by quoting it trips the very halt it is explaining. Re-derive them by running the check.)
 
-  - id: D5
-    title: "Lockbox and carrier assignment: two lockboxes, both carriers, every test combination demonstrated first"
-    decision: >
-      Elgin+USPS (W1 Almeida → T2 Stavros) · Chicago+FEDERAL EXPRESS
-      (W2 Kavanagh → T1 Tran) · Chicago+USPS (W3 Nowak → T3 Adeyemi).
-    reason: >
-      §16 ruling 9 (UPHELD) requires at least two lockboxes and both carriers,
-      each demonstrated in a worked pair before a test client needs it. Three
-      worked pairs give at most three (lockbox, carrier) pairs, so the three
-      test clients must reuse exactly those three — which is what this does,
-      one-to-one. States were then chosen to fit: MA and NJ route to Elgin;
-      IL, MI, OH and WI route to Chicago (STYLE-SPEC §7). The lockbox is a
-      function of the CURRENT address, and two clients (W2, T2) carry a
-      superseded-address mess, so both moves were kept INSIDE one state —
-      a cross-state move would make the lockbox itself ambiguous and turn a
-      bounded mess into an unbounded one.
+    '
+- id: D3
+  title: Three folders are correspondent-named, not two
+  decision: '`kavanagh_liam` (applicant is his wife, Siobhan Brennan), `tran_daniel` (applicant is his
+    wife, Vu Thanh Ha) and `stavros_daphne` (applicant is her father, Konstantinos Stavros).
 
-  - id: D6
-    title: "Tax years split 4/2 across the two committed blanks, and BOTH branches are demonstrated in a worked pair"
-    decision: "W1 TY2024 · W2 TY2024 · W3 TY2025 (worked) — T2 TY2024 · T1 TY2025 · T3 TY2025 (test)."
-    reason: >
-      STYLE-SPEC §13 D11: filed before ~mid-April 2026 → TY2024
-      (`f1040--2024.pdf`); filed after → TY2025 (`f1040.pdf`). The obvious
-      casting — worked pairs early in the window, test clients late — would
-      have put all three worked pairs on TY2024 and all three test clients on
-      TY2025, so the TY2025 branch would be TESTED WITHOUT EVER BEING
-      DEMONSTRATED and a solver copying the worked pairs would file a 2024
-      return in June 2026. W3's filing date was therefore moved to 2026-05-26
-      so a worked pair carries TY2025, and T2's to 2026-03-17 so a test client
-      carries TY2024. The worked/test split is not chronological; nothing
-      requires it to be.
+    '
+  reason: 'BUILD-PLAN §8 marks two folders correspondent-named; §5.3''s mess table lists the mess type
+    as W2-demonstrated, T1-reused. But §7 describes T2''s register as "Greek-American", and an applicant
+    for naturalization cannot be American. The plain reading is that T2''s correspondent is the American
+    member of a Greek household — the daughter — and the applicant is her father. The third instance is
+    recorded explicitly in coverage_matrix.mess_types so nobody mistakes it for an unlisted mess.
 
-  - id: D7
-    title: "The day trip appears on NEITHER the Part 8 table NOR the travel addendum"
-    decision: >
-      A day trip (entire trip completed within 24 hours) is listed by the
-      client on the input side, is trimmed from the N-400 Part 8 table, and is
-      ALSO absent from the travel addendum. C4 fires for W1 and T2 on the
-      row-count disjunct, never on the trimmed-day-trip disjunct.
-    reason: >
-      STYLE-SPEC §4.5 fixes the addendum's opening sentence verbatim, and it
-      says "excluding day trips"; the blank's own Part 8 instruction says "Do
-      not include day trips (where the entire trip was completed within 24
-      hours) in the table". STYLE-SPEC §9.2's C4 condition offers a second
-      disjunct — "any supplied trip was trimmed from the form (day trips)" —
-      which cannot be live at the same time: a trip the addendum excludes by
-      its own wording cannot be the reason the addendum exists. Both W1 and T2
-      independently exceed the table's row count, so the rule is never load
-      bearing for them; it is settled here so that a masterkey writer does not
-      put the day trip in the addendum, where Phase 5's "addendum ⊇ Part 8"
-      lock would happily pass over a wrong fact.
-    verified_fact: >
-      The Part 8 table on the committed 01/20/25 blank has EXACTLY SIX ROWS —
-      fields P8_Line1_DateLeft1..6 / P8_Line1_DateReturn1..6 /
-      P8_Line1_Countries2..6, on page 6 of 14 (page index 5). Row 1's country
-      field is misnamed `P9_Line1_Countries1[0]` by the form vendor; it sits
-      in the same subform as the Part 8 fields and IS the Part 8 row-1 country
-      field. Phase 3's fieldmap_n400.yaml must not be fooled by the name.
-      STYLE-SPEC §8's "6 rows on that edition" was written about zhu's OLDER
-      04/01/24 form; it happens to be right for 01/20/25 too, and is now
-      confirmed against the blank rather than inherited.
-    addendum_page_reference: "Page 6 — the value STYLE-SPEC §4.5's `Page {p}, Part 8, Question 1` slot takes for all six clients."
+    '
+  mitigation: 'T2 is the median difficulty and BUILD-PLAN §6 layer 4 dogfoods it first, and it now carries
+    five mess types. The folder-name indirection must therefore be SIGNPOSTED, not puzzled: Daphne names
+    her father in full in the first e-mail of the thread, signs every message as his daughter, and never
+    refers to the applicant as "me". Written into her brief and her voice card.
 
-  - id: D8
-    title: "Every telephone number is in the 555-01xx fiction block; e-mail domains are invented"
-    decision: >
-      All telephone numbers use a real area code for the client's region plus
-      the reserved fictional exchange 555-0100..555-0199. Personal e-mail runs
-      on two invented consumer domains, `quillmail.com` and `brightpost.net`;
-      work e-mail runs on the invented employer domains.
-    reason: >
-      Real free-mail domains cannot be used: the three commonest consumer
-      mail domains are all on blocklist.txt as whole tokens (the corpus is
-      full of them), so a synthetic packet carrying one would trip the Phase 5
-      layer-3 halt. STYLE-SPEC §11 does not list them as shared house-style
-      strings, so they would not be excused either. Invented domains cost
-      nothing and scan clean. The 555-01xx block is the equivalent move for
-      telephone numbers. Again the offending tokens are not quoted here — see
-      decision D2's closing note.
+    '
+- id: D4
+  title: Six firm-identity fact slots in STYLE-SPEC §12.9 are DELETED, not filled
+  decision: 'firm name · preparer name · preparer daytime telephone · preparer e-mail · preparer business
+    address · and §13 D4''s sentence "The registry still invents a firm address — Phase 3 needs it for
+    the N-400''s Part 13 preparer block" are all DEAD. The registry invents none of them. Only `preparer_title`
+    survives, unattributed.
 
-  - id: D9
-    title: "All names are rendered ASCII-only"
-    decision: >
-      `Siobhan`, not `Siobhán`. `Vu Thanh Ha`, not `Vũ Thanh Hà`.
-      `Konstantinos`, not `Κωνσταντίνος`.
-    reason: >
-      The names travel through pypdf AcroForm values, a passport MRZ (which is
-      A-Z, 0-9 and `<` only, with its own transliteration rules), Times New
-      Roman docx runs and a `soffice --headless` conversion. Diacritics
-      survive some of that and not all of it, and a mismatch between the MRZ
-      transliteration and the printed name would break STYLE-SPEC §9.4's name
-      lock for a reason that has nothing to do with the rule being taught.
-      The input side may still show a client typing an accented name in prose;
-      the packet is ASCII.
+    '
+  reason: '§16 ruling 7 forbids a firm identity anywhere in any artefact and §16 ruling 10 empties the
+    Part 13 preparer block, which was the only remaining consumer of a business address. §12.9 and §13
+    D4 were written before those rulings and were not rewritten. A masterkey writer reading §12.9 as a
+    checklist would dutifully invent all five. They are named here as deleted so that does not happen.
+    Per SPEC-DELTA D-B the signature block closes `Sincerely,` · blank · blank · `Petition Preparer` —
+    the role line with no name and no `By:`.
 
-  - id: D10
-    title: "T1's marriage predates her permanent residence by more than two years"
-    decision: "Married 2020-03-14; LPR 2022-11-30; class of admission IR6; conditional_resident.was_cr = false."
-    reason: >
-      Had T1 become a permanent resident within two years of the marriage she
-      would have been admitted as a CONDITIONAL resident (CR6) under INA 216,
-      which produces an I-751 and puts C2 (Form I-797C) in play. Her mandated
-      set is {C1, C3a, C3c, C4} = 10 documents, and a stray C2 would both
-      break the target matrix and collapse her story into W2's — W2's
-      conditional-residence history is W2's whole differentiator. Two years
-      and eight months keeps her unconditional. Every client's
-      `class_of_admission` is stated explicitly for the same reason: the green
-      card exhibit prints the category and STYLE-SPEC §9.4 locks it.
-      W2 is the ONLY conditional resident in the set (CR6, married 2022-02-19,
-      resident 2022-09-15 — seven months, correctly conditional).
+    '
+- id: D5
+  title: 'Lockbox and carrier assignment: two lockboxes, both carriers, every test combination demonstrated
+    first'
+  decision: 'Elgin+USPS (W1 Almeida → T2 Stavros) · Chicago+FEDERAL EXPRESS (W2 Kavanagh → T1 Tran) ·
+    Chicago+USPS (W3 Nowak → T3 Adeyemi).
 
-  - id: D11
-    title: "Two clients carry family facts that trigger nothing"
-    decision: >
-      W3 Nowak is divorced and has a son; T3 Adeyemi is married to a
-      non-citizen and has a daughter. Neither produces a single conditional
-      document.
-    reason: >
-      STYLE-SPEC §9.3 rule 2 ("316(a) admits no spousal evidence at all") and
-      §9.2 C3c (which requires `basis == 319(a)` AND a child AND a supplied
-      passport) are both easy to mis-learn as "a spouse means a spouse's
-      passport" and "a child means a child's passport". Two negative controls
-      make the rule visible: T3 has a living spouse and no C1, W3 has a child
-      and no C3c. Both are worked-or-tested against W2 and T1, where the same
-      facts DO produce documents because the basis is 319(a). This costs two
-      lines of masterkey and buys the rule its contrapositive.
+    '
+  reason: '§16 ruling 9 (UPHELD) requires at least two lockboxes and both carriers, each demonstrated
+    in a worked pair before a test client needs it. Three worked pairs give at most three (lockbox, carrier)
+    pairs, so the three test clients must reuse exactly those three — which is what this does, one-to-one.
+    States were then chosen to fit: MA and NJ route to Elgin; IL, MI, OH and WI route to Chicago (STYLE-SPEC
+    §7). The lockbox is a function of the CURRENT address, and two clients (W2, T2) carry a superseded-address
+    mess, so both moves were kept INSIDE one state — a cross-state move would make the lockbox itself
+    ambiguous and turn a bounded mess into an unbounded one.
 
-  - id: D12
-    title: "Both 319(a) clients file jointly, and DOCUMENT 6 absorbs the joint return"
-    decision: "W2 and T1 file Married Filing Jointly; the joint return is DOCUMENT 6 and appears once."
-    reason: >
-      STYLE-SPEC §16 ruling 13 and §9.3 rule 1. Stated at casting time because
-      a masterkey writer with a joint return and a marriage-evidence cluster
-      in front of them is one step from listing it twice, which would break
-      the §4.4 lock (TOC line count == divider count == DOCUMENT count).
+    '
+- id: D6
+  title: Tax years split 4/2 across the two committed blanks, and BOTH branches are demonstrated in a
+    worked pair
+  decision: W1 TY2024 · W2 TY2024 · W3 TY2025 (worked) — T2 TY2024 · T1 TY2025 · T3 TY2025 (test).
+  reason: 'STYLE-SPEC §13 D11: filed before ~mid-April 2026 → TY2024 (`f1040--2024.pdf`); filed after
+    → TY2025 (`f1040.pdf`). The obvious casting — worked pairs early in the window, test clients late
+    — would have put all three worked pairs on TY2024 and all three test clients on TY2025, so the TY2025
+    branch would be TESTED WITHOUT EVER BEING DEMONSTRATED and a solver copying the worked pairs would
+    file a 2024 return in June 2026. W3''s filing date was therefore moved to 2026-05-26 so a worked pair
+    carries TY2025, and T2''s to 2026-03-17 so a test client carries TY2024. The worked/test split is
+    not chronological; nothing requires it to be.
 
-  - id: D13
-    title: "T1's requested new name appears in exactly one place"
-    decision: >
-      Vu Thanh Ha requests the name `Ha Thanh Tran` on the N-400. That string
-      appears ONLY in the Part 2 name-change item. The applicant cover page,
-      the cover letter Re: block, the passport and its MRZ, the green card,
-      the tax return and every other artefact carry the CURRENT legal name,
-      `Vu Thanh Ha`.
-    reason: >
-      STYLE-SPEC §9.4 locks surname and given name identical across the N-400,
-      the passport MRZ and the cover letter. A requested name is a request,
-      not a fact about any document that exists at filing. This is the single
-      most likely fact error in the whole set and is repeated at the head of
-      T1's brief.
+    '
+- id: D7
+  title: The day trip appears on NEITHER the Part 8 table NOR the travel addendum
+  decision: 'A day trip (entire trip completed within 24 hours) is listed by the client on the input side,
+    is trimmed from the N-400 Part 8 table, and is ALSO absent from the travel addendum. C4 fires for
+    W1 and T2 on the row-count disjunct, never on the trimmed-day-trip disjunct.
 
-  - id: D14
-    title: "Nationality adjectives and their articles are frozen here, not derived downstream"
-    decision: >
-      "a Brazilian national" · "an Irish national" · "a Polish national" ·
-      "a Vietnamese national" · "a Greek national" · "a Nigerian national".
-    reason: >
-      STYLE-SPEC §5's cover-letter template carries an `{A|AN}` slot next to a
-      `{NATIONALITY ADJECTIVE}` slot. A renderer choosing the article from the
-      first letter gets `an Irish` right and nothing else wrong here, but the
-      rule is not "vowel letter" (it is vowel SOUND), so the article is stored
-      as data alongside the adjective and never computed.
+    '
+  reason: 'STYLE-SPEC §4.5 fixes the addendum''s opening sentence verbatim, and it says "excluding day
+    trips"; the blank''s own Part 8 instruction says "Do not include day trips (where the entire trip
+    was completed within 24 hours) in the table". STYLE-SPEC §9.2''s C4 condition offers a second disjunct
+    — "any supplied trip was trimmed from the form (day trips)" — which cannot be live at the same time:
+    a trip the addendum excludes by its own wording cannot be the reason the addendum exists. Both W1
+    and T2 independently exceed the table''s row count, so the rule is never load bearing for them; it
+    is settled here so that a masterkey writer does not put the day trip in the addendum, where Phase
+    5''s "addendum ⊇ Part 8" lock would happily pass over a wrong fact.
 
-  - id: D15
-    title: "Selective Service is No for every applicant, by construction"
-    decision: >
-      All three male applicants (W1 Almeida, T2 Stavros, T3 Adeyemi) first
-      lived in the United States after their 26th birthday, so Part 9 Item
-      22.a is No and 22.b/22.c do not arise.
-    reason: >
-      A `No` at 22.b is a real-world written-explanation trigger and would be
-      a FOURTH C6 pathway competing with Item 20 — it would muddy the C5/C6
-      truth table the set exists to teach. Arrival dates were cast to close
-      it: Almeida first entered 2015 at 27, Adeyemi 2016 at 30, Stavros 2011
-      at 54.
+    '
+  verified_fact: 'The Part 8 table on the committed 01/20/25 blank has EXACTLY SIX ROWS — fields P8_Line1_DateLeft1..6
+    / P8_Line1_DateReturn1..6 / P8_Line1_Countries2..6, on page 6 of 14 (page index 5). Row 1''s country
+    field is misnamed `P9_Line1_Countries1[0]` by the form vendor; it sits in the same subform as the
+    Part 8 fields and IS the Part 8 row-1 country field. Phase 3''s fieldmap_n400.yaml must not be fooled
+    by the name. STYLE-SPEC §8''s "6 rows on that edition" was written about zhu''s OLDER 04/01/24 form;
+    it happens to be right for 01/20/25 too, and is now confirmed against the blank rather than inherited.
 
-  - id: D16
-    title: "Engagement dates run 5 to 9 weeks before filing"
-    decision: "Each matter opens 5–9 weeks before it is filed; the input e-mail threads live in that window."
-    reason: >
-      Phase 4 writes threads dated between the engagement date and the filing
-      date, and messes like 'password in a later e-mail', 'superseded address'
-      and 'blank field supplied later by prose' need enough room for a
-      chronology to exist. Under a fortnight there is no room; over three
-      months the thread stops reading like one matter. Five to nine weeks also
-      keeps every thread inside the 2025-11 .. 2026-07 in-world window.
+    '
+  addendum_page_reference: Page 6 — the value STYLE-SPEC §4.5's `Page {p}, Part 8, Question 1` slot takes
+    for all six clients.
+- id: D8
+  title: Every telephone number is in the 555-01xx fiction block; e-mail domains are invented
+  decision: 'All telephone numbers use a real area code for the client''s region plus the reserved fictional
+    exchange 555-0100..555-0199. Personal e-mail runs on two invented consumer domains, `quillmail.com`
+    and `brightpost.net`; work e-mail runs on the invented employer domains.
 
-# ---------------------------------------------------------------------------
-# FIRM — §16 ruling 7. There is no firm identity in this build.
-# ---------------------------------------------------------------------------
+    '
+  reason: 'Real free-mail domains cannot be used: the three commonest consumer mail domains are all on
+    blocklist.txt as whole tokens (the corpus is full of them), so a synthetic packet carrying one would
+    trip the Phase 5 layer-3 halt. STYLE-SPEC §11 does not list them as shared house-style strings, so
+    they would not be excused either. Invented domains cost nothing and scan clean. The 555-01xx block
+    is the equivalent move for telephone numbers. Again the offending tokens are not quoted here — see
+    decision D2''s closing note.
+
+    '
+- id: D9
+  title: All names are rendered ASCII-only
+  decision: '`Siobhan`, not `Siobhán`. `Vu Thanh Ha`, not `Vũ Thanh Hà`. `Konstantinos`, not `Κωνσταντίνος`.
+
+    '
+  reason: 'The names travel through pypdf AcroForm values, a passport MRZ (which is A-Z, 0-9 and `<` only,
+    with its own transliteration rules), Times New Roman docx runs and a `soffice --headless` conversion.
+    Diacritics survive some of that and not all of it, and a mismatch between the MRZ transliteration
+    and the printed name would break STYLE-SPEC §9.4''s name lock for a reason that has nothing to do
+    with the rule being taught. The input side may still show a client typing an accented name in prose;
+    the packet is ASCII.
+
+    '
+- id: D10
+  title: T1's marriage predates her permanent residence by more than two years
+  decision: Married 2020-03-14; LPR 2022-11-30; class of admission IR6; conditional_resident.was_cr =
+    false.
+  reason: 'Had T1 become a permanent resident within two years of the marriage she would have been admitted
+    as a CONDITIONAL resident (CR6) under INA 216, which produces an I-751 and puts C2 (Form I-797C) in
+    play. Her mandated set is {C1, C3a, C3c, C4} = 10 documents, and a stray C2 would both break the target
+    matrix and collapse her story into W2''s — W2''s conditional-residence history is W2''s whole differentiator.
+    Two years and eight months keeps her unconditional. Every client''s `class_of_admission` is stated
+    explicitly for the same reason: the green card exhibit prints the category and STYLE-SPEC §9.4 locks
+    it. W2 is the ONLY conditional resident in the set (CR6, married 2022-02-19, resident 2022-09-15 —
+    seven months, correctly conditional).
+
+    '
+- id: D11
+  title: Two clients carry family facts that trigger nothing
+  decision: 'W3 Nowak is divorced and has a son; T3 Adeyemi is married to a non-citizen and has a daughter.
+    Neither produces a single conditional document.
+
+    '
+  reason: 'STYLE-SPEC §9.3 rule 2 ("316(a) admits no spousal evidence at all") and §9.2 C3c (which requires
+    `basis == 319(a)` AND a child AND a supplied passport) are both easy to mis-learn as "a spouse means
+    a spouse''s passport" and "a child means a child''s passport". Two negative controls make the rule
+    visible: T3 has a living spouse and no C1, W3 has a child and no C3c. Both are worked-or-tested against
+    W2 and T1, where the same facts DO produce documents because the basis is 319(a). This costs two lines
+    of masterkey and buys the rule its contrapositive.
+
+    '
+- id: D12
+  title: Both 319(a) clients file jointly, and DOCUMENT 6 absorbs the joint return
+  decision: W2 and T1 file Married Filing Jointly; the joint return is DOCUMENT 6 and appears once.
+  reason: 'STYLE-SPEC §16 ruling 13 and §9.3 rule 1. Stated at casting time because a masterkey writer
+    with a joint return and a marriage-evidence cluster in front of them is one step from listing it twice,
+    which would break the §4.4 lock (TOC line count == divider count == DOCUMENT count).
+
+    '
+- id: D13
+  title: T1's requested new name appears in exactly one place
+  decision: 'Vu Thanh Ha requests the name `Ha Thanh Tran` on the N-400. That string appears ONLY in the
+    Part 2 name-change item. The applicant cover page, the cover letter Re: block, the passport and its
+    MRZ, the green card, the tax return and every other artefact carry the CURRENT legal name, `Vu Thanh
+    Ha`.
+
+    '
+  reason: 'STYLE-SPEC §9.4 locks surname and given name identical across the N-400, the passport MRZ and
+    the cover letter. A requested name is a request, not a fact about any document that exists at filing.
+    This is the single most likely fact error in the whole set and is repeated at the head of T1''s brief.
+
+    '
+- id: D14
+  title: Nationality adjectives and their articles are frozen here, not derived downstream
+  decision: '"a Brazilian national" · "an Irish national" · "a Polish national" · "a Vietnamese national"
+    · "a Greek national" · "a Nigerian national".
+
+    '
+  reason: 'STYLE-SPEC §5''s cover-letter template carries an `{A|AN}` slot next to a `{NATIONALITY ADJECTIVE}`
+    slot. A renderer choosing the article from the first letter gets `an Irish` right and nothing else
+    wrong here, but the rule is not "vowel letter" (it is vowel SOUND), so the article is stored as data
+    alongside the adjective and never computed.
+
+    '
+- id: D15
+  title: Selective Service is No for every applicant, by construction
+  decision: 'All three male applicants (W1 Almeida, T2 Stavros, T3 Adeyemi) first lived in the United
+    States after their 26th birthday, so Part 9 Item 22.a is No and 22.b/22.c do not arise.
+
+    '
+  reason: 'A `No` at 22.b is a real-world written-explanation trigger and would be a FOURTH C6 pathway
+    competing with Item 20 — it would muddy the C5/C6 truth table the set exists to teach. Arrival dates
+    were cast to close it: Almeida first entered 2015 at 27, Adeyemi 2016 at 30, Stavros 2011 at 54.
+
+    '
+- id: D16
+  title: Engagement dates run 5 to 9 weeks before filing
+  decision: Each matter opens 5–9 weeks before it is filed; the input e-mail threads live in that window.
+  reason: 'Phase 4 writes threads dated between the engagement date and the filing date, and messes like
+    ''password in a later e-mail'', ''superseded address'' and ''blank field supplied later by prose''
+    need enough room for a chronology to exist. Under a fortnight there is no room; over three months
+    the thread stops reading like one matter. Five to nine weeks also keeps every thread inside the 2025-11
+    .. 2026-07 in-world window.
+
+    '
 firm:
   identity: none
-  note: >
-    STYLE-SPEC §16 ruling 7 (UPHELD AND EXTENDED) forbids a firm name, a
-    preparer name, a business address, a firm telephone or a firm e-mail
-    anywhere in any artefact — cover letter, signature block, N-400, or any
-    other page. This registry invents none of them and nothing downstream may
-    reintroduce one. See decision D4 for the six §12.9 slots that are deleted
-    rather than filled. If a template appears to need one, the slot is dead:
-    delete the slot.
-  preparer_title: "Petition Preparer"        # SPEC-DELTA D-B: the unattributed role line, no name, no `By:`
-  fee: "760.00"                              # STYLE-SPEC §5.2; cover letter first sentence only
-  form_edition: "01/20/25"                   # STYLE-SPEC §8 / §13 D1
+  note: 'STYLE-SPEC §16 ruling 7 (UPHELD AND EXTENDED) forbids a firm name, a preparer name, a business
+    address, a firm telephone or a firm e-mail anywhere in any artefact — cover letter, signature block,
+    N-400, or any other page. This registry invents none of them and nothing downstream may reintroduce
+    one. See decision D4 for the six §12.9 slots that are deleted rather than filled. If a template appears
+    to need one, the slot is dead: delete the slot.
+
+    '
+  preparer_title: Petition Preparer
+  fee: '760.00'
+  form_edition: 01/20/25
   signature_block:
-    - "Sincerely,"
-    - ""
-    - ""
-    - "Petition Preparer"
+  - Sincerely,
+  - ''
+  - ''
+  - Petition Preparer
   n400_policy:
-    part_11: "FILLED — the applicant's own daytime telephone, mobile telephone and e-mail (§16 r10)"
-    part_13: "EMPTY — no preparer name, no business name, no preparer address, no preparer signature (§16 r10)"
-    signature: "UNSIGNED — no cursive rendering, no signature date, Z003 unused (§16 r11)"
-
-# ---------------------------------------------------------------------------
-# CLIENTS — six. `slug` is the shipped folder name (BUILD-PLAN §8, as amended
-# by decision D2). Three slugs are the CORRESPONDENT's name, not the
-# applicant's: kavanagh_liam, tran_daniel, stavros_daphne (decision D3).
-# Every fact below is invented and scans clean against blocklist.txt.
-# ---------------------------------------------------------------------------
+    part_11: FILLED — the applicant's own daytime telephone, mobile telephone and e-mail (§16 r10)
+    part_13: EMPTY — no preparer name, no business name, no preparer address, no preparer signature (§16
+      r10)
+    signature: UNSIGNED — no cursive rendering, no signature date, Z003 unused (§16 r11)
 clients:
-
-  # =========================================================================
-  - slug: almeida_paulo
-    label: "W1"
-    ships_as: examples
-    folder_named_for: applicant
-    correspondent:
-      name: "Paulo Miguel Almeida"
-      relationship: "the applicant himself"
-    applicant:
-      full_legal_name: "Paulo Miguel Almeida"
-      family_name: "Almeida"
-      given_name: "Paulo"
-      middle_name: "Miguel"
-      other_names_used: []
-      name_change_requested: false
-      honorific: "Mr."
-      pronoun_subject: "he"
-      pronoun_possessive: "his"
-      dob: "1988-03-22"
-      sex: "M"
-      country_of_birth: "Brazil"
-      country_of_citizenship: "Brazil"
-      nationality_adjective: "Brazilian"
-      nationality_article: "a"           # "a Brazilian national"
-      cover_page_cob_con: "Brazil"
-      ssn: "037-84-2196"
-      first_entered_us: "2015-09-02"     # age 27 — Part 9 item 22.a is No (D15)
-    immigration:
-      a_number: "208451772"
-      a_number_formatted: "A-208451772"
-      lpr_date: "2020-06-19"
-      class_of_admission: "E21"
-      basis: "316a"
-      classification_basis_string: "INA 316(a)"
-      conditional_resident: {was_cr: false}
-      derived:
-        residence_anniversary: "2025-06-19"
-        earliest_filing_date: "2025-03-21"   # LPR + 5y - 90d
-        filing_margin_days: 262
-        residence_years_at_filing: 5.47
-    residence:
-      state: "MA"
-      city: "Somerville"
-      current_address: "47 Larkspur Street, Apt 3, Somerville, MA 02143"
-      current_address_from: "2019-11-01"
-      prior_addresses:
-        - "118 Hollis Avenue, Medford, MA 02155 (2016-02-15 to 2019-10-31)"
-      lockbox: "Elgin"
-      carrier: "U.S. POSTAL SERVICE (USPS)"
-    matter:
-      engagement_date: "2025-10-14"
-      filing_date: "2025-12-08"
-      tax_year: 2024
-      tax_blank: "f1040--2024.pdf"
-      tax_filing_status: "Single"
-    family:
-      marital_status: "Single"
-      spouse: none
-      children: []
-      parents:
-        - "Joao Almeida, not a U.S. citizen"
-        - "Rosa Almeida, not a U.S. citizen"
-    employment:
-      - "Harborline Structural Engineering LLC, Somerville, MA — Structural Engineer, 2019-04-08 to present"
-      - "Dunmore Precision Castings, Medford, MA — Design Engineer, 2016-03-01 to 2019-04-04"
-    contact:
-      daytime_phone: "(617) 555-0142"
-      mobile_phone: "(617) 555-0142"
-      email: "paulo.almeida@quillmail.com"
-    input_modality: "questionnaire docx returned filled + phone photos of the green card and passport + a PDF of the 1040 + a resume docx"
-    voice_register: "terse-professional-engineer"
-    voice_card: "clients/almeida_paulo/voice-card.md"
-    mess_types:
-      - "day trip in travel list, excluded per firm instruction  (DEMONSTRATES)"
-      - "phone-photo documents  (DEMONSTRATES)"
-      - "over-delivery of unrequested documents  (DEMONSTRATES)"
-      - "unrelated-matter noise in the mailbox  (DEMONSTRATES)"
-    travel_summary:
-      countable_trips: 7
-      day_trips_supplied: 1
-      part_8_rows: 6
-    moral_character:
-      part9_15a: "No"
-      part9_15b: "No"
-      part9_20: "No"
-      part9_21: "No"
-      all_other_items: "No, except the Part 9 items 31/32/34/35/36/37 oath answers, which are Yes"
-    conditional_exhibits:
-      set: ["C4"]
-      justification:
-        C4: "7 countable trips in the 5-year residence window exceed the Part 8 table's 6 rows (STYLE-SPEC §9.2 C4, row-count disjunct). The eighth supplied trip is a day trip: trimmed from the form AND absent from the addendum, per decision D7."
-      barred:
-        C1_C2_C3: "basis is 316(a) — STYLE-SPEC §9.3 rule 2 admits no spousal evidence at all"
-        C5: "no Part 9 arrest / citation / detention / charge answer is Yes"
-        C6: "no non-tabulable Part 9 Yes"
-    document_count: 7
-    documents: ["1 Table of contents", "2 Cover letter", "3 Form N-400", "4 Applicant passport", "5 Permanent Resident Card", "6 2024 Income Tax Return", "7 Travel addendum"]
-
-  # =========================================================================
-  - slug: kavanagh_liam
-    label: "W2"
-    ships_as: examples
-    folder_named_for: correspondent
-    correspondent:
-      name: "Liam Patrick Kavanagh"
-      relationship: "the applicant's husband, a U.S. citizen; he writes the whole thread"
-      dob: "1987-05-08"
-      emails: ["liam.kavanagh@brightpost.net", "l.kavanagh@halstedfreight.com"]
-      mobile_phone: "(312) 555-0187"
-    applicant:
-      full_legal_name: "Siobhan Maire Brennan"
-      family_name: "Brennan"
-      given_name: "Siobhan"
-      middle_name: "Maire"
-      other_names_used: []
-      name_change_requested: false
-      honorific: "Ms."
-      pronoun_subject: "she"
-      pronoun_possessive: "her"
-      dob: "1990-11-27"
-      sex: "F"
-      country_of_birth: "Ireland"
-      country_of_citizenship: "Ireland"
-      nationality_adjective: "Irish"
-      nationality_article: "an"          # "an Irish national"
-      cover_page_cob_con: "Ireland"
-      ssn: "341-27-8065"
-      first_entered_us: "2021-08-19"
-    immigration:
-      a_number: "213668041"
-      a_number_formatted: "A-213668041"
-      lpr_date: "2022-09-15"
-      class_of_admission: "CR6"
-      basis: "319a"
-      classification_basis_string: "INA 319(a)"
-      conditional_resident:
-        was_cr: true
-        reason: "married 2022-02-19, resident 2022-09-15 — seven months, so admitted as a conditional resident under INA 216"
-        i751:
-          filed: "2024-07-02"
-          receipt_number: "MSC0918452207"
-          notice_date: "2024-07-11"
-          status_at_filing: "pending"
-          approved: "2026-04-30"
-          unconditional_card_in_hand_at_filing: false
-      derived:
-        residence_anniversary: "2025-09-15"
-        earliest_filing_date: "2025-06-17"   # LPR + 3y - 90d
-        filing_margin_days: 238
-        residence_years_at_filing: 3.41
-    residence:
-      state: "IL"
-      city: "Berwyn"
-      current_address: "2214 Wexford Road, Berwyn, IL 60402"
-      current_address_from: "2024-05-01"
-      prior_addresses:
-        - "5417 Quarry Lane, Cicero, IL 60804 (2022-01-10 to 2024-04-30)"
-      lockbox: "Chicago"
-      carrier: "FEDERAL EXPRESS"
-    matter:
-      engagement_date: "2025-12-02"
-      filing_date: "2026-02-10"
-      tax_year: 2024
-      tax_blank: "f1040--2024.pdf"
-      tax_filing_status: "Married Filing Jointly"
-    family:
-      marital_status: "Married"
+- slug: almeida_paulo
+  label: W1
+  ships_as: examples
+  folder_named_for: applicant
+  correspondent:
+    name: Paulo Miguel Almeida
+    relationship: the applicant himself
+  applicant:
+    full_legal_name: Paulo Miguel Almeida
+    family_name: Almeida
+    given_name: Paulo
+    middle_name: Miguel
+    other_names_used: []
+    name_change_requested: false
+    honorific: Mr.
+    pronoun_subject: he
+    pronoun_possessive: his
+    dob: '1988-03-22'
+    sex: M
+    country_of_birth: Brazil
+    country_of_citizenship: Brazil
+    nationality_adjective: Brazilian
+    nationality_article: a
+    cover_page_cob_con: Brazil
+    ssn: 037-84-2196
+    first_entered_us: '2015-09-02'
+  immigration:
+    a_number: '208451772'
+    a_number_formatted: A-208451772
+    lpr_date: '2020-06-19'
+    class_of_admission: E21
+    basis: 316a
+    classification_basis_string: INA 316(a)
+    conditional_resident:
+      was_cr: false
+    derived:
+      residence_anniversary: '2025-06-19'
+      earliest_filing_date: '2025-03-21'
+      filing_margin_days: 262
+      residence_years_at_filing: 5.47
+  residence:
+    state: MA
+    city: Somerville
+    current_address: 47 Larkspur Street, Apt 3, Somerville, MA 02143
+    current_address_from: '2019-11-01'
+    prior_addresses:
+    - 118 Hollis Avenue, Medford, MA 02155 (2016-02-15 to 2019-10-31)
+    lockbox: Elgin
+    carrier: U.S. POSTAL SERVICE (USPS)
+  matter:
+    engagement_date: '2025-10-14'
+    filing_date: '2025-12-08'
+    tax_year: 2024
+    tax_blank: f1040--2024.pdf
+    tax_filing_status: Single
+  family:
+    marital_status: Single
+    spouse: none
+    children: []
+    parents:
+    - Joao Almeida, not a U.S. citizen
+    - Rosa Almeida, not a U.S. citizen
+  employment:
+  - Harborline Structural Engineering LLC, Somerville, MA — Structural Engineer, 2019-04-08 to present
+  - Dunmore Precision Castings, Medford, MA — Design Engineer, 2016-03-01 to 2019-04-04
+  contact:
+    daytime_phone: (617) 555-0142
+    mobile_phone: (617) 555-0142
+    email: paulo.almeida@quillmail.com
+  input_modality: questionnaire docx returned filled + phone photos of the green card and passport + a
+    PDF of the 1040 + a resume docx
+  voice_register: terse-professional-engineer
+  voice_card: clients/almeida_paulo/voice-card.md
+  mess_types:
+  - day trip in travel list, excluded per firm instruction  (DEMONSTRATES)
+  - phone-photo documents  (DEMONSTRATES)
+  - over-delivery of unrequested documents  (DEMONSTRATES)
+  - unrelated-matter noise in the mailbox  (DEMONSTRATES)
+  travel_summary:
+    countable_trips: 7
+    day_trips_supplied: 1
+    part_8_rows: 6
+  moral_character:
+    part9_15a: 'No'
+    part9_15b: 'No'
+    part9_20: 'No'
+    part9_21: 'No'
+    all_other_items: No, except the Part 9 items 31/32/34/35/36/37 oath answers, which are Yes
+  conditional_exhibits:
+    set:
+    - C4
+    justification:
+      C4: '7 countable trips in the 5-year residence window exceed the Part 8 table''s 6 rows (STYLE-SPEC
+        §9.2 C4, row-count disjunct). The eighth supplied trip is a day trip: trimmed from the form AND
+        absent from the addendum, per decision D7.'
+    barred:
+      C1_C2_C3: basis is 316(a) — STYLE-SPEC §9.3 rule 2 admits no spousal evidence at all
+      C5: no Part 9 arrest / citation / detention / charge answer is Yes
+      C6: no non-tabulable Part 9 Yes
+  document_count: 7
+  documents:
+  - 1 Table of contents
+  - 2 Cover letter
+  - 3 Form N-400
+  - 4 Applicant passport
+  - 5 Permanent Resident Card
+  - 6 2024 Income Tax Return
+  - 7 Travel addendum
+- slug: kavanagh_liam
+  label: W2
+  ships_as: examples
+  folder_named_for: correspondent
+  correspondent:
+    name: Liam Patrick Kavanagh
+    relationship: the applicant's husband, a U.S. citizen; he writes the whole thread
+    dob: '1987-05-08'
+    emails:
+    - liam.kavanagh@brightpost.net
+    - l.kavanagh@halstedfreight.com
+    mobile_phone: (312) 555-0187
+  applicant:
+    full_legal_name: Siobhan Maire Brennan
+    family_name: Brennan
+    given_name: Siobhan
+    middle_name: Maire
+    other_names_used: []
+    name_change_requested: false
+    honorific: Ms.
+    pronoun_subject: she
+    pronoun_possessive: her
+    dob: '1990-11-27'
+    sex: F
+    country_of_birth: Ireland
+    country_of_citizenship: Ireland
+    nationality_adjective: Irish
+    nationality_article: an
+    cover_page_cob_con: Ireland
+    ssn: 341-27-8065
+    first_entered_us: '2021-08-19'
+  immigration:
+    a_number: '213668041'
+    a_number_formatted: A-213668041
+    lpr_date: '2022-09-15'
+    class_of_admission: CR6
+    basis: 319a
+    classification_basis_string: INA 319(a)
+    conditional_resident:
+      was_cr: true
+      reason: married 2022-02-19, resident 2022-09-15 — seven months, so admitted as a conditional resident
+        under INA 216
+      i751:
+        filed: '2024-07-02'
+        receipt_number: MSC0918452207
+        notice_date: '2024-07-11'
+        status_at_filing: pending
+        approved: '2026-04-30'
+        unconditional_card_in_hand_at_filing: false
+    derived:
+      residence_anniversary: '2025-09-15'
+      earliest_filing_date: '2025-06-17'
+      filing_margin_days: 238
+      residence_years_at_filing: 3.41
+  residence:
+    state: IL
+    city: Berwyn
+    current_address: 2214 Wexford Road, Berwyn, IL 60402
+    current_address_from: '2024-05-01'
+    prior_addresses:
+    - 5417 Quarry Lane, Cicero, IL 60804 (2022-01-10 to 2024-04-30)
+    lockbox: Chicago
+    carrier: FEDERAL EXPRESS
+  matter:
+    engagement_date: '2025-12-02'
+    filing_date: '2026-02-10'
+    tax_year: 2024
+    tax_blank: f1040--2024.pdf
+    tax_filing_status: Married Filing Jointly
+  family:
+    marital_status: Married
+    times_married: 1
+    marriage_date: '2022-02-19'
+    spouse:
+      name: Liam Patrick Kavanagh
+      dob: '1987-05-08'
+      usc: true
+      usc_since: birth
+      employer: Halsted Freight Systems, Chicago, IL — Dispatcher
       times_married: 1
-      marriage_date: "2022-02-19"
-      spouse:
-        name: "Liam Patrick Kavanagh"
-        dob: "1987-05-08"
-        usc: true
-        usc_since: "birth"
-        employer: "Halsted Freight Systems, Chicago, IL — Dispatcher"
-        times_married: 1
-        same_address_as_applicant: true
-      children: []
-      parents:
-        - "Declan Brennan, not a U.S. citizen"
-        - "Nuala Brennan, not a U.S. citizen"
-    employment:
-      - "Riverbend Veterinary Clinic, Berwyn, IL — Veterinary Technician, 2022-11-14 to present"
-    contact:
-      daytime_phone: "(773) 555-0118"
-      mobile_phone: "(773) 555-0118"
-      email: "s.brennan@quillmail.com"
-    input_modality: "e-mail prose only — no questionnaire; the facts are narrated across a thread, with a phone photo of the I-797C among the attachments"
-    voice_register: "warm-apologetic-couple"
-    voice_card: "clients/kavanagh_liam/voice-card.md"
-    mess_types:
-      - "folder named for the correspondent, not the applicant  (DEMONSTRATES)"
-      - "superseded fact, later e-mail wins — the Cicero address is given as current, then corrected to Berwyn  (DEMONSTRATES)"
-      - "same client, multiple e-mail addresses — Liam writes from both his personal and his work address  (DEMONSTRATES)"
-    travel_summary:
-      countable_trips: 4
-      day_trips_supplied: 0
-      part_8_rows: 6
-    moral_character:
-      part9_15a: "No"
-      part9_15b: "No"
-      part9_20: "No"
-      part9_21: "No"
-      all_other_items: "No, except the oath answers, which are Yes"
-    conditional_exhibits:
-      set: ["C1", "C2", "C3b"]
-      justification:
-        C1: "basis == 319(a) — STYLE-SPEC §9.2 C1 is unconditional on the basis"
-        C2: "was a conditional resident AND the unconditional I-551 was not in hand at the filing date — the I-751 was still pending on 2026-02-10 and was not approved until 2026-04-30, so the card post-dates filing (STYLE-SPEC §9.2 C2)"
-        C3b: "basis == 319(a) AND a joint automobile insurance policy is among the documents the client supplied (STYLE-SPEC §9.2 C3b)"
-      not_triggered:
-        C3a: "no joint deed supplied — they rent"
-        C3c: "no children of the marriage"
-        C4: "4 countable trips do not exceed the Part 8 table's 6 rows, and no trip was trimmed"
-        C5_C6: "every Part 9 answer is No"
-      note: "The joint 2024 return IS the marriage evidence and stays DOCUMENT 6; it is not duplicated (STYLE-SPEC §9.3 rule 1, §16 ruling 13, decision D12)."
-    document_count: 9
-    documents: ["1 Table of contents", "2 Cover letter", "3 Form N-400", "4 Applicant passport", "5 Permanent Resident Card", "6 2024 Income Tax Return (joint)", "7 Spouse's passport", "8 Form I-797C, Notice of Action", "9 Joint automobile insurance policy"]
-
-  # =========================================================================
-  - slug: nowak_agata
-    label: "W3"
-    ships_as: examples
-    folder_named_for: applicant
-    correspondent:
-      name: "Agata Zofia Nowak"
-      relationship: "the applicant herself"
-    applicant:
-      full_legal_name: "Agata Zofia Nowak"
-      family_name: "Nowak"
-      given_name: "Agata"
-      middle_name: "Zofia"
-      other_names_used: []
-      name_change_requested: false
-      honorific: "Ms."
-      pronoun_subject: "she"
-      pronoun_possessive: "her"
-      dob: "1986-09-30"
-      sex: "F"
-      country_of_birth: "Poland"
-      country_of_citizenship: "Poland"
-      nationality_adjective: "Polish"
-      nationality_article: "a"
-      cover_page_cob_con: "Poland"
-      ssn: "372-51-9430"
-      first_entered_us: "2011-08-24"
-    immigration:
-      a_number: "212337509"
-      a_number_formatted: "A-212337509"
-      lpr_date: "2021-02-11"
-      class_of_admission: "E31"
-      basis: "316a"
-      classification_basis_string: "INA 316(a)"
-      conditional_resident: {was_cr: false}
-      derived:
-        residence_anniversary: "2026-02-11"
-        earliest_filing_date: "2025-11-13"
-        filing_margin_days: 194
-        residence_years_at_filing: 5.28
-    residence:
-      state: "MI"
-      city: "Ann Arbor"
-      current_address: "806 Brightwood Terrace, Ann Arbor, MI 48104"
-      current_address_from: "2019-06-01"
-      prior_addresses:
-        - "1120 Tanager Way, Ypsilanti, MI 48197 (2015-08-15 to 2019-05-31)"
-      lockbox: "Chicago"
-      carrier: "U.S. POSTAL SERVICE (USPS)"
-    matter:
-      engagement_date: "2026-03-30"
-      filing_date: "2026-05-26"
-      tax_year: 2025
-      tax_blank: "f1040.pdf"
-      tax_filing_status: "Head of Household"
-    family:
-      marital_status: "Divorced"
+      same_address_as_applicant: true
+    children: []
+    parents:
+    - Declan Brennan, not a U.S. citizen
+    - Nuala Brennan, not a U.S. citizen
+  employment:
+  - Riverbend Veterinary Clinic, Berwyn, IL — Veterinary Technician, 2022-11-14 to present
+  contact:
+    daytime_phone: (773) 555-0118
+    mobile_phone: (773) 555-0118
+    email: s.brennan@quillmail.com
+  input_modality: e-mail prose only — no questionnaire; the facts are narrated across a thread, with a
+    phone photo of the I-797C among the attachments
+  voice_register: warm-apologetic-couple
+  voice_card: clients/kavanagh_liam/voice-card.md
+  mess_types:
+  - folder named for the correspondent, not the applicant  (DEMONSTRATES)
+  - superseded fact, later e-mail wins — the Cicero address is given as current, then corrected to Berwyn  (DEMONSTRATES)
+  - same client, multiple e-mail addresses — Liam writes from both his personal and his work address  (DEMONSTRATES)
+  travel_summary:
+    countable_trips: 4
+    day_trips_supplied: 0
+    part_8_rows: 6
+  moral_character:
+    part9_15a: 'No'
+    part9_15b: 'No'
+    part9_20: 'No'
+    part9_21: 'No'
+    all_other_items: No, except the oath answers, which are Yes
+  conditional_exhibits:
+    set:
+    - C1
+    - C2
+    - C3b
+    justification:
+      C1: basis == 319(a) — STYLE-SPEC §9.2 C1 is unconditional on the basis
+      C2: was a conditional resident AND the unconditional I-551 was not in hand at the filing date —
+        the I-751 was still pending on 2026-02-10 and was not approved until 2026-04-30, so the card post-dates
+        filing (STYLE-SPEC §9.2 C2)
+      C3b: basis == 319(a) AND a joint automobile insurance policy is among the documents the client supplied
+        (STYLE-SPEC §9.2 C3b)
+    not_triggered:
+      C3a: no joint deed supplied — they rent
+      C3c: no children of the marriage
+      C4: 4 countable trips do not exceed the Part 8 table's 6 rows, and no trip was trimmed
+      C5_C6: every Part 9 answer is No
+    note: The joint 2024 return IS the marriage evidence and stays DOCUMENT 6; it is not duplicated (STYLE-SPEC
+      §9.3 rule 1, §16 ruling 13, decision D12).
+  document_count: 9
+  documents:
+  - 1 Table of contents
+  - 2 Cover letter
+  - 3 Form N-400
+  - 4 Applicant passport
+  - 5 Permanent Resident Card
+  - 6 2024 Income Tax Return (joint)
+  - 7 Spouse's passport
+  - 8 Form I-797C, Notice of Action
+  - 9 Joint automobile insurance policy
+- slug: nowak_agata
+  label: W3
+  ships_as: examples
+  folder_named_for: applicant
+  correspondent:
+    name: Agata Zofia Nowak
+    relationship: the applicant herself
+  applicant:
+    full_legal_name: Agata Zofia Nowak
+    family_name: Nowak
+    given_name: Agata
+    middle_name: Zofia
+    other_names_used: []
+    name_change_requested: false
+    honorific: Ms.
+    pronoun_subject: she
+    pronoun_possessive: her
+    dob: '1986-09-30'
+    sex: F
+    country_of_birth: Poland
+    country_of_citizenship: Poland
+    nationality_adjective: Polish
+    nationality_article: a
+    cover_page_cob_con: Poland
+    ssn: 372-51-9430
+    first_entered_us: '2011-08-24'
+  immigration:
+    a_number: '212337509'
+    a_number_formatted: A-212337509
+    lpr_date: '2021-02-11'
+    class_of_admission: E31
+    basis: 316a
+    classification_basis_string: INA 316(a)
+    conditional_resident:
+      was_cr: false
+    derived:
+      residence_anniversary: '2026-02-11'
+      earliest_filing_date: '2025-11-13'
+      filing_margin_days: 194
+      residence_years_at_filing: 5.28
+  residence:
+    state: MI
+    city: Ann Arbor
+    current_address: 806 Brightwood Terrace, Ann Arbor, MI 48104
+    current_address_from: '2019-06-01'
+    prior_addresses:
+    - 1120 Tanager Way, Ypsilanti, MI 48197 (2015-08-15 to 2019-05-31)
+    lockbox: Chicago
+    carrier: U.S. POSTAL SERVICE (USPS)
+  matter:
+    engagement_date: '2026-03-30'
+    filing_date: '2026-05-26'
+    tax_year: 2025
+    tax_blank: f1040.pdf
+    tax_filing_status: Head of Household
+  family:
+    marital_status: Divorced
+    times_married: 1
+    prior_marriage: Marek Wisniewski, a Polish national — married 2012-06-16, divorced 2018-04-12
+    spouse: none
+    children:
+    - Jakub Nowak, son, DOB 2014-03-05, born in Poland, lives with the applicant — NO exhibit (C3c needs
+      basis 319(a); see decision D11)
+    parents:
+    - Henryk Nowak, not a U.S. citizen
+    - Bozena Nowak, not a U.S. citizen
+  employment:
+  - Kestrel Field Design, Ann Arbor, MI — Senior Graphic Designer, 2020-08-17 to present
+  - Ferndale Type Works, Ypsilanti, MI — Graphic Designer, 2016-05-02 to 2020-08-14
+  contact:
+    daytime_phone: (734) 555-0163
+    mobile_phone: (734) 555-0163
+    email: a.nowak@quillmail.com
+  input_modality: xlsx questionnaire returned with several hard fields left blank + flatbed scans, one
+    of them password-protected
+  voice_register: fluent-non-native-comma-splice
+  voice_card: clients/nowak_agata/voice-card.md
+  mess_types:
+  - blank questionnaire field, supplied later by e-mail prose  (DEMONSTRATES)
+  - 'password-protected attachment — benign: the password is in the same e-mail thread  (DEMONSTRATES)'
+  travel_summary:
+    countable_trips: 3
+    day_trips_supplied: 0
+    part_8_rows: 6
+  moral_character:
+    part9_15a: 'No'
+    part9_15b: Yes — arrested 2019-11-08, Ann Arbor, MI; disorderly conduct; charge DISMISSED 2020-02-14;
+      no conviction, no sentence
+    part9_20: Yes — placed in removal proceedings 2015-03-11 after an F-1 status violation; proceedings
+      TERMINATED 2017-09-22; she later adjusted status and became a permanent resident 2021-02-11
+    part9_21: No — never removed or deported
+    all_other_items: No, except the oath answers, which are Yes
+  conditional_exhibits:
+    set:
+    - C5
+    - C6
+    justification:
+      C5: Part 9 Item 15.b is Yes — an arrest — so court records are pulled (STYLE-SPEC §9.2 C5). The
+        arrest is carried by the form's own Item 15 table.
+      C6: Part 9 Item 20 is Yes and the form has no table that can carry it; it routes to Part 14. Additional
+        Information, so a written explanation is authored (STYLE-SPEC §9.2 C6). INDEPENDENT of C5 — a
+        different event, seven years apart, on a different form item. This is the pair that makes T2's
+        C6-without-C5 learnable (decision D1).
+    not_triggered:
+      C1_C2_C3: basis is 316(a); she is divorced and has a child, and NEITHER produces a document (decision
+        D11)
+      C4: 3 countable trips, no trims
+  document_count: 8
+  documents:
+  - 1 Table of contents
+  - 2 Cover letter
+  - 3 Form N-400
+  - 4 Applicant passport
+  - 5 Permanent Resident Card
+  - 6 2025 Income Tax Return
+  - 7 Court records
+  - 8 Written explanation
+- slug: tran_daniel
+  label: T1
+  ships_as: to-do
+  folder_named_for: correspondent
+  correspondent:
+    name: Daniel Quang Tran
+    relationship: the applicant's husband, a U.S. citizen by naturalization; he writes almost every message
+    dob: '1988-01-09'
+    emails:
+    - dtran@trestlefp.com
+    mobile_phone: (614) 555-0176
+  applicant:
+    full_legal_name: Vu Thanh Ha
+    family_name: Vu
+    given_name: Ha
+    middle_name: Thanh
+    other_names_used: []
+    name_change_requested: true
+    name_change_to:
+      family_name: Tran
+      given_name: Ha
+      middle_name: Thanh
+    name_change_note: APPEARS ONLY in N-400 Part 2's name-change item. Every other artefact carries `Vu
+      Thanh Ha` — see decision D13.
+    honorific: Ms.
+    pronoun_subject: she
+    pronoun_possessive: her
+    dob: '1991-06-18'
+    sex: F
+    country_of_birth: Vietnam
+    country_of_citizenship: Vietnam
+    nationality_adjective: Vietnamese
+    nationality_article: a
+    cover_page_cob_con: Vietnam
+    ssn: 289-63-4157
+    first_entered_us: '2020-05-27'
+  immigration:
+    a_number: '214902186'
+    a_number_formatted: A-214902186
+    lpr_date: '2022-11-30'
+    class_of_admission: IR6
+    basis: 319a
+    classification_basis_string: INA 319(a)
+    conditional_resident:
+      was_cr: false
+      reason: married 2020-03-14 and became a permanent resident 2022-11-30 — two years and eight months
+        later, so NOT conditional and NO I-751 (decision D10). C2 must not appear.
+    derived:
+      residence_anniversary: '2025-11-30'
+      earliest_filing_date: '2025-09-01'
+      filing_margin_days: 287
+      residence_years_at_filing: 3.54
+  residence:
+    state: OH
+    city: Westerville
+    current_address: 3155 Sandpiper Drive, Westerville, OH 43081
+    current_address_from: '2023-04-20'
+    prior_addresses:
+    - 690 Bellhaven Court, Gahanna, OH 43230 (2020-06-01 to 2023-04-19)
+    lockbox: Chicago
+    carrier: FEDERAL EXPRESS
+  matter:
+    engagement_date: '2026-04-27'
+    filing_date: '2026-06-15'
+    tax_year: 2025
+    tax_blank: f1040.pdf
+    tax_filing_status: Married Filing Jointly
+  family:
+    marital_status: Married
+    times_married: 1
+    marriage_date: '2020-03-14'
+    spouse:
+      name: Daniel Quang Tran
+      dob: '1988-01-09'
+      usc: true
+      usc_since: naturalized 2009-05-21, Cleveland, Ohio
+      employer: Trestle Fire Protection LLC, Westerville, OH — Fire Protection Technician
       times_married: 1
-      prior_marriage: "Marek Wisniewski, a Polish national — married 2012-06-16, divorced 2018-04-12"
-      spouse: none
-      children:
-        - "Jakub Nowak, son, DOB 2014-03-05, born in Poland, lives with the applicant — NO exhibit (C3c needs basis 319(a); see decision D11)"
-      parents:
-        - "Henryk Nowak, not a U.S. citizen"
-        - "Bozena Nowak, not a U.S. citizen"
-    employment:
-      - "Kestrel Field Design, Ann Arbor, MI — Senior Graphic Designer, 2020-08-17 to present"
-      - "Ferndale Type Works, Ypsilanti, MI — Graphic Designer, 2016-05-02 to 2020-08-14"
-    contact:
-      daytime_phone: "(734) 555-0163"
-      mobile_phone: "(734) 555-0163"
-      email: "a.nowak@quillmail.com"
-    input_modality: "xlsx questionnaire returned with several hard fields left blank + flatbed scans, one of them password-protected"
-    voice_register: "fluent-non-native-comma-splice"
-    voice_card: "clients/nowak_agata/voice-card.md"
-    mess_types:
-      - "blank questionnaire field, supplied later by e-mail prose  (DEMONSTRATES)"
-      - "password-protected attachment — benign: the password is in the same e-mail thread  (DEMONSTRATES)"
-    travel_summary:
-      countable_trips: 3
-      day_trips_supplied: 0
-      part_8_rows: 6
-    moral_character:
-      part9_15a: "No"
-      part9_15b: "Yes — arrested 2019-11-08, Ann Arbor, MI; disorderly conduct; charge DISMISSED 2020-02-14; no conviction, no sentence"
-      part9_20: "Yes — placed in removal proceedings 2015-03-11 after an F-1 status violation; proceedings TERMINATED 2017-09-22; she later adjusted status and became a permanent resident 2021-02-11"
-      part9_21: "No — never removed or deported"
-      all_other_items: "No, except the oath answers, which are Yes"
-    conditional_exhibits:
-      set: ["C5", "C6"]
-      justification:
-        C5: "Part 9 Item 15.b is Yes — an arrest — so court records are pulled (STYLE-SPEC §9.2 C5). The arrest is carried by the form's own Item 15 table."
-        C6: "Part 9 Item 20 is Yes and the form has no table that can carry it; it routes to Part 14. Additional Information, so a written explanation is authored (STYLE-SPEC §9.2 C6). INDEPENDENT of C5 — a different event, seven years apart, on a different form item. This is the pair that makes T2's C6-without-C5 learnable (decision D1)."
-      not_triggered:
-        C1_C2_C3: "basis is 316(a); she is divorced and has a child, and NEITHER produces a document (decision D11)"
-        C4: "3 countable trips, no trims"
-    document_count: 8
-    documents: ["1 Table of contents", "2 Cover letter", "3 Form N-400", "4 Applicant passport", "5 Permanent Resident Card", "6 2025 Income Tax Return", "7 Court records", "8 Written explanation"]
-
-  # =========================================================================
-  - slug: tran_daniel                     # RENAMED from BUILD-PLAN §8's T1 slug — decision D2
-    label: "T1"
-    ships_as: to-do
-    folder_named_for: correspondent
-    correspondent:
-      name: "Daniel Quang Tran"
-      relationship: "the applicant's husband, a U.S. citizen by naturalization; he writes almost every message"
-      dob: "1988-01-09"
-      emails: ["dtran@trestlefp.com"]
-      mobile_phone: "(614) 555-0176"
-    applicant:
-      full_legal_name: "Vu Thanh Ha"
-      family_name: "Vu"
-      given_name: "Ha"
-      middle_name: "Thanh"
-      other_names_used: []
-      name_change_requested: true
-      name_change_to: {family_name: "Tran", given_name: "Ha", middle_name: "Thanh"}
-      name_change_note: "APPEARS ONLY in N-400 Part 2's name-change item. Every other artefact carries `Vu Thanh Ha` — see decision D13."
-      honorific: "Ms."
-      pronoun_subject: "she"
-      pronoun_possessive: "her"
-      dob: "1991-06-18"
-      sex: "F"
-      country_of_birth: "Vietnam"
-      country_of_citizenship: "Vietnam"
-      nationality_adjective: "Vietnamese"
-      nationality_article: "a"
-      cover_page_cob_con: "Vietnam"
-      ssn: "289-63-4157"
-      first_entered_us: "2020-05-27"
-    immigration:
-      a_number: "214902186"
-      a_number_formatted: "A-214902186"
-      lpr_date: "2022-11-30"
-      class_of_admission: "IR6"
-      basis: "319a"
-      classification_basis_string: "INA 319(a)"
-      conditional_resident:
-        was_cr: false
-        reason: "married 2020-03-14 and became a permanent resident 2022-11-30 — two years and eight months later, so NOT conditional and NO I-751 (decision D10). C2 must not appear."
-      derived:
-        residence_anniversary: "2025-11-30"
-        earliest_filing_date: "2025-09-01"
-        filing_margin_days: 287
-        residence_years_at_filing: 3.54
-    residence:
-      state: "OH"
-      city: "Westerville"
-      current_address: "3155 Sandpiper Drive, Westerville, OH 43081"
-      current_address_from: "2023-04-20"
-      prior_addresses:
-        - "690 Bellhaven Court, Gahanna, OH 43230 (2020-06-01 to 2023-04-19)"
-      lockbox: "Chicago"
-      carrier: "FEDERAL EXPRESS"
-    matter:
-      engagement_date: "2026-04-27"
-      filing_date: "2026-06-15"
-      tax_year: 2025
-      tax_blank: "f1040.pdf"
-      tax_filing_status: "Married Filing Jointly"
-    family:
-      marital_status: "Married"
+      same_address_as_applicant: true
+    children:
+    - Mai Linh Tran, daughter, DOB 2021-08-02, born Westerville, OH — a U.S. citizen; her U.S. passport
+      IS supplied, so C3c fires
+    parents:
+    - Vu Van Thang, not a U.S. citizen
+    - Pham Thi Nga, not a U.S. citizen
+  employment:
+  - Scioto Clinical Laboratories, Westerville, OH — Medical Laboratory Technician, 2023-01-09 to present
+  - Unemployed (at home with the child), Gahanna, OH, 2020-06-01 to 2023-01-06
+  contact:
+    daytime_phone: (614) 555-0129
+    mobile_phone: (614) 555-0129
+    email: ha.vu@quillmail.com
+  input_modality: delegated correspondence — the husband writes; the applicant surfaces rarely and briefly;
+    documents arrive as his scans and photos
+  voice_register: verbose-solution-oriented-delegate
+  voice_card: clients/tran_daniel/voice-card.md
+  mess_types:
+  - folder named for the correspondent, not the applicant  (REUSES W2)
+  - e-signature friction — an e-sign attempt fails and he returns a printed, signed, re-scanned page instead  (T1-only,
+    low-stakes)
+  travel_summary:
+    countable_trips: 7
+    day_trips_supplied: 0
+    part_8_rows: 6
+  moral_character:
+    part9_15a: 'No'
+    part9_15b: 'No'
+    part9_20: 'No'
+    part9_21: 'No'
+    all_other_items: No, except the oath answers, which are Yes
+  conditional_exhibits:
+    set:
+    - C1
+    - C3a
+    - C3c
+    - C4
+    justification:
+      C1: basis == 319(a) — demonstrated by W2
+      C3a: basis == 319(a) AND a joint deed is among the documents supplied (they bought the Westerville
+        house 2023-04-14). Same supplied-evidence RULE W2 demonstrates with C3b; a different supplied
+        document.
+      C3c: basis == 319(a) AND a child of the marriage exists AND her passport was supplied. Same rule
+        again.
+      C4: 7 countable trips exceed the Part 8 table's 6 rows — demonstrated by W1
+    not_triggered:
+      C2: not a conditional resident (decision D10) — no I-751, no I-797C
+      C3b: no joint automobile policy supplied; they were asked and did not send one. C3a/C3b/C3c are
+        a function of SUPPLIED evidence, not of the basis (STYLE-SPEC §9.3 rule 3).
+      C5_C6: every Part 9 answer is No
+    generalisation_gap: 'This is the intended test: the supplied-evidence rule is demonstrated once (W2,
+      C3b) and must be applied to two documents it was never demonstrated on (BUILD-PLAN §7).'
+  document_count: 10
+  documents:
+  - 1 Table of contents
+  - 2 Cover letter
+  - 3 Form N-400
+  - 4 Applicant passport
+  - 5 Permanent Resident Card
+  - 6 2025 Income Tax Return (joint)
+  - 7 Spouse's passport
+  - 8 Joint deed
+  - 9 Child's passport
+  - 10 Travel addendum
+- slug: stavros_daphne
+  label: T2
+  ships_as: to-do
+  folder_named_for: correspondent
+  correspondent:
+    name: Daphne Stavros
+    relationship: the applicant's daughter, a U.S. citizen by naturalization (2009-06-11); she writes
+      the whole thread and signs as his daughter
+    dob: '1984-02-27'
+    emails:
+    - daphne.stavros@brightpost.net
+    mobile_phone: (973) 555-0134
+  applicant:
+    full_legal_name: Konstantinos Stavros
+    family_name: Stavros
+    given_name: Konstantinos
+    middle_name: ''
+    other_names_used: []
+    name_change_requested: false
+    honorific: Mr.
+    pronoun_subject: he
+    pronoun_possessive: his
+    dob: '1957-04-12'
+    sex: M
+    country_of_birth: Greece
+    country_of_citizenship: Greece
+    nationality_adjective: Greek
+    nationality_article: a
+    cover_page_cob_con: Greece
+    ssn: 148-92-7350
+    first_entered_us: '2011-05-14'
+  immigration:
+    a_number: '207115634'
+    a_number_formatted: A-207115634
+    lpr_date: '2020-01-23'
+    class_of_admission: IR5
+    basis: 316a
+    classification_basis_string: INA 316(a)
+    conditional_resident:
+      was_cr: false
+    history_for_the_written_explanation:
+    - 2013-06-18  Daphne, a U.S. citizen since 2009, files Form I-130 for her father with a concurrent
+      Form I-485
+    - 2015-02-11  the I-485 is DENIED (notices went to a superseded address; he did not appear)
+    - 2015-09-14  he is placed in removal proceedings — this is the Part 9 Item 20 Yes
+    - 2018-11-06  proceedings TERMINATED; he was never removed or deported (Item 21 is No)
+    - 2020-01-23  a re-filed petition is approved and he becomes a lawful permanent resident, IR5
+    derived:
+      residence_anniversary: '2025-01-23'
+      earliest_filing_date: '2024-10-25'
+      filing_margin_days: 508
+      residence_years_at_filing: 6.15
+  residence:
+    state: NJ
+    city: Montclair
+    current_address: 74 Fern Hollow Road, Montclair, NJ 07042
+    current_address_from: '2024-08-15'
+    prior_addresses:
+    - 231 Ridgeline Avenue, Bloomfield, NJ 07003 (2011-05-20 to 2024-08-14)
+    lockbox: Elgin
+    carrier: U.S. POSTAL SERVICE (USPS)
+    note: The superseded-address mess moves him WITHIN New Jersey, so the lockbox is stable either way
+      (decision D5).
+  matter:
+    engagement_date: '2026-01-26'
+    filing_date: '2026-03-17'
+    tax_year: 2024
+    tax_blank: f1040--2024.pdf
+    tax_filing_status: Single
+  family:
+    marital_status: Widowed
+    times_married: 1
+    marriage_date: '1982-09-05'
+    spouse: none
+    prior_marriage: Eleni Stavros — married 1982-09-05, ended by her death 2019-11-03
+    children:
+    - Daphne Stavros, daughter, DOB 1984-02-27, born in Greece, a U.S. citizen, lives at her own address
+      — NO exhibit (basis is 316(a))
+    parents:
+    - Georgios Stavros, not a U.S. citizen, deceased
+    - Despina Stavros, not a U.S. citizen, deceased
+  employment:
+  - Retired, Montclair, NJ, 2023-07-01 to present
+  - Bellwether Baking Company, Bloomfield, NJ — Baker, 2016-03-07 to 2023-06-30
+  contact:
+    daytime_phone: (973) 555-0155
+    mobile_phone: (973) 555-0155
+    email: k.stavros@quillmail.com
+  input_modality: a tidy table export (spreadsheet) prepared by the daughter + a complete, over-complete
+    document set
+  voice_register: warm-over-deliverer-self-doubting
+  voice_card: clients/stavros_daphne/voice-card.md
+  mess_types:
+  - folder named for the correspondent, not the applicant  (REUSES W2 — third instance, decision D3)
+  - superseded fact, later e-mail wins — the table export gives Bloomfield as his current address; a later
+    message corrects it to Montclair  (REUSES W2)
+  - day trip in travel list, excluded per firm instruction  (REUSES W1)
+  - over-delivery of unrequested documents  (REUSES W1)
+  - unrelated-matter noise in the mailbox  (REUSES W1)
+  travel_summary:
+    countable_trips: 8
+    day_trips_supplied: 1
+    part_8_rows: 6
+  moral_character:
+    part9_15a: 'No'
+    part9_15b: No — he has NEVER been arrested, cited, detained or charged. There is no C5.
+    part9_20: Yes — placed in removal proceedings 2015-09-14; terminated 2018-11-06
+    part9_21: 'No'
+    all_other_items: No, except the oath answers, which are Yes
+  conditional_exhibits:
+    set:
+    - C4
+    - C6
+    justification:
+      C4: '8 countable trips exceed the Part 8 table''s 6 rows — demonstrated by W1. The ninth supplied
+        trip is a day trip: on neither the form nor the addendum (decision D7).'
+      C6: Part 9 Item 20 is Yes and no table on the form can carry it, so a written explanation is authored
+        (STYLE-SPEC §9.2 C6) — demonstrated by W3. It narrates the 2015 denial, the proceedings and their
+        termination.
+    not_triggered:
+      C1_C2_C3: basis is 316(a) — STYLE-SPEC §9.3 rule 2
+      C5: 'no arrest, citation, detention or charge, ever. THIS IS THE POINT OF T2: C6 does not ride along
+        with C5.'
+    differentiator: See decision D1. This is what breaks the T2 == W1 duplicate recorded in STYLE-SPEC
+      §13 D13.
+  document_count: 8
+  documents:
+  - 1 Table of contents
+  - 2 Cover letter
+  - 3 Form N-400
+  - 4 Applicant passport
+  - 5 Permanent Resident Card
+  - 6 2024 Income Tax Return
+  - 7 Travel addendum
+  - 8 Written explanation
+- slug: adeyemi_tunde
+  label: T3
+  ships_as: to-do
+  folder_named_for: applicant
+  correspondent:
+    name: Tunde Olusegun Adeyemi
+    relationship: the applicant himself
+  applicant:
+    full_legal_name: Tunde Olusegun Adeyemi
+    family_name: Adeyemi
+    given_name: Tunde
+    middle_name: Olusegun
+    other_names_used: []
+    name_change_requested: false
+    honorific: Mr.
+    pronoun_subject: he
+    pronoun_possessive: his
+    dob: '1985-11-09'
+    sex: M
+    country_of_birth: Nigeria
+    country_of_citizenship: Nigeria
+    nationality_adjective: Nigerian
+    nationality_article: a
+    cover_page_cob_con: Nigeria
+    ssn: 396-70-2841
+    first_entered_us: '2016-01-11'
+  immigration:
+    a_number: '216540923'
+    a_number_formatted: A-216540923
+    lpr_date: '2021-03-04'
+    class_of_admission: E21
+    basis: 316a
+    classification_basis_string: INA 316(a)
+    conditional_resident:
+      was_cr: false
+    derived:
+      residence_anniversary: '2026-03-04'
+      earliest_filing_date: '2025-12-04'
+      filing_margin_days: 215
+      residence_years_at_filing: 5.34
+  residence:
+    state: WI
+    city: Fitchburg
+    current_address: 5127 Copperleaf Lane, Fitchburg, WI 53711
+    current_address_from: '2023-02-01'
+    prior_addresses:
+    - 908 Foundry Street, Apt 12, Middleton, WI 53562 (2021-06-15 to 2023-01-31)
+    - 412 Wren Street, Verona, WI 53593 (2019-09-20 to 2021-06-14)
+    lockbox: Chicago
+    carrier: U.S. POSTAL SERVICE (USPS)
+    note: Three addresses inside the 5-year window, supplied piecemeal across the thread — the 'multiple
+      addresses' mess. All three are in Wisconsin, so the lockbox never moves.
+  matter:
+    engagement_date: '2026-05-11'
+    filing_date: '2026-07-07'
+    tax_year: 2025
+    tax_blank: f1040.pdf
+    tax_filing_status: Married Filing Jointly
+  family:
+    marital_status: Married
+    times_married: 1
+    marriage_date: '2017-12-16'
+    spouse:
+      name: Folake Adeyemi
+      dob: '1988-04-16'
+      usc: false
+      usc_since: null
+      immigration_status: lawful permanent resident
+      employer: Silverwood Pharmacy, Fitchburg, WI — Pharmacy Technician
       times_married: 1
-      marriage_date: "2020-03-14"
-      spouse:
-        name: "Daniel Quang Tran"
-        dob: "1988-01-09"
-        usc: true
-        usc_since: "naturalized 2009-05-21, Cleveland, Ohio"
-        employer: "Trestle Fire Protection LLC, Westerville, OH — Fire Protection Technician"
-        times_married: 1
-        same_address_as_applicant: true
-      children:
-        - "Mai Linh Tran, daughter, DOB 2021-08-02, born Westerville, OH — a U.S. citizen; her U.S. passport IS supplied, so C3c fires"
-      parents:
-        - "Vu Van Thang, not a U.S. citizen"
-        - "Pham Thi Nga, not a U.S. citizen"
-    employment:
-      - "Scioto Clinical Laboratories, Westerville, OH — Medical Laboratory Technician, 2023-01-09 to present"
-      - "Unemployed (at home with the child), Gahanna, OH, 2020-06-01 to 2023-01-06"
-    contact:
-      daytime_phone: "(614) 555-0129"
-      mobile_phone: "(614) 555-0129"
-      email: "ha.vu@quillmail.com"
-    input_modality: "delegated correspondence — the husband writes; the applicant surfaces rarely and briefly; documents arrive as his scans and photos"
-    voice_register: "verbose-solution-oriented-delegate"
-    voice_card: "clients/tran_daniel/voice-card.md"
-    mess_types:
-      - "folder named for the correspondent, not the applicant  (REUSES W2)"
-      - "e-signature friction — an e-sign attempt fails and he returns a printed, signed, re-scanned page instead  (T1-only, low-stakes)"
-    travel_summary:
-      countable_trips: 7
-      day_trips_supplied: 0
-      part_8_rows: 6
-    moral_character:
-      part9_15a: "No"
-      part9_15b: "No"
-      part9_20: "No"
-      part9_21: "No"
-      all_other_items: "No, except the oath answers, which are Yes"
-    conditional_exhibits:
-      set: ["C1", "C3a", "C3c", "C4"]
-      justification:
-        C1: "basis == 319(a) — demonstrated by W2"
-        C3a: "basis == 319(a) AND a joint deed is among the documents supplied (they bought the Westerville house 2023-04-14). Same supplied-evidence RULE W2 demonstrates with C3b; a different supplied document."
-        C3c: "basis == 319(a) AND a child of the marriage exists AND her passport was supplied. Same rule again."
-        C4: "7 countable trips exceed the Part 8 table's 6 rows — demonstrated by W1"
-      not_triggered:
-        C2: "not a conditional resident (decision D10) — no I-751, no I-797C"
-        C3b: "no joint automobile policy supplied; they were asked and did not send one. C3a/C3b/C3c are a function of SUPPLIED evidence, not of the basis (STYLE-SPEC §9.3 rule 3)."
-        C5_C6: "every Part 9 answer is No"
-      generalisation_gap: "This is the intended test: the supplied-evidence rule is demonstrated once (W2, C3b) and must be applied to two documents it was never demonstrated on (BUILD-PLAN §7)."
-    document_count: 10
-    documents: ["1 Table of contents", "2 Cover letter", "3 Form N-400", "4 Applicant passport", "5 Permanent Resident Card", "6 2025 Income Tax Return (joint)", "7 Spouse's passport", "8 Joint deed", "9 Child's passport", "10 Travel addendum"]
-
-  # =========================================================================
-  - slug: stavros_daphne
-    label: "T2"
-    ships_as: to-do
-    folder_named_for: correspondent
-    correspondent:
-      name: "Daphne Stavros"
-      relationship: "the applicant's daughter, a U.S. citizen by naturalization (2009-06-11); she writes the whole thread and signs as his daughter"
-      dob: "1984-02-27"
-      emails: ["daphne.stavros@brightpost.net"]
-      mobile_phone: "(973) 555-0134"
-    applicant:
-      full_legal_name: "Konstantinos Stavros"
-      family_name: "Stavros"
-      given_name: "Konstantinos"
-      middle_name: ""
-      other_names_used: []
-      name_change_requested: false
-      honorific: "Mr."
-      pronoun_subject: "he"
-      pronoun_possessive: "his"
-      dob: "1957-04-12"
-      sex: "M"
-      country_of_birth: "Greece"
-      country_of_citizenship: "Greece"
-      nationality_adjective: "Greek"
-      nationality_article: "a"
-      cover_page_cob_con: "Greece"
-      ssn: "148-92-7350"
-      first_entered_us: "2011-05-14"     # age 54 — Part 9 item 22.a is No (D15)
-    immigration:
-      a_number: "207115634"
-      a_number_formatted: "A-207115634"
-      lpr_date: "2020-01-23"
-      class_of_admission: "IR5"
-      basis: "316a"
-      classification_basis_string: "INA 316(a)"
-      conditional_resident: {was_cr: false}
-      history_for_the_written_explanation:
-        - "2013-06-18  Daphne, a U.S. citizen since 2009, files Form I-130 for her father with a concurrent Form I-485"
-        - "2015-02-11  the I-485 is DENIED (notices went to a superseded address; he did not appear)"
-        - "2015-09-14  he is placed in removal proceedings — this is the Part 9 Item 20 Yes"
-        - "2018-11-06  proceedings TERMINATED; he was never removed or deported (Item 21 is No)"
-        - "2020-01-23  a re-filed petition is approved and he becomes a lawful permanent resident, IR5"
-      derived:
-        residence_anniversary: "2025-01-23"
-        earliest_filing_date: "2024-10-25"
-        filing_margin_days: 508
-        residence_years_at_filing: 6.15
-    residence:
-      state: "NJ"
-      city: "Montclair"
-      current_address: "74 Fern Hollow Road, Montclair, NJ 07042"
-      current_address_from: "2024-08-15"
-      prior_addresses:
-        - "231 Ridgeline Avenue, Bloomfield, NJ 07003 (2011-05-20 to 2024-08-14)"
-      lockbox: "Elgin"
-      carrier: "U.S. POSTAL SERVICE (USPS)"
-      note: "The superseded-address mess moves him WITHIN New Jersey, so the lockbox is stable either way (decision D5)."
-    matter:
-      engagement_date: "2026-01-26"
-      filing_date: "2026-03-17"
-      tax_year: 2024
-      tax_blank: "f1040--2024.pdf"
-      tax_filing_status: "Single"
-    family:
-      marital_status: "Widowed"
-      times_married: 1
-      marriage_date: "1982-09-05"
-      spouse: none
-      prior_marriage: "Eleni Stavros — married 1982-09-05, ended by her death 2019-11-03"
-      children:
-        - "Daphne Stavros, daughter, DOB 1984-02-27, born in Greece, a U.S. citizen, lives at her own address — NO exhibit (basis is 316(a))"
-      parents:
-        - "Georgios Stavros, not a U.S. citizen, deceased"
-        - "Despina Stavros, not a U.S. citizen, deceased"
-    employment:
-      - "Retired, Montclair, NJ, 2023-07-01 to present"
-      - "Bellwether Baking Company, Bloomfield, NJ — Baker, 2016-03-07 to 2023-06-30"
-    contact:
-      daytime_phone: "(973) 555-0155"
-      mobile_phone: "(973) 555-0155"
-      email: "k.stavros@quillmail.com"
-    input_modality: "a tidy table export (spreadsheet) prepared by the daughter + a complete, over-complete document set"
-    voice_register: "warm-over-deliverer-self-doubting"
-    voice_card: "clients/stavros_daphne/voice-card.md"
-    mess_types:
-      - "folder named for the correspondent, not the applicant  (REUSES W2 — third instance, decision D3)"
-      - "superseded fact, later e-mail wins — the table export gives Bloomfield as his current address; a later message corrects it to Montclair  (REUSES W2)"
-      - "day trip in travel list, excluded per firm instruction  (REUSES W1)"
-      - "over-delivery of unrequested documents  (REUSES W1)"
-      - "unrelated-matter noise in the mailbox  (REUSES W1)"
-    travel_summary:
-      countable_trips: 8
-      day_trips_supplied: 1
-      part_8_rows: 6
-    moral_character:
-      part9_15a: "No"
-      part9_15b: "No — he has NEVER been arrested, cited, detained or charged. There is no C5."
-      part9_20: "Yes — placed in removal proceedings 2015-09-14; terminated 2018-11-06"
-      part9_21: "No"
-      all_other_items: "No, except the oath answers, which are Yes"
-    conditional_exhibits:
-      set: ["C4", "C6"]
-      justification:
-        C4: "8 countable trips exceed the Part 8 table's 6 rows — demonstrated by W1. The ninth supplied trip is a day trip: on neither the form nor the addendum (decision D7)."
-        C6: "Part 9 Item 20 is Yes and no table on the form can carry it, so a written explanation is authored (STYLE-SPEC §9.2 C6) — demonstrated by W3. It narrates the 2015 denial, the proceedings and their termination."
-      not_triggered:
-        C1_C2_C3: "basis is 316(a) — STYLE-SPEC §9.3 rule 2"
-        C5: "no arrest, citation, detention or charge, ever. THIS IS THE POINT OF T2: C6 does not ride along with C5."
-      differentiator: "See decision D1. This is what breaks the T2 == W1 duplicate recorded in STYLE-SPEC §13 D13."
-    document_count: 8
-    documents: ["1 Table of contents", "2 Cover letter", "3 Form N-400", "4 Applicant passport", "5 Permanent Resident Card", "6 2024 Income Tax Return", "7 Travel addendum", "8 Written explanation"]
-
-  # =========================================================================
-  - slug: adeyemi_tunde
-    label: "T3"
-    ships_as: to-do
-    folder_named_for: applicant
-    correspondent:
-      name: "Tunde Olusegun Adeyemi"
-      relationship: "the applicant himself"
-    applicant:
-      full_legal_name: "Tunde Olusegun Adeyemi"
-      family_name: "Adeyemi"
-      given_name: "Tunde"
-      middle_name: "Olusegun"
-      other_names_used: []
-      name_change_requested: false
-      honorific: "Mr."
-      pronoun_subject: "he"
-      pronoun_possessive: "his"
-      dob: "1985-11-09"
-      sex: "M"
-      country_of_birth: "Nigeria"
-      country_of_citizenship: "Nigeria"
-      nationality_adjective: "Nigerian"
-      nationality_article: "a"
-      cover_page_cob_con: "Nigeria"
-      ssn: "396-70-2841"
-      first_entered_us: "2016-01-11"     # age 30 — Part 9 item 22.a is No (D15)
-    immigration:
-      a_number: "216540923"
-      a_number_formatted: "A-216540923"
-      lpr_date: "2021-03-04"
-      class_of_admission: "E21"
-      basis: "316a"
-      classification_basis_string: "INA 316(a)"
-      conditional_resident: {was_cr: false}
-      derived:
-        residence_anniversary: "2026-03-04"
-        earliest_filing_date: "2025-12-04"
-        filing_margin_days: 215
-        residence_years_at_filing: 5.34
-    residence:
-      state: "WI"
-      city: "Fitchburg"
-      current_address: "5127 Copperleaf Lane, Fitchburg, WI 53711"
-      current_address_from: "2023-02-01"
-      prior_addresses:
-        - "908 Foundry Street, Apt 12, Middleton, WI 53562 (2021-06-15 to 2023-01-31)"
-        - "412 Wren Street, Verona, WI 53593 (2019-09-20 to 2021-06-14)"
-      lockbox: "Chicago"
-      carrier: "U.S. POSTAL SERVICE (USPS)"
-      note: "Three addresses inside the 5-year window, supplied piecemeal across the thread — the 'multiple addresses' mess. All three are in Wisconsin, so the lockbox never moves."
-    matter:
-      engagement_date: "2026-05-11"
-      filing_date: "2026-07-07"
-      tax_year: 2025
-      tax_blank: "f1040.pdf"
-      tax_filing_status: "Married Filing Jointly"
-    family:
-      marital_status: "Married"
-      times_married: 1
-      marriage_date: "2017-12-16"
-      spouse:
-        name: "Folake Adeyemi"
-        dob: "1988-04-16"
-        usc: false
-        usc_since: null
-        immigration_status: "lawful permanent resident"
-        employer: "Silverwood Pharmacy, Fitchburg, WI — Pharmacy Technician"
-        times_married: 1
-        same_address_as_applicant: true
-        note: "NOT a U.S. citizen, so the basis is 316(a) and there is NO spouse's passport. A negative control for C1 (decision D11)."
-      children:
-        - "Ayodele Adeyemi, daughter, DOB 2022-07-19, born Fitchburg, WI — a U.S. citizen; NO exhibit (C3c needs basis 319(a))"
-      parents:
-        - "Segun Adeyemi, not a U.S. citizen"
-        - "Bisi Adeyemi, not a U.S. citizen"
-    employment:
-      - "Cardinal Polymer Systems, Fitchburg, WI — Process Engineer, 2019-09-30 to present"
-    contact:
-      daytime_phone: "(608) 555-0171"
-      mobile_phone: "(608) 555-0171"
-      email: "tunde.adeyemi@quillmail.com"
-      second_email: "t.adeyemi@cardinalpolymer.com"
-    input_modality: "the stress test — phone photographs only, no questionnaire of any kind; a password-protected 1040 whose password arrives two e-mails later; the blank facts filled in by prose"
-    voice_register: "blunt-precise-minimal-courtesy"
-    voice_card: "clients/adeyemi_tunde/voice-card.md"
-    mess_types:
-      - "blank fields supplied later by e-mail prose  (REUSES W3)"
-      - "password-protected attachment, password in a LATER e-mail  (REUSES W3, escalated: W3's password is in the same message)"
-      - "phone-photo documents  (REUSES W1)"
-      - "same client, multiple e-mail addresses  (REUSES W2)"
-    travel_summary:
-      countable_trips: 7
-      day_trips_supplied: 0
-      part_8_rows: 6
-    moral_character:
-      part9_15a: "No"
-      part9_15b: "Yes — arrested 2023-06-24, Fitchburg, WI; operating a motor vehicle with a suspended license; charge DISMISSED 2023-09-12. NOTE the American spelling `license` on the court record and in the Item 15 table; the applicant's own prose spells it `licence`."
-      part9_20: "No — never in removal, rescission or deportation proceedings. There is no C6."
-      part9_21: "No"
-      all_other_items: "No, except the oath answers, which are Yes"
-    conditional_exhibits:
-      set: ["C4", "C5"]
-      justification:
-        C4: "7 countable trips exceed the Part 8 table's 6 rows — demonstrated by W1"
-        C5: "Part 9 Item 15.b is Yes, so court records are pulled — demonstrated by W3"
-      not_triggered:
-        C1_C2_C3: "basis is 316(a); he has a spouse and a child and NEITHER produces a document (decision D11)"
-        C6: "Item 20 and Item 21 are both No — no non-tabulable Yes. THIS IS THE MIRROR OF T2: C5 does not drag C6 along either."
-    document_count: 8
-    documents: ["1 Table of contents", "2 Cover letter", "3 Form N-400", "4 Applicant passport", "5 Permanent Resident Card", "6 2025 Income Tax Return (joint)", "7 Travel addendum", "8 Court records"]
-
-# ---------------------------------------------------------------------------
-# COVERAGE MATRIX
-# basis x mess type x input modality x voice, plus the two rules that must be
-# DEMONSTRATED IN A WORKED PAIR BEFORE THEY ARE TESTED: the conditional-exhibit
-# rules and the (lockbox, carrier) pair. Computed, not asserted — the numbers
-# below were produced by a script over this file, not typed from memory.
-# ---------------------------------------------------------------------------
+      same_address_as_applicant: true
+      note: NOT a U.S. citizen, so the basis is 316(a) and there is NO spouse's passport. A negative control
+        for C1 (decision D11).
+    children:
+    - Ayodele Adeyemi, daughter, DOB 2022-07-19, born Fitchburg, WI — a U.S. citizen; NO exhibit (C3c
+      needs basis 319(a))
+    parents:
+    - Segun Adeyemi, not a U.S. citizen
+    - Bisi Adeyemi, not a U.S. citizen
+  employment:
+  - Cardinal Polymer Systems, Fitchburg, WI — Process Engineer, 2019-09-30 to present
+  contact:
+    daytime_phone: (608) 555-0171
+    mobile_phone: (608) 555-0171
+    email: tunde.adeyemi@quillmail.com
+    second_email: t.adeyemi@cardinalpolymer.com
+  input_modality: the stress test — phone photographs only, no questionnaire of any kind; a password-protected
+    1040 whose password arrives two e-mails later; the blank facts filled in by prose
+  voice_register: blunt-precise-minimal-courtesy
+  voice_card: clients/adeyemi_tunde/voice-card.md
+  mess_types:
+  - blank fields supplied later by e-mail prose  (REUSES W3)
+  - 'password-protected attachment, password in a LATER e-mail  (REUSES W3, escalated: W3''s password
+    is in the same message)'
+  - phone-photo documents  (REUSES W1)
+  - same client, multiple e-mail addresses  (REUSES W2)
+  travel_summary:
+    countable_trips: 7
+    day_trips_supplied: 0
+    part_8_rows: 6
+  moral_character:
+    part9_15a: 'No'
+    part9_15b: Yes — arrested 2023-06-24, Fitchburg, WI; operating a motor vehicle with a suspended license;
+      charge DISMISSED 2023-09-12. NOTE the American spelling `license` on the court record and in the
+      Item 15 table; the applicant's own prose spells it `licence`.
+    part9_20: No — never in removal, rescission or deportation proceedings. There is no C6.
+    part9_21: 'No'
+    all_other_items: No, except the oath answers, which are Yes
+  conditional_exhibits:
+    set:
+    - C4
+    - C5
+    justification:
+      C4: 7 countable trips exceed the Part 8 table's 6 rows — demonstrated by W1
+      C5: Part 9 Item 15.b is Yes, so court records are pulled — demonstrated by W3
+    not_triggered:
+      C1_C2_C3: basis is 316(a); he has a spouse and a child and NEITHER produces a document (decision
+        D11)
+      C6: 'Item 20 and Item 21 are both No — no non-tabulable Yes. THIS IS THE MIRROR OF T2: C5 does not
+        drag C6 along either.'
+  document_count: 8
+  documents:
+  - 1 Table of contents
+  - 2 Cover letter
+  - 3 Form N-400
+  - 4 Applicant passport
+  - 5 Permanent Resident Card
+  - 6 2025 Income Tax Return (joint)
+  - 7 Travel addendum
+  - 8 Court records
 coverage_matrix:
-
   clients:
-    - {label: W1, slug: almeida_paulo,  ships: examples, basis: "316a", set: "{C4}",             docs: 7,  lockbox: Elgin,   carrier: "USPS",   filed: "2025-12-08", tax_year: 2024, modality: "questionnaire docx + phone photos",       voice: "terse-professional-engineer"}
-    - {label: W2, slug: kavanagh_liam,  ships: examples, basis: "319a", set: "{C1,C2,C3b}",      docs: 9,  lockbox: Chicago, carrier: "FedEx",  filed: "2026-02-10", tax_year: 2024, modality: "e-mail prose only",                     voice: "warm-apologetic-couple"}
-    - {label: W3, slug: nowak_agata,    ships: examples, basis: "316a", set: "{C5,C6}",          docs: 8,  lockbox: Chicago, carrier: "USPS",   filed: "2026-05-26", tax_year: 2025, modality: "xlsx questionnaire + scans",            voice: "fluent-non-native-comma-splice"}
-    - {label: T1, slug: tran_daniel,    ships: to-do,    basis: "319a", set: "{C1,C3a,C3c,C4}",  docs: 10, lockbox: Chicago, carrier: "FedEx",  filed: "2026-06-15", tax_year: 2025, modality: "delegated correspondence",              voice: "verbose-solution-oriented-delegate"}
-    - {label: T2, slug: stavros_daphne, ships: to-do,    basis: "316a", set: "{C4,C6}",          docs: 8,  lockbox: Elgin,   carrier: "USPS",   filed: "2026-03-17", tax_year: 2024, modality: "tidy table export + full document set", voice: "warm-over-deliverer-self-doubting"}
-    - {label: T3, slug: adeyemi_tunde,  ships: to-do,    basis: "316a", set: "{C4,C5}",          docs: 8,  lockbox: Chicago, carrier: "USPS",   filed: "2026-07-07", tax_year: 2025, modality: "phone photos only, password chase",     voice: "blunt-precise-minimal-courtesy"}
-
+  - label: W1
+    slug: almeida_paulo
+    ships: examples
+    basis: 316a
+    set: '{C4}'
+    docs: 7
+    lockbox: Elgin
+    carrier: USPS
+    filed: '2025-12-08'
+    tax_year: 2024
+    modality: questionnaire docx + phone photos
+    voice: terse-professional-engineer
+  - label: W2
+    slug: kavanagh_liam
+    ships: examples
+    basis: 319a
+    set: '{C1,C2,C3b}'
+    docs: 9
+    lockbox: Chicago
+    carrier: FedEx
+    filed: '2026-02-10'
+    tax_year: 2024
+    modality: e-mail prose only
+    voice: warm-apologetic-couple
+  - label: W3
+    slug: nowak_agata
+    ships: examples
+    basis: 316a
+    set: '{C5,C6}'
+    docs: 8
+    lockbox: Chicago
+    carrier: USPS
+    filed: '2026-05-26'
+    tax_year: 2025
+    modality: xlsx questionnaire + scans
+    voice: fluent-non-native-comma-splice
+  - label: T1
+    slug: tran_daniel
+    ships: to-do
+    basis: 319a
+    set: '{C1,C3a,C3c,C4}'
+    docs: 10
+    lockbox: Chicago
+    carrier: FedEx
+    filed: '2026-06-15'
+    tax_year: 2025
+    modality: delegated correspondence
+    voice: verbose-solution-oriented-delegate
+  - label: T2
+    slug: stavros_daphne
+    ships: to-do
+    basis: 316a
+    set: '{C4,C6}'
+    docs: 8
+    lockbox: Elgin
+    carrier: USPS
+    filed: '2026-03-17'
+    tax_year: 2024
+    modality: tidy table export + full document set
+    voice: warm-over-deliverer-self-doubting
+  - label: T3
+    slug: adeyemi_tunde
+    ships: to-do
+    basis: 316a
+    set: '{C4,C5}'
+    docs: 8
+    lockbox: Chicago
+    carrier: USPS
+    filed: '2026-07-07'
+    tax_year: 2025
+    modality: phone photos only, password chase
+    voice: blunt-precise-minimal-courtesy
   basis:
-    "316a": [W1, W3, T2, T3]
-    "319a": [W2, T1]
-    check: "both bases appear in a worked pair (W1/W3 and W2) before either is tested"
-
+    316a:
+    - W1
+    - W3
+    - T2
+    - T3
+    319a:
+    - W2
+    - T1
+    check: both bases appear in a worked pair (W1/W3 and W2) before either is tested
   exhibit_sets_pairwise_distinct:
     result: PASS
-    method: "15 pairs compared on (basis, sorted conditional set); 0 collisions. Also distinct on the conditional set alone."
+    method: 15 pairs compared on (basis, sorted conditional set); 0 collisions. Also distinct on the conditional
+      set alone.
     sets:
-      W1: ["C4"]
-      W2: ["C1", "C2", "C3b"]
-      W3: ["C5", "C6"]
-      T1: ["C1", "C3a", "C3c", "C4"]
-      T2: ["C4", "C6"]
-      T3: ["C4", "C5"]
-    note: "BUILD-PLAN §7's no-duplicate promise now holds. It did not hold as the plan was written — see decision D1 and STYLE-SPEC §13 D13."
-
+      W1:
+      - C4
+      W2:
+      - C1
+      - C2
+      - C3b
+      W3:
+      - C5
+      - C6
+      T1:
+      - C1
+      - C3a
+      - C3c
+      - C4
+      T2:
+      - C4
+      - C6
+      T3:
+      - C4
+      - C5
+    note: BUILD-PLAN §7's no-duplicate promise now holds. It did not hold as the plan was written — see
+      decision D1 and STYLE-SPEC §13 D13.
   conditional_rules_demonstrated_before_tested:
-    C1_spouse_passport:      {rule: "basis == 319(a)",                          demonstrated_in: [W2], tested_in: [T1], status: OK}
-    C2_i797c:                {rule: "was a conditional resident AND no unconditional card at filing", demonstrated_in: [W2], tested_in: [], status: "OK — worked-pair only; no test client is a conditional resident"}
-    C3_supplied_evidence:    {rule: "basis == 319(a) AND the document was SUPPLIED", demonstrated_in: ["W2 (C3b, joint automobile insurance policy)"], tested_in: ["T1 (C3a joint deed, C3c child's passport)"], status: "OK at RULE level — this is BUILD-PLAN §7's intended generalisation gap: the rule is shown once, on one document, and must be applied to two it was never shown on. T1's C3b is deliberately NOT triggered (no policy supplied), which is the same rule read the other way."}
-    C4_travel_addendum:      {rule: "countable trips exceed the Part 8 table's 6 rows", demonstrated_in: [W1], tested_in: [T1, T2, T3], status: OK}
-    C5_court_records:        {rule: "any Part 9 arrest / citation / detention / charge answer is Yes (Item 15.a or 15.b)", demonstrated_in: [W3], tested_in: [T3], status: OK}
-    C6_written_explanation:  {rule: "any Part 9 Yes the form's own table cannot carry — on edition 01/20/25 that is Item 20 or Item 21", demonstrated_in: [W3], tested_in: [T2], status: "OK — and W3 carries C5 and C6 from two SEPARATE events precisely so that T2's C6-without-C5 is learnable (decision D1)"}
-
+    C1_spouse_passport:
+      rule: basis == 319(a)
+      demonstrated_in:
+      - W2
+      tested_in:
+      - T1
+      status: OK
+    C2_i797c:
+      rule: was a conditional resident AND no unconditional card at filing
+      demonstrated_in:
+      - W2
+      tested_in: []
+      status: OK — worked-pair only; no test client is a conditional resident
+    C3_supplied_evidence:
+      rule: basis == 319(a) AND the document was SUPPLIED
+      demonstrated_in:
+      - W2 (C3b, joint automobile insurance policy)
+      tested_in:
+      - T1 (C3a joint deed, C3c child's passport)
+      status: 'OK at RULE level — this is BUILD-PLAN §7''s intended generalisation gap: the rule is shown
+        once, on one document, and must be applied to two it was never shown on. T1''s C3b is deliberately
+        NOT triggered (no policy supplied), which is the same rule read the other way.'
+    C4_travel_addendum:
+      rule: countable trips exceed the Part 8 table's 6 rows
+      demonstrated_in:
+      - W1
+      tested_in:
+      - T1
+      - T2
+      - T3
+      status: OK
+    C5_court_records:
+      rule: any Part 9 arrest / citation / detention / charge answer is Yes (Item 15.a or 15.b)
+      demonstrated_in:
+      - W3
+      tested_in:
+      - T3
+      status: OK
+    C6_written_explanation:
+      rule: any Part 9 Yes the form's own table cannot carry — on edition 01/20/25 that is Item 20 or
+        Item 21
+      demonstrated_in:
+      - W3
+      tested_in:
+      - T2
+      status: OK — and W3 carries C5 and C6 from two SEPARATE events precisely so that T2's C6-without-C5
+        is learnable (decision D1)
   moral_character_truth_table:
-    columns: "Part 9 Item 15.b (arrest) | Part 9 Item 20 (removal proceedings) | exhibits"
+    columns: Part 9 Item 15.b (arrest) | Part 9 Item 20 (removal proceedings) | exhibits
     rows:
-      - "W1 Almeida    No  | No  | -           (worked)"
-      - "W2 Kavanagh   No  | No  | -           (worked)"
-      - "W3 Nowak      Yes | Yes | C5 + C6     (worked)  <- both cells positive, from unrelated events"
-      - "T1 Tran       No  | No  | -           (test)"
-      - "T2 Stavros    No  | Yes | C6 only     (test)    <- proves C6 has its own trigger"
-      - "T3 Adeyemi    Yes | No  | C5 only     (test)    <- proves C5 has its own trigger"
-    check: "all four cells of the 2x2 are populated, and the two mixed cells are the two test clients. A solver that learns 'court records and a written explanation always travel together' fails both T2 and T3."
-
+    - W1 Almeida    No  | No  | -           (worked)
+    - W2 Kavanagh   No  | No  | -           (worked)
+    - W3 Nowak      Yes | Yes | C5 + C6     (worked)  <- both cells positive, from unrelated events
+    - T1 Tran       No  | No  | -           (test)
+    - T2 Stavros    No  | Yes | C6 only     (test)    <- proves C6 has its own trigger
+    - T3 Adeyemi    Yes | No  | C5 only     (test)    <- proves C5 has its own trigger
+    check: all four cells of the 2x2 are populated, and the two mixed cells are the two test clients.
+      A solver that learns 'court records and a written explanation always travel together' fails both
+      T2 and T3.
   lockbox_carrier_demonstrated_before_tested:
     result: PASS
     pairs:
-      "Elgin + U.S. POSTAL SERVICE (USPS)":  {demonstrated_in: "W1 Almeida (MA)",  tested_in: "T2 Stavros (NJ)"}
-      "Chicago + FEDERAL EXPRESS":           {demonstrated_in: "W2 Kavanagh (IL)", tested_in: "T1 Tran (OH)"}
-      "Chicago + U.S. POSTAL SERVICE (USPS)": {demonstrated_in: "W3 Nowak (MI)",    tested_in: "T3 Adeyemi (WI)"}
-    lockboxes_used: [Elgin, Chicago]
-    carriers_used: ["U.S. POSTAL SERVICE (USPS)", "FEDERAL EXPRESS"]
-    ruling: "§16 ruling 9 (UPHELD): at least two lockboxes AND both carriers, each demonstrated first. Satisfied — and every test client's pair is exactly one worked client's pair, one to one."
-    state_derivation_checked: "all six states re-derived against STYLE-SPEC §7's table by script: MA->Elgin, NJ->Elgin, IL->Chicago, MI->Chicago, OH->Chicago, WI->Chicago. Six of six agree with the declared value."
-    stability_under_mess: "W2 and T2 both carry a superseded-address mess; both moves are intra-state, so the lockbox is the same before and after the correction (decision D5)."
-
+      Elgin + U.S. POSTAL SERVICE (USPS):
+        demonstrated_in: W1 Almeida (MA)
+        tested_in: T2 Stavros (NJ)
+      Chicago + FEDERAL EXPRESS:
+        demonstrated_in: W2 Kavanagh (IL)
+        tested_in: T1 Tran (OH)
+      Chicago + U.S. POSTAL SERVICE (USPS):
+        demonstrated_in: W3 Nowak (MI)
+        tested_in: T3 Adeyemi (WI)
+    lockboxes_used:
+    - Elgin
+    - Chicago
+    carriers_used:
+    - U.S. POSTAL SERVICE (USPS)
+    - FEDERAL EXPRESS
+    ruling: '§16 ruling 9 (UPHELD): at least two lockboxes AND both carriers, each demonstrated first.
+      Satisfied — and every test client''s pair is exactly one worked client''s pair, one to one.'
+    state_derivation_checked: 'all six states re-derived against STYLE-SPEC §7''s table by script: MA->Elgin,
+      NJ->Elgin, IL->Chicago, MI->Chicago, OH->Chicago, WI->Chicago. Six of six agree with the declared
+      value.'
+    stability_under_mess: W2 and T2 both carry a superseded-address mess; both moves are intra-state,
+      so the lockbox is the same before and after the correction (decision D5).
   tax_year_demonstrated_before_tested:
-    "TY2024 (f1040--2024.pdf)": {demonstrated_in: [W1, W2], tested_in: [T2]}
-    "TY2025 (f1040.pdf)":       {demonstrated_in: [W3],     tested_in: [T1, T3]}
-    rule: "filed before ~2026-04-15 -> TY2024; filed after -> TY2025 (STYLE-SPEC §13 D11)"
-    check: "both blanks are exercised by a worked pair BEFORE a test client needs them. See decision D6 for why the filing dates are not in worked-then-test order."
-
+    TY2024 (f1040--2024.pdf):
+      demonstrated_in:
+      - W1
+      - W2
+      tested_in:
+      - T2
+    TY2025 (f1040.pdf):
+      demonstrated_in:
+      - W3
+      tested_in:
+      - T1
+      - T3
+    rule: filed before ~2026-04-15 -> TY2024; filed after -> TY2025 (STYLE-SPEC §13 D11)
+    check: both blanks are exercised by a worked pair BEFORE a test client needs them. See decision D6
+      for why the filing dates are not in worked-then-test order.
   filing_window_arithmetic:
     result: PASS
-    rule: "319(a): filing >= LPR + 3y - 90d.  316(a): filing >= LPR + 5y - 90d."
+    rule: '319(a): filing >= LPR + 3y - 90d.  316(a): filing >= LPR + 5y - 90d.'
     computed:
-      W1: "LPR 2020-06-19 + 5y - 90d = 2025-03-21; filed 2025-12-08; margin +262 d"
-      W2: "LPR 2022-09-15 + 3y - 90d = 2025-06-17; filed 2026-02-10; margin +238 d"
-      W3: "LPR 2021-02-11 + 5y - 90d = 2025-11-13; filed 2026-05-26; margin +194 d"
-      T1: "LPR 2022-11-30 + 3y - 90d = 2025-09-01; filed 2026-06-15; margin +287 d"
-      T2: "LPR 2020-01-23 + 5y - 90d = 2024-10-25; filed 2026-03-17; margin +508 d"
-      T3: "LPR 2021-03-04 + 5y - 90d = 2025-12-04; filed 2026-07-07; margin +215 d"
-    note: "Computed in Python, not eyeballed. No margin is thin, so no client inherits ossola's 2y9m tension (BUILD-PLAN §3)."
-
+      W1: LPR 2020-06-19 + 5y - 90d = 2025-03-21; filed 2025-12-08; margin +262 d
+      W2: LPR 2022-09-15 + 3y - 90d = 2025-06-17; filed 2026-02-10; margin +238 d
+      W3: LPR 2021-02-11 + 5y - 90d = 2025-11-13; filed 2026-05-26; margin +194 d
+      T1: LPR 2022-11-30 + 3y - 90d = 2025-09-01; filed 2026-06-15; margin +287 d
+      T2: LPR 2020-01-23 + 5y - 90d = 2024-10-25; filed 2026-03-17; margin +508 d
+      T3: LPR 2021-03-04 + 5y - 90d = 2025-12-04; filed 2026-07-07; margin +215 d
+    note: Computed in Python, not eyeballed. No margin is thin, so no client inherits ossola's 2y9m tension
+      (BUILD-PLAN §3).
   input_modality:
-    "questionnaire docx + phone photos": [W1]
-    "e-mail prose only, no questionnaire": [W2]
-    "xlsx questionnaire + scans": [W3]
-    "delegated correspondence": [T1]
-    "tidy table export + full document set": [T2]
-    "phone photos only, password chase, blanks by prose": [T3]
-    check: "six distinct modalities; every test modality is a recombination of surfaces a worked pair already shows (prose-only from W2, spreadsheet from W3, photos from W1, password handoff from W3)."
-
+    questionnaire docx + phone photos:
+    - W1
+    e-mail prose only, no questionnaire:
+    - W2
+    xlsx questionnaire + scans:
+    - W3
+    delegated correspondence:
+    - T1
+    tidy table export + full document set:
+    - T2
+    phone photos only, password chase, blanks by prose:
+    - T3
+    check: six distinct modalities; every test modality is a recombination of surfaces a worked pair already
+      shows (prose-only from W2, spreadsheet from W3, photos from W1, password handoff from W3).
   voice:
-    W1: "terse-professional-engineer          (zhu-register)"
-    W2: "warm-apologetic-couple               (jacobs-register)"
-    W3: "fluent-non-native-comma-splice       (izaguirre-register)"
-    T1: "verbose-solution-oriented-delegate   (malone-register)"
-    T2: "warm-over-deliverer-self-doubting    (ossola-register)"
-    T3: "blunt-precise-minimal-courtesy       (NEW sixth register)"
-    check: "six distinct registers. The five corpus registers are DESCRIBED from lab/reports/, never quoted; every sample line on every voice card is invented (BUILD-PLAN §3)."
-
+    W1: terse-professional-engineer          (zhu-register)
+    W2: warm-apologetic-couple               (jacobs-register)
+    W3: fluent-non-native-comma-splice       (izaguirre-register)
+    T1: verbose-solution-oriented-delegate   (malone-register)
+    T2: warm-over-deliverer-self-doubting    (ossola-register)
+    T3: blunt-precise-minimal-courtesy       (NEW sixth register)
+    check: six distinct registers. The five corpus registers are DESCRIBED from lab/reports/, never quoted;
+      every sample line on every voice card is invented (BUILD-PLAN §3).
   mess_types:
-    # BUILD-PLAN §5.3, in the plan's own order. Every type is demonstrated in a
-    # worked pair before any test input uses it.
-    check: "nine of nine §5.3 types demonstrated-before-tested; T1 carries the one extra, which is inert."
+    check: nine of nine §5.3 types demonstrated-before-tested; T1 carries the one extra, which is inert.
     types:
-    - {type: "folder named for the correspondent, not the applicant", demonstrated_in: W2, reused_in: [T1, T2], status: "OK — §5.3 lists T1 only; T2 is a third instance, decision D3"}
-    - {type: "blank questionnaire field, supplied later by e-mail prose", demonstrated_in: W3, reused_in: [T3], status: OK}
-    - {type: "superseded fact (later e-mail wins)", demonstrated_in: W2, reused_in: [T2], status: OK}
-    - {type: "day trip in travel list, excluded per firm instruction", demonstrated_in: W1, reused_in: [T2], status: "OK — resolution frozen by decision D7: on neither the form nor the addendum"}
-    - {type: "phone-photo documents", demonstrated_in: W1, reused_in: [T3], status: OK}
-    - {type: "password-protected attachment, password in a later e-mail", demonstrated_in: "W3 (benign — password in the same thread)", reused_in: [T3], status: "OK — T3 escalates it to a genuine two-message chase"}
-    - {type: "over-delivery of unrequested documents", demonstrated_in: W1, reused_in: [T2], status: OK}
-    - {type: "same client, multiple e-mail addresses", demonstrated_in: W2, reused_in: [T3], status: OK}
-    - {type: "unrelated-matter noise in the mailbox", demonstrated_in: W1, reused_in: [T2], status: OK}
-    - {type: "e-signature friction", demonstrated_in: "-", reused_in: [T1], status: "BUILD-PLAN §7 lists it in T1's own mess column; §5.3's table does not, because it has no demonstrate/reuse pair. T1-only, and deliberately consequence-free — the signed page arrives either way and no packet fact depends on how. It adds thread texture without adding an unbounded mess. Recorded so Phase 5 does not read it as an unlisted mess type."}
-
+    - type: folder named for the correspondent, not the applicant
+      demonstrated_in: W2
+      reused_in:
+      - T1
+      - T2
+      status: OK — §5.3 lists T1 only; T2 is a third instance, decision D3
+    - type: blank questionnaire field, supplied later by e-mail prose
+      demonstrated_in: W3
+      reused_in:
+      - T3
+      status: OK
+    - type: superseded fact (later e-mail wins)
+      demonstrated_in: W2
+      reused_in:
+      - T2
+      status: OK
+    - type: day trip in travel list, excluded per firm instruction
+      demonstrated_in: W1
+      reused_in:
+      - T2
+      status: 'OK — resolution frozen by decision D7: on neither the form nor the addendum'
+    - type: phone-photo documents
+      demonstrated_in: W1
+      reused_in:
+      - T3
+      status: OK
+    - type: password-protected attachment, password in a later e-mail
+      demonstrated_in: W3 (benign — password in the same thread)
+      reused_in:
+      - T3
+      status: OK — T3 escalates it to a genuine two-message chase
+    - type: over-delivery of unrequested documents
+      demonstrated_in: W1
+      reused_in:
+      - T2
+      status: OK
+    - type: same client, multiple e-mail addresses
+      demonstrated_in: W2
+      reused_in:
+      - T3
+      status: OK
+    - type: unrelated-matter noise in the mailbox
+      demonstrated_in: W1
+      reused_in:
+      - T2
+      status: OK
+    - type: e-signature friction
+      demonstrated_in: '-'
+      reused_in:
+      - T1
+      status: BUILD-PLAN §7 lists it in T1's own mess column; §5.3's table does not, because it has no
+        demonstrate/reuse pair. T1-only, and deliberately consequence-free — the signed page arrives either
+        way and no packet fact depends on how. It adds thread texture without adding an unbounded mess.
+        Recorded so Phase 5 does not read it as an unlisted mess type.
   negative_controls:
-    purpose: "STYLE-SPEC §9.3 rule 4 — every conditional document must be traceable to a form answer. These six pairs teach the contrapositive, which is the half of the rule a copier gets wrong."
+    purpose: STYLE-SPEC §9.3 rule 4 — every conditional document must be traceable to a form answer. These
+      six pairs teach the contrapositive, which is the half of the rule a copier gets wrong.
     controls:
-    - "T3 has a spouse and no C1 (she is not a U.S. citizen; basis is 316(a))"
-    - "W3 has a child and no C3c (basis is 316(a))"
-    - "T1 has a 319(a) basis and no C3b (no automobile policy was supplied)"
-    - "T1 has a spouse-based basis and no C2 (she was never a conditional resident)"
-    - "T2 has a Part 9 Yes and no C5 (it is not an arrest)"
-    - "T3 has an arrest and no C6 (nothing non-tabulable)"
-
-# ---------------------------------------------------------------------------
-# COLLISION CHECK — computed by script over this file.
-# ---------------------------------------------------------------------------
+    - T3 has a spouse and no C1 (she is not a U.S. citizen; basis is 316(a))
+    - W3 has a child and no C3c (basis is 316(a))
+    - T1 has a 319(a) basis and no C3b (no automobile policy was supplied)
+    - T1 has a spouse-based basis and no C2 (she was never a conditional resident)
+    - T2 has a Part 9 Yes and no C5 (it is not an arrest)
+    - T3 has an arrest and no C6 (nothing non-tabulable)
 collision_check:
   result: PASS
-  asserted: "No two clients share a surname, an A-number, an SSN, an address, an employer, a telephone number or an e-mail address."
-  surnames:   {unique: true, values: [Almeida, Brennan, Nowak, Vu, Stavros, Adeyemi]}
-  correspondent_surnames: {unique: true, values: [Almeida, Kavanagh, Nowak, Tran, Stavros, Adeyemi]}
-  a_numbers:  {unique: true, values: ["208451772", "213668041", "212337509", "214902186", "207115634", "216540923"]}
-  ssns:       {unique: true, values: ["037-84-2196", "341-27-8065", "372-51-9430", "289-63-4157", "148-92-7350", "396-70-2841"]}
-  addresses:  {unique: true, note: "all twelve current and prior addresses are distinct street addresses in six different metropolitan areas; no street name is reused across clients"}
-  employers:  {unique: true, values: ["Harborline Structural Engineering LLC", "Dunmore Precision Castings", "Riverbend Veterinary Clinic", "Halsted Freight Systems", "Kestrel Field Design", "Ferndale Type Works", "Scioto Clinical Laboratories", "Trestle Fire Protection LLC", "Bellwether Baking Company", "Cardinal Polymer Systems", "Silverwood Pharmacy"]}
-  telephones: {unique: true, values: ["(617) 555-0142", "(773) 555-0118", "(312) 555-0187", "(734) 555-0163", "(614) 555-0129", "(614) 555-0176", "(973) 555-0155", "(973) 555-0134", "(608) 555-0171"], note: "all in the reserved 555-01xx fiction block — decision D8"}
-  emails:     {unique: true, count: 11, values: ["paulo.almeida@quillmail.com", "s.brennan@quillmail.com", "liam.kavanagh@brightpost.net", "l.kavanagh@halstedfreight.com", "a.nowak@quillmail.com", "ha.vu@quillmail.com", "dtran@trestlefp.com", "k.stavros@quillmail.com", "daphne.stavros@brightpost.net", "tunde.adeyemi@quillmail.com", "t.adeyemi@cardinalpolymer.com"]}
-  dobs:       {unique: true, note: "six applicants, six distinct dates of birth, spread 1957-1991"}
-  filing_dates: {unique: true, values: ["2025-12-08", "2026-02-10", "2026-05-26", "2026-06-15", "2026-03-17", "2026-07-07"], note: "all inside the 2025-11 .. 2026-07 in-world window"}
-  nationalities: {unique: true, values: [Brazil, Ireland, Poland, Vietnam, Greece, Nigeria], blocklisted_as_applicant_nationality: [Australia, China, Mexico, Philippines, Italy], check: "no overlap — BUILD-PLAN §7, STYLE-SPEC §11"}
-  states:     {unique: true, values: [MA, IL, MI, OH, NJ, WI]}
-
+  asserted: No two clients share a surname, an A-number, an SSN, an address, an employer, a telephone
+    number or an e-mail address.
+  surnames:
+    unique: true
+    values:
+    - Almeida
+    - Brennan
+    - Nowak
+    - Vu
+    - Stavros
+    - Adeyemi
+  correspondent_surnames:
+    unique: true
+    values:
+    - Almeida
+    - Kavanagh
+    - Nowak
+    - Tran
+    - Stavros
+    - Adeyemi
+  a_numbers:
+    unique: true
+    values:
+    - '208451772'
+    - '213668041'
+    - '212337509'
+    - '214902186'
+    - '207115634'
+    - '216540923'
+  ssns:
+    unique: true
+    values:
+    - 037-84-2196
+    - 341-27-8065
+    - 372-51-9430
+    - 289-63-4157
+    - 148-92-7350
+    - 396-70-2841
+  addresses:
+    unique: true
+    note: all twelve current and prior addresses are distinct street addresses in six different metropolitan
+      areas; no street name is reused across clients
+  employers:
+    unique: true
+    values:
+    - Harborline Structural Engineering LLC
+    - Dunmore Precision Castings
+    - Riverbend Veterinary Clinic
+    - Halsted Freight Systems
+    - Kestrel Field Design
+    - Ferndale Type Works
+    - Scioto Clinical Laboratories
+    - Trestle Fire Protection LLC
+    - Bellwether Baking Company
+    - Cardinal Polymer Systems
+    - Silverwood Pharmacy
+  telephones:
+    unique: true
+    values:
+    - (617) 555-0142
+    - (773) 555-0118
+    - (312) 555-0187
+    - (734) 555-0163
+    - (614) 555-0129
+    - (614) 555-0176
+    - (973) 555-0155
+    - (973) 555-0134
+    - (608) 555-0171
+    note: all in the reserved 555-01xx fiction block — decision D8
+  emails:
+    unique: true
+    count: 11
+    values:
+    - paulo.almeida@quillmail.com
+    - s.brennan@quillmail.com
+    - liam.kavanagh@brightpost.net
+    - l.kavanagh@halstedfreight.com
+    - a.nowak@quillmail.com
+    - ha.vu@quillmail.com
+    - dtran@trestlefp.com
+    - k.stavros@quillmail.com
+    - daphne.stavros@brightpost.net
+    - tunde.adeyemi@quillmail.com
+    - t.adeyemi@cardinalpolymer.com
+  dobs:
+    unique: true
+    note: six applicants, six distinct dates of birth, spread 1957-1991
+  filing_dates:
+    unique: true
+    values:
+    - '2025-12-08'
+    - '2026-02-10'
+    - '2026-05-26'
+    - '2026-06-15'
+    - '2026-03-17'
+    - '2026-07-07'
+    note: all inside the 2025-11 .. 2026-07 in-world window
+  nationalities:
+    unique: true
+    values:
+    - Brazil
+    - Ireland
+    - Poland
+    - Vietnam
+    - Greece
+    - Nigeria
+    blocklisted_as_applicant_nationality:
+    - Australia
+    - China
+    - Mexico
+    - Philippines
+    - Italy
+    check: no overlap — BUILD-PLAN §7, STYLE-SPEC §11
+  states:
+    unique: true
+    values:
+    - MA
+    - IL
+    - MI
+    - OH
+    - NJ
+    - WI
   leakage_scan:
-    method: "every capitalised token and every digit-string of length >= 6 in registry.yaml and the twelve client files, uniqued and whole-token (grep -ixF) matched against blocklist.txt (12,454 tokens). See SPEC-DELTA D-F: whole-token, minimum length, and STYLE-SPEC §11 house-style strings are an exclusion-set bug, not a halt."
-    result: "PASS — 152 distinctive invented tokens (every surname, given name, city, street, employer, mail domain, e-mail address, A-number, SSN, receipt number, telephone number, ZIP and slug in this build) whole-token checked: ZERO hits. The 359-token cast namespace checked in full: the only hits are ordinary English and occupational words carried inside multi-word strings (Apt, Company, Engineering, Design, Medical, Pharmacy, Senior, Fire, Protection, Field, Engineer), which STYLE-SPEC §11 already classes as generic address nouns and exhibit vocabulary."
+    method: 'every capitalised token and every digit-string of length >= 6 in registry.yaml and the twelve
+      client files, uniqued and whole-token (grep -ixF) matched against blocklist.txt (12,454 tokens).
+      See SPEC-DELTA D-F: whole-token, minimum length, and STYLE-SPEC §11 house-style strings are an exclusion-set
+      bug, not a halt.'
+    result: 'PASS — 152 distinctive invented tokens (every surname, given name, city, street, employer,
+      mail domain, e-mail address, A-number, SSN, receipt number, telephone number, ZIP and slug in this
+      build) whole-token checked: ZERO hits. The 359-token cast namespace checked in full: the only hits
+      are ordinary English and occupational words carried inside multi-word strings (Apt, Company, Engineering,
+      Design, Medical, Pharmacy, Senior, Fire, Protection, Field, Engineer), which STYLE-SPEC §11 already
+      classes as generic address nouns and exhibit vocabulary.'
     notes:
-      - "Blocklisted tokens are NOT quoted anywhere in this file. A registry that documents a hit by spelling it out trips the halt it is documenting. Six candidate city names, nine candidate given names and the three commonest consumer mail domains were rejected during casting because they are on the list; they were rejected, not recorded."
-      - "The rejection of BUILD-PLAN §8's original T1 slug (decision D2) and the invention of the mail domains (decision D8) are both consequences of that."
-      - "Legitimate house-style strings — the four lockbox blocks, agency and form vocabulary, statutory citations, the fee, the §4/§5 literals, state and month and country names — are STYLE-SPEC §11 shared strings and are excluded from blocklist.txt by construction. `Dearborn` returns 0 hits, which confirms the exclusion set is working."
-      - "RESIDUAL HITS, and why none is a halt (SPEC-DELTA D-F). Whole-token matching these thirteen files against a 12,454-token list built from ordinary corpus prose returns ordinary English words — `About`, `Additional`, `Company`, `Design`, `Engineer`, `Height`, `Weight`, `Short`, `Read` and so on — plus N-400 Part 3 race and ethnicity vocabulary (`Black`, `Brown`, `Hispanic`) that STYLE-SPEC §11 already classes as agency and form vocabulary, plus bare digit strings manufactured by stripping the hyphens out of a date. Every one is an exclusion-set bug in blocklist.txt, not a leak. ZERO hits fall in the class the halt is reserved for: a real corpus PROPER NOUN or IDENTIFIER. Every invented name, surname, street, city, employer, telephone number, e-mail address, A-number, SSN, receipt number and ZIP in this build was whole-token checked and returns 0."
-      - "Recommendation for Phase 5's verify_set.py: add a stop-word pass (common English words, N-400 Part 3 vocabulary, and digit strings that parse as a date) before the halt fires, or it will halt on noise on every run."
+    - Blocklisted tokens are NOT quoted anywhere in this file. A registry that documents a hit by spelling
+      it out trips the halt it is documenting. Six candidate city names, nine candidate given names and
+      the three commonest consumer mail domains were rejected during casting because they are on the list;
+      they were rejected, not recorded.
+    - The rejection of BUILD-PLAN §8's original T1 slug (decision D2) and the invention of the mail domains
+      (decision D8) are both consequences of that.
+    - Legitimate house-style strings — the four lockbox blocks, agency and form vocabulary, statutory
+      citations, the fee, the §4/§5 literals, state and month and country names — are STYLE-SPEC §11 shared
+      strings and are excluded from blocklist.txt by construction. `Dearborn` returns 0 hits, which confirms
+      the exclusion set is working.
+    - 'RESIDUAL HITS, and why none is a halt (SPEC-DELTA D-F). Whole-token matching these thirteen files
+      against a 12,454-token list built from ordinary corpus prose returns ordinary English words — `About`,
+      `Additional`, `Company`, `Design`, `Engineer`, `Height`, `Weight`, `Short`, `Read` and so on — plus
+      N-400 Part 3 race and ethnicity vocabulary (`Black`, `Brown`, `Hispanic`) that STYLE-SPEC §11 already
+      classes as agency and form vocabulary, plus bare digit strings manufactured by stripping the hyphens
+      out of a date. Every one is an exclusion-set bug in blocklist.txt, not a leak. ZERO hits fall in
+      the class the halt is reserved for: a real corpus PROPER NOUN or IDENTIFIER. Every invented name,
+      surname, street, city, employer, telephone number, e-mail address, A-number, SSN, receipt number
+      and ZIP in this build was whole-token checked and returns 0.'
+    - 'Recommendation for Phase 5''s verify_set.py: add a stop-word pass (common English words, N-400
+      Part 3 vocabulary, and digit strings that parse as a date) before the halt fires, or it will halt
+      on noise on every run.'
+phase_2_review:
+  reviewed: 2026-08-22
+  barrier_a: green (79 checks, tools/validate_masterkeys.py)
+  verdict: PASS WITH FINDINGS
+  reviewer_scope: six masterkey.norm.yaml + registry + briefs + voice cards
+  findings_blocking: 1
+  findings_should_fix: 2
+  findings_note: 3
+  t2_c6_signal: 'C6 itself is not muddied — all three non-tabulable Part 9 Yes answers (8.a, 12, 20) independently
+    satisfy the C6 rule regardless of narrative order — but Items 8.a/12 have exactly one input surface,
+    a scan filed under a key literally named over_delivered_not_used whose demonstrated W1 resolution
+    is "produces no document, no form change," so a solver correctly generalising the over-delivery rule
+    is likely to answer those two items No and fail the first dogfood diff.
+
+    '
+  report: reports/phase-2-review.md
+  summary: 'Six clients read as six different people — distinct professions, family shapes, income levels,
+    ages, states and voice registers, with no accidental sameness found. Coverage, negative controls and
+    the mess catalogue''s demonstrated-before-tested rule all hold on inspection, not just on the registry''s
+    own assertion. One blocking defect: T2 Stavros''s Items 8.a/12 (Greek military service) have no narrated
+    input surface, only a scan in the inert over-delivery pile, risking a false No on the first, never-cut
+    dogfood run. Two should-fix items concern T2''s written-explanation content ordering (undetermined
+    downstream of the masterkey) and a rule_inputs field (trips_trimmed) that conflates two distinct C4
+    disjuncts across all six clients. Three notes are cosmetic or already adequately explained.
+
+    '
+phase_5_set_review:
+  reviewed: 2026-08-22
+  scope: six masterkey.norm.yaml + registry + voice cards + input email bodies
+  scripted_gates: all green (see reports/phase-5-scripted.md)
+  verdict: PASS WITH FINDINGS
+  findings_blocking: 0
+  findings_should_fix: 4
+  findings_note: 3
+  blocking_bar_note: 'Finding 1 (an invented firm e-mail address shipped in twelve of T3''s input bodies)
+    was considered for `blocking` and deliberately left at `should-fix`. Phase 2''s blocking finding cleared
+    the bar because it sat inside the acceptance gate and would have failed the dogfood diff; finding
+    1 does not touch the dogfood. Keeping one meaning of `blocking` in this file was judged worth more
+    than a generous severity. It is still the first thing to fix.
+
+    '
+  voices_distinguishable: 'yes — no two of the six could be confused from prose alone with the salutations
+    stripped. Closest pair is W1 Almeida / T3 Adeyemi, the two low-affect list-making registers, separated
+    reliably by bare numbered answers (Adeyemi only), sentence length (12 vs 30 words), unasked context
+    (Almeida only), the spaced hyphen-dash (Almeida only) and ISO-in-prose dates (Adeyemi only). They
+    are also the closest pair biographically — two engineers, both E21, both 316(a) — so the similarity
+    compounds; still clearly distinct and no change recommended.
+
+    '
+  t2_items_8a_12_fix_landed: 'yes — narrated in email:0004 (2026-02-24, "About 2015"), twenty-six days
+    and one message away from the inert over-delivery pile in email:0002, covering Item 8.a (Hellenic
+    Army, Infantry, Private, March 1976 to February 1978) and Item 12 (ordinary weapons and basic infantry
+    training) as prose facts, explicitly re-classifying the discharge scan out of the "ignore whatever
+    isn''t useful" bucket, in Daphne''s own hedged over-explaining register; masterkey input_surfaces.q8a/.q12
+    now list email:0004 first and the scan as corroboration.
+
+    '
+  generalisation_gaps_bridgeable: 'both yes — C3b to C3a/C3c rests on W2''s category-level paraphrase
+    of the firm''s ask, T1''s quoted request naming all three candidates with the auto policy declined
+    in the client''s own words, and a passport TOC-line pattern the solver sees twice; C5/C6 to C6-without-C5
+    is the stronger of the two, since W3 separates the triggers into different messages under subject
+    lines naming Item 15.b and Item 20, and T2 asserts Item 20 while pre-emptively negating any arrest
+    in the same paragraph. Residual risk is ordering within the C3 cluster, never demonstrated (finding
+    6), not inclusion.
+
+    '
+  report: reports/phase-5-set-review.md
+  summary: 'The set reads as six clients of one firm: six voices that survive stripping the salutations,
+    six coherent lives whose immigration routes carry their own logic, and both teaching gaps genuinely
+    bridgeable from the three worked pairs alone (which is all the solver gets — the challenge article
+    hands over no spec). All three Phase 2 findings are verified closed, the 8.a/12 fix included, and
+    it reads as written rather than bolted on. Nothing is blocking — see blocking_bar_note. Four should-fix
+    items, in priority order. Phase 4 invented a firm e-mail address, casework@brightpost.net, and shipped
+    it in all twelve of T3''s input bodies: the domain is one the registry itself declares to be invented
+    CONSUMER webmail and that two clients already use as personal mail, so the firm is running its casework
+    queue on its clients'' webmail provider — the one detail that punctures the one-firm illusion on sight.
+    The address is in collision_check''s eleven-address list nowhere, and it sits in tension with §16
+    ruling 7''s "nothing downstream may reintroduce one"; T2''s "To: Petition Preparer" is the fix already
+    present in the set, and no scripted gate can see any of it. Then: W2 Kavanagh carries a fifteen-month
+    employment hole and a five-month address hole INSIDE the five-year window, contradicted by its own
+    input and inconsistent with the firm''s gap-chasing on T1 and T3, in a worked pair that teaches by
+    example; six threads use four different conventions for representing the firm plus a divergent header
+    format on T3, because PHASE-4-BRIEF specified none; and normalize_masterkeys.py left early_filing_date/earliest_filing_date
+    split 3/3 and duplicated rather than replaced the height and weight spellings on three clients, which
+    is the failure class SPEC-DELTA D-I exists to remove.
+
+    '
+build_final:
+  completed: '2026-08-22'
+  phases: 2 through 6, all executed
+  scripted_gates:
+    validate_masterkeys: green, 79 checks
+    verify_coverage: green, 325 fields swept across 6 clients
+    verify_inputs: green, 33 checks
+    verify_set: green, 34 checks
+    verify_client: green on all six, 24-27 checks each
+  dogfood: T2 stavros_daphne PASS — reports/phase-5-dogfood-stavros.md
+  leakage: zero distinctive hits on masterkeys, rendered pages, inputs and the landed tree; poison-tested
+  landed: content/21-challenges/materials/challenge-one/, 13 MB, no answer key shipped
+  install_sh: rm -rf "$TUTOR_HOME/lab" added; bash -n clean
+  decisions: spec/SPEC-DELTA.md, D-A through D-Q
+  set_level_fixes_applied:
+  - T3 input headers no longer put the firm on a client's consumer mail domain; they use the unattributed
+    'Petition Preparer' line, matching T2
+  dogfood_scripted_diff: 'tools/dogfood_diff.py stavros_daphne — GREEN: document set and locked facts
+    match the answer key'
+phase_5_client_reviews:
+  note: Six per-client reviews, one per client, each holding that client's full set. Three returned FAIL
+    on rendering defects that were then fixed and re-verified; their reports carry a dated addendum rather
+    than an edited verdict.
+  reviews:
+    almeida_paulo:
+      verdict: PASS WITH FINDINGS
+      now: PASS
+      fixed_by: D-P (appearance streams)
+    kavanagh_liam:
+      verdict: FAIL
+      now: PASS
+      fixed_by: D-N, D-P, D-Q
+    nowak_agata:
+      verdict: PASS WITH FINDINGS
+      now: PASS
+      fixed_by: D-P, D-Q
+    tran_daniel:
+      verdict: FAIL
+      now: PASS
+      fixed_by: D-N (merge + fieldmap)
+    stavros_daphne:
+      verdict: FAIL
+      now: PASS
+      fixed_by: D-N (ordering + raw key path)
+    adeyemi_tunde:
+      verdict: PASS WITH FINDINGS
+      now: PASS
+      fixed_by: D-P, D-Q
+  reverified: 2026-08-22, all scripted gates green + rendered pages re-inspected

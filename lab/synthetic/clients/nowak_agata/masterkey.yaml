@@ -427,7 +427,8 @@ exhibit_notes:                                   # EXT
     C6 with no C5, and only stays learnable because this worked pair shows C6
     firing on its own, unconnected to any arrest.
 
-input_surfaces:                                  # THE input-coverage ledger. Modality: xlsx questionnaire + scans.
+input_surfaces:
+  contact.daytime_phone: [email:0002]                                  # THE input-coverage ledger. Modality: xlsx questionnaire + scans.
   # -- identity, filled on the questionnaire --
   identity.family_name:      [questionnaire, passport_scan]
   identity.given_name:       [questionnaire, passport_scan]
@@ -444,10 +445,10 @@ input_surfaces:                                  # THE input-coverage ledger. Mo
   identity.weight_lbs:   [email:0002]
   identity.eye_color:     [email:0002]
   identity.hair_color:      [email:0002]
-  immigration.a_number:       [email:0002, green_card_scan_front]
+  immigration.a_number:       [email:0002, green_card_scan]
   # -- immigration / residence / family / employment / travel: questionnaire, cross-checked to scans --
-  immigration.lpr_date:          [green_card_scan_front, questionnaire]
-  immigration.class_of_admission: [green_card_scan_front]
+  immigration.lpr_date:          [green_card_scan, questionnaire]
+  immigration.class_of_admission: [green_card_scan]
   addresses:                        [questionnaire]
   employment:                         [questionnaire, resume_file]
   family.marital_status:                [questionnaire]
@@ -456,18 +457,21 @@ input_surfaces:                                  # THE input-coverage ledger. Mo
   family.parents:                             [questionnaire]
   travel:                                        [questionnaire]
   # -- moral character: table answers on the questionnaire; narratives by e-mail --
+  # C5 (arrest, Item 15.b) and C6 (removal proceedings, Item 20) are narrated
+  # in TWO DIFFERENT e-mails, three weeks apart (email:0003 vs email:0004),
+  # each silent about the other event — see exhibit_notes.c5_c6_independence.
   moral_character.q_15b.answer:        [questionnaire]
-  moral_character.q_15b.explanation:      [email:0004]
-  moral_character.q_15b.arrest_detail:       [questionnaire, court_disposition_scan]
+  moral_character.q_15b.explanation:      [email:0003]
+  moral_character.q_15b.arrest_detail:       [questionnaire, court_disposition_scan, email:0003]
   moral_character.q_20.answer:                  [questionnaire]
   moral_character.q_20.explanation:                [email:0004]
   moral_character.all_other_items:                    [questionnaire]
   # -- documents --
   documents.passport:          [passport_scan]
-  documents.green_card:        [green_card_scan_front, green_card_scan_back]
+  documents.green_card:        [green_card_scan]
   documents.tax_return:        [tax_return_scan]
   documents.resume:            [resume_file]
-  documents.court_records:     [court_disposition_scan, email:0004]
+  documents.court_records:     [court_disposition_scan, email:0003]
   documents.written_explanation: [email:0004]
   # -- matter/firm facts: NOT client-supplied; firm-operational, see note --
   matter.engagement_date: {source: "correspondence_date", note: "date of email:0001, the engagement's first e-mail — not a fact the client states, a fact the thread dates by itself"}
@@ -482,7 +486,7 @@ mess_events:
     fact: ["identity.height", "identity.weight_lbs", "identity.eye_color", "identity.hair_color", "immigration.a_number"]
     wrong_surface: "questionnaire"
     right_surface: "email:0002"
-    resolution: "chronological — the prose value in email:0002 is the value used; the questionnaire cells stay blank in the input and are never treated as data"
+    resolution: "chronological — the prose value in email:0002 is the value used; the questionnaire cells stay blank in the input and are never treated as data. The green-card scan itself also arrives no earlier than email:0002 (she says the card 'is not with me today' in email:0001), so the A-number is never visible on a surface that predates its own prose disclosure."
     voice_evidence: "voice-card.md sample #1 ('some fields I could not complete... I will measure and send... the card is not with me today') and #2 ('Here are answers: 1. Height... 2. Weight... 3. Eyes... 4. The number on the card is A-212337509, I checked twice.')"
   - type: "password_protected_benign"
     fact: "documents.court_records (the scanned disposition attachment)"
@@ -490,6 +494,19 @@ mess_events:
     right_surface: "email:0003"
     resolution: "the password (JakubMarzec2014) is in the same message as the attachment, two lines below it — no chase required, unlike T3's escalation of this same mess type"
     voice_evidence: "voice-card.md: 'The file with court paper has password, it is JakubMarzec2014, I set this long ago and I keep it for all scans from that year.'"
+
+# C5/C6 INDEPENDENCE, AS ACTUALLY WRITTEN (not merely planned): the arrest
+# (Item 15.b) is narrated in email:0003 (2026-04-15), alongside the
+# password-protected court scan; the removal proceedings (Item 20) are
+# narrated in email:0004 (2026-05-04), nineteen days later, on their own,
+# prompted by the firm's separate question about that item. Neither message
+# mentions the other event, date, place, or cause — verified by grep: email
+# 0003 contains none of {2015, removal, immigration court, proceedings,
+# F-1, terminat*}; email 0004 contains none of {2019, arrest, disorderly,
+# dismiss*, docket, AAPD, 15th District}. Earlier drafts of this masterkey
+# put both narratives in one e-mail (email:0004); moved apart in Phase 4 so
+# a solver cannot infer that C6 requires an accompanying C5 — that
+# inference would make T2 Stavros (C6 with no C5) unlearnable.
 
 consistency_locks:                               # STYLE-SPEC §9.4, instantiated
   - {lock: "surname/given name identical", value: "NOWAK / AGATA ZOFIA", where: ["N-400", "passport MRZ", "cover letter", "cover page"]}

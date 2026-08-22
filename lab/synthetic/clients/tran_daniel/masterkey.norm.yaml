@@ -49,6 +49,12 @@ identity:
   eye_color: Brown
   hair_color: Black
   first_entered_us: '2020-05-27'
+  cob: Vietnam
+  coc: Vietnam
+  height:
+    feet: 5
+    inches: 3
+  other_names_used_since_birth: []
 immigration:
   a_number: '214902186'
   a_number_formatted: A-214902186
@@ -80,6 +86,7 @@ immigration:
     filing_margin_days: 287
     residence_years_at_filing: 3.54
     window_check: 'filed >= lpr_date + 3y - 90d: 2026-06-15 >= 2025-09-01 -> TRUE'
+  part1_eligibility_box: B
 family:
   marital_status: Married
   times_married_applicant: 1
@@ -105,6 +112,7 @@ family:
     address_same_as_applicant: true
     times_married: 1
     prior_marriages: []
+    name: Daniel Quang Tran
   children:
   - full_name: Mai Linh Tran
     family_name: Tran
@@ -117,6 +125,7 @@ family:
     address: 3155 Sandpiper Drive, Westerville, OH 43081 (same as applicant)
     lives_with_applicant: true
     passport_supplied: true
+    name: Mai Linh Tran
   parents:
   - name: Vu Van Thang
     usc: false
@@ -124,6 +133,7 @@ family:
   - name: Pham Thi Nga
     usc: false
     married_before_applicant_18: true
+  times_married: 1
 matter:
   engagement_date: '2026-04-27'
   filed_date: '2026-06-15'
@@ -133,76 +143,97 @@ matter:
   form_edition: 01/20/25
 input_surfaces:
   identity.family_name/given_name/middle_name:
-  - email:0001 (Daniel, engagement)
-  - scan:passport_ha.pdf
+  - 000001_2026-04-27_engagement-intake/body.txt (Daniel, point 1)
+  - 000005_2026-05-06_identity-document-scans/passport_ha.pdf
   identity.dob/sex/country_of_birth:
-  - email:0001
-  - scan:passport_ha.pdf
+  - 000001_2026-04-27_engagement-intake/body.txt (Daniel, point 1)
+  - 000005_2026-05-06_identity-document-scans/passport_ha.pdf
   identity.ssn:
-  - email:0001
+  - 000001_2026-04-27_engagement-intake/body.txt (Daniel, point 2)
   identity.height/weight/eye_color/hair_color/ethnicity/race:
-  - email:0008 (Daniel, biographic-detail follow-up, answering the firm's Part 3 checklist on Ha's behalf)
+  - 000010_2026-05-18_biographic-details-and-part9/body.txt (Daniel, point 1, relaying Ha's own answers)
   identity.name_change:
-  - 'ha_email:0002 (Ha''s own clarification: ''she wants to take my surname when this goes through ...
-    does that create a problem anywhere?'', quoted in voice-card.md)'
-  - email:0009 (Daniel confirms she wants to proceed)
+  - '000008_2026-05-13_name-change-question/body.txt (Ha, first person: ''I''d like to take Daniel''s
+    surname, Tran, on the N-400'')'
+  - '000011_2026-05-20_name-change-confirmed/body.txt (Daniel confirms: ''yes, she wants to go ahead with
+    the name change to Ha Thanh Tran on the application'')'
+  identity.other_names_used:
+  - 000010_2026-05-18_biographic-details-and-part9/body.txt ('she has also never gone by any name other
+    than Vu Thanh Ha')
+  identity.uscis_online_account_number:
+  - '000001_2026-04-27_engagement-intake/body.txt (point 3: ''She''s never set up a USCIS online account'')'
   contact.*:
-  - email:0001 — Daniel supplies Ha's own phone/e-mail explicitly, distinct from his own
+  - 000001_2026-04-27_engagement-intake/body.txt (point 3) — Daniel supplies Ha's own phone/e-mail explicitly,
+    distinct from his own
   immigration.a_number/lpr_date/class_of_admission:
-  - scan:green_card_front.jpg
-  - email:0001
+  - 000001_2026-04-27_engagement-intake/body.txt (point 4)
+  - 000005_2026-05-06_identity-document-scans/green_card.pdf
   immigration.conditional_resident:
-  - scan:green_card_front.jpg (shows the 10-year, not 2-year, card)
-  - email:0001 (states the 2020 marriage / 2022 LPR dates)
+  - '000001_2026-04-27_engagement-intake/body.txt (point 4: card issued 18 Jan 2023 / expires 17 Jan 2033;
+    point 5: 2020 marriage / 2022 LPR dates)'
+  - 000005_2026-05-06_identity-document-scans/green_card.pdf (single PDF, front+back one page — 'Card
+    Expires 01/17/2033', 'Resident Since 11/30/2022' — only the unconditional 10-year card exists, so
+    no competing 2-year-card surface can appear)
   addresses.0 (current):
-  - email:0001
-  - scan:deed.pdf
+  - 000001_2026-04-27_engagement-intake/body.txt (point 7)
+  - 000004_2026-05-04_deed-child-passport-auto-insurance/deed.pdf
   addresses.1 (prior, Gahanna):
-  - email:0002 (Daniel, address history)
-  employment.0 (unemployed period):
-  - email:0002
+  - 000002_2026-04-29_address-employment-history/body.txt (point 1)
+  employment.0 (unemployed/homemaker period):
+  - 000002_2026-04-29_address-employment-history/body.txt (point 2)
   employment.1 (Scioto):
-  - email:0002 (Daniel, states 'January 2022' in error)
-  - 'ha_email:0001 (Ha''s correction: ''The lab start date is 9 January 2023, not January 2022'', voice-card.md
-    sample line)'
+  - 000002_2026-04-29_address-employment-history/body.txt (point 2, Daniel states 'January 2022' in error)
+  - '000003_2026-05-01_lab-start-date-correction/body.txt (Ha''s correction: ''The lab start date is 9
+    January 2023, not January 2022'')'
+  - 000002_2026-04-29_address-employment-history/Ha_Vu_Resume.pdf (corroborates the year, 'January 2023
+    - Present', without pinning the day)
   family.marriage_date/spouse.*:
-  - email:0001
+  - 000001_2026-04-27_engagement-intake/body.txt (points 5-6)
   family.spouse.naturalization_date/place:
-  - email:0001 (prose statement)
-  - scan:passport_daniel.pdf (issuing country only; naturalization date/place is not itself printed on
-    a passport and rests on Daniel's own prose statement)
+  - 000001_2026-04-27_engagement-intake/body.txt (point 6, prose statement)
+  - 000005_2026-05-06_identity-document-scans/passport_daniel.pdf (issuing country only; naturalization
+    date/place is not itself printed on a passport and rests on Daniel's own prose statement)
   family.children:
-  - email:0001
-  - 'photo:child_passport_photo.jpg then scan:child_passport_full.pdf (voice-card sample: ''Photo attached,
-    I''ll do a proper scan tonight'')'
+  - 000001_2026-04-27_engagement-intake/body.txt (point 8)
+  - 000004_2026-05-04_deed-child-passport-auto-insurance/child_passport_photo.jpg (first pass, a phone
+    photo)
+  - 000009_2026-05-14_child-passport-scan-and-signature-page/child_passport_full.pdf (proper scan, supersedes
+    the photo — same document, no fact conflict)
   family.parents:
-  - email:0008
+  - 000010_2026-05-18_biographic-details-and-part9/body.txt (point 2)
   travel.trips:
-  - email:0006 (Daniel, full trip history recalled from his and Ha's calendars)
+  - 000007_2026-05-11_travel-history/body.txt (Daniel, full trip history recalled from his and Ha's calendars)
   documents.passport (Ha):
-  - scan:passport_ha.pdf (email:0004)
+  - 000005_2026-05-06_identity-document-scans/passport_ha.pdf
   documents.green_card:
-  - scan:green_card_front.jpg
-  - scan:green_card_back.jpg (email:0004)
+  - 000005_2026-05-06_identity-document-scans/green_card.pdf (single PDF, front and back on one page —
+    matches documents.green_card.sides)
   documents.spouse_passport:
-  - scan:passport_daniel.pdf (email:0004)
+  - 000005_2026-05-06_identity-document-scans/passport_daniel.pdf
   documents.child_passport:
-  - photo:child_passport_photo.jpg
-  - scan:child_passport_full.pdf (email:0003, then email:0007)
+  - 000004_2026-05-04_deed-child-passport-auto-insurance/child_passport_photo.jpg
+  - 000009_2026-05-14_child-passport-scan-and-signature-page/child_passport_full.pdf
   documents.tax_return:
-  - scan:tax_return_2025.pdf (email:0005)
+  - 000006_2026-05-08_tax-return/tax_return_2025.pdf
   documents.evidence.deed:
-  - 'scan:deed.pdf (email:0003, voice-card sample line 1: ''I have the recorded copy from the county,
-    it''s a PDF, attached'')'
+  - 000004_2026-05-04_deed-child-passport-auto-insurance/deed.pdf
+  - '000004_2026-05-04_deed-child-passport-auto-insurance/body.txt (point 1: ''I have the recorded copy
+    from the county, it''s a PDF, attached'')'
   documents.evidence.auto_policy (absence):
-  - email:0003, voice-card sample line 3 (Daniel declines to send it, with reason)
+  - '000004_2026-05-04_deed-child-passport-auto-insurance/body.txt — the quoted request at the top of
+    the message (''Any evidence of a jointly-held automobile insurance policy, if you have one'') AND
+    Daniel''s answer immediately below it (point 3: ''Ours is through my employer''s group plan and it''s
+    in my name only, so I don''t think it helps you''). Both the ask and the refusal are present in the
+    same message, so a solver can see C3b does not fire for lack of supplied evidence, not for lack of
+    an ask.'
   documents.resume:
-  - email:0002
+  - 000002_2026-04-29_address-employment-history/Ha_Vu_Resume.pdf
   moral_character.*:
-  - email:0008 (Daniel relays her answers to the firm's Part 9 checklist)
+  - 000010_2026-05-18_biographic-details-and-part9/body.txt (point 3, Daniel relays her answers to the
+    firm's Part 9 checklist, run through with her directly)
   matter.engagement_date:
   - engagement letter, dated 2026-04-27 (firm-generated, countersigned by e-mail; not itself a fact ABOUT
-    the client)
+    the client; no input-folder surface written or expected for it)
   matter.filed_date:
   - firm filing log — an operational fact set by the firm at submission, not sourced from client correspondence;
     no client input surface exists or is expected for it
@@ -235,10 +266,11 @@ documents:
       a verifier will false-flag every field on this client.
 
       '
+    number: C6820451
   green_card:
     surname: VU
     given_name: THANH HA
-    a_number: A-214902186
+    a_number: '214902186'
     category: IR6
     country_of_birth: Vietnam
     dob: '1991-06-18'
@@ -250,6 +282,7 @@ documents:
     sides:
     - front
     - back
+    uscis_number: '214902186'
   spouse_passport:
     issuing_country: USA
     passport_number: '548219307'
@@ -274,6 +307,7 @@ documents:
     note: Surname on this passport legitimately reads TRAN — that is Daniel's own name, not Ha's requested
       name. The two TRANs are unrelated facts (his existing surname; her Part-2 request) and must not
       be cross-checked against each other.
+    number: '548219307'
   child_passport:
     issuing_country: USA
     passport_number: '671048823'
@@ -296,6 +330,7 @@ documents:
       personal_number: 0
       composite: 8
     lock: surname/given/DOB here == family.children[0] exactly (Tran / Mai Linh / 2021-08-02)
+    number: '671048823'
   tax_return:
     filing_status: Married Filing Jointly
     taxpayer_name: Daniel Quang Tran
@@ -488,6 +523,8 @@ addresses:
   from: '2023-04-20'
   to: present
   current: true
+  present: true
+  is_mailing_address: true
 - street: 690 Bellhaven Court
   city: Gahanna
   state: OH
@@ -496,6 +533,7 @@ addresses:
   from: '2020-05-27'
   to: '2023-04-19'
   current: false
+  present: false
 employment:
 - employer: Not employed (homemaker, at home with the child)
   city: Gahanna
@@ -518,22 +556,29 @@ employment:
 mess_events:
 - type: correspondent_folder_naming
   fact: identity — who the applicant is
-  wrong_surface: the shipped folder name and the header of nearly every e-mail, both keyed to Daniel
-  right_surface: scan:passport_ha.pdf and scan:green_card_front.jpg, both under Vu Thanh Ha
+  wrong_surface: 'the shipped folder name (tran_daniel) and the From: header of 9 of the 11 e-mails, all
+    keyed to Daniel Tran <dtran@trestlefp.com>'
+  right_surface: 000005_2026-05-06_identity-document-scans/passport_ha.pdf and .../green_card.pdf, both
+    under Vu Thanh Ha
   resolution: the applicant is the person named on the passport and the green card, never the correspondent.
     Reuses the W2 (kavanagh_liam) mess type, per BUILD-PLAN §7.
 - type: e_signature_channel_switch
   fact: none — inert. No packet fact depends on which route the signature page took.
-  wrong_surface: a failed e-signature attempt (link kicked him out twice, per voice-card.md)
-  right_surface: email:0007 — printed, signed, scanned page returned instead
+  wrong_surface: a failed e-signature attempt (link kicked him out twice), narrated in 000009_2026-05-14_child-passport-scan-and-signature-page/body.txt
+  right_surface: 000009_2026-05-14_child-passport-scan-and-signature-page/signature_page.pdf — printed,
+    signed, scanned page returned instead. A generic client-authorization signature page (not the N-400),
+    printed name 'Vu Thanh Ha' — her current legal name, never the requested one.
   resolution: 'no consequence for any output fact: the N-400 ships UNSIGNED in every case (STYLE-SPEC
-    §16 r11), so neither route ever reaches the packet. Texture, not a load-bearing mess (T1-only).'
+    §16 r11), so neither signing route, nor this page itself, ever reaches the packet. Texture, not a
+    load-bearing mess (T1-only).'
 - type: superseded
   fact: employment.1.from (Scioto Clinical Laboratories start date)
-  wrong_surface: email:0002 ('January 2022')
-  right_surface: ha_email:0001 ('9 January 2023')
+  wrong_surface: 000002_2026-04-29_address-employment-history/body.txt ('January 2022')
+  right_surface: 000003_2026-05-01_lab-start-date-correction/body.txt ('9 January 2023')
   resolution: chronological — the later, more specific correction from the person with firsthand knowledge
-    wins. Ha's correction post-dates Daniel's e-mail.
+    wins. Ha's correction (1 May 2026) post-dates Daniel's e-mail (29 April 2026); the resume attached
+    to Daniel's own e-mail corroborates only the year (January 2023), so no third competing value is ever
+    in play.
 consistency_locks:
 - name: name_lock
   rule: family_name + given_name identical across N-400 current-name fields, passport MRZ, green card,
@@ -877,10 +922,13 @@ rule_inputs:
   unconditional_card_in_hand_at_filing: true
   arrest_items_yes: []
   part14_items_yes: []
+  part14_order_source: numeric
   oath_items_not_yes: []
   trip_count: 7
   trips_on_form: 6
   trips_trimmed: 1
+  trips_overflow_from_part8: 1
+  trips_day_excluded: 0
   part8_rows: 6
   evidence_types:
   - child_passport
@@ -893,6 +941,7 @@ rule_inputs:
   c3b_fires: false
   c3c_fires: true
   c4_fires: true
+  c4_reason: row-count overflow
   c5_fires: false
   c6_fires: false
 _authored_notes:

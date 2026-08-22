@@ -31,6 +31,15 @@ spouse
 daughter
 father
 
+# Added Phase 6: the landing scan's first pass over raw input body.txt (a
+# surface verify_set.py's masterkey/rendered-output scan never covered) flags
+# the ordinary contraction "it's" wherever a client email uses it, in both
+# quote styles. english_words()'s dictionary has "its" but not the
+# apostrophised contraction, so it falls through the ordinary-word filter.
+# Same class as firm's/person's above, not a corpus identifier.
+it's
+it’s
+
 # --- generic legal / geographic nouns §11 excuses by class but not by name
 # §11 excuses "US state names and abbreviations ... generic address nouns" and
 # "deed and recorder terms ... court disposition terms". County names and
@@ -51,3 +60,42 @@ notary
 republic
 ministry
 affairs
+
+# ---------------------------------------------------------------------------
+# Added Phase 3 (toolsmith), per SPEC-DELTA D-F: a hit on a STYLE-SPEC §11
+# house-style string is an exclusion-set bug to record, not a halt.
+#
+# The four USCIS lockbox blocks (§7) are strings the house style REQUIRES the
+# cover letter to contain. Filters (2) and (3) of the D-J scan only admitted
+# ALPHABETIC vocabulary, so the numeric parts of those blocks were never
+# excused and the leakage gate went red on four clients out of six for
+# printing the address §7 tells them to print.
+#
+# verify_set.py now derives these by construction from mklib.lockbox_block
+# (all four lockboxes x both carriers), so the exclusion cannot drift from the
+# rendered letter. They are listed here as well because D-J requires the
+# exclusion set to be recorded, not hidden.
+60197
+60197-4060
+4060
+60124
+60124-7836
+2500
+85036
+85036-1251
+21251
+85284
+85284-1806
+2108
+75266
+75266-0060
+660060
+75067
+75067-8003
+2501
+60680
+60680-4380
+4380
+60603
+60603-5517
+131

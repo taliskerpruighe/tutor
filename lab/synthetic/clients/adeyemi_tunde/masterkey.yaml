@@ -492,6 +492,24 @@ exhibits:   # derived from the 4-argument rule (basis, moral answers, immigratio
     C6: "Item 20 and Item 21 are both No (moral_character.q_20, q_21) — no non-tabulable Yes exists anywhere in Part 9. Mirror of T2 Stavros (C6 alone, no C5): here C5 fires alone, C6 does not ride along with it. All four cells of the {C5,C6} x {Yes,No} truth table are populated across the six-client set (registry coverage_matrix.moral_character_truth_table)."
   document_count: 8
 
+# ACTUAL INPUT LAYOUT WRITTEN (Phase 4): clients/adeyemi_tunde/input/, twelve
+# NNNNNN_YYYY-MM-DD_slug/ folders (000001..000012, 2026-05-11..2026-06-17),
+# each holding body.txt (+ attachments where noted below). Odd numbers are the
+# firm (casework@brightpost.net, no firm identity anywhere in the body);
+# even numbers are the applicant. Attachments actually produced: 000002/
+# passport_bio.pdf + green_card_front.pdf + green_card_back.pdf (fabricate_ids.py,
+# finish="photo"); 000006/court_record.pdf (render_court_records._draw(), one
+# certified page); 000008/resume.pdf (plain one-page vector resume, no existing
+# renderer owns this id); 000010/f1040_2025.pdf (the already-rendered B-6 1040,
+# copied and genuinely AES-256 password-protected with pypdf — verified: opens
+# with no password fails, opens with 'Cx7-Marlow-2025' succeeds and reveals
+# wages/AGI/total tax/refund/address/preparer name). Two input_surfaces entries
+# below were corrected against the actual rendered artefacts during Phase 4
+# (see their own notes): immigration.lpr_date moved from the green card FRONT
+# face to the BACK face, where 'Resident Since' is actually printed; and
+# family.spouse.dob was removed as an input-surface obligation because no
+# output artefact actually prints it (1040 has no spouse-DOB line; N-400 Part 5
+# Items 4.a-8 are skipped for a 316(a) filer on this edition).
 input_surfaces:   # every output-consumed fact -> at least one unambiguous input surface. Modality: phone photographs only + prose; NO questionnaire of any kind. Thread numbering: email:NNNNNN, 2026-05-11 (engagement) .. 2026-06-17, all inside the 2026-07-07 filing date (registry D16's 5-9-week window).
   identity.family_name:            [photo:passport_bio@email:000002]
   identity.given_name:             [photo:passport_bio@email:000002]
@@ -515,7 +533,7 @@ input_surfaces:   # every output-consumed fact -> at least one unambiguous input
   documents.passport.expiry_date:     [photo:passport_bio@email:000002]
   documents.passport.mrz:             [photo:passport_bio@email:000002]
   immigration.a_number:            [photo:green_card_front@email:000002]
-  immigration.lpr_date:            [photo:green_card_front@email:000002, note: "printed as 'Resident Since'"]
+  immigration.lpr_date:            [photo:green_card_back@email:000002, note: "printed as 'Resident Since' — the card's BACK face carries this row, not the front (verified against the actual fabricate_ids.py card layout during Phase 4; the front face carries surname/given name/USCIS#/category/country of birth/DOB/sex/card-expiry only)"]
   immigration.class_of_admission:  [photo:green_card_front@email:000002]
   documents.green_card.card_expiry: [photo:green_card_front@email:000002]
   documents.green_card.sides:      [photo:green_card_front@email:000002, photo:green_card_back@email:000002]
@@ -528,7 +546,7 @@ input_surfaces:   # every output-consumed fact -> at least one unambiguous input
   family.spouse.name:              [email:000004]
   family.spouse.usc:               [email:000004, note: "'My wife is a permanent resident. She is not a citizen.'"]
   family.spouse.employer:          [email:000004]
-  family.spouse.dob:               [documents.tax_return@email:000010+000012, note: "printed on the joint 1040; legible only after the password unlocks the PDF"]
+  family.spouse.dob:               []  # NOT an input-surface obligation: verified during Phase 4 that spouse DOB is not consumed by any output artefact — the 1040 has no spouse-DOB line (checked against the actual rendered f1040.pdf field map, render_1040.py), and N-400 Part 5 Items 4.a-8 (which do carry spouse DOB) are themselves SKIPPED on this edition for a 316(a) filer per the form's own printed instruction ("If you are not filing under [a 319(a) category], skip to Part 6") — confirmed empty in the rendered B-3 N-400 (only Item 1-3 marital-status fields are filled). family.spouse.dob is carried in this masterkey as DATA ONLY, per the note already on family.spouse above; no input surface is required for a fact nothing downstream reads.
   family.spouse.ssn:               [documents.tax_return@email:000010+000012]
   family.children.0:               [email:000004]
   family.parents:                  [email:000004]

@@ -450,47 +450,52 @@ exhibits:                           # derived from STYLE-SPEC §9's four-argumen
 
 input_surfaces:                     # THE input-coverage ledger. Modality: e-mail prose only, no questionnaire
                                      # (registry.kavanagh_liam.input_modality). Every §12 fact narrated somewhere
-                                     # in an invented 11-message thread, engagement_date .. filed_date.
-  identity.family_name: ["email:0001"]
-  identity.given_name: ["email:0001"]
-  identity.middle_name: ["email:0001"]
-  identity.dob: ["email:0001"]
-  identity.cob: ["email:0001"]
-  identity.ssn: ["email:0003"]
-  identity.other_names_used: ["email:0011"]
-  identity.name_change_requested: ["email:0011"]
-  identity.uscis_online_account_number: ["email:0011"]
-  identity.ethnicity: ["email:0010"]
-  identity.race: ["email:0010"]
-  identity.height_ft: ["email:0010"]
-  identity.height_in: ["email:0010"]
-  identity.weight_lbs: ["email:0010"]
-  identity.eye_color: ["email:0010"]
-  identity.hair_color: ["email:0010"]
-  identity.first_entered_us: ["email:0007"]
-  immigration.a_number: ["email:0001"]
-  immigration.lpr_date: ["email:0006", "documents.green_card scan attached email:0006"]
-  immigration.class_of_admission: ["email:0006"]
-  immigration.conditional_resident: ["email:0004"]         # the I-751-worry email — voice card's centrepiece
-  immigration.conditional_resident.i751.receipt_number: ["email:0004", "phone photo of I-797C attached to email:0004"]
-  addresses.0: ["email:0001"]           # WRONG — Cicero given as current; superseded, see mess_events
-  addresses.1: ["email:0005"]           # RIGHT — Berwyn correction, chronologically later
-  employment.0: ["email:0003"]
-  family.marriage_date: ["email:0002"]
-  family.spouse: ["email:0002", "email:0003"]
-  family.parents: ["email:0010"]
-  family.children: ["email:0002"]        # "no children" stated directly
-  travel: ["email:0007"]
-  moral_character: ["email:0010"]
-  fee_reduction: ["email:0011"]
-  contact: ["email:0003"]
-  documents.applicant_passport: ["email:0006", "passport scan attached email:0006"]
-  documents.spouse_passport: ["email:0006", "passport scan attached email:0006"]
-  documents.green_card: ["email:0006", "green card scan (front+back) attached email:0006"]
-  documents.tax_return: ["email:0008", "1040 scan attached email:0008"]
-  documents.i797c: ["email:0004", "phone photo attached email:0004 (voice card: 'the lighting is terrible')"]
-  documents.evidence.0 (auto_policy): ["email:0009", "policy scan attached email:0009"]
-  matter.engagement_date: ["email:0001"]
+                                     # in an actually-written 11-message thread, engagement_date .. filed_date.
+                                     # Folders live under clients/kavanagh_liam/input/NNNNNN_YYYY-MM-DD_slug/;
+                                     # "email:0004" below == input/000004_2025-12-10_i751-worry/, etc. — the
+                                     # ordinal in the tag is the folder's leading 6-digit number, last 4 digits.
+  identity.family_name: ["email:0001 body.txt"]
+  identity.given_name: ["email:0001 body.txt"]
+  identity.middle_name: ["email:0001 body.txt"]
+  identity.dob: ["email:0001 body.txt"]
+  identity.cob: ["email:0001 body.txt"]
+  identity.ssn: ["email:0003 body.txt"]
+  identity.other_names_used: ["email:0011 body.txt"]
+  identity.name_change_requested: ["email:0011 body.txt"]
+  identity.uscis_online_account_number: ["email:0011 body.txt"]
+  identity.ethnicity: ["email:0010 body.txt"]
+  identity.race: ["email:0010 body.txt"]
+  identity.height_ft: ["email:0010 body.txt"]
+  identity.height_in: ["email:0010 body.txt"]
+  identity.weight_lbs: ["email:0010 body.txt"]
+  identity.eye_color: ["email:0010 body.txt"]
+  identity.hair_color: ["email:0010 body.txt"]
+  identity.first_entered_us: ["email:0007 body.txt"]
+  immigration.a_number: ["email:0001 body.txt"]
+  immigration.lpr_date: ["email:0006 body.txt", "email:0006/green_card_front_and_back_scan.pdf"]
+  immigration.class_of_admission: ["email:0006 body.txt"]
+  immigration.conditional_resident: ["email:0004 body.txt"]         # the I-751-worry email — voice card's centrepiece
+  immigration.conditional_resident.i751.receipt_number: ["email:0004 body.txt", "email:0004/IMG_i797c_photo.jpg"]
+  immigration.conditional_resident.i751.received_date: ["email:0004 body.txt (read off the notice: 'received date is July 8, 2024')", "email:0004/IMG_i797c_photo.jpg"]
+  immigration.conditional_resident.i751.notice_date: ["email:0004 body.txt (read off the notice: 'notice itself is dated July 11, 2024')", "email:0004/IMG_i797c_photo.jpg"]
+  addresses.0: ["email:0001 body.txt (WRONG — Cicero given as current; superseded, see mess_events)", "email:0011 body.txt (from-date 01/10/2022, supplied on request)"]
+  addresses.1: ["email:0005 body.txt"]           # RIGHT — Berwyn correction, chronologically later
+  employment.0: ["email:0003 body.txt"]
+  family.marriage_date: ["email:0002 body.txt"]
+  family.spouse: ["email:0002 body.txt", "email:0003 body.txt", "email:0006/liam_passport_scan.pdf (Liam's own DOB)"]
+  family.parents: ["email:0010 body.txt"]
+  family.children: ["email:0002 body.txt"]        # "no children" stated directly
+  travel: ["email:0007 body.txt"]
+  moral_character: ["email:0010 body.txt"]
+  fee_reduction: ["email:0011 body.txt"]
+  contact: ["email:0003 body.txt"]
+  documents.applicant_passport: ["email:0006 body.txt", "email:0006/siobhan_passport_scan.pdf"]
+  documents.spouse_passport: ["email:0006 body.txt", "email:0006/liam_passport_scan.pdf"]
+  documents.green_card: ["email:0006 body.txt", "email:0006/green_card_front_and_back_scan.pdf"]
+  documents.tax_return: ["email:0008 body.txt", "email:0008/2024_joint_tax_return_scan.pdf"]
+  documents.i797c: ["email:0004 body.txt", "email:0004/IMG_i797c_photo.jpg (voice card: 'the lighting is terrible')"]
+  documents.evidence.0 (auto_policy): ["email:0009 body.txt", "email:0009/auto_insurance_policy_scan.pdf"]
+  matter.engagement_date: ["email:0001 body.txt"]
   matter.filed_date: ["registry.yaml matter.filing_date — filing-side fact, not narrated by the client"]
 
 mess_events:
@@ -523,7 +528,7 @@ mess_events:
       shift; voice card notes he sometimes forgets to sign from the work
       address).
     wrong_surface: null
-    right_surface: "email:0001, email:0002, email:0004, email:0005 (personal) + email:0003 (work)"
+    right_surface: "email:0001, 0002, 0004, 0005, 0006, 0007, 0008, 0009, 0010, 0011 (personal, liam.kavanagh@brightpost.net) + email:0003 (work, l.kavanagh@halstedfreight.com, sent unsigned)"
     resolution: "one person, one thread — both addresses belong to Liam the correspondent; neither belongs to the applicant Siobhan, whose own contact fields (Part 11) are (773) 555-0118 / s.brennan@quillmail.com."
 
 consistency_locks:            # STYLE-SPEC §9.4, instantiated with this client's real values

@@ -79,11 +79,24 @@ immigration:
   basis: "316a"
   classification_basis_string: "INA 316(a)"
   conditional_resident: {was_cr: false}
+  written_explanation_structure:
+    # Phase 2 review finding 2 (should-fix): W3 Nowak's written explanation pins
+    # its scope ("Item 20 ONLY"); T2's did not, and nothing downstream enforced
+    # an order. T2 is the first dogfood target, so the document must lead with
+    # the trigger a solver has to reason about.
+    covers: "Part 9 Item 20 (removal proceedings) FIRST and at length; then, in a
+      short closing paragraph, Items 8.a and 12 (routine Greek compulsory military
+      service), which the form's own instruction also routes to Part 14."
+    order: [q20, q8a, q12]
+    lead_paragraph_is: q20
+    render_note: "render_docs.py must emit the paragraphs in `order`. The
+      Item 20 narrative is the substance of the document; the military-service
+      paragraph is a closing formality and must not open it."
   history_for_the_written_explanation:
     - date: "2013-06-18"
       event: "Daphne Stavros, a U.S. citizen since 2009-06-11, files Form I-130 for her father with a concurrent Form I-485."
     - date: "2015-02-11"
-      event: "The Form I-485 is DENIED. The denial notice and the underlying NOID went to a superseded address; he did not appear or respond."
+      event: "The Form I-485 is DENIED. The NOID and the denial notice both went to his daughter's former address — she had filed the petition and given her own address for correspondence, then moved in 2014 without updating it — so neither of them saw either notice and no response was filed."
     - date: "2015-09-14"
       event: "A Notice to Appear issues and he is placed in removal proceedings. This is the Part 9 Item 20 'Yes'."
     - date: "2018-11-06"
@@ -344,11 +357,21 @@ moral_character:
   q20:
     text: "EVER been placed in removal, rescission, or deportation proceedings"
     answer: "Yes"
-    explanation: >
-      Placed in removal proceedings 2015-09-14 following the 2015-02-11
-      denial of a Form I-485 filed on his behalf (notices went to a
-      superseded address); proceedings TERMINATED 2018-11-06 without any
-      order of removal. Full narrative in `immigration.history_for_the_written_explanation`.
+    explanation: >-
+      On June 18, 2013, the applicant's daughter, a United States citizen, filed a
+      Form I-130 petition on his behalf together with a concurrent Form I-485
+      application to adjust status. Because she prepared and filed the petition,
+      her own address was given as the mailing address for all correspondence. She
+      moved in 2014 and did not file a change of address for the pending case. On
+      February 11, 2015, the Form I-485 was denied; the notice of intent to deny
+      and the denial notice were both sent to her former address and neither
+      reached her or the applicant, who had himself remained at the same residence
+      throughout. A Notice to Appear issued on September 14, 2015, and he was
+      placed in removal proceedings. On November 6, 2018, those proceedings were
+      terminated. He was never ordered removed, and he has never been removed or
+      deported from the United States. A re-filed Form I-130 and Form I-485 were
+      approved, and he became a lawful permanent resident on January 23, 2020,
+      class of admission IR5.
     routes_to: "Part 14. Additional Information"
     triggers: "C6 — the form's own table cannot carry this item; it routes to Part 14 only. THE DIFFERENTIATOR (registry D1)."
   q21: {text: "EVER been removed or deported from the United States", answer: "No"}
@@ -478,6 +501,23 @@ input_surfaces:
   # THE input-coverage ledger. Modality: a tidy table export (spreadsheet)
   # Daphne built from a form she filled in for him, plus a complete,
   # over-complete document set (brief.md "Input modality").
+  #
+  # AS ACTUALLY WRITTEN (Phase 4), under clients/stavros_daphne/input/:
+  #   000001_2026-01-26_getting-started/   body.txt + table_export (.xlsx
+  #     and .csv, "Konstantinos Stavros - Application Info.*") + passport_scan
+  #     ("...Passport.pdf") + green_card_scan ("...Green Card.pdf") +
+  #     tax_return_scan ("...2024 Tax Return.pdf") + resume_scan
+  #     ("...Employment Summary.pdf")
+  #   000002_2026-01-29_a-few-extra-things/   body.txt + the five
+  #     over_delivered_not_used items (two expired-passport scans, the
+  #     greek_military_discharge_scan, death_certificate_scan, utility_bill_scan)
+  #   000003_2026-02-10_address-correction/   body.txt only — the superseded-
+  #     address mess event
+  #   000004_2026-02-24_about-2015/   body.txt only — the Item 20 removal-
+  #     proceedings narrative AND, as its closing paragraph, the NARRATED
+  #     surface for Items 8.a/12 that fixes the Phase 2 blocking finding
+  #   000005_2026-03-02_one-separate-thing/   body.txt only — the unrelated-
+  #     matter noise (Daphne's own LLC tax question)
   correspondent.name: [email:0001]
   correspondent.relationship_to_applicant: [email:0001]
   identity.family_name: [table_export, email:0001, passport_scan, green_card_scan]
@@ -511,8 +551,8 @@ input_surfaces:
   employment.0 (Bellwether Baking): [table_export, resume_scan]
   employment.1 (Retired): [table_export]
   travel.trips (8 countable + 1 day trip): [table_export]
-  moral_character.q8a: [military_discharge_scan]
-  moral_character.q12: [military_discharge_scan]
+  moral_character.q8a: [email:0004, greek_military_discharge_scan]   # PRIMARY surface is the narrated e-mail — see mess_events "blocking-finding fix"
+  moral_character.q12: [email:0004, greek_military_discharge_scan]   # PRIMARY surface is the narrated e-mail — see mess_events "blocking-finding fix"
   moral_character.q15a: [table_export]
   moral_character.q15b: [table_export]
   moral_character.q20: [table_export, email:0004]
@@ -527,6 +567,15 @@ input_surfaces:
   documents.resume: [resume_scan]
   matter.engagement_date: [email:0001]
   over_delivered_not_used: [greek_military_discharge_scan, greek_passport_expired_1_scan, greek_passport_expired_2_scan, death_certificate_scan, utility_bill_scan]
+  # NOTE: greek_military_discharge_scan appears BOTH here and as a secondary
+  # (corroborating) surface for moral_character.q8a/.q12 above. It is inert
+  # for the packet — no exhibit derives from it, exactly like the other four
+  # items in this pile — but it is not FACT-inert: it happens to agree with
+  # (and back up) a fact that is independently, substantively narrated in
+  # email:0004. That is the whole point of the Phase 4 blocking-finding fix:
+  # the discharge paper alone, sitting in this pile next to the passports and
+  # the death certificate, must never be the ONLY place a solver can find
+  # q8a/q12 — see mess_events below.
   unrelated_noise_not_used: [email:0005]     # her own LLC's tax question — not this matter
 
 mess_events:
@@ -554,10 +603,31 @@ mess_events:
       none becomes a packet document. All five still AGREE with the
       masterkey: the death certificate corroborates `family.prior_marriage`,
       the expired passports and utility bill are superseded/irrelevant but
-      not contradictory, and the Greek military discharge paper corroborates
-      `moral_character.q8a` and `.q12` (both correctly set to Yes — see
-      `_notes.item_8a_finding`). This is deliberately NOT "chronological";
-      it is a no-op resolution.
+      not contradictory, and the Greek military discharge paper CORROBORATES
+      (does not solely carry) `moral_character.q8a` and `.q12` (both
+      correctly set to Yes — see `_notes.item_8a_finding`). The discharge
+      scan sits inertly in this pile exactly like the other four items — it
+      produces no exhibit and a solver correctly generalising the W1
+      over-delivery rule (documents in this pile are inert) will still land
+      on the right q8a/q12 answer, because those two facts are ALSO, and
+      primarily, stated in prose in email:0004 (see the next mess event).
+      This entry is deliberately NOT "chronological"; it is a no-op
+      resolution for the pile as a whole.
+  - type: "blocking-finding fix — Items 8.a/12 given a second, narrated, load-bearing surface"
+    fact: "moral_character.q8a and moral_character.q12 (routine Greek compulsory military service, 1976-1978)"
+    wrong_surface: "greek_military_discharge_scan alone (over_delivered_not_used pile) — the ORIGINAL, defective single surface identified by the Phase 2 review"
+    right_surface: "email:0004 — Daphne states her father's Hellenic Army service (branch, rank, dates) and his basic weapons/military-type training in her own words, as a closing paragraph after the Item 20 removal-proceedings narrative, mirroring `immigration.written_explanation_structure.order` ([q20, q8a, q12])"
+    resolution: >
+      Not chronological — both surfaces are simultaneously true and neither
+      supersedes the other. The fix is that the fact is no longer SOLELY
+      locatable in the inert over-delivery pile next to two expired
+      passports, a death certificate and a utility bill (which W1 Almeida
+      demonstrates a solver should correctly treat as inert). email:0004
+      states the same fact in prose, in the register of someone answering a
+      question, distinct in kind from "here is a document you probably don't
+      need" — so a solver generalising the over-delivery rule from W1 still
+      finds q8a/q12 answered correctly from the narrated surface, and the
+      discharge scan remains genuine (if redundant) corroboration.
   - type: "unrelated-matter noise in the mailbox"
     fact: "a tax question about Daphne's own consulting LLC"
     wrong_surface: "n/a"
@@ -689,6 +759,22 @@ _notes:
     contradict a document the client actually sent — precisely the
     "unlocatable/contradictory fact" class the task calls a
     challenge-breaking bug for this dogfooded client.
+
+    PHASE 4 UPDATE (2026-08-22): the Phase 2 set review found the residual
+    defect this note left in place — the discharge scan was the ONLY input
+    surface for q8a/q12, sitting inertly in the over-delivery pile next to
+    two expired passports, a death certificate and a utility bill, right
+    where the voice card has Daphne say "ignore whatever isn't useful." A
+    solver correctly generalising W1 Almeida's demonstrated rule (pile
+    contents are inert) would read the discharge paper as inert too and
+    answer both items `No`. Fixed here: email:0004 now states the same
+    facts (Hellenic Army, Infantry, Private, 1976-03-01 to 1978-02-28,
+    honorable discharge, ordinary conscript weapons/basic training) in
+    Daphne's own prose, as a closing paragraph after the Item 20 narrative,
+    per `immigration.written_explanation_structure.order`. `input_surfaces`
+    now lists email:0004 first for both moral_character.q8a and .q12; the
+    discharge scan remains a secondary, corroborating surface only. See
+    mess_events "blocking-finding fix" for the full resolution.
   mrz_arithmetic: >
     Computed in Python (ICAO 9303 weights 7,3,1 cyclic; digit value = itself,
     letter value = ord(c)-ord('A')+10, '<' = 0), not eyeballed:

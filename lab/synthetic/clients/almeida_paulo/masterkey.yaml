@@ -452,11 +452,16 @@ input_surfaces:
   # Client modality: questionnaire docx returned filled + phone photos of the
   # green card (front/back) and passport bio page + a PDF of the 2024 1040 +
   # a resume docx. Grouped by fact, per BUILD-PLAN §3's ledger convention.
+  # UPDATED to match input/ as actually written (Phase 4). Five email dirs
+  # under input/: 000001_2025-10-16_documents-and-questionnaire,
+  # 000002_2025-10-20_additional-documents, 000003_2025-10-23_address-confirmation,
+  # 000004_2025-10-27_employment-confirmation, 000005_2025-11-04_cousin-visa-question.
   identity.family_name: [questionnaire]
   identity.given_name: [questionnaire]
   identity.middle_name: [questionnaire]
   identity.dob: [questionnaire, phone_photo_passport]
   identity.cob: [questionnaire, phone_photo_passport]
+  identity.coc: [questionnaire]
   identity.ssn: [questionnaire]
   identity.ethnicity_race_height_weight_eye_hair: [questionnaire]
   family.marital_status: [questionnaire]
@@ -467,26 +472,26 @@ input_surfaces:
   contact.daytime_phone: [questionnaire]
   contact.mobile_phone: [questionnaire]
   contact.email: [questionnaire]
-  immigration.a_number: [questionnaire, phone_photo_green_card_front]
-  immigration.lpr_date: [questionnaire, phone_photo_green_card_front]
-  immigration.class_of_admission: [questionnaire, phone_photo_green_card_front]
+  immigration.a_number: [questionnaire, phone_photo_green_card]
+  immigration.lpr_date: [questionnaire, phone_photo_green_card]
+  immigration.class_of_admission: [questionnaire, phone_photo_green_card]
   addresses.0_current: [questionnaire, tax_return_pdf]
   addresses.1_prior_medford: [questionnaire]
-  addresses.1_end_date_2019-10-31: ["email:0002"]     # voice-card sample: "The Medford address ended 31 October 2019 — I moved the next day."
+  addresses.1_end_date_2019-10-31: [questionnaire, "email:000003"]  # questionnaire table already carries the end date; email:000003 corroborates it in response to a firm question
   employment.harborline: [questionnaire, resume_docx]
   employment.dunmore: [questionnaire, resume_docx]
-  employment.dates_confirmed: ["email:0003"]          # voice-card sample: "2016-03-01 to 2019-04-04 at Dunmore, then Harborline from 2019-04-08."
+  employment.dates_confirmed: ["email:000004"]        # "Confirming employment: 03/01/2016 to 04/04/2019 at Dunmore, then Harborline from 04/08/2019 to now. There is no gap."
   travel.seven_countable_trips: [questionnaire]
-  travel.day_trip_2024-05-14: [questionnaire, "email:0001"]  # voice-card sample: "the Toronto trip on 14 May was one day only ... I have left it in the list but marked it."
+  travel.day_trip_2024-05-14: [questionnaire, "email:000001"]  # questionnaire travel table row 3 (Canada, 05/14/2024, "Same-day drive..."); email:000001 body: "that one was a same-day drive, I left in the morning and was back the same night, no hotel."
   moral_character.all_items: [questionnaire]
   documents.passport.bio_page: [phone_photo_passport]
-  documents.green_card.front: [phone_photo_green_card_front]
-  documents.green_card.back: [phone_photo_green_card_back]
+  documents.green_card.front: [phone_photo_green_card]   # one fabricated image carries both card faces (fabricate_ids green_card doc), labelled "Front" and "Back" on a single page
+  documents.green_card.back: [phone_photo_green_card]
   documents.tax_return: [tax_return_pdf]
   documents.resume: [resume_docx]
-  documents.over_delivered.expired_passport: ["email attachment, unrequested"]
-  documents.over_delivered.lease: ["email attachment, unrequested"]
-  documents.over_delivered.vaccination_record: ["email attachment, unrequested"]
+  documents.over_delivered.expired_passport: ["email:000002 attachment, unrequested"]
+  documents.over_delivered.lease: ["email:000002 attachment, unrequested"]
+  documents.over_delivered.vaccination_record: ["email:000002 attachment, unrequested"]
   matter.engagement_date: ["firm-side — retainer / first email date, not a client-supplied fact"]
   matter.filed_date: ["firm-side — internal filing record, not a client-supplied fact"]
   matter.lockbox: ["firm policy — function of state of residence (STYLE-SPEC §7), not client-supplied"]
@@ -496,26 +501,27 @@ input_surfaces:
 
 mess_events:
   # W1 demonstrates 4 of the 9 mess types (BUILD-PLAN §5.3), all listed in
-  # brief.md's "Mess events" table.
+  # brief.md's "Mess events" table. UPDATED to name the real files/emails
+  # written under input/ (Phase 4).
   - type: "day_trip_exclusion"
     fact: "travel (Canada, 2024-05-14)"
     wrong_surface: "if trimmed into the Part 8 table or the travel addendum — WOULD be wrong"
-    right_surface: "excluded from BOTH the Part 8 table and the travel addendum"
+    right_surface: "questionnaire.docx travel table (row 3, with note) and email:000001 body — both list the trip and both are correctly excluded from BOTH the N-400 Part 8 table and B-7. Travel Addendum.pdf"
     resolution: "firm instruction (day trips <24h are excluded from both, per the form's own Part 8 text and STYLE-SPEC §4.5); registry decision D7. Not chronological — a standing rule, not a supersession."
   - type: "phone_photo_texture"
     fact: "documents.passport, documents.green_card (front and back)"
     wrong_surface: "none — no ambiguity is introduced"
-    right_surface: "questionnaire-typed values, corroborated by the (rotated, shadowed) phone photo"
-    resolution: "texture only — every fact on the photographed documents is legible and agrees with the questionnaire by construction"
+    right_surface: "questionnaire-typed values, corroborated by input/000001.../passport_photo.pdf and input/000001.../green_card_photo.pdf (fabricate_ids.py, finish=photo; both card faces on one page). The passport render visibly carries the desk/shadow photo texture behind the data (finish=photo differs from finish=scan in both page fill and background image, confirmed by rendering both to PNG and comparing); the green-card render currently differs from finish=scan only in page-fill tone (245-grey vs white) — fabricate_ids.py's _draw_card_face accepts a finish argument but does not yet apply _apply_photo_finish to the card faces, a tool gap outside this client folder's scope, not hand-waved here"
+    resolution: "texture only — every fact on both photographed documents is legible and agrees with the questionnaire by construction (verified by pdftotext on both PDFs)"
   - type: "over_delivery"
     fact: "documents.over_delivered (expired 2014 passport, lease, vaccination record)"
     wrong_surface: "none — no §9.2 rule is triggered by any of the three"
-    right_surface: "excluded from the packet entirely; still agree with the masterkey where they overlap it (e.g. the lease address matches addresses.0)"
+    right_surface: "input/000002_2025-10-20_additional-documents/ (expired_passport_photo.pdf, lease.docx, vaccination_record.pdf) — sent unprompted, excluded from the packet entirely; still agree with the masterkey where they overlap it (e.g. the lease address matches addresses.0)"
     resolution: "excluded by rule (not triggered), not by chronology"
   - type: "unrelated_matter_noise"
     fact: "none — a cousin's B-2 visitor-visa question, mentioned in passing"
     wrong_surface: "none"
-    right_surface: "not this matter; touches no packet fact; produces no document"
+    right_surface: "input/000005_2025-11-04_cousin-visa-question/body.txt — not this matter; touches no packet fact; produces no document"
     resolution: "excluded, out of scope"
 
 consistency_locks:
