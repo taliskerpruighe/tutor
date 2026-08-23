@@ -262,6 +262,11 @@ rm -f "$TUTOR_HOME/.dvcignore"
 # Rules about which files the repository ignores. There is no repository here.
 rm -f "$TUTOR_HOME/.gitignore"
 
+# The repository's own release log, which numbers versions of the source tree
+# for the people who work on it. Her changelog is the article in the course,
+# content/01-this-wiki/03-changelog.md, and it stays.
+rm -f "$TUTOR_HOME/CHANGELOG.md"
+
 say "  pruned      go/ bin/ devlog/ lab/ jobs/ .github/ tui/*.py .dvc/"
 
 # Claude settings describe the development environment — plugins enabled
