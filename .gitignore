@@ -1,0 +1,6 @@
+# Worktrees under .claude/ are second checkouts of this repo, never content.
+# Also covered by ~/dotfiles/git/.gitignore_global; kept here so the repo is
+# correct on a machine whose global ignore differs.
+/.claude/worktrees/
+/.claude/settings.local.json
+__pycache__/
