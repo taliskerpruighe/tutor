@@ -23,5 +23,5 @@ The source repo is also what a reader receives — the reader downloads the GitH
 <!-- git-ops:branch -->
 ## Next
 
-@lab/TODO.md
+@lab/TODO.json
 <!-- /git-ops:branch -->
