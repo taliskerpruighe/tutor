@@ -104,6 +104,10 @@ tutor doctor
 It prints one line per check and tells you what to do about anything that
 failed. Running `bash ~/tutor/install.sh` again fixes most things.
 
+If the robot above the TUTOR wordmark on the launch screen shows up as an
+empty box, your terminal's font cannot draw it — run `TUTOR_ASCII=1 tutor`
+to hide it, and everything else stays exactly as it was.
+
 ## Keeping it up to date
 
 You do not have to do anything. When the course gains new articles, the next

@@ -110,6 +110,38 @@ const splashWidth = 53
 const narrowThreshold = 55
 
 // --------------------------------------------------------------------------
+// The robot crest
+//
+// robotRune is U+F16A0, nf-md-robot-confused: a Material Design Icons glyph
+// carried by Nerd Fonts and by nothing else. It is written here as an
+// escape and never as the character itself, so an editor, a patch tool or
+// an encoding round trip cannot mangle it into a different Private Use Area
+// codepoint that would still render as *something* and so never be caught
+// by eye. TestGlyphCodepoint is what enforces that.
+//
+// The assumption it rests on is that the reader's terminal is set to a Nerd
+// Font, which content/03-the-cli/13-powerline-themes.md states outright:
+// the terminal is set to Hack Nerd Font rather than plain Hack, and Hack
+// Nerd Font contains this codepoint. A TUI cannot query the active font's
+// coverage, so there is no detection to do here — TUTOR_ASCII below is the
+// single explicit escape hatch.
+const robotRune = '\U000F16A0'
+
+// robotGlyph is the same codepoint as a string, for the width arithmetic:
+// dwidth takes a string where charWidth takes a rune, and the centring
+// below needs the former.
+const robotGlyph = string(robotRune)
+
+// asciiOnly drops the robot crest when TUTOR_ASCII is set to any non-empty
+// value, leaving the screen exactly as it was before the glyph landed. It
+// is read once at package initialisation, the same way noColor reads
+// $NO_COLOR (term.go:77) — an os.Getenv call per line would be re-read on
+// every render for a value that cannot change mid-process, and a test that
+// wanted to exercise this path could not use os.Setenv against an init-time
+// read anyway.
+var asciiOnly = os.Getenv("TUTOR_ASCII") != ""
+
+// --------------------------------------------------------------------------
 // Colouring
 // --------------------------------------------------------------------------
 
@@ -163,6 +195,46 @@ func artworkRowColored(row int) string {
 	return b.String()
 }
 
+// glyphPad centres the crest over a field of the given width. The pad is
+// always computed, never written down: artworkRowPlain opens with a single
+// space, so splashWidth's extra column is a LEADING margin and the visible
+// wordmark occupies columns 2 through 53. Centring over the field and
+// centring over the wordmark agree at these numbers only by coincidence,
+// so if the margin, splashWidth or the glyph's measured width ever moves,
+// this expression and the test that mirrors it move together.
+func glyphPad(field int) string {
+	pad := (field - dwidth(robotGlyph)) / 2
+	if pad < 0 {
+		pad = 0
+	}
+	return strings.Repeat(" ", pad)
+}
+
+// glyphLinePlain is the crest centred over the full artwork. It is
+// deliberately alone on its line and outside every exact-width assertion:
+// charWidth measures U+F16A0 as one column (the Private Use Area is in
+// neither range table in width_table.go), but a Nerd Font glyph can render
+// wider than one cell in some terminals, and a line of its own is the only
+// place where that drift cannot pull anything else out of alignment.
+func glyphLinePlain() string {
+	return glyphPad(splashWidth) + robotGlyph
+}
+
+func glyphLineColored() string {
+	return glyphPad(splashWidth) + colorRun(robotGlyph, tagColor, true)
+}
+
+// narrowGlyphLinePlain centres the crest over the bare five-character word
+// the narrow fallback prints, which starts at column 1 with no padding of
+// its own.
+func narrowGlyphLinePlain() string {
+	return glyphPad(dwidth(narrowWord())) + robotGlyph
+}
+
+func narrowGlyphLineColored() string {
+	return glyphPad(dwidth(narrowWord())) + colorRun(robotGlyph, tagColor, true)
+}
+
 func subtitlePlain() string {
 	return strings.Repeat(" ", subtitleIndent) + subtitle
 }
@@ -205,6 +277,9 @@ func versionLineColored() string {
 
 func fullSplashPlain() []string {
 	lines := []string{""}
+	if !asciiOnly {
+		lines = append(lines, glyphLinePlain(), "")
+	}
 	for row := 0; row < 5; row++ {
 		lines = append(lines, artworkRowPlain(row))
 	}
@@ -216,6 +291,9 @@ func fullSplashColored() []string {
 		return fullSplashPlain()
 	}
 	lines := []string{""}
+	if !asciiOnly {
+		lines = append(lines, glyphLineColored(), "")
+	}
 	for row := 0; row < 5; row++ {
 		lines = append(lines, artworkRowColored(row))
 	}
@@ -233,7 +311,11 @@ func narrowWord() string {
 }
 
 func narrowSplashPlain() []string {
-	return []string{narrowWord(), narrowSubtitle, versionTag()}
+	lines := []string{}
+	if !asciiOnly {
+		lines = append(lines, narrowGlyphLinePlain())
+	}
+	return append(lines, narrowWord(), narrowSubtitle, versionTag())
 }
 
 func narrowSplashColored() []string {
@@ -251,7 +333,11 @@ func narrowSplashColored() []string {
 		subLine.WriteString(colorRun(string(r), color, false))
 	}
 	verLine := colorRun(versionTag(), tagColor, false)
-	return []string{wordLine.String(), subLine.String(), verLine}
+	lines := []string{}
+	if !asciiOnly {
+		lines = append(lines, narrowGlyphLineColored())
+	}
+	return append(lines, wordLine.String(), subLine.String(), verLine)
 }
 
 // --------------------------------------------------------------------------

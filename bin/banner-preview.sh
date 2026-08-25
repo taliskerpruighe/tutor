@@ -119,9 +119,34 @@ spread() {
 }
 
 # ===========================================================================
-# The screen itself: blank, five artwork rows, blank, subtitle, version tag.
+# The robot crest: U+F16A0, nf-md-robot-confused, a Nerd Fonts glyph. It is
+# written as its four UTF-8 bytes rather than pasted in as a character, so
+# this script survives being edited by anything that mishandles astral-plane
+# codepoints. Bold, colour 81 — the cyan that opens the headline sweep and
+# closes the subtitle's, so the mark bookends the palette rather than adding
+# a sixth colour to it.
+#
+# It sits alone on its line, centred over the 53-column artwork field, with
+# a blank line beneath it so it reads as a crest above the wordmark and not
+# as a sixth letter row. Go's splash.go computes that pad from splashWidth;
+# here it is written out, because this file is the mock and that one is
+# authoritative.
 # ===========================================================================
 
+crest() {
+    printf '%26s' ''
+    printf '%s%s' "$B" "$TAG_COL"
+    printf '\xf3\xb1\x9a\xa0'
+    printf '%s\n' "$R"
+}
+
+# ===========================================================================
+# The screen itself: blank, crest, blank, five artwork rows, blank, subtitle,
+# version tag.
+# ===========================================================================
+
+printf '\n'
+crest
 printf '\n'
 by_letter "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R"
 printf '\n'
