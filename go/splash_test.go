@@ -4,14 +4,18 @@
 // behaviour nobody had reasoned about. These tests fail on the build
 // machine instead of on her screen.
 //
-// The screen's rune set is printable ASCII plus the Block Elements repertoire
-// the wordmark already proves at runtime: █ U+2588 (the letters themselves)
-// and ▀ U+2580 / ▄ U+2584 (the half-block robot beside them). There is no
-// Nerd Font dependency and no Private Use Area codepoint anywhere in this
-// package — a TUI cannot ask the terminal what its font covers, so the one
-// explicit escape hatch is TUTOR_ASCII: set to any non-empty value, it swaps
-// the half-block robot for a plain-ASCII one instead of hiding it, since the
-// new art can never render as tofu where the wordmark itself succeeds.
+// The screen's rune set is printable ASCII, the Block Elements repertoire the
+// wordmark proves at runtime (█ U+2588, the letters themselves), and the
+// Braille Patterns block U+2800-28FF, which the robot logo beside them is
+// drawn from. There is no Private Use Area codepoint anywhere in this
+// package, but braille is a weaker guarantee than the block elements were:
+// it is not in the Nerd Fonts repertoire and not in the range the wordmark
+// uses, so it renders out of whatever fallback font the machine happens to
+// have (lab/glyph-blowup/NOTES.md), and coverage on the shipped audience's
+// stock macOS is unverified. A TUI cannot ask the terminal what its font
+// covers, so TUTOR_ASCII is no longer a cosmetic preference but the actual
+// remedy: set to any non-empty value, it swaps the braille robot for a
+// plain-ASCII one of the same dimensions instead of hiding it.
 package main
 
 import (
@@ -33,13 +37,38 @@ var splashRunes = map[rune]string{
 	'▄': "U+2584 LOWER HALF BLOCK",
 }
 
+// splashRuneRanges is the allow-set's second half: whole blocks the screen
+// may draw from, rather than named individual runes. The robot logo uses
+// most of the 256 braille cells and its "blank" cell is U+2800 BRAILLE
+// PATTERN BLANK — not a space — so enumerating them one by one would be a
+// 256-entry table that says less than one range does.
+var splashRuneRanges = []struct {
+	lo, hi rune
+	name   string
+}{
+	{0x2800, 0x28FF, "U+2800-28FF BRAILLE PATTERNS"},
+}
+
+// inSplashRanges reports whether r falls in any admitted block.
+func inSplashRanges(r rune) bool {
+	for _, rg := range splashRuneRanges {
+		if r >= rg.lo && r <= rg.hi {
+			return true
+		}
+	}
+	return false
+}
+
 // allowedRunes renders splashRunes for a failure message. Map iteration
 // order is random in Go, so the names are sorted — a test that fails with a
 // different message each run is a test nobody trusts.
 func allowedRunes() string {
-	names := make([]string, 0, len(splashRunes))
+	names := make([]string, 0, len(splashRunes)+len(splashRuneRanges))
 	for _, name := range splashRunes {
 		names = append(names, name)
+	}
+	for _, rg := range splashRuneRanges {
+		names = append(names, rg.name)
 	}
 	sort.Strings(names)
 	return strings.Join(names, ", ")
@@ -52,6 +81,9 @@ func checkRunes(t *testing.T, label, s string) {
 	t.Helper()
 	for _, r := range s {
 		if _, ok := splashRunes[r]; ok {
+			continue
+		}
+		if inSplashRanges(r) {
 			continue
 		}
 		if r < 0x20 || r > 0x7E {
@@ -67,7 +99,7 @@ func checkRunes(t *testing.T, label, s string) {
 // what actually answers "will the characters render", not an artifact of
 // how they are coloured.
 //
-// The 9 composed rows are checked in both tier states — half-block default
+// All logoRows composed rows are checked in both tier states — half-block default
 // and TUTOR_ASCII — because robotRow's branch means each tier exercises a
 // different rune set on the very same rows.
 func TestSplashRuneWhitelist(t *testing.T) {
@@ -76,7 +108,7 @@ func TestSplashRuneWhitelist(t *testing.T) {
 
 	for _, tier := range []bool{false, true} {
 		asciiOnly = tier
-		for row := 0; row < 9; row++ {
+		for row := 0; row < logoRows; row++ {
 			checkRunes(t, fmt.Sprintf("composed row %d (asciiOnly=%v)", row, tier), composedRowPlain(row))
 		}
 	}
@@ -108,6 +140,71 @@ func TestBlockCharWidth(t *testing.T) {
 	}
 }
 
+// TestBrailleCharWidth is TestBlockCharWidth's twin for the range the robot
+// logo is actually drawn from, and it is measured rather than taken on
+// trust from a spec note. The whole logoCols budget rests on every braille
+// cell being one column wide; U+2800-28FF is East Asian Width "Neutral",
+// but the failure mode is identical to the block elements' — one
+// reclassification in a regenerated width_table.go and every composed row
+// silently measures 82 runes at 164 columns.
+//
+// The three sampled cells are the ones the layout depends on most: the
+// blank that pads every short row, the full cell that fills the robot's
+// solid mass, and one mid-density cell from the art itself.
+func TestBrailleCharWidth(t *testing.T) {
+	for _, r := range []rune{'⠀', '⣿', '⢀'} {
+		if w := charWidth(r); w != 1 {
+			t.Errorf("charWidth(%q) (U+%04X) = %d, want 1", r, r, w)
+		}
+	}
+}
+
+// TestBrailleBlankIsNotSpace pins the fact that makes the art table's
+// "transcribed by a generator, never retyped" rule load-bearing rather than
+// stylistic: the pad character in robotArt is U+2800 BRAILLE PATTERN BLANK,
+// which looks exactly like a space, measures exactly like a space, and is
+// not a space. Anything that "tidies trailing whitespace" leaves it alone;
+// anything that retypes a row by eye replaces it with U+0020 and changes
+// which font is asked to draw that cell. If a future edit ever does
+// normalise them to spaces, this fails and says why.
+func TestBrailleBlankIsNotSpace(t *testing.T) {
+	saved := asciiOnly
+	defer func() { asciiOnly = saved }()
+	asciiOnly = false
+
+	found := false
+	for row := 0; row < logoRows; row++ {
+		for _, r := range robotRow(row) {
+			if r == '\u2800' {
+				found = true
+			}
+			if r == ' ' {
+				t.Errorf("robotArt row %d contains an ASCII space; braille rows pad with U+2800 BRAILLE PATTERN BLANK", row)
+				break
+			}
+		}
+	}
+	if !found {
+		t.Error("robotArt contains no U+2800 BRAILLE PATTERN BLANK — the art table has been retyped or replaced")
+	}
+}
+
+// TestRobotColorsPalette proves the claim splash.go makes about the logo's
+// colouring: it introduces no colour of its own, it is headColors — the
+// wordmark's own five stops — swept down the rows with the same bucket
+// arithmetic subtitleColored uses across its characters. Written out as a
+// literal table for readability, robotColors could drift from that rule in
+// a single mistyped digit and nothing else would notice.
+func TestRobotColorsPalette(t *testing.T) {
+	for row, got := range robotColors {
+		want := headColors[row*len(headColors)/logoRows]
+		if got != want {
+			t.Errorf("robotColors[%d] = %d, want %d (headColors[%d*%d/%d])",
+				row, got, want, row, len(headColors), logoRows)
+		}
+	}
+}
+
 // TestSplashLayout checks the arithmetic the plan specifies: every composed
 // row of the logo screen is exactly composedWidth columns, in both tier
 // states, and the logo-screen version line matches it; and the mid screen's
@@ -119,7 +216,7 @@ func TestSplashLayout(t *testing.T) {
 
 	for _, tier := range []bool{false, true} {
 		asciiOnly = tier
-		for row := 0; row < 9; row++ {
+		for row := 0; row < logoRows; row++ {
 			line := composedRowPlain(row)
 			if w := dwidth(line); w != composedWidth {
 				t.Errorf("composed row %d (asciiOnly=%v) measures %d columns, want %d (%q)", row, tier, w, composedWidth, line)
@@ -152,20 +249,23 @@ func TestSplashLayout(t *testing.T) {
 // order changes between runs is not one a reader can check by eye).
 var artTables = []struct {
 	name  string
-	table [9]string
+	table [logoRows]string
 }{
 	{"robotArt", robotArt},
 	{"robotAscii", robotAscii},
 }
 
 // TestArtTableDimensions is this file's proof that transcription of the art
-// from lab/title-logo/robot-primary.txt and robot-fallback.txt into
-// splash.go was not corrupted: every row of both tables measures exactly
-// dwidth 20, mirroring the SPEC.md §9 measurement record
-// ("row N: runes=20 display_width=20") produced against the source files
-// themselves. [9]string array types already guarantee 9 rows at compile
-// time; what needs runtime proof is column width, which a byte-level typo
-// could silently change. Every row is logged (t.Logf, visible under -v) in
+// from lab/glyph-blowup/full-braille-12r.txt and
+// lab/title-logo/robot-fallback.txt into splash.go was not corrupted: every
+// row of both tables measures exactly dwidth logoCols, in the same shape as
+// the SPEC.md §9 measurement record produced against the source files
+// themselves — that record's own figures are the superseded 20-column
+// half-block art's and are not what this asserts. [logoRows]string array
+// types already guarantee the row count at compile time; what needs runtime
+// proof is column width, which a byte-level typo could silently change —
+// and with U+2800 padding, one that no amount of squinting at the source
+// would reveal. Every row is logged (t.Logf, visible under -v) in
 // the same shape as SPEC.md §9's record, so this in-process measurement of
 // the actual Go values can be read directly against it.
 func TestArtTableDimensions(t *testing.T) {
@@ -173,8 +273,8 @@ func TestArtTableDimensions(t *testing.T) {
 		for row, line := range tt.table {
 			w := dwidth(line)
 			t.Logf("%s row %d: runes=%d display_width=%d", tt.name, row, utf8.RuneCountInString(line), w)
-			if w != 20 {
-				t.Errorf("%s row %d measures %d display columns, want 20 (%q)", tt.name, row, w, line)
+			if w != logoCols {
+				t.Errorf("%s row %d measures %d display columns, want %d (%q)", tt.name, row, w, logoCols, line)
 			}
 		}
 	}
@@ -183,7 +283,7 @@ func TestArtTableDimensions(t *testing.T) {
 // TestArtTableRuneCount is TestArtTableDimensions' complementary half: rune
 // count rather than display width. The failure mode this catches that the
 // other test cannot: a row with the wrong number of runes that nonetheless
-// happens to measure 20 display columns — e.g. 19 runes where one of them
+// happens to measure logoCols display columns — e.g. 19 runes where one of them
 // is width-2 (there are none in this codebase's width table for the runes
 // in play here, but the two checks are cheap and independent, so a future
 // change to width_table.go could not silently make one test redundant
@@ -191,11 +291,27 @@ func TestArtTableDimensions(t *testing.T) {
 func TestArtTableRuneCount(t *testing.T) {
 	for _, tt := range artTables {
 		for row, line := range tt.table {
-			if n := utf8.RuneCountInString(line); n != 20 {
-				t.Errorf("%s row %d has %d runes, want 20 (%q)", tt.name, row, n, line)
+			if n := utf8.RuneCountInString(line); n != logoCols {
+				t.Errorf("%s row %d has %d runes, want %d (%q)", tt.name, row, n, logoCols, line)
 			}
 		}
 	}
+}
+
+// fillerRows returns the composed rows that carry no wordmark, derived from
+// wordmarkTopRow rather than written out. The old hardcoded {0, 1, 7, 8}
+// was correct for a 9-row robot with the wordmark on rows 2-6 and silently
+// wrong for anything else — with 12 rows and wordmarkTopRow 4, rows 7 and 8
+// now carry wordmark and rows 9-11 do not. Deriving it means the two tests
+// below cannot disagree with splash.go about where the band sits.
+func fillerRows() []int {
+	var rows []int
+	for row := 0; row < logoRows; row++ {
+		if row < wordmarkTopRow || row >= wordmarkTopRow+5 {
+			rows = append(rows, row)
+		}
+	}
+	return rows
 }
 
 // TestWordmarkCentredOnRobot is the only check on the composed block's
@@ -204,8 +320,11 @@ func TestArtTableRuneCount(t *testing.T) {
 // in the exact wordmark row; rows outside it are the robot row, the gutter,
 // and nothing but a full splashWidth-space filler — checked by exact
 // equality, not just a trailing-space count, since the robot's own rows
-// (e.g. row 0's antenna bulb) already end in many spaces of their own and a
+// (e.g. row 0's antenna) already end in many blank cells of their own and a
 // bare count could not tell "filler" from "coincidentally blank robot art".
+// With braille art the distinction is sharper still: the robot's blanks are
+// U+2800 and the filler's are U+0020, so a test that counted "blank-looking
+// columns" would be measuring two different characters as one.
 func TestWordmarkCentredOnRobot(t *testing.T) {
 	for k := 0; k < 5; k++ {
 		row := wordmarkTopRow + k
@@ -217,7 +336,7 @@ func TestWordmarkCentredOnRobot(t *testing.T) {
 	}
 
 	filler := strings.Repeat(" ", splashWidth)
-	for _, row := range []int{0, 1, 7, 8} {
+	for _, row := range fillerRows() {
 		got := composedRowPlain(row)
 		want := robotRow(row) + robotGutter + filler
 		if got != want {
@@ -229,8 +348,8 @@ func TestWordmarkCentredOnRobot(t *testing.T) {
 // TestAsciiOnlySwapsTier proves TUTOR_ASCII does what section 5 of the spec
 // says it now does: it no longer hides anything, it swaps which robot tier
 // is drawn. With asciiOnly set, robotRow itself is pure printable ASCII for
-// all 9 rows (proving the swap happened) and every composed row is still
-// exactly 76 columns; the line count of the logo screen is identical
+// all logoRows rows (proving the swap happened) and every composed row is
+// still exactly composedWidth columns; the line count of the logo screen is identical
 // between tiers (no orphaned or missing blank line); the narrow screen
 // carries no robot in either state, because it never reaches robotRow at
 // all; and the mid screen is byte-identical in both states, since the
@@ -240,7 +359,7 @@ func TestWordmarkCentredOnRobot(t *testing.T) {
 // This deliberately checks robotRow(row), not the full composedRowPlain(row):
 // asciiOnly only ever selects between robotArt and robotAscii (splash.go's
 // robotRow) — it does not touch the wordmark's own glyphs table, which is
-// built from █ in every tier. Composed rows 2..6 therefore always carry █
+// built from █ in every tier. The wordmark band therefore always carries █
 // regardless of TUTOR_ASCII; that is unchanged, correct behaviour, not
 // something this hatch was ever meant to affect, so asserting ASCII-only
 // across the *whole* composed row would be a false requirement that fails
@@ -264,7 +383,7 @@ func TestAsciiOnlySwapsTier(t *testing.T) {
 		t.Fatalf("TUTOR_ASCII logo screen has %d lines, want %d (same as the half-block tier)", len(asciiLines), len(blockLines))
 	}
 
-	for row := 0; row < 9; row++ {
+	for row := 0; row < logoRows; row++ {
 		if w := dwidth(composedRowPlain(row)); w != composedWidth {
 			t.Errorf("TUTOR_ASCII composed row %d measures %d columns, want %d", row, w, composedWidth)
 		}
@@ -275,11 +394,11 @@ func TestAsciiOnlySwapsTier(t *testing.T) {
 		}
 	}
 
-	// Rows 0, 1, 7 and 8 carry no wordmark (see TestWordmarkCentredOnRobot),
-	// so in the ASCII tier the *entire* composed row — robot, gutter and
-	// filler alike — is pure printable ASCII, recovering the literal
-	// row-level claim for the rows where it actually holds.
-	for _, row := range []int{0, 1, 7, 8} {
+	// The filler rows carry no wordmark (see TestWordmarkCentredOnRobot), so
+	// in the ASCII tier the *entire* composed row — robot, gutter and filler
+	// alike — is pure printable ASCII, recovering the literal row-level claim
+	// for the rows where it actually holds.
+	for _, row := range fillerRows() {
 		for _, r := range composedRowPlain(row) {
 			if r < 0x20 || r > 0x7E {
 				t.Errorf("TUTOR_ASCII composed row %d contains rune %q (U+%04X), not printable ASCII", row, r, r)
@@ -300,8 +419,8 @@ func TestAsciiOnlySwapsTier(t *testing.T) {
 			t.Errorf("narrow screen line %d differs between tiers: %q vs %q", i, narrowBlock[i], narrowAscii[i])
 		}
 		for _, r := range narrowBlock[i] {
-			if r == '▀' || r == '▄' || r == '█' {
-				t.Errorf("narrow screen line %d contains block element %q — the narrow screen must never carry a robot", i, r)
+			if r == '▀' || r == '▄' || r == '█' || inSplashRanges(r) {
+				t.Errorf("narrow screen line %d contains logo art %q — the narrow screen must never carry a robot", i, r)
 			}
 		}
 	}
@@ -350,10 +469,17 @@ func firstContentLine(lines []string) string {
 // comment).
 //
 // Each width's line count and first-content-row width are checked together
-// because either alone is ambiguous: 77 and 55 both fall in the mid band
-// and share a line count of 9, but only the row width also confirms 76
-// wasn't reached; 78 and 100 share both numbers, proving anything at or
-// above logoThreshold lands on the same screen.
+// because either alone is ambiguous: 83 and 55 both fall in the mid band
+// and share a line count of 9, but only the row width also confirms
+// composedWidth wasn't reached; 84 and 100 share both numbers, proving
+// anything at or above logoThreshold lands on the same screen.
+//
+// 80 is in the table on its own account, and it is the one case here that
+// asserts a deliberate regression rather than a preserved property: the
+// braille logo is too wide for an 80-column terminal (26 + 3 + 53 = 82), so
+// detectWidth's default now lands on the mid screen. Anyone who later
+// narrows the art to win that band back will find this line failing, which
+// is the point — it should be changed knowingly, not drifted past.
 func TestSplashLinesWidthBands(t *testing.T) {
 	saved := noColor
 	defer func() { noColor = saved }()
@@ -364,9 +490,10 @@ func TestSplashLinesWidthBands(t *testing.T) {
 		wantLines int
 		wantWidth int
 	}{
-		{100, 13, composedWidth}, // well above logoThreshold: logo screen
-		{78, 13, composedWidth},  // == logoThreshold: logo screen, exact fit
-		{77, 9, splashWidth},     // one below logoThreshold: mid screen
+		{100, 16, composedWidth}, // well above logoThreshold: logo screen
+		{84, 16, composedWidth},  // == logoThreshold: logo screen, exact fit
+		{83, 9, splashWidth},     // one below logoThreshold: mid screen
+		{80, 9, splashWidth},     // detectWidth's default: mid screen, NOT the logo
 		{55, 9, splashWidth},     // == narrowThreshold: mid screen
 		{54, 3, 5},               // one below narrowThreshold: narrow screen ("TUTOR")
 	}

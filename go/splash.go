@@ -1,8 +1,14 @@
 // The launch screen for `tutor` — five seconds of block-letter artwork,
 // modelled on oh-my-zsh's update banner. At logoThreshold columns and up, a
-// half-block robot stands beside the TUTOR wordmark, drawn from the same
-// Block Elements repertoire (█, plus ▀ and ▄) the wordmark itself already
-// uses, so it needs no Nerd Font and no font detection.
+// braille robot head stands beside the TUTOR wordmark: U+2800-28FF, 2x4
+// dots per cell, which buys four times the vertical detail of the half
+// blocks the wordmark itself is drawn from. That detail is not free —
+// braille is NOT in the Nerd Fonts repertoire (see
+// lab/glyph-blowup/NOTES.md), so a terminal draws it out of whatever
+// fallback font on the machine does cover it, and coverage on stock macOS
+// is unverified. TUTOR_ASCII is therefore no longer a cosmetic opt-in but
+// the real escape hatch: it swaps the braille for a printable-ASCII robot
+// of the same dimensions.
 //
 // It is printed in cmdRun before NewTerminal.Start puts the tty into raw
 // mode and switches to the alternate screen (term.go:264-291). That ordering
@@ -115,45 +121,80 @@ const narrowThreshold = 55
 // --------------------------------------------------------------------------
 // The robot logo
 //
-// A 9-row x 20-column half-block robot stands beside the TUTOR wordmark,
-// replacing the single Nerd Font crest rune that used to float above it.
-// Half blocks (▀ U+2580, ▄ U+2584, █ U+2588) turn the 20x9 cell budget into
-// a 20x18 subpixel grid, drawn from the same Block Elements repertoire the
-// wordmark itself already uses (█), so the logo cannot fail to render
-// anywhere the wordmark succeeds — no font detection, no Nerd Font
-// dependency. A plain-ASCII tier exists as the explicit TUTOR_ASCII
-// opt-in for environments where block glyphs render badly.
+// A logoRows x logoCols braille robot head stands beside the TUTOR
+// wordmark. Braille (U+2800-28FF) packs 2x4 dots into every cell, so a
+// 26x12 cell budget carries a 52x48 dot grid — enough resolution for the
+// antenna, the two open eyes, the ear tabs and the "!?" off the robot's
+// shoulder to survive downsampling, none of which the previous half-block
+// robot could hold.
+//
+// The cost is font coverage. Braille is not part of the Nerd Fonts
+// repertoire and is not in the Block Elements range the wordmark is built
+// from, so unlike the half-block robot it CANNOT be assumed to render
+// wherever the wordmark does: the terminal falls back to some other
+// installed font, at that font's weight and metrics, or draws tofu if no
+// installed font covers the range. lab/glyph-blowup/NOTES.md records the
+// coverage survey; stock macOS (SF Mono, Menlo, Monaco) is unverified.
+// TUTOR_ASCII is the hatch for exactly that case and swaps in a
+// printable-ASCII robot of identical dimensions.
 // --------------------------------------------------------------------------
 
-// robotArt is the half-block robot, 9 rows x 20 columns. Source of truth:
-// lab/title-logo/robot-primary.txt. Transcribed verbatim by a generator
-// script, never retyped by eye — every row carries significant leading and
-// trailing spaces that a stripping tool would silently destroy.
-var robotArt = [9]string{
-	"        ████        ",
-	"  ▄▄▄▄▄▄▄██▄▄▄▄▄▄▄  ",
-	"  ███▀▀▀████▀▀▀███  ",
-	"  ███   ████   ███  ",
-	"  ████▀▀▀▀▀▀▀▀████  ",
-	"  ▀▀▀▀▀▀████▀▀▀▀▀▀  ",
-	"██  ████▀▀▀▀████  ██",
-	"▀▀  ████▄▄▄▄████  ▀▀",
-	"     ▄███  ███▄     ",
+// logoRows and logoCols are the logo's cell budget, shared by both art
+// tiers and by every loop that walks a composed row. They are named rather
+// than repeated as literals because a mismatch between the array bounds
+// and a loop bound is exactly the kind of edit that compiles and then
+// prints a ragged banner.
+const logoRows = 12
+const logoCols = 26
+
+// robotArt is the braille robot head, logoRows x logoCols. Source of truth:
+// lab/glyph-blowup/full-braille-12r.txt (rendered from Nerd Font U+F169F by
+// lab/glyph-blowup/gen.py). Transcribed verbatim by a generator script,
+// never retyped by eye — and here that discipline matters more than it did
+// for the half blocks: the blank cells are U+2800 BRAILLE PATTERN BLANK,
+// not spaces, so a truncated or space-padded row is invisible to the eye,
+// to an editor's trailing-whitespace highlighting, and to gofmt alike.
+// Only TestArtTableDimensions would catch it.
+var robotArt = [logoRows]string{
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣦⡀⠀⢀⣤⠀⣤⣤⣤⡀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⠃⠀⢸⣿⠀⠉⢉⣹⡇⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⠁⠀⠀⢸⣿⠀⠀⣿⡟⠁⠀⠀",
+	"⠀⠀⠀⠀⠀⢀⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⡇⢀⣄⠀⠀⣠⡄⠀⠀⠀",
+	"⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣀⣉⣀⣀⣈⠁⠀⠀⠀",
+	"⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀",
+	"⠀⠀⢸⣿⣿⣿⠿⠛⠻⢿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠿⣿⣿⣿⡇⠀⠀",
+	"⣴⣶⣾⣿⣿⠁⠀⠀⠀⠀⢻⣿⣿⣿⣿⡏⠀⠀⠀⠀⠈⣿⣿⣷⣶⣦",
+	"⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿",
+	"⣿⣿⣿⣿⣿⣷⣤⣤⣤⣴⣿⣿⣿⣿⣿⣿⣦⣤⣤⣤⣾⣿⣿⣿⣿⣿",
+	"⠈⠉⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠉⠁",
+	"⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀",
 }
 
-// robotAscii is the plain-ASCII robot, same box. Source of truth:
-// lab/title-logo/robot-fallback.txt. Same transcription discipline as
-// robotArt.
-var robotAscii = [9]string{
-	"        (__)        ",
-	"         ||         ",
-	"  .--------------.  ",
-	"  |  [o]    [o]  |  ",
-	"  |     ====     |  ",
-	"  '--------------'  ",
-	" __ .----------. __ ",
-	"|  ||   [##]   ||  |",
-	"'--' '--'  '--' '--'",
+// robotAscii is the plain-ASCII robot, same box: the 9x20 half-block-era
+// fallback art from lab/title-logo/robot-fallback.txt, centred in the
+// larger logoRows x logoCols field with ordinary ASCII spaces (never
+// U+2800, which would defeat the entire point of this tier). Same
+// transcription discipline as robotArt.
+//
+// The vertical padding is 2 rows above and 1 below, not the other way
+// round: 9 rows of art in a 12-row field leaves 3 rows of slack, and
+// putting 2 of them on top lands this robot's own centre on composed row 6,
+// the same row the wordmark's middle stripe sits on. Padding the other way
+// would leave the wordmark visibly low against the ASCII tier while sitting
+// correctly against the braille one.
+var robotAscii = [logoRows]string{
+	"                          ",
+	"                          ",
+	"           (__)           ",
+	"            ||            ",
+	"     .--------------.     ",
+	"     |  [o]    [o]  |     ",
+	"     |     ====     |     ",
+	"     '--------------'     ",
+	"    __ .----------. __    ",
+	"   |  ||   [##]   ||  |   ",
+	"   '--' '--'  '--' '--'   ",
+	"                          ",
 }
 
 // robotRow picks the active tier's row: half-block by default, plain ASCII
@@ -165,34 +206,61 @@ func robotRow(row int) string {
 	return robotArt[row]
 }
 
-// robotColors is one colour per robot row, bold, mirroring how headColors
-// works for the wordmark: row 0 is the antenna bulb — the robot's "power
-// light", warn amber; the rest is chassis in the same cyan as the T beside
-// it, so the robot begins the wordmark's left-to-right 81->209 sweep and
-// the bulb echoes the sweep's far end.
-var robotColors = [9]int{209, 81, 81, 81, 81, 81, 81, 81, 81}
+// robotColors is one colour per robot row, bold. It introduces no colour of
+// its own: it is headColors — the wordmark's own five-stop palette — swept
+// top to bottom down the logo instead of left to right across the letters,
+// using the same bucket arithmetic subtitleColored uses to spread five
+// colours over a longer run (i*len/len). So the antenna and crown open on
+// 81, the same cyan the T beside them opens on, and the jaw arrives at 209,
+// the same amber the R closes on: the logo and the wordmark are two runs of
+// one palette crossing at right angles, rather than two separate colour
+// schemes that happen to share values.
+//
+// It is a literal table rather than a loop over headColors so the actual
+// per-row values are readable here, and TestRobotColorsPalette pins it to
+// the arithmetic.
+var robotColors = [logoRows]int{
+	81, 81, 81, 115, 115, 150, 150, 150, 215, 215, 209, 209,
+}
 
-// composedWidth is the logo screen's row width: a 20-column robot, a
+// composedWidth is the logo screen's row width: a 26-column robot, a
 // 3-column gutter, and the 53-column wordmark field.
-const composedWidth = 76 // 20 + 3 + splashWidth
+const composedWidth = 82 // 26 + 3 + splashWidth
 
 // logoThreshold is the terminal width at and above which the robot is
-// shown beside the wordmark. This is deliberately NOT composedWidth (76):
-// at a real 76-column terminal every composed row (rows 0,1,7,8 in
-// particular, padded with 53 trailing spaces) measures exactly 76
+// shown beside the wordmark. This is deliberately NOT composedWidth (82):
+// at a real 82-column terminal every composed row (the non-wordmark rows in
+// particular, padded with 53 trailing spaces) measures exactly 82
 // characters and lands flush on the right margin, where deferred-autowrap
 // behaviour is terminal-dependent and can insert a spurious blank line
 // between every row. logoThreshold is set two columns higher than
 // composedWidth to keep the last printed column off the margin — the same
 // two-column slack the original author already used between
-// narrowThreshold (55) and splashWidth (53). detectWidth's 80-column
-// default clears this with room to spare; 76- and 77-column terminals
-// correctly fall through to the wordmark-only mid screen instead.
-const logoThreshold = 78
+// narrowThreshold (55) and splashWidth (53).
+//
+// Note what this costs, because it is a real narrowing: the braille logo is
+// six columns wider than the half-block robot it replaced, so the threshold
+// moved 78 -> 84 and detectWidth's 80-column default no longer clears it.
+// An 80-column terminal — the stock macOS Terminal default — now gets the
+// wordmark-only mid screen, not the logo. Widening the band again means
+// narrowing the art, not lowering this number: 26 + 3 + 53 cannot be made
+// to fit in 80 columns, and lab/glyph-blowup/gen.py's art() takes an
+// explicit cols argument for exactly that kind of re-render.
+const logoThreshold = 84
 
-// wordmarkTopRow is the composed row (0-indexed, of 9) on which the
-// 5-row wordmark starts, centring it against the 9-row robot.
-const wordmarkTopRow = 2
+// wordmarkTopRow is the composed row (0-indexed, of logoRows) on which the
+// 5-row wordmark starts, centring it against the taller robot. With 12 rows
+// and a 5-row wordmark there are 7 rows of slack, which does not divide
+// evenly; 4 above and 3 below puts the wordmark's optical centre level with
+// the robot's eyes rather than with its jaw, since the braille head carries
+// its ink low (rows 7-11 are the solid chin and shoulders).
+const wordmarkTopRow = 4
+
+// logoOffset is how far the whole wordmark field sits to the right of where
+// it sits on the mid screen: the robot's width plus the gutter. Everything
+// that has to stay aligned with the wordmark on the logo screen (the
+// subtitle) shifts by exactly this, so the three numbers cannot drift.
+const logoOffset = logoCols + len(robotGutter)
 
 // robotGutter is the horizontal gap between the robot's right edge and the
 // wordmark field: wide enough (with the field's own 1-column leading
@@ -262,7 +330,7 @@ func artworkRowColored(row int) string {
 	return b.String()
 }
 
-// composedRowPlain builds one row (0..8) of the logo screen: the robot row,
+// composedRowPlain builds one row (0..logoRows-1) of the logo screen: the robot row,
 // the gutter, then either the wordmark row (rows wordmarkTopRow through
 // wordmarkTopRow+4) or a full 53-space filler. The filler rows are
 // deliberately full splashWidth-space strings so every one of the 9
@@ -331,17 +399,17 @@ func versionLineColored() string {
 // Logo screen (logoThreshold columns and up) — robot beside the wordmark
 // --------------------------------------------------------------------------
 
-// subtitleWidePlain is the subtitle shifted right by 23 columns from its
-// mid-screen position, so it keeps its position relative to the wordmark
-// now that the wordmark's visible letters start at column 25 (20 robot + 3
-// gutter + 1 field margin + 1) instead of column 2.
+// subtitleWidePlain is the subtitle shifted right by logoOffset columns
+// from its mid-screen position, so it keeps its position relative to the
+// wordmark now that the wordmark's visible letters start at column 31 (26
+// robot + 3 gutter + 1 field margin + 1) instead of column 2.
 func subtitleWidePlain() string {
-	return strings.Repeat(" ", subtitleIndent+23) + subtitle
+	return strings.Repeat(" ", subtitleIndent+logoOffset) + subtitle
 }
 
 func subtitleWideColored() string {
 	var b strings.Builder
-	b.WriteString(strings.Repeat(" ", subtitleIndent+23))
+	b.WriteString(strings.Repeat(" ", subtitleIndent+logoOffset))
 	runes := []rune(subtitle)
 	for i, r := range runes {
 		color := tailColors[i*len(tailColors)/len(runes)]
@@ -351,7 +419,7 @@ func subtitleWideColored() string {
 }
 
 // versionPadWide is versionPad's logo-screen twin: it lands the tag's last
-// character on column composedWidth (76) — the wordmark's right edge in
+// character on column composedWidth (82) — the wordmark's right edge in
 // the wider field — instead of splashWidth (53).
 func versionPadWide() string {
 	pad := composedWidth - dwidth(versionTag())
@@ -369,12 +437,12 @@ func versionLineWideColored() string {
 	return versionPadWide() + colorRun(versionTag(), tagColor, false)
 }
 
-// logoSplashPlain is the 13-line logo screen: a blank line, the 9 composed
-// rows (robot beside the vertically-centred wordmark), a blank line, the
-// subtitle, and the version tag.
+// logoSplashPlain is the 16-line logo screen: a blank line, the logoRows
+// composed rows (robot beside the vertically-centred wordmark), a blank
+// line, the subtitle, and the version tag.
 func logoSplashPlain() []string {
 	lines := []string{""}
-	for row := 0; row < 9; row++ {
+	for row := 0; row < logoRows; row++ {
 		lines = append(lines, composedRowPlain(row))
 	}
 	return append(lines, "", subtitleWidePlain(), versionLineWidePlain())
@@ -385,7 +453,7 @@ func logoSplashColored() []string {
 		return logoSplashPlain()
 	}
 	lines := []string{""}
-	for row := 0; row < 9; row++ {
+	for row := 0; row < logoRows; row++ {
 		lines = append(lines, composedRowColored(row))
 	}
 	return append(lines, "", subtitleWideColored(), versionLineWideColored())

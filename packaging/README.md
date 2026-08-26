@@ -104,9 +104,18 @@ tutor doctor
 It prints one line per check and tells you what to do about anything that
 failed. Running `bash ~/tutor/install.sh` again fixes most things.
 
-If the robot beside the TUTOR wordmark on the launch screen looks broken or
-misaligned, run `TUTOR_ASCII=1 tutor` — it redraws the robot in plain
-characters and leaves everything else exactly as it was.
+If the robot beside the TUTOR wordmark on the launch screen looks broken,
+misaligned, or comes out as a grid of empty boxes, run `TUTOR_ASCII=1 tutor`
+— it redraws the robot in plain characters and leaves everything else
+exactly as it was. The robot is drawn in braille dots, which not every Mac
+has a font for, so this is a normal thing to need rather than a sign that
+anything is wrong with your install. To make it permanent, add
+`export TUTOR_ASCII=1` to your `~/.zshrc`.
+
+The robot only appears at all if your terminal window is at least 84
+columns wide. Narrower than that and you get the TUTOR wordmark on its own,
+which is not a fault either — just make the window wider if you want the
+robot back.
 
 ## Keeping it up to date
 
