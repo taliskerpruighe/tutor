@@ -48,8 +48,9 @@ SUB_E=$(c 81)
 TAG_COL=$(c 81)
 
 SUB='A G E N T I C   A I   C R A S H   C O U R S E'
-IND='     '   # the artwork's letters start one column in; the subtitle
-              # sits five columns in to match.
+IND='                         '   # 25 spaces: the robot's 17 columns, the
+              # 3-column gutter, and the wordmark field's own 5-column
+              # indent (matches Go's subtitleIndent+logoOffset).
 
 # ===========================================================================
 # The F4 letterforms, a glyph at a time. Colouring a letter differently from
@@ -77,20 +78,17 @@ glyph() {
     esac
 }
 
-# One colour per letter. Give it five.
-by_letter() {
-    r=1
-    while [ "$r" -le 5 ]; do
-        printf ' '
-        i=1
-        for L in T U T O R; do
-            eval "col=\${$i}"
-            printf '%s%s%s' "$col" "$(glyph "$L" "$r")" "$R"
-            [ "$i" -lt 5 ] && printf '   '
-            i=$((i + 1))
-        done
-        printf '\n'
-        r=$((r + 1))
+# One row of the wordmark, coloured per letter. row is 1..5, matching the
+# glyph() row numbering above; the caller passes one colour per letter.
+wordmark_row() {
+    row=$1; shift
+    printf ' '
+    i=1
+    for L in T U T O R; do
+        eval "col=\${$i}"
+        printf '%s%s%s' "$col" "$(glyph "$L" "$row")" "$R"
+        [ "$i" -lt 5 ] && printf '   '
+        i=$((i + 1))
     done
 }
 
@@ -119,13 +117,92 @@ spread() {
 }
 
 # ===========================================================================
-# The screen itself: blank, five artwork rows, blank, subtitle, version tag.
+# The robot, a braille row at a time. Braille (U+2800-28FF) packs 2x4 dots
+# into every cell, which is what lets a 17x8 box hold the antenna, two open
+# eyes, the ear tabs and the "!?" -- four times the vertical detail of the
+# half blocks the wordmark is built from.
+#
+# Unlike those half blocks, braille is NOT proven wherever the wordmark
+# renders: it is outside the Nerd Fonts repertoire, so the terminal draws it
+# from whatever fallback font the machine has (lab/glyph-blowup/NOTES.md).
+# If it looks wrong here, that is a font question, not a script bug.
+#
+# These rows are copied byte-for-byte from
+# lab/glyph-blowup/full-braille-8r.txt -- never retyped by eye, and here
+# that matters more than usual: the blank cells are U+2800 BRAILLE PATTERN
+# BLANK, not spaces. They are invisible, they are not whitespace, and
+# nothing in an editor will show you when one has been lost.
+#
+# Colour is headColors -- the wordmark's own five stops -- swept top to
+# bottom down the rows instead of left to right across the letters, so the
+# crown opens on the same 81 the T beside it opens on and the jaw arrives at
+# the same 209 the R closes on. Mirrors robotColors in go/splash.go.
+# ===========================================================================
+
+robot_color() {
+    case "$1" in
+        0|1)   c 81  ;;
+        2|3)   c 115 ;;
+        4)     c 150 ;;
+        5|6)   c 215 ;;
+        7)     c 209 ;;
+    esac
+}
+
+robot_row() {
+    case "$1" in
+        0) printf '⠀⠀⠀⠀⠀⠀⠀⣾⣿⣷⠀⢠⡄⠤⢤⡄⠀' ;;
+        1) printf '⠀⠀⠀⠀⠀⠀⠀⢹⣿⡏⠀⢸⡇⠀⡾⠃⠀' ;;
+        2) printf '⠀⠀⠀⣠⣶⣾⣿⣿⣿⣿⣿⠠⠄⠀⠄⠀⠀' ;;
+        3) printf '⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣦⠀⠀' ;;
+        4) printf '⢀⣸⣿⡿⠛⠛⢿⣿⣿⣿⡿⠛⠛⢿⣿⣇⡀' ;;
+        5) printf '⣿⣿⣿⡀⠀⠀⢀⣿⣿⣿⡀⠀⠀⢀⣿⣿⣿' ;;
+        6) printf '⠿⢿⣿⣷⣦⣴⣾⣿⣿⣿⣷⣦⣴⣾⣿⡿⠿' ;;
+        7) printf '⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀' ;;
+    esac
+}
+
+# One full row of the logo screen: the robot (17 columns, its own colour),
+# a 3-column gutter, then either a wordmark row (composed rows 2-6, which
+# are glyph rows 1-5) or 53 spaces of filler (composed rows 0, 1 and 7), so
+# every one of the 8 rows this prints is 73 columns wide -- 17 robot + 3
+# gutter + 53 wordmark field -- exactly mirroring composedRowColored in
+# go/splash.go.
+composed_row() {
+    # cr (not "row") on purpose: this script has no variable scoping, and
+    # wordmark_row below also assigns its own argument to a plain variable
+    # -- sharing the name "row" here let that inner assignment clobber the
+    # outer 0..7 loop counter in the main body, freezing the loop on row 2.
+    cr=$1
+    rc=$(robot_color "$cr")
+    printf '%s%s' "$B" "$rc"
+    robot_row "$cr"
+    printf '%s' "$R"
+    printf '   '
+    case "$cr" in
+        2) wordmark_row 1 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        3) wordmark_row 2 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        4) wordmark_row 3 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        5) wordmark_row 4 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        6) wordmark_row 5 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        *) printf '%53s' '' ;;
+    esac
+    printf '\n'
+}
+
+# ===========================================================================
+# The screen itself: blank, 8 composed rows (robot beside the wordmark),
+# blank, subtitle, version tag.
 # ===========================================================================
 
 printf '\n'
-by_letter "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R"
+n=0
+while [ "$n" -le 7 ]; do
+    composed_row "$n"
+    n=$((n + 1))
+done
 printf '\n'
 printf '%s' "$IND"
 spread "$SUB" "$SUB_A" "$SUB_B" "$SUB_C" "$SUB_D" "$SUB_E"
 printf '\n'
-printf '%46s%s%s%s\n' '' "$TAG_COL" 'v0.2.14' "$R"
+printf '%66s%s%s%s\n' '' "$TAG_COL" 'v0.2.14' "$R"
