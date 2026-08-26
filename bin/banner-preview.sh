@@ -48,8 +48,9 @@ SUB_E=$(c 81)
 TAG_COL=$(c 81)
 
 SUB='A G E N T I C   A I   C R A S H   C O U R S E'
-IND='     '   # the artwork's letters start one column in; the subtitle
-              # sits five columns in to match.
+IND='                            '   # 28 spaces: the robot's 20 columns, the
+              # 3-column gutter, and the wordmark field's own 5-column indent
+              # (matches Go's subtitleIndent+23).
 
 # ===========================================================================
 # The F4 letterforms, a glyph at a time. Colouring a letter differently from
@@ -77,20 +78,17 @@ glyph() {
     esac
 }
 
-# One colour per letter. Give it five.
-by_letter() {
-    r=1
-    while [ "$r" -le 5 ]; do
-        printf ' '
-        i=1
-        for L in T U T O R; do
-            eval "col=\${$i}"
-            printf '%s%s%s' "$col" "$(glyph "$L" "$r")" "$R"
-            [ "$i" -lt 5 ] && printf '   '
-            i=$((i + 1))
-        done
-        printf '\n'
-        r=$((r + 1))
+# One row of the wordmark, coloured per letter. row is 1..5, matching the
+# glyph() row numbering above; the caller passes one colour per letter.
+wordmark_row() {
+    row=$1; shift
+    printf ' '
+    i=1
+    for L in T U T O R; do
+        eval "col=\${$i}"
+        printf '%s%s%s' "$col" "$(glyph "$L" "$row")" "$R"
+        [ "$i" -lt 5 ] && printf '   '
+        i=$((i + 1))
     done
 }
 
@@ -119,38 +117,85 @@ spread() {
 }
 
 # ===========================================================================
-# The robot crest: U+F16A0, nf-md-robot-confused, a Nerd Fonts glyph. It is
-# written as its four UTF-8 bytes rather than pasted in as a character, so
-# this script survives being edited by anything that mishandles astral-plane
-# codepoints. Bold, colour 81 — the cyan that opens the headline sweep and
-# closes the subtitle's, so the mark bookends the palette rather than adding
-# a sixth colour to it.
+# The robot, a half-block row at a time. Half blocks (▀ U+2580, ▄ U+2584,
+# █ U+2588) are the same Block Elements repertoire the wordmark itself is
+# built from (█), so the art cannot fail to render anywhere the wordmark
+# succeeds -- no special font, no font detection.
 #
-# It sits alone on its line, centred over the 53-column artwork field, with
-# a blank line beneath it so it reads as a crest above the wordmark and not
-# as a sixth letter row. Go's splash.go computes that pad from splashWidth;
-# here it is written out, because this file is the mock and that one is
-# authoritative.
+# These rows are copied byte-for-byte from lab/title-logo/robot-primary.txt
+# -- never retyped by eye. Every row carries significant leading AND
+# trailing spaces to reach exactly 20 columns; row 8 in particular ends in
+# five trailing spaces that are invisible but load-bearing. Do not "fix" the
+# leading-space pattern either: rows 6 and 7 start at column 0 by design,
+# with no leading spaces at all, while every other row has some.
+#
+# Row 0 (the antenna bulb) is bold colour 209, amber, the same "warn" shade
+# used elsewhere in the reader. Rows 1-8 (the chassis) are bold colour 81,
+# the same cyan that opens the headline sweep, so the robot begins the
+# wordmark's left-to-right 81->209 sweep and the bulb echoes its far end.
 # ===========================================================================
 
-crest() {
-    printf '%26s' ''
-    printf '%s%s' "$B" "$TAG_COL"
-    printf '\xf3\xb1\x9a\xa0'
-    printf '%s\n' "$R"
+ROBOT_BULB=$(c 209)
+ROBOT_CHASSIS=$(c 81)
+
+robot_row() {
+    case "$1" in
+        0) printf '        ████        ' ;;
+        1) printf '  ▄▄▄▄▄▄▄██▄▄▄▄▄▄▄  ' ;;
+        2) printf '  ███▀▀▀████▀▀▀███  ' ;;
+        3) printf '  ███   ████   ███  ' ;;
+        4) printf '  ████▀▀▀▀▀▀▀▀████  ' ;;
+        5) printf '  ▀▀▀▀▀▀████▀▀▀▀▀▀  ' ;;
+        6) printf '██  ████▀▀▀▀████  ██' ;;
+        7) printf '▀▀  ████▄▄▄▄████  ▀▀' ;;
+        8) printf '     ▄███  ███▄     ' ;;
+    esac
+}
+
+# One full row of the logo screen: the robot (20 columns, its own colour),
+# a 3-column gutter, then either a wordmark row (composed rows 2-6, which
+# are glyph rows 1-5) or 53 spaces of filler (composed rows 0, 1, 7 and 8),
+# so every one of the 9 rows this prints is 76 columns wide -- 20 robot + 3
+# gutter + 53 wordmark field -- exactly mirroring composedRowColored in
+# go/splash.go.
+composed_row() {
+    # cr (not "row") on purpose: this script has no variable scoping, and
+    # wordmark_row below also assigns its own argument to a plain variable
+    # -- sharing the name "row" here let that inner assignment clobber the
+    # outer 0..8 loop counter in the main body, freezing the loop on row 2.
+    cr=$1
+    case "$cr" in
+        0) rc="$ROBOT_BULB" ;;
+        *) rc="$ROBOT_CHASSIS" ;;
+    esac
+    printf '%s%s' "$B" "$rc"
+    robot_row "$cr"
+    printf '%s' "$R"
+    printf '   '
+    case "$cr" in
+        2) wordmark_row 1 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        3) wordmark_row 2 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        4) wordmark_row 3 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        5) wordmark_row 4 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        6) wordmark_row 5 "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R" ;;
+        *) printf '%53s' '' ;;
+    esac
+    printf '\n'
 }
 
 # ===========================================================================
-# The screen itself: blank, crest, blank, five artwork rows, blank, subtitle,
-# version tag.
+# The screen itself: blank, 9 composed rows (robot beside the wordmark),
+# blank, subtitle, version tag.
 # ===========================================================================
 
 printf '\n'
-crest
-printf '\n'
-by_letter "$B$HEAD_T1" "$B$HEAD_U" "$B$HEAD_T2" "$B$HEAD_O" "$B$HEAD_R"
+n=0
+while [ "$n" -le 8 ]; do
+    composed_row "$n"
+    n=$((n + 1))
+done
 printf '\n'
 printf '%s' "$IND"
 spread "$SUB" "$SUB_A" "$SUB_B" "$SUB_C" "$SUB_D" "$SUB_E"
 printf '\n'
-printf '%46s%s%s%s\n' '' "$TAG_COL" 'v0.2.14' "$R"
+printf '%69s%s%s%s\n' '' "$TAG_COL" 'v0.2.14' "$R"

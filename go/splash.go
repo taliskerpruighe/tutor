@@ -1,5 +1,8 @@
 // The launch screen for `tutor` — five seconds of block-letter artwork,
-// modelled on oh-my-zsh's update banner.
+// modelled on oh-my-zsh's update banner. At logoThreshold columns and up, a
+// half-block robot stands beside the TUTOR wordmark, drawn from the same
+// Block Elements repertoire (█, plus ▀ and ▄) the wordmark itself already
+// uses, so it needs no Nerd Font and no font detection.
 //
 // It is printed in cmdRun before NewTerminal.Start puts the tty into raw
 // mode and switches to the alternate screen (term.go:264-291). That ordering
@@ -110,35 +113,99 @@ const splashWidth = 53
 const narrowThreshold = 55
 
 // --------------------------------------------------------------------------
-// The robot crest
+// The robot logo
 //
-// robotRune is U+F16A0, nf-md-robot-confused: a Material Design Icons glyph
-// carried by Nerd Fonts and by nothing else. It is written here as an
-// escape and never as the character itself, so an editor, a patch tool or
-// an encoding round trip cannot mangle it into a different Private Use Area
-// codepoint that would still render as *something* and so never be caught
-// by eye. TestGlyphCodepoint is what enforces that.
-//
-// The assumption it rests on is that the reader's terminal is set to a Nerd
-// Font, which content/03-the-cli/13-powerline-themes.md states outright:
-// the terminal is set to Hack Nerd Font rather than plain Hack, and Hack
-// Nerd Font contains this codepoint. A TUI cannot query the active font's
-// coverage, so there is no detection to do here — TUTOR_ASCII below is the
-// single explicit escape hatch.
-const robotRune = '\U000F16A0'
+// A 9-row x 20-column half-block robot stands beside the TUTOR wordmark,
+// replacing the single Nerd Font crest rune that used to float above it.
+// Half blocks (▀ U+2580, ▄ U+2584, █ U+2588) turn the 20x9 cell budget into
+// a 20x18 subpixel grid, drawn from the same Block Elements repertoire the
+// wordmark itself already uses (█), so the logo cannot fail to render
+// anywhere the wordmark succeeds — no font detection, no Nerd Font
+// dependency. A plain-ASCII tier exists as the explicit TUTOR_ASCII
+// opt-in for environments where block glyphs render badly.
+// --------------------------------------------------------------------------
 
-// robotGlyph is the same codepoint as a string, for the width arithmetic:
-// dwidth takes a string where charWidth takes a rune, and the centring
-// below needs the former.
-const robotGlyph = string(robotRune)
+// robotArt is the half-block robot, 9 rows x 20 columns. Source of truth:
+// lab/title-logo/robot-primary.txt. Transcribed verbatim by a generator
+// script, never retyped by eye — every row carries significant leading and
+// trailing spaces that a stripping tool would silently destroy.
+var robotArt = [9]string{
+	"        ████        ",
+	"  ▄▄▄▄▄▄▄██▄▄▄▄▄▄▄  ",
+	"  ███▀▀▀████▀▀▀███  ",
+	"  ███   ████   ███  ",
+	"  ████▀▀▀▀▀▀▀▀████  ",
+	"  ▀▀▀▀▀▀████▀▀▀▀▀▀  ",
+	"██  ████▀▀▀▀████  ██",
+	"▀▀  ████▄▄▄▄████  ▀▀",
+	"     ▄███  ███▄     ",
+}
 
-// asciiOnly drops the robot crest when TUTOR_ASCII is set to any non-empty
-// value, leaving the screen exactly as it was before the glyph landed. It
-// is read once at package initialisation, the same way noColor reads
-// $NO_COLOR (term.go:77) — an os.Getenv call per line would be re-read on
-// every render for a value that cannot change mid-process, and a test that
-// wanted to exercise this path could not use os.Setenv against an init-time
-// read anyway.
+// robotAscii is the plain-ASCII robot, same box. Source of truth:
+// lab/title-logo/robot-fallback.txt. Same transcription discipline as
+// robotArt.
+var robotAscii = [9]string{
+	"        (__)        ",
+	"         ||         ",
+	"  .--------------.  ",
+	"  |  [o]    [o]  |  ",
+	"  |     ====     |  ",
+	"  '--------------'  ",
+	" __ .----------. __ ",
+	"|  ||   [##]   ||  |",
+	"'--' '--'  '--' '--'",
+}
+
+// robotRow picks the active tier's row: half-block by default, plain ASCII
+// when TUTOR_ASCII is set.
+func robotRow(row int) string {
+	if asciiOnly {
+		return robotAscii[row]
+	}
+	return robotArt[row]
+}
+
+// robotColors is one colour per robot row, bold, mirroring how headColors
+// works for the wordmark: row 0 is the antenna bulb — the robot's "power
+// light", warn amber; the rest is chassis in the same cyan as the T beside
+// it, so the robot begins the wordmark's left-to-right 81->209 sweep and
+// the bulb echoes the sweep's far end.
+var robotColors = [9]int{209, 81, 81, 81, 81, 81, 81, 81, 81}
+
+// composedWidth is the logo screen's row width: a 20-column robot, a
+// 3-column gutter, and the 53-column wordmark field.
+const composedWidth = 76 // 20 + 3 + splashWidth
+
+// logoThreshold is the terminal width at and above which the robot is
+// shown beside the wordmark. This is deliberately NOT composedWidth (76):
+// at a real 76-column terminal every composed row (rows 0,1,7,8 in
+// particular, padded with 53 trailing spaces) measures exactly 76
+// characters and lands flush on the right margin, where deferred-autowrap
+// behaviour is terminal-dependent and can insert a spurious blank line
+// between every row. logoThreshold is set two columns higher than
+// composedWidth to keep the last printed column off the margin — the same
+// two-column slack the original author already used between
+// narrowThreshold (55) and splashWidth (53). detectWidth's 80-column
+// default clears this with room to spare; 76- and 77-column terminals
+// correctly fall through to the wordmark-only mid screen instead.
+const logoThreshold = 78
+
+// wordmarkTopRow is the composed row (0-indexed, of 9) on which the
+// 5-row wordmark starts, centring it against the 9-row robot.
+const wordmarkTopRow = 2
+
+// robotGutter is the horizontal gap between the robot's right edge and the
+// wordmark field: wide enough (with the field's own 1-column leading
+// margin) that the robot cannot read as a sixth letter.
+const robotGutter = "   "
+
+// asciiOnly selects the plain-ASCII robot tier when TUTOR_ASCII is set to
+// any non-empty value; the default is the half-block tier. It is read once
+// at package initialisation, the same way noColor reads $NO_COLOR
+// (term.go:77) — an os.Getenv call per line would be re-read on every
+// render for a value that cannot change mid-process, and a test that
+// wanted to exercise this path could not use os.Setenv against an
+// init-time read anyway.
 var asciiOnly = os.Getenv("TUTOR_ASCII") != ""
 
 // --------------------------------------------------------------------------
@@ -195,44 +262,29 @@ func artworkRowColored(row int) string {
 	return b.String()
 }
 
-// glyphPad centres the crest over a field of the given width. The pad is
-// always computed, never written down: artworkRowPlain opens with a single
-// space, so splashWidth's extra column is a LEADING margin and the visible
-// wordmark occupies columns 2 through 53. Centring over the field and
-// centring over the wordmark agree at these numbers only by coincidence,
-// so if the margin, splashWidth or the glyph's measured width ever moves,
-// this expression and the test that mirrors it move together.
-func glyphPad(field int) string {
-	pad := (field - dwidth(robotGlyph)) / 2
-	if pad < 0 {
-		pad = 0
+// composedRowPlain builds one row (0..8) of the logo screen: the robot row,
+// the gutter, then either the wordmark row (rows wordmarkTopRow through
+// wordmarkTopRow+4) or a full 53-space filler. The filler rows are
+// deliberately full splashWidth-space strings so every one of the 9
+// composed rows measures exactly composedWidth, keeping the layout check a
+// single uniform assertion.
+func composedRowPlain(row int) string {
+	right := strings.Repeat(" ", splashWidth)
+	if row >= wordmarkTopRow && row < wordmarkTopRow+5 {
+		right = artworkRowPlain(row - wordmarkTopRow)
 	}
-	return strings.Repeat(" ", pad)
+	return robotRow(row) + robotGutter + right
 }
 
-// glyphLinePlain is the crest centred over the full artwork. It is
-// deliberately alone on its line and outside every exact-width assertion:
-// charWidth measures U+F16A0 as one column (the Private Use Area is in
-// neither range table in width_table.go), but a Nerd Font glyph can render
-// wider than one cell in some terminals, and a line of its own is the only
-// place where that drift cannot pull anything else out of alignment.
-func glyphLinePlain() string {
-	return glyphPad(splashWidth) + robotGlyph
-}
-
-func glyphLineColored() string {
-	return glyphPad(splashWidth) + colorRun(robotGlyph, tagColor, true)
-}
-
-// narrowGlyphLinePlain centres the crest over the bare five-character word
-// the narrow fallback prints, which starts at column 1 with no padding of
-// its own.
-func narrowGlyphLinePlain() string {
-	return glyphPad(dwidth(narrowWord())) + robotGlyph
-}
-
-func narrowGlyphLineColored() string {
-	return glyphPad(dwidth(narrowWord())) + colorRun(robotGlyph, tagColor, true)
+// composedRowColored is composedRowPlain's coloured twin. It wraps only the
+// robot row in its own colour; the wordmark's existing per-letter colouring
+// in artworkRowColored is untouched.
+func composedRowColored(row int) string {
+	right := strings.Repeat(" ", splashWidth)
+	if row >= wordmarkTopRow && row < wordmarkTopRow+5 {
+		right = artworkRowColored(row - wordmarkTopRow)
+	}
+	return colorRun(robotRow(row), robotColors[row], true) + robotGutter + right
 }
 
 func subtitlePlain() string {
@@ -275,11 +327,77 @@ func versionLineColored() string {
 	return versionPad() + colorRun(versionTag(), tagColor, false)
 }
 
+// --------------------------------------------------------------------------
+// Logo screen (logoThreshold columns and up) — robot beside the wordmark
+// --------------------------------------------------------------------------
+
+// subtitleWidePlain is the subtitle shifted right by 23 columns from its
+// mid-screen position, so it keeps its position relative to the wordmark
+// now that the wordmark's visible letters start at column 25 (20 robot + 3
+// gutter + 1 field margin + 1) instead of column 2.
+func subtitleWidePlain() string {
+	return strings.Repeat(" ", subtitleIndent+23) + subtitle
+}
+
+func subtitleWideColored() string {
+	var b strings.Builder
+	b.WriteString(strings.Repeat(" ", subtitleIndent+23))
+	runes := []rune(subtitle)
+	for i, r := range runes {
+		color := tailColors[i*len(tailColors)/len(runes)]
+		b.WriteString(colorRun(string(r), color, false))
+	}
+	return b.String()
+}
+
+// versionPadWide is versionPad's logo-screen twin: it lands the tag's last
+// character on column composedWidth (76) — the wordmark's right edge in
+// the wider field — instead of splashWidth (53).
+func versionPadWide() string {
+	pad := composedWidth - dwidth(versionTag())
+	if pad < 0 {
+		pad = 0
+	}
+	return strings.Repeat(" ", pad)
+}
+
+func versionLineWidePlain() string {
+	return versionPadWide() + versionTag()
+}
+
+func versionLineWideColored() string {
+	return versionPadWide() + colorRun(versionTag(), tagColor, false)
+}
+
+// logoSplashPlain is the 13-line logo screen: a blank line, the 9 composed
+// rows (robot beside the vertically-centred wordmark), a blank line, the
+// subtitle, and the version tag.
+func logoSplashPlain() []string {
+	lines := []string{""}
+	for row := 0; row < 9; row++ {
+		lines = append(lines, composedRowPlain(row))
+	}
+	return append(lines, "", subtitleWidePlain(), versionLineWidePlain())
+}
+
+func logoSplashColored() []string {
+	if noColor {
+		return logoSplashPlain()
+	}
+	lines := []string{""}
+	for row := 0; row < 9; row++ {
+		lines = append(lines, composedRowColored(row))
+	}
+	return append(lines, "", subtitleWideColored(), versionLineWideColored())
+}
+
+// --------------------------------------------------------------------------
+// Mid screen (narrowThreshold up to logoThreshold columns) — wordmark only,
+// no robot: the band is too narrow for one that would not read as a smudge.
+// --------------------------------------------------------------------------
+
 func fullSplashPlain() []string {
 	lines := []string{""}
-	if !asciiOnly {
-		lines = append(lines, glyphLinePlain(), "")
-	}
 	for row := 0; row < 5; row++ {
 		lines = append(lines, artworkRowPlain(row))
 	}
@@ -291,9 +409,6 @@ func fullSplashColored() []string {
 		return fullSplashPlain()
 	}
 	lines := []string{""}
-	if !asciiOnly {
-		lines = append(lines, glyphLineColored(), "")
-	}
 	for row := 0; row < 5; row++ {
 		lines = append(lines, artworkRowColored(row))
 	}
@@ -311,11 +426,7 @@ func narrowWord() string {
 }
 
 func narrowSplashPlain() []string {
-	lines := []string{}
-	if !asciiOnly {
-		lines = append(lines, narrowGlyphLinePlain())
-	}
-	return append(lines, narrowWord(), narrowSubtitle, versionTag())
+	return []string{narrowWord(), narrowSubtitle, versionTag()}
 }
 
 func narrowSplashColored() []string {
@@ -333,11 +444,7 @@ func narrowSplashColored() []string {
 		subLine.WriteString(colorRun(string(r), color, false))
 	}
 	verLine := colorRun(versionTag(), tagColor, false)
-	lines := []string{}
-	if !asciiOnly {
-		lines = append(lines, narrowGlyphLineColored())
-	}
-	return append(lines, wordLine.String(), subLine.String(), verLine)
+	return []string{wordLine.String(), subLine.String(), verLine}
 }
 
 // --------------------------------------------------------------------------
@@ -356,13 +463,20 @@ func detectWidth() int {
 	return cols
 }
 
-// splashLines picks the full artwork or the narrow fallback for the given
-// terminal width.
+// splashLines picks the logo screen, the mid (wordmark-only) screen, or the
+// narrow fallback for the given terminal width. Do NOT raise
+// narrowThreshold to make room for logoThreshold — demoting 55-to-77-column
+// terminals to the plain-text fallback would be a new bug shipped with
+// this one.
 func splashLines(width int) []string {
-	if width < narrowThreshold {
+	switch {
+	case width >= logoThreshold:
+		return logoSplashColored()
+	case width >= narrowThreshold:
+		return fullSplashColored()
+	default:
 		return narrowSplashColored()
 	}
-	return fullSplashColored()
 }
 
 // printSplash writes the launch screen for width columns.
