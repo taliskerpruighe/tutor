@@ -2,6 +2,26 @@
   {
     "id": 1,
     "description": "create new title screen",
-    "status": "Closed"
+    "status": "Open"
+  },
+  {
+    "id": 2,
+    "description": "create tmux sidecar agent",
+    "status": "Open"
+  },
+  {
+    "id": 3,
+    "description": "create interactive tutorials/quizzes/practices",
+    "status": "Open"
+  },
+  {
+    "id": 4,
+    "description": "add image support",
+    "status": "Open"
+  },
+  {
+    "id": 5,
+    "description": "add an image pipeline",
+    "status": "Open"
   }
 ]
