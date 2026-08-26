@@ -1,5 +1,15 @@
 # Changelog
 
+## MkI_v0.2.18
+<!-- git-ops:from b47ef9c81be2bfdfdea02cc596a70618ecd16b58 -->
+
+- chore(lab): close TODO.json item 1
+- test: update 8 files across bin, go, tui
+- build: update 6 files in scope
+- feat(lab/glyph-blowup): add glyph blowup rendering experiment
+- feat: add title-logo assets and update 9 files
+- test: update 7 files across bin, go, packaging, tui
+
 ## MkI_v0.2.17
 <!-- git-ops:from 45136a74057326272ac9193c6d8eec58a5fe44d9 -->
 
