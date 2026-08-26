@@ -123,10 +123,13 @@ const narrowThreshold = 55
 //
 // A logoRows x logoCols braille robot head stands beside the TUTOR
 // wordmark. Braille (U+2800-28FF) packs 2x4 dots into every cell, so a
-// 26x12 cell budget carries a 52x48 dot grid — enough resolution for the
+// 17x8 cell budget carries a 34x32 dot grid — enough resolution for the
 // antenna, the two open eyes, the ear tabs and the "!?" off the robot's
 // shoulder to survive downsampling, none of which the previous half-block
-// robot could hold.
+// robot could hold. The logo was first drawn at 26x12 and read as
+// overbearing beside a 5-row wordmark; 8 rows is the same art re-rendered,
+// not a crop, so nothing about the shape or the threshold arithmetic here
+// is inherited from that size.
 //
 // The cost is font coverage. Braille is not part of the Nerd Fonts
 // repertoire and is not in the Block Elements range the wordmark is built
@@ -144,11 +147,11 @@ const narrowThreshold = 55
 // than repeated as literals because a mismatch between the array bounds
 // and a loop bound is exactly the kind of edit that compiles and then
 // prints a ragged banner.
-const logoRows = 12
-const logoCols = 26
+const logoRows = 8
+const logoCols = 17
 
 // robotArt is the braille robot head, logoRows x logoCols. Source of truth:
-// lab/glyph-blowup/full-braille-12r.txt (rendered from Nerd Font U+F169F by
+// lab/glyph-blowup/full-braille-8r.txt (rendered from Nerd Font U+F169F by
 // lab/glyph-blowup/gen.py). Transcribed verbatim by a generator script,
 // never retyped by eye — and here that discipline matters more than it did
 // for the half blocks: the blank cells are U+2800 BRAILLE PATTERN BLANK,
@@ -156,45 +159,35 @@ const logoCols = 26
 // to an editor's trailing-whitespace highlighting, and to gofmt alike.
 // Only TestArtTableDimensions would catch it.
 var robotArt = [logoRows]string{
-	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣦⡀⠀⢀⣤⠀⣤⣤⣤⡀⠀⠀",
-	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⠃⠀⢸⣿⠀⠉⢉⣹⡇⠀⠀",
-	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⠁⠀⠀⢸⣿⠀⠀⣿⡟⠁⠀⠀",
-	"⠀⠀⠀⠀⠀⢀⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⡇⢀⣄⠀⠀⣠⡄⠀⠀⠀",
-	"⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣀⣉⣀⣀⣈⠁⠀⠀⠀",
-	"⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀",
-	"⠀⠀⢸⣿⣿⣿⠿⠛⠻⢿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠿⣿⣿⣿⡇⠀⠀",
-	"⣴⣶⣾⣿⣿⠁⠀⠀⠀⠀⢻⣿⣿⣿⣿⡏⠀⠀⠀⠀⠈⣿⣿⣷⣶⣦",
-	"⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿",
-	"⣿⣿⣿⣿⣿⣷⣤⣤⣤⣴⣿⣿⣿⣿⣿⣿⣦⣤⣤⣤⣾⣿⣿⣿⣿⣿",
-	"⠈⠉⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠉⠁",
-	"⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⣾⣿⣷⠀⢠⡄⠤⢤⡄⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⢹⣿⡏⠀⢸⡇⠀⡾⠃⠀",
+	"⠀⠀⠀⣠⣶⣾⣿⣿⣿⣿⣿⠠⠄⠀⠄⠀⠀",
+	"⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣦⠀⠀",
+	"⢀⣸⣿⡿⠛⠛⢿⣿⣿⣿⡿⠛⠛⢿⣿⣇⡀",
+	"⣿⣿⣿⡀⠀⠀⢀⣿⣿⣿⡀⠀⠀⢀⣿⣿⣿",
+	"⠿⢿⣿⣷⣦⣴⣾⣿⣿⣿⣷⣦⣴⣾⣿⡿⠿",
+	"⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀",
 }
 
-// robotAscii is the plain-ASCII robot, same box: the 9x20 half-block-era
-// fallback art from lab/title-logo/robot-fallback.txt, centred in the
-// larger logoRows x logoCols field with ordinary ASCII spaces (never
-// U+2800, which would defeat the entire point of this tier). Same
-// transcription discipline as robotArt.
+// robotAscii is the plain-ASCII robot, same box. Source of truth:
+// lab/title-logo/robot-fallback-8r.txt, drawn to fill logoRows x logoCols
+// exactly — there is no padding tier here, every row is 17 columns of the
+// art itself. Its predecessor was 9x20 art padded into a 12x26 field; at
+// 8x17 there is no slack to pad with, so the drawing carries the whole
+// budget: antenna, head with both eyes open, ear tabs and body.
 //
-// The vertical padding is 2 rows above and 1 below, not the other way
-// round: 9 rows of art in a 12-row field leaves 3 rows of slack, and
-// putting 2 of them on top lands this robot's own centre on composed row 6,
-// the same row the wordmark's middle stripe sits on. Padding the other way
-// would leave the wordmark visibly low against the ASCII tier while sitting
-// correctly against the braille one.
+// Every blank in this table is an ordinary ASCII space, never U+2800, which
+// would defeat the entire point of this tier. Same transcription discipline
+// as robotArt: copied from the art file by script, never retyped by eye.
 var robotAscii = [logoRows]string{
-	"                          ",
-	"                          ",
-	"           (__)           ",
-	"            ||            ",
-	"     .--------------.     ",
-	"     |  [o]    [o]  |     ",
-	"     |     ====     |     ",
-	"     '--------------'     ",
-	"    __ .----------. __    ",
-	"   |  ||   [##]   ||  |   ",
-	"   '--' '--'  '--' '--'   ",
-	"                          ",
+	"      (__)       ",
+	"       ||        ",
+	" .-------------. ",
+	" | [o]     [o] | ",
+	" |     ===     | ",
+	" '-------------' ",
+	"__ .---------. __",
+	"|_||  [###]  ||_|",
 }
 
 // robotRow picks the active tier's row: half-block by default, plain ASCII
@@ -220,12 +213,14 @@ func robotRow(row int) string {
 // per-row values are readable here, and TestRobotColorsPalette pins it to
 // the arithmetic.
 var robotColors = [logoRows]int{
-	81, 81, 81, 115, 115, 150, 150, 150, 215, 215, 209, 209,
+	81, 81, 115, 115, 150, 215, 215, 209,
 }
 
-// composedWidth is the logo screen's row width: a 26-column robot, a
-// 3-column gutter, and the 53-column wordmark field.
-const composedWidth = 82 // 26 + 3 + splashWidth
+// composedWidth is the logo screen's row width: a 17-column robot, a
+// 3-column gutter, and the 53-column wordmark field. It is computed from
+// those three, not written as a literal, because the literal is exactly
+// what drifts when the art is re-rendered at another size.
+const composedWidth = logoCols + len(robotGutter) + splashWidth // 17 + 3 + 53
 
 // logoThreshold is the terminal width at and above which the robot is
 // shown beside the wordmark. This is deliberately NOT composedWidth (82):
@@ -238,23 +233,23 @@ const composedWidth = 82 // 26 + 3 + splashWidth
 // two-column slack the original author already used between
 // narrowThreshold (55) and splashWidth (53).
 //
-// Note what this costs, because it is a real narrowing: the braille logo is
-// six columns wider than the half-block robot it replaced, so the threshold
-// moved 78 -> 84 and detectWidth's 80-column default no longer clears it.
-// An 80-column terminal — the stock macOS Terminal default — now gets the
-// wordmark-only mid screen, not the logo. Widening the band again means
-// narrowing the art, not lowering this number: 26 + 3 + 53 cannot be made
-// to fit in 80 columns, and lab/glyph-blowup/gen.py's art() takes an
-// explicit cols argument for exactly that kind of re-render.
-const logoThreshold = 84
+// At the logo's first size (26x12) the composed row was 82 columns and the
+// threshold sat at 84, which put it above detectWidth's 80-column fallback:
+// a stock macOS Terminal got the wordmark-only mid screen instead of the
+// logo. Re-rendering the art at 8 rows took the composed row to 17 + 3 + 53
+// = 73 and the threshold to 75, so 80 columns clears it again and the
+// default width gets the full logo screen. That recovery is asserted, not
+// assumed — see TestSplashLinesWidthBands' 80-column case.
+const logoThreshold = 75
 
 // wordmarkTopRow is the composed row (0-indexed, of logoRows) on which the
-// 5-row wordmark starts, centring it against the taller robot. With 12 rows
-// and a 5-row wordmark there are 7 rows of slack, which does not divide
-// evenly; 4 above and 3 below puts the wordmark's optical centre level with
-// the robot's eyes rather than with its jaw, since the braille head carries
-// its ink low (rows 7-11 are the solid chin and shoulders).
-const wordmarkTopRow = 4
+// 5-row wordmark starts, centring it against the taller robot. With 8 rows
+// and a 5-row wordmark there are 3 rows of slack, which does not divide
+// evenly; 2 above and 1 below lands the wordmark's middle stripe on
+// composed row 4, which is the robot's eye row, rather than a row lower on
+// its jaw — the braille head still carries its ink low (rows 6-7 are the
+// solid chin and shoulders).
+const wordmarkTopRow = 2
 
 // logoOffset is how far the whole wordmark field sits to the right of where
 // it sits on the mid screen: the robot's width plus the gutter. Everything
@@ -333,7 +328,7 @@ func artworkRowColored(row int) string {
 // composedRowPlain builds one row (0..logoRows-1) of the logo screen: the robot row,
 // the gutter, then either the wordmark row (rows wordmarkTopRow through
 // wordmarkTopRow+4) or a full 53-space filler. The filler rows are
-// deliberately full splashWidth-space strings so every one of the 9
+// deliberately full splashWidth-space strings so every one of the logoRows
 // composed rows measures exactly composedWidth, keeping the layout check a
 // single uniform assertion.
 func composedRowPlain(row int) string {
@@ -401,7 +396,7 @@ func versionLineColored() string {
 
 // subtitleWidePlain is the subtitle shifted right by logoOffset columns
 // from its mid-screen position, so it keeps its position relative to the
-// wordmark now that the wordmark's visible letters start at column 31 (26
+// wordmark now that the wordmark's visible letters start at column 22 (17
 // robot + 3 gutter + 1 field margin + 1) instead of column 2.
 func subtitleWidePlain() string {
 	return strings.Repeat(" ", subtitleIndent+logoOffset) + subtitle
@@ -419,7 +414,7 @@ func subtitleWideColored() string {
 }
 
 // versionPadWide is versionPad's logo-screen twin: it lands the tag's last
-// character on column composedWidth (82) — the wordmark's right edge in
+// character on column composedWidth (73) — the wordmark's right edge in
 // the wider field — instead of splashWidth (53).
 func versionPadWide() string {
 	pad := composedWidth - dwidth(versionTag())
@@ -437,7 +432,7 @@ func versionLineWideColored() string {
 	return versionPadWide() + colorRun(versionTag(), tagColor, false)
 }
 
-// logoSplashPlain is the 16-line logo screen: a blank line, the logoRows
+// logoSplashPlain is the 12-line logo screen: a blank line, the logoRows
 // composed rows (robot beside the vertically-centred wordmark), a blank
 // line, the subtitle, and the version tag.
 func logoSplashPlain() []string {
@@ -533,7 +528,7 @@ func detectWidth() int {
 
 // splashLines picks the logo screen, the mid (wordmark-only) screen, or the
 // narrow fallback for the given terminal width. Do NOT raise
-// narrowThreshold to make room for logoThreshold — demoting 55-to-77-column
+// narrowThreshold to make room for logoThreshold — demoting 55-to-74-column
 // terminals to the plain-text fallback would be a new bug shipped with
 // this one.
 func splashLines(width int) []string {

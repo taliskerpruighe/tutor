@@ -146,7 +146,7 @@ func TestBlockCharWidth(t *testing.T) {
 // cell being one column wide; U+2800-28FF is East Asian Width "Neutral",
 // but the failure mode is identical to the block elements' — one
 // reclassification in a regenerated width_table.go and every composed row
-// silently measures 82 runes at 164 columns.
+// silently measures 73 runes at 90 columns.
 //
 // The three sampled cells are the ones the layout depends on most: the
 // blank that pads every short row, the full cell that fills the robot's
@@ -256,8 +256,8 @@ var artTables = []struct {
 }
 
 // TestArtTableDimensions is this file's proof that transcription of the art
-// from lab/glyph-blowup/full-braille-12r.txt and
-// lab/title-logo/robot-fallback.txt into splash.go was not corrupted: every
+// from lab/glyph-blowup/full-braille-8r.txt and
+// lab/title-logo/robot-fallback-8r.txt into splash.go was not corrupted: every
 // row of both tables measures exactly dwidth logoCols, in the same shape as
 // the SPEC.md §9 measurement record produced against the source files
 // themselves — that record's own figures are the superseded 20-column
@@ -301,9 +301,10 @@ func TestArtTableRuneCount(t *testing.T) {
 // fillerRows returns the composed rows that carry no wordmark, derived from
 // wordmarkTopRow rather than written out. The old hardcoded {0, 1, 7, 8}
 // was correct for a 9-row robot with the wordmark on rows 2-6 and silently
-// wrong for anything else — with 12 rows and wordmarkTopRow 4, rows 7 and 8
-// now carry wordmark and rows 9-11 do not. Deriving it means the two tests
-// below cannot disagree with splash.go about where the band sits.
+// wrong for anything else — it has since been right by accident (12 rows,
+// wordmarkTopRow 4) and wrong again (8 rows, wordmarkTopRow 2, where rows 0,
+// 1 and 7 are the filler). Deriving it means the two tests below cannot
+// disagree with splash.go about where the band sits.
 func fillerRows() []int {
 	var rows []int
 	for row := 0; row < logoRows; row++ {
@@ -469,17 +470,18 @@ func firstContentLine(lines []string) string {
 // comment).
 //
 // Each width's line count and first-content-row width are checked together
-// because either alone is ambiguous: 83 and 55 both fall in the mid band
+// because either alone is ambiguous: 74 and 55 both fall in the mid band
 // and share a line count of 9, but only the row width also confirms
-// composedWidth wasn't reached; 84 and 100 share both numbers, proving
+// composedWidth wasn't reached; 75 and 100 share both numbers, proving
 // anything at or above logoThreshold lands on the same screen.
 //
-// 80 is in the table on its own account, and it is the one case here that
-// asserts a deliberate regression rather than a preserved property: the
-// braille logo is too wide for an 80-column terminal (26 + 3 + 53 = 82), so
-// detectWidth's default now lands on the mid screen. Anyone who later
-// narrows the art to win that band back will find this line failing, which
-// is the point — it should be changed knowingly, not drifted past.
+// 80 is in the table on its own account: it is detectWidth's fallback and
+// the stock macOS Terminal default, and at 26x12 art (composed width 82,
+// threshold 84) it did NOT clear the bar — that terminal got the
+// wordmark-only mid screen. At 8x17 the composed row is 73 and the
+// threshold 75, so 80 lands on the logo screen again. That is the whole
+// point of the smaller art, so it is asserted here rather than left to be
+// noticed on someone's Mac.
 func TestSplashLinesWidthBands(t *testing.T) {
 	saved := noColor
 	defer func() { noColor = saved }()
@@ -490,10 +492,10 @@ func TestSplashLinesWidthBands(t *testing.T) {
 		wantLines int
 		wantWidth int
 	}{
-		{100, 16, composedWidth}, // well above logoThreshold: logo screen
-		{84, 16, composedWidth},  // == logoThreshold: logo screen, exact fit
-		{83, 9, splashWidth},     // one below logoThreshold: mid screen
-		{80, 9, splashWidth},     // detectWidth's default: mid screen, NOT the logo
+		{100, 12, composedWidth}, // well above logoThreshold: logo screen
+		{80, 12, composedWidth},  // detectWidth's default: the logo screen, recovered
+		{75, 12, composedWidth},  // == logoThreshold: logo screen, exact fit
+		{74, 9, splashWidth},     // one below logoThreshold: mid screen
 		{55, 9, splashWidth},     // == narrowThreshold: mid screen
 		{54, 3, 5},               // one below narrowThreshold: narrow screen ("TUTOR")
 	}
