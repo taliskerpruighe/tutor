@@ -330,6 +330,108 @@
 
 # Level 3
 
++ Challenge two
+  + The hook
+    + A firm writes noncompetes in all fifty states
+    + Every draft it has ever sent out is sitting in a folder, and none of
+      that work is reachable. The wording that survived a challenge in
+      New Jersey is in a file nobody can find
+    + The firm wants the folder turned into something it can draw from
+  + What to build
+    + A provision library that lives on the reader's own machine. Nothing
+      published, nothing hosted
+    + Drop a noncompete into a folder and it is taken apart on its own —
+      each provision identified for what it is, filed under the states it
+      works in, and added to what is already there
+    + The library therefore grows. Every contract fed to it makes the next
+      draft better, which is the thing to sell in the opening paragraph
+    + When a kind of provision turns up that the library has not seen, it
+      goes looking — searches, fetches what it finds, and something judges
+      whether what came back is worth keeping
+    + A master template for the contract as a whole, with the provisions
+      as the parts that slot into it
+  + What the reader operates it with
+    + A TUI, run from a terminal. No web page, no browser
+    + Pick a state; the provisions narrow to the ones that work there
+    + The template on one side, the provisions available to drop into it
+      on the other
+    + Fill the variables it asks for — party names, duration, geographic
+      scope, subject-matter scope — and a finished draft comes out
+    + Search by wording when the phrase is known, and by meaning when it
+      is not
+  + The rules
+    + Same as challenge one — anything from levels one through three, and
+      nothing said about how to build it
+    + This one is local by design. That is the contrast with challenge three,
+      and worth stating so the reader sees the two halves of the level
+  + Rungs
+    + It parses a contract dropped in the folder and the TUI shows it
+    + A new kind of provision sends it out to the web unprompted
+    + It runs without being asked — the folder watched, a summary arriving
+      on a schedule, a message when something new lands
+  + Materials
+    + Three noncompetes, one each from New Jersey, New York and Connecticut
+    + Three invented deal profiles — emails or notes of the kind a partner
+      actually sends, carrying the employee's name, the company, the term,
+      the territory. The variables arrive buried in prose, not on a form
+    + Enough that the reader can feed the library, then draft against it
+    + Still to be built — the corpus does not exist yet
+
++ Challenge three
+  + The hook
+    + What if nobody ever had to pay for accounting software again
+    + It turns out they need not, and the reader is going to prove it
+    + A challenge, not a tutorial — the firm-and-its-problem framing of
+      challenge one, with an invented small business in place of the firm
+  + What to build
+    + A web application the reader hosts themselves, that a stranger can
+      reach in a browser by typing an address
+    + Accounts — create one, log in, log out
+    + Upload the things you would otherwise hand a bookkeeper: bank
+      statements, bills, receipts, invoices
+    + Out of that, unprompted, two financial statements — a profit and
+      loss, and a balance sheet
+    + The period is whatever the uploaded documents cover. No fixed range,
+      no limit
+  + What has to be on the page
+    + One page after login is enough; nothing here needs more
+    + Somewhere to upload
+    + Somewhere to browse and open what was uploaded before
+    + The two statements, sortable and filterable by period
+    + An agent with a chat box, tied to that account
+    + Say nothing about what the chat box is for. Leave the reader to
+      discover it can be asked about their own documents
+  + The rules
+    + Anything from levels one, two and three is fair game
+    + Nothing is said about how to build it — no stack, no back end, no
+      named tool. Only what a finished one looks like
+    + Nobody is marking it. The proof is that it works and that somebody
+      else can open it
+  + Rungs, in the escalating voice of challenge one
+    + It runs, and the reader can use it on their own machine
+    + Somebody else can reach it from another machine
+    + It stays up — survives a reboot, runs with nobody watching
+  + Materials, framed as challenge one frames them
+    + Three invented small businesses, of three different types, each in
+      its own folder under `materials/challenge-three/`
+    + The conceit: these companies have agreed to let the reader put their
+      books through the thing they are about to build. Sign each of them
+      up, upload their year, see whether the statements come out right
+    + Different types on purpose, so the trader with stock, the service
+      business with none, and the one with a loan do not all reduce to the
+      same shape
+    + What is in each folder: bank statements, bills, receipts, invoices.
+      Several sources and several formats, some scanned and some exported,
+      so nothing can be hardcoded to one layout
+    + As in challenge one, the input is a mess and varies by client; what
+      comes out the other end must not
+    + Enough months that a quarter and a year both mean something
+    + Still to be built — the fake corpus does not exist yet
+
+# Level 3 Backlog
+
+The rant, still being processed into the outline above.
+
 ## Theme
 
 Automation and integration.
@@ -973,3 +1075,12 @@ Code, reaching their own systems rather than only their own terminal.
   - SQLite with a timestamp column — enough for most of this.
   - InfluxDB and TimescaleDB — purpose-built.
   - Prometheus — for machine metrics.
+
+## Left out on purpose
+
+- Computer use — macOS and Windows only, Pro or Max only, dead under `-p`.
+  Shown, never required.
+- Log aggregators — twelve unattended jobs justify one, two challenges do
+  not.
+- Connectors are gated on a claude.ai subscription, so they can be reached
+  for but never depended on.
