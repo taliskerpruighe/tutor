@@ -1,5 +1,12 @@
 # Changelog
 
+## MkI_v0.2.21
+<!-- git-ops:from bfede13472ef89244f9c31825d610c05c2ba55e1 -->
+
+- docs(content): update pipeline.md
+- docs: update content/pipeline.md
+- refactor: update content/pipeline.md, lab/TODO.json, lab/level-3.md
+
 ## MkI_v0.2.20
 <!-- git-ops:from 5a060668660f4006f17f093e00b3cc9778b2611c -->
 
