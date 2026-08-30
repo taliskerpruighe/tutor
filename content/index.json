@@ -3216,6 +3216,46 @@
             "examples"
           ],
           "path": "content/21-challenges/01-challenge-one.md"
+        },
+        {
+          "id": "challenges/two",
+          "title": "Challenge two",
+          "section": "",
+          "summary": "A law firm wants every noncompete it has ever sent out turned into a library it can draft the next one from",
+          "version": "v0.2.14",
+          "keywords": [
+            "challenge",
+            "noncompete",
+            "provisions",
+            "library",
+            "template",
+            "terminal",
+            "states",
+            "search",
+            "meaning",
+            "draft"
+          ],
+          "path": "content/21-challenges/02-challenge-two.md"
+        },
+        {
+          "id": "challenges/three",
+          "title": "Challenge three",
+          "section": "",
+          "summary": "Small businesses want a web application that turns their uploaded paperwork into finished financial statements",
+          "version": "v0.2.14",
+          "keywords": [
+            "challenge",
+            "web application",
+            "accounts",
+            "upload",
+            "profit and loss",
+            "balance sheet",
+            "chat",
+            "hosting",
+            "period",
+            "statements"
+          ],
+          "path": "content/21-challenges/03-challenge-three.md"
         }
       ]
     }
