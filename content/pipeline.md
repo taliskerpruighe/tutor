@@ -2498,12 +2498,13 @@
     + It runs without being asked — the folder watched, a summary arriving
       on a schedule, a message when something new lands
   + Materials
-    + Three noncompetes, one each from New Jersey, New York and Connecticut
+    + Nine noncompetes, three each from New Jersey, New York and
+      Connecticut
     + Three invented deal profiles — emails or notes of the kind a partner
       actually sends, carrying the employee's name, the company, the term,
       the territory. The variables arrive buried in prose, not on a form
     + Enough that the reader can feed the library, then draft against it
-    + Still to be built — the corpus does not exist yet
+    + The corpus exists, at content/21-challenges/materials/challenge-two/
 
 + Challenge three
   + The hook

@@ -1,0 +1,82 @@
+{
+  "accounts_payable": [
+    {
+      "amount_cents": 1500000,
+      "creditor": "Salumeria Adriatica Import Co.",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    {
+      "amount_cents": 1200000,
+      "creditor": "Molino d'Oro Pasta Imports LLC",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  ],
+  "accounts_receivable": [
+    {
+      "amount_cents": 2200000,
+      "debtor": "Trattoria Rosso NYC",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    {
+      "amount_cents": 1800000,
+      "debtor": "Trattoria Vialardi",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  ],
+  "as_of": "2024-12-31",
+  "cash_by_account": {
+    "1000": {
+      "amount_cents": 25000000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "1010": {
+      "amount_cents": 3000000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  },
+  "equity_components": {
+    "member_capital_a_ferrone": {
+      "account_code": "3000",
+      "amount_cents": 22000000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "member_capital_l_ferrone": {
+      "account_code": "3010",
+      "amount_cents": 24680000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  },
+  "other_balances": {
+    "1300": {
+      "amount_cents": 17500000,
+      "doc_ids": [
+        "DOC-OPEN-0001",
+        "DOC-STOCKOPEN-0001"
+      ]
+    },
+    "2100": {
+      "amount_cents": 120000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  },
+  "period_end": "2025-12-31",
+  "period_start": "2025-01-01"
+}

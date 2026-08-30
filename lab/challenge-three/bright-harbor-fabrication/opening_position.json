@@ -1,0 +1,101 @@
+{
+  "accounts_payable": [
+    {
+      "amount_cents": 1130000,
+      "creditor": "Atlantic Steel Supply Co",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    {
+      "amount_cents": 475000,
+      "creditor": "Five Boro Metals Inc",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  ],
+  "accounts_receivable": [
+    {
+      "amount_cents": 1840000,
+      "debtor": "Halcyon Builders LLC",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    {
+      "amount_cents": 920000,
+      "debtor": "Meridian GC Corp",
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  ],
+  "as_of": "2024-12-31",
+  "cash_by_account": {
+    "1000": {
+      "amount_cents": 9500000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  },
+  "depreciation_policy": "Fixed assets are recorded at cost and depreciated on a straight-line basis, no salvage value assumed, beginning the month following the date each asset is placed in service. By asset class: Fixed Assets - Equipment (account 1500), including fabrication machinery, is depreciated over a 7-year useful life (approximately 14.29% per year); Fixed Assets - Vehicles (account 1510) is depreciated over a 5-year useful life (20% per year).",
+  "equity_components": {
+    "additional_paid_in_capital": {
+      "account_code": "3210",
+      "amount_cents": 7500000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "common_stock": {
+      "account_code": "3200",
+      "amount_cents": 5000000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "retained_earnings": {
+      "account_code": "3220",
+      "amount_cents": 18880000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  },
+  "other_balances": {
+    "1500": {
+      "amount_cents": 21043887,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "1510": {
+      "amount_cents": 4200000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "1590": {
+      "amount_cents": 2932610,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "2300": {
+      "amount_cents": 315000,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    },
+    "2400": {
+      "amount_cents": 1271277,
+      "doc_ids": [
+        "DOC-OPEN-0001"
+      ]
+    }
+  },
+  "period_end": "2025-12-31",
+  "period_start": "2025-01-01"
+}

@@ -1,0 +1,17 @@
+{"account_code": "1000", "account_name": "", "counterparty": "", "credit": 0, "date": "2024-12-31", "debit": 100000, "doc_ids": ["DOC-OPEN"], "entry_id": "OB-1", "memo": "Opening cash - operating"}
+{"account_code": "1010", "account_name": "", "counterparty": "", "credit": 0, "date": "2024-12-31", "debit": 20000, "doc_ids": ["DOC-OPEN"], "entry_id": "OB-1", "memo": "Opening cash - payroll"}
+{"account_code": "1200", "account_name": "", "counterparty": "", "credit": 0, "date": "2024-12-31", "debit": 50000, "doc_ids": ["DOC-OPEN"], "entry_id": "OB-1", "memo": "Opening AR - Acme Diner"}
+{"account_code": "2000", "account_name": "", "counterparty": "", "credit": 30000, "date": "2024-12-31", "debit": 0, "doc_ids": ["DOC-OPEN"], "entry_id": "OB-1", "memo": "Opening AP - Rossi Meats"}
+{"account_code": "3000", "account_name": "", "counterparty": "", "credit": 140000, "date": "2024-12-31", "debit": 0, "doc_ids": ["DOC-OPEN"], "entry_id": "OB-1", "memo": "Opening member capital"}
+{"account_code": "1200", "account_name": "", "counterparty": "Acme Diner", "credit": 0, "date": "2025-01-05", "debit": 20000, "doc_ids": ["DOC-INV1"], "entry_id": "J-0001", "memo": "Invoice 1001"}
+{"account_code": "4000", "account_name": "", "counterparty": "Acme Diner", "credit": 20000, "date": "2025-01-05", "debit": 0, "doc_ids": ["DOC-INV1"], "entry_id": "J-0001", "memo": "Invoice 1001"}
+{"account_code": "1000", "account_name": "", "counterparty": "Acme Diner", "credit": 0, "date": "2025-01-10", "debit": 50000, "doc_ids": ["DOC-STMT-OP-JAN"], "entry_id": "J-0002", "memo": "Receipt - Acme Diner (opening AR)"}
+{"account_code": "1200", "account_name": "", "counterparty": "Acme Diner", "credit": 50000, "date": "2025-01-10", "debit": 0, "doc_ids": ["DOC-OPEN"], "entry_id": "J-0002", "memo": "Receipt - Acme Diner (opening AR)"}
+{"account_code": "2000", "account_name": "", "counterparty": "Rossi Meats", "credit": 0, "date": "2025-01-15", "debit": 30000, "doc_ids": ["DOC-OPEN"], "entry_id": "J-0003", "memo": "Payment - Rossi Meats (opening AP)"}
+{"account_code": "1000", "account_name": "", "counterparty": "Rossi Meats", "credit": 30000, "date": "2025-01-15", "debit": 0, "doc_ids": ["DOC-STMT-OP-JAN"], "entry_id": "J-0003", "memo": "Payment - Rossi Meats (opening AP)"}
+{"account_code": "1000", "account_name": "", "counterparty": "", "credit": 20000, "date": "2025-01-18", "debit": 0, "doc_ids": ["DOC-STMT-OP-JAN"], "entry_id": "J-0004", "memo": "Transfer to payroll account"}
+{"account_code": "1010", "account_name": "", "counterparty": "", "credit": 0, "date": "2025-01-18", "debit": 20000, "doc_ids": ["DOC-STMT-PR-JAN"], "entry_id": "J-0004", "memo": "Transfer from operating account"}
+{"account_code": "6020", "account_name": "", "counterparty": "Fixture Payroll Co", "credit": 0, "date": "2025-01-20", "debit": 15000, "doc_ids": ["DOC-PAYROLL-JAN"], "entry_id": "J-0005", "memo": "January wages"}
+{"account_code": "1010", "account_name": "", "counterparty": "Fixture Payroll Co", "credit": 15000, "date": "2025-01-20", "debit": 0, "doc_ids": ["DOC-STMT-PR-JAN"], "entry_id": "J-0005", "memo": "January wages"}
+{"account_code": "6080", "account_name": "", "counterparty": "Fixture Bank", "credit": 0, "date": "2025-01-25", "debit": 500, "doc_ids": ["DOC-STMT-OP-JAN"], "entry_id": "J-0006", "memo": "Monthly account fee"}
+{"account_code": "1000", "account_name": "", "counterparty": "Fixture Bank", "credit": 500, "date": "2025-01-25", "debit": 0, "doc_ids": ["DOC-DOES-NOT-EXIST"], "entry_id": "J-0006", "memo": "Monthly account fee"}

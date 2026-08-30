@@ -1,0 +1,46 @@
+{
+  "accounts_payable": [
+    {
+      "amount_cents": 30000,
+      "creditor": "Rossi Meats",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  ],
+  "accounts_receivable": [
+    {
+      "amount_cents": 50000,
+      "debtor": "Acme Diner",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  ],
+  "as_of": "2024-12-31",
+  "cash_by_account": {
+    "1000": {
+      "amount_cents": 90000,
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    },
+    "1010": {
+      "amount_cents": 20000,
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  },
+  "equity_components": {
+    "member_capital": {
+      "account_code": "3000",
+      "amount_cents": 140000,
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  },
+  "period_end": "2025-01-31",
+  "period_start": "2025-01-01"
+}

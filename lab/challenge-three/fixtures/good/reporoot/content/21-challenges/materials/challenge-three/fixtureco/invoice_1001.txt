@@ -1,0 +1,1 @@
+Fixture invoice 1001 to Acme Diner, dated 2025-01-05, total $200.00.

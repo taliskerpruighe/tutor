@@ -1,0 +1,77 @@
+{
+  "accounts_payable": [
+    {
+      "amount_cents": 620000,
+      "creditor": "Reyes Drafting Studio",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    },
+    {
+      "amount_cents": 720000,
+      "creditor": "Ionescu Lighting Consultants",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    },
+    {
+      "amount_cents": 300000,
+      "creditor": "Tribeca Paper & Print Co",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  ],
+  "accounts_receivable": [
+    {
+      "amount_cents": 3400000,
+      "debtor": "Bellcourt Retail Group",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    },
+    {
+      "amount_cents": 2140000,
+      "debtor": "Ansel Family Residence",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    },
+    {
+      "amount_cents": 2500000,
+      "debtor": "Larkspur Hospitality LLC",
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  ],
+  "as_of": "2024-06-30",
+  "cash_by_account": {
+    "1000": {
+      "amount_cents": 4800000,
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  },
+  "depreciation_policy": "N/A -- Halloran & Vance is a service business with no fixed assets or depreciation.",
+  "equity_components": {
+    "Partner Capital - Halloran": {
+      "account_code": "3100",
+      "amount_cents": 7000000,
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    },
+    "Partner Capital - Vance": {
+      "account_code": "3110",
+      "amount_cents": 4200000,
+      "doc_ids": [
+        "DOC-OPEN"
+      ]
+    }
+  },
+  "other_balances": {},
+  "period_end": "2025-06-30",
+  "period_start": "2024-07-01"
+}

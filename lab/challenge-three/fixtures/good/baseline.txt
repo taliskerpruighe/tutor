@@ -1,0 +1,5 @@
+./content/21-challenges/materials/challenge-three/fixtureco/bank_statement_operating_jan.txt	58
+./content/21-challenges/materials/challenge-three/fixtureco/bank_statement_payroll_jan.txt	56
+./content/21-challenges/materials/challenge-three/fixtureco/invoice_1001.txt	69
+./content/21-challenges/materials/challenge-three/fixtureco/opening_letter.txt	68
+./content/21-challenges/materials/challenge-three/fixtureco/payroll_summary_jan.txt	52
