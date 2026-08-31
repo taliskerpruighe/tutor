@@ -1,5 +1,12 @@
 # Changelog
 
+## MkI_v0.2.22
+<!-- git-ops:from 267dabcdeba8a7af451239af10b2ae7e613bc018 -->
+
+- docs(content): update pipeline.md
+- docs: update content/pipeline.md
+- docs(content): update pipeline.md
+
 ## MkI_v0.2.21
 <!-- git-ops:from bfede13472ef89244f9c31825d610c05c2ba55e1 -->
 
