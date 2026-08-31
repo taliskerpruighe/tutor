@@ -1,9 +1,4 @@
-# Level 1
-
-## This Wiki
-
-- This version
-- About this wiki
+# Level 1 ## This Wiki - This version - About this wiki
 - Changelog
 - How to read this
 - The companion agent
@@ -335,1693 +330,930 @@
 ### Scripted vs Agentic Behavior
 
 - What changes at level three
-  + Level two's funnel ran when you typed; level three's runs on its own —
-    a `claude -p` job at 06:00 off a `launchd` plist while you are in
-    court.
-  + The reader stops running Claude Code by hand and starts building
-    applications that use it, reaching their own systems instead of only
-    the terminal.
-  + The machine that runs it is either a box that never sleeps or the
-    laptop in your bag, and that choice decides every other decision in
-    this level.
+  - Explain how level 2 was all manual: start sessions, ask agents
+  - Explain how level 2 depended on agents to do everything; more tokens and more risk
+  - Explain that it gets a lot easier, a lot cheaper, and a lot better
+    - Everything is code--including what agents do
+    - Move the code from agents to scripts, and everything gets much faster, much safer, and much cheaper
+      - Give one or two examples here, with visuals, of a level 2-like pipeline (agent/subagent chain only) versus a scripted pipeline to do the same thing (starts automatically, works/logs automatically, sends/notifies of results automatically, starts the next session automatically, etc)
+  - Explain that with Claude Code features and software packages like automators, connectors, databases, and servers, and you can automate your life--and any business
+    - Give ample examples here as well    
+  - Explain that the reader stops running Claude Code by hand and starts building things that run on it, reaching their own systems instead of only the terminal
 
 - The shape of an automated system
-  + Four parts, seen on the intake form: Caddy taking a POST is the
-    trigger, the passport scan is the input, `claude -p` with the intake
-    skill is the work, and the drafted engagement letter in
-    `matters/smith/` is the output.
-  + Four kinds of trigger: a clock (`cron`), a file appearing
-    (`inotifywait`), a request arriving (a webhook POST), or a message
-    pushed in (a Telegram channel).
-  + Claude Code is the work step and never the trigger; something outside
-    it always starts the run.
-  + Output that stays in the transcript is not output — it has to land as
-    a file in the matter folder, a row in SQLite, or an artifact URL.
+  - Four parts to any automated pipeline: trigger, input, work, output
+    - Walk one pipeline through all four parts end to end: what triggers it, what arrives as input, what Claude Code does as the work step, what lands as output
+  - Four kinds of trigger: a clock, a file appearing, a request arriving, a message pushed in
+  - Claude Code is the work step, never the trigger
+  - Output has to land somewhere real -- not sit in the transcript
 
 - Less is more
-  + An agent turn costs tokens, seconds, and a different answer on every
-    run; `pdftotext scan.pdf -` costs none of the three and returns the
-    same bytes each time.
-  + Deciding which of forty scans has no text layer reduces to a rule;
-    deciding which of forty letters mentions a deadline needs judgement.
+  - Touch the cost point in a line, not a section -- it was already made above
+  - What reduces to a rule belongs in a script; what needs judgement stays with the agent
 
 ### Scripted Behavior
 
 - What a script is for
-  + Claude writes the script; something else — cron, a shell, a scheduled
-    job — executes it on its own after the session that produced it
-    ends.
-  + Cheaper and more reliable than another agent turn every time it runs:
-    no tokens spent, no seconds of latency, no chance the wording changes
-    between runs.
-  + The filing rule agreed in March still fires in December, because a
-    script outlives the session that wrote it — no context window has to
-    hold it.
+  - Claude writes the script; something else -- cron, a shell, a scheduled job -- runs it later, after the session ends
+  - A script outlives the session that wrote it
+    - A filing rule agreed in March still firing in December, unattended, months after that session is gone, is the example this point needs
 
 - Python, Node and Bun
-  + Python is the default because it is on every machine already and
-    every library needed exists there; Node comes bundled with the
-    web-development world instead.
-  + Bun is Node, but faster, with TypeScript built in and no separate
-    build step.
-  + You name the outcome — "file the scans by matter number" — and
-    Claude picks the runtime itself; the choice shows up afterward as a
-    `.py` file you can read, not a decision you make first.
+  - Python is the default -- already on every machine, every library already there
+  - Node comes bundled with the web-development world instead
+  - Bun: Node, but faster, TypeScript built in, no build step
+  - The reader names the outcome, not the runtime; the choice shows up after, as a file
 
 - A script instead of an agent turn
-  + An agent turn repeats itself on every run: the same task, phrased
-    slightly differently, with a different number of tokens spent doing
-    it.
-  + A script guarantees the same operation happens the same way every
-    time — the same rename, the same checksum, the same arithmetic, with
-    nothing to reinterpret.
-  + Some decisions reduce to a rule — moving `2026-08-30-smith.pdf` into
-    `matters/smith/`, computing a 21-day deadline from a service date,
-    checksumming an import against the file count.
-  + Others do not — deciding whether a letter contains a deadline at all,
-    or which of two spellings is the same client.
-  + A script cannot notice that a scan is upside down, or that the
-    covering letter contradicts the enclosure it describes.
-  + A script cannot notice that the matter number written on the form is
-    wrong.
+  - An agent turn repeats itself slightly differently each run; a script repeats identically
+  - The split that decides which gets used
+    - Reduces to a rule: filing by filename, computing a deadline, checksumming a count
+    - Needs judgement: whether a letter mentions a deadline, whether two spellings name the same client
+  - What a script cannot detect at all
+    - A scan that's upside down
+    - A wrong matter number written on the form
 
 ### Environments
 
 - Virtual environments
-  + Installing a library system-wide means every project shares it; when
-    two projects need different versions of the same package, the second
-    install breaks the first.
-  + `.venv` is a folder inside the project itself; Python looks there
-    before anywhere else, so what a project needs never has to touch the
-    system install.
-  + Deleting the `.venv` folder deletes the packages with it — there is
-    nothing else to clean up.
-  + The name is Python's; the problem is not: Node solves it by default
-    with `node_modules`, Go builds dependencies into the binary, Ruby has
-    bundler, Rust has cargo.
-  + Python is awkward here because it installed system-wide for decades,
-    so the fix is bolted on rather than built in — which is why virtual
-    environments are only ever discussed in Python's context.
-  + The same idea as a container, one layer lighter: an environment
-    isolates the libraries; a container isolates the whole operating
-    system underneath them too.
+  - System-wide installs collide: two projects needing different versions of the same package, one breaks the other
+  - `.venv` sits inside the project; Python looks there first, before the system install
+    - A diagram would do this best: the same package at two versions, one in `.venv`, one system-wide, and which one actually runs
+  - Delete the folder, the packages are gone -- nothing else to clean up
+  - The name is Python's, not the problem: `node_modules`, Go's static binary, bundler, cargo all solve it another way
+  - Bolted on rather than built in, because Python installed system-wide for decades
+  - One layer lighter than a container: isolates the libraries, not the whole operating system
 
 - uv, pipx and conda
-  + `uv` does the same pure-Python job as `.venv` and `pip`, in a
-    fraction of the time.
-  + `pipx` installs command-line tools each into its own isolated
-    environment, rather than mixing their dependencies into a project's.
-  + Conda goes further than either: it installs the Python interpreter
-    itself plus non-Python things like compilers and CUDA libraries — the
-    cost is weight and slower installs.
-  + If a conda setup already works, there is nothing to fix by switching
-    to `uv`.
+  - `uv`: the same job as `.venv` and `pip`, a fraction of the time
+  - `pipx`: installs CLI tools each into their own environment, not mixed into a project's
+  - Conda goes further: installs the interpreter itself, plus non-Python things like compilers and CUDA -- costs weight and speed
+  - Nothing to fix by switching to `uv` if conda already works
 
 ### Logs
 
 - Unattended work fails quietly
-  + A run that OCR'd nothing and a run that filed twelve matters leave an
-    identically empty terminal at 08:00 — nothing distinguishes success
-    from failure by looking.
-  + Exit code zero means the last command in the pipeline returned zero —
-    not that the right documents were filed, or that any were.
-  + A record written during the run is the only evidence of what
-    happened, because unattended work fails silently and nothing else is
-    watching.
+  - A silent terminal doesn't mean nothing went wrong
+    - Put two terminals side by side, one from a run that did nothing, one from a run that worked -- both empty, so looking tells you nothing
+  - Exit code zero only means the last command returned zero, not that the work was done
+  - The only evidence of what happened is a record written during the run
 
 - Where logs go
-  + A typed command's output goes to your terminal and dies with the
-    window; a cron job's stdout goes to mail, or nowhere, unless you
-    redirect it.
-  + One job, one file, one known place: `>> ~/logs/intake.log 2>&1`.
-  + A usable log line carries the time, the matter it concerns, what was
-    done, and the exit status.
-  + A log nobody reads answers no question afterwards, which makes it not
-    a log — just disk space.
+  - A typed command's output dies with the terminal; a cron job's stdout goes to mail, or nowhere, unless redirected
+  - The pattern: one job, one file, one known place -- `>> ~/logs/intake.log 2>&1`
+  - A usable log line carries the time, the matter, what was done, the exit status
+  - A log nobody reads is disk space, not a log
 
 - Log aggregators
-  + Twelve unattended jobs each writing their own log file cost you:
-    nobody reads twelve separate files, so a failure sits unnoticed until
-    something downstream breaks.
-  + An aggregator collects those twelve files into one searchable place,
-    so a question about any of them is one query rather than twelve
-    terminals.
-  + Answers questions no single file can: which run failed last night and
-    why, and what Claude cost this month per skill.
-  + Also answers whether the intake job actually ran on Tuesday, and
-    which matters were processed against which were silently skipped.
-  + `journalctl` if systemd is already on the box; otherwise Loki, or a
-    plain SQLite table with a timestamp column.
-  + Twelve unattended jobs justify building one; two challenges running
-    on a laptop do not.
+  - Twelve log files means nobody reads all twelve -- a failure sits unnoticed
+  - An aggregator makes them one searchable place instead of twelve terminals
+  - Answers what no single file can: which run failed and why, what Claude cost this month, whether a job ran, what was silently skipped
+  - `journalctl` if systemd's already there; otherwise Loki or a timestamped SQLite table
+  - A threshold call: twelve jobs justify one, two challenges on a laptop don't
 
 ### Language Servers
 
 - What a language server is
-  + A language server answers questions about your code, not about the
-    language — which of forty files defines a function, who calls it,
-    what breaks if it changes.
-  + It knows the language already; the difference is knowing your
-    project — the same server that understands Python syntax has to be
-    pointed at this repository to know what `charge_client` means here.
-  + Without one, Claude greps and guesses, and guessing is where bugs
-    enter.
-  + Grep returns every mention of a name, comments and same-named
-    functions included; the server returns the actual definition and
-    every genuine caller.
+  - Answers questions about your code, not the language -- which file defines a function, who calls it, what breaks if it changes
+  - Knows the language already; has to be pointed at your project to know what a name means here
+  - Without one, Claude greps and guesses -- guessing is where bugs enter
+  - Grep returns every mention; the server returns the actual definition and every genuine caller
+    - Put grep's hits next to the language server's for the same function name, and let the false hits grep includes that the server doesn't make the point
 
 - The servers there are
-  + They already exist, one per language — nobody writes their own.
-  + `gopls` covers Go; Python has a choice between `pyright` and `ruff`;
-    `typescript-language-server` and `rust-analyzer` cover their own
-    languages — all named in Claude Code's own docs and installed the
-    ordinary way, with npm or pip.
-  + One per language, not per project or per part of one — count the
-    languages in the repository and that is the count.
-  + Tutor itself would run two side by side, one for the Go reader and
-    one for the Python parity oracle, each indexing only its own
-    language's files.
-  + A server's scope is this repository: it starts when a session opens
-    here and indexes what is under this folder.
-  + Open a different project and it indexes that one instead, from a
-    standing start.
+  - They already exist, one per language -- nobody writes their own
+  - One per language, not per project -- count the languages in the repo, that's the count
+  - Tutor runs two side by side: one for the Go reader, one for the Python parity oracle
+  - Scope is the repository: indexes what's under the folder, starts fresh in a different one
 
 - Wiring one into Claude Code
-  + A server is declared in `.lsp.json` at the plugin root, or inline in
-    `plugin.json` under `lspServers`.
-  + Two fields are compulsory: `command`, the binary, and
-    `extensionToLanguage`, which maps an extension like `.py` to a
-    language like `python` so Claude Code knows which files belong to
-    which server.
-  + The binary named in `command` has to already be on `PATH` —
-    `.lsp.json` names `pyright`, it does not install it; `pip install
-    pyright` is a separate step done first.
-  + Optional fields cover the rest: `args`, `env`, `startupTimeout`,
-    `restartOnCrash` (on by default), and `maxRestarts`.
-  + `typescript-language-server`, `pyright` and `rust-analyzer` are the
-    ones named in Claude Code's own docs, installed the ordinary way with
-    npm or pip.
-  + Wiring into a project's own `.lsp.json` serves that repository alone;
-    wiring into a plugin's ships the same server configuration to
-    everyone who installs the plugin.
-  + Shipping one in a plugin is four lines, and every installer gets
-    symbol navigation — go-to-definition, find-references, hover — with
-    nothing further to configure.
+  - Declared in `.lsp.json` at the plugin root, or inline in `plugin.json` under `lspServers`
+  - Two compulsory fields: `command`, the binary already on `PATH`, and `extensionToLanguage`, mapping an extension to a language
+    - A minimal `.lsp.json` for one language, with just the two compulsory fields and nothing else, makes this concrete fastest
+  - Optional fields: `args`, `env`, `startupTimeout`, `restartOnCrash` (on by default), `maxRestarts`
+  - Named in Claude Code's own docs: `typescript-language-server`, `pyright`, `rust-analyzer` -- installed with npm or pip
+  - Project-scoped serves that repository alone; plugin-scoped ships to everyone who installs it
+  - Four lines in a plugin buys every installer symbol navigation, nothing further to configure
 
 - Diagnostics
-  + On by default, and it pushes every error the server sees into
-    Claude's context the moment an edit is made.
-  + Turned off, go-to-definition, find-references and hover still work —
-    what is lost is the running commentary, not the navigation.
-  + A long editing session with diagnostics on pays for that commentary
-    in context space on every single edit, against catching a broken
-    line the instant it is written.
+  - On by default: every error the server sees lands in Claude's context the moment you edit
+  - Off: navigation still works -- go-to-definition, find-references, hover; only the running commentary is lost
+  - The trade-off: context space on every edit, against catching a broken line the instant it's written
 
 ## Triggers
 
 ### Schedulers
 
 - What a scheduler is
-  + A scheduler is an OS daemon that fires a command at set times — the
-    intake run at 06:00, say — whether or not anyone is logged in, and
-    even after a reboot: the machine's own alarm clock.
-  + Five fields and a command is the whole shape of a job, however it is
-    declared, before cron, launchd or systemd timers differ in the
-    details.
-  + cron, launchd and systemd timers are three implementations of the
-    same idea, chosen by platform rather than by what the job needs to
-    do.
+  - An OS daemon that fires commands at set times, logged in or not, even through a reboot
+  - cron, launchd and systemd timers are the same idea, picked by platform rather than by the job
+  - The shape underneath all three: five fields and a command
 
 - cron
-  + `0 6 * * 1-5` is the schedule and `/usr/bin/claude -p "run the
-    intake skill"` is the command; adding `>> ~/logs/intake.log 2>&1`
-    keeps a record of what ran.
-  + On a rented box that never sleeps, cron is what fires `claude -p`
-    unattended; Claude Code's own scheduler only runs inside a session
-    already open.
-  + Cron is the name people reach for because every Linux and Mac
-    machine already has it running, with nothing to install.
-  + Cron does not check whether yesterday's run is still going, so two
-    `claude -p` processes racing over one matter folder is prevented
-    with `flock`, not with cron.
+  - Explain the shape of a cron line: a schedule, a command, and redirected output that keeps the record
+    - `0 6 * * 1-5` is the schedule, `claude -p "run the intake skill"` the command, `>> ~/logs/intake.log 2>&1` the redirect
+  - Already installed and running on every Linux and Mac box, nothing to add
+  - Fires unattended on a box that never sleeps; Claude Code's own scheduler only runs inside a session already open
+  - Doesn't check whether yesterday's run finished -- two runs racing over one matter folder need `flock`, not cron
 
 - launchd
-  + `~/incoming/scans/` filling with a new scan is enough to trigger a
-    launchd job on its own — it fires on events as well as on set
-    times, with no polling loop required.
-  + launchd is the macOS scheduler, and the only one Apple actually
-    supports; cron still runs there, but Apple's own tooling assumes
-    launchd.
-  + `RunAtLoad` is launchd's answer to a missed slot: a job due while the
-    Mac was asleep fires as soon as it next wakes, rather than being
-    lost.
+  - The macOS scheduler -- the only one Apple's own tooling assumes, though cron still runs there too
+  - Fires on events as well as times, with no polling loop required
+  - `RunAtLoad` fires a job missed while asleep on the next wake
 
 - systemd timers
-  + systemd timers are the Linux replacement for cron: a `.timer` file
-    paired with a `.service` file, and they exist only on Linux —
-    nothing equivalent on macOS.
-  + `OnCalendar=Mon..Fri 06:00` sets the schedule; `Persistent=true` on
-    the timer catches a run that was due while the box was off and
-    fires it on the next boot instead of skipping it.
-  + The record of what happened lives in `journalctl -u intake.service`,
-    not in a log file that has to be created and redirected by hand.
-  + A timer can wait on another systemd unit before firing — the intake
-    job held until the database service is confirmed up.
+  - systemd timers are the Linux replacement for cron: a `.timer` paired with a `.service`, Linux only
+    - Runs log to `journalctl -u intake.service`, not a hand-redirected file
+  - `OnCalendar` sets the schedule; `Persistent=true` fires a missed run on the next boot
+  - A timer can wait on another unit -- the intake job held until the database is up
 
 - Claude Code's own scheduler
-  + Claude Code's own scheduler queues a task inside a session that is
-    already running — a reminder to check tomorrow's hearing list before
-    the session ends, say — it is not a system-level cron replacement.
-  + Nothing fires if Claude Code is not running: close the terminal
-    running the evening session and the whole schedule closes with it.
-  + A scheduled task expires after seven days if it never gets the
-    chance to run.
-  + Firing time jitters by up to thirty minutes, so it is not a precise
-    alarm clock.
-  + Tasks fire only between turns, never interrupting one already in
-    progress.
-  + For anything that has to run with nobody logged in, system cron
-    launching `claude -p` is the tool; Claude's own scheduler is for a
-    session already alive.
+  - It queues a task inside a session already running -- not a system-level cron replacement
+    - Give an example of a task scheduled mid-session -- check tomorrow's hearing list -- firing between turns before the session ends, and show it never interrupts work in progress
+  - All its limits come from that one fact: it lives inside the session
+    - Nothing fires if Claude Code isn't running -- close the terminal and the schedule closes with it
+    - Expires after seven days unmet, jitters by up to thirty minutes, and fires only between turns
+  - The rule: system cron for anything unattended, Claude's own scheduler only for a session already alive
 
 - Machines that sleep
-  + Neither cron nor launchd wakes a sleeping machine; a job due while
-    the laptop is closed is simply missed, full stop.
-  + `RunAtLoad` on macOS fires a launchd job as soon as the machine next
-    wakes, rather than waiting for the next scheduled slot.
-  + `anacron` on Linux does the equivalent: it catches jobs that were
-    missed while the box was off and runs them once it is back.
-  + A job that truly cannot be missed does not belong on a laptop that
-    sleeps — it belongs on a rented box that never does.
+  - Neither cron nor launchd wakes a sleeping machine -- a missed job is simply missed
+  - Both platforms catch up: `RunAtLoad` fires on next wake, `anacron` does the same on Linux
+  - A job that can't be missed belongs on a box that never sleeps, not a laptop -- the case for cloud automation
 
 ### Watchers
 
 - What a watcher is
-  + A scan landing in `~/incoming/scans/` is enough to run a watcher's
-    command instantly — the folder itself becomes the trigger.
-  + Cron asks every five minutes whether anything changed; a watcher is
-    told by the operating system the moment it happens, with no polling
-    and no delay.
-  + It only works while the watching process itself is running — close
-    the terminal it lives in and nothing fires until it is started
-    again.
+  - Turns a folder into a trigger: something landing in it runs a command instantly
+    - A scan, a saved file or an export lands in the folder, and a command fires immediately with nothing else in between -- the folder itself is the only interface a reader has to build
+  - Cron polls every five minutes; a watcher is told by the OS the instant it happens, no delay
+  - Only works while the watching process itself is running -- close its terminal and nothing fires
 
 - inotify, fswatch and entr
-  + A scanner writing to `~/incoming/scans/` is caught by `inotify`, the
-    Linux kernel mechanism doing the actual watching; `inotifywait` is
-    the command that uses it, and neither exists outside Linux.
-  + `fswatch` is the cross-platform wrapper, doing the same job on Linux
-    and macOS.
-  + `entr` reruns its command whenever a file in the list it was piped
-    changes — the friendliest of the three.
+  - `inotify` is the Linux kernel mechanism; `inotifywait` is the command that uses it -- Linux only
+  - `fswatch` is the cross-platform wrapper, the same job on Linux and macOS
+  - `entr` reruns its command whenever a watched file changes -- the friendliest of the three
 
 - A folder as a trigger
-  + `~/incoming/scans/` can be the entire interface: the scanner writes
-    there, `inotifywait -m -e close_write` fires, and `claude -p` files
-    whatever landed — drop a PDF in and it is OCR'd and filed with
-    nothing else in between.
-  + Each job watches its own folder, so two watchers never race for the
-    same file.
-  + `-e create` fires on a half-written forty-megabyte scan the instant
-    the first byte lands, not on the finished file.
-  + Waiting for `close_write`, or for the file's size to stop changing,
-    is what tells a watcher the write is actually done.
+  - A folder can be the entire interface -- something arrives, the watcher fires, Claude Code processes it
+    - Walk a scan folder through end to end: a scanner writes into it, the watcher fires on the finished write, `claude -p` files what landed -- dropping a file in is the entire workflow a reader has to perform
+  - Each job watches its own folder, so two watchers never race for the same file
+  - `-e create` fires on the first byte, catching a scan half-written -- not what you want
+    - Wait for `close_write`, or for the file size to stop changing, to know the write is actually done
 
 ### Queues
 
 - What a queue is
-  + A queue is a waiting line for work: forty scanned documents arriving
-    at once do not get processed forty at a time and melt the machine.
-  + Workers pull from the front of the line at a controlled rate — two
-    at a time, say, while the other thirty-eight wait their turn.
-  + A job that fails goes back into the line and is retried, rather than
-    silently vanishing.
-  + Nothing is dropped and load stays controlled — that is the entire
-    point of putting a queue between the trigger and the work.
-  + The trigger and the queue are two separate jobs: a watcher's only
-    work is to add a row to the queue and get out of the way, not to run
-    the OCR itself.
+  - Keeps forty documents landing at once from being processed forty at a time and melting the machine
+    - Picture forty scans arriving together, two workers pulling off the front at a controlled rate while the other thirty-eight wait their turn
+  - A failed job goes back into the line and gets retried, rather than vanishing
+  - The trigger and the queue are separate jobs -- a watcher adds a row and gets out of the way
 
 - Redis, SQLite and the serious version
-  + A `jobs` table in SQLite is enough when one machine does the work: a
-    row per job, a status column, and a script that claims the next
-    pending row.
-  + Redis with a worker library earns its place once more than one
-    process needs to pull from the same queue — two intake workers, say,
-    splitting forty scanned documents between them.
-  + RabbitMQ and Celery are built for the serious version: many workers,
-    many queues, retries and routing rules that a `jobs` table cannot
-    express.
-  + The path runs in that order — SQLite first, Redis once a second
-    process needs the same queue, RabbitMQ and Celery only when that
-    stops being enough.
+  - A `jobs` table in SQLite is enough on one machine -- a row per job, a status column
+  - Redis with a worker library earns its place once a second process needs the same queue
+  - RabbitMQ and Celery are the serious version: many workers, many queues, routing a table can't express
+  - Explain the order: SQLite, then Redis, then RabbitMQ and Celery, each earned only once the last stops being enough
 
 ### Monitors
 
 - What a monitor is
-  + A monitor is a background command a plugin declares, running for the
-    life of the session.
-  + Every line it prints to stdout is delivered to Claude as a
-    notification — the output reaches the model mid-session, not a
-    person directly.
-  + Tailing a log to speak up on an error, watching an incoming folder
-    and announcing what landed, following a long build, and reporting a
-    queue growing are the jobs it is built for.
-  + It differs from the watchers described elsewhere in this outline in
-    where it lives: those run outside Claude Code and start sessions; a
-    monitor runs inside one, watching on the model's behalf.
-  + Experimental, and it inherits the session's lifetime — nothing is
-    watched once the session ends.
+  - A background command a plugin declares, running for the life of the session
+  - Every line it prints to stdout reaches Claude as a notification -- the model hears it, not a person
+  - Unlike the watchers earlier, a monitor runs inside a session -- it can't start an unattended run, only report
+  - Experimental, and it inherits the session's lifetime -- nothing is watched once the session ends
 
 - Declaring one in a plugin
-  + `monitors/monitors.json` at the plugin root, or `plugin.json` under
-    `experimental.monitors` inline, is where a monitor gets declared.
-  + Three fields are compulsory: `name`, `command` and `description`.
-  + `name` has to be unique within the plugin, so reloading the plugin
-    does not spawn a second copy of the same monitor.
-  + `when` decides the start; left unset it defaults to `always`, which
-    fires at session start.
-  + `on-skill-invoke:<skill-name>` defers the start until that named
-    skill is first dispatched, instead of firing immediately.
-  + The choice matters because it decides who pays the cost: `always`
-    runs for every session, `on-skill-invoke` only for the ones that
-    actually reach that skill.
-  + `${CLAUDE_PLUGIN_ROOT}`, `${CLAUDE_PLUGIN_DATA}` and
-    `${CLAUDE_PROJECT_DIR}` expand inside `command`, so a monitor can
-    call a script shipped alongside the plugin rather than a hardcoded
-    path.
+  - Declared in `monitors/monitors.json` at the plugin root, or inline in `plugin.json` under `experimental.monitors`
+  - Three fields are compulsory: `name`, `command` and `description`
+    - `name` must be unique within the plugin, so a reload doesn't spawn a second copy
+  - `when` decides the start: `always` (the default) fires at session start; `on-skill-invoke:<name>` waits for that skill
+    - Explain the tradeoff: `always` costs every session, `on-skill-invoke` only the ones that reach that skill
+  - `${CLAUDE_PLUGIN_ROOT}`, `${CLAUDE_PLUGIN_DATA}` and `${CLAUDE_PROJECT_DIR}` expand inside `command`, letting it call a script shipped with the plugin
 
 ## Integrations
 
 ### APIs
 
 - What an API is
-  + The client is the caller and the API is the callee — `curl` is an
-    HTTP client, and so are a browser and `WebFetch`.
-  + The portal a client clicks through calls the same endpoints `curl`
-    would; nothing installs, it is a URL and a key.
-  + Companies House publishes an API for company filings; most county
-    court listing pages do not.
+  - An API is a contract to call, not a UI to click through -- `curl`, a browser and `WebFetch` are all just clients speaking to it
+  - The portal you click through calls the same endpoints a script could call directly
+  - Not every service publishes one -- Companies House does for company filings, most court listing pages don't
 
 - curl and jq
-  + `curl` fetches a URL from the command line with headers, an API
-    key and a POST body; `jq` cuts up the JSON that comes back —
-    together the cheapest integration there is.
-  + A morning `curl` of the case-status endpoint reports only what
-    changed since yesterday.
-  + The day's exchange rate drops into a fee calculation; a Slack or
-    Telegram post fires the moment a run finishes.
-  + `curl` fetches filings from Companies House, downloads a court
-    listing, and asks accounting software what invoices are unpaid.
+  - `curl` fetches a URL with headers, a key and a POST body; `jq` cuts up the JSON that comes back -- the cheapest integration there is
+  - Use cases: a morning check of a case-status endpoint reporting only what changed, the day's exchange rate dropped into a fee calculation, a Slack or Telegram post when a run finishes, filings pulled from Companies House, a court listing downloaded, accounting software asked what's unpaid
+    - Run one `curl | jq` pipeline end to end and show the fetch next to the field pulled out of it
 
 - The API shapes there are
-  + Every shape splits on the same question: who speaks first.
-  + REST — you ask, it answers, the connection closes; the vast
-    majority of APIs.
-  + Webhooks — the reverse: you paste an address reaching your machine
-    into the service's settings, and their server calls you when
-    something happens — Stripe on a payment, GitHub on a pull request,
-    a case management system on a status change.
-  + WebSockets keep a line open both ways for a continuous stream;
-    server-sent events keep it open one way, them to you — the way
-    Claude streams its own replies.
-  + GraphQL is still you-ask-they-answer, but you name exactly which
-    fields you want, in one request.
-  + The service chose the shape, not you — `curl` and `jq` work
-    against whichever one you're handed.
+  - Every shape splits on the same question: who speaks first
+  - REST -- you ask, it answers, the connection closes; the vast majority of APIs
+  - Webhooks -- the reverse: you hand the service an address, it calls you when something happens (Stripe on a payment, GitHub on a pull request)
+  - WebSockets hold a line open both ways for a stream; server-sent events hold it open one way, them to you -- how Claude streams its own replies
+  - GraphQL is still you-ask-they-answer, but you name exactly which fields in one request
+  - The service picked the shape, not you -- `curl` and `jq` work against whichever one you're handed
 
 - Polling and webhooks
-  + A webhook needs the front door — a web server of your own the
-    service can reach — and a case management system that offers one
-    calls it on every status change.
-  + Courts almost never offer one.
-  + The fallback is polling: cron fires, `curl` fetches, the result is
-    compared against yesterday's saved copy, and the difference is
-    acted on.
-  + Webhooks are a gift when offered; polling is what you build when
-    they are not.
+  - A webhook needs a front door of your own the service can call -- something a case system offers, a court almost never does
+  - Where there's no webhook, polling is the fallback: fetch on a timer, compare to yesterday's saved copy, act on the difference
+  - Webhooks are a gift when offered; polling is what you build when they're not
 
 - Scraping
-  + Polling a plain HTML page with no API at all is scraping — the
-    same cron-and-compare loop, aimed at markup instead of JSON.
-  + A court listing page is HTML written for a person: the hearing
-    date sits in a table cell with no id, nothing marking it as data.
-  + A redesign moves that cell without throwing any error — the fetch
-    still succeeds, and the extracted value is simply wrong.
-  + Where `curl` stops working — a login wall or heavy JavaScript — is
-    where Chrome control earns its place.
-  + The manners are cheap: a `User-Agent` that identifies who is
-    calling, and a fetch once or twice a day, which bothers nobody.
+  - Scraping is polling aimed at markup instead of JSON -- the same cron-and-compare loop, run against a page with no API behind it
+  - The page was written for a person, not a machine: a hearing date sitting in a table cell with no id and nothing marking it as data
+    - A page redesign that moves that cell is the example: the fetch still succeeds, but the extracted value comes back silently wrong
+  - Where a login wall or heavy JavaScript stops `curl` working, that's where Chrome control takes over
+  - Basic manners cost nothing: identify yourself in the `User-Agent`, and a fetch once or twice a day bothers no one
 
 ### MCPs
 
 - What an MCP is
-  + An MCP server advertises a list of tools; Claude calls them like any
-    built-in, typed and described instead of guessed at
-  + Without one, reaching a service means Claude writing curl commands
-    and parsing whatever comes back
-  + Use cases: a read-only case-management database, a document store,
-    a Playwright browser, errors pulled out of Sentry
-  + Same protocol and same tools as a connector; what differs is the
-    install — a server is added at the command line, a connector is
-    ticked on at `claude.ai`
+  - An MCP server advertises a list of tools; Claude calls them typed and described, like any built-in
+  - Without one, reaching a service means Claude writing `curl` commands and guessing at what comes back
+  - Use cases: a read-only case database, a document store, a Playwright browser, errors pulled out of Sentry
+  - Same protocol and same tools as a connector -- what differs is the install: a server is added at the command line, a connector is ticked on at claude.ai
 
 - Adding one
-  + A remote server is added with
-    `claude mcp add --transport http <name> <url>`
-  + A local one is added with `claude mcp add <name> -- <command>`,
-    where the bare `--` separates the server's own arguments from
-    Claude Code's
-  + A published server usually exists already — vendors ship them for
-    Sentry, Playwright and Postgres — so writing your own is rarely
-    the first move
-  + A `stdio` server runs as a subprocess with your own files and your
-    own network access, so adding one is a trust decision, not a
-    convenience
+  - A remote server: `claude mcp add --transport http <name> <url>`
+  - A local server: `claude mcp add <name> -- <command>`, where the bare `--` separates the server's arguments from Claude Code's
+  - A published server usually exists already -- Sentry, Playwright and Postgres are shipped by their vendors -- so writing your own is rarely the first move
+  - A `stdio` server runs as a subprocess with your own files and network access: adding one is a trust decision, not just a convenience
 
 - The transports
-  + `stdio` launches the server as a subprocess on your machine — the
-    case-management database on your own disk is the common case
-  + `http` reaches a server somebody else runs, such as a document
-    portal's own service
-  + `sse` is deprecated
+  - `stdio` -- a subprocess on your own machine, the common case for a local database or file store
+  - `http` -- a server somebody else runs, such as a document portal's own service
+  - `sse` -- deprecated
 
 - Scopes and where they live
-  + `local` scope is this project only, stored in `~/.claude.json`
-  + `project` scope lives in `.mcp.json` in the repository root — the
-    file that travels with the code, arriving with the clone on the
-    office machine
-  + `user` scope reaches every project, also in `~/.claude.json`
-  + MCP servers are not configured in `.claude/settings.json` with
-    everything else — the first wrong guess
-  + `~/.claude/mcp.json` is never read, however plausible the path
-    looks — the second wrong guess
-  + `project` scope suits a server the whole team should get on every
-    clone; `local` scope suits one this checkout alone should keep
+  - Three scopes: `local` (this project only), `project` (the whole team, every clone), `user` (every project you open)
+    - `local` and `user` both live in `~/.claude.json`; `project` lives in `.mcp.json` in the repo root, which is the one that travels with the code
+      - A `.mcp.json` committed to a repo next to a `~/.claude.json` holding a `local` entry shows which file a given server actually lives in
+  - Two traps worth naming: MCP servers are not in `.claude/settings.json` with everything else, and `~/.claude/mcp.json` is never read, however plausible the path looks
+  - `project` scope suits a server the whole team should get on every clone; `local` suits one only this checkout should keep
 
 - Authentication
-  + A static `headers.Authorization` value, the kind used against an
-    internal document-store server, never refreshes and must be
-    rotated by hand each quarter
-  + OAuth refreshes its own token and retries once on a 401, which
-    covers most overnight running
-  + `headersHelper` runs a command that prints a JSON object of headers
-    fresh on every connection with no caching — how Kerberos and
-    internal SSO are reached
-  + It gets ten seconds and executes arbitrary shell, so it only
-    belongs in a trusted folder
+  - Three ways, in ascending order of what survives running unattended
+    - A static `headers.Authorization` value never refreshes -- rotate it by hand
+    - OAuth refreshes its own token and retries once on a 401, which covers most overnight running
+    - `headersHelper` runs a command that prints fresh headers on every connection, with no caching -- how Kerberos and internal SSO get reached
+      - It gets ten seconds and executes arbitrary shell, so it only belongs in a trusted folder
 
 - Tool search and output limits
-  + Tool search is on by default, so a dozen servers cost almost
-    nothing at startup — only names and instructions load
-  + Full schemas are fetched on demand, the moment a tool is actually
-    called
-  + `ENABLE_TOOL_SEARCH=false` reverts to loading every schema upfront
-  + `MAX_MCP_OUTPUT_TOKENS` caps what a single call may return,
-    defaulting to 25,000 tokens
-  + A document-store call returning two hundred filings can pass the
-    10,000-token warning long before the 25,000 cap is hit
+  - Tool search is on by default: a dozen servers cost almost nothing at startup, since only names and instructions load until a tool is actually called
+  - `ENABLE_TOOL_SEARCH=false` reverts to loading every schema upfront
+  - `MAX_MCP_OUTPUT_TOKENS` caps what a single call may return -- 25,000 tokens by default, with a warning at 10,000
+    - A call that returns two hundred filings is worth showing -- it clears the warning long before it hits the cap
 
 - Timeouts
-  + Four separate clocks govern an MCP call, and a job hung at
-    midnight is usually one of them running out
-  + `MCP_TIMEOUT` covers startup, and defaults to 30 seconds
-  + The per-server `timeout`, set in milliseconds, bounds the whole
-    call
-  + HTTP servers carry a 60-second per-request timer on top of that
-  + Idle timeout is five minutes for a remote server, thirty minutes
-    for a local one
-  + Matching a failure to the clock that caused it is the diagnostic
-    step: a startup hang is `MCP_TIMEOUT`, a stalled call is the
-    per-server `timeout` or the HTTP timer, silence after replies is
-    the idle timeout
+  - Four separate clocks govern an MCP call -- a job hung at midnight is usually one of them running out
+    - `MCP_TIMEOUT` for startup, 30 seconds by default
+    - The per-server `timeout`, in milliseconds, bounding the whole call
+    - A 60-second per-request timer on HTTP servers, on top of that
+    - Idle timeout: five minutes remote, thirty minutes local
+  - Matching a failure to its clock is the diagnostic step: a startup hang is `MCP_TIMEOUT`, a stalled call is the per-server timeout or the HTTP timer, silence after replies is the idle timeout
 
 - MCPs in unattended sessions
-  + A project-scoped server in `.mcp.json` normally prompts for
-    approval before it loads
-  + Under `claude -p`, in an SDK session, and in a cloud session there
-    is nobody to answer that prompt, so a server committed to the
-    matters repo loads unasked when a 06:00 intake run starts
-  + The security consequence: anyone who can commit a `.mcp.json` to
-    the repo can get a server run unattended, with nobody there to
-    say no
-  + `disabledMcpjsonServers` keeps a specific one out;
-    `--setting-sources` cuts project settings off entirely
-  + Managed MCP is the enterprise counterpart — a `managed-mcp.json`
-    in a system directory fixes what may load regardless of what a
-    project asks for
+  - A project-scoped server in `.mcp.json` normally prompts for approval before it loads
+  - Under `claude -p`, in an SDK session, or in a cloud session there's nobody to answer that prompt -- it loads unasked
+    - Show a server committed to a matters repo loading itself into a 06:00 intake run with nobody there to say no
+  - The security consequence: anyone who can commit a `.mcp.json` to the repo can get a server run unattended
+  - `disabledMcpjsonServers` keeps a specific one out; `--setting-sources` cuts project settings off entirely
+  - Managed MCP is the enterprise counterpart -- a `managed-mcp.json` in a system directory that fixes what may load regardless of what a project asks for
 
 - Driving a browser headlessly
-  + The Playwright MCP server is what drives a browser headlessly —
-    it renders into memory, so no display is needed and the box can
-    be a rented Linux one
-  + Nothing about the run is visible, so a login page or a CAPTCHA
-    becomes a silent hang rather than a prompt anybody can answer
-  + A page plain enough to run unwatched has a stable form and no
-    login
-  + A court portal behind a sign-in is not one of those pages, and
-    belongs to Chrome control instead
+  - The Playwright MCP server drives a browser headlessly -- it renders into memory, so no display is needed and the box can be a rented Linux one
+  - Nothing about the run is visible, so a login page or a CAPTCHA becomes a silent hang, not a prompt anyone can answer
+  - A page plain enough to run unwatched has a stable form and no login -- a court portal behind a sign-in isn't one of them, and belongs to Chrome control instead
 
 - When an MCP breaks
-  + A JSON entry with a `url` and no `type` is skipped outright — the
-    single most common malformed config, and why a document-store
-    server can show no tools the morning after an edit
-  + The fix is naming the transport explicitly, `"type": "http"` or
-    `"type": "stdio"`, alongside the `url`
-  + `claude mcp list` and `/mcp` inside a session are how you find out
-    what actually loaded
-  + A server that failed to start and a server that was never
-    configured both look like nothing on the menu — the failure is
-    silent either way
-  + An empty tool list can equally mean tool search deferred the
-    schemas; it proves nothing about the server on its own
+  - A JSON entry with a `url` and no `type` is skipped outright -- the single most common malformed config
+    - A document-store server with no tools on the menu the morning after an edit dropped the `type` field, and the fix -- naming it explicitly as `"type": "http"` or `"type": "stdio"` -- makes a good pair to show
+  - `claude mcp list` and `/mcp` inside a session are how you find out what actually loaded
+  - A server that failed to start and one that was never configured both look like nothing on the menu -- the failure is silent either way
+  - An empty tool list can just as easily mean tool search deferred the schemas -- it proves nothing about the server on its own
 
 ### Browser and Screen Control
 
 - What Chrome control is
-  + Chrome control is an extension that drives a browser window you
-    can see — the same window, taking the same actions a person would.
-  + It exists for the site with no API and no way in through the
-    terminal: a login-gated portal, a page that renders only after its
-    JavaScript runs.
-  + Computer use, by contrast, is a built-in MCP server driving the
-    whole desktop, screenshot by screenshot — not just the browser.
+  - Chrome control is an extension driving a browser window you can see -- the same actions a person would take
+  - It exists for the site with no API and no way in through the terminal: a login-gated portal, a page that only renders after its JavaScript runs
+  - Computer use, by contrast, drives the whole desktop screenshot by screenshot, not just the browser
 
 - The browser's own login
-  + It shares the browser's own login state — the entire reason to
-    prefer it over `curl` for a signed-in site.
-  + Anything the browser is already signed into, Claude reaches
-    without a credential of its own: no separate API key, no service
-    account.
-  + A solicitor's Chrome already signed into the county court's
-    e-filing portal — Claude reaches that same session, not a fresh
-    login of its own.
+  - It shares the browser's own login state -- the whole reason to prefer it over `curl` for a signed-in site
+  - Whatever the browser is already signed into, Claude reaches with no credential of its own: no API key, no service account
+    - A solicitor's Chrome already signed into a county court's e-filing portal is the example -- Claude reaching that same session rather than logging in fresh
 
 - The portal with no API
-  + The use case is a portal behind a login with no API — most court
-    and government systems.
-  + Chrome control reaches a page that renders nothing until its
-    JavaScript runs, and fills a form that must be clicked into field
-    by field and submitted.
-  + A filing confirmation exists only on screen, and no API can hand
-    it back instead — a screenshot is the record.
-  + It runs in a visible window in real time — watchable, not
-    headless.
-  + It pauses and hands control back at a login page or a CAPTCHA.
-  + Read-only calls — reading the page, searching it, screenshots —
-    pass without a prompt in plan mode; clicking, typing and
-    navigating ask first.
+  - The use case: a portal behind a login with no API -- most court and government systems
+  - It reaches a page that renders nothing until its JavaScript runs, and fills a form field by field before submitting
+  - A filing confirmation that exists only on screen has no API to hand it back through -- a screenshot is the record
+  - It runs in a visible window in real time, watchable rather than headless, and hands control back at a login page or a CAPTCHA
+  - Permission split: reading, searching and screenshots pass without a prompt in plan mode; clicking, typing and navigating ask first
 
 - Computer use
-  + It reaches native applications with no other way in — a desktop
-    e-filing client, a case-management program with no browser and no
-    API — after an MCP server, Bash and Chrome have all failed.
-  + It runs on macOS and Windows only, and on Pro or Max only.
-  + Approval is scoped per application, per session.
-  + Only one session machine-wide may hold control at a time.
-  + It is unavailable under `-p`, so no unattended run reaches it.
-  + Escape aborts a run in progress.
-  + The terminal is hidden from its own screenshots.
+  - What it's for: native applications with no other way in -- a desktop e-filing client, a case-management program with no browser and no API -- reached only after an MCP server, Bash and Chrome have all failed
+  - The constraints stack up
+    - macOS and Windows only, Pro or Max only
+    - Approval scoped per application, per session
+    - Only one session machine-wide may hold control at a time
+    - Unavailable under `-p` -- no unattended run reaches it
+  - Escape aborts a run in progress, and the terminal is hidden from its own screenshots
 
 - Reach for these last
-  + The ladder runs MCP server, then Bash, then Chrome, then computer
-    use — each rung reached only once the one before it has failed.
-  + An API is faster and cheaper, and does not break when a button
-    moves.
-  + Screen control is what's left when nothing behind the screen can
-    be reached any other way.
+  - The ladder: MCP server, then Bash, then Chrome, then computer use -- each rung tried only once the one before has failed
+  - An API is faster and cheaper, and doesn't break when a button moves
+  - Screen control is the last resort, for when nothing behind the screen can be reached any other way
 
 ### Connectors
 
 - What a connector is
-  + A connector is an MCP server somebody else runs, ticked on at
-    `claude.ai/customize/connectors` rather than added at the command
-    line
-  + Same protocol and same tools as a server you configure yourself —
-    what differs is a shorter install and no config file touched
-  + Because it is remote it is HTTP, and because Anthropic handles the
-    authorisation it reaches services that refuse a local OAuth round
-    trip: Gmail, Google Calendar, Microsoft 365, Slack
-  + The calendar connector answers when the Smith hearing is listed;
-    the Gmail connector pulls a client's thread into the session
-  + A shared Drive folder's current contents are readable, and an
-    overnight run's outcome posts into a Slack channel
+  - A connector is an MCP server somebody else runs, ticked on at `claude.ai/customize/connectors` instead of added at the command line
+  - Same protocol and same tools as a server you configure yourself -- what differs is a shorter install and no config file touched
+  - Because it's remote it's HTTP, and because Anthropic handles the authorisation it reaches services that refuse a local OAuth round trip -- Gmail, Google Calendar, Microsoft 365, Slack
+  - Use cases: the calendar connector answers when a hearing is listed, Gmail pulls a client's thread into the session, a shared Drive folder's contents are readable, an overnight run's outcome posts to Slack
 
 - Turning one on
-  + The tick is made at `claude.ai/customize/connectors`
-  + Nothing installs on your machine and no config file changes — the
-    whole action is the tick itself
-  + The tick is made once per account, not once per matter repo, so
-    every session that account opens sees it
+  - The tick is made at `claude.ai/customize/connectors` -- nothing installs, no config file changes
+  - It's made once per account, not once per repo -- every session that account opens sees it
 
 - The subscription condition
-  + Connectors load only when the session is signed in with a
-    claude.ai subscription
-  + Setting `ANTHROPIC_API_KEY` kills them silently
-  + So does an `apiKeyHelper`, a `claude setup-token` token, or
-    running through Bedrock, Vertex or Foundry
-  + No warning and no error in any of those cases — just an empty
-    list where the connectors should be
-  + They also ride the claude.ai session token itself, so when that
-    lapses the connector reports itself rejected
-  + Re-authorising the connector does not mend a lapsed login — the
-    login has to be renewed by a person, which an unattended job
-    cannot do
+  - Connectors load only when the session is signed in with a claude.ai subscription
+  - Any of these kill them silently, with no warning and no error -- just an empty list: `ANTHROPIC_API_KEY`, an `apiKeyHelper`, a `claude setup-token` token, or running through Bedrock, Vertex or Foundry
+  - They also ride the claude.ai session token itself -- when that lapses, the connector reports itself rejected
+  - Re-authorising the connector doesn't mend a lapsed login -- a person has to renew it, which an unattended job can't do
 
 - Precedence
-  + A server you configure yourself at the same endpoint URL wins
-    over a connector reaching that endpoint
-  + Pointing your own server at a connector's endpoint overrides it
-    without unticking the connector first
-  + The match is made on endpoint URL, not on name
-  + Renaming your own server changes nothing about precedence, since
-    the match never looked at the name in the first place
+  - A server you configure yourself wins over a connector reaching the same endpoint, without having to untick the connector first
+  - The match is made on endpoint URL, not on name -- renaming your own server changes nothing
 
 ### Channels
 
 - What a channel is
-  + A channel is an MCP server that pushes events into a running
-    session from outside — the one integration where the world
-    reaches in rather than Claude reaching out.
-  + It reverses every other integration in this course: connectors,
-    MCPs and Chrome have Claude call out; a channel has something
-    outside call in.
-  + Use case: a case-management webhook arrives and Claude acts on
-    the status change without anyone opening a terminal.
-  + Use case: a message from a paralegal's phone redirects a run
-    already underway, or an approval is granted from a train.
+  - State that a channel is an MCP server pushing events in from outside
+    - Contrast it with connectors, MCPs and Chrome, which have Claude call out instead
+  - Show an event arriving from outside and acting on a session with nobody at the terminal -- a case-management webhook flipping a status, a phone message redirecting a run already underway, or an approval granted from a train
 
 - The channels there are
-  + Ships as plugins: Telegram, Discord and iMessage, plus a webhook
-    receiver listening on a local port for anything that can POST,
-    and a browser demo for testing.
-  + Custom channels are written against the ordinary MCP SDK, so a
-    firm's own case-management webhook does not have to wait for a
-    shipped plugin.
-  + The webhook receiver is the one built for a firm's own systems:
-    point a case-management server's status-change webhook at the
-    local port instead of picking a chat app.
-  + Needs an Anthropic login, and does not run on Bedrock, Vertex or
-    Foundry.
-  + Blocked by default on Team and Enterprise until an owner enables
-    it.
+  - Ships as plugins: Telegram, Discord, iMessage, a webhook receiver, a browser demo for testing
+  - Custom channels use the ordinary MCP SDK -- no waiting on a shipped plugin
+    - The webhook receiver already covers it: point a case system's webhook at the local port
+  - Needs an Anthropic login, not Bedrock, Vertex or Foundry; blocked by default on Team and Enterprise until an owner enables it
+  - Slack is a separate integration, not a channel -- it opens its own new cloud session rather than pushing into the local one already running
 
 - Switching one on
-  + Installed as a plugin, with a token landing in
-    `~/.claude/channels/<name>/.env`.
-  + Switched on for the session by naming it on the command line —
-    `claude --channels plugin:telegram@claude-plugins-official` —
-    not by editing a config file.
-  + Being listed in `.mcp.json` is not enough; a channel not named on
-    the command line never loads.
-  + Events arrive only while a local session is open — not the web,
-    not the desktop app, not Remote Control.
-  + An always-on channel means a session parked in tmux, or a
-    `claude -p` worker left running for the purpose.
-  + A paralegal wanting a Telegram alert on every filed matter has to
-    leave that session running all day, not just open it when
-    checking.
+  - Installed as a plugin, with a token landing in `~/.claude/channels/<name>/.env`
+  - Switched on per session by naming it on the command line: `claude --channels plugin:telegram@claude-plugins-official`
+    - Not by editing a config file -- listed in `.mcp.json` alone does nothing
+  - Events arrive only while a local session is open, not the web, desktop app, or Remote Control
+    - Staying always-on means a session parked in tmux, or a `claude -p` worker left running
+    - A paralegal wanting a Telegram alert on every filed matter has to leave that session running all day, not just open it when checking -- worth spelling out
 
 - Two-way and the permission relay
-  + Two-way requires the channel to offer a reply tool — not every
-    channel does.
-  + The permission relay puts the same approval prompt in two places
-    at once: the terminal and the phone.
-  + Whichever answer arrives first wins, so approving from a phone
-    while stepping out of a hearing beats a terminal sitting
-    untouched back at the office.
+  - Two-way needs the channel to offer a reply tool -- not every channel does
+  - The permission relay puts the same approval prompt in the terminal and on the phone -- first answer wins
+    - Approving from a phone leaving a hearing beats a terminal sitting untouched back at the office
 
 - Gating the sender
-  + Sender-ID gating is the rule that holds; the room a message
-    arrives in is not a safe boundary to gate on.
-  + Gating on the room instead lets anyone who can reach that room
-    put text in front of Claude — a client's own group chat, say, not
-    just the paralegal running it.
-  + The same rule applies to the webhook receiver: gate on which case
-    system or account sent the POST, not on the port being reachable.
-  + An ungated channel is a prompt-injection hole with an address —
-    anyone who finds it can steer the session.
+  - Gate on the sender's own ID -- the room it arrives in is not a safe boundary
+    - Gating on the room instead lets anyone who can reach it put text in front of Claude
+  - Same rule for the webhook receiver: gate on which system sent the POST, not the port
+  - An ungated channel is a prompt-injection hole with an address
 
 ### Deep Links
 
 - What a deep link is
-  + A deep link opens Claude Code in a new terminal window with the
-    prompt box already filled — scheme `claude-cli://open`.
-  + It carries `q` for the prompt text, `cwd` for an absolute working
-    directory, and `repo` for a GitHub `owner/name` slug resolved
-    against clones Claude Code has already seen.
-  + Use case: an alert link that opens a session pointed straight at
-    whatever broke — a failed intake run, say.
-  + Use case: a runbook written as links rather than paragraphs to
-    copy, so each step is one click.
-  + Use case: a dashboard row for an overdue filing that becomes an
-    investigation in one click.
-  + It never runs on its own — the prompt lands in the box, a person
-    presses Enter, and an external-link warning stays visible until
-    they do; that hand-off is the design, not a limitation.
+  - A deep link opens a new terminal window with the prompt already filled -- scheme `claude-cli://open`
+    - Three parameters: `q` the prompt text, `cwd` an absolute working directory, `repo` a GitHub slug resolved against known clones
+  - Give a few examples of what a deep link is for: an alert that opens a session on whatever broke, a runbook written as one-click links instead of paragraphs to copy, a dashboard row that becomes an investigation in one click
+  - It never runs on its own -- the prompt lands in the box, a person presses Enter
+    - A warning it came from an external link stays up until they do -- the hand-off is the design
 
 - Firing one
-  + Fired from anywhere the OS can open a URL — `open` on macOS,
-    `xdg-open` on Linux, `start` on Windows — so any script can
-    produce one.
-  + A monitor watching the intake queue can print a deep link
-    straight into its notification, landing a session pointed at the
-    stuck matter with one click.
-  + The handler registers itself the first time a prompt is typed
-    into an interactive session.
-  + `disableDeepLinkRegistration` in `settings.json` prevents that
-    registration.
-  + Sites that strip unknown URL schemes — GitHub Markdown among
-    them — render the link as plain text, so put it in a code block
-    so it can still be copied.
+  - Fired from anywhere the OS can open a URL -- `open`, `xdg-open`, `start` -- any script can make one
+    - A monitor watching the intake queue that prints a deep link into its own notification, landing a session on the stuck matter in one click, is worth a picture
+  - The handler registers on first use in an interactive session; `disableDeepLinkRegistration` turns that off
+  - Scheme-stripping sites like GitHub Markdown show it as plain text -- keep it copyable in a code block
 
 ### Credentials
 
 - Where keys should live
-  + A dozen services reached from automations means a dozen
-    credentials, and each one written down in the open is its own
-    liability.
-  + Use case: an unattended job running at 3am needs an API key with
-    nobody there to type a password.
-  + Use case: rotating a shared database password in one place rather
-    than editing six scripts.
-  + Use case: keeping a key out of a repository that later gets
-    shared with a client or a new hire.
-  + The rule: a key is fetched at the moment of use, not stored
-    everywhere it might be needed.
+  - A dozen services means a dozen credentials, and each one sitting in the open is a liability
+    - Two examples earn their place here: an unattended 3am job needing a key with no one to type a password, and rotating one shared database password instead of editing six scripts
+  - The rule: fetch a key at the moment of use, not store it everywhere it might be needed
+    - Also keeps a key out of a repo later shared with a client or a new hire
 
 - The keychain, direnv and password managers
-  + The OS keychain — Keychain on macOS, Secret Service or `pass` on
-    Linux — holds a credential outside any file a script or
-    repository can expose.
-  + `.env` files paired with `direnv`, kept out of version control,
-    load a key into environment variables only inside that directory.
-  + Bitwarden or 1Password with a CLI reaches the same vault a person
-    already uses for the firm's other passwords.
-  + HashiCorp Vault or a cloud provider's secret manager is the
-    serious version, for a script, a colleague and a scheduled job
-    all pulling from the same store.
-  + A script asks the keychain by name at the moment it calls out and
-    keeps no copy of what comes back.
-  + A firm running Telegram, a case-management API and an email
-    provider keeps three keys in one keychain rather than three
-    `.env` files scattered across matter folders.
+  - Order the options by one axis: how many things need the same secret
+    - One machine, one key: the OS keychain -- Keychain on macOS, Secret Service or `pass` on Linux
+    - One project: a `.env` file with `direnv`, kept out of version control
+    - Many consumers, one secret: HashiCorp Vault or a cloud provider's secret manager
+  - If a password manager is already in use, its CLI reaches the same vault -- Bitwarden or 1Password, nothing new to run
+  - A script asks the keychain by name and keeps no copy of the answer
+    - Picture a firm keeping three keys -- Telegram, a case-management API, an email provider -- in one keychain rather than three scattered `.env` files
 
 - Keys and the transcript
-  + Three ways a secret reaches the transcript: pasted into a prompt,
-    a `.env` file read wholesale into context, or a credential typed
-    on a command line.
-  + The transcript persists as a JSONL file long after the terminal
-    window closes, so a secret typed into it does not vanish with
-    the session.
-  + The fix is timing, not carefulness: fetch the key at the moment
-    of use rather than trying never to type it.
-  + A script can fetch a key straight from the keychain and call the
-    API itself, so Claude reads the result but never the credential.
+  - Three ways a secret reaches the transcript: pasted, a `.env` loaded into context, or typed on a command line
+  - The transcript is a JSONL file that outlives the terminal -- a secret in it doesn't vanish
+  - The fix is timing, not carefulness -- fetch the key at the point of use
+    - A script can fetch the key itself and call the API, so Claude sees the result, never the credential
 
 - apiKeyHelper and sandbox credentials
-  + `apiKeyHelper` runs a command to produce the key at connection
-    time, so it is never written into a settings file at all.
-  + `sandbox.credentials` denies or masks credentials from a
-    sandboxed process entirely — the process runs without ever
-    holding the value.
-  + Both keep a key out of the places a transcript or a shared config
-    file could expose it — the settings file for one, the process
-    environment for the other.
+  - Grade any credential mechanism by whether it survives unattended, with nobody there to renew it
+    - A pasted or hardcoded key needs a person to rotate it; something that fetches itself doesn't
+    - MCP's own ladder makes the same point and is worth pointing back to: a static header needs rotating by hand, OAuth refreshes itself, `headersHelper` produces fresh headers on every connection
+  - `apiKeyHelper` is Claude Code's version: produces the key at connection time, never written to a settings file
+  - `sandbox.credentials` denies or masks credentials from a sandboxed process -- it runs without ever holding the value
+  - Both keep the key out of what could leak it: a settings file, a process environment
 
 ## Databases
 
 ### Why Database Anything
 
 - What a database is
-  + The question a folder answers is "what files are here"; the
-    question it cannot answer is "which matters have an unbilled
-    hearing in the next fourteen days".
-  + A database holds rows with named columns and links between them —
-    a `matters` table, a `clients` table, one row per invoice.
-  + The most common shape is relational — fixed columns and links
-    between them, such as `matters`, `clients`, and `invoices` — but
-    several other shapes exist for different needs.
-  + Recording that a letter states the deadline as 14 October does not
-    make 14 October correct; a database stores claims, not facts.
+  - A folder answers "what files are here"; a database answers a question about the data itself
+    - Show "which matters have an unbilled hearing in the next fourteen days" asked of a folder listing that can't answer it, then asked of the database
+  - A database stores claims, not facts -- recording a deadline doesn't make it correct
+  - Other shapes beyond rows-and-columns exist for other needs, covered later in this part
 
 - Why put your own files in one
-  + The archive stays exactly where it is; what goes into the
-    database is a row per document saying what it is, which matter it
-    belongs to, and the path on disk.
-  + Once the rows exist, one query returns every noncompete sent to a
-    New Jersey client since 2023, with no folder opened.
-  + A document nobody indexed is invisible to every query, and the
-    query returns no error saying so.
+  - The archive doesn't move -- a database adds a row per document, not a copy of it
+    - The row records what the document is, which matter it belongs to, and its path on disk
+  - Once the rows exist, a query answers instantly what would otherwise mean opening every folder
+    - Give the query "every noncompete sent to a New Jersey client since 2023" and show it answered instantly, against what opening every folder would take
+  - An unindexed document is invisible to every query, and nothing says so -- no error, just absence
 
 - SQLite first
-  + SQLite is one file, no server, no setup — it ships inside Python
-    already, and it is the default for anything living on one
-    machine.
-  + `sqlite3 matters.db` creates the database on the spot; deleting
-    the file deletes the database, with nothing else to clean up.
-  + Reaching for Postgres before it is needed costs a server process
-    to keep running and a connection string to manage, for a machine
-    that never needed either.
-  + The path is SQLite first, moving to Postgres only when a second
-    machine needs to reach the same data — that is the one condition
-    that changes the answer.
-  + The questions to answer are named up front; Claude designs the
-    tables from them, not the other way round.
+  - SQLite first, moving to Postgres only once a second machine needs the same data
+    - One file, no server, ships inside Python already
+    - `sqlite3 matters.db` creates it; deleting the file removes it
+    - Reaching for Postgres before that point means a server running for no benefit yet
+  - Name the questions the database has to answer -- Claude designs the tables from them, not the other way round
 
 ### Relational
 
 - Relational databases
-  + Every row in a `matters` table, a `clients` table, or an
-    `invoices` table carries the same named columns and can link to
-    rows in another table.
-  + A `matters` row points at a `clients` row and at many `documents`
-    rows; that link is the thing a folder cannot hold.
-  + Matters, clients, and invoices already exist as record-shaped data
-    in most practices, so relational is usually the shape already at
-    hand, not one invented for the occasion.
-  + Changing a link's shape after rows exist means migrating every row
-    that used the old shape, not just adding a column.
+  - Rows carry named columns and can link to rows in another table
+    - That link is what a folder can't hold
+    - A diagram of one `matters` row branching to one `clients` row and many `documents` rows, showing a query traverse the link from matters through both
+  - Matters, clients and invoices are already record-shaped, so relational is usually the shape already at hand
+  - Changing a link's shape later means migrating every row that used it, not just adding a column
 
 - PostgreSQL
-  + Postgres is the serious open-source server — the step up from
-    SQLite once a single file and no server stop being enough.
-  + It handles JSON, full-text search, and vectors natively, so one
-    Postgres instance often covers three of the other database types
-    covered later in this part.
-  + The path SQLite leads to runs through Postgres the moment a
-    second machine, a second person, or a second automation needs to
-    reach the same data at once.
-  + A server process differs from a file: something has to start it,
-    keep it running, and grant a connection to it, rather than just
-    opening a path.
-  + Several people or automations reading and writing the same
-    `matters` table at once is exactly the condition Postgres is
-    built for and a single SQLite file is not.
-  + Nothing answers while the server is stopped — a stopped Postgres
-    instance is not a slower file, it is no database at all until
-    restarted.
+  - Postgres is the serious open-source server -- the step up once a single file and no server aren't enough
+  - It earns its place once a second machine, person or automation needs the same data at once
+  - A server process differs from a file -- something has to start it, keep it running, grant access to it
+  - It handles JSON, full-text search and vectors natively, covering three of the other types this part goes on to name
+  - A stopped Postgres instance isn't a slower file -- it's no database at all until restarted
 
 - DuckDB and the others
-  + MySQL, and its fork MariaDB, are older and hugely deployed —
-    mostly the database behind existing websites, not a first choice
-    for a new one.
-  + SQL Server and Oracle are commercial and licensed — databases a
-    practice inherits from an enterprise case-management system, not
-    ones it installs by choice.
-  + DuckDB has SQLite's shape, one file and no server, but it is
-    columnar rather than row-based, built to answer questions across
-    many rows at once.
-  + DuckDB queries CSV and Parquet files directly, where they already
-    sit on disk, with no import step first.
-  + None of MySQL, SQL Server, Oracle, or DuckDB is chosen from
-    scratch — they show up because an existing system already uses
-    one, not because SQLite and Postgres stopped being enough.
-  + A firm's billing export lands as a folder of CSVs each month;
-    DuckDB queries them directly for "total billed per client this
-    quarter" with no database to load them into first.
+  - None of these are chosen from scratch -- an existing system already uses one
+    - MySQL and its fork MariaDB are older and hugely deployed, mostly behind existing websites
+    - SQL Server and Oracle are commercial and licensed -- inherited from a case-management system, not installed by choice
+  - DuckDB has SQLite's shape -- one file, no server -- but is columnar, built for questions across many rows
+    - It queries CSV and Parquet files directly where they already sit on disk, with no import step first
+    - Show a folder of monthly billing CSVs queried directly for "total billed per client this quarter", with nothing loaded into anything first
 
 ### The Other Kinds
 
 - Document databases
-  + Document databases hold JSON blobs of varying shape — no fixed
-    columns, so one record can carry a field another record lacks.
-  + MongoDB is the one everyone names: collections of JSON documents
-    with no fixed schema. CouchDB is older and syncs well between
-    machines. Firestore and DynamoDB are hosted, by Google and
-    Amazon.
-  + A scraped court listing shows why: one hearing's record carries a
-    room number, the next does not, and a typo in a key silently
-    becomes a new field that nothing queries, with no error raised.
-  + The use case is saving scraped or API data before deciding its
-    final structure, since the shape can vary record to record and
-    nothing is rejected for not matching.
-  + A `jsonb` column in Postgres, or a JSON column in SQLite, covers
-    this without installing MongoDB — the pragmatic answer before
-    reaching for a dedicated document database.
+  - Document databases hold JSON blobs of varying shape -- no fixed columns, so records can differ
+    - The use case is scraped or API data whose shape isn't settled yet
+      - Walk through a scraped court listing where one hearing's record has a room number and the next doesn't
+      - Show a typo in a key silently becoming a new field that nothing queries, with no error raised
+  - A `jsonb` column in Postgres, or a JSON column in SQLite, covers this without installing a dedicated document database
+  - Standalone options earn a mention only once a `jsonb` column or JSON column isn't enough -- MongoDB, CouchDB, Firestore, DynamoDB
 
 - Key-value stores
-  + A key-value store holds one value per key and nothing else — no
-    columns, no relations, just a fast lookup by name.
-  + In practice it is a notepad that survives between runs: an
-    archiver running every ten minutes asks, key by message ID, "seen
-    this?" before processing it again.
-  + The same shape covers an expensive API answer not worth paying for
-    twice, a "job already running, do not start another" flag, and a
-    count of how many times something happened today.
-  + Redis is the standard — a server holding everything in memory, so
-    lookups are very fast; Valkey is the open fork that continued
-    after Redis changed its licence.
-  + Memcached is cache-only and simpler; LMDB and RocksDB are
-    embedded, a file on disk with no server, used inside other
-    programs; etcd and Consul are for machines agreeing on shared
-    settings across a network.
-  + Nothing expires on its own unless the code that wrote the key also
-    sets an expiry — a "seen this" flag stays forever unless something
-    deletes it.
-  + The path is a two-column SQLite table on one machine, installing
-    nothing new; Redis earns its place only when several processes
-    need to share the same notepad at once.
+  - A key-value store holds one value per key and nothing else -- no columns, no relations, just a fast lookup
+    - The shape is a notepad that survives between runs
+      - Show an archiver asking, key by message ID, "seen this?" before reprocessing it every ten minutes, and skipping the message it already has a key for
+    - The same shape covers a cached API answer not worth paying for twice
+    - It also covers a "job already running" flag, or a count of how many times something happened today
+  - Nothing expires on its own unless the code that set a key also sets its expiry
+  - The path is a two-column SQLite table on one machine, installing nothing
+    - A dedicated store earns its place only when several processes need to share the same notepad at once
+  - Name the rest only as needed -- Redis, Valkey, Memcached, LMDB, RocksDB, etcd and Consul
 
 - Columnar databases
-  + A columnar database reads only the columns a query asks for,
-    rather than fetching every row whole — that is what makes
-    across-every-row questions much faster.
-  + "What did I bill per client per month for three years" or "which
-    of these 400,000 log lines are errors, grouped by hour" run
-    roughly a hundred times faster columnar than relational.
-  + DuckDB is the one that matters for a single practice; ClickHouse
-    is the server version for constant streams; BigQuery, Snowflake,
-    and Redshift are the hosted, enterprise-scale versions.
-  + It is bad at the opposite question — fetching one matter's whole
-    record, which is what most days actually require — because that
-    means touching every column instead of the few a report needs.
-  + It earns its place once reporting across the whole archive —
-    total billed, error counts, trends over years — starts being
-    asked for, not before.
+  - A columnar database reads only the columns a query asks for, instead of fetching every row whole
+    - A diagram of that difference -- row-wise touching every cell in a row versus column-wise touching only the three columns a query needs
+    - Give the two queries "total billed per client per month for three years" and "which of 400,000 log lines are errors, grouped by hour", and show them running roughly a hundred times faster columnar than relational
+  - It's bad at the opposite question -- fetching one matter's whole record, which is what most days actually require
+  - It earns its place once reporting across the whole archive starts being asked for, not before
+  - DuckDB is the one that matters for a single practice; ClickHouse and hosted warehouses are for scale beyond that
 
 - Graph databases
-  + A graph database stores the connections as the primary thing —
-    who owns what, who is related to whom — and answers "everyone
-    connected to this person within four steps" directly, where a
-    relational join chain makes that painful.
-  + Corporate ownership chains, conflict-of-interest checks across a
-    client base, and family relationships in an immigration matter
-    are what a practice would actually build one for.
-  + Neo4j is the standard, run as a server; Kuzu is embedded, one
-    file; Memgraph is a faster server option.
-  + A client base of two hundred with one owner each buys nothing from
-    a graph database — SQLite's recursive queries reach further than
-    most practices ever need.
+  - A graph database stores connections as the primary thing, not the records themselves
+    - It answers "everyone connected to this person within four steps" directly, where a relational join chain makes that painful
+  - The use cases are specific: corporate ownership chains, conflict-of-interest checks across a client base, family relationships in an immigration matter
+  - Most practices don't need one -- SQLite's recursive queries reach as far as most client bases ever require
+  - Neo4j, Kuzu and Memgraph are worth naming only once that headroom is actually needed
 
 - Time-series databases
-  + A time-series database stores the same measurement taken
-    repeatedly and stamped with when, built to throw away old detail
-    and keep only summaries — tracking what an automation costs per
-    day, how long each run took, or rates over months.
-  + InfluxDB and TimescaleDB are purpose-built for this; Prometheus is
-    for machine metrics specifically.
-  + A SQLite table with a timestamp column is enough for most of
-    this, without a dedicated time-series database at all.
+  - A time-series database stores the same measurement taken repeatedly and stamped with when, built to throw away old detail and keep summaries
+  - The use case is tracking what an automation costs per day, how long each run took, or rates over months
+  - A SQLite table with a timestamp column covers most of this; a dedicated database is rarely needed
 
 ### Search
 
 - Full-text search
-  + `grep` scans every file every time it runs and matches only what
-    was typed exactly — nothing is prebuilt, so nothing is wrong, but
-    nothing is fast either.
-  + A full-text index is built once and then answers instantly,
-    ranking the best hits first instead of returning matches in file
-    order.
-  + Stemming means the index knows "filed", "filing", and "files" are
-    the same word, so a search for one finds all three without asking
-    for each separately.
-  + SQLite FTS5 is built into SQLite already, so search across every
-    letter and pleading in an archive needs nothing installed.
-  + Postgres `tsvector` does the same job inside Postgres, for an
-    archive that already lives there.
-  + Tantivy and Meilisearch are standalone and rank better than
-    either built-in option; Elasticsearch is the heavyweight, a
-    server of its own, for an archive that outgrows both.
-  + An index built on Monday does not know about Tuesday's filings —
-    it goes stale silently, returning a confident empty result
-    instead of an error saying it is out of date.
+  - `grep` matches only what was typed, scanning every file every time
+    - Nothing prebuilt, so nothing is wrong, but nothing is fast either
+  - A full-text index is built once and answers instantly, ranked best-match-first instead of file order
+    - Stemming catches "filed", "filing" and "files" as the same word without asking for each separately
+    - Show a search across an archive returning ranked results, best match first, against the same search run with `grep`
+  - SQLite FTS5 needs nothing installed; Postgres `tsvector` does the same job for an archive already in Postgres
+    - A standalone engine like Tantivy, Meilisearch or Elasticsearch earns its place only once both are outgrown
+  - An index built on Monday doesn't know about Tuesday's filings
+    - It goes stale silently -- a confident empty result, not an error
 
 - Vector search
-  + Full-text finds "termination" as a word; vector search finds the
-    clause about ending the agreement early even though it never uses
-    that word.
-  + Each document becomes a list of numbers from an embedding model;
-    similar meanings land near each other in that space, and a search
-    looks for what is nearby.
-  + The use case is finding the clause about early termination, or
-    the passage capping liability, across a contract archive without
-    knowing the exact wording each one used.
-  + `sqlite-vec` adds vector search to SQLite as an extension, with no
-    separate service to run.
-  + `pgvector` does the same job inside Postgres, for an archive that
-    already lives there.
-  + Chroma, Qdrant, and LanceDB are standalone vector databases, for
-    an archive that outgrows an extension bolted onto an existing
-    one.
-  + Changing the embedding model makes every vector already stored
-    meaningless against the new ones — the whole archive has to be
-    re-embedded, not just the new documents.
+  - Full-text finds "termination" as a word; vector search finds the clause even when it never says that word
+    - Each document becomes a list of numbers from an embedding model, and similar meanings land near each other
+    - A diagram of documents as points in space, showing the liability clause and the termination clause sitting near each other despite sharing no words
+    - Show a contract archive search that finds the clause capping liability, or the passage on early termination, without matching the search word itself
+  - `sqlite-vec` adds it to SQLite as an extension, `pgvector` does the same for Postgres
+    - Chroma, Qdrant and LanceDB are standalone, for an archive that outgrows an extension bolted onto an existing database
+  - Changing the embedding model breaks every vector already stored
+    - The whole archive has to be re-embedded, not just the new documents
 
 - Retrieval in practice
-  + No model can be handed the whole archive at once — a Claude Code
-    retrieval setup finds the six relevant passages out of ten
-    thousand and hands only those to the model.
-  + Full-text and vector search answer different questions — "every
-    letter using the word 'forfeiture'" against "the clause about
-    ending it early" — so a working setup usually runs both, not one
-    or the other.
-  + Retrieval sits in between the archive and the model: it narrows
-    ten thousand documents down to the handful actually relevant to
-    the question asked.
-  + An answer built on the wrong six passages reads exactly as
-    confident as one built on the right six — nothing in the reply
-    signals that retrieval picked badly.
+  - No model can be handed the whole archive at once
+    - Retrieval finds the handful of relevant passages and hands only those to the model
+  - Full-text and vector search answer different questions
+    - "every letter using the word 'forfeiture'" against "the clause about ending it early"
+    - A working setup usually runs both, not one or the other
+  - An answer built on the wrong six passages reads exactly as confident as one built on the right six
+    - Nothing in the reply signals that retrieval picked badly
 
 ### With the Harness
 
 - Getting your material in
-  + Material arrives as scanner PDFs, DOCX from clients, email
-    attachments, and exports from a case-management system — not as
-    one clean format.
-  + Getting it in is three steps: extract the text, classify what it
-    is (engagement letter, pleading, invoice), and record where it
-    lives.
-  + `pdftotext` is the test for whether OCR is needed at all: a blank
-    result means the PDF needs tesseract before anything else.
-  + tesseract does the OCR itself — a scan with no text layer becomes
-    text once tesseract has run over it.
-  + The original PDF never moves — the database row records only its
-    path, not a copy of the file.
-  + An import that OCR'd a blank page writes a row with empty text and
-    no error; the fix is counting rows against files afterward to
-    catch the gap.
+  - Material arrives as scanner PDFs, DOCX from clients, email attachments and case-management exports -- not one clean format
+  - Getting it in is three steps: extract the text, classify what it is, and record where it lives
+    - extract: `pdftotext` tests whether OCR is needed -- a blank result means running tesseract first
+      - Walk through a three-format ingest run -- a clean PDF, a DOCX and a scan with no text layer -- ending with all three searchable
+    - classify: sort what comes out into engagement letter, pleading, invoice and the rest
+    - record: the row holds what the document is, which matter it belongs to, and its path
+      - The original file never moves
+  - An import that OCR'd a blank page writes a row with empty text and no error
+    - The fix is counting rows against files afterward to catch the gap
 
 - Asking questions of your own data
-  + Questions worth asking become ordinary once the material is in:
-    "which matters have no engagement letter on file", "every letter
-    mentioning an appeal deadline last quarter", "what did I bill
-    Ramirez between March and June".
-  + The question is asked in plain language; Claude writes the SQL
-    that answers it.
-  + The pieces already covered do the work together: FTS5 finds the
-    word, sqlite-vec finds the clause phrased differently, and the
-    `matters` table says whose record it belongs to.
-  + A query that joins the wrong way returns a number that looks
-    exactly as authoritative as a right one — the check is running it
-    against a matter whose answer is already known and comparing.
+  - The question is asked in plain language; Claude writes the SQL that answers it
+    - For instance: "which matters have no engagement letter on file", "every letter mentioning an appeal deadline last quarter", "what did I bill Ramirez between March and June"
+  - The pieces already covered work together on one question
+    - FTS5 finds the word, sqlite-vec finds the clause phrased differently, the `matters` table says whose record it belongs to
+  - A query that joins the wrong way returns a number that looks exactly as authoritative as a right one
+    - The check is running it against a matter whose answer is already known, and comparing
 
 ## Automatic Outputs
 
 ### Document Automation
 
 - Document pipelines
-  + Document pipelines are commands you run, not libraries you import.
-  + Together they turn an incoming document into something Claude can
-    read, and Claude's output into a document a person can open.
-  + Which command depends on what arrived: `pdftotext` for a text PDF,
-    `tesseract` for a scan, `pandoc` for a format swap, LibreOffice
-    headless for an Office file that has to become a PDF.
-  + A scanned bundle and a filed PDF look identical in Preview and are
-    not the same thing at all — one has a text layer, one is pictures.
+  - Document pipelines are chained shell commands, not libraries you import
+    - Together they turn what comes in into something Claude can read, and what Claude writes into something a person can open
+      - Which command depends on what arrived: `pdftotext` for text, `tesseract` for a scan, `pandoc` for a format swap, LibreOffice for an Office file
+  - A scanned bundle and a filed PDF look the same in Preview -- only one of them has a text layer
 
 - poppler and pdftotext
-  + poppler is a command-line PDF toolkit; `pdftotext` is the command in
-    it that pulls a PDF's text out as plain text.
-  + It also splits a bundle into single pages, merges pages into one
-    file, and renders a page to an image.
-  + `pdftotext scan.pdf -` returning nothing is the test: no text back
-    means the PDF is pictures, not words, and needs tesseract next.
-  + It is the first command to run on any incoming filing or scanned
-    exhibit: it costs nothing and names which kind of PDF just arrived.
-  + On a text PDF it returns the whole document in under a second, which
-    is why it beats guessing from how the file looks.
+  - poppler is a command-line PDF toolkit -- `pdftotext` is the piece of it that turns a PDF into plain text
+    - poppler's other tools split a bundle apart, glue pages back into one file, or turn a page into an image
+  - Run `pdftotext scan.pdf -`: nothing back tells you the PDF is pictures, not words, and hands the job to tesseract
+  - It's the first thing worth trying on anything that arrives -- costs nothing, and tells you which kind of PDF you've got
+    - The example that shows this: `pdftotext` against a text PDF returning the whole document in under a second, the same command against a scan returning nothing
 
 - tesseract and OCR
-  + tesseract is OCR: it turns a scan with no text layer into text,
-    reading the pixels of a scanned filing the way a person would.
-  + Used on incoming scanned exhibits, faxed correspondence, and old
-    filings that only exist as images — anything `pdftotext` came back
-    empty on.
-  + A poor scan produces confident wrong text — a `1` misread as a `7`
-    in a deadline date, with nothing in the output flagging the error.
-  + Running it on a PDF that already has a text layer throws the good
-    text away and replaces it with tesseract's guess.
-  + A PDF that already answers `pdftotext` never needs OCR, which is
-    why that check comes first.
+  - tesseract reads the pixels of a scan and produces text, the way a person reading it would
+    - It only helps once `pdftotext` comes back empty -- on a PDF with a text layer already, it just replaces good text with a worse guess
+  - Used on scanned exhibits, faxed correspondence, and old filings that exist only as images
+    - Show a poor scan that produces confident wrong text -- a misread digit in a deadline date, nothing in the output flagging the error
 
 - pandoc
-  + pandoc converts between text formats — Markdown to DOCX, DOCX to
-    Markdown, HTML to PDF — with one command.
-  + Markdown to DOCX keeps the words and loses the styling; DOCX back to
-    Markdown loses tracked changes and comments outright — the loss
-    that bites when a redlined engagement letter comes back from
-    opposing counsel and gets converted to Markdown.
-  + A first draft survives the round trip through Markdown; a document
-    already carrying revisions and comments only survives by staying
-    in DOCX.
+  - pandoc converts between text formats in one command -- Markdown to DOCX, DOCX to Markdown, HTML to PDF
+  - Each direction loses something different: Markdown to DOCX drops styling, DOCX to Markdown drops tracked changes and comments
+    - One example worth giving: a redlined engagement letter from opposing counsel converted to Markdown and back, with the redlines gone
+  - A plain first draft can make that round trip fine -- one already marked up with revisions has to stay in DOCX
 
 - LibreOffice headless
-  + LibreOffice headless runs Word and Excel with no window, driven from
-    a script instead of a person clicking File > Export.
-  + `soffice --headless --convert-to pdf letter.docx` is the whole
-    command, and it keeps the firm's letterhead where pandoc would strip
-    it.
-  + It reads XLSX too — a billing spreadsheet goes in and a table
-    Claude can read comes out.
-  + Fonts missing on the machine running the conversion are substituted
-    silently, so a letter rendered on the server does not always match
-    the one on your desk.
+  - LibreOffice headless puts Word and Excel behind a script -- no window, no person clicking File > Export
+    - `soffice --headless --convert-to pdf letter.docx` is the whole command, and it keeps the letterhead pandoc would strip
+      - A side-by-side image would do the work here -- the same DOCX letter converted to PDF with LibreOffice headless and with pandoc, showing what pandoc's version lost
+  - It reads XLSX too -- a billing spreadsheet in, a table Claude can read out
+  - Missing fonts on the conversion machine get substituted silently, so the server's version can look different from yours
 
 ### Templates
 
 - Templating
-  + A template is a document with holes filled from data — an
-    engagement letter with `{{client_name}}` and `{{matter_type}}` where
-    the details go, written once and filled a hundred times.
-  + The point is not saved typing: the model does not draft the
-    boilerplate, it only supplies the values.
-  + The fixed parts of the letter — the firm's boilerplate, terms and
-    closing language — never move; only the holes like
-    `{{client_name}}` and `{{matter_type}}` change row to row.
-  + Free drafting lets approved wording drift a little every time; a
-    template is the only way it cannot.
-  + The values come from a row of data — a client intake form, a matter
-    record, a spreadsheet — not from Claude drafting them fresh.
+  - A template is boilerplate written once with holes in it, and every use just fills the holes from data
+    - The model doesn't draft the boilerplate, it only supplies the values that go in the holes
+  - Only the holes move; the fixed parts of the document -- the boilerplate, the terms, the closing language -- never do
+    - Walk through an engagement letter with `{{client_name}}` and `{{matter_type}}` holes, filled from a row of client intake data
+  - Draft it fresh each time and approved wording drifts a little more every run -- a template is what stops that
 
 - Jinja and docxtpl
-  + Jinja is the templating engine for Python — the general tool behind
-    the `{{ }}` holes.
-  + docxtpl fills a DOCX in place, so letterhead, styles and numbering
-    survive untouched around the filled-in values.
-  + The output is a real, editable Word document, not a rendered image
-    of one, so a lawyer can still mark it up after Claude fills it in.
-  + docxtpl is the asset worth keeping: it does the Word-specific part
-    that Jinja alone does not touch.
+  - Jinja is the templating engine behind the `{{ }}` holes, the general Python tool underneath
+  - docxtpl edits a DOCX where it stands, leaving letterhead, styles and numbering alone
+  - That output is a real, editable Word document, not a picture of one -- someone can still mark it up once Claude's done
 
 - Filling a form PDF
-  + A form PDF like an immigration Form N-400 already carries named
-    fields — the blanks exist before anything is filled in.
-  + Filling one means writing values into those existing fields by
-    name, with `pdftk` or `pypdf`, not building the page from nothing.
-  + Flattening turns the filled-in fields into fixed page content, so
-    the values can no longer be edited or tabbed through afterward.
-  + That distinction is why filling is not templating: nothing is
-    generated from holes in a document — the fields were already there.
-  + An N-400's fields are written from the client's intake record, one
-    row per applicant, the same `pdftk` or `pypdf` script run down a
-    list rather than typed by hand.
-  + The opposite case — a PDF built from scratch, with no fields to
-    fill — is templated as DOCX or Typst first and converted to PDF at
-    the end, the same route as any other typeset document.
+  - A form PDF -- an immigration Form N-400, say -- already has named fields sitting in it before anyone fills anything in
+    - Filling means writing values into fields that already exist, by name, using `pdftk` or `pypdf` -- there's no page to build
+      - Give an example of an N-400's fields written from a client's intake record, one row per applicant, the same script run down a list rather than typed by hand
+    - Flattening locks the filled values into the page as fixed content -- nothing left to edit or tab through
+  - Draw the distinction between filling and templating -- reaching for docxtpl on a form that already has fields is wasted work
+  - With no fields to start from, template the PDF instead -- DOCX or Typst, converted at the end
 
 - Typst and LaTeX
-  + Typesetting is for documents where page breaks, running headers and
-    automatic renumbering have to be exactly right — a bundle index, an
-    exhibit list — not for a document that is mostly words.
-  + Typst and LaTeX are the two typesetting engines; both take source
-    text and control the layout in ways a word processor does not.
-  + For a two-page engagement letter, either one is more machinery than
-    the job needs — docxtpl is the right answer there instead.
-  + Typst and LaTeX are for output templated from scratch that has to
-    be typeset, not for values filled into an existing Word layout.
+  - Typst and LaTeX take source text and control layout the way a word processor doesn't -- the two typesetting engines
+  - They earn their place when layout has to be exact: page breaks, running headers, automatic renumbering, a bundle index, an exhibit list
+  - A two-page engagement letter doesn't need either one -- that's still docxtpl's job
 
 ### Artifacts
 
 - What an artifact is
-  + An artifact is a self-contained web page Claude Code publishes from
-    a session to a private URL on claude.ai — the cheapest way for work
-    to leave the terminal and become something a person can open.
-  + The file itself is one HTML file with styles and script inline and
-    no server behind it — nothing to host, nothing to keep running.
-  + Used for a matter status page a client can check, a summary of an
-    overnight run, a chart of the month's processing, or a checklist
-    that fills in while a long job proceeds.
-  + Requires a paid plan and a `/login` session on the Anthropic API —
-    not Bedrock, Vertex or Foundry.
-  + `CLAUDE_CODE_ARTIFACT_AUTO_OPEN=0` stops a headless run from
-    trying to open a browser that is not there.
+  - An artifact is a self-contained web page that a session in Claude Code puts up at a private claude.ai URL -- the cheapest way for work to leave the terminal
+    - One HTML file, styles and script inline -- nothing to host, nothing to keep running
+  - A screenshot earns its place here: a published artifact -- a status page, an overnight run's summary, a monthly chart -- with its private URL, showing what actually lands in the reader's browser
+  - It needs a paid plan with a `/login` session on the Anthropic API -- Bedrock, Vertex and Foundry don't support it
+    - `CLAUDE_CODE_ARTIFACT_AUTO_OPEN=0` keeps a headless run from trying to open a browser that isn't there
 
 - Publishing and revising
-  + Publishing prompts once per artifact — after the first publish, the
-    same artifact is revised, not republished from scratch.
-  + Revising means editing the file and publishing again to the same
-    URL; anyone already looking at the page sees it change under them.
-  + Every publish is kept as a version, so a prior state of the page is
-    never simply lost.
-  + A later session not given the existing URL publishes a second,
-    separate artifact instead of updating the first.
-  + An artifact is private to its creator on creation, on every plan.
-  + Pro and Max share by sending the link to anyone; Team and
-    Enterprise share inside the organisation only, with public links
-    off until an owner turns them on.
+  - Publishing prompts once per artifact -- after that, editing the file and publishing again revises the same URL
+    - Someone with the page already open watches it update in front of them
+  - Each publish keeps its own version, so an earlier state of the page is always still there
+  - Skip passing the existing URL to a later session and you get a second, separate artifact, not an update to the first
+  - An artifact starts private to whoever created it, on every plan
+    - Pro and Max share it by sending the link to anyone
+    - Team and Enterprise keep it inside the organisation by default -- an owner has to flip a setting before a public link works
 
 - Connectors inside an artifact
-  + A published page may call MCP connectors when it loads — the same
-    connectors described earlier in this level, running inside the
-    page.
-  + A status page built this way fetches its own fresh data every time
-    it is opened, using the viewer's connectors and account.
-  + That means the automation that built the page does not have to run
-    again to keep it current — the page does the refreshing itself.
-  + Two viewers can see different things on the same URL, because each
-    one runs on their own connectors — a client with none sees an empty
-    page where the firm sees live data.
+  - The connectors inside a published page are the same MCP connectors covered under Integrations -- they just run inside the page now, on load
+  - It fetches fresh data on every open using the viewer's own connectors, so the automation that built it never has to run again
+    - Picture the same status page URL opened by two viewers with different connectors -- a client with none sees an empty page where the firm sees live data
 
 - The content policy
-  + The content policy blocks every external script, stylesheet, font
-    and image — nothing loads in from outside the page.
-  + It blocks all fetch, XHR and WebSocket traffic too — no outbound
-    request from inside the page's own script.
-  + Everything the page needs has to be inlined into the one HTML file,
-    styles, scripts and images alike, or it does not render.
-  + Sixteen megabytes is the ceiling on that single file.
-  + Together that is what makes something an artifact rather than an
-    ordinary web page: self-contained, and bounded in size.
+  - The content policy blocks everything from outside the page -- external scripts, stylesheets, fonts, images, and all outbound fetch, XHR and WebSocket traffic
+  - Everything the page needs has to be inlined into that one HTML file, or it doesn't render
+  - Sixteen megabytes is the ceiling on that file
+  - Self-contained and bounded in size is what makes something an artifact instead of an ordinary web page
 
 ### Static Sites
 
 - Static site generators
-  + A generator turns a folder of Markdown into plain HTML files with
-    no server logic — nothing to run, nothing to keep alive.
-  + Because the output is just files, it works wherever it is put: a
-    folder on a laptop, a bucket, any static host.
-  + Hugo, Zola, Eleventy and MkDocs are the generators named here;
-    `mkdocs build` over a folder of notes gives a searchable internal
-    reference with a search box and no server behind it.
-  + GitHub Pages hosts the result for free, straight from the same repo
-    the Markdown lives in.
-  + A site hosted this way is public by default to anyone with the
-    URL — nothing about publishing it asks first.
+  - A generator compiles a folder of Markdown into plain HTML -- nothing to run, nothing to keep alive once it's built
+    - The output is nothing but files, so it runs anywhere: a laptop folder, a bucket, any static host
+  - Hugo, Zola, Eleventy and MkDocs are the generators worth naming
+    - A worked example belongs here: `mkdocs build` run over a folder of notes, producing a searchable internal reference with a search box and no server behind it
+  - The same repo that holds the Markdown can serve the built site too, for free, through GitHub Pages
+    - Nothing stops anyone with the URL from reading it -- GitHub Pages defaults to public
 
 - Publishing what an automation makes
-  + This is the cheapest way for an automation to publish something a
-    person can read: a client-facing status page regenerated nightly,
-    an internal reference built from your own notes, a published
-    version of something like this course.
-  + A nightly `claude -p` run rewrites `content/status.md`, the
-    generator rebuilds the site, and the client opens the same URL to
-    this morning's position — no new link to send.
-  + A static page is only as current as its last build — it is
-    generated ahead of time, not built on request — which is what
-    makes the nightly rebuild load-bearing.
-  + A GitHub Pages site is public to anyone with the URL, so a matter
-    status page with client names on it belongs behind Tailscale or
-    inside an artifact instead.
+  - An automation publishing this way is about as cheap as it gets
+    - A status page rebuilt nightly, an internal reference from your own notes, a published version of something like tutor
+  - A static page only shows what the last build put there -- generated ahead of time, not served fresh on request
+    - Trace a nightly `claude -p` run rewriting a status file, the generator rebuilding the site, and the client opening the same URL to this morning's position -- no new link to send
+  - A matter status page with client names doesn't belong on public GitHub Pages -- Tailscale or an artifact instead
 
 ## Hosting and Serving
 
 ### Web Servers
 
 - What a web server is
-  + A web server listens on one port and answers whatever request
-    arrives at it.
-  + The door is open only while the process runs; stop it and the
-    form and the webhook both go dark at once.
-  + It is how an automation gets a front door: a client fills in a
-    form, or another service calls a URL when something happens — a
-    case system posting a status change, say.
-  + It answers with a page built for a person, or with `JSON` built
-    for another program — the same listener, a different reply
-    depending on who is asking.
+  - A web server listens on a port and answers whatever request arrives
+    - Same listener, different reply depending on who's asking -- a page for a person, JSON for a program
+  - It's the front door for an automation: a form filled in, or a URL another service calls
+  - Open only while the process runs
+    - Start the server and hit it, see the reply -- then stop it and hit it again, and show the failure
 
 - Reverse proxies
-  + A reverse proxy sits in front of the real web server and takes on
-    the HTTPS certificate, so it is renewed and served in one place
-    rather than inside every app behind it.
-  + A browser error says only that the site cannot be reached; it
-    does not say whether the proxy is down or the server behind it is
-    — the cost of the extra hop.
-  + Several services can sit behind one address — the intake form and
-    a status page, say — routed to different backends.
-  + It refuses traffic that was not invited, so the app behind it
-    never sees a connection that should not have reached it.
+  - A reverse proxy sits in front of the real server
+    - Takes over the HTTPS certificate, renewed once instead of inside every app behind it
+    - Several services can sit behind one address, routed to different backends
+    - Refuses traffic that wasn't invited, before the app behind it ever sees the connection
+  - The cost of the extra hop: a browser error only says the site's unreachable, not which layer is down
 
 - Caddy, nginx and certificates
-  + Caddy gets a certificate automatically: a Caddyfile as short as
-    `intake.example.com { reverse_proxy localhost:8080 }` is enough,
-    and the certificate appears on its own.
-  + A certificate belongs to a name, not a machine: moving the box to
-    a new address does not break it, but changing the name does.
-  + nginx is the standard and leaves certificates to you — it wants
-    `certbot` obtaining and renewing them separately.
-  + A certificate is what turns the address into a real `https://`
-    one to hand to a client, rather than one a browser warns about
-    before the page loads.
+  - It's what turns the address into a real `https://` instead of one the browser warns about
+  - Caddy gets a certificate automatically -- a couple of lines in a Caddyfile, issued and renewed on its own
+  - nginx is the standard, and leaves certificates to you, via `certbot`
+  - A certificate belongs to a name, not a machine -- move the box, nothing breaks; change the name, it does
 
 - Tunnels
-  + Tailscale and a tunnel are two separate ways to avoid opening the
-    machine to the internet at all.
-  + A tunnel is what gives the machine a name reachable from outside;
-    the client's browser still connects straight to it, with no
-    hosting layer in between.
-  + It changes how the machine is reached, not what is listening on
-    it — the web server behind the tunnel is the same one Caddy
-    already fronts.
+  - Tailscale and a tunnel are two different ways to avoid opening the machine to the internet directly
+  - A tunnel gives the machine a reachable name -- the browser connects straight to it, no hosting layer between
+    - It changes how the machine is reached, not what's listening on it -- same server, same Caddy in front
 
 - Self-hosting
-  + Self-hosting means the files genuinely land on your own disk: the
-    client's browser connects straight to your machine, with no third
-    party holding a copy in between.
-  + A domain name costs around ten pounds a year and can point at
-    your own machine exactly as easily as at a host's — a name is
-    memorable, a number is not, and home addresses change.
-  + The one condition is that the machine stays awake: a laptop that
-    sleeps overnight takes the form down with it.
-  + What paid hosting sells beyond that is someone else's electricity,
-    a connection that does not drop, and blame that lands elsewhere
-    when something breaks.
-  + For a form only you depend on — the intake page, say — your own
-    machine is a reasonable choice.
+  - Self-hosting means the files land on your own disk, no third party holding a copy
+    - The client's browser connects straight to your machine
+  - A domain costs about ten pounds a year
+    - Points at your own machine as easily as at a host's -- a name is memorable, a number isn't, and home addresses change
+  - The one condition: the machine has to stay awake
+  - What paid hosting sells beyond that: someone else's electricity, a connection that doesn't drop, blame elsewhere when it breaks
+    - Skippable for a form only you depend on
 
 - A worked example — the intake form
-  + The page itself is small: three fields — name, matter type, and
-    an upload for a passport scan.
-  + A web server on your own machine serves that one page directly,
-    with nothing published elsewhere.
-  + Caddy fronts it with a real `https://` address, the one that
-    actually gets sent to the client.
-  + Submitting writes three things at once: the uploaded files into a
-    case folder, a row into SQLite recording the matter, and a job
-    into the queue.
-  + Cron picks the job up and runs `claude -p` with the intake skill.
-  + That skill reads the uploaded documents, extracts the client's
-    and matter's details, and drafts the engagement letter.
-  + The letter is drafted and the matter filed before anyone opens
-    the laptop — the whole intake ran unattended.
-  + A form that accepts uploads accepts files from strangers, so the
-    size is capped, the type checked, and what arrives is never
-    handed straight to a shell.
+  - A worked example ties the section together: an intake form (name, matter type, a passport-scan upload) served from your own machine and fronted by Caddy with a real address; submitting writes to a case folder, a database row and a queue at once; cron picks the job up and `claude -p` with the intake skill drafts the engagement letter, matter filed before anyone opens the laptop
+  - A form that accepts uploads accepts them from strangers
+    - Cap the size, check the type, never hand what arrives straight to a shell
 
 ### Containers
 
 - What a container is
-  + A container is a sealed box holding a program and everything it
-    needs — its own filesystem, its own packages, its own version of
-    Python.
-  + It runs identically on a laptop, a rented box, or a reader's
-    machine — nothing outside the box is touched, so a Postgres you
-    experiment with inside it vanishes cleanly when deleted.
-  + Containers are Linux only, and not a virtual machine — running
-    one against a clean machine catches "works here because I have
-    it" bugs that a laptop full of installed tools hides.
-  + A container can still *build* Mac and Windows binaries, since Go
-    cross-compiles — building and running are different acts, and the
-    container that emits `tutor.exe` cannot open it.
-  + For Claude Code it is also containment: an agent working inside
-    one cannot damage the machine around it.
-  + Docker is the tool; a devcontainer is the same idea wired into an
-    editor.
+  - A container is a sealed box holding a program and everything it needs
+    - Its own filesystem, its own packages, its own version of Python
+    - Build one running something like Postgres, show its version and files differ from the host's, run it unchanged on a second machine, then delete it and show nothing is left behind
+  - It runs identically anywhere -- laptop, rented box, a reader's machine -- and touches nothing outside itself
+  - Containers share the host's kernel instead of booting their own -- fast to start, and Linux-only rather than a virtual machine
+    - Running against a clean machine catches "works here because I have it" bugs a laptop full of installed tools hides
+  - Building and running are different acts: a container can cross-compile a Windows binary without being able to open it
+  - For Claude Code it's also containment -- an agent working inside one can't damage the machine around it
+  - Docker is the tool; a devcontainer is the same idea wired into an editor
 
 - Images and registries
-  + The image travels through a registry — Docker Hub, or a cloud's
-    own artifact registry — pushed from here, pulled there.
-  + On a rented box the sequence is three steps: install Docker, pull
-    the image, run it.
-  + The image you tested is the thing that runs; rebuilding on the
-    box produces a different image, which may not behave the same
-    way.
-  + The dependencies travel inside the image, so the box itself needs
-    nothing else installed — an image built to OCR scanned filings
-    needs nothing more than Docker on the box it runs on.
-  + Architecture matters: a laptop's chip and a rented box's chip can
-    differ, so the image has to be built for the target, or built on
-    the box itself.
-  + Services like Cloud Run skip the machine entirely — hand over an
-    image and it runs it, with no box to manage.
+  - An image travels through a registry -- Docker Hub, or a cloud's own -- pushed from here, pulled there
+  - Getting it onto a rented box is three steps: install Docker, pull the image, run it
+    - Nothing else to install -- the dependencies travel inside the image
+  - The image you tested is the thing that runs -- rebuilding on the box produces a different image
+  - Architecture matters -- laptop and box can run different chips, so build for the target, or build on the box
+  - Services like Cloud Run skip the machine entirely: hand over an image and it runs it
 
 - Reproducibility
-  + A container is a written-down recipe of every dependency, so what
-    worked in March still works in December, on a machine not yet
-    built.
-  + Reproducibility alone accounts for most container use, with the
-    containment of an agent as a bonus on top of it.
-  + Deployment is easier — move the box to a rented server rather
-    than reinstalling forty things and finding the versions differ.
-  + Two projects needing incompatible versions — different Postgres
-    versions, say — sit side by side without conflict.
-  + Trying software costs one command: use it, delete it, and nothing
-    is left behind on the machine.
-  + Twenty identical boxes can run the same job in parallel, each one
-    processing its own batch of matters overnight.
+  - A container is a written-down recipe of every dependency -- what worked in March still works in December, on a machine not yet built
+  - Reproducibility alone accounts for most container use -- containment is a bonus on top
+  - Deployment gets easier: move the box to a rented server instead of reinstalling forty things
+  - Nothing installed collides with anything else, and nothing survives being deleted -- incompatible versions sit side by side, trying new software costs one command
+  - Twenty identical boxes can run the same job in parallel, each on its own batch of matters overnight
 
 - Running one on a box that never sleeps
-  + A laptop cannot run an unattended job overnight if it is closed or
-    asleep — a rented box that never sleeps is the fix, running the
-    same container.
-  + It runs what cannot wait for a laptop lid to open: a scheduled
-    cron job, or a server backing something like the intake form.
-  + The box needs only Docker installed; everything else the job
-    needs travels inside the image, exactly as it does on a laptop.
-  + Building and running are different acts: an image built for the
-    box does not have to be built on the laptop, and the box needs
-    only the ability to run what already exists.
+  - A laptop closed or asleep can't run an unattended job overnight -- a box that never sleeps can
+  - It runs what can't wait for the lid to open
+    - A scheduled cron job, or a server backing something like the intake form
 
 ## Agent SDK
 
 ### The SDK Harness
 
 - What the Agent SDK is
-  + The Agent SDK is the same agent loop that runs Claude Code, offered
-    as a library for your own Python or TypeScript program.
-  + There is no terminal: your program decides when to start a turn, not
-    a person pressing Enter.
-  + Your program sees every message as it arrives, and can refuse a tool
-    call in code — denying a write outside a client's own matter
-    folder, say — rather than at a permission prompt.
-  + What is unchanged underneath is the same agent loop, the same tools,
-    and the same `.claude` machinery Level Two built.
-  + It removes the terminal, not the engineering — sessions, permissions
-    and cost still have to be designed, just in code instead of a
-    prompt.
+  - The same agent loop that runs Claude Code, packaged as a library for Python or TypeScript
+  - No terminal: your program decides when a turn starts, not someone pressing Enter
+  - Your program sees every message and can refuse a tool call in code instead of at a prompt
+    - Walk through a callback denying a write outside a client's own matter folder, so the reader sees the call stopped in code before it ever reaches a prompt
+  - Same tools and the same `.claude` machinery run underneath -- what changes is who's driving, not what's driving it
+  - It removes the terminal, not the engineering: sessions, permissions and cost are still your job, just written in code
 
 - How it differs from headless sessions
-  + The prior question is whether the SDK is needed at all: `claude -p
-    --output-format json` also runs Claude non-interactively, from any
-    language, in one line of shell.
-  + A headless session is that one line, fired from cron or a script,
-    with one shot at a final answer and nothing seen in between.
-  + The SDK earns its place in four cases: approving tools conditionally,
-    streaming partial output to a user, holding a session open across
-    many exchanges, or billing a customer by the turn.
-  + The shape of the difference is mid-run intervention: `claude -p`
-    hands back one final answer, the SDK hands back every message as it
-    happens.
-  + A nightly job that OCRs the day's scans and exits only needs
-    `claude -p`; a paralegal's intake tool that streams status back to a
-    browser needs the SDK.
+  - Ask first whether the SDK is needed at all -- `claude -p --output-format json` already runs Claude non-interactively, from any language, in one line
+  - A headless session is that one line: one shot at a final answer, nothing seen in between
+  - The SDK earns its place on mid-run intervention
+    - Conditional tool approval, streaming partial output, a session held open across exchanges, per-turn billing
+    - Give one example of each side of that line -- a nightly OCR job that only needs `claude -p` and exits, next to a paralegal's intake tool that needs the SDK to stream status to a browser -- so the reader can place their own job on it
 
 - Use cases
-  + The back end of an intake form: it submits documents and watches for
-    the answer as messages arrive, rather than waiting on one blocking
-    call.
-  + A service runs one agent per customer, with each customer's files
-    walled off from every other's.
-  + Anything with a user waiting on the other end of a connection, where
-    a blank screen for the length of a headless run is not acceptable.
+  - The intake form's back end: submits documents, watches the answer arrive as messages rather than blocking on one call
+  - A service running one agent per customer, each customer's files walled off from every other's
+  - Anything with someone waiting on a connection, where a headless run's blank screen won't do
 
 ### Building an SDK
 
 - Running a query and holding a session
-  + Two entry points exist in either language, one for a single question
-    and one for a held-open session.
-  + `query()` answers a single question and ends — whether a bundle has
-    a text layer, say — returning a stream of messages for that one run.
-  + Python's `ClaudeSDKClient` and TypeScript's streaming input keep a
-    session alive across repeated exchanges, the shape a paralegal's
-    back-and-forth on one matter needs.
-  + The session-holding entry point also allows interrupting the run
-    mid-thought, which `query()` cannot do.
+  - Two entry points in either language: one for a single question, one for a session held open across exchanges
+  - `query()` answers one question and ends, returning a stream of messages for that run
+    - Give an example of a `query()` call in use -- whether a bundle has a text layer, say -- so the reader sees one question go in and a stream of messages come back with nothing held open after
+  - Python's `ClaudeSDKClient` and TypeScript's streaming input keep a session alive for repeated exchanges -- a paralegal's back-and-forth on one matter
+  - Only the session-holding entry point can be interrupted mid-thought; `query()` can't
 
 - The messages that come back
-  + What comes back is a sequence of typed messages, not a single string
-    reply.
-  + The first message is a `SystemMessage` with subtype `init`, carrying
-    the session ID.
-  + An `AssistantMessage` arrives per reply, as the model produces it.
-  + A `UserMessage` arrives per tool result, one per tool call answered.
-  + A turn is one trip through assistant-then-tools — a reply followed by
-    the tool calls it made.
-  + The final message is a `ResultMessage`, holding cost, tokens and the
-    session ID — the number to check against a per-matter budget.
-  + That sequence makes live status possible, per-turn billing, and a
-    log of exactly what happened and when.
+  - What comes back is a sequence of typed messages, not one string reply
+    - `SystemMessage` (subtype `init`) first, carrying the session ID
+    - `AssistantMessage` per reply, `UserMessage` per tool result
+    - `ResultMessage` last, holding cost, tokens and the session ID
+  - A turn is one trip through assistant-then-tools -- a reply followed by the tool calls it made
+  - That sequence is what makes live status, per-turn billing and a full log of what happened all possible
+    - Walk through reading a `ResultMessage` after a turn and checking its cost against a per-matter budget cap, so the reader sees where in the stream that number actually lands
 
 - Stopping it running forever
-  + Two limits exist, and neither is a clock: `max_turns` and
-    `max_budget_usd`.
-  + `max_turns` counts tool-using turns only.
-  + `max_budget_usd` stops on a client-side cost estimate, not a metered
-    bill.
-  + A session has no overall timeout and will not end on its own, so an
-    unattended program needs something watching from outside it — a
-    systemd timeout, or `timeout 3600` wrapped around an overnight
-    intake run.
+  - Two limits exist and neither is a clock: `max_turns` and `max_budget_usd`
+    - `max_turns` counts tool-using turns only
+    - `max_budget_usd` stops on a client-side cost estimate, not a metered bill
+  - A session has no timeout and won't end on its own -- an unattended program needs something watching from outside it
+    - Show `timeout 3600` wrapped around an overnight intake run, or the equivalent systemd unit, so the reader sees the limit sitting outside the SDK rather than inside it
 
 - The permission callback
-  + `can_use_tool` is the permission callback: it decides whether a
-    specific tool call proceeds or is refused, in code rather than at a
-    prompt.
-  + It fires only when the decision would otherwise have gone to a
-    prompt: an allow rule for `Read` never reaches it at all.
-  + That is why it is not the full security boundary it looks like — a
-    call already cleared by an allow rule is never judged by the
-    callback.
-  + Six permission modes exist, and the callback sits beneath all of
-    them, seeing only what the mode does not already resolve.
-  + A deny rule on writes outside `matters/<client>/` outranks
-    everything, including `bypassPermissions`, which itself refuses to
-    run as root.
+  - `can_use_tool` is the permission callback -- it decides whether a specific tool call proceeds, in code instead of at a prompt
+  - It only fires when a prompt would otherwise have fired -- an allow rule never reaches it at all
+    - Worth flagging: that's not the full security boundary it looks like
+  - Six permission modes exist and the callback sits beneath all of them, seeing only what the mode leaves unresolved
+  - A deny rule outranks everything, including `bypassPermissions` -- which itself refuses to run as root
+    - Walk through a deny rule blocking a write outside `matters/<client>/`, then show it still holding once `bypassPermissions` is turned on, so the reader watches the rule win rather than just reads that it does
 
 - One process, many customers
-  + By default, an SDK session loads the same `.claude` machinery Level
-    Two built: settings, CLAUDE.md, filesystem hooks, skills and
-    subagents.
-  + `setting_sources: []` shuts all of that out, which is what running
-    one process for several customers requires.
-  + Each customer additionally needs its own working directory — a
-    client's own matter folder — and its own `CLAUDE_CONFIG_DIR`, so one
-    customer's settings cannot leak into another's session.
-  + Without that separation, one client's CLAUDE.md, skills or files
-    reach a different client's run.
+  - By default an SDK session loads the same `.claude` machinery Level Two built -- settings, CLAUDE.md, hooks, skills, subagents
+  - `setting_sources: []` shuts all of that out, which is what running one process for several customers requires
+  - Each customer also needs its own working directory (its own matter folder) and its own `CLAUDE_CONFIG_DIR`
+    - Without that separation, one client's CLAUDE.md, skills or files reach another client's run
+  - Run two customers' sessions side by side -- one pair sharing a working directory and `CLAUDE_CONFIG_DIR`, one pair with its own -- so the reader watches the leak happen before seeing what stops it
 
 - Sessions and where they live
-  + Sessions persist as JSONL files under `~/.claude/projects/`.
-  + A session can be resumed by its ID — picking up the Ramirez matter's
-    thread next week exactly where it left off.
-  + A session can also be forked into a new branch, to draft a second
-    engagement letter without losing the first.
-  + Forking leaves the original session intact, untouched by whatever
-    the fork does next.
-  + A `SessionStore` adapter mirrors sessions to S3, Redis or Postgres
-    instead of the local JSONL file.
-  + That mirroring matters the moment the program runs somewhere that
-    gets rebuilt — a container redeploy wipes `~/.claude/projects/`
-    along with it.
+  - Sessions persist as JSONL files under `~/.claude/projects/`, resumable by ID
+    - Give an example of resuming a session by ID -- picking up the Ramirez matter's thread a week later exactly where it left off -- so the reader sees the whole prior exchange come back, not just a note that it happened
+  - A session can be forked into a new branch, leaving the original untouched -- draft a second letter without losing the first
+  - A `SessionStore` adapter mirrors sessions to S3, Redis or Postgres instead of the local JSONL file
+  - That mirroring matters the moment the program runs somewhere that gets rebuilt -- a container redeploy wipes `~/.claude/projects/` with it
 
 - What it consumes
-  + Every `query()` spawns the `claude` binary as its own subprocess.
-  + Twenty concurrent intake sessions on one box means twenty processes
-    running at once, not twenty threads inside one.
-  + Reckon on a gigabyte of memory, five gigabytes of disk and a CPU
-    core, per process, as the floor.
-  + `total_cost_usd` is an estimate, read from a price table compiled
-    into the build, not a metered figure from Anthropic.
-  + That estimate is good enough for a budget cap; it is not accurate
-    enough to invoice a customer from.
+  - Every `query()` spawns the `claude` binary as its own subprocess -- twenty concurrent sessions are twenty processes, not twenty threads
+  - Reckon on a gigabyte of memory, five gigabytes of disk and a CPU core per process as the floor
+  - `total_cost_usd` is an estimate from a price table compiled into the build, not a metered figure from Anthropic
+  - Good enough for a budget cap; not accurate enough to invoice a customer from
 
 ### Deploying and Integrating SDKs
 
 - The shapes a deployment takes
-  + The four faces are a terminal program, a web page, a desktop
-    application and a phone — the same SDK code runs behind every one.
-  + The paralegal using the intake tool never learns Claude is behind
-    it; they see a form and a drafted letter.
-  + Choosing between the four is about who is on the other side and what
-    they already have open, not about the SDK underneath.
-  + The face worth building is the one already within reach — a Python
-    TUI that gets finished beats a React app that does not.
+  - A terminal program, a web page, a desktop application, a phone -- four faces, the same SDK code behind each
+  - The choice between them is about who's on the other side and what they already have open, not about the SDK
+    - Give the paralegal's intake tool as the example -- she sees a form and a drafted letter, never a mention of Claude -- so the reader sees the SDK doing the choosing rather than showing up as a feature
+  - The face worth building is the one already within reach -- a finished Python TUI beats a React app that never ships
 
 - Behind a TUI
-  + `ClaudeSDKClient` in a loop with `input()` and `print()` is a
-    deployment.
-  + No server, no certificate and no hosting bill, and it runs where the
-    matter folders already are.
-  + It reaches exactly one person on one machine, and stops dead at the
-    colleague who will not open a terminal.
+  - `ClaudeSDKClient` in a loop with `input()` and `print()` is already a deployment
+  - No server, no certificate, no hosting bill -- it runs where the matter folders already are
+  - It reaches exactly one person on one machine, and stops dead at the colleague who won't open a terminal
 
 - Behind a web page
-  + A small FastAPI or Express server holds the SDK; the browser holds
-    the form — the intake page from Web Servers, with the SDK behind it
-    instead of a queue.
-  + Anyone who can reach the URL can use it, which is the whole gain and
-    the whole problem.
-  + No authentication arrives with a browser: a login, a shared secret,
-    or a Tailscale-only address is yours to add.
-  + Files uploaded through it land on your disk under your own
-    permissions, and the SDK runs directly against them.
+  - A small FastAPI or Express server holds the SDK; the browser holds the form
+    - The same intake page from Web Servers, with the SDK behind it instead of a queue
+  - Anyone who can reach the URL can use it -- the whole gain and the whole problem
+  - No authentication arrives with a browser -- add a login, a shared secret, or a Tailscale-only address
+  - Files uploaded through it land on your disk, under your own permissions, with the SDK running directly against them
 
 - Inside a desktop app
-  + Electron or Tauri wraps the same web page, installed with an icon,
-    so to the user it is a program rather than a website.
-  + Code signing on macOS, an updater, and every colleague's machine
-    sitting at a different version all become your job.
-  + The window hides where the work happens: the model call still leaves
-    the machine, and a client's documents go with it.
+  - Electron or Tauri wraps the same web page behind an icon -- a program to the user, not a website
+  - Code signing on macOS, an updater, and every colleague's machine sitting at a different version all become your job
+  - The window hides where the work actually happens -- the model call still leaves the machine, and a client's documents go with it
 
 - On a phone
-  + The agent runs on the box; the phone holds only a page or a chat
-    window.
-  + The phone therefore needs nothing but a browser and a connection —
-    no install, no key.
-  + The cheapest version is the web page above, opened on a phone; a
-    Telegram channel is cheaper still.
-  + Approving a redaction from a train is the case that justifies
-    building this face at all.
-  + A dropped connection must not lose the run: the session lives on the
-    box, resumable by ID, and the phone simply reconnects to it.
+  - The agent runs on the box; the phone holds only a page or a chat window
+    - Nothing but a browser and a connection needed -- no install, no key
+  - The cheapest version is the web page above, opened on a phone; a Telegram channel is cheaper still
+  - Approving a redaction from a train is the case that justifies building this face at all
+  - A dropped connection must not lose the run
+    - The session lives on the box, resumable by ID; the phone just reconnects to it
 
 - Where the process actually runs
-  + The process runs in one of three places: on your own machine, on a
-    rented box, or in a container on something like Cloud Run.
-  + A laptop that sleeps is not a host — an intake form nobody can
-    submit at 11pm is a form that does not work.
-  + Working when you tested it standing over it is not evidence it works
-    at 3am from a client's phone.
+  - Pick your own machine, a rented box, or a container on something like Cloud Run
+  - A laptop that sleeps is not a host -- an intake form nobody can submit at 11pm doesn't work
+  - Working when you tested it standing over it is not evidence it works at 3am from a client's phone
 
 - Streaming to someone waiting
-  + The SDK hands you an `AssistantMessage` per reply and a
-    `UserMessage` per tool result as they arrive; that stream is what
-    you put on the screen.
-  + Ninety seconds of blank screen reads as broken, and the client
-    reloads and submits the form twice.
-  + What holds the wait is the tool names as they run — "reading the
-    passport scan", "checking the matter number".
-  + The long step produces no message of its own: OCR on a forty-page
-    bundle is one tool call, so print something before it starts.
+  - The message stream from Building an SDK is what goes on the screen
+    - An `AssistantMessage` per reply, a `UserMessage` per tool result, as they arrive
+  - A blank screen for ninety seconds reads as broken -- the client reloads and submits the form twice
+  - What holds the wait is the tool names as they run
+    - Give a couple of status lines built off real tool names -- "Reading the passport scan", "checking the matter number" -- so the reader sees the wording comes from the call, not from its result
+  - A long step produces no message of its own -- OCR on a forty-page bundle is one tool call
+    - Print something before it starts
+  - Walk the screen through those ninety seconds start to finish -- status lines appearing as calls land, the flat stretch while OCR runs, then the printed line that covers it -- so the reader watches the wait rather than reads a description of it
 
 - Keeping it up
-  + A deployment has to survive the box rebooting and the API key
-    rotating — the operational half of staying up.
-  + It also has to survive a model version changing underneath it,
-    unannounced, since the SDK always calls the latest.
-  + Someone else using it raises the need for a log of what actually
-    happened.
-  + It also raises the need for a way to say what broke, and a person to
-    say it to — not a stack trace nobody reads.
-  + Resuming a customer's thread next week means the session JSONL
-    outliving the machine — a `SessionStore` to Postgres or S3, not
-    `~/.claude/projects/`.
-  + The loud cost is the model bill, visible in `total_cost_usd`; the
-    quiet cost is a gigabyte of memory per concurrent session, and your
-    evenings spent answering "it did not work".
+  - Survive the operational basics: the box rebooting, the API key rotating
+    - Also the model version changing underneath you unannounced -- the SDK always calls the latest
+  - Someone else using it raises two needs: a log of what happened
+    - And a way to say what broke to a person, not a stack trace nobody reads
+    - Show the same failure two ways -- a raw traceback in a terminal nobody but you reads, next to a one-line message a paralegal would actually understand -- so the reader sees why the second one is the job
+  - Resuming a customer's thread next week means the session outliving the machine -- a `SessionStore` to Postgres or S3, not `~/.claude/projects/`
+  - The loud cost is the model bill, visible in `total_cost_usd`
+    - The quiet cost is a gigabyte of memory per concurrent session, and your evenings spent answering "it did not work"
 
 ### Notifications
 
 - Notification transports
-  + A notification transport is how an unattended job reaches you
-    when you are not at the machine; without one, you find out only
-    when you next look, which may be days later.
-  + A notification for every processed matter is a notification for
-    none — what earns a message is what failed and what needs a
-    decision, not what went fine.
-  + A run that failed, a document drafted and awaiting approval, a
-    deadline detected in an incoming letter, or the one matter in
-    twelve that could not be processed — all clear that bar.
-  + A two-way transport adds the reply: a decision can be sent back
-    from the phone rather than waiting until you are at the machine.
+  - A notification transport is how an unattended job reaches you away from the machine
+    - Without one, you find out only when you next happen to look, which may be days
+  - A notification for every processed matter is a notification for none
+    - What earns one is what failed or needs a decision, not what went fine
+  - A failed run, a document awaiting approval, a spotted deadline, one matter in twelve that failed -- all clear that bar
+  - A two-way transport adds the reply -- a decision sent back from the phone, not held until you're at the machine
 
 - Telegram, ntfy and email
-  + Telegram or Discord reaches you through a bot posting into a chat
-    you already have open.
-  + `ntfy` pushes straight to a phone, needing nothing more than a
-    topic name.
-  + Email through a provider's API suits a record that should sit in
-    an inbox, not just an alert.
-  + A desktop notification is the simplest of the four and dies at
-    the edge of the machine — nobody on the train sees it.
-  + Where you already look decides which transport works: an email
-    sent at 3am is read at 9, however fast it sent.
+  - Pick the transport by where you'll actually see it
+    - Telegram or Discord: a bot posting into a chat you already have open
+    - `ntfy`: pushes straight to a phone off nothing more than a topic name
+    - Email through a provider's API: for a record that belongs in an inbox, not just an alert
+    - A desktop notification: simplest of the four, and dies at the edge of the machine -- nobody on the train sees it
+  - Where you already look decides which one works, not which is technically best
+    - Show an email sent at 3am and not opened until 9, next to an `ntfy` push that lands on the phone the same minute, so the reader sees the delay come from the channel and not from Claude
 
 - Claude Code in Slack
-  + Slack is not simply another notification channel — "Claude Code
-    in Slack" is its own integration.
-  + `@Claude` mentioned in a channel spawns a cloud session, not a
-    session running on your own machine.
-  + It is two-way: it posts status and summaries back into the
-    channel as it works — the intake skill's change, say, narrated as
-    it runs.
-  + It ends with a button to open a pull request from what it did.
-  + It works in channels only, never in DMs, and opens one pull
-    request per session.
-  + It needs a claude.ai login, a connected GitHub account, and a
-    paid plan — Bedrock, Vertex and Foundry cannot use it.
-  + It is being replaced by Claude Tag on Team and Enterprise plans.
+  - Slack isn't just another transport from the list above -- "Claude Code in Slack" is its own integration
+    - Running a cloud session rather than one on your machine, started by `@Claude` mentioned in a channel
+  - Two-way: it narrates as it works, posting status and summaries back into the channel
+    - Picture the intake skill's change, narrated turn by turn as it runs, ending with a button to open a pull request
+  - Channels only, never DMs, and one pull request per session
+  - Needs a claude.ai login, a connected GitHub account and a paid plan -- not available on Bedrock, Vertex or Foundry
+  - Being replaced by Claude Tag on Team and Enterprise plans
 
 
 + Challenge two
