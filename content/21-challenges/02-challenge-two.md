@@ -12,87 +12,82 @@ keywords: [challenge, noncompete, provisions, library, template, terminal, state
 
 *v0.2.14*
 
-Somewhere on a law firm's server sits every noncompete it has ever
-sent out, across many states, spanning years of work. None of that
-history earns its keep. The wording that survived a challenge in one
-state sits inside a document nobody can find, indistinguishable from
-the drafts that never mattered.
+A law firm has sent out noncompete agreements for years, and it can
+no longer find them.
 
-Alongside those old agreements sit the notes and emails of the kind a
-partner actually writes when starting a new one — a name, a term of
-years, a territory, a line of business, buried in prose rather than
-laid out on a form.
+It would like you to turn what it has into a library it can draft
+the next one from.
 
-The whole lot, past agreements and current instructions together, is
-in `materials/challenge-two/`, next to this article.
+## What the firm has given you
 
-The firm wants that folder turned into something it can draw from —
-and something that gets sharper with every contract that passes
-through it, not a fixed snapshot of what already exists.
+The signed agreements sit in `materials/challenge-two/contracts/` —
+nine files, governed by the law of New York, Connecticut or New
+Jersey, saved as `.pdf`, `.docx` and one stray `.txt`.
 
-## Taking a contract apart
+As it is, the firm has a bunch of files and no way to track which
+file uses which provisions. Two of them: `NONCOMPETE_FINAL_v3.docx`
+and `Copy of Noncompete - Larkspur HVAC (M. Duarte) FINAL.pdf`.
+Nobody at the firm can open one of those names and know what it
+holds — a duration clause, a territory clause, or neither.
 
-What gets built lives entirely on the reader's own machine. Nothing
-about it is published and nothing is hosted — no address anyone else
-can reach. The point is a private library of provisions that only
-grows because the firm keeps feeding it.
+Alongside the contracts sits `materials/challenge-two/to-do/`,
+three emails from a partner to an associate, each one asking for a
+new hire's noncompete.
 
-Drop a noncompete into a folder and it should come apart on its own.
-Each provision inside it gets identified for what it is — a duration
-clause, a territory clause, a garden-leave clause, whatever the kind —
-and filed under the states in which that particular wording works.
+Each email buries the company name, the hire's name, the role, the
+term, the territory and the industry scope inside ordinary prose.
 
-A version that files everything it recognises already does the job.
-One that also flags a provision it cannot confidently place, rather
-than filing it under a guess, goes further.
+One of the three also spends paragraphs on an unrelated Newark
+closing, a dinner with the client's general counsel and a candidate
+named Desmond Okafor, who withdrew from consideration weeks earlier
+and still turns up in the file.
 
-Fed a new contract, the library adds it to what is already there, so
-the collection improves on every use rather than staying fixed at
-whatever size it started.
+The firm wants a library it can draft from. Build it on your own
+machine. It grows as you feed it.
 
-Sooner or later a kind of provision turns up that nothing in the
-folder resembles. Naming that gap is already useful on its own.
+## What the firm would like the library to do
 
-Reaching further is a library that does not stop at naming the gap —
-one that searches for itself, fetches what it finds and judges
-whether the result is worth keeping.
+Drop a noncompete into the folder and the library takes it apart
+into provisions. A duration clause, a territory clause, a
+garden-leave clause, a non-solicitation clause. It files each one
+under the states where that wording holds up.
 
-Underneath the provisions sits a master template for the contract as
-a whole, with the provisions as the parts that slot into it: the
-skeleton the library is filling in, one clause at a time.
+- **Files what it recognises.** Every provision it can identify gets
+  sorted under its state.
+- **Flags what it cannot place.** Instead of guessing, it sets the
+  provision aside and says so.
+- **Names a gap.** When a requested kind of provision has no
+  precedent in the folder, it says so. Merrivale Diagnostics asked
+  for a bar on poaching a client's reagent suppliers. Pell & Ottway
+  asked for repayment of sponsored certification costs. Neither
+  exists in the folder yet.
+- **Finds the missing provision.** It searches for the missing
+  provision itself. Then it judges whether what it finds is worth
+  keeping.
+- **Works unattended.** It watches the folder on its own, and
+  reports when something lands.
 
-Feeding the library one contract at a time by hand already keeps it
-growing. Further still is a version that watches the folder on its
-own, taking in whatever lands there and sending word when it does,
-without anyone telling it to look.
+Underneath the provisions sits a master template for the whole
+contract — confidentiality, non-solicitation of customers, return of
+company property and the rest. The provisions slot into it a clause
+at a time.
 
-## Working it from the terminal
+## What drafting looks like
 
-None of this happens in a browser. The reader picks a state from a
-terminal and the available provisions narrow to the ones that
-actually work there, discarding everything the library knows that
-would not survive in that state.
+It runs in a terminal, not a browser. Pick a state. The available
+provisions narrow to the ones that survive there.
 
-From there the working view has two sides: the template on one, and
-the provisions available to drop into it on the other. Fill in what
-it asks for and a finished draft comes out, built from clauses that
-have already survived somewhere real:
+The view has two sides: the template on one, the provisions
+available to fill it on the other. You supply party names, duration,
+geographic scope and subject-matter scope, and a finished draft
+comes out.
 
-- **Party names.** Who the agreement binds, on each side.
-- **Duration.** How long the restriction runs once employment ends.
-- **Geographic scope.** Where the restriction applies.
-- **Subject-matter scope.** What kind of competing work is barred.
+Two ways to search: on wording when you know the wording, on meaning
+when you only know the sense of it.
 
-Two ways of searching should sit side by side. When the wording of a
-clause is known, search on the wording. When only its sense is known,
-search on meaning instead, and let something judge which stored
-provisions are close enough to matter.
+## Feel free to cheat
 
-## What is fair game
-
-Everything covered across Levels 1, 2 and 3 of this course is fair
-game here, without restriction. The only thing that matters is what
-the finished library does for the firm, not what it is written in or
-how a provision gets recognised.
+Everything in Levels 1, 2 and 3 of this course is fair game. How it
+works is up to you.
 
 Press `n`.

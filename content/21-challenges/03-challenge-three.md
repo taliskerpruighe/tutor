@@ -12,86 +12,84 @@ keywords: [challenge, web application, accounts, upload, profit and loss, balanc
 
 *v0.2.14*
 
-Nobody need pay for accounting software again. That is the claim
-behind this challenge, and the challenge is to prove it by building
-the thing rather than arguing for it.
+Three small businesses in New York — a limited liability company, a
+partnership and a corporation — want a web application. It turns
+whatever paperwork they upload into a profit and loss and a balance
+sheet. You are building it.
 
-The proof has a specific shape. It is a web application the reader
-hosts personally, reachable by a stranger who does no more than type
-an address into a browser — not a spreadsheet dressed up to look
-like one.
+## What the three businesses have given you
 
-## The books coming in
+`materials/challenge-three/` holds three folders, one per business.
 
-A handful of invented small businesses have agreed to let the reader
-put a year of their paperwork through whatever gets built. Each one
-signs up inside the finished application, uploads what it would
-otherwise hand a bookkeeper, and finds out whether the two statements
-that come back are actually right.
+`ferrone-provisions-llc` is a food business in Sunset Park,
+Brooklyn. It carries stock. Its filing is tidy: a folder tree by
+document type, two bank accounts, the whole of 2025.
 
-The whole arrangement — every business, a year of its documents —
-sits in `materials/challenge-three/`.
+`halloran-vance-design` is a design partnership on West 23rd
+Street. It is a service business with no stock. Its invoices and
+receipts sit in dated batches, running from July 2024 to August
+2025.
 
-What arrives is bank statements, bills, receipts and invoices, out of
-several sources and several formats, with nothing shaped to make the
-job easier. The businesses differ from each other on purpose, so a
-year of stock movements and a year of nothing but service invoices do
-not quietly reduce to the same shape.
+`bright-harbor-fabrication` is a manufacturer in Long Island City,
+a corporation with stock, equipment and loans.
 
-The input is a mess, and it should stay one. What comes out the other
-end must not be.
+It has over a hundred files in one flat folder for calendar 2025,
+with names like `Copy of card statement.pdf`, `bank aug pt1.pdf`
+and `scan3021.pdf`. Many are scanned pages with no text in them.
 
-## Two statements, unprompted
+Each folder opens with a letter from the business's previous
+accountant, stating the cash, receivables, payables and capital at
+the end of the last engagement.
 
-Out of whatever has been uploaded, the application should produce two
-financial statements without being asked: a profit and loss, and a
-balance sheet. Nobody sets a reporting period in advance.
+`bright-harbor-fabrication` keeps it as `opening_position_letter.pdf`,
+loose in the flat folder. `ferrone-provisions-llc` keeps it in
+`opening/`. `halloran-vance-design` keeps it in the first batch
+folder.
 
-The period is whatever the uploaded documents happen to cover,
-whether that turns out to be a single month or several years, and
-nothing about the design should assume otherwise.
+Everything after that letter has to reconcile against its figures.
 
-Getting there means treating documents that disagree with each other
-in format as figures that must agree with each other in substance,
-reconciling anything that only states a balance against the material
-that explains how it was reached.
+Formats run to `.pdf`, `.docx`, `.xlsx`, `.csv`, `.jpg` and `.txt`.
+No two of the three periods share a start or an end.
+
+A year of stock movements and a year of service invoices do not
+reduce to the same shape.
+
+## What the application has to produce
+
+Out of whatever has been uploaded, the application produces a
+profit and loss and a balance sheet without being asked for
+either.
+
+Nobody sets the reporting period. It is whatever the uploaded
+documents happen to cover: a single month for one business, years
+for another.
+
+A document that only states a balance — the opening letter, or a
+running total on a bank statement — has to be reconciled against
+the material that explains how it was reached.
 
 ## What has to be on the page
 
-One page after login is enough for all of this to live on, and the
-same account can be logged out of as easily as it was logged into.
+One page after login holds all of this. The account logs out as
+easily as it logs in.
 
-- **Somewhere to upload.** A single place for whatever the business
-  wants to add next.
-- **Somewhere to browse.** Every document uploaded before, sitting
-  where it can be opened again.
-- **The two statements.** Sortable and filterable by period, not
-  fixed to whatever range they first appeared in.
+- **Somewhere to upload.** One place for whatever gets added next.
+- **Somewhere to browse.** Every document uploaded before, open
+  again.
+- **The two statements.** Sortable and filterable by period.
 - **An agent, reachable through a chat box.** Tied to the account,
-  and living on the same page as everything else.
+  on the same page.
 
-Nothing else has to be there. Everything the business does with the
-application, it does from that one page.
+## How far you take it
 
-## The terms of the challenge
+No stack is specified. No particular way of handling a login is
+required. Levels 1, 2 and 3 of this course are all fair game.
 
-Nothing here says how to build it. No stack is specified, and no
-particular way of handling a login is required. Only the finished
-shape matters — what happens when a stranger opens the address and
-starts using it.
+Build it on your own machine first. Then host it: a second person,
+on a second machine, reaches it with an address in a browser and
+uses it without being told how. It has to survive a reboot and keep
+working unwatched.
 
-Beyond that, Levels 1, 2 and 3 of this course are free to draw on,
-and using them well matters more than being clever about what is
-left out.
-
-Running on the reader's own machine proves the mechanism works, and
-nothing more than that. It counts for more once somebody else, on a
-different machine entirely, can reach it without help. The furthest
-version needs nobody at all — it survives a reboot, keeps taking
-uploads and keeps producing statements while nobody is watching it.
-
-Nobody marks this. The only proof that matters is that it works, and
-that a second person, on a second machine, can pick it up and use it
-without being told how.
+Nobody marks this. The only test is that it works.
 
 Press `n`.
