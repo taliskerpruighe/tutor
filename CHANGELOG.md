@@ -1,5 +1,13 @@
 # Changelog
 
+## MkI_v0.2.23
+<!-- git-ops:from 8078da7603254324c8fe81c83ff03262d38bb657 -->
+
+- refactor(lab/challenge-two, lab/challenge-three): remove lab challenge-two and challenge-three assets
+- docs(content/21-challenges): update 02-challenge-two.md, 03-challenge-three.md
+- feat(content): add 21-challenges 02, 03
+- feat(challenge-three): add bright-harbor, ferrone, halloran-vance materials
+
 ## MkI_v0.2.22
 <!-- git-ops:from 267dabcdeba8a7af451239af10b2ae7e613bc018 -->
 
