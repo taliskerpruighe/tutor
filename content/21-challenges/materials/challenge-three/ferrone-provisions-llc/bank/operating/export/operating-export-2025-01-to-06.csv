@@ -1,0 +1,73 @@
+Txn Date,Memo,Debit Amount,Credit Amount,Running Balance
+2025-01-12,DEPOSIT - TRATTORIA ROSSO NYC,,22000.00,272000.00
+2025-01-15,CHECK - SALUMERIA ADRIATICA IMPORT CO.,15000.00,,257000.00
+2025-01-19,DEPOSIT - TRATTORIA VIALARDI,,18000.00,275000.00
+2025-01-22,CHECK - MOLINO D'ORO PASTA IMPORTS LLC,12000.00,,263000.00
+2025-01-25,Payment - Bill FP-4024 - Harborline Business Insurance,9600.00,,253400.00
+2025-01-25,Rent - 2025-01,6500.00,,246900.00
+2025-01-25,Utilities - 2025-01,960.11,,245939.89
+2025-01-25,Telephone & internet - 2025-01,260.35,,245679.54
+2025-01-25,Vehicle tolls/parking - 2025-01,43.93,,245635.61
+2025-01-28,Transfer to payroll account - 2025-01,17440.00,,228195.61
+2025-01-30,Receipt - Invoice INV-1001 - Trattoria Rosso NYC,,80000.00,308195.61
+2025-01-30,Payment - Bill FP-4027 - Ridgewood Ledger CPAs,3000.00,,305195.61
+2025-01-30,Monthly account fee - 2025-01,41.86,,305153.75
+2025-02-09,Receipt - Invoice INV-1002 - Amalfi Table Catering,,16331.25,321485.00
+2025-02-20,Payment - Bill FP-4001 - Salumeria Adriatica Import Co.,50161.00,,271324.00
+2025-02-21,Fuel - Harbor Fuel & Auto,58.40,,271265.60
+2025-02-25,Transfer to payroll account - 2025-02,17440.00,,253825.60
+2025-02-26,Rent - 2025-02,6500.00,,247325.60
+2025-02-26,Utilities - 2025-02,1059.00,,246266.60
+2025-02-26,Telephone & internet - 2025-02,272.31,,245994.29
+2025-02-26,Vehicle tolls/parking - 2025-02,119.00,,245875.29
+2025-02-28,Payment - Bill FP-4013 - Caseificio Del Ponte USA,33737.00,,212138.29
+2025-02-28,Monthly account fee - 2025-02,41.89,,212096.40
+2025-03-02,Receipt - Invoice INV-1003 - Trattoria Rosso NYC,,80000.00,292096.40
+2025-03-11,Payment - Bill FP-4007 - Molino d'Oro Pasta Imports LLC,39279.00,,252817.40
+2025-03-12,Receipt - Invoice INV-1004 - Amalfi Table Catering,,21775.00,274592.40
+2025-03-13,Payment - Bill FP-4019 - Frantoio Import Traders,37665.00,,236927.40
+2025-03-20,NY sales tax remittance - filing period 1 Dec 2024 - 28 Feb 2025,4306.25,,232621.15
+2025-03-25,Payment - Bill FP-4025 - Gowanus Paper & Packaging Supply,1200.00,,231421.15
+2025-03-27,Rent - 2025-03,6500.00,,224921.15
+2025-03-27,Utilities - 2025-03,897.28,,224023.87
+2025-03-27,Telephone & internet - 2025-03,264.12,,223759.75
+2025-03-27,Vehicle tolls/parking - 2025-03,54.44,,223705.31
+2025-03-28,Transfer to payroll account - 2025-03,17440.00,,206265.31
+2025-03-28,Member distribution - A. Ferrone,15000.00,,191265.31
+2025-03-28,Member distribution - L. Ferrone,12000.00,,179265.31
+2025-03-29,Payment - Bill FP-4014 - Caseificio Del Ponte USA,48517.00,,130748.31
+2025-03-30,Receipt - Invoice INV-1005 - Trattoria Vialardi,,87000.00,217748.31
+2025-03-30,Monthly account fee - 2025-03,45.17,,217703.14
+2025-04-09,Receipt - Invoice INV-1006 - Amalfi Table Catering,,19597.50,237300.64
+2025-04-24,Rent - 2025-04,6500.00,,230800.64
+2025-04-24,Utilities - 2025-04,725.22,,230075.42
+2025-04-24,Telephone & internet - 2025-04,248.20,,229827.22
+2025-04-24,Vehicle tolls/parking - 2025-04,74.14,,229753.08
+2025-04-27,Transfer to payroll account - 2025-04,17440.00,,212313.08
+2025-04-30,Receipt - Invoice INV-1007 - Trattoria Rosso NYC,,88000.00,300313.08
+2025-04-30,Monthly account fee - 2025-04,42.99,,300270.09
+2025-05-09,Fuel - Bay Ridge Gas & Wash,71.15,,300198.94
+2025-05-10,Receipt - Invoice INV-1008 - Amalfi Table Catering,,23952.50,324151.44
+2025-05-13,Payment - Bill FP-4015 - Caseificio Del Ponte USA,50563.00,,273588.44
+2025-05-25,Rent - 2025-05,6500.00,,267088.44
+2025-05-25,Utilities - 2025-05,757.27,,266331.17
+2025-05-25,Telephone & internet - 2025-05,267.98,,266063.19
+2025-05-25,Vehicle tolls/parking - 2025-05,123.60,,265939.59
+2025-05-28,Transfer to payroll account - 2025-05,17440.00,,248499.59
+2025-05-30,Receipt - Invoice INV-1009 - Trattoria Vialardi,,86000.00,334499.59
+2025-05-30,Payment - Bill FP-4008 - Molino d'Oro Pasta Imports LLC,47237.00,,287262.59
+2025-05-30,Monthly account fee - 2025-05,48.72,,287213.87
+2025-06-02,Payment - Bill FP-4002 - Salumeria Adriatica Import Co.,36590.00,,250623.87
+2025-06-09,Receipt - Invoice INV-1010 - Amalfi Table Catering,,23952.50,274576.37
+2025-06-17,Payment - Bill FP-4003 - Salumeria Adriatica Import Co.,41638.00,,232938.37
+2025-06-20,NY sales tax remittance - filing period 1 Mar 2025 - 31 May 2025,5502.50,,227435.87
+2025-06-23,Payment - Bill FP-4020 - Frantoio Import Traders,57373.00,,170062.87
+2025-06-27,Transfer to payroll account - 2025-06,17440.00,,152622.87
+2025-06-27,Member distribution - A. Ferrone,15000.00,,137622.87
+2025-06-27,Member distribution - L. Ferrone,12000.00,,125622.87
+2025-06-28,Rent - 2025-06,6500.00,,119122.87
+2025-06-28,Utilities - 2025-06,1012.59,,118110.28
+2025-06-28,Telephone & internet - 2025-06,254.38,,117855.90
+2025-06-28,Vehicle tolls/parking - 2025-06,113.69,,117742.21
+2025-06-30,Receipt - Invoice INV-1011 - Trattoria Rosso NYC,,90000.00,207742.21
+2025-06-30,Monthly account fee - 2025-06,45.91,,207696.30
