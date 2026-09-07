@@ -12,83 +12,32 @@ keywords: [challenge, web application, accounts, upload, profit and loss, balanc
 
 *v0.2.14*
 
-Three small businesses in New York — a limited liability company, a
-partnership and a corporation — want a web application. It turns
-whatever paperwork they upload into a profit and loss and a balance
-sheet. You are building it.
+Here is the situation. Three small businesses in New York want an application that turns their paperwork into financial statements. A limited liability company, a partnership and a corporation — each one different enough that the same approach will not work for all three. You are building the application, and it runs in a browser, not a terminal.
 
-## What the three businesses have given you
+The three businesses and their paperwork sit in `materials/challenge-three/`.
 
-`materials/challenge-three/` holds three folders, one per business.
+`ferrone-provisions-llc` is a food business in Sunset Park, Brooklyn. It carries stock. Its filing is tidy: a folder tree organized by document type, two bank accounts, the whole of 2025.
 
-`ferrone-provisions-llc` is a food business in Sunset Park,
-Brooklyn. It carries stock. Its filing is tidy: a folder tree by
-document type, two bank accounts, the whole of 2025.
+`halloran-vance-design` is a design partnership on West 23rd Street. Service business, no stock. Its invoices and receipts sit in dated batches running from July 2024 to August 2025.
 
-`halloran-vance-design` is a design partnership on West 23rd
-Street. It is a service business with no stock. Its invoices and
-receipts sit in dated batches, running from July 2024 to August
-2025.
+`bright-harbor-fabrication` is a manufacturer in Long Island City — a corporation with stock, equipment and loans. It has over a hundred files dumped into one flat folder for calendar 2025, with names like `Copy of card statement.pdf`, `bank aug pt1.pdf` and `scan3021.pdf`. Many of them are scanned pages with no selectable text.
 
-`bright-harbor-fabrication` is a manufacturer in Long Island City,
-a corporation with stock, equipment and loans.
+Each folder opens with a letter from the business's previous accountant, stating the cash, receivables, payables and capital at the end of the last engagement. Where the letter sits depends on the business: `bright-harbor-fabrication` keeps it loose as `opening_position_letter.pdf`, `ferrone-provisions-llc` keeps it in `opening/`, `halloran-vance-design` keeps it in the first batch folder. Everything after that letter has to reconcile against its figures.
 
-It has over a hundred files in one flat folder for calendar 2025,
-with names like `Copy of card statement.pdf`, `bank aug pt1.pdf`
-and `scan3021.pdf`. Many are scanned pages with no text in them.
+Formats run to PDF, DOCX, XLSX, CSV, JPG and TXT. No two of the three periods share a start or an end. A year of stock movements and a year of service invoices do not reduce to the same shape.
 
-Each folder opens with a letter from the business's previous
-accountant, stating the cash, receivables, payables and capital at
-the end of the last engagement.
+Here is what the application does. A business signs up, uploads what it would otherwise hand a bookkeeper, and gets back two financial statements: a profit and loss and a balance sheet. Nobody sets the reporting period — it is whatever the uploaded documents happen to cover. A document that only states a balance (the opening letter, a running total on a bank statement) has to be reconciled against the material that explains how it was reached.
 
-`bright-harbor-fabrication` keeps it as `opening_position_letter.pdf`,
-loose in the flat folder. `ferrone-provisions-llc` keeps it in
-`opening/`. `halloran-vance-design` keeps it in the first batch
-folder.
+The whole thing fits on one page after login:
 
-Everything after that letter has to reconcile against its figures.
+1. A place to upload whatever gets added next.
+2. A place to browse everything uploaded before.
+3. The two statements, sortable and filterable by period.
+4. A chat box tied to the account, on the same page as everything else.
 
-Formats run to `.pdf`, `.docx`, `.xlsx`, `.csv`, `.jpg` and `.txt`.
-No two of the three periods share a start or an end.
+No stack is specified. No particular login mechanism is required. Everything in Levels 1, 2 and 3 of this course is fair game.
 
-A year of stock movements and a year of service invoices do not
-reduce to the same shape.
-
-## What the application has to produce
-
-Out of whatever has been uploaded, the application produces a
-profit and loss and a balance sheet without being asked for
-either.
-
-Nobody sets the reporting period. It is whatever the uploaded
-documents happen to cover: a single month for one business, years
-for another.
-
-A document that only states a balance — the opening letter, or a
-running total on a bank statement — has to be reconciled against
-the material that explains how it was reached.
-
-## What has to be on the page
-
-One page after login holds all of this. The account logs out as
-easily as it logs in.
-
-- **Somewhere to upload.** One place for whatever gets added next.
-- **Somewhere to browse.** Every document uploaded before, open
-  again.
-- **The two statements.** Sortable and filterable by period.
-- **An agent, reachable through a chat box.** Tied to the account,
-  on the same page.
-
-## How far you take it
-
-No stack is specified. No particular way of handling a login is
-required. Levels 1, 2 and 3 of this course are all fair game.
-
-Build it on your own machine first. Then host it: a second person,
-on a second machine, reaches it with an address in a browser and
-uses it without being told how. It has to survive a reboot and keep
-working unwatched.
+Build it on your own machine first, then host it. A second person on a second machine types an address into a browser and uses it without being told how. It survives a reboot and keeps working with nobody watching it.
 
 Nobody marks this. The only test is that it works.
 
