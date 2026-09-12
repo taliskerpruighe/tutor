@@ -209,5 +209,11 @@ spread "$SUB" "$SUB_A" "$SUB_B" "$SUB_C" "$SUB_D" "$SUB_E"
 printf '\n'
 # The version tag is read out of version.txt the same way install.sh reads
 # it, never hardcoded: a hardcoded tag is a second source of truth that
-# drifts on the very next release.
-printf '%66s%s%s%s\n' '' "$TAG_COL" "v$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$ROOT/version.txt")" "$R"
+# drifts on the very next release. The pad is computed for the same reason:
+# go/splash.go lands the tag's last character on composedWidth (73), so a
+# literal 66 sits right for v0.2.14's seven characters and one short for
+# v0.3.0's six.
+VTAG="v$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$ROOT/version.txt")"
+VPAD=$((73 - ${#VTAG}))
+[ "$VPAD" -ge 0 ] || VPAD=0
+printf '%*s%s%s%s\n' "$VPAD" '' "$TAG_COL" "$VTAG" "$R"

@@ -7,6 +7,11 @@
 #   sh bin/release-version.sh this script: rewrites, rebuilds, commits, pushes
 #   git-ops-2 ship release/0.3.0 opens + merges the PRs, creates the GitHub release
 #
+# `release` computes the version from the latest GitHub release, and the
+# release it computes from is the hand-seeded v0.2.15 baseline: delete that
+# release and the next cut falls back to v0.0.0 -> v0.1.0, below the readers
+# already deployed, which then never see an update at all.
+#
 # It takes the version from the branch name (release/N.N.N), so the number it
 # writes is always the number the release ships under — never a second source
 # of truth to drift. The files it owns:
