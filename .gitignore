@@ -4,3 +4,9 @@
 /.claude/worktrees/
 /.claude/settings.local.json
 __pycache__/
+# A stray reader build landed at go/go once; keep it out of the tree.
+# Same reasoning for the agent scratch dirs: ignored globally, and kept
+# here so a machine whose global ignore differs still gets it right.
+/go/go
+/.worktrees/
+/.scratch/
