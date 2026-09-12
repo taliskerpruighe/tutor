@@ -24,6 +24,11 @@ OUT="$ROOT/tui/bin"
 # silently in one of two directions: the reader never sees a real update, or
 # it loops forever offering an "update" that is exactly what she already has.
 # Check this before spending time compiling, not after.
+#
+# The N-marker allowlist lives twice — newVersions in go/layout.go and
+# NEW_VERSIONS in tui/layout.py — and must agree with itself and hold the
+# release being built: a release whose own articles cannot draw N shipped a
+# marker rule that silently does nothing for its own batch.
 command -v grep >/dev/null 2>&1 && command -v sed >/dev/null 2>&1 || {
     echo "grep and sed are required." >&2
     exit 1
@@ -41,6 +46,25 @@ if [ "$VTXT" != "$VGO" ] || [ "$VTXT" != "$VPY" ]; then
     echo "All three must agree before a build." >&2
     exit 1
 fi
+
+# Same gate for the allowlists.
+GALLOW=$(sed -n 's/^var newVersions = \[\]string{\(.*\)}$/\1/p' "$ROOT/go/layout.go" | sed 's/[" ]//g' | tr ',' '\n' | sort)
+PALLOW=$(sed -n 's/^NEW_VERSIONS = (\(.*\))$/\1/p' "$ROOT/tui/layout.py" | sed 's/["() ]//g' | tr ',' '\n' | sort)
+if [ -z "$GALLOW" ] || [ -z "$PALLOW" ]; then
+    echo "newVersions allowlist not found in go/layout.go or tui/layout.py" >&2
+    exit 1
+fi
+if [ "$GALLOW" != "$PALLOW" ]; then
+    echo "newVersions mismatch:" >&2
+    echo "  go/layout.go    $(sed -n 's/^var newVersions = \[\]string{\(.*\)}$/\1/p' "$ROOT/go/layout.go")" >&2
+    echo "  tui/layout.py   $(sed -n 's/^NEW_VERSIONS = (\(.*\))$/\1/p' "$ROOT/tui/layout.py")" >&2
+    echo "Both lists must agree before a build." >&2
+    exit 1
+fi
+printf '%s\n' "$GALLOW" | grep -qx "v$VTXT" || {
+    echo "newVersions does not hold this release (v$VTXT) — add it when cutting one" >&2
+    exit 1
+}
 
 command -v go >/dev/null 2>&1 || {
     echo "go is not installed." >&2

@@ -18,6 +18,8 @@
 
 set -eu
 
+ROOT=$(cd "$(dirname "$0")/.." && pwd)
+
 # Build the escape sequences with a real ESC byte in them. Writing them as
 # the literal string \033 would not do: these are passed to printf as
 # *arguments*, and printf only expands backslash escapes in its format
@@ -205,4 +207,7 @@ printf '\n'
 printf '%s' "$IND"
 spread "$SUB" "$SUB_A" "$SUB_B" "$SUB_C" "$SUB_D" "$SUB_E"
 printf '\n'
-printf '%66s%s%s%s\n' '' "$TAG_COL" 'v0.2.14' "$R"
+# The version tag is read out of version.txt the same way install.sh reads
+# it, never hardcoded: a hardcoded tag is a second source of truth that
+# drifts on the very next release.
+printf '%66s%s%s%s\n' '' "$TAG_COL" "v$(sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$ROOT/version.txt")" "$R"
