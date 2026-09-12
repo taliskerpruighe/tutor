@@ -99,13 +99,14 @@ func TestVersionURLFor(t *testing.T) {
 
 // TestUpdateTagsFor pins the exact candidate list and its order. The order is
 // the contract: namespaced entries first, one per name in updateBranches, so
-// no pre-v0.2.12 release changes the candidate it resolves on; the bare tag
-// last, because that is the shape v0.2.12 and v0.2.13 were published under
-// and the reason a reader could see v0.2.13 in version.txt and still fail to
-// download it.
+// no pre-v0.2.12 release changes the candidate it resolves on; the bare
+// MkI_v tag next, because that is the shape v0.2.12 and v0.2.13 were
+// published under and the reason a reader could see v0.2.13 in version.txt
+// and still fail to download it; and the standard shape last, for what the
+// git-ops release flow publishes from v0.3.0 on.
 func TestUpdateTagsFor(t *testing.T) {
 	got := updateTagsFor("0.2.13")
-	want := []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13"}
+	want := []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13", "v0.2.13"}
 
 	if len(got) != len(want) {
 		t.Fatalf("updateTagsFor(%q) = %q, want %q", "0.2.13", got, want)
@@ -117,21 +118,25 @@ func TestUpdateTagsFor(t *testing.T) {
 	}
 }
 
-// TestUpdateTagsForBareTagIsLast states the ordering requirement separately
-// from the exact-list check above, so that a future edit to updateBranches
-// cannot quietly promote the bare tag ahead of the namespaced ones and take
-// the historical releases' resolution with it.
-func TestUpdateTagsForBareTagIsLast(t *testing.T) {
+// TestUpdateTagsForStandardTagIsLast states the ordering requirement
+// separately from the exact-list check above, so that a future edit to
+// updateBranches cannot quietly promote either trailing shape ahead of the
+// namespaced ones and take the historical releases' resolution with it.
+// The standard shape is last of all, after the bare MkI_v one.
+func TestUpdateTagsForStandardTagIsLast(t *testing.T) {
 	got := updateTagsFor("0.2.13")
 	if len(got) == 0 {
 		t.Fatal("updateTagsFor returned no candidates")
 	}
-	if last := got[len(got)-1]; last != "MkI_v0.2.13" {
-		t.Errorf("last candidate = %q, want the bare tag %q", last, "MkI_v0.2.13")
+	if second := got[len(got)-2]; second != "MkI_v0.2.13" {
+		t.Errorf("second-to-last candidate = %q, want the bare tag %q", second, "MkI_v0.2.13")
 	}
-	for i, tag := range got[:len(got)-1] {
+	if last := got[len(got)-1]; last != "v0.2.13" {
+		t.Errorf("last candidate = %q, want the standard tag %q", last, "v0.2.13")
+	}
+	for i, tag := range got[:len(got)-2] {
 		if !strings.Contains(tag, "/") {
-			t.Errorf("candidate %d = %q, want a namespaced tag before the bare one", i, tag)
+			t.Errorf("candidate %d = %q, want a namespaced tag before the trailing ones", i, tag)
 		}
 	}
 }
@@ -145,7 +150,7 @@ func TestUpdateTagsForDerivesFromUpdateBranches(t *testing.T) {
 	t.Cleanup(func() { updateBranches = orig })
 
 	got := updateTagsFor("1.0.0")
-	want := []string{"alpha/MkI_v1.0.0", "beta/MkI_v1.0.0", "gamma/MkI_v1.0.0", "MkI_v1.0.0"}
+	want := []string{"alpha/MkI_v1.0.0", "beta/MkI_v1.0.0", "gamma/MkI_v1.0.0", "MkI_v1.0.0", "v1.0.0"}
 
 	if len(got) != len(want) {
 		t.Fatalf("updateTagsFor = %q, want %q", got, want)
@@ -487,8 +492,47 @@ func TestApplyUpdateWalksPastNamespacedTagsToBareTag(t *testing.T) {
 	}
 }
 
+// TestApplyUpdateFindsStandardTagOnly proves a git-ops release — published
+// under the plain vN.N.N shape, with no MkI_v twin for this test's server to
+// serve — is still reached and installed after the three legacy candidates
+// have each 404'd.
+func TestApplyUpdateFindsStandardTagOnly(t *testing.T) {
+	var asked []string
+	srv := releaseServer(t, "v0.2.13", &asked)
+	defer srv.Close()
+	withTarballURL(t, srv)
+	pinUpdateBranches(t, "main", "tori")
+
+	parent := t.TempDir()
+	root := filepath.Join(parent, "tutor")
+	if err := os.MkdirAll(filepath.Join(root, "content"), 0o755); err != nil {
+		t.Fatalf("seeding root: %v", err)
+	}
+
+	if err := applyUpdate(root, "0.2.13"); err != nil {
+		t.Fatalf("applyUpdate failed on a release published under the standard tag: %v", err)
+	}
+
+	want := []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13", "v0.2.13"}
+	if len(asked) != len(want) {
+		t.Fatalf("server was asked for %q, want %q", asked, want)
+	}
+	for i := range want {
+		if asked[i] != want[i] {
+			t.Errorf("request %d was for %q, want %q", i, asked[i], want[i])
+		}
+	}
+
+	if _, err := os.Stat(filepath.Join(root, "tui", "bin", "tutor")); err != nil {
+		t.Errorf("root was not replaced by the downloaded tree: %v", err)
+	}
+	if _, err := os.Stat(root + ".old"); !os.IsNotExist(err) {
+		t.Errorf("the .old rollback directory was left behind")
+	}
+}
+
 // TestApplyUpdateReportsEveryTagItTried covers the failure path a reader
-// actually sees. When no candidate resolves, the error must name all three,
+// actually sees. When no candidate resolves, the error must name all four,
 // because that message is what distinguishes a genuinely missing release from
 // one tagged in a shape the candidate list does not cover — the distinction
 // nobody could make while the bug was live.
@@ -509,7 +553,7 @@ func TestApplyUpdateReportsEveryTagItTried(t *testing.T) {
 	if err == nil {
 		t.Fatal("applyUpdate succeeded with no resolvable tag")
 	}
-	for _, tag := range []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13"} {
+	for _, tag := range []string{"main/MkI_v0.2.13", "tori/MkI_v0.2.13", "MkI_v0.2.13", "v0.2.13"} {
 		if !strings.Contains(err.Error(), tag) {
 			t.Errorf("error %q does not name tried tag %q", err, tag)
 		}

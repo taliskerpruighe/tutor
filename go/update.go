@@ -47,21 +47,27 @@ var versionURLFmt = "https://raw.githubusercontent.com/taliskerpruighe/tutor/%s/
 var tarballURLFmt = "https://codeload.github.com/taliskerpruighe/tutor/tar.gz/refs/tags/%s"
 
 const (
-	// Release tags in this repo come in two shapes, because the convention
-	// changed mid-flight and the old tags were never renamed.
+	// Release tags in this repo come in three shapes, because the convention
+	// changed mid-flight twice and the old tags were never renamed.
 	//
 	// Up through v0.2.11 every tag was namespaced by the trunk it was cut
 	// on: "main/MkI_v0.2.11", or "tori/MkI_v0.2.11" on the other side of the
 	// rename. From v0.2.12 onward the branch prefix was simply left off and
-	// the tags are bare: "MkI_v0.2.12", "MkI_v0.2.13".
+	// the tags are bare: "MkI_v0.2.12", "MkI_v0.2.13". From v0.3.0 the
+	// git-ops release flow publishes the standard shape instead — "v0.3.0"
+	// with no MkI_ prefix at all — and the release-tag-alias workflow keeps
+	// a MkI_v twin of every one of those for the readers predating this
+	// change to resolve.
 	//
-	// So neither shape can be assumed. updateTagsFor builds both, namespaced
-	// first (every historical release resolves exactly as it always has) and
-	// bare last (which is what catches v0.2.12 onward). Emitting only the
-	// namespaced form is the bug this pair of constants exists to prevent
-	// recurring: the reader would find v0.2.13 in version.txt, correctly
-	// announce it, then 404 on both namespaced candidates and report the
-	// release missing while it sat on GitHub under the shorter name.
+	// So no shape can be assumed. updateTagsFor builds all three, namespaced
+	// first (every historical release resolves exactly as it always has),
+	// bare MkI_v next (which is what catches v0.2.12 onward), and the plain
+	// vN.N.N standard shape last for what the release flow publishes now.
+	// Emitting only the namespaced form is the bug this pair of constants
+	// exists to prevent recurring: the reader would find v0.2.13 in
+	// version.txt, correctly announce it, then 404 on both namespaced
+	// candidates and report the release missing while it sat on GitHub
+	// under the shorter name.
 	bareTagPrefix = "MkI_v"
 	tagPrefixFmt  = "%s/" + bareTagPrefix
 
@@ -95,23 +101,26 @@ func versionURLFor(branch string) string {
 
 // updateTagsFor returns every release tag ver might have been published
 // under, in the order applyUpdate should try them: one namespaced tag per
-// name in updateBranches, then the bare tag last.
+// name in updateBranches, then the bare MkI_v tag, then the standard
+// vN.N.N tag last.
 //
 // The order is the whole point. Namespaced first means a pre-v0.2.12 release
 // resolves on the same candidate it always did, so nothing about an older
-// reader's update path changes. Bare last means a release tagged without the
+// reader's update path changes. Bare next means a release tagged without the
 // branch prefix is still found, one extra round trip later — and a tag that
 // does not exist 404s in milliseconds, so that trip costs essentially
-// nothing.
+// nothing. The standard shape last means what the git-ops release flow
+// publishes from v0.3.0 on is reached too, after the legacy shapes it
+// arrives alongside have each had their turn.
 //
 // The namespaced entries are derived from updateBranches rather than spelled
 // out, so adding a branch stays the one-line change it is today.
 func updateTagsFor(ver string) []string {
-	tags := make([]string, 0, len(updateBranches)+1)
+	tags := make([]string, 0, len(updateBranches)+2)
 	for _, branch := range updateBranches {
 		tags = append(tags, fmt.Sprintf(tagPrefixFmt, branch)+ver)
 	}
-	return append(tags, bareTagPrefix+ver)
+	return append(tags, bareTagPrefix+ver, "v"+ver)
 }
 
 // updateCacheFile is where the last-seen remote version is written after
