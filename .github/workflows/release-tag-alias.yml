@@ -1,0 +1,34 @@
+# Keep every git-ops release installable by the updater already on
+# readers' Macs. That program only ever asks codeload for tags shaped
+# MkI_vN.N.N, while git-ops ship creates the release tag as vN.N.N. So
+# on every published release, create the MkI_v alias of this release's
+# tag at the same commit and push it. Newer clients try the v shape
+# themselves (see updateTagsFor in go/update.go); the alias is for the
+# ones that predate it. install.sh strips .github/ from the shipped
+# copy, so this file never reaches a reader.
+name: release tag alias
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  alias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          case "$TAG" in
+            v*) ;;
+            *) echo "not a vN.N.N release tag ($TAG); nothing to alias"; exit 0 ;;
+          esac
+          if git rev-parse -q --verify "refs/tags/MkI_$TAG" >/dev/null; then
+            echo "MkI_$TAG already exists; nothing to do"
+            exit 0
+          fi
+          git tag "MkI_$TAG" "$TAG"
+          git push origin "MkI_$TAG"
